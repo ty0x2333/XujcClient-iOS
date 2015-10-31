@@ -1,0 +1,33 @@
+//
+//  XujcClient-prefix.pch
+//  XujcClient
+//
+//  Created by 田奕焰 on 15/10/31.
+//  Copyright © 2015年 luckytianyiyan. All rights reserved.
+//
+
+#ifndef XujcClient_prefix_pch
+#define XujcClient_prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <Availability.h>
+
+#ifdef __OBJC__
+// System Frameworks
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import <QuartzCore/QuartzCore.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "TyLog_Objc.h"
+// Pod Configuration
+#define MAS_SHORTHAND
+// Pods
+#import <UIColor-HexString/UIColor+HexString.h>
+#import <Masonry/Masonry.h>
+#endif
+
+#endif /* XujcClient_prefix_pch */

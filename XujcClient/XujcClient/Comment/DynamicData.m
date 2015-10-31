@@ -7,7 +7,6 @@
  */
 
 #import "DynamicData.h"
-#import "TyLog_Objc.h"
 
 static NSString* const kDataXujcUser = @"XujcUser";
 static NSString* const kDataXujcAPIKey = @"APIKey";

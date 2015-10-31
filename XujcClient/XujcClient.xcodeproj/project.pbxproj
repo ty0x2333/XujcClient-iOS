@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */; settings = {ASSET_TAGS = (); }; };
+		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE1B1BE3AC25001D027C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1A1BE3AC25001D027C /* main.m */; };
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
 		70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE201BE3AC25001D027C /* LoginViewController.m */; };
@@ -23,10 +25,21 @@
 		70F7CE581BE41182001D027C /* tabbar-schedule-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE541BE41182001D027C /* tabbar-schedule-selected@3x.png */; settings = {ASSET_TAGS = (); }; };
 		70F7CE591BE41182001D027C /* tabbar-schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE551BE41182001D027C /* tabbar-schedule@2x.png */; settings = {ASSET_TAGS = (); }; };
 		70F7CE5A1BE41182001D027C /* tabbar-schedule@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE561BE41182001D027C /* tabbar-schedule@3x.png */; settings = {ASSET_TAGS = (); }; };
+		70F7CE5E1BE422B2001D027C /* MSEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE5D1BE422B2001D027C /* MSEventCell.m */; settings = {ASSET_TAGS = (); }; };
+		70F7CE611BE42391001D027C /* MSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE601BE42391001D027C /* MSEvent.m */; settings = {ASSET_TAGS = (); }; };
+		70F7CE651BE426FF001D027C /* MSDayColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE641BE426FF001D027C /* MSDayColumnHeader.m */; settings = {ASSET_TAGS = (); }; };
+		70F7CE681BE4279C001D027C /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE671BE4279C001D027C /* MSTimeRowHeader.m */; settings = {ASSET_TAGS = (); }; };
+		70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE6D1BE43A4E001D027C /* MSGridline.m */; settings = {ASSET_TAGS = (); }; };
+		70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */; settings = {ASSET_TAGS = (); }; };
+		70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE721BE43AC3001D027C /* MSCurrentTimeGridline.m */; settings = {ASSET_TAGS = (); }; };
 		D6AA2EAC9399777C75CF39CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F22B4B799576540B0102BE0C /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7023F9A01BE52F6B0046CF3B /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
+		7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
+		7023F9A31BE52FA10046CF3B /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
+		7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeaderBackground.m; sourceTree = "<group>"; };
 		70F7CE161BE3AC25001D027C /* XujcClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XujcClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F7CE1A1BE3AC25001D027C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70F7CE1C1BE3AC25001D027C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +67,21 @@
 		70F7CE541BE41182001D027C /* tabbar-schedule-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-schedule-selected@3x.png"; sourceTree = "<group>"; };
 		70F7CE551BE41182001D027C /* tabbar-schedule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-schedule@2x.png"; sourceTree = "<group>"; };
 		70F7CE561BE41182001D027C /* tabbar-schedule@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-schedule@3x.png"; sourceTree = "<group>"; };
+		70F7CE5C1BE422B2001D027C /* MSEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEventCell.h; sourceTree = "<group>"; };
+		70F7CE5D1BE422B2001D027C /* MSEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEventCell.m; sourceTree = "<group>"; };
+		70F7CE5F1BE42391001D027C /* MSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEvent.h; sourceTree = "<group>"; };
+		70F7CE601BE42391001D027C /* MSEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEvent.m; sourceTree = "<group>"; };
+		70F7CE631BE426FF001D027C /* MSDayColumnHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeader.h; sourceTree = "<group>"; };
+		70F7CE641BE426FF001D027C /* MSDayColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeader.m; sourceTree = "<group>"; };
+		70F7CE661BE4279C001D027C /* MSTimeRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeader.h; sourceTree = "<group>"; };
+		70F7CE671BE4279C001D027C /* MSTimeRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeader.m; sourceTree = "<group>"; };
+		70F7CE6B1BE4394D001D027C /* XujcClient-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XujcClient-prefix.pch"; sourceTree = "<group>"; };
+		70F7CE6C1BE43A4E001D027C /* MSGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridline.h; sourceTree = "<group>"; };
+		70F7CE6D1BE43A4E001D027C /* MSGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridline.m; sourceTree = "<group>"; };
+		70F7CE6F1BE43AA6001D027C /* MSCurrentTimeGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeGridline.h; sourceTree = "<group>"; };
+		70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeIndicator.m; sourceTree = "<group>"; };
+		70F7CE721BE43AC3001D027C /* MSCurrentTimeGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeGridline.m; sourceTree = "<group>"; };
+		70F7CE731BE43AC3001D027C /* MSCurrentTimeIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeIndicator.h; sourceTree = "<group>"; };
 		809B7A975EDBE96102E85C69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F11D480843B2B5B2BA56FFB6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F22B4B799576540B0102BE0C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +137,8 @@
 		70F7CE181BE3AC25001D027C /* XujcClient */ = {
 			isa = PBXGroup;
 			children = (
+				70F7CE621BE426FF001D027C /* Collection View Reusable Views */,
+				70F7CE5B1BE422B2001D027C /* Collection View Cells */,
 				70F7CE3A1BE3E7E7001D027C /* Model */,
 				70F7CE341BE3D1B8001D027C /* Comment */,
 				70F7CE301BE3BD4A001D027C /* API */,
@@ -133,6 +163,7 @@
 		70F7CE191BE3AC25001D027C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				70F7CE6B1BE4394D001D027C /* XujcClient-prefix.pch */,
 				70F7CE1A1BE3AC25001D027C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -160,6 +191,8 @@
 		70F7CE3A1BE3E7E7001D027C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				70F7CE5F1BE42391001D027C /* MSEvent.h */,
+				70F7CE601BE42391001D027C /* MSEvent.m */,
 				70F7CE3B1BE3E806001D027C /* BaseModel.h */,
 				70F7CE3C1BE3E806001D027C /* BaseModel.m */,
 				70F7CE411BE3E832001D027C /* XujcUser.h */,
@@ -177,6 +210,36 @@
 				70F7CE561BE41182001D027C /* tabbar-schedule@3x.png */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		70F7CE5B1BE422B2001D027C /* Collection View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				70F7CE5C1BE422B2001D027C /* MSEventCell.h */,
+				70F7CE5D1BE422B2001D027C /* MSEventCell.m */,
+			);
+			path = "Collection View Cells";
+			sourceTree = "<group>";
+		};
+		70F7CE621BE426FF001D027C /* Collection View Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				7023F9A31BE52FA10046CF3B /* MSTimeRowHeaderBackground.h */,
+				7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */,
+				7023F9A01BE52F6B0046CF3B /* MSDayColumnHeaderBackground.h */,
+				7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */,
+				70F7CE6F1BE43AA6001D027C /* MSCurrentTimeGridline.h */,
+				70F7CE721BE43AC3001D027C /* MSCurrentTimeGridline.m */,
+				70F7CE731BE43AC3001D027C /* MSCurrentTimeIndicator.h */,
+				70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */,
+				70F7CE6C1BE43A4E001D027C /* MSGridline.h */,
+				70F7CE6D1BE43A4E001D027C /* MSGridline.m */,
+				70F7CE661BE4279C001D027C /* MSTimeRowHeader.h */,
+				70F7CE671BE4279C001D027C /* MSTimeRowHeader.m */,
+				70F7CE631BE426FF001D027C /* MSDayColumnHeader.h */,
+				70F7CE641BE426FF001D027C /* MSDayColumnHeader.m */,
+			);
+			path = "Collection View Reusable Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,13 +353,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				70F7CE431BE3E832001D027C /* XujcUser.m in Sources */,
+				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
+				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
+				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
 				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
 				70F7CE511BE40A81001D027C /* MainTabBarController.m in Sources */,
+				70F7CE681BE4279C001D027C /* MSTimeRowHeader.m in Sources */,
+				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
 				70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
+				70F7CE651BE426FF001D027C /* MSDayColumnHeader.m in Sources */,
+				70F7CE5E1BE422B2001D027C /* MSEventCell.m in Sources */,
+				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
+				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				70F7CE4E1BE40A3C001D027C /* ScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XujcClient/XujcClient-prefix.pch";
 				INFOPLIST_FILE = XujcClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.XujcClient;
@@ -415,6 +488,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XujcClient/XujcClient-prefix.pch";
 				INFOPLIST_FILE = XujcClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.XujcClient;

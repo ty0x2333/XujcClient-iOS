@@ -8,7 +8,6 @@
 
 #import "LoginViewController.h"
 #import "XujcAPI.h"
-#import "TyLog_Objc.h"
 #import "DynamicData.h"
 
 #import "XujcUser.h"
