@@ -10,7 +10,6 @@
 #import "MSEventCell.h"
 #import "MSEvent.h"
 #import "MSGridline.h"
-#import "MSDayColumnHeader.h"
 #import "MSTimeRowHeader.h"
 #import "MSCurrentTimeIndicator.h"
 #import "MSCurrentTimeGridline.h"
@@ -19,13 +18,15 @@
 #import "NSDate+CupertinoYankee.h"
 #import <MSCollectionViewCalendarLayout.h>
 
+#import "ScheduleColumnHeader.h"
+
 static NSInteger const kDayCountOfWeek = 7;
 static NSInteger const kTimeIntervalOfDay = 60 * 60 * 24;
 static NSInteger const kTimeIntervalOfHour = 60 * 60;
 static NSInteger const kTimeIntervalOfMinute = 60;
 
 static NSString * const kMSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
-static NSString * const kMSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
+static NSString * const kScheduleColumnHeaderReuseIdentifier = @"ScheduleColumnHeaderReuseIdentifier";
 static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 
 @interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout>
@@ -63,7 +64,7 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     [self.collectionView registerClass:MSEventCell.class forCellWithReuseIdentifier:kMSEventCellReuseIdentifier];
-    [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:kMSDayColumnHeaderReuseIdentifier];
+    [self.collectionView registerClass:ScheduleColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:kScheduleColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:MSTimeRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:kMSTimeRowHeaderReuseIdentifier];
     
     self.collectionViewCalendarLayout.sectionWidth = self.layoutSectionWidth;
@@ -128,7 +129,7 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
 {
     UICollectionReusableView *view;
     if (kind == MSCollectionElementKindDayColumnHeader) {
-        MSDayColumnHeader *dayColumnHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kMSDayColumnHeaderReuseIdentifier forIndexPath:indexPath];
+        ScheduleColumnHeader *dayColumnHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kScheduleColumnHeaderReuseIdentifier forIndexPath:indexPath];
         
         NSDate *day = [self.collectionViewCalendarLayout dateForDayColumnHeaderAtIndexPath:indexPath];
         
@@ -138,7 +139,7 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
         NSDate *startOfCurrentDay = [[NSCalendar currentCalendar] startOfDayForDate:currentDay];
         
         dayColumnHeader.day = day;
-        dayColumnHeader.currentDay = [startOfDay isEqualToDate:startOfCurrentDay];
+        dayColumnHeader.isCurrentDay = [startOfDay isEqualToDate:startOfCurrentDay];
         
         view = dayColumnHeader;
     } else if (kind == MSCollectionElementKindTimeRowHeader) {

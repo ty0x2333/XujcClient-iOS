@@ -1,30 +1,30 @@
-//
-//  MSDayColumnHeader.m
-//  Example
-//
-//  Created by Eric Horacek on 2/26/13.
-//  Copyright (c) 2015 Eric Horacek. All rights reserved.
-//
+/**
+ * @file ScheduleColumnHeader.m
+ *
+ * @author luckytianyiyan@gmail.com
+ * @date 15/11/1
+ * @copyright   Copyright © 2015年 luckytianyiyan. All rights reserved.
+ */
 
-#import "MSDayColumnHeader.h"
+#import "ScheduleColumnHeader.h"
 
-@interface MSDayColumnHeader ()
+@interface ScheduleColumnHeader ()
 
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UIView *titleBackground;
 
 @end
 
-@implementation MSDayColumnHeader
+@implementation ScheduleColumnHeader
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.titleBackground = [UIView new];
-        self.titleBackground.layer.cornerRadius = nearbyintf(15.0);
-        [self addSubview:self.titleBackground];
+        _titleBackground = [UIView new];
+        _titleBackground.layer.cornerRadius = nearbyintf(15.0);
+        [self addSubview:_titleBackground];
         
         self.backgroundColor = [UIColor clearColor];
         self.title = [UILabel new];
@@ -49,17 +49,17 @@
     static NSDateFormatter *dateFormatter;
     if (!dateFormatter) {
         dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"EEE MMM d" : @"EEEE MMMM d, YYYY");
+        dateFormatter.dateFormat = @"EE MM-dd";
     }
     self.title.text = [dateFormatter stringFromDate:day];
     [self setNeedsLayout];
 }
 
-- (void)setCurrentDay:(BOOL)currentDay
+- (void)setIsCurrentDay:(BOOL)isCurrentDay
 {
-    _currentDay = currentDay;
+    _isCurrentDay = isCurrentDay;
     
-    if (currentDay) {
+    if (_isCurrentDay) {
         self.title.textColor = [UIColor whiteColor];
         self.title.font = [UIFont boldSystemFontOfSize:16.0];
         self.titleBackground.backgroundColor = [UIColor colorWithHexString:@"fd3935"];
