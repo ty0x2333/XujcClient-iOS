@@ -21,6 +21,8 @@
 
 static NSInteger const kDayCountOfWeek = 7;
 static NSInteger const kTimeIntervalOfDay = 60 * 60 * 24;
+static NSInteger const kTimeIntervalOfHour = 60 * 60;
+static NSInteger const kTimeIntervalOfMinute = 60;
 
 static NSString * const kMSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 static NSString * const kMSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
@@ -39,6 +41,18 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
 {
     self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
     self.collectionViewCalendarLayout.delegate = self;
+//    self.collectionViewCalendarLayout.hourHeight = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 80.0 : 80.0);
+//    self.collectionViewCalendarLayout.sectionWidth = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 194.0 : 254.0);
+//    self.collectionViewCalendarLayout.dayColumnHeaderHeight = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 60.0 : 50.0);
+//    self.collectionViewCalendarLayout.currentTimeHorizontalGridlineHeight = 1.0;
+//    self.collectionViewCalendarLayout.verticalGridlineWidth = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);
+//    self.collectionViewCalendarLayout.horizontalGridlineHeight = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);;
+//    self.collectionViewCalendarLayout.sectionMargin = UIEdgeInsetsMake(30.0, 0.0, 30.0, 0.0);
+//    self.collectionViewCalendarLayout.cellMargin = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
+//    self.collectionViewCalendarLayout.contentMargin = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIEdgeInsetsMake(30.0, 0.0, 30.0, 30.0) : UIEdgeInsetsMake(20.0, 0.0, 20.0, 10.0));
+    
+    self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
+
     self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
     return self;
 }
@@ -61,17 +75,6 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
     [self.collectionViewCalendarLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindHorizontalGridline];
     [self.collectionViewCalendarLayout registerClass:MSTimeRowHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
     [self.collectionViewCalendarLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
-    
-//    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
-//    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start" ascending:YES]];
-//    // No events with undecided times or dates
-//    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(dateToBeDecided == NO) AND (timeToBeDecided == NO)"];
-//    // Divide into sections by the "day" key path
-//    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext sectionNameKeyPath:@"day" cacheName:nil];
-//    self.fetchedResultsController.delegate = self;
-//    [self.fetchedResultsController performFetch:nil];
-    
-//    [self loadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -106,20 +109,16 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-//    return [(id <NSFetchedResultsSectionInfo>)self.fetchedResultsController.sections[section] numberOfObjects];
-    return 6;
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MSEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMSEventCellReuseIdentifier forIndexPath:indexPath];
     MSEvent *event = [[MSEvent alloc] init];
-//    event.remoteID = @(100);
     event.start = [NSDate dateWithTimeIntervalSinceNow:-100];
     event.title = @"title";
     event.location = @"location";
-//    event.timeToBeDecided = @(1);
-//    event.dateToBeDecided = @(2);
     
     cell.event = event;
     return cell;
@@ -157,18 +156,17 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
     NSDate *now = [NSDate date];
     NSDate *beginningOfWeek = [now beginningOfWeek];
     TyLogDebug(@"beginningOfWeek: %@", beginningOfWeek);
-    return [beginningOfWeek dateByAddingTimeInterval:kTimeIntervalOfDay];
+    return [beginningOfWeek dateByAddingTimeInterval:section * kTimeIntervalOfDay];
 }
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout startTimeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [NSDate date];
+    return [[[NSDate date] beginningOfDay] dateByAddingTimeInterval:kTimeIntervalOfHour * 8];
 }
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout endTimeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    return [[NSDate date] dateByAddingTimeInterval:(60 * 60 * 3)];
-    return [NSDate date];
+    return [[[NSDate date] beginningOfDay] dateByAddingTimeInterval:kTimeIntervalOfHour * 10 + kTimeIntervalOfMinute * 25];
 }
 
 - (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout
