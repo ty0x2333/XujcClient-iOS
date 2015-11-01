@@ -7,10 +7,6 @@
  */
 
 #import "XujcUser.h"
-static NSString* const kResponseStudentId = @"xj_id";
-static NSString* const kResponseName = @"xj_xm";
-static NSString* const kResponseGrade = @"xj_nj";
-static NSString* const kResponseProfessional = @"zy_mc";
 
 static NSString* const kDataStudentId = @"StudentId";
 static NSString* const kDataName = @"Name";
