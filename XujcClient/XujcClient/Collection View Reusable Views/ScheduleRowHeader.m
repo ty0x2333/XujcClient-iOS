@@ -1,20 +1,21 @@
-//
-//  MSTimeRowHeader.m
-//  Example
-//
-//  Created by Eric Horacek on 2/26/13.
-//  Copyright (c) 2015 Eric Horacek. All rights reserved.
-//
+/**
+ * @file ScheduleRowHeader.m
+ *
+ * @author luckytianyiyan@gmail.com
+ * @date 15/11/1
+ * @copyright   Copyright © 2015年 luckytianyiyan. All rights reserved.
+ */
 
-#import "MSTimeRowHeader.h"
+#import "ScheduleRowHeader.h"
 
-@implementation MSTimeRowHeader
+@implementation ScheduleRowHeader
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+//        self.backgroundColor = [UIColor redColor];
         self.title = [UILabel new];
         self.title.backgroundColor = [UIColor clearColor];
         self.title.font = [UIFont systemFontOfSize:12.0];
@@ -37,10 +38,11 @@
     static NSDateFormatter *dateFormatter;
     if (!dateFormatter) {
         dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = @"h a";
+        dateFormatter.dateFormat = @"h:mm";
     }
     self.title.text = [dateFormatter stringFromDate:time];
     [self setNeedsLayout];
 }
+
 
 @end

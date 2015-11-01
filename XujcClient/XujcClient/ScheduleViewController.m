@@ -10,7 +10,7 @@
 #import "MSEventCell.h"
 #import "MSEvent.h"
 #import "MSGridline.h"
-#import "MSTimeRowHeader.h"
+#import "ScheduleRowHeader.h"
 #import "MSCurrentTimeIndicator.h"
 #import "MSCurrentTimeGridline.h"
 #import "MSTimeRowHeaderBackground.h"
@@ -27,7 +27,9 @@ static NSInteger const kTimeIntervalOfMinute = 60;
 
 static NSString * const kMSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 static NSString * const kScheduleColumnHeaderReuseIdentifier = @"ScheduleColumnHeaderReuseIdentifier";
-static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
+static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderReuseIdentifier";
+
+static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 @interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout>
 
@@ -42,6 +44,8 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
 {
     self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
     self.collectionViewCalendarLayout.delegate = self;
+    self.collectionViewCalendarLayout.timeRowHeaderWidth = kTimeRowHeaderWidth;
+    self.collectionViewCalendarLayout.currentTimeIndicatorSize = CGSizeMake(self.collectionViewCalendarLayout.timeRowHeaderWidth, 10.0);
 //    self.collectionViewCalendarLayout.hourHeight = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 80.0 : 80.0);
 //    self.collectionViewCalendarLayout.sectionWidth = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 194.0 : 254.0);
 //    self.collectionViewCalendarLayout.dayColumnHeaderHeight = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 60.0 : 50.0);
@@ -65,7 +69,7 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
     
     [self.collectionView registerClass:MSEventCell.class forCellWithReuseIdentifier:kMSEventCellReuseIdentifier];
     [self.collectionView registerClass:ScheduleColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:kScheduleColumnHeaderReuseIdentifier];
-    [self.collectionView registerClass:MSTimeRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:kMSTimeRowHeaderReuseIdentifier];
+    [self.collectionView registerClass:ScheduleRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:kScheduleRowHeaderReuseIdentifier];
     
     self.collectionViewCalendarLayout.sectionWidth = self.layoutSectionWidth;
     
@@ -143,7 +147,7 @@ static NSString * const kMSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuse
         
         view = dayColumnHeader;
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
-        MSTimeRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kMSTimeRowHeaderReuseIdentifier forIndexPath:indexPath];
+        ScheduleRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kScheduleRowHeaderReuseIdentifier forIndexPath:indexPath];
         timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
         view = timeRowHeader;
     }

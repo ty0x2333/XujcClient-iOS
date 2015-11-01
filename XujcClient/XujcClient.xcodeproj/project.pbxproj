@@ -10,6 +10,7 @@
 		7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */; settings = {ASSET_TAGS = (); }; };
 		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; settings = {ASSET_TAGS = (); }; };
 		7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */; settings = {ASSET_TAGS = (); }; };
+		7023F9AB1BE60F680046CF3B /* ScheduleRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AA1BE60F680046CF3B /* ScheduleRowHeader.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE1B1BE3AC25001D027C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1A1BE3AC25001D027C /* main.m */; };
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
 		70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE201BE3AC25001D027C /* LoginViewController.m */; };
@@ -28,7 +29,6 @@
 		70F7CE5A1BE41182001D027C /* tabbar-schedule@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE561BE41182001D027C /* tabbar-schedule@3x.png */; settings = {ASSET_TAGS = (); }; };
 		70F7CE5E1BE422B2001D027C /* MSEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE5D1BE422B2001D027C /* MSEventCell.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE611BE42391001D027C /* MSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE601BE42391001D027C /* MSEvent.m */; settings = {ASSET_TAGS = (); }; };
-		70F7CE681BE4279C001D027C /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE671BE4279C001D027C /* MSTimeRowHeader.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE6D1BE43A4E001D027C /* MSGridline.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE721BE43AC3001D027C /* MSCurrentTimeGridline.m */; settings = {ASSET_TAGS = (); }; };
@@ -42,6 +42,8 @@
 		7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeaderBackground.m; sourceTree = "<group>"; };
 		7023F9A61BE551030046CF3B /* ScheduleColumnHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleColumnHeader.h; sourceTree = "<group>"; };
 		7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleColumnHeader.m; sourceTree = "<group>"; };
+		7023F9A91BE60F680046CF3B /* ScheduleRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleRowHeader.h; sourceTree = "<group>"; };
+		7023F9AA1BE60F680046CF3B /* ScheduleRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRowHeader.m; sourceTree = "<group>"; };
 		70F7CE161BE3AC25001D027C /* XujcClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XujcClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F7CE1A1BE3AC25001D027C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70F7CE1C1BE3AC25001D027C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -73,8 +75,6 @@
 		70F7CE5D1BE422B2001D027C /* MSEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEventCell.m; sourceTree = "<group>"; };
 		70F7CE5F1BE42391001D027C /* MSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEvent.h; sourceTree = "<group>"; };
 		70F7CE601BE42391001D027C /* MSEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEvent.m; sourceTree = "<group>"; };
-		70F7CE661BE4279C001D027C /* MSTimeRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeader.h; sourceTree = "<group>"; };
-		70F7CE671BE4279C001D027C /* MSTimeRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeader.m; sourceTree = "<group>"; };
 		70F7CE6B1BE4394D001D027C /* XujcClient-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XujcClient-prefix.pch"; sourceTree = "<group>"; };
 		70F7CE6C1BE43A4E001D027C /* MSGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridline.h; sourceTree = "<group>"; };
 		70F7CE6D1BE43A4E001D027C /* MSGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridline.m; sourceTree = "<group>"; };
@@ -234,8 +234,8 @@
 				70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */,
 				70F7CE6C1BE43A4E001D027C /* MSGridline.h */,
 				70F7CE6D1BE43A4E001D027C /* MSGridline.m */,
-				70F7CE661BE4279C001D027C /* MSTimeRowHeader.h */,
-				70F7CE671BE4279C001D027C /* MSTimeRowHeader.m */,
+				7023F9A91BE60F680046CF3B /* ScheduleRowHeader.h */,
+				7023F9AA1BE60F680046CF3B /* ScheduleRowHeader.m */,
 				7023F9A61BE551030046CF3B /* ScheduleColumnHeader.h */,
 				7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */,
 			);
@@ -356,9 +356,9 @@
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
 				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
+				7023F9AB1BE60F680046CF3B /* ScheduleRowHeader.m in Sources */,
 				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
 				70F7CE511BE40A81001D027C /* MainTabBarController.m in Sources */,
-				70F7CE681BE4279C001D027C /* MSTimeRowHeader.m in Sources */,
 				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
 				70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */,
