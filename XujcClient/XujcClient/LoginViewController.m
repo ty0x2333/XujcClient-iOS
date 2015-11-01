@@ -46,6 +46,7 @@
         DYNAMIC_DATA.APIKey = apiKey;
         DYNAMIC_DATA.user = user;
         [DYNAMIC_DATA flush];
+        [self dismissViewControllerAnimated:YES completion:nil];
     };
     ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
         TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);

@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "LoginViewController.h"
 #import "MainTabBarController.h"
+#import "DynamicData.h"
 @interface AppDelegate ()
 
 @end
@@ -21,10 +21,10 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-//    LoginViewController *vc = [[LoginViewController alloc] init];
-//    self.window.rootViewController = vc;
+    
     MainTabBarController *vc = [[MainTabBarController alloc] init];
     self.window.rootViewController = vc;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

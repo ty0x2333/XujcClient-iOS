@@ -17,6 +17,10 @@
 #import "MSDayColumnHeaderBackground.h"
 #import "NSDate+CupertinoYankee.h"
 #import <MSCollectionViewCalendarLayout.h>
+#import "XujcAPI.h"
+#import "LoginViewController.h"
+#import "XujcTerm.h"
+#import "DynamicData.h"
 
 #import "ScheduleColumnHeader.h"
 
@@ -87,6 +91,14 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     [super viewDidAppear:animated];
     
     [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
+    
+    if (DYNAMIC_DATA.APIKey == nil){
+        LoginViewController *loginViewController = [[LoginViewController alloc] init];
+        [self presentViewController:loginViewController animated:NO completion:nil];
+        return;
+    }
+    
+    [self termRequest];
 }
 
 
@@ -160,7 +172,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 {
     NSDate *now = [NSDate date];
     NSDate *beginningOfWeek = [now beginningOfWeek];
-    TyLogDebug(@"beginningOfWeek: %@", beginningOfWeek);
+//    TyLogDebug(@"beginningOfWeek: %@", beginningOfWeek);
     return [beginningOfWeek dateByAddingTimeInterval:section * kTimeIntervalOfDay];
 }
 
@@ -177,6 +189,36 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 - (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout
 {
     return [NSDate date];
+}
+
+#pragma mark - Requests
+
+- (void)dataRequest
+{
+    
+}
+
+- (void)termRequest
+{
+    NSString *apiKey = DYNAMIC_DATA.APIKey;
+    ResponseSuccessBlock success = ^(AFHTTPRequestOperation *operation, id responseObject){
+        TyLogDebug(@"Success Response: %@", responseObject);
+        NSArray *termIds = [responseObject allKeys];
+        NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termIds.count];
+        for (id key in termIds) {
+            XujcTerm *term = [[XujcTerm alloc] init];
+            term.termId = key;
+            term.displayName = responseObject[key];
+            [termArray addObject:term];
+        }
+        DYNAMIC_DATA.terms = termArray;
+        [DYNAMIC_DATA flush];
+    };
+    ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);
+    };
+    
+    [XujcAPI terms:apiKey successBlock:success failureBlock:failure];
 }
 
 #pragma mark - Getter
