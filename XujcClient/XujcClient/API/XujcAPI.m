@@ -18,11 +18,13 @@
 #pragma mark 用户信息
 
 #define XUJCAPI_USER_INFOMATION XUJCAPI_URL_MAKER(@"me.php")
-
+#define XUJCAPI_TERMS XUJCAPI_URL_MAKER(@"kb.php")
+#define XUJCAPI_CLASS_SCHEDULE XUJCAPI_URL_MAKER(@"kb.php")
 
 #pragma mark - Request Keys
 
 static NSString* const kRequestKeyAPIKey = @"apikey";
+static NSString* const kRequestKeyTermId = @"tm_id";
 
 @implementation XujcAPI
 
@@ -38,4 +40,28 @@ static NSString* const kRequestKeyAPIKey = @"apikey";
      ];
 }
 
++ (void)terms:(NSString *)APIKey
+ successBlock:(ResponseSuccessBlock)success
+ failureBlock:(ResponseFailureBlock)failure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:XUJCAPI_TERMS
+      parameters:@{kRequestKeyAPIKey: APIKey}
+         success:success
+         failure:failure
+     ];
+}
+
++ (void)classSchedule:(NSString *)APIKey
+               termId:(NSString *)termId
+         successBlock:(ResponseSuccessBlock)success
+         failureBlock:(ResponseFailureBlock)failure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:XUJCAPI_CLASS_SCHEDULE
+      parameters:@{kRequestKeyAPIKey: APIKey, kRequestKeyTermId:termId}
+         success:success
+         failure:failure
+     ];
+}
 @end

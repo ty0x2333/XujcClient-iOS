@@ -18,4 +18,13 @@ typedef void (^ResponseFailureBlock)(AFHTTPRequestOperation *operation, NSError 
           successBlock:(ResponseSuccessBlock)success
           failureBlock:(ResponseFailureBlock)failure;
 
++ (void)terms:(NSString *)APIKey
+ successBlock:(ResponseSuccessBlock)success
+ failureBlock:(ResponseFailureBlock)failure;
+
++ (void)classSchedule:(NSString *)APIKey
+               termId:(NSString *)termId
+ successBlock:(ResponseSuccessBlock)success
+ failureBlock:(ResponseFailureBlock)failure;
+
 @end
