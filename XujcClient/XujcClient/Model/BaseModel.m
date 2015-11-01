@@ -18,6 +18,24 @@
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)decoder
+{
+    if(self = [super init]){
+        NSAssert(false, @"Over initWithCoder in subclasses");
+    }
+    return  self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    NSAssert(false, @"Over encodeWithCoder in subclasses");
+}
+
+- (NSData *)data
+{
+    return [NSKeyedArchiver archivedDataWithRootObject:self];
+}
+
 - (id)checkForNull:(id)value
 {
     return value == [NSNull null] ? nil : value;

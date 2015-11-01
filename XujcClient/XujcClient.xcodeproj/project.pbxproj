@@ -11,6 +11,7 @@
 		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; settings = {ASSET_TAGS = (); }; };
 		7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */; settings = {ASSET_TAGS = (); }; };
 		7023F9AB1BE60F680046CF3B /* ScheduleRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AA1BE60F680046CF3B /* ScheduleRowHeader.m */; settings = {ASSET_TAGS = (); }; };
+		7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcTerm.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE1B1BE3AC25001D027C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1A1BE3AC25001D027C /* main.m */; };
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
 		70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE201BE3AC25001D027C /* LoginViewController.m */; };
@@ -44,6 +45,8 @@
 		7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleColumnHeader.m; sourceTree = "<group>"; };
 		7023F9A91BE60F680046CF3B /* ScheduleRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleRowHeader.h; sourceTree = "<group>"; };
 		7023F9AA1BE60F680046CF3B /* ScheduleRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRowHeader.m; sourceTree = "<group>"; };
+		7023F9AC1BE6550A0046CF3B /* XujcTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcTerm.h; sourceTree = "<group>"; };
+		7023F9AD1BE6550A0046CF3B /* XujcTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcTerm.m; sourceTree = "<group>"; };
 		70F7CE161BE3AC25001D027C /* XujcClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XujcClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F7CE1A1BE3AC25001D027C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70F7CE1C1BE3AC25001D027C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				70F7CE3C1BE3E806001D027C /* BaseModel.m */,
 				70F7CE411BE3E832001D027C /* XujcUser.h */,
 				70F7CE421BE3E832001D027C /* XujcUser.m */,
+				7023F9AC1BE6550A0046CF3B /* XujcTerm.h */,
+				7023F9AD1BE6550A0046CF3B /* XujcTerm.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				70F7CE5E1BE422B2001D027C /* MSEventCell.m in Sources */,
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
+				7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				70F7CE4E1BE40A3C001D027C /* ScheduleViewController.m in Sources */,

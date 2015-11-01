@@ -27,5 +27,6 @@
 
 @property(nonatomic, copy) NSString *APIKey;
 @property(nonatomic, strong) XujcUser *user;
+@property(nonatomic, copy) NSArray *terms;
 
 @end

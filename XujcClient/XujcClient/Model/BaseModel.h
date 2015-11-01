@@ -21,4 +21,6 @@
  */
 - (id)checkForNull:(id)value;
 
+- (NSData *)data;
+
 @end

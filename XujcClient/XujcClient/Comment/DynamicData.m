@@ -7,9 +7,10 @@
  */
 
 #import "DynamicData.h"
-
+#import "XujcTerm.h"
 static NSString* const kDataXujcUser = @"XujcUser";
 static NSString* const kDataXujcAPIKey = @"APIKey";
+static NSString* const kDataXujcTerms = @"XujcTerms";
 
 
 @implementation DynamicData
@@ -38,20 +39,34 @@ static NSString* const kDataXujcAPIKey = @"APIKey";
 - (void)loadingSettings
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *user = [userDefaults dictionaryForKey:kDataXujcUser];
-    _user = [[XujcUser alloc] initWithDictionary:user];
+    
+    _user = [NSKeyedUnarchiver unarchiveObjectWithData:[userDefaults objectForKey:kDataXujcUser]];
     _APIKey = [userDefaults stringForKey:kDataXujcAPIKey];
+    NSArray *termDataArray = [userDefaults objectForKey:kDataXujcTerms];
+    NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termDataArray.count];
+    for (NSData *data in termDataArray) {
+        XujcTerm *term = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        [termArray addObject:term];
+    }
+    _terms = termArray;
     TyLogDebug(@"DynamicData Loaded:%@", [self description]);
 }
 
 - (void)flush
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *dict = [_user dictionaryRepresentation];
-    [userDefaults setObject:dict forKey:kDataXujcUser];
+    [userDefaults setObject:[_user data] forKey:kDataXujcUser];
+    
     [userDefaults setObject:_APIKey forKey:kDataXujcAPIKey];
-    [userDefaults synchronize];
+    
+    NSMutableArray *termDataArray = [NSMutableArray arrayWithCapacity:_terms.count];
+    for (XujcTerm *term in _terms) {
+        [termDataArray addObject:[term data]];
+    }
+    [userDefaults setObject:termDataArray forKey:kDataXujcTerms];
     TyLogDebug(@"DynamicData Flush:%@", [self description]);
+    
+    [userDefaults synchronize];
 }
 
 - (void)clear

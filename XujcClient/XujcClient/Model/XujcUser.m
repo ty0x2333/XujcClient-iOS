@@ -41,6 +41,25 @@ static NSString* const kDataProfessional = @"Professional";
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)decoder
+{
+    if(self = [super init]){
+        _studentId = [decoder decodeObjectForKey:kDataStudentId];
+        _name = [decoder decodeObjectForKey:kDataName];
+        _professional = [decoder decodeObjectForKey:kDataGrade];
+        _grade = [decoder decodeObjectForKey:kDataProfessional];
+    }
+    return  self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:_studentId forKey:kDataStudentId];
+    [encoder encodeObject:_name forKey:kDataName];
+    [encoder encodeObject:_grade forKey:kDataProfessional];
+    [encoder encodeObject:_professional forKey:kDataGrade];
+}
+
 - (NSDictionary *)dictionaryRepresentation
 {
     NSString *null = @"";
