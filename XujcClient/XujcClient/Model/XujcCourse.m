@@ -26,6 +26,7 @@
         NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:courseEventDataArray.count];
         for (id courseEventData in courseEventDataArray) {
             XujcCourseEvent *event = [[XujcCourseEvent alloc] initWithJSONResopnse:courseEventData];
+            event.name = _name;
             [courseEventArray addObject:event];
         }
         _courseEvents = courseEventArray;

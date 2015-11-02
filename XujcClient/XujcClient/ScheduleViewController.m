@@ -15,7 +15,7 @@
 #import "MSCurrentTimeGridline.h"
 #import "MSTimeRowHeaderBackground.h"
 #import "MSDayColumnHeaderBackground.h"
-#import "NSDate+CupertinoYankee.h"
+#import "NSDate+Week.h"
 #import <MSCollectionViewCalendarLayout.h>
 #import "XujcAPI.h"
 #import "LoginViewController.h"
@@ -24,11 +24,6 @@
 #import "DynamicData.h"
 
 #import "ScheduleColumnHeader.h"
-
-static NSInteger const kDayCountOfWeek = 7;
-static NSInteger const kTimeIntervalOfDay = 60 * 60 * 24;
-static NSInteger const kTimeIntervalOfHour = 60 * 60;
-static NSInteger const kTimeIntervalOfMinute = 60;
 
 static NSString * const kMSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 static NSString * const kScheduleColumnHeaderReuseIdentifier = @"ScheduleColumnHeaderReuseIdentifier";
@@ -40,7 +35,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 @property(nonatomic, strong) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property(nonatomic, readonly) CGFloat layoutSectionWidth;
-@property(nonatomic, strong) NSMutableArray *courses;
+@property(nonatomic, strong) NSMutableArray *courseEvents;
 
 @end
 
@@ -87,7 +82,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     [self.collectionViewCalendarLayout registerClass:MSTimeRowHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
     [self.collectionViewCalendarLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
     
-    _courses = [[NSMutableArray alloc] init];
+    _courseEvents = [NSMutableArray arrayWithCapacity:kDayCountOfWeek];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -123,21 +118,26 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 #pragma mark - UICollectionViewDataSource
 
+/**
+ *  @brief  获取课表列数
+ */
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return kDayCountOfWeek;
+    return _courseEvents.count;
 }
-
+/**
+ *  @brief  获取每天课程数
+ */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1;
+    return [_courseEvents[section] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MSEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMSEventCellReuseIdentifier forIndexPath:indexPath];
     MSEvent *event = [[MSEvent alloc] init];
-    event.start = [NSDate dateWithTimeIntervalSinceNow:-100];
+    event.start = [NSDate date];
     event.title = @"title";
     event.location = @"location";
     
@@ -174,20 +174,19 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout dayForSection:(NSInteger)section
 {
-    NSDate *now = [NSDate date];
-    NSDate *beginningOfWeek = [now beginningOfWeek];
-//    TyLogDebug(@"beginningOfWeek: %@", beginningOfWeek);
-    return [beginningOfWeek dateByAddingTimeInterval:section * kTimeIntervalOfDay];
+    return [[NSDate date] dayOfCurrentWeek:section];
 }
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout startTimeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[[NSDate date] beginningOfDay] dateByAddingTimeInterval:kTimeIntervalOfHour * 8];
+    NSDate *dayOfCurrentWeek = [[NSDate date] dayOfCurrentWeek:indexPath.section];
+    return [[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] startTime:dayOfCurrentWeek];
 }
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout endTimeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[[NSDate date] beginningOfDay] dateByAddingTimeInterval:kTimeIntervalOfHour * 10 + kTimeIntervalOfMinute * 25];
+    NSDate *dayOfCurrentWeek = [[NSDate date] dayOfCurrentWeek:indexPath.section];
+    return [[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] endTime:dayOfCurrentWeek];
 }
 
 - (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout
@@ -232,12 +231,22 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     ResponseSuccessBlock success = ^(AFHTTPRequestOperation *operation, id responseObject){
         TyLogDebug(@"Success Response: %@", responseObject);
         
-        [_courses removeAllObjects];
+        NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
         
         for (id item in responseObject) {
             XujcCourse *course = [[XujcCourse alloc] initWithJSONResopnse:item];
-            [_courses addObject:course];
+            for (XujcCourseEvent* event in course.courseEvents) {
+                [courseEventArray addObject:event];
+            }
         }
+        
+        [_courseEvents removeAllObjects];
+        
+        for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
+            [_courseEvents addObject:[ScheduleViewController coureEventsFromDayNumberOfWeek:courseEventArray dayNumberOfWeek:i + 1]];
+        }
+        [self.collectionViewCalendarLayout invalidateLayoutCache];
+        [self.collectionView reloadData];
     };
     ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
         TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);
@@ -262,6 +271,20 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     //
     //    return (width - timeRowHeaderWidth - rightMargin);
 //    return 100;
+}
+
+#pragma mark - Helper
+
++ (NSArray *)coureEventsFromDayNumberOfWeek:(NSArray *)allCourseEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (XujcCourseEvent *event in allCourseEvents) {
+        NSInteger currentDayNumberOfWeek = [NSDate dayNumberOfWeekFromString:event.studyDay];
+        if (currentDayNumberOfWeek == dayNumberOfWeek){
+            [result addObject:event];
+        }
+    }
+    return result;
 }
 
 @end

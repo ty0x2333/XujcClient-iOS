@@ -7,9 +7,11 @@
  */
 
 #import "BaseModel.h"
+#import "XujcSection.h"
 
 @interface XujcCourseEvent : BaseModel
 
+@property(nonatomic, copy) NSString *name;
 @property(nonatomic, copy) NSString *courseClassId;
 @property(nonatomic, copy) NSString *eventDescription;
 /**
@@ -21,12 +23,16 @@
  */
 @property(nonatomic, copy) NSString *weekInterval;
 
-@property(nonatomic, assign) NSInteger startTime;
-@property(nonatomic, assign) NSInteger endTime;
+@property(nonatomic, strong) XujcSection *startSection;
+@property(nonatomic, strong) XujcSection *endSection;
 
 @property(nonatomic, assign) NSInteger startWeek;
 @property(nonatomic, assign) NSInteger endWeek;
 
 @property(nonatomic, copy) NSString *location;
+
+- (NSDate *)startTime:(NSDate *)date;
+
+- (NSDate *)endTime:(NSDate *)date;
 
 @end

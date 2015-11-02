@@ -14,6 +14,9 @@
 		7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcTerm.m */; settings = {ASSET_TAGS = (); }; };
 		7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcCourse.m */; settings = {ASSET_TAGS = (); }; };
 		7023F9BB1BE681300046CF3B /* XujcCourseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcCourseEvent.m */; settings = {ASSET_TAGS = (); }; };
+		7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */; settings = {ASSET_TAGS = (); }; };
+		7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9C11BE72F280046CF3B /* NSDate+Week.m */; settings = {ASSET_TAGS = (); }; };
+		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE1B1BE3AC25001D027C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1A1BE3AC25001D027C /* main.m */; };
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
 		70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE201BE3AC25001D027C /* LoginViewController.m */; };
@@ -54,6 +57,12 @@
 		7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XujcRequestKeys.h; sourceTree = "<group>"; };
 		7023F9B91BE681300046CF3B /* XujcCourseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcCourseEvent.h; sourceTree = "<group>"; };
 		7023F9BA1BE681300046CF3B /* XujcCourseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcCourseEvent.m; sourceTree = "<group>"; };
+		7023F9BC1BE70BB10046CF3B /* CourseEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEventCell.h; sourceTree = "<group>"; };
+		7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseEventCell.m; sourceTree = "<group>"; };
+		7023F9C01BE72F280046CF3B /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
+		7023F9C11BE72F280046CF3B /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
+		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
+		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		70F7CE161BE3AC25001D027C /* XujcClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XujcClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F7CE1A1BE3AC25001D027C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70F7CE1C1BE3AC25001D027C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -126,6 +135,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7023F9BF1BE72E5E0046CF3B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				7023F9C01BE72F280046CF3B /* NSDate+Week.h */,
+				7023F9C11BE72F280046CF3B /* NSDate+Week.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		70F7CE0D1BE3AC25001D027C = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +165,7 @@
 		70F7CE181BE3AC25001D027C /* XujcClient */ = {
 			isa = PBXGroup;
 			children = (
+				7023F9BF1BE72E5E0046CF3B /* Category */,
 				70F7CE621BE426FF001D027C /* Collection View Reusable Views */,
 				70F7CE5B1BE422B2001D027C /* Collection View Cells */,
 				70F7CE3A1BE3E7E7001D027C /* Model */,
@@ -214,6 +233,8 @@
 				7023F9B31BE678E60046CF3B /* XujcCourse.m */,
 				7023F9B91BE681300046CF3B /* XujcCourseEvent.h */,
 				7023F9BA1BE681300046CF3B /* XujcCourseEvent.m */,
+				708661331BE75B7400AD64C2 /* XujcSection.h */,
+				708661341BE75B7400AD64C2 /* XujcSection.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,6 +255,8 @@
 			children = (
 				70F7CE5C1BE422B2001D027C /* MSEventCell.h */,
 				70F7CE5D1BE422B2001D027C /* MSEventCell.m */,
+				7023F9BC1BE70BB10046CF3B /* CourseEventCell.h */,
+				7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */,
 			);
 			path = "Collection View Cells";
 			sourceTree = "<group>";
@@ -370,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70F7CE431BE3E832001D027C /* XujcUser.m in Sources */,
+				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
 				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
@@ -383,11 +407,13 @@
 				7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,
+				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
 				70F7CE5E1BE422B2001D027C /* MSEventCell.m in Sources */,
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
 				7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
+				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				70F7CE4E1BE40A3C001D027C /* ScheduleViewController.m in Sources */,
 			);
