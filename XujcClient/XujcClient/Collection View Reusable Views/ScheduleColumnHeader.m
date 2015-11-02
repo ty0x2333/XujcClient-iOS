@@ -8,9 +8,14 @@
 
 #import "ScheduleColumnHeader.h"
 
+static CGFloat const kDateTitleFontSize = 10.0f;
+static CGFloat const kDayOfWeekTitleFontSize = 15.0f;
+static CGFloat const kBackgroundCornerRadius = 10.0f;
+
 @interface ScheduleColumnHeader ()
 
-@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UILabel *dayOfWeekTitleLabel;
+@property (nonatomic, strong) UILabel *dateTitleLabel;
 @property (nonatomic, strong) UIView *titleBackground;
 
 @end
@@ -21,21 +26,35 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
+//        self.backgroundColor = [UIColor greenColor];
         
         _titleBackground = [UIView new];
-        _titleBackground.layer.cornerRadius = nearbyintf(15.0);
+        _titleBackground.layer.cornerRadius = kBackgroundCornerRadius;
         [self addSubview:_titleBackground];
         
-        self.backgroundColor = [UIColor clearColor];
-        self.title = [UILabel new];
-        self.title.backgroundColor = [UIColor clearColor];
-        [self addSubview:self.title];
+        _dayOfWeekTitleLabel = [UILabel new];
+        _dayOfWeekTitleLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:_dayOfWeekTitleLabel];
         
-        [self.titleBackground makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.title).with.insets(UIEdgeInsetsMake(-6.0, -12.0, -4.0, -12.0));
+        _dateTitleLabel = [UILabel new];
+        _dateTitleLabel.backgroundColor = [UIColor clearColor];
+        _dateTitleLabel.font = [UIFont systemFontOfSize:kDateTitleFontSize];
+        [self addSubview:_dateTitleLabel];
+        
+        [_dateTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_dayOfWeekTitleLabel.bottom);
+            make.centerX.equalTo(_dayOfWeekTitleLabel);
+            make.bottom.equalTo(_titleBackground).offset(-4.0);
         }];
         
-        [self.title makeConstraints:^(MASConstraintMaker *make) {
+        [_dayOfWeekTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_titleBackground).offset(2.0);
+            make.left.equalTo(_titleBackground).offset(12.0);
+            make.right.equalTo(_titleBackground).offset(-12.0);
+        }];
+        
+        [_titleBackground makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self);
         }];
     }
@@ -46,12 +65,19 @@
 {
     _day = day;
     
+    static NSDateFormatter *dayOfWeekFormatter;
     static NSDateFormatter *dateFormatter;
+    if (!dayOfWeekFormatter) {
+        dayOfWeekFormatter = [NSDateFormatter new];
+        dayOfWeekFormatter.dateFormat = @"EE";
+    }
     if (!dateFormatter) {
         dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = @"EE MM-dd";
+        dateFormatter.dateFormat = @"MM-dd";
     }
-    self.title.text = [dateFormatter stringFromDate:day];
+    
+    _dayOfWeekTitleLabel.text = [dayOfWeekFormatter stringFromDate:day];
+    _dateTitleLabel.text = [dateFormatter stringFromDate:day];
     [self setNeedsLayout];
 }
 
@@ -60,13 +86,15 @@
     _isCurrentDay = isCurrentDay;
     
     if (_isCurrentDay) {
-        self.title.textColor = [UIColor whiteColor];
-        self.title.font = [UIFont boldSystemFontOfSize:16.0];
-        self.titleBackground.backgroundColor = [UIColor colorWithHexString:@"fd3935"];
+        _dayOfWeekTitleLabel.textColor = [UIColor whiteColor];
+        _dayOfWeekTitleLabel.font = [UIFont boldSystemFontOfSize:kDayOfWeekTitleFontSize];
+        _dateTitleLabel.textColor = [UIColor whiteColor];
+        _titleBackground.backgroundColor = [UIColor colorWithHexString:@"fd3935"];
     } else {
-        self.title.font = [UIFont systemFontOfSize:16.0];
-        self.title.textColor = [UIColor blackColor];
-        self.titleBackground.backgroundColor = [UIColor clearColor];
+        _dayOfWeekTitleLabel.font = [UIFont systemFontOfSize:kDayOfWeekTitleFontSize];
+        _dayOfWeekTitleLabel.textColor = [UIColor blackColor];
+        _dateTitleLabel.textColor = [UIColor blackColor];
+        _titleBackground.backgroundColor = [UIColor clearColor];
     }
 }
 

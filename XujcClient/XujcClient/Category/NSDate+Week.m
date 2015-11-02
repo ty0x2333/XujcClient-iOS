@@ -12,7 +12,7 @@
 
 - (NSDate *)dayOfCurrentWeek:(NSInteger)offset
 {
-    return [[[NSDate date] beginningOfDay] dateByAddingTimeInterval:kTimeIntervalOfDay * offset];
+    return [[[NSDate date] beginningOfWeek] dateByAddingTimeInterval:kTimeIntervalOfDay * offset];
 }
 
 + (NSInteger)dayNumberOfWeekFromString:(NSString *)str

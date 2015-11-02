@@ -603,7 +603,9 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
         }
     }
 }
-
+/**
+ *  @brief  collectionView的内容的尺寸
+ */
 - (CGSize)collectionViewContentSize
 {
     CGFloat width;

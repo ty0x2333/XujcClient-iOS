@@ -32,7 +32,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 @interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout>
 
 @property(nonatomic, strong) CollectionViewScheduleLayout *collectionViewCalendarLayout;
-@property(nonatomic, readonly) CGFloat layoutSectionWidth;
 @property(nonatomic, strong) NSMutableArray *courseEvents;
 @property(nonatomic, strong) UICollectionView *collectionView;
 
@@ -46,8 +45,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     self.collectionViewCalendarLayout = [[CollectionViewScheduleLayout alloc] init];
     self.collectionViewCalendarLayout.delegate = self;
     self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
-    
-    self.collectionViewCalendarLayout.sectionWidth = self.layoutSectionWidth;
     
     // These are optional. If you don't want any of the decoration views, just don't register a class for them.
     [self.collectionViewCalendarLayout registerClass:MSCurrentTimeIndicator.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
@@ -108,6 +105,13 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     [self.collectionView registerClass:ScheduleRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:kScheduleRowHeaderReuseIdentifier];
     
     [self.view addSubview:_collectionView];
+    
+    CGFloat width = CGRectGetWidth(_collectionView.bounds);
+    CGFloat timeRowHeaderWidth = self.collectionViewCalendarLayout.timeRowHeaderWidth;
+    //    CGFloat rightMargin = self.collectionViewCalendarLayout.contentMargin.right;
+    CGFloat layoutSectionWidth = (width - timeRowHeaderWidth) / 4;
+    
+    self.collectionViewCalendarLayout.sectionWidth = layoutSectionWidth;
 
 }
 
@@ -165,7 +169,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout dayForSection:(NSInteger)section
 {
-    return [[NSDate date] dayOfCurrentWeek:section];
+    return [[NSDate date] dayOfCurrentWeek:section + 1];
 }
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout startTimeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -244,24 +248,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     };
     [XujcAPI classSchedule:apiKey termId:@"20131" successBlock:success failureBlock:failure];
 //    [XujcAPI classSchedule:apiKey termId:termId successBlock:success failureBlock:failure];
-}
-
-#pragma mark - Getter
-
-- (CGFloat)layoutSectionWidth
-{
-    // Default to 254 on iPad.
-    //    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        return 254.0;
-    //    }
-    
-    //    // Otherwise, on iPhone, fit-to-width.
-    //    CGFloat width = CGRectGetWidth(self.collectionView.bounds);
-    //    CGFloat timeRowHeaderWidth = self.collectionViewCalendarLayout.timeRowHeaderWidth;
-    //    CGFloat rightMargin = self.collectionViewCalendarLayout.contentMargin.right;
-    //
-    //    return (width - timeRowHeaderWidth - rightMargin);
-//    return 100;
 }
 
 #pragma mark - Helper
