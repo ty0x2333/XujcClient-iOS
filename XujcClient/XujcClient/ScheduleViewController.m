@@ -34,31 +34,18 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 @property(nonatomic, strong) CollectionViewScheduleLayout *collectionViewCalendarLayout;
 @property(nonatomic, readonly) CGFloat layoutSectionWidth;
 @property(nonatomic, strong) NSMutableArray *courseEvents;
+@property(nonatomic, strong) UICollectionView *collectionView;
 
 @end
 
 @implementation ScheduleViewController
 
-- (id)init
-{
-    self.collectionViewCalendarLayout = [[CollectionViewScheduleLayout alloc] init];
-    self.collectionViewCalendarLayout.delegate = self;
-    self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
-
-    self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.collectionView.bounces = NO;
-
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    
-    [self.collectionView registerClass:CourseEventCell.class forCellWithReuseIdentifier:kCourseEventCellIdentifier];
-    [self.collectionView registerClass:ScheduleColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:kScheduleColumnHeaderReuseIdentifier];
-    [self.collectionView registerClass:ScheduleRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:kScheduleRowHeaderReuseIdentifier];
+    self.collectionViewCalendarLayout = [[CollectionViewScheduleLayout alloc] init];
+    self.collectionViewCalendarLayout.delegate = self;
+    self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
     
     self.collectionViewCalendarLayout.sectionWidth = self.layoutSectionWidth;
     
@@ -77,6 +64,8 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 {
     [super viewDidAppear:animated];
     
+    [self setupCollectionView];
+    
     [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
     
     if (DYNAMIC_DATA.APIKey == nil){
@@ -94,15 +83,33 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Setup
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setupCollectionView
+{
+    CGFloat navigationBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
+    
+    CGFloat navigationBarBottomY = self.navigationController.navigationBar.frame.origin.y + navigationBarHeight;
+    
+    CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
+    
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, navigationBarBottomY, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - navigationBarHeight - tabBarHeight)
+                                         collectionViewLayout:self.collectionViewCalendarLayout];
+    
+    _collectionView.dataSource = self;
+    _collectionView.delegate = self;
+    
+    self.collectionView.bounces = NO;
+    
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    
+    [self.collectionView registerClass:CourseEventCell.class forCellWithReuseIdentifier:kCourseEventCellIdentifier];
+    [self.collectionView registerClass:ScheduleColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:kScheduleColumnHeaderReuseIdentifier];
+    [self.collectionView registerClass:ScheduleRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:kScheduleRowHeaderReuseIdentifier];
+    
+    [self.view addSubview:_collectionView];
+
 }
-*/
 
 #pragma mark - UICollectionViewDataSource
 
