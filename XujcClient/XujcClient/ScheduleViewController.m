@@ -20,6 +20,7 @@
 #import "XujcAPI.h"
 #import "LoginViewController.h"
 #import "XujcTerm.h"
+#import "XujcCourse.h"
 #import "DynamicData.h"
 
 #import "ScheduleColumnHeader.h"
@@ -37,8 +38,9 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 @interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout>
 
-@property (nonatomic, strong) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
-@property (nonatomic, readonly) CGFloat layoutSectionWidth;
+@property(nonatomic, strong) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
+@property(nonatomic, readonly) CGFloat layoutSectionWidth;
+@property(nonatomic, strong) NSMutableArray *courses;
 
 @end
 
@@ -84,6 +86,8 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     [self.collectionViewCalendarLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindHorizontalGridline];
     [self.collectionViewCalendarLayout registerClass:MSTimeRowHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
     [self.collectionViewCalendarLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
+    
+    _courses = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -213,12 +217,33 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
         }
         DYNAMIC_DATA.terms = termArray;
         [DYNAMIC_DATA flush];
+        [self scheduleCourseRequest:[[DYNAMIC_DATA.terms lastObject] termId]];
     };
     ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
         TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);
     };
     
     [XujcAPI terms:apiKey successBlock:success failureBlock:failure];
+}
+
+- (void)scheduleCourseRequest:(NSString *)termId
+{
+    NSString *apiKey = DYNAMIC_DATA.APIKey;
+    ResponseSuccessBlock success = ^(AFHTTPRequestOperation *operation, id responseObject){
+        TyLogDebug(@"Success Response: %@", responseObject);
+        
+        [_courses removeAllObjects];
+        
+        for (id item in responseObject) {
+            XujcCourse *course = [[XujcCourse alloc] initWithJSONResopnse:item];
+            [_courses addObject:course];
+        }
+    };
+    ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);
+    };
+    [XujcAPI classSchedule:apiKey termId:@"20131" successBlock:success failureBlock:failure];
+//    [XujcAPI classSchedule:apiKey termId:termId successBlock:success failureBlock:failure];
 }
 
 #pragma mark - Getter
@@ -238,6 +263,5 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     //    return (width - timeRowHeaderWidth - rightMargin);
 //    return 100;
 }
-
 
 @end
