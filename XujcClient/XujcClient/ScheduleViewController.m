@@ -16,7 +16,7 @@
 #import "MSTimeRowHeaderBackground.h"
 #import "MSDayColumnHeaderBackground.h"
 #import "NSDate+Week.h"
-#import <MSCollectionViewCalendarLayout.h>
+#import "CollectionViewScheduleLayout.h"
 #import "XujcAPI.h"
 #import "LoginViewController.h"
 #import "XujcTerm.h"
@@ -29,11 +29,9 @@ static NSString * const kCourseEventCellIdentifier = @"kCourseEventCellIdentifie
 static NSString * const kScheduleColumnHeaderReuseIdentifier = @"ScheduleColumnHeaderReuseIdentifier";
 static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderReuseIdentifier";
 
-static CGFloat const kTimeRowHeaderWidth = 40.0f;
-
 @interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout>
 
-@property(nonatomic, strong) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
+@property(nonatomic, strong) CollectionViewScheduleLayout *collectionViewCalendarLayout;
 @property(nonatomic, readonly) CGFloat layoutSectionWidth;
 @property(nonatomic, strong) NSMutableArray *courseEvents;
 
@@ -43,20 +41,8 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 - (id)init
 {
-    self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
+    self.collectionViewCalendarLayout = [[CollectionViewScheduleLayout alloc] init];
     self.collectionViewCalendarLayout.delegate = self;
-    self.collectionViewCalendarLayout.timeRowHeaderWidth = kTimeRowHeaderWidth;
-    self.collectionViewCalendarLayout.currentTimeIndicatorSize = CGSizeMake(self.collectionViewCalendarLayout.timeRowHeaderWidth, 10.0);
-//    self.collectionViewCalendarLayout.hourHeight = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 80.0 : 80.0);
-//    self.collectionViewCalendarLayout.sectionWidth = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 194.0 : 254.0);
-//    self.collectionViewCalendarLayout.dayColumnHeaderHeight = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 60.0 : 50.0);
-//    self.collectionViewCalendarLayout.currentTimeHorizontalGridlineHeight = 1.0;
-//    self.collectionViewCalendarLayout.verticalGridlineWidth = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);
-//    self.collectionViewCalendarLayout.horizontalGridlineHeight = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);;
-//    self.collectionViewCalendarLayout.sectionMargin = UIEdgeInsetsMake(30.0, 0.0, 30.0, 0.0);
-//    self.collectionViewCalendarLayout.cellMargin = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
-//    self.collectionViewCalendarLayout.contentMargin = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIEdgeInsetsMake(30.0, 0.0, 30.0, 30.0) : UIEdgeInsetsMake(20.0, 0.0, 20.0, 10.0));
-    
     self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
 
     self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
@@ -65,6 +51,8 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.collectionView.bounces = NO;
 
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
@@ -168,24 +156,24 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 #pragma mark - MSCollectionViewDelegateCalendarLayout
 
-- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout dayForSection:(NSInteger)section
+- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout dayForSection:(NSInteger)section
 {
     return [[NSDate date] dayOfCurrentWeek:section];
 }
 
-- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout startTimeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout startTimeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDate *dayOfCurrentWeek = [[NSDate date] dayOfCurrentWeek:indexPath.section];
     return [[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] startTime:dayOfCurrentWeek];
 }
 
-- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout endTimeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout endTimeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDate *dayOfCurrentWeek = [[NSDate date] dayOfCurrentWeek:indexPath.section];
     return [[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] endTime:dayOfCurrentWeek];
 }
 
-- (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout
+- (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout
 {
     return [NSDate date];
 }

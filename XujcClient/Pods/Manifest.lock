@@ -20,23 +20,20 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - CupertinoYankee (0.1.1)
+  - CupertinoYankee (1.0.2)
   - Masonry (0.6.3)
-  - MSCollectionViewCalendarLayout (0.1.4):
-    - CupertinoYankee (~> 0.1)
   - UIColor-HexString (1.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - CupertinoYankee
   - Masonry
-  - MSCollectionViewCalendarLayout
   - UIColor-HexString
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
-  CupertinoYankee: 742ab22e47518167d0c78d2eaa5aed5b6e26af3b
+  CupertinoYankee: c288994087c791657fce35a43d2a604e64eef23e
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
-  MSCollectionViewCalendarLayout: 806362f9c1b32eda1215b79821441273b89ed997
   UIColor-HexString: f8a5612bd6772fed8db58ee594b42a0b2831750e
 
 COCOAPODS: 0.38.2

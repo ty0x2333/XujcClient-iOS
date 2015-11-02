@@ -19,6 +19,7 @@
         self.title = [UILabel new];
         self.title.backgroundColor = [UIColor clearColor];
         self.title.font = [UIFont systemFontOfSize:12.0];
+        self.layer.borderWidth = 1.0f;
         [self addSubview:self.title];
         
         [self.title makeConstraints:^(MASConstraintMaker *make) {
@@ -38,7 +39,7 @@
     static NSDateFormatter *dateFormatter;
     if (!dateFormatter) {
         dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = @"h:mm";
+        dateFormatter.dateFormat = @"H:mm";
     }
     self.title.text = [dateFormatter stringFromDate:time];
     [self setNeedsLayout];

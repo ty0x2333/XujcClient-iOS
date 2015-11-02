@@ -15,6 +15,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor colorWithHexString:@"d7d7d7"];
+        self.layer.borderWidth = 1.0f;
+        self.layer.borderColor = [UIColor redColor].CGColor;
     }
     return self;
 }
