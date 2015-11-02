@@ -10,4 +10,21 @@
 
 @implementation XujcCourseEvent
 
+- (instancetype)initWithJSONResopnse:(NSDictionary *)json
+{
+    if (self = [super init]) {
+        _courseClassId = [self checkForNull:json[kResponseCourseClassId]];
+        _eventDescription = [self checkForNull:json[kResponseCourseEventDescription]];
+        _studyDay = [self checkForNull:json[kResponseCourseEventStudyDay]];
+        _weekInterval = [self checkForNull:json[kResponseCourseEventWeekInterval]];
+        _startTime = [[self checkForNull:json[kResponseCourseEventStartTime]] integerValue];
+        _endTime = [[self checkForNull:json[kResponseCourseEventEndTime]] integerValue];
+        _startWeek = [[self checkForNull:json[kResponseCourseEventStartWeek]] integerValue];
+        _endWeek = [[self checkForNull:json[kResponseCourseEventEndWeek]] integerValue];
+        _location = [self checkForNull:json[kResponseCourseEventLocation]];
+    }
+    return self;
+}
+
+
 @end

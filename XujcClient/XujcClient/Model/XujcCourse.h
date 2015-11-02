@@ -7,6 +7,7 @@
  */
 
 #import "BaseModel.h"
+#import "XujcCourseEvent.h"
 
 @interface XujcCourse : BaseModel
 

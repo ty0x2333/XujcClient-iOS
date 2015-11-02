@@ -21,11 +21,11 @@
  */
 @property(nonatomic, copy) NSString *weekInterval;
 
-@property(nonatomic, copy) NSString *startTime;
-@property(nonatomic, copy) NSString *endTime;
+@property(nonatomic, assign) NSInteger startTime;
+@property(nonatomic, assign) NSInteger endTime;
 
-@property(nonatomic, copy) NSString *startWeek;
-@property(nonatomic, copy) NSString *endWeek;
+@property(nonatomic, assign) NSInteger startWeek;
+@property(nonatomic, assign) NSInteger endWeek;
 
 @property(nonatomic, copy) NSString *location;
 
