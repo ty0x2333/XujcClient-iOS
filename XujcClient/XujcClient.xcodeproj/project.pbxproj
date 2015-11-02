@@ -33,7 +33,6 @@
 		70F7CE581BE41182001D027C /* tabbar-schedule-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE541BE41182001D027C /* tabbar-schedule-selected@3x.png */; settings = {ASSET_TAGS = (); }; };
 		70F7CE591BE41182001D027C /* tabbar-schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE551BE41182001D027C /* tabbar-schedule@2x.png */; settings = {ASSET_TAGS = (); }; };
 		70F7CE5A1BE41182001D027C /* tabbar-schedule@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE561BE41182001D027C /* tabbar-schedule@3x.png */; settings = {ASSET_TAGS = (); }; };
-		70F7CE5E1BE422B2001D027C /* MSEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE5D1BE422B2001D027C /* MSEventCell.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE611BE42391001D027C /* MSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE601BE42391001D027C /* MSEvent.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE6D1BE43A4E001D027C /* MSGridline.m */; settings = {ASSET_TAGS = (); }; };
 		70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */; settings = {ASSET_TAGS = (); }; };
@@ -90,8 +89,6 @@
 		70F7CE541BE41182001D027C /* tabbar-schedule-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-schedule-selected@3x.png"; sourceTree = "<group>"; };
 		70F7CE551BE41182001D027C /* tabbar-schedule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-schedule@2x.png"; sourceTree = "<group>"; };
 		70F7CE561BE41182001D027C /* tabbar-schedule@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-schedule@3x.png"; sourceTree = "<group>"; };
-		70F7CE5C1BE422B2001D027C /* MSEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEventCell.h; sourceTree = "<group>"; };
-		70F7CE5D1BE422B2001D027C /* MSEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEventCell.m; sourceTree = "<group>"; };
 		70F7CE5F1BE42391001D027C /* MSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEvent.h; sourceTree = "<group>"; };
 		70F7CE601BE42391001D027C /* MSEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEvent.m; sourceTree = "<group>"; };
 		70F7CE6B1BE4394D001D027C /* XujcClient-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XujcClient-prefix.pch"; sourceTree = "<group>"; };
@@ -253,8 +250,6 @@
 		70F7CE5B1BE422B2001D027C /* Collection View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				70F7CE5C1BE422B2001D027C /* MSEventCell.h */,
-				70F7CE5D1BE422B2001D027C /* MSEventCell.m */,
 				7023F9BC1BE70BB10046CF3B /* CourseEventCell.h */,
 				7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */,
 			);
@@ -408,7 +403,6 @@
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,
 				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
-				70F7CE5E1BE422B2001D027C /* MSEventCell.m in Sources */,
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
 				7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */,

@@ -7,7 +7,7 @@
  */
 
 #import "ScheduleViewController.h"
-#import "MSEventCell.h"
+#import "CourseEventCell.h"
 #import "MSEvent.h"
 #import "MSGridline.h"
 #import "ScheduleRowHeader.h"
@@ -25,7 +25,7 @@
 
 #import "ScheduleColumnHeader.h"
 
-static NSString * const kMSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
+static NSString * const kCourseEventCellIdentifier = @"kCourseEventCellIdentifier";
 static NSString * const kScheduleColumnHeaderReuseIdentifier = @"ScheduleColumnHeaderReuseIdentifier";
 static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderReuseIdentifier";
 
@@ -68,7 +68,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
-    [self.collectionView registerClass:MSEventCell.class forCellWithReuseIdentifier:kMSEventCellReuseIdentifier];
+    [self.collectionView registerClass:CourseEventCell.class forCellWithReuseIdentifier:kCourseEventCellIdentifier];
     [self.collectionView registerClass:ScheduleColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:kScheduleColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:ScheduleRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:kScheduleRowHeaderReuseIdentifier];
     
@@ -135,13 +135,9 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    MSEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMSEventCellReuseIdentifier forIndexPath:indexPath];
-    MSEvent *event = [[MSEvent alloc] init];
-    event.start = [NSDate date];
-    event.title = @"title";
-    event.location = @"location";
+    CourseEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCourseEventCellIdentifier forIndexPath:indexPath];
     
-    cell.event = event;
+    cell.event = [_courseEvents[indexPath.section] objectAtIndex:indexPath.row];
     return cell;
 }
 
