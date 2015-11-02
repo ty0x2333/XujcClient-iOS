@@ -48,7 +48,8 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
         XujcTerm *term = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         [termArray addObject:term];
     }
-    _terms = termArray;
+    // 使用 setTerm 使其排序, 勿用 _term
+    [self setTerms:termArray];
     TyLogDebug(@"DynamicData Loaded:%@", [self description]);
 }
 
@@ -74,6 +75,15 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
     XujcUser *user = [[XujcUser alloc] init];
     _user = user;
     [self flush];
+}
+
+#pragma mark - Setter
+
+- (void)setTerms:(NSArray *)terms
+{
+    // 使用 termId 升序
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"termId" ascending:YES];
+    _terms = [terms sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
 }
 
 #pragma mark - Other

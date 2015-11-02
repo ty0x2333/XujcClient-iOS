@@ -27,6 +27,10 @@
 
 @property(nonatomic, copy) NSString *APIKey;
 @property(nonatomic, strong) XujcUser *user;
+/**
+ *  @brief  学期数组
+ *  @note   它总是有序的, setter 会自动排序
+ */
 @property(nonatomic, copy) NSArray *terms;
 
 @end
