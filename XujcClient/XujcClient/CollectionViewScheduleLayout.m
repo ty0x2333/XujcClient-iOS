@@ -335,14 +335,15 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
                 [sectionItemAttributes addObject:itemAttributes];
                 
                 NSInteger itemStartClassSectionIndex = [self startClassSectionIndexForIndexPath:itemIndexPath];
-                NSInteger itemEndClassSectionIndex = [self endClassSectionIndexForIndexPath:itemIndexPath];
                 
-                CGFloat startHourY = ((itemStartClassSectionIndex - earliestClassSectionIndex) * _classSectionHeight);
+                NSInteger itemClassSectionDuration = [self endClassSectionIndexForIndexPath:itemIndexPath] - itemStartClassSectionIndex + 1;
                 
-                CGFloat endHourY = ((itemEndClassSectionIndex - earliestClassSectionIndex) * _classSectionHeight);
+                CGFloat startClassSecionIndexY = ((itemStartClassSectionIndex - earliestClassSectionIndex) * _classSectionHeight);
                 
-                CGFloat itemMinY = nearbyintf(startHourY + calendarContentMinY + self.cellMargin.top);
-                CGFloat itemMaxY = nearbyintf(endHourY + calendarContentMinY - self.cellMargin.bottom);
+                CGFloat endClassSecionIndexY = startClassSecionIndexY + itemClassSectionDuration * _classSectionHeight;
+                
+                CGFloat itemMinY = nearbyintf(startClassSecionIndexY + calendarContentMinY + self.cellMargin.top);
+                CGFloat itemMaxY = nearbyintf(endClassSecionIndexY + calendarContentMinY - self.cellMargin.bottom);
                 CGFloat itemMinX = nearbyintf(sectionMinX + self.cellMargin.left);
                 CGFloat itemMaxX = nearbyintf(itemMinX + (self.sectionWidth - (self.cellMargin.left + self.cellMargin.right)));
                 itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
@@ -564,7 +565,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     self.currentTimeIndicatorAttributes = [NSMutableDictionary new];
     self.currentTimeHorizontalGridlineAttributes = [NSMutableDictionary new];
     
-    _classSectionHeight = 100;
+    _classSectionHeight = 80;
     self.sectionWidth = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 194.0 : 254.0);
     self.dayColumnHeaderHeight = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 60.0 : 50.0);
     self.timeRowHeaderWidth = kTimeRowHeaderWidth;
