@@ -32,8 +32,7 @@ static NSString* const kRequestKeyTermId = @"tm_id";
           successBlock:(ResponseSuccessBlock)success
           failureBlock:(ResponseFailureBlock)failure
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:XUJCAPI_USER_INFOMATION
+    [[XujcAPI XujcManager] GET:XUJCAPI_USER_INFOMATION
       parameters:@{kRequestKeyAPIKey: APIKey}
           success:success
           failure:failure
@@ -44,8 +43,7 @@ static NSString* const kRequestKeyTermId = @"tm_id";
  successBlock:(ResponseSuccessBlock)success
  failureBlock:(ResponseFailureBlock)failure
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:XUJCAPI_TERMS
+    [[XujcAPI XujcManager] GET:XUJCAPI_TERMS
       parameters:@{kRequestKeyAPIKey: APIKey}
          success:success
          failure:failure
@@ -57,11 +55,22 @@ static NSString* const kRequestKeyTermId = @"tm_id";
          successBlock:(ResponseSuccessBlock)success
          failureBlock:(ResponseFailureBlock)failure
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:XUJCAPI_CLASS_SCHEDULE
+    [[XujcAPI XujcManager] GET:XUJCAPI_CLASS_SCHEDULE
       parameters:@{kRequestKeyAPIKey: APIKey, kRequestKeyTermId:termId}
          success:success
          failure:failure
      ];
 }
+
+#pragma mark - Helper
+
++ (AFHTTPRequestOperationManager *)XujcManager
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
+//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.requestSerializer.stringEncoding = encoding;
+    return manager;
+}
+
 @end
