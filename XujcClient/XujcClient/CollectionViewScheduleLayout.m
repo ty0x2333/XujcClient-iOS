@@ -302,7 +302,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     for (NSInteger index = earliestClassSectionIndex; index <= latestClassSectionIndex; index++) {
         NSIndexPath *timeRowHeaderIndexPath = [NSIndexPath indexPathForItem:timeRowHeaderIndex inSection:0];
         UICollectionViewLayoutAttributes *timeRowHeaderAttributes = [self layoutAttributesForSupplementaryViewAtIndexPath:timeRowHeaderIndexPath ofKind:MSCollectionElementKindTimeRowHeader withItemCache:self.timeRowHeaderAttributes];
-        CGFloat titleRowHeaderMinY = (calendarContentMinY + (_classSectionHeight * (index - earliestClassSectionIndex)) - nearbyintf(_classSectionHeight / 2.0));
+        CGFloat titleRowHeaderMinY = (calendarContentMinY + (_classSectionHeight * (index - earliestClassSectionIndex)));
         timeRowHeaderAttributes.frame = CGRectMake(timeRowHeaderMinX, titleRowHeaderMinY, self.timeRowHeaderWidth, _classSectionHeight);
         timeRowHeaderAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindTimeRowHeader floating:timeRowHeaderFloating];
         timeRowHeaderIndex++;
@@ -326,7 +326,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
         }
         
         if (needsToPopulateItemAttributes) {
-#warning message
             // Items
             NSMutableArray *sectionItemAttributes = [NSMutableArray new];
             for (NSInteger item = 0; item < [self.collectionView numberOfItemsInSection:section]; item++) {
@@ -342,8 +341,8 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
                 
                 CGFloat endHourY = ((itemEndClassSectionIndex - earliestClassSectionIndex) * _classSectionHeight);
                 
-                CGFloat itemMinY = nearbyintf(startHourY + calendarContentMinY + self.cellMargin.top - nearbyintf(_classSectionHeight / 2.0));
-                CGFloat itemMaxY = nearbyintf(endHourY + calendarContentMinY - self.cellMargin.bottom - nearbyintf(_classSectionHeight / 2.0));
+                CGFloat itemMinY = nearbyintf(startHourY + calendarContentMinY + self.cellMargin.top);
+                CGFloat itemMaxY = nearbyintf(endHourY + calendarContentMinY - self.cellMargin.bottom);
                 CGFloat itemMinX = nearbyintf(sectionMinX + self.cellMargin.left);
                 CGFloat itemMaxX = nearbyintf(itemMinX + (self.sectionWidth - (self.cellMargin.left + self.cellMargin.right)));
                 itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
@@ -359,7 +358,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     for (NSInteger index = earliestClassSectionIndex; index <= latestClassSectionIndex; index++) {
         NSIndexPath *horizontalGridlineIndexPath = [NSIndexPath indexPathForItem:horizontalGridlineIndex inSection:0];
         UICollectionViewLayoutAttributes *horizontalGridlineAttributes = [self layoutAttributesForDecorationViewAtIndexPath:horizontalGridlineIndexPath ofKind:MSCollectionElementKindHorizontalGridline withItemCache:self.horizontalGridlineAttributes];
-        CGFloat horizontalGridlineMinY = nearbyintf(calendarContentMinY + (_classSectionHeight * (index - earliestClassSectionIndex))) - (self.horizontalGridlineHeight / 2.0) - nearbyintf(_classSectionHeight / 2.0);
+        CGFloat horizontalGridlineMinY = nearbyintf(calendarContentMinY + (_classSectionHeight * (index - earliestClassSectionIndex))) - (self.horizontalGridlineHeight / 2.0);
         
         CGFloat horizontalGridlineXOffset = (calendarGridMinX + self.sectionMargin.left);
         CGFloat horizontalGridlineMinX = fmaxf(horizontalGridlineXOffset, self.collectionView.contentOffset.x + horizontalGridlineXOffset);
@@ -565,7 +564,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     self.currentTimeIndicatorAttributes = [NSMutableDictionary new];
     self.currentTimeHorizontalGridlineAttributes = [NSMutableDictionary new];
     
-    _classSectionHeight = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 80.0 : 80.0);
+    _classSectionHeight = 100;
     self.sectionWidth = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 194.0 : 254.0);
     self.dayColumnHeaderHeight = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 60.0 : 50.0);
     self.timeRowHeaderWidth = kTimeRowHeaderWidth;
@@ -573,9 +572,9 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     self.currentTimeHorizontalGridlineHeight = 1.0;
     self.verticalGridlineWidth = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);
     self.horizontalGridlineHeight = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);;
-    self.sectionMargin = UIEdgeInsetsMake(30.0, 0.0, 30.0, 0.0);
+    self.sectionMargin = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
     self.cellMargin = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
-    self.contentMargin = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIEdgeInsetsMake(30.0, 0.0, 30.0, 30.0) : UIEdgeInsetsMake(10.0, 0.0, 20.0, 10.0));
+    self.contentMargin = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
     
     self.displayHeaderBackgroundAtOrigin = YES;
     self.headerLayoutType = MSHeaderLayoutTypeDayColumnAboveTimeRow;
