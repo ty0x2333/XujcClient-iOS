@@ -253,6 +253,18 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
     @autoreleasepool {
         NSString *responseString = [[NSString alloc] initWithData:data encoding:stringEncoding];
         if (responseString && ![responseString isEqualToString:@" "]) {
+            
+            NSCharacterSet *controlChars = [NSCharacterSet controlCharacterSet];
+            NSRange range = [responseString rangeOfCharacterFromSet:controlChars];
+            if (range.location != NSNotFound) {
+                NSMutableString *mutable = [NSMutableString stringWithString:responseString];
+                while (range.location != NSNotFound) {
+                    [mutable deleteCharactersInRange:range];
+                    range = [mutable rangeOfCharacterFromSet:controlChars];
+                }
+                responseString = mutable;
+            }
+
             // Workaround for a bug in NSJSONSerialization when Unicode character escape codes are used instead of the actual character
             // See http://stackoverflow.com/a/12843465/157142
             data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
