@@ -8,6 +8,9 @@
 
 #import "ScheduleRowHeader.h"
 
+static CGFloat const kTimeTitleFontSize = 12.0f;
+static CGFloat const kClassSectionNumberTitleFontSize = 16.0f;
+
 @implementation ScheduleRowHeader
 
 - (id)initWithFrame:(CGRect)frame
@@ -16,15 +19,25 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
 //        self.backgroundColor = [UIColor redColor];
-        self.title = [UILabel new];
-        self.title.backgroundColor = [UIColor clearColor];
-        self.title.font = [UIFont systemFontOfSize:12.0];
+        _timeTitle = [UILabel new];
+        _timeTitle.backgroundColor = [UIColor clearColor];
+        _timeTitle.font = [UIFont systemFontOfSize:kTimeTitleFontSize];
         self.layer.borderWidth = 1.0f;
-        [self addSubview:self.title];
+        [self addSubview:_timeTitle];
         
-        [self.title makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.centerY);
-            make.right.equalTo(self.right).offset(-5.0);
+        _classSectionNumberTitle = [UILabel new];
+        _classSectionNumberTitle.backgroundColor = [UIColor clearColor];
+        _classSectionNumberTitle.font = [UIFont systemFontOfSize:kClassSectionNumberTitleFontSize];
+        [self addSubview:_classSectionNumberTitle];
+        
+        [_classSectionNumberTitle makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.centerY);
+            make.centerX.equalTo(self.centerX);
+        }];
+        
+        [_timeTitle makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.centerY);
+            make.centerX.equalTo(self.centerX);
         }];
     }
     return self;
@@ -41,7 +54,16 @@
         dateFormatter = [NSDateFormatter new];
         dateFormatter.dateFormat = @"H:mm";
     }
-    self.title.text = [dateFormatter stringFromDate:_classSection.startTime];
+    _timeTitle.text = [dateFormatter stringFromDate:_classSection.startTime];
+    
+    NSInteger sectionNumber = _classSection.sectionNumber;
+    if (sectionNumber == 51){
+        _classSectionNumberTitle.text = @"午1";
+    }else if (sectionNumber == 52){
+        _classSectionNumberTitle.text = @"午2";
+    }else{
+        _classSectionNumberTitle.text = [NSString stringWithFormat:@"%ld", _classSection.sectionNumber];
+    }
     [self setNeedsLayout];
 }
 

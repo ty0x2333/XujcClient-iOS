@@ -11,7 +11,8 @@
 
 @interface ScheduleRowHeader : UICollectionReusableView
 
-@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UILabel *timeTitle;
+@property (nonatomic, strong) UILabel *classSectionNumberTitle;
 @property (nonatomic, strong) XujcSection *classSection;
 
 @end
