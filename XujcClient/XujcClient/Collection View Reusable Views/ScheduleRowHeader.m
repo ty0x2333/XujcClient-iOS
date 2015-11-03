@@ -22,7 +22,7 @@ static CGFloat const kClassSectionNumberTitleFontSize = 16.0f;
         _timeTitle = [UILabel new];
         _timeTitle.backgroundColor = [UIColor clearColor];
         _timeTitle.font = [UIFont systemFontOfSize:kTimeTitleFontSize];
-        self.layer.borderWidth = 1.0f;
+//        self.layer.borderWidth = 1.0f;
         [self addSubview:_timeTitle];
         
         _classSectionNumberTitle = [UILabel new];

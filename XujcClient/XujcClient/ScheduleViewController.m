@@ -197,7 +197,8 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 {
     NSString *apiKey = DYNAMIC_DATA.APIKey;
     ResponseSuccessBlock success = ^(AFHTTPRequestOperation *operation, id responseObject){
-        TyLogDebug(@"Success Response: %@", responseObject);
+        TyLogDebug(@"Success Response: %@", (NSString *)responseObject);
+        
         NSArray *termIds = [responseObject allKeys];
         NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termIds.count];
         for (id key in termIds) {
@@ -243,8 +244,9 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
         TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);
     };
-    [XujcAPI classSchedule:apiKey termId:@"20131" successBlock:success failureBlock:failure];
-//    [XujcAPI classSchedule:apiKey termId:termId successBlock:success failureBlock:failure];
+#warning need make it dynamic
+//    [XujcAPI classSchedule:apiKey termId:@"20131" successBlock:success failureBlock:failure];
+    [XujcAPI classSchedule:apiKey termId:termId successBlock:success failureBlock:failure];
 }
 
 #pragma mark - Helper
