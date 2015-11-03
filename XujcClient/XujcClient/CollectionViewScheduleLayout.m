@@ -749,7 +749,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
         NSInteger latestClassSection = [self latestClassSection];
         CGFloat sectionColumnHeight;
         if ((earliestClassSection != -1) && (latestClassSection != -1)) {
-            sectionColumnHeight = (_classSectionHeight * (latestClassSection - earliestClassSection));
+            sectionColumnHeight = (_classSectionHeight * (latestClassSection - earliestClassSection + 1));
         } else {
             sectionColumnHeight = 0.0;
         }
