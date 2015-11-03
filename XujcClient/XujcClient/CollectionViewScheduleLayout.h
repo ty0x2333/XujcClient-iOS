@@ -7,6 +7,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "XujcSection.h"
 
 extern NSString * const MSCollectionElementKindTimeRowHeader;
 extern NSString * const MSCollectionElementKindDayColumnHeader;
@@ -16,11 +17,6 @@ extern NSString * const MSCollectionElementKindCurrentTimeIndicator;
 extern NSString * const MSCollectionElementKindCurrentTimeHorizontalGridline;
 extern NSString * const MSCollectionElementKindVerticalGridline;
 extern NSString * const MSCollectionElementKindHorizontalGridline;
-
-typedef NS_ENUM(NSUInteger, MSSectionLayoutType) {
-    MSSectionLayoutTypeHorizontalTile,
-    MSSectionLayoutTypeVerticalTile
-};
 
 typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
     MSHeaderLayoutTypeTimeRowAboveDayColumn,
@@ -34,8 +30,9 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 
 @property (nonatomic, weak) id <MSCollectionViewDelegateCalendarLayout> delegate;
 
+@property (nonatomic) CGFloat classSectionHeight;
+
 @property (nonatomic) CGFloat sectionWidth;
-@property (nonatomic) CGFloat hourHeight;
 @property (nonatomic) CGFloat dayColumnHeaderHeight;
 @property (nonatomic) CGFloat timeRowHeaderWidth;
 @property (nonatomic) CGSize currentTimeIndicatorSize;
@@ -45,11 +42,13 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 @property (nonatomic) UIEdgeInsets sectionMargin;
 @property (nonatomic) UIEdgeInsets contentMargin;
 @property (nonatomic) UIEdgeInsets cellMargin;
-@property (nonatomic) MSSectionLayoutType sectionLayoutType;
 @property (nonatomic) MSHeaderLayoutType headerLayoutType;
 @property (nonatomic) BOOL displayHeaderBackgroundAtOrigin;
 
-- (NSDate *)dateForTimeRowHeaderAtIndexPath:(NSIndexPath *)indexPath;
+/**
+ *  @brief  获取行头的课程节号
+ */
+- (XujcSection *)classSectionForTimeRowHeaderAtIndexPath:(NSIndexPath *)indexPath;
 - (NSDate *)dateForDayColumnHeaderAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)scrollCollectionViewToClosetSectionToCurrentTimeAnimated:(BOOL)animated;
@@ -62,10 +61,18 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 @protocol MSCollectionViewDelegateCalendarLayout <UICollectionViewDelegate>
 
 @required
-
+/**
+ *  @brief  列表标题时间
+ *
+ *  @param collectionView       collectionView
+ *  @param collectionViewLayout collectionViewLayout
+ *  @param section              列号
+ *
+ *  @return 该列显示的NSDate
+ */
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout dayForSection:(NSInteger)section;
-- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout startTimeForItemAtIndexPath:(NSIndexPath *)indexPath;
-- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout endTimeForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout startClassSectionIndexForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout endClassSectionIndexForItemAtIndexPath:(NSIndexPath *)indexPath;
 - (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout;
 
 @end

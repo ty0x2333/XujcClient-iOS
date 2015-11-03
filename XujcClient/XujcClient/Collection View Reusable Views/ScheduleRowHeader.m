@@ -32,18 +32,17 @@
 
 #pragma mark - MSTimeRowHeader
 
-- (void)setTime:(NSDate *)time
+- (void)setClassSection:(XujcSection *)classSection
 {
-    _time = time;
+    _classSection = classSection;
     
     static NSDateFormatter *dateFormatter;
     if (!dateFormatter) {
         dateFormatter = [NSDateFormatter new];
         dateFormatter.dateFormat = @"H:mm";
     }
-    self.title.text = [dateFormatter stringFromDate:time];
+    self.title.text = [dateFormatter stringFromDate:_classSection.startTime];
     [self setNeedsLayout];
 }
-
 
 @end

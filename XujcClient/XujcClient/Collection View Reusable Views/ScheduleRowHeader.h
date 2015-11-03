@@ -7,10 +7,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "XujcSection.h"
 
 @interface ScheduleRowHeader : UICollectionReusableView
 
 @property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) NSDate *time;
+@property (nonatomic, strong) XujcSection *classSection;
 
 @end

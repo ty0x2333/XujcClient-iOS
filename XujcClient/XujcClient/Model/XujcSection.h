@@ -7,15 +7,33 @@
  */
 
 #import <Foundation/Foundation.h>
-
+#import "NSDate+Week.h"
 /**
  *  @brief  课程小节
  */
 @interface XujcSection : NSObject
 
 @property(nonatomic, assign)NSInteger sectionNumber;
-
+@property(nonatomic, readonly)NSInteger sectionIndex;
+/**
+ *  @brief  通过课程节的数字创建
+ *  
+ *  - 午课为 51, 52
+ *  - 下午从 5 开始
+ *
+ *  @param sectionIndex 课程节的数字
+ */
 + (instancetype)section:(NSInteger)sectionNumber;
+/**
+ *  @brief  通过课程节的序号创建
+ *
+ *  @param sectionIndex 课程节的序号
+ */
++ (instancetype)sectionIndex:(NSInteger)sectionIndex;
+/**
+ *  @brief  课程节持续时间
+ */
++ (NSInteger)sectionDuration;
 
 - (NSDate *)startTime;
 - (NSDate *)startTime:(NSDate *)currentDay;

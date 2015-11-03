@@ -7,7 +7,6 @@
  */
 
 #import "XujcSection.h"
-#import "NSDate+Week.h"
 
 @implementation XujcSection
 
@@ -15,6 +14,13 @@
 {
     XujcSection *result = [[XujcSection alloc] init];
     result.sectionNumber = sectionNumber;
+    return result;
+}
+
++ (instancetype)sectionIndex:(NSInteger)sectionIndex
+{
+    XujcSection *result = [[XujcSection alloc] init];
+    result.sectionNumber = [XujcSection sectionNumberFromSectionIndex:sectionIndex];
     return result;
 }
 
@@ -54,12 +60,24 @@
 
 - (NSDate *)endTime
 {
-    return [[self startTime] dateByAddingTimeInterval:45 * kTimeIntervalOfMinute];
+    return [[self startTime] dateByAddingTimeInterval:[XujcSection sectionDuration]];
 }
 
 - (NSDate *)endTime:(NSDate *)currentDay
 {
-    return [[self startTime:currentDay] dateByAddingTimeInterval:45 * kTimeIntervalOfMinute];
+    return [[self startTime:currentDay] dateByAddingTimeInterval:[XujcSection sectionDuration]];
+}
+
+#pragma mark - Getter
+
+- (NSInteger)sectionIndex
+{
+    return [XujcSection sectionIndexFromSectionNumber:self.sectionNumber];
+}
+
++ (NSInteger)sectionDuration
+{
+    return 45 * kTimeIntervalOfMinute;
 }
 
 #pragma mark - Private Helper
@@ -78,24 +96,54 @@
         interval = kTimeIntervalOfHour * 2;
     }else if (_sectionNumber == 4){
         interval = kTimeIntervalOfHour * 2 + kTimeIntervalOfMinute * 55;
-    }else if (_sectionNumber == 5){
+    }else if (_sectionNumber == 51){
         interval = kTimeIntervalOfHour * 4 + kTimeIntervalOfMinute * 30;
-    }else if (_sectionNumber == 6){
+    }else if (_sectionNumber == 52){
         interval = kTimeIntervalOfHour * 5 + kTimeIntervalOfMinute * 25;
-    }else if (_sectionNumber == 7){
+    }else if (_sectionNumber == 5){
         interval = kTimeIntervalOfHour * 6 + kTimeIntervalOfMinute * 30;
-    }else if (_sectionNumber == 8){
+    }else if (_sectionNumber == 6){
         interval = kTimeIntervalOfHour * 7 + kTimeIntervalOfMinute * 25;
-    }else if (_sectionNumber == 9){
+    }else if (_sectionNumber == 7){
         interval = kTimeIntervalOfHour * 8 + kTimeIntervalOfMinute * 30;
-    }else if (_sectionNumber == 10){
+    }else if (_sectionNumber == 8){
         interval = kTimeIntervalOfHour * 9 + kTimeIntervalOfMinute * 25;
-    }else if (_sectionNumber == 11){
+    }else if (_sectionNumber == 9){
         interval = kTimeIntervalOfHour * 11 + kTimeIntervalOfMinute * 30;
-    }else if (_sectionNumber == 12){
+    }else if (_sectionNumber == 10){
         interval = kTimeIntervalOfHour * 12 + kTimeIntervalOfMinute * 25;
     }
     return interval;
+}
+
++ (NSInteger)sectionIndexFromSectionNumber:(NSInteger)sectionNumber
+{
+    NSInteger sectionIndex = 0;
+    if (sectionNumber < 5) {
+        sectionIndex = sectionNumber;
+    }else if (sectionNumber == 51) {
+        sectionIndex = 5;
+    }else if (sectionNumber == 52) {
+        sectionIndex = 6;
+    }else if (sectionIndex < 11) {
+        sectionIndex = sectionNumber + 2;
+    }
+    return sectionIndex;
+}
+
++ (NSInteger)sectionNumberFromSectionIndex:(NSInteger)sectionIndex
+{
+    NSInteger sectionNumber = 0;
+    if (sectionIndex < 5) {
+        sectionNumber = sectionIndex;
+    }else if (sectionIndex == 5) {
+        sectionNumber = 51;
+    }else if (sectionIndex == 6) {
+        sectionNumber = 52;
+    }else if (sectionIndex < 13) {
+        sectionNumber = sectionIndex - 2;
+    }
+    return sectionNumber;
 }
 
 @end

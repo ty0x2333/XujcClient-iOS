@@ -44,7 +44,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     
     self.collectionViewCalendarLayout = [[CollectionViewScheduleLayout alloc] init];
     self.collectionViewCalendarLayout.delegate = self;
-    self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
     
     // These are optional. If you don't want any of the decoration views, just don't register a class for them.
     [self.collectionViewCalendarLayout registerClass:MSCurrentTimeIndicator.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
@@ -159,7 +158,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         view = dayColumnHeader;
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
         ScheduleRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kScheduleRowHeaderReuseIdentifier forIndexPath:indexPath];
-        timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
+        timeRowHeader.classSection = [self.collectionViewCalendarLayout classSectionForTimeRowHeaderAtIndexPath:indexPath];
         view = timeRowHeader;
     }
     return view;
@@ -172,16 +171,14 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     return [[NSDate date] dayOfCurrentWeek:section + 1];
 }
 
-- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout startTimeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout startClassSectionIndexForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDate *dayOfCurrentWeek = [[NSDate date] dayOfCurrentWeek:indexPath.section];
-    return [[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] startTime:dayOfCurrentWeek];
+    return [[[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] startSection] sectionIndex];
 }
 
-- (NSDate *)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout endTimeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout endClassSectionIndexForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDate *dayOfCurrentWeek = [[NSDate date] dayOfCurrentWeek:indexPath.section];
-    return [[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] endTime:dayOfCurrentWeek];
+    return [[[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] endSection] sectionIndex];
 }
 
 - (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout
