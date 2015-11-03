@@ -87,9 +87,11 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     
     CGFloat navigationBarBottomY = self.navigationController.navigationBar.frame.origin.y + navigationBarHeight;
     
+    CGFloat statusBarHeight = CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]);
+    
     CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, navigationBarBottomY, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - navigationBarHeight - tabBarHeight)
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, navigationBarBottomY, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - navigationBarHeight - tabBarHeight - statusBarHeight)
                                          collectionViewLayout:self.collectionViewCalendarLayout];
     
     _collectionView.dataSource = self;
