@@ -57,7 +57,7 @@
 - (void)updateTime
 {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"h:mm aa"];
+    [dateFormatter setDateFormat:@"HH:mm"];
     self.time.text = [dateFormatter stringFromDate:[NSDate date]];
     [self.time sizeToFit];
 }
