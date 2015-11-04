@@ -24,9 +24,7 @@
     
     MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
     
-    UINavigationController *navViewController = [[UINavigationController alloc] initWithRootViewController:mainTabBarController];
-    
-    self.window.rootViewController = navViewController;
+    self.window.rootViewController = mainTabBarController;
     
     [self.window makeKeyAndVisible];
     return YES;

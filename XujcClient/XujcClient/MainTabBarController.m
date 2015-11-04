@@ -23,14 +23,16 @@
     
     _scheduleViewController = [[ScheduleViewController alloc] init];
     
+    UINavigationController *navViewController = [[UINavigationController alloc] initWithRootViewController:_scheduleViewController];
+    
     self.viewControllers = @[
-                             _scheduleViewController,
+                             navViewController,
                              [[UIViewController alloc] init],
                              [[UIViewController alloc] init],
                              [[UIViewController alloc] init]
                              ];
     
-    NSArray *titles = @[@"课表", @"考试安排", @"成绩查询", @"更多"];
+    NSArray *titles = @[@"课程表", @"考试安排", @"成绩查询", @"更多"];
     NSArray *images = @[@"tabbar-schedule", @"", @"", @"", @""];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
