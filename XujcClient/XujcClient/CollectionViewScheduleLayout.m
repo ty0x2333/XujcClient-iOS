@@ -224,7 +224,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     NSInteger latestClassSectionIndex = [self latestClassSection];
     
     CGFloat sectionWidth = (self.sectionMargin.left + self.sectionWidth + self.sectionMargin.right);
-    CGFloat sectionHeight = nearbyintf((_classSectionHeight * (latestClassSectionIndex - earliestClassSectionIndex)) + (self.sectionMargin.top + self.sectionMargin.bottom));
+    CGFloat sectionHeight = nearbyintf((_classSectionHeight * (latestClassSectionIndex - earliestClassSectionIndex + 1)) + (self.sectionMargin.top + self.sectionMargin.bottom));
     CGFloat calendarGridMinX = (self.timeRowHeaderWidth + self.contentMargin.left);
     CGFloat calendarGridMinY = (self.dayColumnHeaderHeight + self.contentMargin.top);
     CGFloat calendarContentMinX = (self.timeRowHeaderWidth + self.contentMargin.left + self.sectionMargin.left);
