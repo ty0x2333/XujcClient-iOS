@@ -54,15 +54,13 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     [self.collectionViewCalendarLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
     
     _courseEvents = [NSMutableArray arrayWithCapacity:kDayCountOfWeek];
+    
+    [self termRequest];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self setupCollectionView];
-    
-    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
     
     if (DYNAMIC_DATA.APIKey == nil){
         LoginViewController *loginViewController = [[LoginViewController alloc] init];
@@ -70,7 +68,9 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         return;
     }
     
-    [self termRequest];
+    [self setupCollectionView];
+    
+    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
 }
 
 
@@ -198,6 +198,9 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 - (void)termRequest
 {
     NSString *apiKey = DYNAMIC_DATA.APIKey;
+    if (apiKey == nil){
+        return;
+    }
     ResponseSuccessBlock success = ^(AFHTTPRequestOperation *operation, id responseObject){
         TyLogDebug(@"Success Response: %@", (NSString *)responseObject);
         
