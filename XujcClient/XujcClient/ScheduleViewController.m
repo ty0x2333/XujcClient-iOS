@@ -149,7 +149,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         
         NSDate *day = [self.collectionViewCalendarLayout dateForDayColumnHeaderAtIndexPath:indexPath];
         
-        NSDate *currentDay = [self currentTimeComponentsForCollectionView:self.collectionView layout:self.collectionViewCalendarLayout];
+        NSDate *currentDay = [self currentTimeForCollectionView:self.collectionView layout:self.collectionViewCalendarLayout];
         
         NSDate *startOfDay = [[NSCalendar currentCalendar] startOfDayForDate:day];
         NSDate *startOfCurrentDay = [[NSCalendar currentCalendar] startOfDayForDate:currentDay];
@@ -183,7 +183,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     return [[[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] endSection] sectionIndex];
 }
 
-- (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout
+- (NSDate *)currentTimeForCollectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout
 {
     return [NSDate date];
 }

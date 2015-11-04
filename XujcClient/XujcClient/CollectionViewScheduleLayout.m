@@ -66,6 +66,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 @property (nonatomic, strong) NSCache *cachedStartClassSectionComponents;
 @property (nonatomic, strong) NSCache *cachedEndClassSectionComponents;
 @property (nonatomic, strong) NSCache *cachedCurrentDateComponents;
+@property (nonatomic, strong) NSCache *cachedCurrentDate;
 @property (nonatomic, assign) CGFloat cachedMaxColumnHeight;
 
 @property (nonatomic, assign) NSInteger cachedEarliestClassSection;
@@ -121,6 +122,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 - (NSDateComponents *)dayForSection:(NSInteger)section;
 - (NSInteger)startClassSectionIndexForIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)endClassSectionIndexForIndexPath:(NSIndexPath *)indexPath;
+- (NSDate *)currentTimeDate;
 - (NSDateComponents *)currentTimeDateComponents;
 
 @end
@@ -259,28 +261,35 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     XujcSection *earliestClassSection = [XujcSection sectionIndex:earliestClassSectionIndex];
     XujcSection *latestClassSection = [XujcSection sectionIndex:latestClassSectionIndex];
     NSDateComponents *currentTimeDateComponents = [self currentTimeDateComponents];
-    NSDate *currentTimeDate = currentTimeDateComponents.date;
+    NSDate *currentTimeDate = [self currentTimeDate];
     
     BOOL currentTimeIndicatorVisible = ([currentTimeDate earlierDate:latestClassSection.endTime] && [currentTimeDate laterDate:earliestClassSection.startTime]);
     currentTimeIndicatorAttributes.hidden = !currentTimeIndicatorVisible;
     currentTimeHorizontalGridlineAttributes.hidden = !currentTimeIndicatorVisible;
     
     if (currentTimeIndicatorVisible) {
-#warning message
+        NSInteger currentClassSectionIndex = 0;
+        for (NSInteger index = earliestClassSectionIndex; index < latestClassSectionIndex; ++index) {
+            XujcSection *section = [XujcSection sectionIndex:index];
+            if ([section.endTime laterDate:currentTimeDate]){
+                currentClassSectionIndex = index;
+            }
+        }
+        
         // The y value of the current time
-//        CGFloat timeY = (calendarContentMinY + nearbyintf(((currentTimeDateComponents.hour - earliestHour) * _classSectionHeight) + (currentTimeDateComponents.minute * self.minuteHeight)));
-//
-//        CGFloat currentTimeIndicatorMinY = (timeY - nearbyintf(self.currentTimeIndicatorSize.height / 2.0));
-//        CGFloat currentTimeIndicatorMinX = (fmaxf(self.collectionView.contentOffset.x, 0.0) + (self.timeRowHeaderWidth - self.currentTimeIndicatorSize.width));
-//        currentTimeIndicatorAttributes.frame = (CGRect){{currentTimeIndicatorMinX, currentTimeIndicatorMinY}, self.currentTimeIndicatorSize};
-//        currentTimeIndicatorAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindCurrentTimeIndicator floating:timeRowHeaderFloating];
-//        
-//        CGFloat currentTimeHorizontalGridlineMinY = (timeY - nearbyintf(self.currentTimeHorizontalGridlineHeight / 2.0));
-//        CGFloat currentTimeHorizontalGridlineXOffset = (calendarGridMinX + self.sectionMargin.left);
-//        CGFloat currentTimeHorizontalGridlineMinX = fmaxf(currentTimeHorizontalGridlineXOffset, self.collectionView.contentOffset.x + currentTimeHorizontalGridlineXOffset);
-//        CGFloat currentTimehorizontalGridlineWidth = fminf(calendarGridWidth, self.collectionView.frame.size.width);
-//        currentTimeHorizontalGridlineAttributes.frame = CGRectMake(currentTimeHorizontalGridlineMinX, currentTimeHorizontalGridlineMinY, currentTimehorizontalGridlineWidth, self.currentTimeHorizontalGridlineHeight);
-//        currentTimeHorizontalGridlineAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
+        CGFloat timeY = (calendarContentMinY + nearbyintf(((currentClassSectionIndex - earliestClassSectionIndex) * _classSectionHeight) + ((currentTimeDateComponents.minute / [XujcSection sectionDuration]) * self.minuteHeight)));
+
+        CGFloat currentTimeIndicatorMinY = (timeY - nearbyintf(self.currentTimeIndicatorSize.height / 2.0));
+        CGFloat currentTimeIndicatorMinX = (fmaxf(self.collectionView.contentOffset.x, 0.0) + (self.timeRowHeaderWidth - self.currentTimeIndicatorSize.width));
+        currentTimeIndicatorAttributes.frame = (CGRect){{currentTimeIndicatorMinX, currentTimeIndicatorMinY}, self.currentTimeIndicatorSize};
+        currentTimeIndicatorAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindCurrentTimeIndicator floating:timeRowHeaderFloating];
+        
+        CGFloat currentTimeHorizontalGridlineMinY = (timeY - nearbyintf(self.currentTimeHorizontalGridlineHeight / 2.0));
+        CGFloat currentTimeHorizontalGridlineXOffset = (calendarGridMinX + self.sectionMargin.left);
+        CGFloat currentTimeHorizontalGridlineMinX = fmaxf(currentTimeHorizontalGridlineXOffset, self.collectionView.contentOffset.x + currentTimeHorizontalGridlineXOffset);
+        CGFloat currentTimehorizontalGridlineWidth = fminf(calendarGridWidth, self.collectionView.frame.size.width);
+        currentTimeHorizontalGridlineAttributes.frame = CGRectMake(currentTimeHorizontalGridlineMinX, currentTimeHorizontalGridlineMinY, currentTimehorizontalGridlineWidth, self.currentTimeHorizontalGridlineHeight);
+        currentTimeHorizontalGridlineAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
     }
     
     // Day Column Header
@@ -544,6 +553,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     self.cachedDayDateComponents = [NSCache new];
     _cachedStartClassSectionComponents = [NSCache new];
     _cachedEndClassSectionComponents = [NSCache new];
+    _cachedCurrentDate = [NSCache new];
     self.cachedCurrentDateComponents = [NSCache new];
     self.cachedMaxColumnHeight = CGFLOAT_MIN;
     self.cachedEarliestClassSection = -1;
@@ -596,6 +606,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 - (void)minuteTick:(id)sender
 {
     // Invalidate cached current date componets (since the minute's changed!)
+    [_cachedCurrentDate removeAllObjects];
     [self.cachedCurrentDateComponents removeAllObjects];
     [self invalidateLayout];
 }
@@ -640,6 +651,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     [self.cachedDayDateComponents removeAllObjects];
     [_cachedStartClassSectionComponents removeAllObjects];
     [_cachedEndClassSectionComponents removeAllObjects];
+    [_cachedCurrentDate removeAllObjects];
     [self.cachedCurrentDateComponents removeAllObjects];
     
     // Invalidate cached interface sizing values
@@ -711,7 +723,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 - (NSInteger)closestSectionToCurrentTime
 {
-    NSDate *currentDate = [[self.delegate currentTimeComponentsForCollectionView:self.collectionView layout:self] beginningOfDay];
+    NSDate *currentDate = [[self.delegate currentTimeForCollectionView:self.collectionView layout:self] beginningOfDay];
     NSTimeInterval minTimeInterval = CGFLOAT_MAX;
     NSInteger closestSection = NSIntegerMax;
     for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
@@ -982,13 +994,25 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     return classSectionIndex;
 }
 
+- (NSDate *)currentTimeDate
+{
+    if ([_cachedCurrentDate objectForKey:@(0)]) {
+        return [_cachedCurrentDate objectForKey:@(0)];
+    }
+    
+    NSDate *date = [self.delegate currentTimeForCollectionView:self.collectionView layout:self];
+    
+    [_cachedCurrentDate setObject:date forKey:@(0)];
+    return date;
+}
+
 - (NSDateComponents *)currentTimeDateComponents
 {
     if ([self.cachedCurrentDateComponents objectForKey:@(0)]) {
         return [self.cachedCurrentDateComponents objectForKey:@(0)];
     }
     
-    NSDate *date = [self.delegate currentTimeComponentsForCollectionView:self.collectionView layout:self];
+    NSDate *date = [self currentTimeDate];
     NSDateComponents *currentTime = [[NSCalendar currentCalendar] components:(NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
     
     [self.cachedCurrentDateComponents setObject:currentTime forKey:@(0)];
