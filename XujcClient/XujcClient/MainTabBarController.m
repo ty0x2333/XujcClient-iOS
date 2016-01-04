@@ -33,7 +33,7 @@
                              ];
     
     NSArray *titles = @[@"课程表", @"考试安排", @"成绩查询", @"更多"];
-    NSArray *images = @[@"tabbar-schedule", @"", @"", @"", @""];
+    NSArray *images = @[@"tabbar-schedule", @"tabbar-exam", @"tabbar-search", @"tabbar-more"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
         [item setImage:[UIImage imageNamed:images[idx]]];
