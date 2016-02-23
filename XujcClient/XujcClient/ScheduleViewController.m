@@ -215,6 +215,8 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         DYNAMIC_DATA.terms = termArray;
         [DYNAMIC_DATA flush];
         [self scheduleCourseRequest:[[DYNAMIC_DATA.terms lastObject] termId]];
+#warning test
+        [self scheduleCourseRequest:@"20151"];
     };
     ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
         TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);

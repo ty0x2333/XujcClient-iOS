@@ -16,6 +16,7 @@
 		7023F9BB1BE681300046CF3B /* XujcCourseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcCourseEvent.m */; };
 		7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */; };
 		7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9C11BE72F280046CF3B /* NSDate+Week.m */; };
+		7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057C49C1C6BD9F700351C98 /* ScoreViewController.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		7089154D1C3ACB910071F12A /* tabbar-search-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 708915491C3ACB910071F12A /* tabbar-search-selected@2x.png */; };
@@ -73,6 +74,8 @@
 		7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseEventCell.m; sourceTree = "<group>"; };
 		7023F9C01BE72F280046CF3B /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		7023F9C11BE72F280046CF3B /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
+		7057C49B1C6BD9F700351C98 /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
+		7057C49C1C6BD9F700351C98 /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -204,6 +207,8 @@
 				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
 				70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */,
 				70F7CE4D1BE40A3C001D027C /* ScheduleViewController.m */,
+				7057C49B1C6BD9F700351C98 /* ScoreViewController.h */,
+				7057C49C1C6BD9F700351C98 /* ScoreViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
 				708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */,
 				70F7CE251BE3AC25001D027C /* Assets.xcassets */,
@@ -445,6 +450,7 @@
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
+				7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */,
 				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
 				7023F9BB1BE681300046CF3B /* XujcCourseEvent.m in Sources */,
 				7023F9AB1BE60F680046CF3B /* ScheduleRowHeader.m in Sources */,

@@ -8,10 +8,8 @@
 
 #import "MainTabBarController.h"
 #import "ScheduleViewController.h"
+#import "ScoreViewController.h"
 @interface MainTabBarController ()
-{
-    ScheduleViewController *_scheduleViewController;
-}
 
 @end
 
@@ -21,14 +19,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _scheduleViewController = [[ScheduleViewController alloc] init];
-    
-    UINavigationController *navViewController = [[UINavigationController alloc] initWithRootViewController:_scheduleViewController];
+    UINavigationController *scheduleNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScheduleViewController alloc] init]];
+    UINavigationController *scoreNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScoreViewController alloc] init]];
     
     self.viewControllers = @[
-                             navViewController,
+                             scheduleNavViewController,
                              [[UIViewController alloc] init],
-                             [[UIViewController alloc] init],
+                             scoreNavViewController,
                              [[UIViewController alloc] init]
                              ];
     
