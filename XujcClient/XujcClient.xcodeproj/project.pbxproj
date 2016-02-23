@@ -46,7 +46,6 @@
 		70F7CE261BE3AC25001D027C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE251BE3AC25001D027C /* Assets.xcassets */; };
 		70F7CE291BE3AC25001D027C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */; };
 		70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE321BE3BDF0001D027C /* XujcAPI.m */; };
-		70F7CE391BE3D81C001D027C /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE381BE3D81C001D027C /* LoginView.xib */; };
 		70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE3C1BE3E806001D027C /* BaseModel.m */; };
 		70F7CE431BE3E832001D027C /* XujcUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE421BE3E832001D027C /* XujcUser.m */; };
 		70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE481BE3ECAE001D027C /* DynamicData.m */; };
@@ -119,7 +118,6 @@
 		70F7CE311BE3BDF0001D027C /* XujcAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcAPI.h; sourceTree = "<group>"; };
 		70F7CE321BE3BDF0001D027C /* XujcAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcAPI.m; sourceTree = "<group>"; };
 		70F7CE351BE3D1B8001D027C /* TyLog_Objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyLog_Objc.h; sourceTree = "<group>"; };
-		70F7CE381BE3D81C001D027C /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		70F7CE3B1BE3E806001D027C /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		70F7CE3C1BE3E806001D027C /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		70F7CE411BE3E832001D027C /* XujcUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcUser.h; sourceTree = "<group>"; };
@@ -240,7 +238,6 @@
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
 				70F7CE1F1BE3AC25001D027C /* LoginViewController.h */,
 				70F7CE201BE3AC25001D027C /* LoginViewController.m */,
-				70F7CE381BE3D81C001D027C /* LoginView.xib */,
 				70F7CE4F1BE40A81001D027C /* MainTabBarController.h */,
 				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
 				70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */,
@@ -425,7 +422,6 @@
 				702F99D91C7D08F9003B35A7 /* tabbar-more@2x.png in Resources */,
 				702F99E01C7D08F9003B35A7 /* tabbar-schedule-selected@3x.png in Resources */,
 				702F99D31C7D08F9003B35A7 /* tabbar-exam-selected@2x.png in Resources */,
-				70F7CE391BE3D81C001D027C /* LoginView.xib in Resources */,
 				702F99E21C7D08F9003B35A7 /* tabbar-schedule@3x.png in Resources */,
 				702F99E61C7D08F9003B35A7 /* tabbar-search@3x.png in Resources */,
 				702F99DA1C7D08F9003B35A7 /* tabbar-more@3x.png in Resources */,

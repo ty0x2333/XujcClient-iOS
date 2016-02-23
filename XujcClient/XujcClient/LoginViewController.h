@@ -10,10 +10,5 @@
 
 @interface LoginViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *APIKeyTextField;
-
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
-
-
 @end
 
