@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "XujcAPI.h"
 #import "DynamicData.h"
-
+#import "UIView+BorderLine.h"
 #import "XujcUser.h"
 
 static const CGFloat kContentMarginHorizontal = 25.f;
@@ -36,12 +36,16 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 {
     [super viewDidLoad];
     _accountTextField = [[UITextField alloc] init];
+    _accountTextField.ty_borderColor = [UIColor blackColor].CGColor;
+    _accountTextField.ty_borderEdge = UIRectEdgeBottom;
     _accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:_accountTextField];
     
     _apiKeyLeftView = [[UILabel alloc] init];
     
     _apiKeyTextField = [[UITextField alloc] init];
+    _apiKeyTextField.ty_borderColor = [UIColor blackColor].CGColor;
+    _apiKeyTextField.ty_borderEdge = UIRectEdgeBottom;
     _apiKeyTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _apiKeyTextField.leftView = _apiKeyLeftView;
     _apiKeyTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -59,8 +63,8 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     _apiKeyTextField.text = @"szyufvxh";
     
     _loginButton.backgroundColor = [UIColor blueColor];
-    _accountTextField.backgroundColor = [UIColor redColor];
-    _apiKeyTextField.backgroundColor = [UIColor redColor];
+//    _accountTextField.backgroundColor = [UIColor redColor];
+//    _apiKeyTextField.backgroundColor = [UIColor redColor];
 #endif
 }
 
