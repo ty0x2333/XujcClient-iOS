@@ -24,12 +24,12 @@ static char const kKeyBorderLineLayerKey = '\0';
 
 + (void)load
 {
-    method_exchangeImplementations(class_getInstanceMethod(self, @selector(layoutSubviews)), class_getInstanceMethod(self, @selector(ty_layoutSubviews)));
+    method_exchangeImplementations(class_getInstanceMethod(self, @selector(layoutSubviews)), class_getInstanceMethod(self, @selector(ty_bl_layoutSubviews)));
 }
 
-- (void)ty_layoutSubviews
+- (void)ty_bl_layoutSubviews
 {
-    [self ty_layoutSubviews];
+    [self ty_bl_layoutSubviews];
     if (self.ty_borderLineLayer) {
         self.ty_borderLineLayer.frame = self.bounds;
         [self ty_p_resetBorderPath:self.ty_borderEdge];
