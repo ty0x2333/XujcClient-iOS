@@ -52,7 +52,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     [self.view addSubview:_apiKeyTextField];
     
     _loginButton = [[UIButton alloc] init];
-    [_loginButton setTitle:@"Login" forState:UIControlStateNormal];
+    [_loginButton setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
     _loginButton.layer.cornerRadius = kLoginButtonRadius;
     [_loginButton addTarget:self action:@selector(onLoginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginButton];
