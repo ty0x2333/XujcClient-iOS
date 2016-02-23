@@ -86,7 +86,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 - (void)onLoginButtonClicked:(id)sender
 {
-    NSString* apiKey = _apiKeyTextField.text;
+    NSString* apiKey = [NSString stringWithFormat:@"%@%@", _apiKeyLeftView.text, _apiKeyTextField.text];
     ResponseSuccessBlock success = ^(AFHTTPRequestOperation *operation, id responseObject){
         TyLogDebug(@"Success Response: %@", responseObject);
         XujcUser *user = [[XujcUser alloc] initWithJSONResopnse:responseObject];
