@@ -37,6 +37,7 @@
 		702F99E41C7D08F9003B35A7 /* tabbar-search-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99D01C7D08F9003B35A7 /* tabbar-search-selected@3x.png */; };
 		702F99E51C7D08F9003B35A7 /* tabbar-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99D11C7D08F9003B35A7 /* tabbar-search@2x.png */; };
 		702F99E61C7D08F9003B35A7 /* tabbar-search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99D21C7D08F9003B35A7 /* tabbar-search@3x.png */; };
+		702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 702F99E81C7D1BF6003B35A7 /* UIView+BorderLine.m */; };
 		7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057C49C1C6BD9F700351C98 /* ScoreViewController.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
@@ -100,6 +101,8 @@
 		702F99D01C7D08F9003B35A7 /* tabbar-search-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-search-selected@3x.png"; sourceTree = "<group>"; };
 		702F99D11C7D08F9003B35A7 /* tabbar-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-search@2x.png"; sourceTree = "<group>"; };
 		702F99D21C7D08F9003B35A7 /* tabbar-search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-search@3x.png"; sourceTree = "<group>"; };
+		702F99E71C7D1BF6003B35A7 /* UIView+BorderLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BorderLine.h"; sourceTree = "<group>"; };
+		702F99E81C7D1BF6003B35A7 /* UIView+BorderLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BorderLine.m"; sourceTree = "<group>"; };
 		7057C49B1C6BD9F700351C98 /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
 		7057C49C1C6BD9F700351C98 /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 			children = (
 				7023F9C01BE72F280046CF3B /* NSDate+Week.h */,
 				7023F9C11BE72F280046CF3B /* NSDate+Week.m */,
+				702F99E71C7D1BF6003B35A7 /* UIView+BorderLine.h */,
+				702F99E81C7D1BF6003B35A7 /* UIView+BorderLine.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,
 				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
+				702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */,
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
 				7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */,
