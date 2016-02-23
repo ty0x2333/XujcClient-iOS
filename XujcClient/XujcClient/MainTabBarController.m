@@ -9,6 +9,7 @@
 #import "MainTabBarController.h"
 #import "ScheduleViewController.h"
 #import "ScoreViewController.h"
+#import "PersonalViewController.h"
 @interface MainTabBarController ()
 
 @end
@@ -26,11 +27,12 @@
                              scheduleNavViewController,
                              [[UIViewController alloc] init],
                              scoreNavViewController,
-                             [[UIViewController alloc] init]
+                             [[UIViewController alloc] init],
+                             [[PersonalViewController alloc] init]
                              ];
     
-    NSArray *titles = @[@"课程表", @"考试安排", @"成绩查询", @"更多"];
-    NSArray *images = @[@"tabbar-schedule", @"tabbar-exam", @"tabbar-search", @"tabbar-more"];
+    NSArray *titles = @[@"课程表", @"考试安排", @"成绩查询", @"更多", @"个人"];
+    NSArray *images = @[@"tabbar-schedule", @"tabbar-exam", @"tabbar-search", @"tabbar-more", @"tabbar-personal"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
         [item setImage:[UIImage imageNamed:images[idx]]];
