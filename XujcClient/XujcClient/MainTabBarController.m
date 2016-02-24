@@ -22,13 +22,13 @@
     
     UINavigationController *scheduleNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScheduleViewController alloc] init]];
     UINavigationController *scoreNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScoreViewController alloc] init]];
-    
+    UINavigationController *personalNavViewController = [[UINavigationController alloc] initWithRootViewController:[[PersonalViewController alloc] init]];
     self.viewControllers = @[
                              scheduleNavViewController,
                              [[UIViewController alloc] init],
                              scoreNavViewController,
                              [[UIViewController alloc] init],
-                             [[PersonalViewController alloc] init]
+                             personalNavViewController
                              ];
     
     NSArray *titles = @[@"课程表", @"考试安排", @"成绩查询", @"更多", @"个人"];
