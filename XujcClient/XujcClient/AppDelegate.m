@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
 #import "DynamicData.h"
+
+static const CGFloat kWindowCornerRadius = 4.f;
 @interface AppDelegate ()
 
 @end
@@ -25,7 +27,8 @@
     MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
     
     self.window.rootViewController = mainTabBarController;
-    
+    self.window.layer.cornerRadius = kWindowCornerRadius;
+    self.window.layer.masksToBounds = YES;
     [self.window makeKeyAndVisible];
     return YES;
 }
