@@ -12,6 +12,7 @@
 #import "UIView+BorderLine.h"
 #import "XujcUser.h"
 #import "SSKeychain.h"
+#import <ReactiveCocoa.h>
 
 static const CGFloat kContentMarginHorizontal = 25.f;
 static const CGFloat kTextFieldHeight = 40.f;
@@ -21,7 +22,7 @@ static const CGFloat kLoginButtonRadius = 4.f;
 
 static const CGFloat kLoginButtonMarginVertical = 15.f;
 
-@interface LoginViewController ()
+@interface LoginViewController()
 
 @property (strong, nonatomic) UITextField *accountTextField;
 
@@ -58,9 +59,21 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     [_loginButton addTarget:self action:@selector(onLoginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginButton];
     
+    // APIKey LeftLabel autosize
+    @weakify(self);
+    [RACObserve(self.apiKeyLeftView, text) subscribeNext:^(id x) {
+        @strongify(self);
+        [self.apiKeyLeftView sizeToFit];
+    }];
+    
+    // Bing apiKeyLeftView.text = _accountTextField.text
+    RAC(self.apiKeyLeftView, text) = [_accountTextField.rac_textSignal map:^id(NSString *text) {
+        return [NSString isEmpty:text] ? text : [NSString stringWithFormat:@"%@-", text];
+    }];
+    
 #ifdef DEBUG
     _accountTextField.text = @"swe12023";
-    _apiKeyLeftView.text = @"swe12023-";
+    [_accountTextField sendActionsForControlEvents:UIControlEventEditingChanged];
     _apiKeyTextField.text = @"szyufvxh";
     
     _loginButton.backgroundColor = [UIColor blueColor];
