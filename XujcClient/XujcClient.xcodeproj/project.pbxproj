@@ -57,6 +57,7 @@
 		70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE6D1BE43A4E001D027C /* MSGridline.m */; };
 		70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */; };
 		70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE721BE43AC3001D027C /* MSCurrentTimeGridline.m */; };
+		70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B01C7F8DEE00112038 /* NSString+Safe.m */; };
 		D6AA2EAC9399777C75CF39CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F22B4B799576540B0102BE0C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +143,8 @@
 		70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeIndicator.m; sourceTree = "<group>"; };
 		70F7CE721BE43AC3001D027C /* MSCurrentTimeGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeGridline.m; sourceTree = "<group>"; };
 		70F7CE731BE43AC3001D027C /* MSCurrentTimeIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeIndicator.h; sourceTree = "<group>"; };
+		70FE64AF1C7F8DEE00112038 /* NSString+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Safe.h"; sourceTree = "<group>"; };
+		70FE64B01C7F8DEE00112038 /* NSString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Safe.m"; sourceTree = "<group>"; };
 		809B7A975EDBE96102E85C69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F11D480843B2B5B2BA56FFB6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F22B4B799576540B0102BE0C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +186,8 @@
 				7023F9C11BE72F280046CF3B /* NSDate+Week.m */,
 				702F99E71C7D1BF6003B35A7 /* UIView+BorderLine.h */,
 				702F99E81C7D1BF6003B35A7 /* UIView+BorderLine.m */,
+				70FE64AF1C7F8DEE00112038 /* NSString+Safe.h */,
+				70FE64B01C7F8DEE00112038 /* NSString+Safe.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
 				70F7CE511BE40A81001D027C /* MainTabBarController.m in Sources */,
 				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
+				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
 				70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */,

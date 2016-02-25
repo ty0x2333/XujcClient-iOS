@@ -22,7 +22,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <SystemConfiguration/SystemConfiguration.h>
+
 #import "TyLog_Objc.h"
+#import "NSString+Safe.h"
+
 // Pod Configuration
 #define MAS_SHORTHAND
 // Pods
