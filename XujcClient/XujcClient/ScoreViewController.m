@@ -7,6 +7,9 @@
 //
 
 #import "ScoreViewController.h"
+#import "XujcAPI.h"
+#import "DynamicData.h"
+#import "XujcScore.h"
 
 static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
@@ -26,6 +29,8 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
+#warning test
+    [self requestScores];
 }
 
 - (void)viewDidLayoutSubviews
@@ -49,4 +54,19 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     cell.detailTextLabel.text = @"分数";
     return cell;
 }
+
+- (void)requestScores
+{
+#warning test
+    [XujcAPI scores:DYNAMIC_DATA.APIKey termId:@"20142" successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *scoreDatas = responseObject;
+        [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            XujcScore *xujcScore = [[XujcScore alloc] initWithJSONResopnse:obj];
+            TyLogDebug(@"%@", xujcScore);
+        }];
+    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
+    }];
+}
+
 @end
