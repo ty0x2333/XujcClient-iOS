@@ -11,6 +11,7 @@
 #import "DynamicData.h"
 #import "UIView+BorderLine.h"
 #import "XujcUser.h"
+#import "SSKeychain.h"
 
 static const CGFloat kContentMarginHorizontal = 25.f;
 static const CGFloat kTextFieldHeight = 40.f;
@@ -94,6 +95,8 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
         DYNAMIC_DATA.APIKey = apiKey;
         DYNAMIC_DATA.user = user;
         [DYNAMIC_DATA flush];
+#warning must be more safe
+        [SSKeychain setPassword:_apiKeyTextField.text forService:@"Xujc" account:user.studentId];
         [self dismissViewControllerAnimated:YES completion:nil];
     } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)task.response;
