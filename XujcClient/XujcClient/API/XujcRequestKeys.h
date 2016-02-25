@@ -38,6 +38,14 @@ static NSString* const kResponseCourseEvents = @"kcb_sksd";
 //static NSString* const kResponseCourseClass_rs = @"kcb_rs";
 //static NSString* const kResponseCourseClass_bz = @"kcb_bz";
 
+#pragma mark - Xujc Score
+
+static NSString* const kResponseCourseSorce = @"zcj";
+static NSString* const kResponseCourseSorceLevel = @"zcj_dj";
+static NSString* const kResponseMidTermStatus = @"ksqk_qz";
+static NSString* const kResponseEndTermStatus = @"ksqk_qm";
+static NSString* const kResponseScoreStudyWay = @"xkfs";
+
 #pragma mark - Xujc Course Event
 
 static NSString* const kResponseCourseEventDescription = @"sksd_mc";

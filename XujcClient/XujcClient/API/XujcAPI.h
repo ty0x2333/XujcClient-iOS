@@ -27,4 +27,8 @@ typedef void (^ResponseFailureBlock)(NSURLSessionDataTask * _Nullable task, NSEr
          successBlock:(nullable ResponseSuccessBlock)success
          failureBlock:(nullable ResponseFailureBlock)failure;
 
++ (void)scores:(nonnull NSString *)APIKey
+        termId:(nonnull NSString *)termId
+  successBlock:(nullable ResponseSuccessBlock)success
+  failureBlock:(nullable ResponseFailureBlock)failure;
 @end

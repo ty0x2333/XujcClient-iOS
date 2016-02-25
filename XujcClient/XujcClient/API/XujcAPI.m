@@ -17,6 +17,7 @@ static const NSString* kXujcAPIBaseURL = @"http://jw.xujc.com/api/";
 #define XUJCAPI_USER_INFOMATION @"me.php"
 #define XUJCAPI_TERMS @"kb.php"
 #define XUJCAPI_CLASS_SCHEDULE @"kb.php"
+#define XUJCAPI_CLASS_SCORE @"score.php"
 
 #pragma mark - Request Keys
 
@@ -55,6 +56,19 @@ static NSString* const kRequestKeyTermId = @"tm_id";
          failureBlock:(nullable ResponseFailureBlock)failure
 {
     [[XujcAPI XujcManager] GET:XUJCAPI_CLASS_SCHEDULE
+                    parameters:@{kRequestKeyAPIKey: APIKey, kRequestKeyTermId:termId}
+                      progress:nil
+                       success:success
+                       failure:failure
+     ];
+}
+
++ (void)scores:(nonnull NSString *)APIKey
+        termId:(nonnull NSString *)termId
+  successBlock:(nullable ResponseSuccessBlock)success
+  failureBlock:(nullable ResponseFailureBlock)failure
+{
+    [[XujcAPI XujcManager] GET:XUJCAPI_CLASS_SCORE
                     parameters:@{kRequestKeyAPIKey: APIKey, kRequestKeyTermId:termId}
                       progress:nil
                        success:success
