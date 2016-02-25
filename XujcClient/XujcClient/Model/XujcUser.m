@@ -26,17 +26,6 @@ static NSString* const kDataProfessional = @"Professional";
     return self;
 }
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
-    if (self = [super init]) {
-        _studentId = [self checkForNull:dictionary[kDataStudentId]];
-        _name = [self checkForNull:dictionary[kDataName]];
-        _professional = [self checkForNull:dictionary[kDataGrade]];
-        _grade = [self checkForNull:dictionary[kDataProfessional]];
-    }
-    return self;
-}
-
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
     if(self = [super init]){
@@ -56,7 +45,14 @@ static NSString* const kDataProfessional = @"Professional";
     [encoder encodeObject:_professional forKey:kDataGrade];
 }
 
-- (NSDictionary *)dictionaryRepresentation
+- (NSString *)description
+{
+    return [[self p_dictionaryRepresentation] description];
+}
+
+#pragma mark - Helper
+
+- (NSDictionary *)p_dictionaryRepresentation
 {
     NSString *null = @"";
     return @{
@@ -65,11 +61,6 @@ static NSString* const kDataProfessional = @"Professional";
              kDataGrade: _grade ?: null,
              kDataProfessional: _professional ?: null,
              };
-}
-
-- (NSString *)description
-{
-    return [[self dictionaryRepresentation] description];
 }
 
 @end

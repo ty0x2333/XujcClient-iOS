@@ -15,10 +15,4 @@
 @property(nonatomic, strong)NSString *grade;
 @property(nonatomic, strong)NSString *professional;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
-- (NSDictionary *)dictionaryRepresentation;
-
-- (NSString *)description;
-
 @end
