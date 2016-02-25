@@ -16,6 +16,13 @@ PODS:
     - AFNetworking/NSURLSession
   - CupertinoYankee (1.0.2)
   - Masonry (0.6.4)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - SSKeychain (1.3.1)
   - UIColor-HexString (1.2.0)
 
@@ -23,6 +30,7 @@ DEPENDENCIES:
   - AFNetworking
   - CupertinoYankee
   - Masonry
+  - ReactiveCocoa
   - SSKeychain
   - UIColor-HexString
 
@@ -30,6 +38,7 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   CupertinoYankee: c288994087c791657fce35a43d2a604e64eef23e
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SSKeychain: 04c4ec40f4c3deda524e269bc76e5f30e638a174
   UIColor-HexString: ef5608be035bb21354d9a69b50251525b431a1e9
 
