@@ -3,3 +3,4 @@ pod "AFNetworking"
 pod 'UIColor-HexString'
 pod 'Masonry'
 pod 'CupertinoYankee'
+pod 'SSKeychain'
