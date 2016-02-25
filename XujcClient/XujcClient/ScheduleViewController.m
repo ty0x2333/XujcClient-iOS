@@ -201,7 +201,8 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     if (apiKey == nil){
         return;
     }
-    ResponseSuccessBlock success = ^(AFHTTPRequestOperation *operation, id responseObject){
+
+    [XujcAPI terms:apiKey successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TyLogDebug(@"Success Response: %@", (NSString *)responseObject);
         
         NSArray *termIds = [responseObject allKeys];
@@ -217,18 +218,16 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         [self scheduleCourseRequest:[[DYNAMIC_DATA.terms lastObject] termId]];
 #warning test
         [self scheduleCourseRequest:@"20151"];
-    };
-    ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);
-    };
-    
-    [XujcAPI terms:apiKey successBlock:success failureBlock:failure];
+    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
+    }];
 }
 
 - (void)scheduleCourseRequest:(NSString *)termId
 {
     NSString *apiKey = DYNAMIC_DATA.APIKey;
-    ResponseSuccessBlock success = ^(AFHTTPRequestOperation *operation, id responseObject){
+#warning need make it dynamic
+    [XujcAPI classSchedule:apiKey termId:termId successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TyLogDebug(@"Success Response: %@", responseObject);
         
         NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
@@ -247,13 +246,10 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         }
         [self.collectionViewCalendarLayout invalidateLayoutCache];
         [self.collectionView reloadData];
-    };
-    ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);
-    };
-#warning need make it dynamic
-//    [XujcAPI classSchedule:apiKey termId:@"20131" successBlock:success failureBlock:failure];
-    [XujcAPI classSchedule:apiKey termId:termId successBlock:success failureBlock:failure];
+
+    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
+    }];
 }
 
 #pragma mark - Helper

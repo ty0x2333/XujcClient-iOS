@@ -87,7 +87,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 - (void)onLoginButtonClicked:(id)sender
 {
     NSString* apiKey = [NSString stringWithFormat:@"%@%@", _apiKeyLeftView.text, _apiKeyTextField.text];
-    ResponseSuccessBlock success = ^(AFHTTPRequestOperation *operation, id responseObject){
+    [XujcAPI userInfomation:apiKey successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TyLogDebug(@"Success Response: %@", responseObject);
         XujcUser *user = [[XujcUser alloc] initWithJSONResopnse:responseObject];
         TyLogDebug(@"User Infomation: %@", [user description]);
@@ -95,12 +95,10 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
         DYNAMIC_DATA.user = user;
         [DYNAMIC_DATA flush];
         [self dismissViewControllerAnimated:YES completion:nil];
-    };
-    ResponseFailureBlock failure = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", operation.response.statusCode, error);
-    };
-    
-    [XujcAPI userInfomation:apiKey successBlock:success failureBlock:failure];
+    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)task.response;
+        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", httpResponse.statusCode, error);
+    }];
 }
 
 

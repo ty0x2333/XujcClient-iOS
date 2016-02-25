@@ -7,24 +7,24 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <AFHTTPRequestOperation.h>
+#import <AFNetworking.h>
 
-typedef void (^ResponseSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject);
-typedef void (^ResponseFailureBlock)(AFHTTPRequestOperation *operation, NSError *error);
+typedef void (^ResponseSuccessBlock)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject);
+typedef void (^ResponseFailureBlock)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error);
 
 @interface XujcAPI : NSObject
 
-+ (void)userInfomation:(NSString *)APIKey
-          successBlock:(ResponseSuccessBlock)success
-          failureBlock:(ResponseFailureBlock)failure;
++ (void)userInfomation:(nonnull NSString *)APIKey
+          successBlock:(nullable ResponseSuccessBlock)success
+          failureBlock:(nullable ResponseFailureBlock)failure;
 
-+ (void)terms:(NSString *)APIKey
- successBlock:(ResponseSuccessBlock)success
- failureBlock:(ResponseFailureBlock)failure;
++ (void)terms:(nonnull NSString *)APIKey
+ successBlock:(nullable ResponseSuccessBlock)success
+ failureBlock:(nullable ResponseFailureBlock)failure;
 
-+ (void)classSchedule:(NSString *)APIKey
-               termId:(NSString *)termId
- successBlock:(ResponseSuccessBlock)success
- failureBlock:(ResponseFailureBlock)failure;
++ (void)classSchedule:(nonnull NSString *)APIKey
+               termId:(nonnull NSString *)termId
+         successBlock:(nullable ResponseSuccessBlock)success
+         failureBlock:(nullable ResponseFailureBlock)failure;
 
 @end
