@@ -27,12 +27,11 @@
                              scheduleNavViewController,
                              [[UIViewController alloc] init],
                              scoreNavViewController,
-                             [[UIViewController alloc] init],
                              personalNavViewController
                              ];
     
-    NSArray *titles = @[@"课程表", @"考试安排", @"成绩查询", @"更多", @"个人"];
-    NSArray *images = @[@"tabbar-schedule", @"tabbar-exam", @"tabbar-search", @"tabbar-more", @"tabbar-personal"];
+    NSArray *titles = @[@"课程表", @"考试安排", @"成绩查询", @"个人"];
+    NSArray *images = @[@"tabbar-schedule", @"tabbar-exam", @"tabbar-search", @"tabbar-personal"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
         [item setImage:[UIImage imageNamed:images[idx]]];
