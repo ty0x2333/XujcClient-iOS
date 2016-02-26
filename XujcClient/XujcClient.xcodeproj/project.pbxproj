@@ -59,6 +59,7 @@
 		70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE721BE43AC3001D027C /* MSCurrentTimeGridline.m */; };
 		70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B01C7F8DEE00112038 /* NSString+Safe.m */; };
 		70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B31C7F9EDC00112038 /* XujcScore.m */; };
+		70FE64B71C8021DF00112038 /* ScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B61C8021DF00112038 /* ScoreTableViewCell.m */; };
 		D6AA2EAC9399777C75CF39CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F22B4B799576540B0102BE0C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +149,8 @@
 		70FE64B01C7F8DEE00112038 /* NSString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Safe.m"; sourceTree = "<group>"; };
 		70FE64B21C7F9EDC00112038 /* XujcScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcScore.h; sourceTree = "<group>"; };
 		70FE64B31C7F9EDC00112038 /* XujcScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcScore.m; sourceTree = "<group>"; };
+		70FE64B51C8021DF00112038 /* ScoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreTableViewCell.h; sourceTree = "<group>"; };
+		70FE64B61C8021DF00112038 /* ScoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreTableViewCell.m; sourceTree = "<group>"; };
 		809B7A975EDBE96102E85C69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F11D480843B2B5B2BA56FFB6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F22B4B799576540B0102BE0C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +264,8 @@
 				7057C49C1C6BD9F700351C98 /* ScoreViewController.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
 				702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */,
+				70FE64B51C8021DF00112038 /* ScoreTableViewCell.h */,
+				70FE64B61C8021DF00112038 /* ScoreTableViewCell.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
 				708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */,
 				70F7CE251BE3AC25001D027C /* Assets.xcassets */,
@@ -527,6 +532,7 @@
 				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
 				702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */,
 				70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */,
+				70FE64B71C8021DF00112038 /* ScoreTableViewCell.m in Sources */,
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
 				7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */,
