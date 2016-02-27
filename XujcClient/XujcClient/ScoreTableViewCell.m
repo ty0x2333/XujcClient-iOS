@@ -12,7 +12,8 @@
 #import "UIView+BorderLine.h"
 
 static const CGFloat kFontSize = 12.f;
-static const CGFloat kContentEdgeInset = 8.f;
+static const CGFloat kContentEdgeInsetVertical = 8.f;
+static const CGFloat kContentEdgeHorizontal = 12.f;
 static const CGFloat kArrowSize = 16.f;
 
 @interface ScoreTableViewCell()
@@ -35,6 +36,7 @@ static const CGFloat kArrowSize = 16.f;
         self.ty_borderWidth = 0.2f;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         _courseNameLabel = [[UILabel alloc] init];
+        _courseNameLabel.textColor = [UIColor ty_textBlack];
         _courseNameLabel.font = [UIFont systemFontOfSize:kFontSize];
         [self.contentView addSubview:_courseNameLabel];
         
@@ -49,15 +51,17 @@ static const CGFloat kArrowSize = 16.f;
         
         _courseDetailView = [[UIView alloc] init];
         _courseDetailView.hidden = YES;
-        _courseDetailView.backgroundColor = [UIColor grayColor];
+        _courseDetailView.backgroundColor = [UIColor ty_backgroundHighlight];
         [self.contentView addSubview:_courseDetailView];
         
         _detailStudyWayLabel = [[UILabel alloc] init];
+        _detailStudyWayLabel.textColor = [UIColor ty_textBlack];
         _detailStudyWayLabel.font = [UIFont systemFontOfSize:kFontSize];
         _detailStudyWayLabel.numberOfLines = 0;
         [_courseDetailView addSubview:_detailStudyWayLabel];
         
         _creditLabel = [[UILabel alloc] init];
+        _creditLabel.textColor = [UIColor ty_textBlack];
         _creditLabel.font = [UIFont systemFontOfSize:kFontSize];
         [_courseDetailView addSubview:_creditLabel];
         
@@ -67,7 +71,7 @@ static const CGFloat kArrowSize = 16.f;
         
         [_arrowImageView makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.leading.equalTo(self.contentView).offset(kContentEdgeInset);
+            make.leading.equalTo(self.contentView).offset(kContentEdgeHorizontal);
             make.height.equalTo(@(kArrowSize));
             make.width.equalTo(self.arrowImageView.height);
             make.top.equalTo(self.courseNameLabel);
@@ -75,7 +79,7 @@ static const CGFloat kArrowSize = 16.f;
         
         [_scoreLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.trailing.equalTo(self.contentView).offset(-kContentEdgeInset);
+            make.trailing.equalTo(self.contentView).offset(-kContentEdgeHorizontal);
             make.height.equalTo(self.courseNameLabel);
             make.top.equalTo(self.courseNameLabel);
         }];
@@ -89,7 +93,7 @@ static const CGFloat kArrowSize = 16.f;
         
         [_detailStudyWayLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.top.equalTo(self.courseDetailView.mas_top).with.offset(kContentEdgeInset);
+            make.top.equalTo(self.courseDetailView.mas_top).with.offset(kContentEdgeInsetVertical);
             make.trailing.equalTo(self.courseDetailView);
             make.leading.equalTo(self.courseNameLabel);
         }];
@@ -99,7 +103,7 @@ static const CGFloat kArrowSize = 16.f;
             make.top.equalTo(self.detailStudyWayLabel.mas_bottom);
             make.trailing.equalTo(self.courseDetailView);
             make.leading.equalTo(self.courseNameLabel);
-            make.bottom.equalTo(self.courseDetailView.mas_bottom).with.offset(-kContentEdgeInset);
+            make.bottom.equalTo(self.courseDetailView.mas_bottom).with.offset(-kContentEdgeInsetVertical);
         }];
         
         RACSignal *scoreSignal = RACObserve(self, xujcScoreModel.score);
@@ -108,7 +112,7 @@ static const CGFloat kArrowSize = 16.f;
         }];
         
         RAC(_scoreLabel, textColor) = [scoreSignal map:^id(NSNumber *value) {
-            return [value integerValue] > 59 ? [UIColor greenColor] : [UIColor redColor];
+            return [value integerValue] > 59 ? [UIColor ty_textGreen] : [UIColor ty_textRed];
         }];
         
         RAC(_courseNameLabel, text) = RACObserve(self, xujcScoreModel.courseName);
@@ -118,7 +122,7 @@ static const CGFloat kArrowSize = 16.f;
         }];
         
         RAC(_creditLabel, text) = [RACObserve(self, xujcScoreModel.credit) map:^id(NSNumber *value) {
-            return [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Credit", nil), [value integerValue]];
+            return [NSString stringWithFormat:@"%@: %ld", NSLocalizedString(@"Credit", nil), (long)[value integerValue]];
         }];
         
         [RACObserve(self, detailHidden) subscribeNext:^(NSNumber *value) {
@@ -128,12 +132,12 @@ static const CGFloat kArrowSize = 16.f;
             [_courseNameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
                 make.left.equalTo(self.arrowImageView.mas_right);
-                make.top.equalTo(self.contentView).offset(kContentEdgeInset);
-                make.right.equalTo(self.scoreLabel.mas_left).with.offset(-kContentEdgeInset);
+                make.top.equalTo(self.contentView).offset(kContentEdgeInsetVertical);
+                make.right.equalTo(self.scoreLabel.mas_left).with.offset(-kContentEdgeInsetVertical);
                 if (hidden) {
-                    make.bottom.equalTo(self.contentView).with.offset(-kContentEdgeInset);
+                    make.bottom.equalTo(self.contentView).with.offset(-kContentEdgeInsetVertical);
                 } else {
-                    make.bottom.equalTo(_courseDetailView.mas_top).with.offset(-kContentEdgeInset);
+                    make.bottom.equalTo(_courseDetailView.mas_top).with.offset(-kContentEdgeInsetVertical);
                 }
             }];
             [super updateConstraints];
