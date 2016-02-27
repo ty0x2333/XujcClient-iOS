@@ -8,28 +8,138 @@
 
 #import "ScoreTableViewCell.h"
 #import <ReactiveCocoa.h>
+#import "XujcScore.h"
+#import "UIView+BorderLine.h"
+
+static const CGFloat kFontSize = 12.f;
+static const CGFloat kContentEdgeInset = 8.f;
+static const CGFloat kArrowSize = 16.f;
+
+@interface ScoreTableViewCell()
+
+@property (strong, nonatomic) UILabel *courseNameLabel;
+@property (strong, nonatomic) UILabel *scoreLabel;
+@property (strong, nonatomic) UIImageView *arrowImageView;
+@property (strong, nonatomic) UIView *courseDetailView;
+@property (strong, nonatomic) UILabel *detailStudyWayLabel;
+@property (strong, nonatomic) UILabel *creditLabel;
+@end
 
 @implementation ScoreTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier]) {
-        RACSignal *scoreSignal = RACObserve(self, score);
-        RAC(self.detailTextLabel, text) = [scoreSignal map:^id(NSNumber *value) {
+        self.ty_borderEdge = UIRectEdgeBottom;
+        self.ty_borderColor = [UIColor blackColor].CGColor;
+        self.ty_borderWidth = 0.2f;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        _courseNameLabel = [[UILabel alloc] init];
+        _courseNameLabel.font = [UIFont systemFontOfSize:kFontSize];
+        [self.contentView addSubview:_courseNameLabel];
+        
+        _arrowImageView = [[UIImageView alloc] init];
+        _arrowImageView.image = [UIImage imageNamed:@"arrow_right"];
+        [self.contentView addSubview:_arrowImageView];
+        
+        _scoreLabel = [[UILabel alloc] init];
+        _scoreLabel.textAlignment = NSTextAlignmentRight;
+        _scoreLabel.font = [UIFont systemFontOfSize:kFontSize];
+        [self.contentView addSubview:_scoreLabel];
+        
+        _courseDetailView = [[UIView alloc] init];
+        _courseDetailView.hidden = YES;
+        _courseDetailView.backgroundColor = [UIColor grayColor];
+        [self.contentView addSubview:_courseDetailView];
+        
+        _detailStudyWayLabel = [[UILabel alloc] init];
+        _detailStudyWayLabel.font = [UIFont systemFontOfSize:kFontSize];
+        _detailStudyWayLabel.numberOfLines = 0;
+        [_courseDetailView addSubview:_detailStudyWayLabel];
+        
+        _creditLabel = [[UILabel alloc] init];
+        _creditLabel.font = [UIFont systemFontOfSize:kFontSize];
+        [_courseDetailView addSubview:_creditLabel];
+        
+        _detailHidden = YES;
+        
+        @weakify(self);
+        
+        [_arrowImageView makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self);
+            make.leading.equalTo(self.contentView).offset(kContentEdgeInset);
+            make.height.equalTo(@(kArrowSize));
+            make.width.equalTo(self.arrowImageView.height);
+            make.top.equalTo(self.courseNameLabel);
+        }];
+        
+        [_scoreLabel makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self);
+            make.trailing.equalTo(self.contentView).offset(-kContentEdgeInset);
+            make.height.equalTo(self.courseNameLabel);
+            make.top.equalTo(self.courseNameLabel);
+        }];
+        
+        [_courseDetailView makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self);
+            make.bottom.equalTo(self.contentView);
+            make.leading.equalTo(self.contentView);
+            make.right.equalTo(self.contentView);
+        }];
+        
+        [_detailStudyWayLabel makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self);
+            make.top.equalTo(self.courseDetailView.mas_top).with.offset(kContentEdgeInset);
+            make.trailing.equalTo(self.courseDetailView);
+            make.leading.equalTo(self.courseNameLabel);
+        }];
+        
+        [_creditLabel makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self);
+            make.top.equalTo(self.detailStudyWayLabel.mas_bottom);
+            make.trailing.equalTo(self.courseDetailView);
+            make.leading.equalTo(self.courseNameLabel);
+            make.bottom.equalTo(self.courseDetailView.mas_bottom).with.offset(-kContentEdgeInset);
+        }];
+        
+        RACSignal *scoreSignal = RACObserve(self, xujcScoreModel.score);
+        RAC(_scoreLabel, text) = [scoreSignal map:^id(NSNumber *value) {
             return [value stringValue];
         }];
         
-        RAC(self.detailTextLabel, textColor) = [scoreSignal map:^id(NSNumber *value) {
+        RAC(_scoreLabel, textColor) = [scoreSignal map:^id(NSNumber *value) {
             return [value integerValue] > 59 ? [UIColor greenColor] : [UIColor redColor];
+        }];
+        
+        RAC(_courseNameLabel, text) = RACObserve(self, xujcScoreModel.courseName);
+        
+        RAC(_detailStudyWayLabel, text) = [RACObserve(self, xujcScoreModel.studyWay) map:^id(NSString *value) {
+            return [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"StudyWay", nil), value];
+        }];
+        
+        RAC(_creditLabel, text) = [RACObserve(self, xujcScoreModel.credit) map:^id(NSNumber *value) {
+            return [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Credit", nil), [value integerValue]];
+        }];
+        
+        [RACObserve(self, detailHidden) subscribeNext:^(NSNumber *value) {
+            BOOL hidden = [value boolValue];
+            _courseDetailView.hidden = hidden;
+            _arrowImageView.image = [UIImage imageNamed:hidden ? @"arrow_right" : @"arrow_down"];
+            [_courseNameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.left.equalTo(self.arrowImageView.mas_right);
+                make.top.equalTo(self.contentView).offset(kContentEdgeInset);
+                make.right.equalTo(self.scoreLabel.mas_left).with.offset(-kContentEdgeInset);
+                if (hidden) {
+                    make.bottom.equalTo(self.contentView).with.offset(-kContentEdgeInset);
+                } else {
+                    make.bottom.equalTo(_courseDetailView.mas_top).with.offset(-kContentEdgeInset);
+                }
+            }];
+            [super updateConstraints];
         }];
     }
     return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XujcScore;
 
 @interface ScoreTableViewCell : UITableViewCell
 
-@property (nonatomic, assign) NSInteger score;
+@property (strong, nonatomic) XujcScore *xujcScoreModel;
+
+@property (assign, nonatomic) BOOL detailHidden;
 
 @end

@@ -18,6 +18,7 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<XujcScore *> *scores;
+@property (assign, nonatomic) NSInteger currentSelected;
 
 @end
 
@@ -29,8 +30,11 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     self.title = @"成绩查询";
     _tableView = [[UITableView alloc] init];
     _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[ScoreTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
+    _currentSelected = -1;
     
     _scores = [[NSMutableArray alloc] init];
 #warning test
@@ -55,9 +59,31 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 //    [[UITableViewCell alloc] initWithStyle:<#(UITableViewCellStyle)#> reuseIdentifier:<#(nullable NSString *)#>]
     ScoreTableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
     XujcScore *score = _scores[indexPath.row];
-    cell.textLabel.text = score.courseName;
-    cell.score = score.score;
+#warning xujcScoreModel is strong
+    cell.xujcScoreModel = score;
+    cell.detailHidden = _currentSelected != indexPath.row;
     return cell;
+}
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // return 0, will be auto size
+    return 0;
+}
+
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    TyLogDebug(@"didDeselectRowAtIndexPath: %d", indexPath.row);
+//    _currentSelected = indexPath.row;
+//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TyLogDebug(@"didSelectRowAtIndexPath: %d", indexPath.row);
+    _currentSelected = _currentSelected == indexPath.row ? -1 : indexPath.row;
+//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView reloadData];
 }
 
 - (void)requestScores
