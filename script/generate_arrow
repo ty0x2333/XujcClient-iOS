@@ -1,0 +1,7 @@
+#!/bin/sh
+current_dir=$(dirname $0)
+target_dir=$current_dir/../XujcClient/XujcClient/Resource
+convert $current_dir/../ImageSource/arrow_right.png -resize 'x50>' $target_dir/arrow_right@2x.png;
+convert $current_dir/../ImageSource/arrow_right.png -resize 'x75>' $target_dir/arrow_right@3x.png;
+convert $current_dir/../ImageSource/arrow_right.png -rotate 90 -resize 'x50>' $target_dir/arrow_down@2x.png;
+convert $current_dir/../ImageSource/arrow_right.png -rotate 90 -resize 'x75>' $target_dir/arrow_down@3x.png;
