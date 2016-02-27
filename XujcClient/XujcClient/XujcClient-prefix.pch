@@ -25,6 +25,7 @@
 
 #import "TyLog_Objc.h"
 #import "NSString+Safe.h"
+#import "UIColor+Theme.h"
 
 // Pod Configuration
 #define MAS_SHORTHAND
