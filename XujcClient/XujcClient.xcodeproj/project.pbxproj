@@ -43,6 +43,8 @@
 		70C2B02F1C81294700923B85 /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02B1C81294700923B85 /* arrow_right@2x.png */; };
 		70C2B0301C81294700923B85 /* arrow_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02C1C81294700923B85 /* arrow_right@3x.png */; };
 		70C2B0331C81349400923B85 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C2B0321C81349400923B85 /* UIColor+Theme.m */; };
+		70C2B0361C81E38800923B85 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0341C81E38800923B85 /* settings@2x.png */; };
+		70C2B0371C81E38800923B85 /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0351C81E38800923B85 /* settings@3x.png */; };
 		70F7CE1B1BE3AC25001D027C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1A1BE3AC25001D027C /* main.m */; };
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
 		70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE201BE3AC25001D027C /* LoginViewController.m */; };
@@ -117,6 +119,8 @@
 		70C2B02C1C81294700923B85 /* arrow_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_right@3x.png"; sourceTree = "<group>"; };
 		70C2B0311C81349400923B85 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
 		70C2B0321C81349400923B85 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
+		70C2B0341C81E38800923B85 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		70C2B0351C81E38800923B85 /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@3x.png"; sourceTree = "<group>"; };
 		70F7CE161BE3AC25001D027C /* XujcClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XujcClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F7CE1A1BE3AC25001D027C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70F7CE1C1BE3AC25001D027C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 		70F7CE521BE41182001D027C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				70C2B0341C81E38800923B85 /* settings@2x.png */,
+				70C2B0351C81E38800923B85 /* settings@3x.png */,
 				70C2B0291C81294700923B85 /* arrow_down@2x.png */,
 				70C2B02A1C81294700923B85 /* arrow_down@3x.png */,
 				70C2B02B1C81294700923B85 /* arrow_right@2x.png */,
@@ -437,6 +443,7 @@
 				70C2B0301C81294700923B85 /* arrow_right@3x.png in Resources */,
 				702F99D61C7D08F9003B35A7 /* tabbar-exam@3x.png in Resources */,
 				70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */,
+				70C2B0371C81E38800923B85 /* settings@3x.png in Resources */,
 				70F7CE291BE3AC25001D027C /* LaunchScreen.storyboard in Resources */,
 				702F99EB1C7D246A003B35A7 /* Localizable.strings in Resources */,
 				70C2B02F1C81294700923B85 /* arrow_right@2x.png in Resources */,
@@ -447,6 +454,7 @@
 				702F99D41C7D08F9003B35A7 /* tabbar-exam-selected@3x.png in Resources */,
 				702F99E11C7D08F9003B35A7 /* tabbar-schedule@2x.png in Resources */,
 				70F7CE261BE3AC25001D027C /* Assets.xcassets in Resources */,
+				70C2B0361C81E38800923B85 /* settings@2x.png in Resources */,
 				702F99DF1C7D08F9003B35A7 /* tabbar-schedule-selected@2x.png in Resources */,
 				702F99D51C7D08F9003B35A7 /* tabbar-exam@2x.png in Resources */,
 				702F99DD1C7D08F9003B35A7 /* tabbar-personal@2x.png in Resources */,
