@@ -45,6 +45,7 @@
 		70C2B0331C81349400923B85 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C2B0321C81349400923B85 /* UIColor+Theme.m */; };
 		70C2B0361C81E38800923B85 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0341C81E38800923B85 /* settings@2x.png */; };
 		70C2B0371C81E38800923B85 /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0351C81E38800923B85 /* settings@3x.png */; };
+		70C2B03A1C81ECAA00923B85 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C2B0391C81ECAA00923B85 /* SettingsViewController.m */; };
 		70F7CE1B1BE3AC25001D027C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1A1BE3AC25001D027C /* main.m */; };
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
 		70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE201BE3AC25001D027C /* LoginViewController.m */; };
@@ -121,6 +122,8 @@
 		70C2B0321C81349400923B85 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
 		70C2B0341C81E38800923B85 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		70C2B0351C81E38800923B85 /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@3x.png"; sourceTree = "<group>"; };
+		70C2B0381C81ECAA00923B85 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		70C2B0391C81ECAA00923B85 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		70F7CE161BE3AC25001D027C /* XujcClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XujcClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F7CE1A1BE3AC25001D027C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70F7CE1C1BE3AC25001D027C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -271,6 +274,8 @@
 				70FE64B61C8021DF00112038 /* ScoreTableViewCell.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
 				708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */,
+				70C2B0381C81ECAA00923B85 /* SettingsViewController.h */,
+				70C2B0391C81ECAA00923B85 /* SettingsViewController.m */,
 				70F7CE251BE3AC25001D027C /* Assets.xcassets */,
 				70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */,
 				70F7CE2A1BE3AC25001D027C /* Info.plist */,
@@ -526,6 +531,7 @@
 				70F7CE431BE3E832001D027C /* XujcUser.m in Sources */,
 				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
+				70C2B03A1C81ECAA00923B85 /* SettingsViewController.m in Sources */,
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
 				7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */,

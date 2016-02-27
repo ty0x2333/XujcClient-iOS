@@ -7,6 +7,8 @@
 //
 
 #import "PersonalViewController.h"
+#import "SettingsViewController.h"
+#import <ReactiveCocoa.h>
 
 @interface PersonalViewController()
 
@@ -27,6 +29,14 @@
     [settingsButton setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
     UIBarButtonItem *settingsButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
     self.navigationItem.rightBarButtonItem = settingsButtonItem;
+    
+    @weakify(self);
+    settingsButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
+        [self.navigationController pushViewController:settingsViewController animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 - (void)viewDidLayoutSubviews
