@@ -37,6 +37,7 @@
 		702F99EB1C7D246A003B35A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 702F99EA1C7D246A003B35A7 /* Localizable.strings */; };
 		70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B681C85DD7D00B0C5DA /* BindingAccountViewController.m */; };
 		70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B6C1C85DDB100B0C5DA /* LoginViewController.m */; };
+		70443B6F1C85F09400B0C5DA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70443B6E1C85F09400B0C5DA /* logo.png */; };
 		7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057C49C1C6BD9F700351C98 /* ScoreViewController.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
@@ -114,6 +115,7 @@
 		70443B6A1C85DDB100B0C5DA /* LoginLayoutConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLayoutConfigs.h; sourceTree = "<group>"; };
 		70443B6B1C85DDB100B0C5DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		70443B6C1C85DDB100B0C5DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		70443B6E1C85F09400B0C5DA /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		7057C49B1C6BD9F700351C98 /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
 		7057C49C1C6BD9F700351C98 /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		70F7CE521BE41182001D027C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				70443B6E1C85F09400B0C5DA /* logo.png */,
 				70C2B0341C81E38800923B85 /* settings@2x.png */,
 				70C2B0351C81E38800923B85 /* settings@3x.png */,
 				70C2B0291C81294700923B85 /* arrow_down@2x.png */,
@@ -460,6 +463,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70443B6F1C85F09400B0C5DA /* logo.png in Resources */,
 				70C2B0301C81294700923B85 /* arrow_right@3x.png in Resources */,
 				702F99D61C7D08F9003B35A7 /* tabbar-exam@3x.png in Resources */,
 				70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */,
