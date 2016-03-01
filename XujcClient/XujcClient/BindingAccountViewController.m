@@ -12,13 +12,10 @@
 #import "UIView+BorderLine.h"
 #import "XujcUser.h"
 #import "SSKeychain.h"
+#import "LoginLayoutConfigs.h"
 #import <ReactiveCocoa.h>
 
-static const CGFloat kContentMarginHorizontal = 25.f;
 static const CGFloat kTextFieldHeight = 40.f;
-static const CGFloat kLoginButtonHeight = 40.f;
-
-static const CGFloat kLoginButtonRadius = 4.f;
 
 static const CGFloat kLoginButtonMarginVertical = 15.f;
 
@@ -55,7 +52,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     
     _loginButton = [[UIButton alloc] init];
     [_loginButton setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
-    _loginButton.layer.cornerRadius = kLoginButtonRadius;
+    _loginButton.layer.cornerRadius = kLoginLayoutButtonRadius;
     [_loginButton addTarget:self action:@selector(onLoginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginButton];
     
@@ -87,13 +84,13 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     [super viewDidLayoutSubviews];
     CGFloat fullWidth = CGRectGetWidth(self.view.bounds);
     CGFloat fullHeight = CGRectGetHeight(self.view.bounds);
-    CGFloat contentWidth = fullWidth - 2 * kContentMarginHorizontal;
+    CGFloat contentWidth = fullWidth - 2 * kLoginContentMarginHorizontal;
     
     [_apiKeyLeftView sizeToFit];
     
-    _accountTextField.frame = CGRectMake(kContentMarginHorizontal, fullHeight / 2, contentWidth, kTextFieldHeight);
-    _apiKeyTextField.frame = CGRectMake(kContentMarginHorizontal, CGRectGetMaxY(_accountTextField.frame), contentWidth, kTextFieldHeight);
-    _loginButton.frame = CGRectMake(kContentMarginHorizontal, CGRectGetMaxY(_apiKeyTextField.frame) + kLoginButtonMarginVertical, contentWidth, kLoginButtonHeight);
+    _accountTextField.frame = CGRectMake(kLoginContentMarginHorizontal, fullHeight / 2, contentWidth, kTextFieldHeight);
+    _apiKeyTextField.frame = CGRectMake(kLoginContentMarginHorizontal, CGRectGetMaxY(_accountTextField.frame), contentWidth, kTextFieldHeight);
+    _loginButton.frame = CGRectMake(kLoginContentMarginHorizontal, CGRectGetMaxY(_apiKeyTextField.frame) + kLoginButtonMarginVertical, contentWidth, kLoginButtonHeight);
 }
 
 #pragma mark - Event Response

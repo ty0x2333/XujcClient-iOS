@@ -18,7 +18,7 @@
 #import "NSDate+Week.h"
 #import "CollectionViewScheduleLayout.h"
 #import "XujcAPI.h"
-#import "BindingAccountViewController.h"
+#import "LoginViewController.h"
 #import "XujcTerm.h"
 #import "XujcCourse.h"
 #import "DynamicData.h"
@@ -63,8 +63,8 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     [super viewDidAppear:animated];
     
     if (DYNAMIC_DATA.APIKey == nil){
-        BindingAccountViewController *bindingAccountViewController = [[BindingAccountViewController alloc] init];
-        [self presentViewController:bindingAccountViewController animated:NO completion:nil];
+        LoginViewController *viewController = [[LoginViewController alloc] init];
+        [self presentViewController:viewController animated:NO completion:nil];
         return;
     }
     

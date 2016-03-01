@@ -35,6 +35,7 @@
 		702F99E61C7D08F9003B35A7 /* tabbar-search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99D21C7D08F9003B35A7 /* tabbar-search@3x.png */; };
 		702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 702F99E81C7D1BF6003B35A7 /* UIView+BorderLine.m */; };
 		702F99EB1C7D246A003B35A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 702F99EA1C7D246A003B35A7 /* Localizable.strings */; };
+		70443B641C85D1EF00B0C5DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B631C85D1EF00B0C5DA /* LoginViewController.m */; };
 		7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057C49C1C6BD9F700351C98 /* ScoreViewController.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
@@ -108,6 +109,9 @@
 		702F99E71C7D1BF6003B35A7 /* UIView+BorderLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BorderLine.h"; sourceTree = "<group>"; };
 		702F99E81C7D1BF6003B35A7 /* UIView+BorderLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BorderLine.m"; sourceTree = "<group>"; };
 		702F99EA1C7D246A003B35A7 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		70443B621C85D1EF00B0C5DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		70443B631C85D1EF00B0C5DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		70443B651C85D3BB00B0C5DA /* LoginLayoutConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLayoutConfigs.h; sourceTree = "<group>"; };
 		7057C49B1C6BD9F700351C98 /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
 		7057C49C1C6BD9F700351C98 /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
@@ -260,6 +264,9 @@
 				70F7CE301BE3BD4A001D027C /* API */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
+				70443B651C85D3BB00B0C5DA /* LoginLayoutConfigs.h */,
+				70443B621C85D1EF00B0C5DA /* LoginViewController.h */,
+				70443B631C85D1EF00B0C5DA /* LoginViewController.m */,
 				70F7CE1F1BE3AC25001D027C /* BindingAccountViewController.h */,
 				70F7CE201BE3AC25001D027C /* BindingAccountViewController.m */,
 				70F7CE4F1BE40A81001D027C /* MainTabBarController.h */,
@@ -548,6 +555,7 @@
 				7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,
+				70443B641C85D1EF00B0C5DA /* LoginViewController.m in Sources */,
 				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
 				702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */,
 				70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */,

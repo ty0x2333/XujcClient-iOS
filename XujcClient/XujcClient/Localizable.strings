@@ -11,3 +11,7 @@
 "StudyWay" = "修读方式";
 "Credit" = "学分";
 "Logout" = "退出登录";
+
+"EmailOrPhone" = "邮箱或手机号";
+"Password" = "密码";
+"SwitchToSign" = "注册帐号";
