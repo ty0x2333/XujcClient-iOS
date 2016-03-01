@@ -53,11 +53,13 @@
         make.top.equalTo(self.view.mas_centerY);
         make.left.equalTo(self.view.mas_left).with.offset(kLoginContentMarginHorizontal);
         make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
+        make.height.equalTo(@(kLoginTextFieldHeight));
     }];
     [_passwordTextField makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_accountTextField.mas_bottom);
         make.leading.equalTo(_accountTextField);
         make.trailing.equalTo(_accountTextField);
+        make.height.equalTo(_accountTextField);
     }];
     
     [_okButton makeConstraints:^(MASConstraintMaker *make) {

@@ -15,8 +15,6 @@
 #import "LoginLayoutConfigs.h"
 #import <ReactiveCocoa.h>
 
-static const CGFloat kTextFieldHeight = 40.f;
-
 static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 @interface BindingAccountViewController()
@@ -88,8 +86,8 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     
     [_apiKeyLeftView sizeToFit];
     
-    _accountTextField.frame = CGRectMake(kLoginContentMarginHorizontal, fullHeight / 2, contentWidth, kTextFieldHeight);
-    _apiKeyTextField.frame = CGRectMake(kLoginContentMarginHorizontal, CGRectGetMaxY(_accountTextField.frame), contentWidth, kTextFieldHeight);
+    _accountTextField.frame = CGRectMake(kLoginContentMarginHorizontal, fullHeight / 2, contentWidth, kLoginTextFieldHeight);
+    _apiKeyTextField.frame = CGRectMake(kLoginContentMarginHorizontal, CGRectGetMaxY(_accountTextField.frame), contentWidth, kLoginTextFieldHeight);
     _loginButton.frame = CGRectMake(kLoginContentMarginHorizontal, CGRectGetMaxY(_apiKeyTextField.frame) + kLoginButtonMarginVertical, contentWidth, kLoginButtonHeight);
 }
 
