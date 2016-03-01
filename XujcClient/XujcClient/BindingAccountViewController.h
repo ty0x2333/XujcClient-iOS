@@ -1,5 +1,5 @@
 /**
- * @file LoginViewController.h
+ * @file BindingAccountViewController.h
  *
  * @author luckytianyiyan@gmail.com
  * @date 15/10/30
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface BindingAccountViewController : UIViewController
 
 @end
 

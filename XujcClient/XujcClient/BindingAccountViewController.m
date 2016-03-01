@@ -6,7 +6,7 @@
 //  Copyright © 2015年 luckytianyiyan. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "BindingAccountViewController.h"
 #import "XujcAPI.h"
 #import "DynamicData.h"
 #import "UIView+BorderLine.h"
@@ -22,7 +22,7 @@ static const CGFloat kLoginButtonRadius = 4.f;
 
 static const CGFloat kLoginButtonMarginVertical = 15.f;
 
-@interface LoginViewController()
+@interface BindingAccountViewController()
 
 @property (strong, nonatomic) UITextField *accountTextField;
 
@@ -32,7 +32,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 @end
 
-@implementation LoginViewController
+@implementation BindingAccountViewController
 
 - (void)viewDidLoad
 {

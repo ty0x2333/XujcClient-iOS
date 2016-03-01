@@ -48,7 +48,7 @@
 		70C2B03A1C81ECAA00923B85 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C2B0391C81ECAA00923B85 /* SettingsViewController.m */; };
 		70F7CE1B1BE3AC25001D027C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1A1BE3AC25001D027C /* main.m */; };
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
-		70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE201BE3AC25001D027C /* LoginViewController.m */; };
+		70F7CE211BE3AC25001D027C /* BindingAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE201BE3AC25001D027C /* BindingAccountViewController.m */; };
 		70F7CE261BE3AC25001D027C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE251BE3AC25001D027C /* Assets.xcassets */; };
 		70F7CE291BE3AC25001D027C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */; };
 		70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE321BE3BDF0001D027C /* XujcAPI.m */; };
@@ -128,8 +128,8 @@
 		70F7CE1A1BE3AC25001D027C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70F7CE1C1BE3AC25001D027C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		70F7CE1D1BE3AC25001D027C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		70F7CE1F1BE3AC25001D027C /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		70F7CE201BE3AC25001D027C /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		70F7CE1F1BE3AC25001D027C /* BindingAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingAccountViewController.h; sourceTree = "<group>"; };
+		70F7CE201BE3AC25001D027C /* BindingAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingAccountViewController.m; sourceTree = "<group>"; };
 		70F7CE251BE3AC25001D027C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70F7CE281BE3AC25001D027C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70F7CE2A1BE3AC25001D027C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -260,8 +260,8 @@
 				70F7CE301BE3BD4A001D027C /* API */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
-				70F7CE1F1BE3AC25001D027C /* LoginViewController.h */,
-				70F7CE201BE3AC25001D027C /* LoginViewController.m */,
+				70F7CE1F1BE3AC25001D027C /* BindingAccountViewController.h */,
+				70F7CE201BE3AC25001D027C /* BindingAccountViewController.m */,
 				70F7CE4F1BE40A81001D027C /* MainTabBarController.h */,
 				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
 				70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */,
@@ -544,7 +544,7 @@
 				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
-				70F7CE211BE3AC25001D027C /* LoginViewController.m in Sources */,
+				70F7CE211BE3AC25001D027C /* BindingAccountViewController.m in Sources */,
 				7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,
