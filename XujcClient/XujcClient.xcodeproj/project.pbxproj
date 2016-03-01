@@ -35,7 +35,8 @@
 		702F99E61C7D08F9003B35A7 /* tabbar-search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99D21C7D08F9003B35A7 /* tabbar-search@3x.png */; };
 		702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 702F99E81C7D1BF6003B35A7 /* UIView+BorderLine.m */; };
 		702F99EB1C7D246A003B35A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 702F99EA1C7D246A003B35A7 /* Localizable.strings */; };
-		70443B641C85D1EF00B0C5DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B631C85D1EF00B0C5DA /* LoginViewController.m */; };
+		70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B681C85DD7D00B0C5DA /* BindingAccountViewController.m */; };
+		70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B6C1C85DDB100B0C5DA /* LoginViewController.m */; };
 		7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057C49C1C6BD9F700351C98 /* ScoreViewController.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
@@ -49,7 +50,6 @@
 		70C2B03A1C81ECAA00923B85 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C2B0391C81ECAA00923B85 /* SettingsViewController.m */; };
 		70F7CE1B1BE3AC25001D027C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1A1BE3AC25001D027C /* main.m */; };
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
-		70F7CE211BE3AC25001D027C /* BindingAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE201BE3AC25001D027C /* BindingAccountViewController.m */; };
 		70F7CE261BE3AC25001D027C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE251BE3AC25001D027C /* Assets.xcassets */; };
 		70F7CE291BE3AC25001D027C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */; };
 		70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE321BE3BDF0001D027C /* XujcAPI.m */; };
@@ -109,9 +109,11 @@
 		702F99E71C7D1BF6003B35A7 /* UIView+BorderLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BorderLine.h"; sourceTree = "<group>"; };
 		702F99E81C7D1BF6003B35A7 /* UIView+BorderLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BorderLine.m"; sourceTree = "<group>"; };
 		702F99EA1C7D246A003B35A7 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		70443B621C85D1EF00B0C5DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		70443B631C85D1EF00B0C5DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		70443B651C85D3BB00B0C5DA /* LoginLayoutConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLayoutConfigs.h; sourceTree = "<group>"; };
+		70443B671C85DD7D00B0C5DA /* BindingAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingAccountViewController.h; sourceTree = "<group>"; };
+		70443B681C85DD7D00B0C5DA /* BindingAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingAccountViewController.m; sourceTree = "<group>"; };
+		70443B6A1C85DDB100B0C5DA /* LoginLayoutConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLayoutConfigs.h; sourceTree = "<group>"; };
+		70443B6B1C85DDB100B0C5DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		70443B6C1C85DDB100B0C5DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7057C49B1C6BD9F700351C98 /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
 		7057C49C1C6BD9F700351C98 /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
@@ -132,8 +134,6 @@
 		70F7CE1A1BE3AC25001D027C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70F7CE1C1BE3AC25001D027C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		70F7CE1D1BE3AC25001D027C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		70F7CE1F1BE3AC25001D027C /* BindingAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingAccountViewController.h; sourceTree = "<group>"; };
-		70F7CE201BE3AC25001D027C /* BindingAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingAccountViewController.m; sourceTree = "<group>"; };
 		70F7CE251BE3AC25001D027C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70F7CE281BE3AC25001D027C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70F7CE2A1BE3AC25001D027C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -235,6 +235,18 @@
 			path = tabbar;
 			sourceTree = "<group>";
 		};
+		70443B661C85DD7D00B0C5DA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				70443B6A1C85DDB100B0C5DA /* LoginLayoutConfigs.h */,
+				70443B6B1C85DDB100B0C5DA /* LoginViewController.h */,
+				70443B6C1C85DDB100B0C5DA /* LoginViewController.m */,
+				70443B671C85DD7D00B0C5DA /* BindingAccountViewController.h */,
+				70443B681C85DD7D00B0C5DA /* BindingAccountViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		70F7CE0D1BE3AC25001D027C = {
 			isa = PBXGroup;
 			children = (
@@ -262,13 +274,9 @@
 				70F7CE3A1BE3E7E7001D027C /* Model */,
 				70F7CE341BE3D1B8001D027C /* Comment */,
 				70F7CE301BE3BD4A001D027C /* API */,
+				70443B661C85DD7D00B0C5DA /* Login */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
-				70443B651C85D3BB00B0C5DA /* LoginLayoutConfigs.h */,
-				70443B621C85D1EF00B0C5DA /* LoginViewController.h */,
-				70443B631C85D1EF00B0C5DA /* LoginViewController.m */,
-				70F7CE1F1BE3AC25001D027C /* BindingAccountViewController.h */,
-				70F7CE201BE3AC25001D027C /* BindingAccountViewController.m */,
 				70F7CE4F1BE40A81001D027C /* MainTabBarController.h */,
 				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
 				70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */,
@@ -535,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */,
 				70F7CE431BE3E832001D027C /* XujcUser.m in Sources */,
 				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
@@ -551,11 +560,10 @@
 				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
-				70F7CE211BE3AC25001D027C /* BindingAccountViewController.m in Sources */,
 				7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,
-				70443B641C85D1EF00B0C5DA /* LoginViewController.m in Sources */,
+				70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */,
 				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
 				702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */,
 				70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */,
