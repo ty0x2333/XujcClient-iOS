@@ -7,6 +7,7 @@
 */
 
 "Login" = "登录";
+"Signup" = "注册";
 "Personal" = "个人";
 "StudyWay" = "修读方式";
 "Credit" = "学分";
@@ -14,4 +15,7 @@
 
 "EmailOrPhone" = "邮箱或手机号";
 "Password" = "密码";
-"SwitchToSign" = "注册帐号";
+"SwitchToLogin" = "登录帐号";
+"SwitchToSignup" = "注册帐号";
+"Nickname" = "昵称";
+"Email" = "邮箱";

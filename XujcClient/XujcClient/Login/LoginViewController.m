@@ -9,12 +9,19 @@
 #import "LoginViewController.h"
 #import "UIView+BorderLine.h"
 #import "LoginLayoutConfigs.h"
+#import <ReactiveCocoa.h>
 
 @interface LoginViewController()
+
+@property (strong, nonatomic) UIImageView *logoImageView;
 
 @property (strong, nonatomic) UITextField *accountTextField;
 @property (strong, nonatomic) UITextField *passwordTextField;
 @property (strong, nonatomic) UIButton *okButton;
+
+@property (strong, nonatomic) UITextField *signupNicknameTextField;
+@property (strong, nonatomic) UITextField *signupEmailTextField;
+@property (strong, nonatomic) UITextField *signupPasswordTextField;
 
 @property (strong, nonatomic) UIButton *switchButton;
 @end
@@ -24,35 +31,76 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _accountTextField = [[UITextField alloc] init];
-    _accountTextField.ty_borderColor = [UIColor blackColor].CGColor;
-    _accountTextField.ty_borderEdge = UIRectEdgeBottom;
+    _logoImageView = [[UIImageView alloc] init];
+    _logoImageView.image = [UIImage imageNamed:@"logo"];
+    [self.view addSubview:_logoImageView];
+    
+    _accountTextField = [self p_textFieldMaker];
     _accountTextField.placeholder = NSLocalizedString(@"EmailOrPhone", nil);
     _accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:_accountTextField];
     
-    _passwordTextField = [[UITextField alloc] init];
-    _passwordTextField.ty_borderColor = [UIColor blackColor].CGColor;
-    _passwordTextField.ty_borderEdge = UIRectEdgeBottom;
+    _passwordTextField = [self p_textFieldMaker];
     _passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
     _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:_passwordTextField];
     
+    _signupNicknameTextField = [self p_textFieldMaker];
+    _signupNicknameTextField.placeholder = NSLocalizedString(@"Nickname", nil);
+    _signupNicknameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.view addSubview:_signupNicknameTextField];
+    
+    _signupEmailTextField = [self p_textFieldMaker];
+    _signupEmailTextField.placeholder = NSLocalizedString(@"Email", nil);
+    _signupEmailTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.view addSubview:_signupEmailTextField];
+    
+    _signupPasswordTextField = [self p_textFieldMaker];
+    _signupPasswordTextField.placeholder = NSLocalizedString(@"Password", nil);
+    _signupPasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.view addSubview:_signupPasswordTextField];
+    
     _okButton = [[UIButton alloc] init];
     _okButton.backgroundColor = [UIColor blueColor];
-    [_okButton setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
     _okButton.layer.cornerRadius = kLoginLayoutButtonRadius;
     [self.view addSubview:_okButton];
     
     _switchButton = [[UIButton alloc] init];
     [_switchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_switchButton setTitle:NSLocalizedString(@"SwitchToSign", nil) forState:UIControlStateNormal];
     [self.view addSubview:_switchButton];
     
+    [_logoImageView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.centerX.equalTo(self.view);
+        make.width.equalTo(self.view.mas_width).with.multipliedBy(0.5f);
+        make.width.equalTo(_logoImageView.mas_height);
+    }];
+    
+    [_signupNicknameTextField makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_logoImageView.mas_bottom);
+        make.left.equalTo(_accountTextField.mas_right).with.offset(2 * kLoginContentMarginHorizontal);
+        make.width.equalTo(self.view.mas_width).with.offset(-2 * kLoginContentMarginHorizontal);
+        make.height.equalTo(@(kLoginTextFieldHeight));
+    }];
+    
+    [_signupEmailTextField makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_signupNicknameTextField.mas_bottom);
+        make.left.equalTo(_signupNicknameTextField);
+        make.width.equalTo(_signupNicknameTextField);
+        make.height.equalTo(_signupNicknameTextField);
+    }];
+    
+    [_signupPasswordTextField makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_signupEmailTextField.mas_bottom);
+        make.left.equalTo(_signupNicknameTextField);
+        make.width.equalTo(_signupNicknameTextField);
+        make.height.equalTo(_signupNicknameTextField);
+    }];
+    
     [_accountTextField makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_centerY);
-        make.left.equalTo(self.view.mas_left).with.offset(kLoginContentMarginHorizontal);
+        make.top.equalTo(_signupEmailTextField);
         make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
+        make.width.equalTo(_signupNicknameTextField);
         make.height.equalTo(@(kLoginTextFieldHeight));
     }];
     [_passwordTextField makeConstraints:^(MASConstraintMaker *make) {
@@ -63,9 +111,9 @@
     }];
     
     [_okButton makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_passwordTextField.mas_bottom);
-        make.leading.equalTo(_accountTextField);
-        make.trailing.equalTo(_accountTextField);
+        make.top.equalTo(_passwordTextField.mas_bottom).with.offset(kLoginButtonMarginTop);
+        make.width.equalTo(_signupNicknameTextField);
+        make.centerX.equalTo(self.view);
         make.height.equalTo(@(kLoginButtonHeight));
     }];
     
@@ -73,6 +121,46 @@
         make.top.equalTo(_okButton.mas_bottom);
         make.centerX.equalTo(_okButton.mas_centerX);
     }];
+    @weakify(self);
+    
+    RACSignal *switchButtonStatusChangedSignal = RACObserve(_switchButton, selected);
+    [switchButtonStatusChangedSignal subscribeNext:^(NSNumber *value) {
+        BOOL selected = [value boolValue];
+        [_accountTextField remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_signupEmailTextField);
+            if (selected) {
+                make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
+            } else {
+                make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
+            }
+            
+            make.width.equalTo(_signupNicknameTextField);
+            make.height.equalTo(@(kLoginTextFieldHeight));
+        }];
+    }];
+    
+    [_switchButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
+        return [value boolValue] ? NSLocalizedString(@"SwitchToLogin", nil) : NSLocalizedString(@"SwitchToSignup", nil);
+    }], [RACSignal return:@(UIControlStateNormal)], nil];
+    
+    [_okButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
+        return ![value boolValue] ? NSLocalizedString(@"Login", nil) : NSLocalizedString(@"Signup", nil);
+    }], [RACSignal return:@(UIControlStateNormal)], nil];
+    
+    _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        TyLogDebug(@"switch button clicked");
+        self.switchButton.selected = !self.switchButton.selected;
+        return [RACSignal empty];
+    }];
+}
+
+- (UITextField *)p_textFieldMaker
+{
+    UITextField *textField = [[UITextField alloc] init];
+    textField.ty_borderColor = [UIColor blackColor].CGColor;
+    textField.ty_borderEdge = UIRectEdgeBottom;
+    return textField;
 }
 
 @end
