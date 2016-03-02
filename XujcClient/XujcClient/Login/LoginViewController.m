@@ -24,6 +24,8 @@
 @property (strong, nonatomic) UITextField *signupPasswordTextField;
 
 @property (strong, nonatomic) UIButton *switchButton;
+
+@property (strong, nonatomic) MASConstraint *accountTextFieldRightConstraint;
 @end
 
 @implementation LoginViewController
@@ -99,7 +101,7 @@
     
     [_accountTextField makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_signupEmailTextField);
-        make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
+        self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
         make.width.equalTo(_signupNicknameTextField);
         make.height.equalTo(@(kLoginTextFieldHeight));
     }];
@@ -127,16 +129,13 @@
     [switchButtonStatusChangedSignal subscribeNext:^(NSNumber *value) {
         @strongify(self);
         BOOL selected = [value boolValue];
-        [self.accountTextField mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_signupEmailTextField);
+        [self.accountTextField mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.accountTextFieldRightConstraint uninstall];
             if (selected) {
-                make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
+                self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
             } else {
-                make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
+                self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
             }
-            
-            make.width.equalTo(self.signupNicknameTextField);
-            make.height.equalTo(@(kLoginTextFieldHeight));
         }];
         [UIView animateWithDuration:.5f animations:^{
             [self.view layoutIfNeeded];
