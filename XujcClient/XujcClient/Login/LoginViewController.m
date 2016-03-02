@@ -125,8 +125,9 @@
     
     RACSignal *switchButtonStatusChangedSignal = RACObserve(_switchButton, selected);
     [switchButtonStatusChangedSignal subscribeNext:^(NSNumber *value) {
+        @strongify(self);
         BOOL selected = [value boolValue];
-        [_accountTextField remakeConstraints:^(MASConstraintMaker *make) {
+        [self.accountTextField mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_signupEmailTextField);
             if (selected) {
                 make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
@@ -134,9 +135,13 @@
                 make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
             }
             
-            make.width.equalTo(_signupNicknameTextField);
+            make.width.equalTo(self.signupNicknameTextField);
             make.height.equalTo(@(kLoginTextFieldHeight));
         }];
+        [UIView animateWithDuration:.5f animations:^{
+            [self.view layoutIfNeeded];
+        }];
+        
     }];
     
     [_switchButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
