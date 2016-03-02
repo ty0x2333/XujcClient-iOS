@@ -15,4 +15,6 @@
 + (UIColor *)ty_textBlack;
 
 + (UIColor *)ty_backgroundHighlight;
+
++ (UIColor *)ty_border;
 @end

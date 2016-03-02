@@ -162,7 +162,7 @@
 - (UITextField *)p_textFieldMaker
 {
     UITextField *textField = [[UITextField alloc] init];
-    textField.ty_borderColor = [UIColor blackColor].CGColor;
+    textField.ty_borderColor = [UIColor ty_border].CGColor;
     textField.ty_borderEdge = UIRectEdgeBottom;
     return textField;
 }

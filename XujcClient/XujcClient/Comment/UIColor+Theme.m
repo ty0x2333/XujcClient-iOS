@@ -30,4 +30,9 @@
     return [UIColor colorWithHexString:@"#f5f5f5"];
 }
 
++ (UIColor *)ty_border
+{
+    return [UIColor colorWithRed:0 green:0 blue:0.1f alpha:0.22f];
+}
+
 @end
