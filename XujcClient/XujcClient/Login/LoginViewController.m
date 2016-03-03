@@ -38,6 +38,7 @@
     [self.view addSubview:_logoImageView];
     
     _accountTextField = [self p_textFieldMaker];
+    _accountTextField.keyboardType = UIKeyboardTypeEmailAddress;
     _accountTextField.placeholder = NSLocalizedString(@"EmailOrPhone", nil);
     _accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:_accountTextField];
@@ -53,6 +54,7 @@
     [self.view addSubview:_signupNicknameTextField];
     
     _signupEmailTextField = [self p_textFieldMaker];
+    _signupEmailTextField.keyboardType = UIKeyboardTypeEmailAddress;
     _signupEmailTextField.placeholder = NSLocalizedString(@"Email", nil);
     _signupEmailTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:_signupEmailTextField];
@@ -71,6 +73,46 @@
     [_switchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:_switchButton];
     
+    [self initConstraints];
+    
+    @weakify(self);
+    
+    RACSignal *switchButtonStatusChangedSignal = RACObserve(_switchButton, selected);
+    [switchButtonStatusChangedSignal subscribeNext:^(NSNumber *value) {
+        @strongify(self);
+        BOOL selected = [value boolValue];
+        [self.accountTextField mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.accountTextFieldRightConstraint uninstall];
+            if (selected) {
+                self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
+            } else {
+                self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
+            }
+        }];
+        [UIView animateWithDuration:.5f animations:^{
+            [self.view layoutIfNeeded];
+        }];
+        
+    }];
+    
+    [_switchButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
+        return [value boolValue] ? NSLocalizedString(@"SwitchToLogin", nil) : NSLocalizedString(@"SwitchToSignup", nil);
+    }], [RACSignal return:@(UIControlStateNormal)], nil];
+    
+    [_okButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
+        return ![value boolValue] ? NSLocalizedString(@"Login", nil) : NSLocalizedString(@"Signup", nil);
+    }], [RACSignal return:@(UIControlStateNormal)], nil];
+    
+    _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        TyLogDebug(@"switch button clicked");
+        self.switchButton.selected = !self.switchButton.selected;
+        return [RACSignal empty];
+    }];
+}
+
+- (void)initConstraints
+{
     [_logoImageView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
         make.centerX.equalTo(self.view);
@@ -123,41 +165,9 @@
         make.top.equalTo(_okButton.mas_bottom);
         make.centerX.equalTo(_okButton.mas_centerX);
     }];
-    @weakify(self);
-    
-    RACSignal *switchButtonStatusChangedSignal = RACObserve(_switchButton, selected);
-    [switchButtonStatusChangedSignal subscribeNext:^(NSNumber *value) {
-        @strongify(self);
-        BOOL selected = [value boolValue];
-        [self.accountTextField mas_updateConstraints:^(MASConstraintMaker *make) {
-            [self.accountTextFieldRightConstraint uninstall];
-            if (selected) {
-                self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
-            } else {
-                self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
-            }
-        }];
-        [UIView animateWithDuration:.5f animations:^{
-            [self.view layoutIfNeeded];
-        }];
-        
-    }];
-    
-    [_switchButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
-        return [value boolValue] ? NSLocalizedString(@"SwitchToLogin", nil) : NSLocalizedString(@"SwitchToSignup", nil);
-    }], [RACSignal return:@(UIControlStateNormal)], nil];
-    
-    [_okButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
-        return ![value boolValue] ? NSLocalizedString(@"Login", nil) : NSLocalizedString(@"Signup", nil);
-    }], [RACSignal return:@(UIControlStateNormal)], nil];
-    
-    _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        TyLogDebug(@"switch button clicked");
-        self.switchButton.selected = !self.switchButton.selected;
-        return [RACSignal empty];
-    }];
 }
+
+#pragma mark - Helper
 
 - (UITextField *)p_textFieldMaker
 {
