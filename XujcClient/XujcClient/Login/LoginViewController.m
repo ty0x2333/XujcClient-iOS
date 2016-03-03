@@ -109,6 +109,9 @@
         self.switchButton.selected = !self.switchButton.selected;
         return [RACSignal empty];
     }];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.view addGestureRecognizer:singleTap];
 }
 
 - (void)initConstraints
@@ -165,6 +168,13 @@
         make.top.equalTo(_okButton.mas_bottom);
         make.centerX.equalTo(_okButton.mas_centerX);
     }];
+}
+
+#pragma mark - Event Response
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)sender
+{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Helper
