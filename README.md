@@ -16,3 +16,4 @@ Dependencies
 - Masonry
 - CupertinoYankee
 - SSKeychain
+- MBProgressHUD
