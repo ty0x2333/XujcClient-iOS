@@ -12,6 +12,8 @@
 #import <ReactiveCocoa.h>
 #import "LoginTextFieldGroupView.h"
 
+#import "LoginViewModel.h"
+
 @interface LoginViewController()
 
 @property (strong, nonatomic) LoginTextFieldGroupView *loginTextFieldGroupView;
@@ -30,6 +32,8 @@
 @property (strong, nonatomic) UIButton *switchButton;
 
 @property (strong, nonatomic) MASConstraint *loginTextFieldGroupViewRightConstraint;
+
+@property (strong, nonatomic) LoginViewModel *viewModel;
 @end
 
 @implementation LoginViewController
@@ -37,6 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _logoImageView = [[UIImageView alloc] init];
     _logoImageView.image = [UIImage imageNamed:@"logo"];
     [self.view addSubview:_logoImageView];
@@ -85,9 +90,9 @@
     
     [self initConstraints];
     
+    // Binding
     @weakify(self);
-    
-    RACSignal *switchButtonStatusChangedSignal = RACObserve(_switchButton, selected);
+    RACSignal *switchButtonStatusChangedSignal = [RACObserve(_switchButton, selected) distinctUntilChanged];
     [switchButtonStatusChangedSignal subscribeNext:^(NSNumber *value) {
         @strongify(self);
         BOOL selected = [value boolValue];
@@ -122,6 +127,9 @@
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleTap];
+    
+    _viewModel = [[LoginViewModel alloc] init];
+    [self bindViewModel];
 }
 
 - (void)initConstraints
@@ -156,6 +164,18 @@
         make.top.equalTo(_okButton.mas_bottom);
         make.centerX.equalTo(_okButton.mas_centerX);
     }];
+}
+
+- (void)bindViewModel
+{
+    _okButton.rac_command = self.viewModel.executeLogin;
+    RAC(self.viewModel, account) = self.accountTextField.rac_textSignal;
+    @weakify(self);
+    [self.viewModel.executeLogin.executionSignals subscribeNext:^(id x) {
+        @strongify(self);
+        [self.view endEditing:YES];
+    }];
+    RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.executeLogin.executing;
 }
 
 #pragma mark - Event Response
