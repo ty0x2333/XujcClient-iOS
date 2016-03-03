@@ -10,8 +10,12 @@
 #import "UIView+BorderLine.h"
 #import "LoginLayoutConfigs.h"
 #import <ReactiveCocoa.h>
+#import "LoginTextFieldGroupView.h"
 
 @interface LoginViewController()
+
+@property (strong, nonatomic) LoginTextFieldGroupView *loginTextFieldGroupView;
+@property (strong, nonatomic) LoginTextFieldGroupView *signupTextFieldGroupView;
 
 @property (strong, nonatomic) UIImageView *logoImageView;
 
@@ -25,7 +29,7 @@
 
 @property (strong, nonatomic) UIButton *switchButton;
 
-@property (strong, nonatomic) MASConstraint *accountTextFieldRightConstraint;
+@property (strong, nonatomic) MASConstraint *loginTextFieldGroupViewRightConstraint;
 @end
 
 @implementation LoginViewController
@@ -37,32 +41,38 @@
     _logoImageView.image = [UIImage imageNamed:@"logo"];
     [self.view addSubview:_logoImageView];
     
+    _loginTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
+    [self.view addSubview:_loginTextFieldGroupView];
+    
     _accountTextField = [self p_textFieldMaker];
     _accountTextField.keyboardType = UIKeyboardTypeEmailAddress;
     _accountTextField.placeholder = NSLocalizedString(@"EmailOrPhone", nil);
     _accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:_accountTextField];
+    [_loginTextFieldGroupView addSubview:_accountTextField];
     
     _passwordTextField = [self p_textFieldMaker];
     _passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
     _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:_passwordTextField];
+    [_loginTextFieldGroupView addSubview:_passwordTextField];
+    
+    _signupTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
+    [self.view addSubview:_signupTextFieldGroupView];
     
     _signupNicknameTextField = [self p_textFieldMaker];
     _signupNicknameTextField.placeholder = NSLocalizedString(@"Nickname", nil);
     _signupNicknameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:_signupNicknameTextField];
+    [_signupTextFieldGroupView addSubview:_signupNicknameTextField];
     
     _signupEmailTextField = [self p_textFieldMaker];
     _signupEmailTextField.keyboardType = UIKeyboardTypeEmailAddress;
     _signupEmailTextField.placeholder = NSLocalizedString(@"Email", nil);
     _signupEmailTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:_signupEmailTextField];
+    [_signupTextFieldGroupView addSubview:_signupEmailTextField];
     
     _signupPasswordTextField = [self p_textFieldMaker];
     _signupPasswordTextField.placeholder = NSLocalizedString(@"Password", nil);
     _signupPasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:_signupPasswordTextField];
+    [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
     
     _okButton = [[UIButton alloc] init];
     _okButton.backgroundColor = [UIColor blueColor];
@@ -81,12 +91,12 @@
     [switchButtonStatusChangedSignal subscribeNext:^(NSNumber *value) {
         @strongify(self);
         BOOL selected = [value boolValue];
-        [self.accountTextField mas_updateConstraints:^(MASConstraintMaker *make) {
-            [self.accountTextFieldRightConstraint uninstall];
+        [self.loginTextFieldGroupView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.loginTextFieldGroupViewRightConstraint uninstall];
             if (selected) {
-                self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
+                self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
             } else {
-                self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
+                self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
             }
         }];
         [UIView animateWithDuration:.5f animations:^{
@@ -123,38 +133,16 @@
         make.width.equalTo(_logoImageView.mas_height);
     }];
     
-    [_signupNicknameTextField makeConstraints:^(MASConstraintMaker *make) {
+    [_signupTextFieldGroupView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_logoImageView.mas_bottom);
-        make.left.equalTo(_accountTextField.mas_right).with.offset(2 * kLoginContentMarginHorizontal);
+        make.left.equalTo(_loginTextFieldGroupView.mas_right).with.offset(2 * kLoginContentMarginHorizontal);
         make.width.equalTo(self.view.mas_width).with.offset(-2 * kLoginContentMarginHorizontal);
-        make.height.equalTo(@(kLoginTextFieldHeight));
     }];
     
-    [_signupEmailTextField makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_signupNicknameTextField.mas_bottom);
-        make.left.equalTo(_signupNicknameTextField);
-        make.width.equalTo(_signupNicknameTextField);
-        make.height.equalTo(_signupNicknameTextField);
-    }];
-    
-    [_signupPasswordTextField makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_signupEmailTextField.mas_bottom);
-        make.left.equalTo(_signupNicknameTextField);
-        make.width.equalTo(_signupNicknameTextField);
-        make.height.equalTo(_signupNicknameTextField);
-    }];
-    
-    [_accountTextField makeConstraints:^(MASConstraintMaker *make) {
+    [_loginTextFieldGroupView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_signupEmailTextField);
-        self.accountTextFieldRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
-        make.width.equalTo(_signupNicknameTextField);
-        make.height.equalTo(@(kLoginTextFieldHeight));
-    }];
-    [_passwordTextField makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_accountTextField.mas_bottom);
-        make.leading.equalTo(_accountTextField);
-        make.trailing.equalTo(_accountTextField);
-        make.height.equalTo(_accountTextField);
+        self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
+        make.width.equalTo(_signupTextFieldGroupView);
     }];
     
     [_okButton makeConstraints:^(MASConstraintMaker *make) {
