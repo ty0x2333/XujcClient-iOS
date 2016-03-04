@@ -35,4 +35,14 @@
     return [UIColor colorWithRed:0 green:0 blue:0.1f alpha:0.22f];
 }
 
++ (UIColor *)ty_buttonBackground
+{
+    return [UIColor colorWithHexString:@"#2e9dff"];
+}
+
++ (UIColor *)ty_buttonDisableBackground
+{
+    return [UIColor colorWithHexString:@"#b8d8f3"];
+}
+
 @end

@@ -17,4 +17,7 @@
 + (UIColor *)ty_backgroundHighlight;
 
 + (UIColor *)ty_border;
+
++ (UIColor *)ty_buttonBackground;
++ (UIColor *)ty_buttonDisableBackground;
 @end
