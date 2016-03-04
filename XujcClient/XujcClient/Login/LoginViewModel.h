@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) RACCommand *executeLogin;
 
+@property (strong, nonatomic) RACSignal *validLoginSignal;
+
 @end
