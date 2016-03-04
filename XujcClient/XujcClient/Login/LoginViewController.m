@@ -186,13 +186,14 @@
 {
     _okButton.rac_command = self.viewModel.executeLogin;
     RAC(self.viewModel, account) = self.accountTextField.rac_textSignal;
+    RAC(self.viewModel, password) = self.passwordTextField.rac_textSignal;
     @weakify(self);
     [self.viewModel.executeLogin.executionSignals subscribeNext:^(id x) {
         @strongify(self);
         [self.view endEditing:YES];
     }];
     
-    [self.viewModel.validLoginSignal subscribeNext:^(NSNumber *enable) {
+    [self.viewModel.loginActiveSignal subscribeNext:^(NSNumber *enable) {
         @strongify(self);
         self.okButton.enabled = [enable boolValue];
     }];
