@@ -16,6 +16,9 @@
 
 @property (strong, nonatomic) RACCommand *executeLogin;
 
-@property (strong, nonatomic) RACSignal *validLoginSignal;
+@property (strong, nonatomic) RACSignal *validEmailSignal;
+@property (strong, nonatomic) RACSignal *validPasswordSignal;
+
+@property (strong, nonatomic) RACSignal *loginActiveSignal;
 
 @end
