@@ -41,6 +41,7 @@
 		7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057C49C1C6BD9F700351C98 /* ScoreViewController.m */; };
 		7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */; };
 		7062B6821C889F220074C716 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6811C889F220074C716 /* LoginViewModel.m */; };
+		7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6841C89FC260074C716 /* NSString+Validator.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -124,6 +125,8 @@
 		7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextFieldGroupView.m; sourceTree = "<group>"; };
 		7062B6801C889F220074C716 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		7062B6811C889F220074C716 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		7062B6831C89FC260074C716 /* NSString+Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validator.h"; sourceTree = "<group>"; };
+		7062B6841C89FC260074C716 /* NSString+Validator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validator.m"; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -340,6 +343,8 @@
 				70F7CE351BE3D1B8001D027C /* TyLog_Objc.h */,
 				70C2B0311C81349400923B85 /* UIColor+Theme.h */,
 				70C2B0321C81349400923B85 /* UIColor+Theme.m */,
+				7062B6831C89FC260074C716 /* NSString+Validator.h */,
+				7062B6841C89FC260074C716 /* NSString+Validator.m */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
+				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
 				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				70F7CE4E1BE40A3C001D027C /* ScheduleViewController.m in Sources */,
