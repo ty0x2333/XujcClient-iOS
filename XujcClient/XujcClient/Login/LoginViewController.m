@@ -80,7 +80,7 @@
     [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
     
     _okButton = [[UIButton alloc] init];
-    _okButton.backgroundColor = [UIColor blueColor];
+    _okButton.backgroundColor = [UIColor ty_buttonBackground];
     _okButton.layer.cornerRadius = kLoginLayoutButtonRadius;
     [self.view addSubview:_okButton];
     
@@ -89,46 +89,24 @@
     [self.view addSubview:_switchButton];
     
     [self initConstraints];
+#warning test viewModel
+    _viewModel = [[LoginViewModel alloc] init];
     
     // Binding
     @weakify(self);
-    RACSignal *switchButtonStatusChangedSignal = [RACObserve(_switchButton, selected) distinctUntilChanged];
-    [switchButtonStatusChangedSignal subscribeNext:^(NSNumber *value) {
+    [self bindSwitchAnimation];
+    
+    [[[RACObserve(self.okButton, enabled) distinctUntilChanged] map:^id(NSNumber *value) {
+        return [value boolValue] ? [UIColor ty_buttonBackground] : [UIColor ty_buttonDisableBackground];
+    }] subscribeNext:^(UIColor *color) {
         @strongify(self);
-        BOOL selected = [value boolValue];
-        [self.loginTextFieldGroupView mas_updateConstraints:^(MASConstraintMaker *make) {
-            [self.loginTextFieldGroupViewRightConstraint uninstall];
-            if (selected) {
-                self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
-            } else {
-                self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
-            }
-        }];
-        [UIView animateWithDuration:.5f animations:^{
-            [self.view layoutIfNeeded];
-        }];
-        
-    }];
-    
-    [_switchButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
-        return [value boolValue] ? NSLocalizedString(@"SwitchToLogin", nil) : NSLocalizedString(@"SwitchToSignup", nil);
-    }], [RACSignal return:@(UIControlStateNormal)], nil];
-    
-    [_okButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
-        return ![value boolValue] ? NSLocalizedString(@"Login", nil) : NSLocalizedString(@"Signup", nil);
-    }], [RACSignal return:@(UIControlStateNormal)], nil];
-    
-    _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        TyLogDebug(@"switch button clicked");
-        self.switchButton.selected = !self.switchButton.selected;
-        return [RACSignal empty];
+        self.okButton.backgroundColor = color;
     }];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleTap];
     
-    _viewModel = [[LoginViewModel alloc] init];
+    
     [self bindViewModel];
 }
 
@@ -166,6 +144,44 @@
     }];
 }
 
+- (void)bindSwitchAnimation
+{
+    @weakify(self);
+    // Animate
+    RACSignal *switchButtonStatusChangedSignal = [RACObserve(_switchButton, selected) distinctUntilChanged];
+    [switchButtonStatusChangedSignal subscribeNext:^(NSNumber *value) {
+        @strongify(self);
+        BOOL selected = [value boolValue];
+        [self.loginTextFieldGroupView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.loginTextFieldGroupViewRightConstraint uninstall];
+            if (selected) {
+                self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_left).with.offset(-kLoginContentMarginHorizontal);
+            } else {
+                self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
+            }
+        }];
+        [UIView animateWithDuration:.5f animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }];
+    // Text update
+    [_switchButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
+        return [value boolValue] ? NSLocalizedString(@"SwitchToLogin", nil) : NSLocalizedString(@"SwitchToSignup", nil);
+    }], [RACSignal return:@(UIControlStateNormal)], nil];
+    
+    [_okButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
+        return ![value boolValue] ? NSLocalizedString(@"Login", nil) : NSLocalizedString(@"Signup", nil);
+    }], [RACSignal return:@(UIControlStateNormal)], nil];
+    
+    // Selected change
+    _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        TyLogDebug(@"switch button clicked");
+        self.switchButton.selected = !self.switchButton.selected;
+        return [RACSignal empty];
+    }];
+}
+
 - (void)bindViewModel
 {
     _okButton.rac_command = self.viewModel.executeLogin;
@@ -175,6 +191,12 @@
         @strongify(self);
         [self.view endEditing:YES];
     }];
+    
+    [self.viewModel.validLoginSignal subscribeNext:^(NSNumber *enable) {
+        @strongify(self);
+        self.okButton.enabled = [enable boolValue];
+    }];
+    
     RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.executeLogin.executing;
 }
 
