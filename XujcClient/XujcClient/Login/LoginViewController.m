@@ -23,11 +23,12 @@
 
 @property (strong, nonatomic) UITextField *accountTextField;
 @property (strong, nonatomic) UITextField *passwordTextField;
-@property (strong, nonatomic) UIButton *okButton;
+@property (strong, nonatomic) UIButton *loginButton;
 
 @property (strong, nonatomic) UITextField *signupNicknameTextField;
 @property (strong, nonatomic) UITextField *signupEmailTextField;
 @property (strong, nonatomic) UITextField *signupPasswordTextField;
+@property (strong, nonatomic) UIButton *signupButton;
 
 @property (strong, nonatomic) UIButton *switchButton;
 
@@ -79,10 +80,17 @@
     _signupPasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
     
-    _okButton = [[UIButton alloc] init];
-    _okButton.backgroundColor = [UIColor ty_buttonBackground];
-    _okButton.layer.cornerRadius = kLoginLayoutButtonRadius;
-    [self.view addSubview:_okButton];
+    _loginButton = [[UIButton alloc] init];
+    [_loginButton setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
+    _loginButton.backgroundColor = [UIColor ty_buttonBackground];
+    _loginButton.layer.cornerRadius = kLoginLayoutButtonRadius;
+    [self.view addSubview:_loginButton];
+    
+    _signupButton = [[UIButton alloc] init];
+    [_signupButton setTitle:NSLocalizedString(@"Signup", nil) forState:UIControlStateNormal];
+    _signupButton.backgroundColor = [UIColor ty_buttonBackground];
+    _signupButton.layer.cornerRadius = kLoginLayoutButtonRadius;
+    [self.view addSubview:_signupButton];
     
     _switchButton = [[UIButton alloc] init];
     [_switchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -96,11 +104,11 @@
     @weakify(self);
     [self bindSwitchAnimation];
     
-    [[[RACObserve(self.okButton, enabled) distinctUntilChanged] map:^id(NSNumber *value) {
+    [[[RACObserve(self.loginButton, enabled) distinctUntilChanged] map:^id(NSNumber *value) {
         return [value boolValue] ? [UIColor ty_buttonBackground] : [UIColor ty_buttonDisableBackground];
     }] subscribeNext:^(UIColor *color) {
         @strongify(self);
-        self.okButton.backgroundColor = color;
+        self.loginButton.backgroundColor = color;
     }];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -131,16 +139,23 @@
         make.width.equalTo(_signupTextFieldGroupView);
     }];
     
-    [_okButton makeConstraints:^(MASConstraintMaker *make) {
+    [_loginButton makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_passwordTextField.mas_bottom).with.offset(kLoginButtonMarginTop);
         make.width.equalTo(_signupNicknameTextField);
         make.centerX.equalTo(self.view);
         make.height.equalTo(@(kLoginButtonHeight));
     }];
     
+    [_signupButton makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_loginButton);
+        make.width.equalTo(_loginButton);
+        make.centerX.equalTo(_loginButton);
+        make.height.equalTo(_loginButton);
+    }];
+    
     [_switchButton makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_okButton.mas_bottom);
-        make.centerX.equalTo(_okButton.mas_centerX);
+        make.top.equalTo(_loginButton.mas_bottom);
+        make.centerX.equalTo(_loginButton.mas_centerX);
     }];
 }
 
@@ -169,9 +184,9 @@
         return [value boolValue] ? NSLocalizedString(@"SwitchToLogin", nil) : NSLocalizedString(@"SwitchToSignup", nil);
     }], [RACSignal return:@(UIControlStateNormal)], nil];
     
-    [_okButton rac_liftSelector:@selector(setTitle:forState:) withSignals:[switchButtonStatusChangedSignal map:^id(NSNumber *value) {
-        return ![value boolValue] ? NSLocalizedString(@"Login", nil) : NSLocalizedString(@"Signup", nil);
-    }], [RACSignal return:@(UIControlStateNormal)], nil];
+    // Button Hidden
+    RAC(_loginButton, hidden) = switchButtonStatusChangedSignal;
+    RAC(_signupButton, hidden) = [RACObserve(_loginButton, hidden) not];
     
     // Selected change
     _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
@@ -184,7 +199,7 @@
 
 - (void)bindViewModel
 {
-    _okButton.rac_command = self.viewModel.executeLogin;
+    _loginButton.rac_command = self.viewModel.executeLogin;
     RAC(self.viewModel, account) = self.accountTextField.rac_textSignal;
     RAC(self.viewModel, password) = self.passwordTextField.rac_textSignal;
     @weakify(self);
@@ -195,7 +210,7 @@
     
     [self.viewModel.loginActiveSignal subscribeNext:^(NSNumber *enable) {
         @strongify(self);
-        self.okButton.enabled = [enable boolValue];
+        self.loginButton.enabled = [enable boolValue];
     }];
     
     RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.executeLogin.executing;
