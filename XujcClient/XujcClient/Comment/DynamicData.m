@@ -8,7 +8,7 @@
 
 #import "DynamicData.h"
 #import "XujcTerm.h"
-static NSString* const kDataXujcUser = @"XujcUser";
+static NSString* const kDataXujcUser = @"User";
 static NSString* const kDataXujcAPIKey = @"APIKey";
 static NSString* const kDataXujcTerms = @"XujcTerms";
 
@@ -72,7 +72,7 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
 
 - (void)clear
 {
-    XujcUser *user = [[XujcUser alloc] init];
+    UserModel *user = [[UserModel alloc] init];
     _user = user;
     [self flush];
 }

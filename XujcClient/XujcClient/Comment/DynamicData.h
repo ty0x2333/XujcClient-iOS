@@ -7,7 +7,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "XujcUser.h"
+#import "UserModel.h"
 
 #define DYNAMIC_DATA [DynamicData instance]
 
@@ -26,7 +26,7 @@
 - (void)clear;
 
 @property(nonatomic, copy) NSString *APIKey;
-@property(nonatomic, strong) XujcUser *user;
+@property(nonatomic, strong) UserModel *user;
 /**
  *  @brief  学期数组
  *  @note   它总是有序的, setter 会自动排序
