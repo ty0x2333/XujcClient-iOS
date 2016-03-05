@@ -42,6 +42,8 @@
 		7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */; };
 		7062B6821C889F220074C716 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6811C889F220074C716 /* LoginViewModel.m */; };
 		7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6841C89FC260074C716 /* NSString+Validator.m */; };
+		7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m */; };
+		7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B68D1C8B0F480074C716 /* RequestViewModel.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -127,6 +129,10 @@
 		7062B6811C889F220074C716 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		7062B6831C89FC260074C716 /* NSString+Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validator.h"; sourceTree = "<group>"; };
 		7062B6841C89FC260074C716 /* NSString+Validator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validator.m"; sourceTree = "<group>"; };
+		7062B6881C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+TYServer.h"; sourceTree = "<group>"; };
+		7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+TYServer.m"; sourceTree = "<group>"; };
+		7062B68C1C8B0F480074C716 /* RequestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestViewModel.h; sourceTree = "<group>"; };
+		7062B68D1C8B0F480074C716 /* RequestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -262,6 +268,34 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		7062B6861C8A21200074C716 /* Xujc */ = {
+			isa = PBXGroup;
+			children = (
+				7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */,
+				70F7CE311BE3BDF0001D027C /* XujcAPI.h */,
+				70F7CE321BE3BDF0001D027C /* XujcAPI.m */,
+			);
+			name = Xujc;
+			sourceTree = "<group>";
+		};
+		7062B6871C8A21320074C716 /* TYServer */ = {
+			isa = PBXGroup;
+			children = (
+				7062B6881C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.h */,
+				7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m */,
+			);
+			name = TYServer;
+			sourceTree = "<group>";
+		};
+		7062B68B1C8B0F350074C716 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7062B68C1C8B0F480074C716 /* RequestViewModel.h */,
+				7062B68D1C8B0F480074C716 /* RequestViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		70F7CE0D1BE3AC25001D027C = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +321,7 @@
 				70F7CE621BE426FF001D027C /* Collection View Reusable Views */,
 				70F7CE5B1BE422B2001D027C /* Collection View Cells */,
 				70F7CE3A1BE3E7E7001D027C /* Model */,
+				7062B68B1C8B0F350074C716 /* ViewModel */,
 				70F7CE341BE3D1B8001D027C /* Comment */,
 				70F7CE301BE3BD4A001D027C /* API */,
 				70443B661C85DD7D00B0C5DA /* Login */,
@@ -328,9 +363,8 @@
 		70F7CE301BE3BD4A001D027C /* API */ = {
 			isa = PBXGroup;
 			children = (
-				7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */,
-				70F7CE311BE3BDF0001D027C /* XujcAPI.h */,
-				70F7CE321BE3BDF0001D027C /* XujcAPI.m */,
+				7062B6871C8A21320074C716 /* TYServer */,
+				7062B6861C8A21200074C716 /* Xujc */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -578,6 +612,7 @@
 				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
 				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
+				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
 				7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */,
 				7062B6821C889F220074C716 /* LoginViewModel.m in Sources */,
@@ -597,6 +632,7 @@
 				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
 				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
+				7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */,
 				70F7CE4E1BE40A3C001D027C /* ScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
