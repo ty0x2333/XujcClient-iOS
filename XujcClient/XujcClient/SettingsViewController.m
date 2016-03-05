@@ -7,7 +7,6 @@
 //
 
 #import "SettingsViewController.h"
-#import <ReactiveCocoa.h>
 
 static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
 

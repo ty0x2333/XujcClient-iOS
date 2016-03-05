@@ -8,7 +8,6 @@
 
 #import "PersonalViewController.h"
 #import "SettingsViewController.h"
-#import <ReactiveCocoa.h>
 
 @interface PersonalViewController()
 

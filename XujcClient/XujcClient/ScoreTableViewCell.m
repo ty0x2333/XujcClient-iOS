@@ -7,7 +7,6 @@
 //
 
 #import "ScoreTableViewCell.h"
-#import <ReactiveCocoa.h>
 #import "XujcScore.h"
 #import "UIView+BorderLine.h"
 

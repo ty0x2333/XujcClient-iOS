@@ -13,7 +13,6 @@
 #import "XujcUser.h"
 #import "SSKeychain.h"
 #import "LoginLayoutConfigs.h"
-#import <ReactiveCocoa.h>
 
 static const CGFloat kLoginButtonMarginVertical = 15.f;
 
