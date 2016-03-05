@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <ReactiveCocoa.h>
+#import "RequestViewModel.h"
 
-@interface LoginViewModel : NSObject
+@interface LoginViewModel : RequestViewModel
 
 @property (strong, nonatomic) NSString *account;
 @property (strong, nonatomic) NSString *password;

@@ -39,7 +39,7 @@
 #endif
         _executeLogin = [[RACCommand alloc] initWithEnabled:_loginActiveSignal signalBlock:^RACSignal *(id input) {
             TyLogDebug(@"executeLogin");
-            return [self executeLoginSignal];
+            return [[[self executeLoginSignal] setNameWithFormat:@"executeLoginSignal"] logAll];
         }];
     }
     return self;
@@ -47,7 +47,21 @@
 
 - (RACSignal *)executeLoginSignal
 {
-    return [[[[RACSignal empty] logAll] delay:2.0] logAll];
+    @weakify(self);
+    RACSignal *executeLoginSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        
+        NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{@"email": self.account, @"password": self.password} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    return executeLoginSignal;
 }
 
 @end
