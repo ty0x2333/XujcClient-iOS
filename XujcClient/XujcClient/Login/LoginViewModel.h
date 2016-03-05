@@ -21,4 +21,6 @@
 
 @property (strong, nonatomic) RACSignal *loginActiveSignal;
 
+@property (strong, readonly, nonatomic) RACSignal *loginCompletedSignal;
+
 @end

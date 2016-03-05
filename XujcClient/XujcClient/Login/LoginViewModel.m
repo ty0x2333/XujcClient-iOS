@@ -44,6 +44,12 @@
             return [[[self executeLoginSignal] setNameWithFormat:@"executeLoginSignal"] logAll];
         }];
         
+        _loginCompletedSignal = [self.executeLogin.executionSignals flattenMap:^RACStream *(RACSignal *value) {
+            return [[value materialize] filter:^BOOL(RACEvent *value) {
+                return value.eventType == RACEventTypeCompleted;
+            }];
+        }];
+        
     }
     return self;
 }
