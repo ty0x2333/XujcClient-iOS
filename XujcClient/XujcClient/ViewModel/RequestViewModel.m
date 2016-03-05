@@ -7,7 +7,7 @@
 //
 
 #import "RequestViewModel.h"
-#import "AFHTTPSessionManager+TYServer.h"
+#import "TYServer.h"
 
 @interface RequestViewModel()
 

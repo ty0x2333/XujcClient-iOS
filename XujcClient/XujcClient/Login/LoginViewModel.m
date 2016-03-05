@@ -8,6 +8,7 @@
 
 #import "LoginViewModel.h"
 #import "NSString+Validator.h"
+#import "TYServer.h"
 
 @implementation LoginViewModel
 
@@ -51,7 +52,7 @@
     RACSignal *executeLoginSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
         
-        NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{@"email": self.account, @"password": self.password} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{TYServerKeyEmail: self.account, TYServerKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [subscriber sendNext:responseObject];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
