@@ -10,6 +10,8 @@
 #import "NSString+Validator.h"
 #import "TYServer.h"
 #import <SSKeychain.h>
+#import "UserModel.h"
+#import "DynamicData.h"
 
 @implementation LoginViewModel
 
@@ -68,6 +70,10 @@
                 [subscriber sendError:error];
             } else {
                 [SSKeychain setPassword:self.password forService:TYServiceName account:self.account];
+                UserModel *user = [[UserModel alloc] initWithJSONResopnse:responseObject];
+                DYNAMIC_DATA.user = user;
+                [DYNAMIC_DATA flush];
+                TyLogDebug(@"%@", user);
                 [subscriber sendNext:responseObject];
                 [subscriber sendCompleted];
             }
