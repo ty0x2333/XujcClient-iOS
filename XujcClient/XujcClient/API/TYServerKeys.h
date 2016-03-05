@@ -13,8 +13,14 @@ static NSString* const TYServiceName = @"TYService";
 
 static NSString* const TYServerKeyEmail = @"email";
 static NSString* const TYServerKeyPassword = @"password";
+static NSString* const TYServerKeyAPIKey = @"api_key";
+static NSString* const TYServerKeyXujcKey = @"xujc_key";
+static NSString* const TYServerKeyCreatedTime = @"created_time";
+
 
 static NSString* const TYServerKeyError = @"error";
 static NSString* const TYServerKeyMessage = @"message";
+
+static NSString* const TYServerKeyNickname = @"name";
 
 #endif /* TYServerKeys.h */
