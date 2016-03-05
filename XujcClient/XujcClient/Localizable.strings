@@ -19,3 +19,8 @@
 "SwitchToSignup" = "注册帐号";
 "Nickname" = "昵称";
 "Email" = "邮箱";
+
+/**
+ * Error
+ */
+"Login failed. Incorrect credentials" = "帐号或密码错误";
