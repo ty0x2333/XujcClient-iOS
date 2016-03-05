@@ -9,6 +9,7 @@
 #import "LoginViewModel.h"
 #import "NSString+Validator.h"
 #import "TYServer.h"
+#import <SSKeychain.h>
 
 @implementation LoginViewModel
 
@@ -42,6 +43,7 @@
             TyLogDebug(@"executeLogin");
             return [[[self executeLoginSignal] setNameWithFormat:@"executeLoginSignal"] logAll];
         }];
+        
     }
     return self;
 }
@@ -59,6 +61,7 @@
                 NSError *error = [NSError errorWithDomain:message code:0 userInfo:nil];
                 [subscriber sendError:error];
             } else {
+                [SSKeychain setPassword:self.password forService:TYServiceName account:self.account];
                 [subscriber sendNext:responseObject];
                 [subscriber sendCompleted];
             }

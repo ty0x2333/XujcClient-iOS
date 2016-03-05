@@ -9,6 +9,8 @@
 #ifndef TYServerKeys_h
 #define TYServerKeys_h
 
+static NSString* const TYServiceName = @"TYService";
+
 static NSString* const TYServerKeyEmail = @"email";
 static NSString* const TYServerKeyPassword = @"password";
 
