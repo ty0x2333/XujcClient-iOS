@@ -10,7 +10,7 @@
 #import "UIView+BorderLine.h"
 #import "LoginLayoutConfigs.h"
 #import "LoginTextFieldGroupView.h"
-
+#import "BindingAccountViewController.h"
 #import "LoginViewModel.h"
 
 @interface LoginViewController()
@@ -210,6 +210,12 @@
     [self.viewModel.loginActiveSignal subscribeNext:^(NSNumber *enable) {
         @strongify(self);
         self.loginButton.enabled = [enable boolValue];
+    }];
+    
+    [self.viewModel.loginCompletedSignal subscribeNext:^(id x) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        BindingAccountViewController *viewController = [[BindingAccountViewController alloc] init];
+        [self presentViewController:viewController animated:YES completion:nil];
     }];
     
     [[self.viewModel.executeLogin.executing filter:^BOOL(id value) {
