@@ -12,4 +12,7 @@
 static NSString* const TYServerKeyEmail = @"email";
 static NSString* const TYServerKeyPassword = @"password";
 
+static NSString* const TYServerKeyError = @"error";
+static NSString* const TYServerKeyMessage = @"message";
+
 #endif /* TYServerKeys.h */
