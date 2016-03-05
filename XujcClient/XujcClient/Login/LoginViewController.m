@@ -120,7 +120,7 @@
 - (void)initConstraints
 {
     [_logoImageView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
+        make.top.equalTo(self.mas_topLayoutGuideBottom);
         make.centerX.equalTo(self.view);
         make.width.equalTo(self.view.mas_width).with.multipliedBy(0.5f);
         make.width.equalTo(_logoImageView.mas_height);
