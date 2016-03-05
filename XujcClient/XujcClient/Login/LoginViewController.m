@@ -212,7 +212,18 @@
         self.loginButton.enabled = [enable boolValue];
     }];
     
-    RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.executeLogin.executing;
+    [[self.viewModel.executeLogin.executing filter:^BOOL(id value) {
+        return [value boolValue];
+    }] subscribeNext:^(id x) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }];
+
+    [self.viewModel.executeLogin.errors subscribeNext:^(NSError *error) {
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+        hud.mode = MBProgressHUDModeText;
+        hud.detailsLabelText = NSLocalizedString(error.domain, nil);
+        [hud hide:YES afterDelay:kErrorHUDShowTime];
+    }];
 }
 
 #pragma mark - Event Response
