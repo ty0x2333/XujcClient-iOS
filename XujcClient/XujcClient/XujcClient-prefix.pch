@@ -27,6 +27,7 @@
 #import "NSString+Safe.h"
 #import "UIColor+Theme.h"
 #import <ReactiveCocoa.h>
+#import <MBProgressHUD.h>
 
 // Pod Configuration
 #define MAS_SHORTHAND
