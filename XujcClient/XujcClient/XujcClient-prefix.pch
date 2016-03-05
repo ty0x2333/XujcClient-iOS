@@ -24,6 +24,7 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 
 #import "TyLog_Objc.h"
+#import "AppConfig.h"
 #import "NSString+Safe.h"
 #import "UIColor+Theme.h"
 #import <ReactiveCocoa.h>

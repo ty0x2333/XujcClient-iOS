@@ -135,6 +135,7 @@
 		7062B68D1C8B0F480074C716 /* RequestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestViewModel.m; sourceTree = "<group>"; };
 		7062B68F1C8B1EC90074C716 /* TYServerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYServerKeys.h; sourceTree = "<group>"; };
 		7062B6901C8B1F950074C716 /* TYServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYServer.h; sourceTree = "<group>"; };
+		7062B6911C8B427E0074C716 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -383,6 +384,7 @@
 				70C2B0321C81349400923B85 /* UIColor+Theme.m */,
 				7062B6831C89FC260074C716 /* NSString+Validator.h */,
 				7062B6841C89FC260074C716 /* NSString+Validator.m */,
+				7062B6911C8B427E0074C716 /* AppConfig.h */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
