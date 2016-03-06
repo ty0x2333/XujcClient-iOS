@@ -87,4 +87,14 @@
     return executeLoginSignal;
 }
 
+- (NSString *)currentAccount
+{
+    return DYNAMIC_DATA.user.email;
+}
+
+- (NSString *)currentAccountPassword
+{
+    return [SSKeychain passwordForService:TYServiceName account:[self currentAccount]];
+}
+
 @end

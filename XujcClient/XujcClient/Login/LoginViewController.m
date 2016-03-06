@@ -113,8 +113,11 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleTap];
     
-    
     [self bindViewModel];
+    
+    // load account cache
+    self.accountTextField.text = [_viewModel currentAccount];
+    self.passwordTextField.text = [_viewModel currentAccountPassword];
 }
 
 - (void)initConstraints
@@ -199,8 +202,8 @@
 - (void)bindViewModel
 {
     _loginButton.rac_command = self.viewModel.executeLogin;
-    RAC(self.viewModel, account) = self.accountTextField.rac_textSignal;
-    RAC(self.viewModel, password) = self.passwordTextField.rac_textSignal;
+    RAC(self.viewModel, account) = [RACSignal merge:@[self.accountTextField.rac_textSignal, RACObserve(self.accountTextField, text)]];
+    RAC(self.viewModel, password) = [RACSignal merge:@[self.passwordTextField.rac_textSignal, RACObserve(self.passwordTextField, text)]];
     @weakify(self);
     [self.viewModel.executeLogin.executionSignals subscribeNext:^(id x) {
         @strongify(self);
