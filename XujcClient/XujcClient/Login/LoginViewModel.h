@@ -6,18 +6,11 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "RequestViewModel.h"
+#import "AccountViewModel.h"
 
-@interface LoginViewModel : RequestViewModel
-
-@property (strong, nonatomic) NSString *account;
-@property (strong, nonatomic) NSString *password;
+@interface LoginViewModel : AccountViewModel
 
 @property (strong, nonatomic) RACCommand *executeLogin;
-
-@property (strong, nonatomic) RACSignal *validEmailSignal;
-@property (strong, nonatomic) RACSignal *validPasswordSignal;
 
 @property (strong, nonatomic) RACSignal *loginActiveSignal;
 
