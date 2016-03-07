@@ -38,34 +38,28 @@
 
 - (RACSignal *)executeSignupSignal
 {
-//    @weakify(self);
-//    RACSignal *executeSignupSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-//        @strongify(self);
-//        
-//        NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{TYServerKeyEmail: self.account, TYServerKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
-//            BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
-//            if (isError) {
-//                NSString *message = [responseObject objectForKey:TYServerKeyMessage];
-//                NSError *error = [NSError errorWithDomain:message code:0 userInfo:nil];
-//                [subscriber sendError:error];
-//            } else {
-//                [SSKeychain setPassword:self.password forService:TYServiceName account:self.account];
-//                UserModel *user = [[UserModel alloc] initWithJSONResopnse:responseObject];
-//                DYNAMIC_DATA.user = user;
-//                [DYNAMIC_DATA flush];
-//                TyLogDebug(@"%@", user);
-//                [subscriber sendNext:responseObject];
-//                [subscriber sendCompleted];
-//            }
-//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//            [subscriber sendError:error];
-//        }];
-//        return [RACDisposable disposableWithBlock:^{
-//            [task cancel];
-//        }];
-//    }];
-//    return executeSignupSignal;
-    return [RACSignal empty];
+    @weakify(self);
+    RACSignal *executeSignupSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        
+        NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServerKeyNickname: self.nickname, TYServerKeyEmail: self.account, TYServerKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+            BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
+            NSString *message = [responseObject objectForKey:TYServerKeyMessage];
+            if (isError) {
+                NSError *error = [NSError errorWithDomain:message code:0 userInfo:nil];
+                [subscriber sendError:error];
+            } else {
+                [subscriber sendNext:message];
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    return executeSignupSignal;
 }
 
 @end

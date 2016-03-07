@@ -10,5 +10,7 @@
 #define AppConfig_h
 
 static CGFloat const kErrorHUDShowTime = 2.f;
+static CGFloat const kSuccessHUDShowTime = 2.f;
+
 
 #endif /* AppConfig_h */
