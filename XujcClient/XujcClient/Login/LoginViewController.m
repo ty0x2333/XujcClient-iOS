@@ -250,10 +250,14 @@
         self.signupButton.enabled = [enable boolValue];
     }];
     
-    [[self.signupViewModel.executeSignup.executionSignals concat] subscribeNext:^(id x) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        BindingAccountViewController *viewController = [[BindingAccountViewController alloc] init];
-        [self presentViewController:viewController animated:YES completion:nil];
+    [[self.signupViewModel.executeSignup.executionSignals concat] subscribeNext:^(NSString *message) {
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+        if (hud != nil) {
+            hud.mode = MBProgressHUDModeText;
+            hud.detailsLabelText = NSLocalizedString(message, nil);
+            [hud hide:YES afterDelay:kSuccessHUDShowTime];
+        }
+        self.switchButton.selected = NO;
     }];
     
     [[self.signupViewModel.executeSignup.executing filter:^BOOL(id value) {
