@@ -18,6 +18,4 @@
 
 @property (strong, nonatomic) RACSignal *validNicknameSignal;
 
-@property (strong, readonly, nonatomic) RACSignal *signupCompletedSignal;
-
 @end

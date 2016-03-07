@@ -24,16 +24,8 @@
                               }];
         
         _executeLogin = [[RACCommand alloc] initWithEnabled:_loginActiveSignal signalBlock:^RACSignal *(id input) {
-            TyLogDebug(@"executeLogin");
-            return [[[self executeLoginSignal] setNameWithFormat:@"executeLoginSignal"] logAll];
+            return [self executeLoginSignal];
         }];
-        
-        _loginCompletedSignal = [self.executeLogin.executionSignals flattenMap:^RACStream *(RACSignal *value) {
-            return [[value materialize] filter:^BOOL(RACEvent *value) {
-                return value.eventType == RACEventTypeCompleted;
-            }];
-        }];
-        
     }
     return self;
 }
@@ -43,7 +35,6 @@
     @weakify(self);
     RACSignal *executeLoginSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        
         NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{TYServerKeyEmail: self.account, TYServerKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
             BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
             if (isError) {
@@ -66,7 +57,7 @@
             [task cancel];
         }];
     }];
-    return executeLoginSignal;
+    return [[executeLoginSignal setNameWithFormat:@"executeLoginSignal"] logAll];
 }
 
 - (NSString *)currentAccount

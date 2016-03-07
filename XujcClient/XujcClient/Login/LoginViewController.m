@@ -12,6 +12,7 @@
 #import "LoginTextFieldGroupView.h"
 #import "BindingAccountViewController.h"
 #import "LoginViewModel.h"
+#import "SignupViewModel.h"
 
 @interface LoginViewController()
 
@@ -33,7 +34,8 @@
 
 @property (strong, nonatomic) MASConstraint *loginTextFieldGroupViewRightConstraint;
 
-@property (strong, nonatomic) LoginViewModel *viewModel;
+@property (strong, nonatomic) LoginViewModel *loginViewModel;
+@property (strong, nonatomic) SignupViewModel *signupViewModel;
 @end
 
 @implementation LoginViewController
@@ -49,34 +51,24 @@
     _loginTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
     [self.view addSubview:_loginTextFieldGroupView];
     
-    _accountTextField = [self p_textFieldMaker];
+    _accountTextField = [self p_textFieldWithPlaceholder:@"EmailOrPhone"];
     _accountTextField.keyboardType = UIKeyboardTypeEmailAddress;
-    _accountTextField.placeholder = NSLocalizedString(@"EmailOrPhone", nil);
-    _accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [_loginTextFieldGroupView addSubview:_accountTextField];
     
-    _passwordTextField = [self p_textFieldMaker];
-    _passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
-    _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _passwordTextField = [self p_textFieldWithPlaceholder:@"Password"];
     [_loginTextFieldGroupView addSubview:_passwordTextField];
     
     _signupTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
     [self.view addSubview:_signupTextFieldGroupView];
     
-    _signupNicknameTextField = [self p_textFieldMaker];
-    _signupNicknameTextField.placeholder = NSLocalizedString(@"Nickname", nil);
-    _signupNicknameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _signupNicknameTextField = [self p_textFieldWithPlaceholder:@"Nickname"];
     [_signupTextFieldGroupView addSubview:_signupNicknameTextField];
     
-    _signupEmailTextField = [self p_textFieldMaker];
+    _signupEmailTextField = [self p_textFieldWithPlaceholder:@"Email"];
     _signupEmailTextField.keyboardType = UIKeyboardTypeEmailAddress;
-    _signupEmailTextField.placeholder = NSLocalizedString(@"Email", nil);
-    _signupEmailTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [_signupTextFieldGroupView addSubview:_signupEmailTextField];
     
-    _signupPasswordTextField = [self p_textFieldMaker];
-    _signupPasswordTextField.placeholder = NSLocalizedString(@"Password", nil);
-    _signupPasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _signupPasswordTextField = [self p_textFieldWithPlaceholder:@"Password"];
     [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
     
     _loginButton = [[UIButton alloc] init];
@@ -97,7 +89,8 @@
     
     [self initConstraints];
 #warning test viewModel
-    _viewModel = [[LoginViewModel alloc] init];
+    _loginViewModel = [[LoginViewModel alloc] init];
+    _signupViewModel = [[SignupViewModel alloc] init];
     
     // Binding
     @weakify(self);
@@ -109,6 +102,12 @@
         @strongify(self);
         self.loginButton.backgroundColor = color;
     }];
+    [[[RACObserve(self.signupButton, enabled) distinctUntilChanged] map:^id(NSNumber *value) {
+        return [value boolValue] ? [UIColor ty_buttonBackground] : [UIColor ty_buttonDisableBackground];
+    }] subscribeNext:^(UIColor *color) {
+        @strongify(self);
+        self.signupButton.backgroundColor = color;
+    }];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleTap];
@@ -116,8 +115,8 @@
     [self bindViewModel];
     
     // load account cache
-    self.accountTextField.text = [_viewModel currentAccount];
-    self.passwordTextField.text = [_viewModel currentAccountPassword];
+    self.accountTextField.text = [_loginViewModel currentAccount];
+    self.passwordTextField.text = [_loginViewModel currentAccountPassword];
 }
 
 - (void)initConstraints
@@ -201,38 +200,75 @@
 
 - (void)bindViewModel
 {
-    _loginButton.rac_command = self.viewModel.executeLogin;
-    RAC(self.viewModel, account) = [RACSignal merge:@[self.accountTextField.rac_textSignal, RACObserve(self.accountTextField, text)]];
-    RAC(self.viewModel, password) = [RACSignal merge:@[self.passwordTextField.rac_textSignal, RACObserve(self.passwordTextField, text)]];
+    // Login
+    _loginButton.rac_command = self.loginViewModel.executeLogin;
+    RAC(self.loginViewModel, account) = [RACSignal merge:@[self.accountTextField.rac_textSignal, RACObserve(self.accountTextField, text)]];
+    RAC(self.loginViewModel, password) = [RACSignal merge:@[self.passwordTextField.rac_textSignal, RACObserve(self.passwordTextField, text)]];
     @weakify(self);
-    [self.viewModel.executeLogin.executionSignals subscribeNext:^(id x) {
+    [self.loginViewModel.executeLogin.executionSignals subscribeNext:^(id x) {
         @strongify(self);
         [self.view endEditing:YES];
     }];
     
-    [self.viewModel.loginActiveSignal subscribeNext:^(NSNumber *enable) {
+    [self.loginViewModel.loginActiveSignal subscribeNext:^(NSNumber *enable) {
         @strongify(self);
         self.loginButton.enabled = [enable boolValue];
     }];
     
-    [self.viewModel.loginCompletedSignal subscribeNext:^(id x) {
+    [[self.loginViewModel.executeLogin.executionSignals concat] subscribeNext:^(id x) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         BindingAccountViewController *viewController = [[BindingAccountViewController alloc] init];
         [self presentViewController:viewController animated:YES completion:nil];
     }];
     
-    [[self.viewModel.executeLogin.executing filter:^BOOL(id value) {
+    [[self.loginViewModel.executeLogin.executing filter:^BOOL(id value) {
         return [value boolValue];
     }] subscribeNext:^(id x) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }];
 
-    [self.viewModel.executeLogin.errors subscribeNext:^(NSError *error) {
+    [self.loginViewModel.executeLogin.errors subscribeNext:^(NSError *error) {
         MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
         hud.mode = MBProgressHUDModeText;
         hud.detailsLabelText = NSLocalizedString(error.domain, nil);
         [hud hide:YES afterDelay:kErrorHUDShowTime];
     }];
+    
+    // Signup
+    _signupButton.rac_command = self.signupViewModel.executeSignup;
+    RAC(self.signupViewModel, nickname) = [RACSignal merge:@[self.signupNicknameTextField.rac_textSignal, RACObserve(self.signupNicknameTextField, text)]];
+    RAC(self.signupViewModel, account) = [RACSignal merge:@[self.signupEmailTextField.rac_textSignal, RACObserve(self.signupEmailTextField, text)]];
+    RAC(self.signupViewModel, password) = [RACSignal merge:@[self.signupPasswordTextField.rac_textSignal, RACObserve(self.signupPasswordTextField, text)]];
+
+    [self.signupViewModel.executeSignup.executionSignals subscribeNext:^(id x) {
+        @strongify(self);
+        [self.view endEditing:YES];
+    }];
+    
+    [self.signupViewModel.signupActiveSignal subscribeNext:^(NSNumber *enable) {
+        @strongify(self);
+        self.signupButton.enabled = [enable boolValue];
+    }];
+    
+    [[self.signupViewModel.executeSignup.executionSignals concat] subscribeNext:^(id x) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        BindingAccountViewController *viewController = [[BindingAccountViewController alloc] init];
+        [self presentViewController:viewController animated:YES completion:nil];
+    }];
+    
+    [[self.signupViewModel.executeSignup.executing filter:^BOOL(id value) {
+        return [value boolValue];
+    }] subscribeNext:^(id x) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }];
+    
+    [self.signupViewModel.executeSignup.errors subscribeNext:^(NSError *error) {
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+        hud.mode = MBProgressHUDModeText;
+        hud.detailsLabelText = NSLocalizedString(error.domain, nil);
+        [hud hide:YES afterDelay:kErrorHUDShowTime];
+    }];
+
 }
 
 #pragma mark - Event Response
@@ -244,11 +280,13 @@
 
 #pragma mark - Helper
 
-- (UITextField *)p_textFieldMaker
+- (UITextField *)p_textFieldWithPlaceholder:(NSString *)placeholder
 {
     UITextField *textField = [[UITextField alloc] init];
     textField.ty_borderColor = [UIColor ty_border].CGColor;
     textField.ty_borderEdge = UIRectEdgeBottom;
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    textField.placeholder = NSLocalizedString(placeholder, nil);
     return textField;
 }
 

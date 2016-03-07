@@ -14,8 +14,6 @@
 
 @property (strong, nonatomic) RACSignal *loginActiveSignal;
 
-@property (strong, readonly, nonatomic) RACSignal *loginCompletedSignal;
-
 - (NSString *)currentAccount;
 - (NSString *)currentAccountPassword;
 

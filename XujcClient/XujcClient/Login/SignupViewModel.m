@@ -32,12 +32,6 @@
             TyLogDebug(@"executeSignup");
             return [[[self executeSignupSignal] setNameWithFormat:@"executeSignupSignal"] logAll];
         }];
-        
-        _signupCompletedSignal = [self.executeSignup.executionSignals flattenMap:^RACStream *(RACSignal *value) {
-            return [[value materialize] filter:^BOOL(RACEvent *value) {
-                return value.eventType == RACEventTypeCompleted;
-            }];
-        }];
     }
     return self;
 }
