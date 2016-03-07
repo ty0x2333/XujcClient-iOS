@@ -21,6 +21,14 @@
 "Email" = "邮箱";
 
 /**
- * Error
+ * TYServer Message
  */
-"Login failed. Incorrect credentials" = "帐号或密码错误";
+"An error occurred." = "发生未知错误, 请重试";
+"Account or password is not correct." = "帐号或密码错误";
+
+"Email address is not valid." = "邮箱格式错误";
+"Username is not valid." = "用户名格式错误";
+"Password is not valid." = "密码格式错误";
+
+"Email already existed." = "邮箱已存在";
+"You are successfully registered." = "注册成功";
