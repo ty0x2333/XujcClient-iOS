@@ -11,8 +11,8 @@
 
 @interface AccountViewModel : RequestViewModel
 
-@property (strong, nonatomic) NSString *account;
-@property (strong, nonatomic) NSString *password;
+@property (copy, nonatomic) NSString *account;
+@property (copy, nonatomic) NSString *password;
 
 @property (strong, nonatomic) RACSignal *validEmailSignal;
 @property (strong, nonatomic) RACSignal *validPasswordSignal;
