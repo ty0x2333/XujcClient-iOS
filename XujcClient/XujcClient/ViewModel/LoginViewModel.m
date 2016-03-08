@@ -13,6 +13,8 @@
 #import "UserModel.h"
 #import "DynamicData.h"
 
+NSString * const kLoginRequestDomain = @"LoginRequestDomain";
+
 @implementation LoginViewModel
 
 - (instancetype)init
@@ -39,7 +41,7 @@
             BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
             if (isError) {
                 NSString *message = [responseObject objectForKey:TYServerKeyMessage];
-                NSError *error = [NSError errorWithDomain:message code:0 userInfo:nil];
+                NSError *error = [NSError errorWithDomain:kLoginRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
                 [subscriber sendError:error];
             } else {
                 [SSKeychain setPassword:self.password forService:TYServiceName account:self.account];

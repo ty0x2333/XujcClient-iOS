@@ -209,7 +209,7 @@
     [self.loginViewModel.executeLogin.errors subscribeNext:^(NSError *error) {
         MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
         hud.mode = MBProgressHUDModeText;
-        hud.detailsLabelText = NSLocalizedString(error.domain, nil);
+        hud.detailsLabelText = error.localizedDescription;
         [hud hide:YES afterDelay:kErrorHUDShowTime];
     }];
     
@@ -243,7 +243,7 @@
     [self.signupViewModel.executeSignup.errors subscribeNext:^(NSError *error) {
         MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
         hud.mode = MBProgressHUDModeText;
-        hud.detailsLabelText = NSLocalizedString(error.domain, nil);
+        hud.detailsLabelText = error.localizedDescription;
         [hud hide:YES afterDelay:kErrorHUDShowTime];
     }];
 

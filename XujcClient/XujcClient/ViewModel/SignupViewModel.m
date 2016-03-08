@@ -13,6 +13,8 @@
 #import "DynamicData.h"
 #import "NSString+Validator.h"
 
+static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
+
 @implementation SignupViewModel
 
 - (instancetype)init
@@ -46,7 +48,7 @@
             BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
             NSString *message = [responseObject objectForKey:TYServerKeyMessage];
             if (isError) {
-                NSError *error = [NSError errorWithDomain:message code:0 userInfo:nil];
+                NSError *error = [NSError errorWithDomain:kSignupRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
                 [subscriber sendError:error];
             } else {
                 [subscriber sendNext:message];
