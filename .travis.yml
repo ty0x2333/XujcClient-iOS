@@ -2,6 +2,4 @@ language: objective-c
 
 osx_image: xcode7.1
 
-podfile: XujcClient/Podfile
-xcode_workspace: XujcClient/XujcClient.xcworkspace
-xcode_scheme: XujcClient
+before_install: cd XujcClient
