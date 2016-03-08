@@ -20,6 +20,8 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 @property (strong, nonatomic) BindingAccountViewModel *viewModel;
 
+@property (strong, nonatomic) UIImageView *imageView;
+
 @property (strong, nonatomic) UITextField *accountTextField;
 
 @property (strong, nonatomic) UITextField *apiKeyTextField;
@@ -63,6 +65,10 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     [_loginButton addTarget:self action:@selector(onLoginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginButton];
     
+    _imageView = [[UIImageView alloc] init];
+    _imageView.image = [UIImage imageNamed:@"logo"];
+    [self.view addSubview:_imageView];
+    
     // APIKey LeftLabel autosize
     @weakify(self);
     [RACObserve(self.apiKeyLeftView, text) subscribeNext:^(id x) {
@@ -90,8 +96,15 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 - (void)initViewConstraints
 {
+    [_imageView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_topLayoutGuideBottom);
+        make.centerX.equalTo(self.view);
+        make.width.equalTo(self.view.mas_width).with.multipliedBy(0.5f);
+        make.width.equalTo(self.imageView.mas_height);
+    }];
+    
     [_accountTextField makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.centerY);
+        make.top.equalTo(self.imageView.mas_bottom);
         make.left.equalTo(self.view).with.offset(kLoginContentMarginHorizontal);
         make.right.equalTo(self.view).with.offset(-kLoginContentMarginHorizontal);
         make.height.equalTo(@(kLoginTextFieldHeight));
