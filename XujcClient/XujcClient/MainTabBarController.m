@@ -12,9 +12,19 @@
 #import "PersonalViewController.h"
 @interface MainTabBarController ()
 
+@property (strong, nonatomic) MainTabBarViewModel *viewModel;
+
 @end
 
 @implementation MainTabBarController
+
+- (instancetype)initWithModel:(MainTabBarViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,7 +47,6 @@
         [item setImage:[UIImage imageNamed:images[idx]]];
         [item setSelectedImage:[UIImage imageNamed:[images[idx] stringByAppendingString:@"-selected"]]];
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning {

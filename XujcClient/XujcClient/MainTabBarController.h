@@ -7,7 +7,10 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "MainTabBarViewModel.h"
 
 @interface MainTabBarController : UITabBarController
+
+- (instancetype)initWithModel:(MainTabBarViewModel *)viewModel;
 
 @end

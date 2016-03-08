@@ -9,9 +9,12 @@
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
 #import "DynamicData.h"
+#import "MasterViewModel.h"
 
 static const CGFloat kWindowCornerRadius = 4.f;
 @interface AppDelegate ()
+
+@property (strong, nonatomic) MasterViewModel *masterViewModel;
 
 @end
 
@@ -20,11 +23,12 @@ static const CGFloat kWindowCornerRadius = 4.f;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    _masterViewModel = [[MasterViewModel alloc] init];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
+    MainTabBarController *mainTabBarController = [[MainTabBarController alloc] initWithModel:_masterViewModel.mainTabBarViewModel];
     
     self.window.rootViewController = mainTabBarController;
     self.window.layer.cornerRadius = kWindowCornerRadius;
