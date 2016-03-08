@@ -63,7 +63,6 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     _loginButton = [[UIButton alloc] init];
     [_loginButton setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
     _loginButton.layer.cornerRadius = kLoginLayoutButtonRadius;
-    [_loginButton addTarget:self action:@selector(onLoginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginButton];
     
     _imageView = [[UIImageView alloc] init];
@@ -84,6 +83,8 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     
     [self initViewConstraints];
     
+    [self bindViewModel];
+    
 #ifdef DEBUG
     _accountTextField.text = @"swe12023";
     [_accountTextField sendActionsForControlEvents:UIControlEventEditingChanged];
@@ -93,6 +94,13 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 //    _accountTextField.backgroundColor = [UIColor redColor];
 //    _apiKeyTextField.backgroundColor = [UIColor redColor];
 #endif
+}
+
+- (void)bindViewModel
+{
+    _loginButton.rac_command = self.viewModel.executeBinding;
+    RAC(self.viewModel, studentId) = [RACSignal merge:@[self.accountTextField.rac_textSignal, RACObserve(self.accountTextField, text)]];
+    RAC(self.viewModel, apiKeySuffix) = [RACSignal merge:@[self.apiKeyTextField.rac_textSignal, RACObserve(self.apiKeyTextField, text)]];
 }
 
 - (void)initViewConstraints
@@ -124,27 +132,6 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
         make.left.equalTo(self.apiKeyTextField);
         make.right.equalTo(self.apiKeyTextField);
         make.height.equalTo(@(kLoginButtonHeight));
-    }];
-}
-
-#pragma mark - Event Response
-
-- (void)onLoginButtonClicked:(id)sender
-{
-    NSString* apiKey = [NSString stringWithFormat:@"%@%@", _apiKeyLeftView.text, _apiKeyTextField.text];
-    [XujcAPI userInfomation:apiKey successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        TyLogDebug(@"Success Response: %@", responseObject);
-        XujcUser *user = [[XujcUser alloc] initWithJSONResopnse:responseObject];
-        TyLogDebug(@"User Infomation: %@", [user description]);
-        DYNAMIC_DATA.APIKey = apiKey;
-        DYNAMIC_DATA.user = user;
-        [DYNAMIC_DATA flush];
-#warning must be more safe
-        [SSKeychain setPassword:_apiKeyTextField.text forService:@"Xujc" account:user.studentId];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)task.response;
-        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", httpResponse.statusCode, error);
     }];
 }
 
