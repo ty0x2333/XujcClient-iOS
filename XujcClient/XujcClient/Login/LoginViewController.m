@@ -90,7 +90,6 @@
     _signupViewModel = [[SignupViewModel alloc] init];
     
     // Binding
-    @weakify(self);
     [self bindSwitchAnimation];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -194,11 +193,6 @@
         [self.view endEditing:YES];
     }];
     
-    [self.loginViewModel.loginActiveSignal subscribeNext:^(NSNumber *enable) {
-        @strongify(self);
-        self.loginButton.enabled = [enable boolValue];
-    }];
-    
     [[self.loginViewModel.executeLogin.executionSignals concat] subscribeNext:^(id x) {
         @strongify(self);
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -228,11 +222,6 @@
     [self.signupViewModel.executeSignup.executionSignals subscribeNext:^(id x) {
         @strongify(self);
         [self.view endEditing:YES];
-    }];
-    
-    [self.signupViewModel.signupActiveSignal subscribeNext:^(NSNumber *enable) {
-        @strongify(self);
-        self.signupButton.enabled = [enable boolValue];
     }];
     
     [[self.signupViewModel.executeSignup.executionSignals concat] subscribeNext:^(NSString *message) {
