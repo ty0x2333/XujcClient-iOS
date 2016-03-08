@@ -18,6 +18,8 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 @interface BindingAccountViewController()
 
+@property (strong, nonatomic) BindingAccountViewModel *viewModel;
+
 @property (strong, nonatomic) UITextField *accountTextField;
 
 @property (strong, nonatomic) UITextField *apiKeyTextField;
@@ -27,6 +29,14 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 @end
 
 @implementation BindingAccountViewController
+
+- (instancetype)initWithViewModel:(BindingAccountViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {

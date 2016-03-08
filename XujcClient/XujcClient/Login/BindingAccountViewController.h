@@ -7,8 +7,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "BindingAccountViewModel.h"
 
 @interface BindingAccountViewController : UIViewController
+
+- (instancetype)initWithViewModel:(BindingAccountViewModel *)viewModel;
 
 @end
 

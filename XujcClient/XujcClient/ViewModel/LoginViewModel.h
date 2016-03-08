@@ -7,12 +7,15 @@
 //
 
 #import "AccountViewModel.h"
+#import "BindingAccountViewModel.h"
 
 @interface LoginViewModel : AccountViewModel
 
 @property (strong, nonatomic) RACCommand *executeLogin;
 
 @property (strong, nonatomic) RACSignal *loginActiveSignal;
+
+- (BindingAccountViewModel *)bindingAccountViewModel;
 
 - (NSString *)currentAccount;
 - (NSString *)currentAccountPassword;

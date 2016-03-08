@@ -70,4 +70,9 @@
     return [SSKeychain passwordForService:TYServiceName account:[self currentAccount]];
 }
 
+- (BindingAccountViewModel *)bindingAccountViewModel
+{
+    return [[BindingAccountViewModel alloc] init];
+}
+
 @end
