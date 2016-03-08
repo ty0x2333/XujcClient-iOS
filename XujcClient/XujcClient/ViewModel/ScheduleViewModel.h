@@ -1,5 +1,5 @@
 //
-//  MainTabBarViewModel.h
+//  ScheduleViewModel.h
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/8.
@@ -7,10 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ScheduleViewModel.h"
 
-@interface MainTabBarViewModel : NSObject
-
-- (ScheduleViewModel *)scheduleViewModel;
+@interface ScheduleViewModel : NSObject
 
 @end

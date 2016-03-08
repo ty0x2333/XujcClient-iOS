@@ -7,7 +7,10 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ScheduleViewModel.h"
 
 @interface ScheduleViewController : UIViewController<UICollectionViewDataSource>
+
+- (instancetype)initWithViewModel:(ScheduleViewModel *)viewModel;
 
 @end

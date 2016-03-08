@@ -31,6 +31,8 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 @interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout>
 
+@property (strong, nonatomic) ScheduleViewModel *viewModel;
+
 @property(nonatomic, strong) CollectionViewScheduleLayout *collectionViewCalendarLayout;
 @property(nonatomic, strong) NSMutableArray *courseEvents;
 @property(nonatomic, strong) UICollectionView *collectionView;
@@ -38,6 +40,14 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 @end
 
 @implementation ScheduleViewController
+
+- (instancetype)initWithViewModel:(ScheduleViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

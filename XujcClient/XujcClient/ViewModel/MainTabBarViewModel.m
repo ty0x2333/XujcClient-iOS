@@ -10,4 +10,9 @@
 
 @implementation MainTabBarViewModel
 
+- (ScheduleViewModel *)scheduleViewModel
+{
+    return [[ScheduleViewModel alloc] init];
+}
+
 @end
