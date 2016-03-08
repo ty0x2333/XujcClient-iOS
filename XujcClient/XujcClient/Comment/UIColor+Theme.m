@@ -25,6 +25,11 @@
     return [UIColor colorWithHexString:@"#424243"];
 }
 
++ (UIColor *)ty_textDisable
+{
+    return [UIColor ty_border];
+}
+
 + (UIColor *)ty_backgroundHighlight
 {
     return [UIColor colorWithHexString:@"#f5f5f5"];

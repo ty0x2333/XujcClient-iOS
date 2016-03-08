@@ -44,15 +44,16 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 {
     [super viewDidLoad];
     _accountTextField = [[UITextField alloc] init];
-    _accountTextField.ty_borderColor = [UIColor blackColor].CGColor;
+    _accountTextField.ty_borderColor = [UIColor ty_border].CGColor;
     _accountTextField.ty_borderEdge = UIRectEdgeBottom;
     _accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:_accountTextField];
     
     _apiKeyLeftView = [[UILabel alloc] init];
+    _apiKeyLeftView.textColor = [UIColor ty_textDisable];
     
     _apiKeyTextField = [[UITextField alloc] init];
-    _apiKeyTextField.ty_borderColor = [UIColor blackColor].CGColor;
+    _apiKeyTextField.ty_borderColor = [UIColor ty_border].CGColor;
     _apiKeyTextField.ty_borderEdge = UIRectEdgeBottom;
     _apiKeyTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _apiKeyTextField.leftView = _apiKeyLeftView;
@@ -75,7 +76,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
         @strongify(self);
         [self.apiKeyLeftView sizeToFit];
     }];
-    
+
     // Bing apiKeyLeftView.text = _accountTextField.text
     RAC(self.apiKeyLeftView, text) = [_accountTextField.rac_textSignal map:^id(NSString *text) {
         return [NSString isEmpty:text] ? text : [NSString stringWithFormat:@"%@-", text];
@@ -96,6 +97,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 - (void)initViewConstraints
 {
+    
     [_imageView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_topLayoutGuideBottom);
         make.centerX.equalTo(self.view);

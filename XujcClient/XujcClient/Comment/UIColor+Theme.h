@@ -13,6 +13,7 @@
 + (UIColor *)ty_textGreen;
 + (UIColor *)ty_textRed;
 + (UIColor *)ty_textBlack;
++ (UIColor *)ty_textDisable;
 
 + (UIColor *)ty_backgroundHighlight;
 
