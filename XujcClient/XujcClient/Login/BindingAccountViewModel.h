@@ -6,8 +6,21 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "RequestViewModel.h"
 
-@interface BindingAccountViewModel : NSObject
+@interface BindingAccountViewModel : RequestViewModel
+
+@property (copy, nonatomic) NSString *studentId;
+@property (copy, nonatomic) NSString *apiKeySuffix;
+
+- (NSString *)apiKey;
+
+@property (strong, nonatomic) RACCommand *executeBinding;
+
+@property (strong, nonatomic) RACSignal *validStudentIdSignal;
+
+@property (strong, nonatomic) RACSignal *validApiKeySuffixSignal;
+
+@property (strong, nonatomic) RACSignal *bindingActiveSignal;
 
 @end
