@@ -13,6 +13,7 @@
 #import "XujcUser.h"
 #import "SSKeychain.h"
 #import "LoginLayoutConfigs.h"
+#import "FormButton.h"
 
 static const CGFloat kLoginButtonMarginVertical = 15.f;
 
@@ -26,7 +27,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 @property (strong, nonatomic) UITextField *apiKeyTextField;
 @property (strong, nonatomic) UILabel *apiKeyLeftView;
-@property (strong, nonatomic) UIButton *loginButton;
+@property (strong, nonatomic) FormButton *loginButton;
 
 @end
 
@@ -60,9 +61,8 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     _apiKeyTextField.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:_apiKeyTextField];
     
-    _loginButton = [[UIButton alloc] init];
+    _loginButton = [[FormButton alloc] init];
     [_loginButton setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
-    _loginButton.layer.cornerRadius = kLoginLayoutButtonRadius;
     [self.view addSubview:_loginButton];
     
     _imageView = [[UIImageView alloc] init];

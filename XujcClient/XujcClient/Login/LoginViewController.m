@@ -13,6 +13,7 @@
 #import "BindingAccountViewController.h"
 #import "LoginViewModel.h"
 #import "SignupViewModel.h"
+#import "FormButton.h"
 
 @interface LoginViewController()
 
@@ -23,12 +24,12 @@
 
 @property (strong, nonatomic) UITextField *accountTextField;
 @property (strong, nonatomic) UITextField *passwordTextField;
-@property (strong, nonatomic) UIButton *loginButton;
+@property (strong, nonatomic) FormButton *loginButton;
 
 @property (strong, nonatomic) UITextField *signupNicknameTextField;
 @property (strong, nonatomic) UITextField *signupEmailTextField;
 @property (strong, nonatomic) UITextField *signupPasswordTextField;
-@property (strong, nonatomic) UIButton *signupButton;
+@property (strong, nonatomic) FormButton *signupButton;
 
 @property (strong, nonatomic) UIButton *switchButton;
 
@@ -71,16 +72,12 @@
     _signupPasswordTextField = [self p_textFieldWithPlaceholder:@"Password"];
     [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
     
-    _loginButton = [[UIButton alloc] init];
+    _loginButton = [[FormButton alloc] init];
     [_loginButton setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
-    _loginButton.backgroundColor = [UIColor ty_buttonBackground];
-    _loginButton.layer.cornerRadius = kLoginLayoutButtonRadius;
     [self.view addSubview:_loginButton];
     
-    _signupButton = [[UIButton alloc] init];
+    _signupButton = [[FormButton alloc] init];
     [_signupButton setTitle:NSLocalizedString(@"Signup", nil) forState:UIControlStateNormal];
-    _signupButton.backgroundColor = [UIColor ty_buttonBackground];
-    _signupButton.layer.cornerRadius = kLoginLayoutButtonRadius;
     [self.view addSubview:_signupButton];
     
     _switchButton = [[UIButton alloc] init];
@@ -95,19 +92,6 @@
     // Binding
     @weakify(self);
     [self bindSwitchAnimation];
-    
-    [[[RACObserve(self.loginButton, enabled) distinctUntilChanged] map:^id(NSNumber *value) {
-        return [value boolValue] ? [UIColor ty_buttonBackground] : [UIColor ty_buttonDisableBackground];
-    }] subscribeNext:^(UIColor *color) {
-        @strongify(self);
-        self.loginButton.backgroundColor = color;
-    }];
-    [[[RACObserve(self.signupButton, enabled) distinctUntilChanged] map:^id(NSNumber *value) {
-        return [value boolValue] ? [UIColor ty_buttonBackground] : [UIColor ty_buttonDisableBackground];
-    }] subscribeNext:^(UIColor *color) {
-        @strongify(self);
-        self.signupButton.backgroundColor = color;
-    }];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleTap];

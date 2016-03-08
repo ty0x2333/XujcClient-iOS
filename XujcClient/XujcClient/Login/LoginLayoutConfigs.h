@@ -9,7 +9,6 @@
 #ifndef LoginLayoutConfigs_h
 #define LoginLayoutConfigs_h
 
-static const CGFloat kLoginLayoutButtonRadius = 4.f;
 static const CGFloat kLoginContentMarginHorizontal = 25.f;
 
 static const CGFloat kLoginButtonHeight = 40.f;
