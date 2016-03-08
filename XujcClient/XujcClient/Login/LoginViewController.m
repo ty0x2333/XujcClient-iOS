@@ -290,6 +290,7 @@
     textField.ty_borderColor = [UIColor ty_border].CGColor;
     textField.ty_borderEdge = UIRectEdgeBottom;
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.placeholder = NSLocalizedString(placeholder, nil);
     return textField;
 }
