@@ -101,11 +101,36 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     _bindingButton.rac_command = self.viewModel.executeBinding;
     RAC(self.viewModel, studentId) = [RACSignal merge:@[self.accountTextField.rac_textSignal, RACObserve(self.accountTextField, text)]];
     RAC(self.viewModel, apiKeySuffix) = [RACSignal merge:@[self.apiKeyTextField.rac_textSignal, RACObserve(self.apiKeyTextField, text)]];
+    @weakify(self);
+    [self.viewModel.executeBinding.executionSignals subscribeNext:^(id x) {
+        @strongify(self);
+        [self.view endEditing:YES];
+    }];
+    
+    [[self.viewModel.executeBinding.executionSignals concat] subscribeNext:^(id x) {
+        @strongify(self);
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+        hud.mode = MBProgressHUDModeText;
+        hud.detailsLabelText = NSLocalizedString(@"Account binding successfully", nil);
+        [hud hide:YES afterDelay:kSuccessHUDShowTime];
+    }];
+    
+    [[self.viewModel.executeBinding.executing filter:^BOOL(id value) {
+        return [value boolValue];
+    }] subscribeNext:^(id x) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }];
+    
+    [self.viewModel.executeBinding.errors subscribeNext:^(NSError *error) {
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+        hud.mode = MBProgressHUDModeText;
+        hud.detailsLabelText = error.localizedDescription;
+        [hud hide:YES afterDelay:kErrorHUDShowTime];
+    }];
 }
 
 - (void)initViewConstraints
 {
-    
     [_imageView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_topLayoutGuideBottom);
         make.centerX.equalTo(self.view);

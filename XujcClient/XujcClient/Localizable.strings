@@ -34,3 +34,8 @@
 
 "Email already existed." = "邮箱已存在";
 "You are successfully registered." = "注册成功";
+
+/**
+ * XujcServer Message
+ */
+"Account binding successfully" = "帐号绑定成功";
