@@ -75,6 +75,8 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
         return [NSString isEmpty:text] ? text : [NSString stringWithFormat:@"%@-", text];
     }];
     
+    [self initViewConstraints];
+    
 #ifdef DEBUG
     _accountTextField.text = @"swe12023";
     [_accountTextField sendActionsForControlEvents:UIControlEventEditingChanged];
@@ -86,18 +88,28 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 #endif
 }
 
-- (void)viewDidLayoutSubviews
+- (void)initViewConstraints
 {
-    [super viewDidLayoutSubviews];
-    CGFloat fullWidth = CGRectGetWidth(self.view.bounds);
-    CGFloat fullHeight = CGRectGetHeight(self.view.bounds);
-    CGFloat contentWidth = fullWidth - 2 * kLoginContentMarginHorizontal;
+    [_accountTextField makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.centerY);
+        make.left.equalTo(self.view).with.offset(kLoginContentMarginHorizontal);
+        make.right.equalTo(self.view).with.offset(-kLoginContentMarginHorizontal);
+        make.height.equalTo(@(kLoginTextFieldHeight));
+    }];
     
-    [_apiKeyLeftView sizeToFit];
+    [_apiKeyTextField makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.accountTextField.mas_bottom);
+        make.left.equalTo(self.accountTextField);
+        make.right.equalTo(self.accountTextField);
+        make.height.equalTo(self.accountTextField);
+    }];
     
-    _accountTextField.frame = CGRectMake(kLoginContentMarginHorizontal, fullHeight / 2, contentWidth, kLoginTextFieldHeight);
-    _apiKeyTextField.frame = CGRectMake(kLoginContentMarginHorizontal, CGRectGetMaxY(_accountTextField.frame), contentWidth, kLoginTextFieldHeight);
-    _loginButton.frame = CGRectMake(kLoginContentMarginHorizontal, CGRectGetMaxY(_apiKeyTextField.frame) + kLoginButtonMarginVertical, contentWidth, kLoginButtonHeight);
+    [_loginButton makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.apiKeyTextField.mas_bottom).with.offset(kLoginButtonMarginVertical);
+        make.left.equalTo(self.apiKeyTextField);
+        make.right.equalTo(self.apiKeyTextField);
+        make.height.equalTo(@(kLoginButtonHeight));
+    }];
 }
 
 #pragma mark - Event Response
