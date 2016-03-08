@@ -3,3 +3,6 @@ language: objective-c
 osx_image: xcode7.1
 
 before_install: cd XujcClient
+
+xcode_workspace: XujcClient.xcworkspace
+xcode_scheme: XujcClient
