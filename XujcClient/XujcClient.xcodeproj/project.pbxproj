@@ -51,6 +51,7 @@
 		7062B6A91C8E43BF0074C716 /* MainTabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6A81C8E43BF0074C716 /* MainTabBarViewModel.m */; };
 		7062B6AC1C8F0B930074C716 /* ScheduleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6AB1C8F0B930074C716 /* ScheduleViewModel.m */; };
 		7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */; };
+		7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -157,6 +158,8 @@
 		7062B6AB1C8F0B930074C716 /* ScheduleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewModel.m; sourceTree = "<group>"; };
 		7062B6AD1C8F1D620074C716 /* BindingAccountViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingAccountViewModel.h; sourceTree = "<group>"; };
 		7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingAccountViewModel.m; sourceTree = "<group>"; };
+		7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+XujcServer.h"; sourceTree = "<group>"; };
+		7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+XujcServer.m"; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 		7062B6861C8A21200074C716 /* Xujc */ = {
 			isa = PBXGroup;
 			children = (
+				7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.h */,
+				7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */,
 				7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */,
 				70F7CE311BE3BDF0001D027C /* XujcAPI.h */,
 				70F7CE321BE3BDF0001D027C /* XujcAPI.m */,
@@ -645,6 +650,7 @@
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
 				7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */,
+				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */,
 				7062B6941C8B842C0074C716 /* UserModel.m in Sources */,
 				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
 				7023F9BB1BE681300046CF3B /* XujcCourseEvent.m in Sources */,
