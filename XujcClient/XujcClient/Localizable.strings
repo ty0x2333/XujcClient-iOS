@@ -20,6 +20,8 @@
 "Nickname" = "昵称";
 "Email" = "邮箱";
 
+"Binding" = "绑定";
+
 /**
  * TYServer Message
  */

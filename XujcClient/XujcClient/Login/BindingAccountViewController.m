@@ -27,7 +27,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 @property (strong, nonatomic) UITextField *apiKeyTextField;
 @property (strong, nonatomic) UILabel *apiKeyLeftView;
-@property (strong, nonatomic) FormButton *loginButton;
+@property (strong, nonatomic) FormButton *bindingButton;
 
 @end
 
@@ -61,9 +61,9 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     _apiKeyTextField.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:_apiKeyTextField];
     
-    _loginButton = [[FormButton alloc] init];
-    [_loginButton setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
-    [self.view addSubview:_loginButton];
+    _bindingButton = [[FormButton alloc] init];
+    [_bindingButton setTitle:NSLocalizedString(@"Binding", nil) forState:UIControlStateNormal];
+    [self.view addSubview:_bindingButton];
     
     _imageView = [[UIImageView alloc] init];
     _imageView.image = [UIImage imageNamed:@"logo"];
@@ -90,7 +90,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     [_accountTextField sendActionsForControlEvents:UIControlEventEditingChanged];
     _apiKeyTextField.text = @"szyufvxh";
     
-    _loginButton.backgroundColor = [UIColor blueColor];
+    _bindingButton.backgroundColor = [UIColor blueColor];
 //    _accountTextField.backgroundColor = [UIColor redColor];
 //    _apiKeyTextField.backgroundColor = [UIColor redColor];
 #endif
@@ -98,7 +98,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 - (void)bindViewModel
 {
-    _loginButton.rac_command = self.viewModel.executeBinding;
+    _bindingButton.rac_command = self.viewModel.executeBinding;
     RAC(self.viewModel, studentId) = [RACSignal merge:@[self.accountTextField.rac_textSignal, RACObserve(self.accountTextField, text)]];
     RAC(self.viewModel, apiKeySuffix) = [RACSignal merge:@[self.apiKeyTextField.rac_textSignal, RACObserve(self.apiKeyTextField, text)]];
 }
@@ -127,7 +127,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
         make.height.equalTo(self.accountTextField);
     }];
     
-    [_loginButton makeConstraints:^(MASConstraintMaker *make) {
+    [_bindingButton makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.apiKeyTextField.mas_bottom).with.offset(kLoginButtonMarginVertical);
         make.left.equalTo(self.apiKeyTextField);
         make.right.equalTo(self.apiKeyTextField);
