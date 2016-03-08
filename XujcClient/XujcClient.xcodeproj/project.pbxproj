@@ -160,6 +160,7 @@
 		7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingAccountViewModel.m; sourceTree = "<group>"; };
 		7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+XujcServer.h"; sourceTree = "<group>"; };
 		7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+XujcServer.m"; sourceTree = "<group>"; };
+		7062B6B51C8F6E560074C716 /* XujcServerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcServerKeys.h; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -300,6 +301,7 @@
 		7062B6861C8A21200074C716 /* Xujc */ = {
 			isa = PBXGroup;
 			children = (
+				7062B6B51C8F6E560074C716 /* XujcServerKeys.h */,
 				7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.h */,
 				7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */,
 				7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */,
