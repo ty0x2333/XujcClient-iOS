@@ -10,6 +10,8 @@
 #import "XujcServer.h"
 #import "XujcUser.h"
 
+NSString * const kBindingRequestDomain = @"BindingRequestDomain";
+
 @interface BindingAccountViewModel()
 
 @property (strong, nonatomic) AFHTTPSessionManager *xujcSessionManager;
@@ -69,7 +71,15 @@
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [subscriber sendError:error];
+            NSInteger statusCode = ((NSHTTPURLResponse *)task.response).statusCode;
+            if (statusCode == 401) {
+                [subscriber sendError:[NSError errorWithDomain:kBindingRequestDomain
+                                                          code:0
+                                                      userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Authentication failed", nil)}
+                                       ]];
+            } else {
+                [subscriber sendError:error];
+            }
         }];
         return [RACDisposable disposableWithBlock:^{
             [task cancel];

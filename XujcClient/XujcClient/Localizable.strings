@@ -39,3 +39,4 @@
  * XujcServer Message
  */
 "Account binding successfully" = "帐号绑定成功";
+"Authentication failed" = "认证失败";
