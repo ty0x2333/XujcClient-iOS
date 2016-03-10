@@ -33,7 +33,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 @property (strong, nonatomic) ScheduleViewModel *viewModel;
 
 @property(nonatomic, strong) CollectionViewScheduleLayout *collectionViewCalendarLayout;
-@property(nonatomic, strong) NSMutableArray *courseEvents;
 @property(nonatomic, strong) UICollectionView *collectionView;
 
 @end
@@ -48,7 +47,8 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.collectionViewCalendarLayout = [[CollectionViewScheduleLayout alloc] init];
@@ -64,7 +64,16 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     
     _courseEvents = [NSMutableArray arrayWithCapacity:kDayCountOfWeek];
     
-    [self termRequest];
+    [self bindViewModel];
+}
+
+- (void)bindViewModel
+{
+    [_viewModel.fetchTermsSignal subscribeNext:^(id x) {
+        TyLogDebug(@"fetchTerms success");
+    } error:^(NSError *error) {
+        TyLogDebug(@"fetchTerms error");
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated

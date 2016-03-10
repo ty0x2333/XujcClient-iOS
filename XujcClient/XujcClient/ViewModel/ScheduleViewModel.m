@@ -7,8 +7,37 @@
 //
 
 #import "ScheduleViewModel.h"
+#import "XujcServer.h"
+#import "DynamicData.h"
+#import "XujcTerm.h"
 
 @implementation ScheduleViewModel
+
+- (RACSignal *)fetchTermsSignal
+{
+    RACSignal *fetchTermsSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"kb.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSArray *termIds = [responseObject allKeys];
+            NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termIds.count];
+            for (id key in termIds) {
+                XujcTerm *term = [[XujcTerm alloc] init];
+                term.termId = key;
+                term.displayName = responseObject[key];
+                [termArray addObject:term];
+            }
+            [self p_saveTerms:termArray];
+            
+            [subscriber sendNext:nil];
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    return [[fetchTermsSignal setNameWithFormat:@"fetchTermsSignal"] logAll];
+}
 
 #pragma mark - Helper
 - (void)p_saveTerms:(NSArray *)terms

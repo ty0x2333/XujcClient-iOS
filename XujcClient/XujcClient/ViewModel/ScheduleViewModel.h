@@ -6,8 +6,10 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "RequestViewModel.h"
 
-@interface ScheduleViewModel : NSObject
+@interface ScheduleViewModel : RequestViewModel
+
+@property (strong, nonatomic) RACSignal *fetchTermsSignal;
 
 @end
