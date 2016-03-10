@@ -87,6 +87,15 @@
     return [[fetchTermsSignal setNameWithFormat:@"fetchTermsSignal"] logAll];
 }
 
+- (CourseEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath
+{
+    XujcCourseEvent *courseEvent = [self.courseEvents[indexPath.section] objectAtIndex:indexPath.row];
+    CourseEventViewModel *viewModel = [[CourseEventViewModel alloc] init];
+    viewModel.name = courseEvent.name;
+    viewModel.location = courseEvent.location;
+    return viewModel;
+}
+
 #pragma mark - Helper
 
 - (NSArray *)p_coureEventsFromDayNumberOfWeek:(NSArray *)allCourseEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek
