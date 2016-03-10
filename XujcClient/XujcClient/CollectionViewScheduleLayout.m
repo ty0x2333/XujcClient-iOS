@@ -225,11 +225,11 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     CGFloat sectionWidth = (self.sectionWidth);
     CGFloat sectionHeight = nearbyintf((_classSectionHeight * (latestClassSectionIndex - earliestClassSectionIndex + 1)));
-    CGFloat calendarGridMinX = (self.timeRowHeaderWidth + self.contentMargin.left);
-    CGFloat calendarGridMinY = (self.dayColumnHeaderHeight + self.contentMargin.top);
-    CGFloat calendarContentMinX = (self.timeRowHeaderWidth + self.contentMargin.left);
-    CGFloat calendarContentMinY = (self.dayColumnHeaderHeight + self.contentMargin.top);
-    CGFloat calendarGridWidth = (self.collectionViewContentSize.width - self.timeRowHeaderWidth - self.contentMargin.right);
+    CGFloat calendarGridMinX = (self.timeRowHeaderWidth);
+    CGFloat calendarGridMinY = (self.dayColumnHeaderHeight);
+    CGFloat calendarContentMinX = (self.timeRowHeaderWidth);
+    CGFloat calendarContentMinY = (self.dayColumnHeaderHeight);
+    CGFloat calendarGridWidth = (self.collectionViewContentSize.width - self.timeRowHeaderWidth);
     
     // Time Row Header
     CGFloat timeRowHeaderMinX = fmaxf(self.collectionView.contentOffset.x, 0.0);
@@ -477,7 +477,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     CGFloat width;
     CGFloat height;
     height = [self maxSectionHeight];
-    width = (self.timeRowHeaderWidth + self.contentMargin.left + ((self.sectionWidth) * self.collectionView.numberOfSections) + self.contentMargin.right);
+    width = (self.timeRowHeaderWidth + ((self.sectionWidth) * self.collectionView.numberOfSections));
     return CGSizeMake(width, height);
 }
 
@@ -583,7 +583,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     self.currentTimeHorizontalGridlineHeight = 1.0;
     self.verticalGridlineWidth = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);
     self.horizontalGridlineHeight = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);;
-    self.contentMargin = UIEdgeInsetsZero;
     
     self.displayHeaderBackgroundAtOrigin = YES;
     self.headerLayoutType = MSHeaderLayoutTypeDayColumnAboveTimeRow;
@@ -699,7 +698,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
         } else {
             yOffset = 0.0;
         }
-        CGFloat xOffset = self.contentMargin.left + ((self.sectionWidth) * closestSectionToCurrentTime);
+        CGFloat xOffset = ((self.sectionWidth) * closestSectionToCurrentTime);
         contentOffset = CGPointMake(xOffset, yOffset);
 
         // Prevent the content offset from forcing the scroll view content off its bounds
@@ -740,7 +739,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 - (CGRect)rectForSection:(NSInteger)section
 {
     CGRect sectionRect;
-    CGFloat calendarGridMinX = (self.timeRowHeaderWidth + self.contentMargin.left);
+    CGFloat calendarGridMinX = (self.timeRowHeaderWidth);
     CGFloat sectionWidth = (self.sectionWidth);
     CGFloat sectionMinX = (calendarGridMinX + (sectionWidth * section));
     sectionRect = CGRectMake(sectionMinX, 0.0, sectionWidth, self.collectionViewContentSize.height);
@@ -768,7 +767,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
             maxSectionHeight = sectionColumnHeight;
         }
     }
-    CGFloat headerAdjustedMaxColumnHeight = (self.dayColumnHeaderHeight + self.contentMargin.top + maxSectionHeight + self.contentMargin.bottom);
+    CGFloat headerAdjustedMaxColumnHeight = (self.dayColumnHeaderHeight + maxSectionHeight);
     if (maxSectionHeight != 0.0) {
         self.cachedMaxColumnHeight = headerAdjustedMaxColumnHeight;
         return headerAdjustedMaxColumnHeight;
@@ -792,7 +791,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
         CGFloat sectionColumnHeight = [self sectionHeight:section];
         stackedSectionHeight += sectionColumnHeight;
     }
-    CGFloat headerAdjustedStackedColumnHeight = (stackedSectionHeight + ((self.dayColumnHeaderHeight + self.contentMargin.top + self.contentMargin.bottom) * upToSection));
+    CGFloat headerAdjustedStackedColumnHeight = (stackedSectionHeight + ((self.dayColumnHeaderHeight) * upToSection));
     if (stackedSectionHeight != 0.0) {
         self.cachedColumnHeights[@(upToSection)] = @(headerAdjustedStackedColumnHeight);
         return headerAdjustedStackedColumnHeight;
