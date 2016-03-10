@@ -583,9 +583,9 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     self.currentTimeHorizontalGridlineHeight = 1.0;
     self.verticalGridlineWidth = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);
     self.horizontalGridlineHeight = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);;
-    self.sectionMargin = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
-    self.cellMargin = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
-    self.contentMargin = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
+    self.sectionMargin = UIEdgeInsetsZero;
+    self.cellMargin = UIEdgeInsetsZero;
+    self.contentMargin = UIEdgeInsetsZero;
     
     self.displayHeaderBackgroundAtOrigin = YES;
     self.headerLayoutType = MSHeaderLayoutTypeDayColumnAboveTimeRow;
