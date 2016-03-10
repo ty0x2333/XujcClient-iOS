@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewModel.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) MasterViewModel *masterViewModel;
 
 @end
 

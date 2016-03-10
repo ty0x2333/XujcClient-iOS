@@ -9,12 +9,9 @@
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
 #import "DynamicData.h"
-#import "MasterViewModel.h"
 
 static const CGFloat kWindowCornerRadius = 4.f;
 @interface AppDelegate ()
-
-@property (strong, nonatomic) MasterViewModel *masterViewModel;
 
 @end
 
