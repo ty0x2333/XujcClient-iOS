@@ -55,7 +55,7 @@
 {
     [super viewDidAppear:animated];
     if ([NSString isEmpty:DYNAMIC_DATA.apiKey]){
-        LoginViewController *viewController = [[LoginViewController alloc] init];
+        LoginViewController *viewController = [[LoginViewController alloc] initWithLoginViewModel:_viewModel.loginViewModel andSignupViewModel:_viewModel.signupViewModel];
         [self presentViewController:viewController animated:NO completion:nil];
         return;
     }

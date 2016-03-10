@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewModel.h"
+#import "SignupViewModel.h"
 
 @interface LoginViewController : UIViewController
+
+- (instancetype)initWithLoginViewModel:(LoginViewModel *)loginViewModel andSignupViewModel:(SignupViewModel *)signupViewModel;
 
 @end

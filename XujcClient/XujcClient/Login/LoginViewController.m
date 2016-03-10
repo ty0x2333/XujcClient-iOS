@@ -11,8 +11,6 @@
 #import "LoginLayoutConfigs.h"
 #import "LoginTextFieldGroupView.h"
 #import "BindingAccountViewController.h"
-#import "LoginViewModel.h"
-#import "SignupViewModel.h"
 #import "FormButton.h"
 
 @interface LoginViewController()
@@ -40,6 +38,15 @@
 @end
 
 @implementation LoginViewController
+
+- (instancetype)initWithLoginViewModel:(LoginViewModel *)loginViewModel andSignupViewModel:(SignupViewModel *)signupViewModel
+{
+    if (self = [super init]) {
+        _loginViewModel = loginViewModel;
+        _signupViewModel = signupViewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -85,9 +92,6 @@
     [self.view addSubview:_switchButton];
     
     [self initConstraints];
-#warning test viewModel
-    _loginViewModel = [[LoginViewModel alloc] init];
-    _signupViewModel = [[SignupViewModel alloc] init];
     
     // Binding
     [self bindSwitchAnimation];
