@@ -4,5 +4,5 @@ osx_image: xcode7.1
 
 before_install: cd XujcClient
 
-xcode_workspace: XujcClient.xcworkspace
-xcode_scheme: XujcClient
+script:
+  - xctool -workspace XujcClient.xcworkspace -scheme XujcClient build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
