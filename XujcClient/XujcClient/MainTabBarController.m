@@ -14,24 +14,28 @@
 #import "DynamicData.h"
 @interface MainTabBarController ()
 
-@property (strong, nonatomic) MainTabBarViewModel *viewModel;
-
 @end
 
 @implementation MainTabBarController
 
-- (instancetype)initWithModel:(MainTabBarViewModel *)viewModel
+- (void)viewDidLoad
 {
-    if (self = [super init]) {
-        _viewModel = viewModel;
-    }
-    return self;
+    [super viewDidLoad];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([NSString isEmpty:DYNAMIC_DATA.apiKey]){
+        LoginViewController *viewController = [[LoginViewController alloc] initWithLoginViewModel:_viewModel.loginViewModel andSignupViewModel:_viewModel.signupViewModel];
+        [self presentViewController:viewController animated:NO completion:nil];
+        return;
+    }
+}
+
+- (void)setViewModel:(MainTabBarViewModel *)viewModel
+{
+    _viewModel = viewModel;
     UINavigationController *scheduleNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScheduleViewController alloc] initWithViewModel:self.viewModel.scheduleViewModel]];
     UINavigationController *scoreNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScoreViewController alloc] init]];
     UINavigationController *personalNavViewController = [[UINavigationController alloc] initWithRootViewController:[[PersonalViewController alloc] init]];
@@ -49,16 +53,6 @@
         [item setImage:[UIImage imageNamed:images[idx]]];
         [item setSelectedImage:[UIImage imageNamed:[images[idx] stringByAppendingString:@"-selected"]]];
     }];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if ([NSString isEmpty:DYNAMIC_DATA.apiKey]){
-        LoginViewController *viewController = [[LoginViewController alloc] initWithLoginViewModel:_viewModel.loginViewModel andSignupViewModel:_viewModel.signupViewModel];
-        [self presentViewController:viewController animated:NO completion:nil];
-        return;
-    }
 }
 
 /*

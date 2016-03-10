@@ -11,6 +11,6 @@
 
 @interface MainTabBarController : UITabBarController
 
-- (instancetype)initWithModel:(MainTabBarViewModel *)viewModel;
+@property (strong, nonatomic) MainTabBarViewModel *viewModel;
 
 @end

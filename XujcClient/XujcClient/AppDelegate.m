@@ -25,7 +25,8 @@ static const CGFloat kWindowCornerRadius = 4.f;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    MainTabBarController *mainTabBarController = [[MainTabBarController alloc] initWithModel:_masterViewModel.mainTabBarViewModel];
+    MainTabBarController *mainTabBarController = [[MainTabBarController alloc] init];
+    mainTabBarController.viewModel = _masterViewModel.mainTabBarViewModel;
     
     self.window.rootViewController = mainTabBarController;
     self.window.layer.cornerRadius = kWindowCornerRadius;
