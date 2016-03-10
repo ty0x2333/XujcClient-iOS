@@ -52,19 +52,6 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
     return self;
 }
 
-- (AFHTTPSessionManager *)xujcSessionManager
-{
-    if (!_xujcSessionManager) {
-        _xujcSessionManager = [AFHTTPSessionManager xujc_manager];
-    }
-    return _xujcSessionManager;
-}
-
-- (void)dealloc
-{
-    [self.xujcSessionManager invalidateSessionCancelingTasks:YES];
-}
-
 - (RACSignal *)executeBindingSignal
 {
     @weakify(self);

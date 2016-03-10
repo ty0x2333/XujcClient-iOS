@@ -8,10 +8,12 @@
 
 #import "RequestViewModel.h"
 #import "TYServer.h"
+#import "XujcServer.h"
 
 @interface RequestViewModel()
 
 @property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
+@property (strong, nonatomic) AFHTTPSessionManager *xujcSessionManager;
 
 @end
 
@@ -25,10 +27,18 @@
     return _sessionManager;
 }
 
-- (void)dealloc
+- (AFHTTPSessionManager *)xujcSessionManager
 {
-    [self.sessionManager invalidateSessionCancelingTasks:YES];
+    if (!_xujcSessionManager) {
+        _xujcSessionManager = [AFHTTPSessionManager xujc_manager];
+    }
+    return _xujcSessionManager;
 }
 
+- (void)dealloc
+{
+    [_sessionManager invalidateSessionCancelingTasks:YES];
+    [_xujcSessionManager invalidateSessionCancelingTasks:YES];
+}
 
 @end

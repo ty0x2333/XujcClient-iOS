@@ -11,5 +11,6 @@
 @interface RequestViewModel : NSObject
 
 @property (strong, readonly, nonatomic) AFHTTPSessionManager *sessionManager;
+@property (strong, readonly, nonatomic) AFHTTPSessionManager *xujcSessionManager;
 
 @end
