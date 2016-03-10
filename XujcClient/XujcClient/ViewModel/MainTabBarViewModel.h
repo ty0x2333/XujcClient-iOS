@@ -8,9 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ScheduleViewModel.h"
+#import "LoginViewModel.h"
+#import "SignupViewModel.h"
 
 @interface MainTabBarViewModel : NSObject
 
 - (ScheduleViewModel *)scheduleViewModel;
+
+- (LoginViewModel *)loginViewModel;
+
+- (SignupViewModel *)signupViewModel;
 
 @end

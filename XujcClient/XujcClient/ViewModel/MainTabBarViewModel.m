@@ -15,4 +15,14 @@
     return [[ScheduleViewModel alloc] init];
 }
 
+- (LoginViewModel *)loginViewModel
+{
+    return [[LoginViewModel alloc] init];
+}
+
+- (SignupViewModel *)signupViewModel
+{
+    return [[SignupViewModel alloc] init];
+}
+
 @end
