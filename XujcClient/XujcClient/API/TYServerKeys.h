@@ -18,6 +18,8 @@ static NSString* const TYServerKeyAPIKey = @"api_key";
 static NSString* const TYServerKeyXujcKey = @"xujc_key";
 static NSString* const TYServerKeyCreatedTime = @"created_time";
 
+static NSString* const TYServerKeyAuthorization = @"authorization";
+
 
 static NSString* const TYServerKeyError = @"error";
 static NSString* const TYServerKeyMessage = @"message";

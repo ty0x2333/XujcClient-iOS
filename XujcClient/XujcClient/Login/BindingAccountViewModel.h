@@ -13,8 +13,6 @@
 @property (copy, nonatomic) NSString *studentId;
 @property (copy, nonatomic) NSString *apiKeySuffix;
 
-- (NSString *)apiKey;
-
 @property (strong, nonatomic) RACCommand *executeBinding;
 
 @property (strong, nonatomic) RACSignal *validStudentIdSignal;

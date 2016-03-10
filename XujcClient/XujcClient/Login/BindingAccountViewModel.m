@@ -9,8 +9,14 @@
 #import "BindingAccountViewModel.h"
 #import "XujcServer.h"
 #import "XujcUser.h"
+#import "DynamicData.h"
+#import "TYServer.h"
 
 NSString * const kBindingRequestDomain = @"BindingRequestDomain";
+
+NSString * const kXujcKeyAuthenticationFaildMessage = @"Xujc Key authentication failed";
+
+NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
 
 @interface BindingAccountViewModel()
 
@@ -63,32 +69,53 @@ NSString * const kBindingRequestDomain = @"BindingRequestDomain";
     @weakify(self);
     RACSignal *executeBindingSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"me.php" parameters:@{XujcServerKeyApiKey: self.apiKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        __block NSURLSessionDataTask *subTask = nil;
+        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"me.php" parameters:@{XujcServerKeyApiKey: self.xujcApiKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             TyLogDebug(@"Success Response: %@", responseObject);
             XujcUser *user = [[XujcUser alloc] initWithJSONResopnse:responseObject];
             TyLogDebug(@"User Infomation: %@", [user description]);
             
-            [subscriber sendNext:nil];
-            [subscriber sendCompleted];
+            subTask = [self.sessionManager PUT:@"bindXujcAccount" parameters:@{TYServerKeyAuthorization: DYNAMIC_DATA.user.apiKey, TYServerKeyXujcKey: self.xujcApiKey} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
+                if (isError) {
+                    NSString *message = [responseObject objectForKey:TYServerKeyMessage];
+                    NSError *error = [NSError errorWithDomain:kBindingRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
+                    [subscriber sendError:error];
+                } else {
+                    [subscriber sendNext:responseObject];
+                    [subscriber sendCompleted];
+                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSInteger statusCode = ((NSHTTPURLResponse *)task.response).statusCode;
+                if (statusCode == 401) {
+                    [subscriber sendError:[NSError errorWithDomain:kBindingRequestDomain
+                                                              code:0
+                                                          userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(kApiKeyAuthenticationFaildMessage, nil)}
+                                           ]];
+                } else {
+                    [subscriber sendError:error];
+                }
+            }];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSInteger statusCode = ((NSHTTPURLResponse *)task.response).statusCode;
             if (statusCode == 401) {
                 [subscriber sendError:[NSError errorWithDomain:kBindingRequestDomain
                                                           code:0
-                                                      userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Authentication failed", nil)}
+                                                      userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(kXujcKeyAuthenticationFaildMessage, nil)}
                                        ]];
             } else {
                 [subscriber sendError:error];
             }
         }];
         return [RACDisposable disposableWithBlock:^{
+            [subTask cancel];
             [task cancel];
         }];
     }];
     return [[executeBindingSignal setNameWithFormat:@"executeBindingSignal"] logAll];
 }
 
-- (NSString *)apiKey
+- (NSString *)xujcApiKey
 {
     return [NSString stringWithFormat:@"%@-%@", _studentId, _apiKeySuffix];
 }
