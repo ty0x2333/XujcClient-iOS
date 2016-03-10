@@ -10,8 +10,6 @@
 
 static NSString * const kUserDefaultsKeyUser = @"user";
 
-static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
-
 @implementation MasterViewModel
 
 - (instancetype)init
@@ -28,11 +26,6 @@ static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:[xujcKey copy] forKey:kUserDefaultsKeyXujcKey];
     [userDefaults synchronize];
-}
-
-- (NSString *)xujcKey
-{
-    return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyXujcKey];
 }
 
 - (MainTabBarViewModel *)mainTabBarViewModel

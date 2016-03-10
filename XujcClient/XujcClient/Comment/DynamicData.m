@@ -90,6 +90,11 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
     return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyApiKey];
 }
 
+- (NSString *)xujcKey
+{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyXujcKey];
+}
+
 #pragma mark - Other
 
 - (NSString *)description

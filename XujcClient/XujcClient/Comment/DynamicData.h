@@ -29,6 +29,8 @@
 
 @property (copy, readonly, nonatomic) NSString *apiKey;
 
+@property (copy, readonly, nonatomic) NSString *xujcKey;
+
 /**
  *  @brief  学期数组
  *  @note   它总是有序的, setter 会自动排序
