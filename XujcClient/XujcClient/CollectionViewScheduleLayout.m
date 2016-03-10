@@ -351,10 +351,10 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
                 
                 CGFloat endClassSecionIndexY = startClassSecionIndexY + itemClassSectionDuration * _classSectionHeight;
                 
-                CGFloat itemMinY = nearbyintf(startClassSecionIndexY + calendarContentMinY + self.cellMargin.top);
-                CGFloat itemMaxY = nearbyintf(endClassSecionIndexY + calendarContentMinY - self.cellMargin.bottom);
-                CGFloat itemMinX = nearbyintf(sectionMinX + self.cellMargin.left);
-                CGFloat itemMaxX = nearbyintf(itemMinX + (self.sectionWidth - (self.cellMargin.left + self.cellMargin.right)));
+                CGFloat itemMinY = nearbyintf(startClassSecionIndexY + calendarContentMinY);
+                CGFloat itemMaxY = nearbyintf(endClassSecionIndexY + calendarContentMinY);
+                CGFloat itemMinX = nearbyintf(sectionMinX);
+                CGFloat itemMaxX = nearbyintf(itemMinX + (self.sectionWidth));
                 itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
                 
                 itemAttributes.zIndex = [self zIndexForElementKind:nil];
@@ -439,20 +439,20 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
             NSMutableArray *dividedAttributes = [NSMutableArray array];
             for (UICollectionViewLayoutAttributes *divisionAttributes in overlappingItems) {
                 
-                CGFloat itemWidth = (divisionWidth - self.cellMargin.left - self.cellMargin.right);
+                CGFloat itemWidth = (divisionWidth);
                 
                 // It it hasn't yet been adjusted, perform adjustment
                 if (![adjustedAttributes containsObject:divisionAttributes]) {
                     
                     CGRect divisionAttributesFrame = divisionAttributes.frame;
-                    divisionAttributesFrame.origin.x = (sectionMinX + self.cellMargin.left);
+                    divisionAttributesFrame.origin.x = (sectionMinX);
                     divisionAttributesFrame.size.width = itemWidth;
                     
                     // Horizontal Layout
                     NSInteger adjustments = 1;
                     for (UICollectionViewLayoutAttributes *dividedItemAttributes in dividedAttributes) {
                         if (CGRectIntersectsRect(dividedItemAttributes.frame, divisionAttributesFrame)) {
-                            divisionAttributesFrame.origin.x = sectionMinX + ((divisionWidth * adjustments) + self.cellMargin.left);
+                            divisionAttributesFrame.origin.x = sectionMinX + ((divisionWidth * adjustments));
                             adjustments++;
                         }
                     }
@@ -583,7 +583,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     self.currentTimeHorizontalGridlineHeight = 1.0;
     self.verticalGridlineWidth = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);
     self.horizontalGridlineHeight = (([[UIScreen mainScreen] scale] == 2.0) ? 0.5 : 1.0);;
-    self.cellMargin = UIEdgeInsetsZero;
     self.contentMargin = UIEdgeInsetsZero;
     
     self.displayHeaderBackgroundAtOrigin = YES;
