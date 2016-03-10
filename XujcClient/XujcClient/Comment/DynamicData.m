@@ -9,7 +9,6 @@
 #import "DynamicData.h"
 #import "XujcTerm.h"
 static NSString* const kDataXujcUser = @"User";
-static NSString* const kDataXujcAPIKey = @"APIKey";
 static NSString* const kDataXujcTerms = @"XujcTerms";
 
 
@@ -99,7 +98,7 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"{\n\tAPIKey: %@\n\tUser: %@\n}", self.apiKey, [_user description]];
+    return [NSString stringWithFormat:@"{\n\tAPIKey: %@, \n\tXujcKey: %@, \n\tUser: %@\n}", self.apiKey, self.xujcKey, [_user description]];
 }
 
 @end
