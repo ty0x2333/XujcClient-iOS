@@ -16,8 +16,6 @@
     if (self = [super init]) {
         _nikename = [self checkForNull:json[TYServerKeyNickname]];
         _email = [self checkForNull:json[TYServerKeyEmail]];
-        _apiKey = [self checkForNull:json[TYServerKeyAPIKey]];
-        _xujcKey = [self checkForNull:json[TYServerKeyXujcKey]];
         _createdTime = [self checkForNull:json[TYServerKeyCreatedTime]];
     }
     return self;
@@ -28,8 +26,6 @@
     if(self = [super init]){
         _nikename = [decoder decodeObjectForKey:TYServerKeyNickname];
         _email = [decoder decodeObjectForKey:TYServerKeyEmail];
-        _apiKey = [decoder decodeObjectForKey:TYServerKeyAPIKey];
-        _xujcKey = [decoder decodeObjectForKey:TYServerKeyXujcKey];
         _createdTime = [decoder decodeObjectForKey:TYServerKeyCreatedTime];
     }
     return  self;
@@ -39,8 +35,6 @@
 {
     [encoder encodeObject:_nikename forKey:TYServerKeyNickname];
     [encoder encodeObject:_email forKey:TYServerKeyEmail];
-    [encoder encodeObject:_apiKey forKey:TYServerKeyAPIKey];
-    [encoder encodeObject:_xujcKey forKey:TYServerKeyXujcKey];
     [encoder encodeObject:_createdTime forKey:TYServerKeyCreatedTime];
 }
 
@@ -57,8 +51,6 @@
     return @{
              TYServerKeyNickname: _nikename ?: null,
              TYServerKeyEmail: _email ?: null,
-             TYServerKeyAPIKey: _apiKey ?: null,
-             TYServerKeyXujcKey: _xujcKey ?: null,
              TYServerKeyCreatedTime: _createdTime ?: null,
              };
 }

@@ -39,6 +39,7 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
         @strongify(self);
         NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{TYServerKeyEmail: self.account, TYServerKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
             BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
+            
             if (isError) {
                 NSString *message = [responseObject objectForKey:TYServerKeyMessage];
                 NSError *error = [NSError errorWithDomain:kLoginRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
@@ -49,6 +50,8 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
                 DYNAMIC_DATA.user = user;
                 [DYNAMIC_DATA flush];
                 TyLogDebug(@"%@", user);
+                NSString *apiKey = [responseObject objectForKey:TYServerKeyAPIKey];
+                [self p_setApiKey:apiKey];
                 [subscriber sendNext:responseObject];
                 [subscriber sendCompleted];
             }
@@ -60,6 +63,13 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
         }];
     }];
     return [[executeLoginSignal setNameWithFormat:@"executeLoginSignal"] logAll];
+}
+
+- (void)p_setApiKey:(NSString *)apiKey
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:[apiKey copy] forKey:kUserDefaultsKeyApiKey];
+    [userDefaults synchronize];
 }
 
 - (NSString *)currentAccount

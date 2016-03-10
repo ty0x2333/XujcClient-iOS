@@ -12,8 +12,6 @@
 
 @property (strong, nonatomic) NSString *nikename;
 @property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSString *apiKey;
-@property (strong, nonatomic) NSString *xujcKey;
 
 @property (strong, nonatomic) NSString *createdTime;
 @end

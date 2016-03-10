@@ -11,6 +11,7 @@
 #import "XujcUser.h"
 #import "DynamicData.h"
 #import "TYServer.h"
+#import "AppDelegate.h"
 
 NSString * const kBindingRequestDomain = @"BindingRequestDomain";
 
@@ -75,7 +76,8 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
             XujcUser *user = [[XujcUser alloc] initWithJSONResopnse:responseObject];
             TyLogDebug(@"User Infomation: %@", [user description]);
             
-            subTask = [self.sessionManager PUT:@"bindXujcAccount" parameters:@{TYServerKeyAuthorization: DYNAMIC_DATA.user.apiKey, TYServerKeyXujcKey: self.xujcApiKey} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSString *apiKey = ((AppDelegate *)([UIApplication sharedApplication].delegate)).masterViewModel.apiKey;
+            subTask = [self.sessionManager PUT:@"bindXujcAccount" parameters:@{TYServerKeyAuthorization: apiKey, TYServerKeyXujcKey: self.xujcApiKey} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
                 if (isError) {
                     NSString *message = [responseObject objectForKey:TYServerKeyMessage];
