@@ -97,11 +97,21 @@
 
 #pragma mark - MSEventCell
 
-- (void)setEvent:(XujcCourseEvent *)event
+- (void)setViewModel:(CourseEventViewModel *)viewModel
 {
-    _event = event;
-    self.title.attributedText = [[NSAttributedString alloc] initWithString:event.name attributes:[self titleAttributesHighlighted:self.selected]];
-    self.location.attributedText = [[NSAttributedString alloc] initWithString:event.location attributes:[self subtitleAttributesHighlighted:self.selected]];
+    if (_viewModel == viewModel) {
+        return;
+    }
+    _viewModel = viewModel;
+    @weakify(self);
+    RAC(self.title, attributedText) = [RACObserve(_viewModel, name) map:^id(NSString *value) {
+        @strongify(self);
+        return [[NSAttributedString alloc] initWithString:value attributes:[self titleAttributesHighlighted:self.selected]];
+    }];
+    RAC(self.location, attributedText) = [RACObserve(_viewModel, location) map:^id(NSString *value) {
+        @strongify(self);
+        return [[NSAttributedString alloc] initWithString:value attributes:[self titleAttributesHighlighted:self.selected]];
+    }];
 }
 
 - (void)updateColors

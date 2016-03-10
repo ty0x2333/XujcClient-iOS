@@ -7,11 +7,11 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "XujcCourseEvent.h"
+#import "CourseEventViewModel.h"
 
 @interface CourseEventCell : UICollectionViewCell
 
-@property (nonatomic, weak) XujcCourseEvent *event;
+@property (strong, nonatomic) CourseEventViewModel *viewModel;
 
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UILabel *location;

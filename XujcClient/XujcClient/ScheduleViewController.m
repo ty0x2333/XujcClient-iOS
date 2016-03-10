@@ -158,8 +158,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CourseEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCourseEventCellIdentifier forIndexPath:indexPath];
-    
-    cell.event = [self.viewModel.courseEvents[indexPath.section] objectAtIndex:indexPath.row];
+    cell.viewModel = [self.viewModel cellViewModelAtIndexPath:indexPath];
     return cell;
 }
 
