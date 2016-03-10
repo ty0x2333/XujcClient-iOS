@@ -112,7 +112,11 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
         MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
         hud.mode = MBProgressHUDModeText;
         hud.detailsLabelText = NSLocalizedString(@"Account binding successfully", nil);
-        [hud hide:YES afterDelay:kSuccessHUDShowTime];
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, kSuccessHUDShowTime * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [hud hide:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
     }];
     
     [[self.viewModel.executeBinding.executing filter:^BOOL(id value) {
