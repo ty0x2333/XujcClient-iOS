@@ -39,7 +39,6 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 @property (nonatomic) CGFloat horizontalGridlineHeight;
 @property (nonatomic) CGFloat verticalGridlineWidth;
 @property (nonatomic) CGFloat currentTimeHorizontalGridlineHeight;
-@property (nonatomic) UIEdgeInsets sectionMargin;
 @property (nonatomic) UIEdgeInsets contentMargin;
 @property (nonatomic) UIEdgeInsets cellMargin;
 @property (nonatomic) MSHeaderLayoutType headerLayoutType;
