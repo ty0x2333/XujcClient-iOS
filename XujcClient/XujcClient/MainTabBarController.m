@@ -10,6 +10,8 @@
 #import "ScheduleViewController.h"
 #import "ScoreViewController.h"
 #import "PersonalViewController.h"
+#import "LoginViewController.h"
+#import "DynamicData.h"
 @interface MainTabBarController ()
 
 @property (strong, nonatomic) MainTabBarViewModel *viewModel;
@@ -49,9 +51,14 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([NSString isEmpty:DYNAMIC_DATA.apiKey]){
+        LoginViewController *viewController = [[LoginViewController alloc] init];
+        [self presentViewController:viewController animated:NO completion:nil];
+        return;
+    }
 }
 
 /*
