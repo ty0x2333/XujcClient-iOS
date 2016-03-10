@@ -31,10 +31,6 @@
 
 @property (copy, readonly, nonatomic) NSString *xujcKey;
 
-/**
- *  @brief  学期数组
- *  @note   它总是有序的, setter 会自动排序
- */
-@property(nonatomic, copy) NSArray *terms;
+@property (strong, readonly, nonatomic) NSArray *terms;
 
 @end

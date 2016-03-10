@@ -9,8 +9,6 @@
 #import "DynamicData.h"
 #import "XujcTerm.h"
 static NSString* const kDataXujcUser = @"User";
-static NSString* const kDataXujcTerms = @"XujcTerms";
-
 
 @implementation DynamicData
 
@@ -40,14 +38,6 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     _user = [NSKeyedUnarchiver unarchiveObjectWithData:[userDefaults objectForKey:kDataXujcUser]];
-    NSArray *termDataArray = [userDefaults objectForKey:kDataXujcTerms];
-    NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termDataArray.count];
-    for (NSData *data in termDataArray) {
-        XujcTerm *term = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        [termArray addObject:term];
-    }
-    // 使用 setTerm 使其排序, 勿用 _term
-    [self setTerms:termArray];
     TyLogDebug(@"DynamicData Loaded:%@", [self description]);
 }
 
@@ -56,11 +46,6 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:[_user data] forKey:kDataXujcUser];
     
-    NSMutableArray *termDataArray = [NSMutableArray arrayWithCapacity:_terms.count];
-    for (XujcTerm *term in _terms) {
-        [termDataArray addObject:[term data]];
-    }
-    [userDefaults setObject:termDataArray forKey:kDataXujcTerms];
     TyLogDebug(@"DynamicData Flush:%@", [self description]);
     
     [userDefaults synchronize];
@@ -73,15 +58,6 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
     [self flush];
 }
 
-#pragma mark - Setter
-
-- (void)setTerms:(NSArray *)terms
-{
-    // 使用 termId 升序
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"termId" ascending:YES];
-    _terms = [terms sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-}
-
 #pragma mark - Getter
 
 - (NSString *)apiKey
@@ -92,6 +68,18 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
 - (NSString *)xujcKey
 {
     return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyXujcKey];
+}
+
+- (NSArray *)terms
+{
+    NSArray *termDataArray = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyXujcTerms];
+    NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termDataArray.count];
+    for (NSData *data in termDataArray) {
+        XujcTerm *term = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        [termArray addObject:term];
+    }
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"termId" ascending:YES];
+    return [termArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
 }
 
 #pragma mark - Other
