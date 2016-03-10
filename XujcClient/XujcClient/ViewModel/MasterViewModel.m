@@ -8,16 +8,19 @@
 
 #import "MasterViewModel.h"
 
-static NSString* const kUserDefaultsKeyApiKey = @"api_key";
+static NSString * const kUserDefaultsKeyUser = @"user";
+
 static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
 
 @implementation MasterViewModel
 
-- (void)setApiKey:(NSString *)apiKey
+- (instancetype)init
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:[apiKey copy] forKey:kUserDefaultsKeyApiKey];
-    [userDefaults synchronize];
+    if (self = [super init]) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        _apiKeyChangedSignal = [userDefaults rac_channelTerminalForKey:kUserDefaultsKeyApiKey];
+    }
+    return self;
 }
 
 - (NSString *)apiKey

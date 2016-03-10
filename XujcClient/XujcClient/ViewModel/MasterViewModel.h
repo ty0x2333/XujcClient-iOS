@@ -11,8 +11,11 @@
 
 @interface MasterViewModel : NSObject
 
-@property (copy, nonatomic) NSString *apiKey;
+@property (copy, readonly, nonatomic) NSString *apiKey;
+
 @property (copy, nonatomic) NSString *xujcKey;
+
+@property (strong, nonatomic) RACSignal *apiKeyChangedSignal;
 
 - (MainTabBarViewModel *)mainTabBarViewModel;
 
