@@ -53,6 +53,7 @@
 		7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */; };
 		7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */; };
 		7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B81C8F7A6B0074C716 /* FormButton.m */; };
+		7062B6BC1C921DC80074C716 /* CourseEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6BB1C921DC80074C716 /* CourseEventViewModel.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -165,6 +166,8 @@
 		7062B6B61C8F6E770074C716 /* XujcServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcServer.h; sourceTree = "<group>"; };
 		7062B6B71C8F7A6B0074C716 /* FormButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormButton.h; sourceTree = "<group>"; };
 		7062B6B81C8F7A6B0074C716 /* FormButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormButton.m; sourceTree = "<group>"; };
+		7062B6BA1C921DC80074C716 /* CourseEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEventViewModel.h; sourceTree = "<group>"; };
+		7062B6BB1C921DC80074C716 /* CourseEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseEventViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -344,6 +347,8 @@
 				7062B69F1C8E3AA20074C716 /* LoginViewModel.m */,
 				7062B6A01C8E3AA20074C716 /* SignupViewModel.h */,
 				7062B6A11C8E3AA20074C716 /* SignupViewModel.m */,
+				7062B6BA1C921DC80074C716 /* CourseEventViewModel.h */,
+				7062B6BB1C921DC80074C716 /* CourseEventViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -651,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7062B6BC1C921DC80074C716 /* CourseEventViewModel.m in Sources */,
 				70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */,
 				70F7CE431BE3E832001D027C /* XujcUser.m in Sources */,
 				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
