@@ -11,12 +11,20 @@
 #import "DynamicData.h"
 #import "XujcTerm.h"
 
+@interface ScheduleViewModel()
+
+@property (strong, nonatomic) XujcTerm *selectedTerm;
+
+@end
+
 @implementation ScheduleViewModel
 
 - (RACSignal *)fetchTermsSignal
 {
+    @weakify(self);
     RACSignal *fetchTermsSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"kb.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            @strongify(self);
             NSArray *termIds = [responseObject allKeys];
             NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termIds.count];
             for (id key in termIds) {
@@ -26,6 +34,8 @@
                 [termArray addObject:term];
             }
             [self p_saveTerms:termArray];
+            
+            self.selectedTerm = [DYNAMIC_DATA.terms lastObject];
             
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
