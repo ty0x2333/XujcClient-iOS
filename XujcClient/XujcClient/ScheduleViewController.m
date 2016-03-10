@@ -130,12 +130,9 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 #pragma mark - UICollectionViewDataSource
 
-/**
- *  @brief  获取课表列数
- */
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return _courseEvents.count;
+    return kDayCountOfWeek;
 }
 /**
  *  @brief  获取每天课程数
