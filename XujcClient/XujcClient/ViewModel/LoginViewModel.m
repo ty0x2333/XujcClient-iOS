@@ -50,8 +50,12 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
                 DYNAMIC_DATA.user = user;
                 [DYNAMIC_DATA flush];
                 TyLogDebug(@"%@", user);
+                
                 NSString *apiKey = [responseObject objectForKey:TYServerKeyAPIKey];
                 [self p_saveApiKey:apiKey];
+                NSString *xujcKey = [responseObject objectForKey:TYServerKeyXujcKey];
+                [self p_saveXujcKey:xujcKey];
+                
                 [subscriber sendNext:responseObject];
                 [subscriber sendCompleted];
             }
@@ -69,6 +73,13 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:[apiKey copy] forKey:kUserDefaultsKeyApiKey];
+    [userDefaults synchronize];
+}
+
+- (void)p_saveXujcKey:(NSString *)xujcKey
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:[xujcKey copy] forKey:kUserDefaultsKeyXujcKey];
     [userDefaults synchronize];
 }
 
