@@ -147,12 +147,10 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 {
     return kDayCountOfWeek;
 }
-/**
- *  @brief  获取每天课程数
- */
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.viewModel.courseEvents[section] count];
+    return [self.viewModel numberOfCourseEventInSection:section];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

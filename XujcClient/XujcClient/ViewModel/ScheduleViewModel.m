@@ -96,6 +96,11 @@
     return viewModel;
 }
 
+- (NSInteger)numberOfCourseEventInSection:(NSInteger)section
+{
+    return [[self.courseEvents objectAtIndex:section] count];
+}
+
 #pragma mark - Helper
 
 - (NSArray *)p_coureEventsFromDayNumberOfWeek:(NSArray *)allCourseEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek

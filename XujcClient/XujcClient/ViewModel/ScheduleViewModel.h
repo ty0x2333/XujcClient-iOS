@@ -20,4 +20,6 @@
 
 - (CourseEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
+- (NSInteger)numberOfCourseEventInSection:(NSInteger)section;
+
 @end
