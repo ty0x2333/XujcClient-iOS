@@ -9,6 +9,7 @@
 #import "MasterViewModel.h"
 
 static NSString* const kUserDefaultsKeyApiKey = @"api_key";
+static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
 
 @implementation MasterViewModel
 
@@ -22,6 +23,18 @@ static NSString* const kUserDefaultsKeyApiKey = @"api_key";
 - (NSString *)apiKey
 {
     return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyApiKey];
+}
+
+- (void)setXujcKey:(NSString *)xujcKey
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:[xujcKey copy] forKey:kUserDefaultsKeyXujcKey];
+    [userDefaults synchronize];
+}
+
+- (NSString *)xujcKey
+{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyXujcKey];
 }
 
 - (MainTabBarViewModel *)mainTabBarViewModel
