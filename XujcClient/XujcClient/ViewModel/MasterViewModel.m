@@ -23,11 +23,6 @@ static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
     return self;
 }
 
-- (NSString *)apiKey
-{
-    return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyApiKey];
-}
-
 - (void)setXujcKey:(NSString *)xujcKey
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

@@ -25,8 +25,10 @@
  */
 - (void)clear;
 
-@property(nonatomic, copy) NSString *APIKey;
 @property(nonatomic, strong) UserModel *user;
+
+@property (copy, readonly, nonatomic) NSString *apiKey;
+
 /**
  *  @brief  学期数组
  *  @note   它总是有序的, setter 会自动排序

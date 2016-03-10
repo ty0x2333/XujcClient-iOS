@@ -41,7 +41,6 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     _user = [NSKeyedUnarchiver unarchiveObjectWithData:[userDefaults objectForKey:kDataXujcUser]];
-    _APIKey = [userDefaults stringForKey:kDataXujcAPIKey];
     NSArray *termDataArray = [userDefaults objectForKey:kDataXujcTerms];
     NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termDataArray.count];
     for (NSData *data in termDataArray) {
@@ -57,8 +56,6 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:[_user data] forKey:kDataXujcUser];
-    
-    [userDefaults setObject:_APIKey forKey:kDataXujcAPIKey];
     
     NSMutableArray *termDataArray = [NSMutableArray arrayWithCapacity:_terms.count];
     for (XujcTerm *term in _terms) {
@@ -86,11 +83,18 @@ static NSString* const kDataXujcTerms = @"XujcTerms";
     _terms = [terms sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
 }
 
+#pragma mark - Getter
+
+- (NSString *)apiKey
+{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyApiKey];
+}
+
 #pragma mark - Other
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"{\n\tAPIKey: %@\n\tUser: %@\n}", _APIKey, [_user description]];
+    return [NSString stringWithFormat:@"{\n\tAPIKey: %@\n\tUser: %@\n}", self.apiKey, [_user description]];
 }
 
 @end

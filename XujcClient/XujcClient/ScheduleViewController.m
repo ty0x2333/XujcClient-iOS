@@ -72,11 +72,11 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 {
     [super viewDidAppear:animated];
     
-    if (DYNAMIC_DATA.APIKey == nil){
+//    if (DYNAMIC_DATA.APIKey == nil){
         LoginViewController *viewController = [[LoginViewController alloc] init];
         [self presentViewController:viewController animated:NO completion:nil];
-        return;
-    }
+//        return;
+//    }
     
     [self setupCollectionView];
     
@@ -207,59 +207,59 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (void)termRequest
 {
-    NSString *apiKey = DYNAMIC_DATA.APIKey;
-    if (apiKey == nil){
-        return;
-    }
-
-    [XujcAPI terms:apiKey successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        TyLogDebug(@"Success Response: %@", (NSString *)responseObject);
-        
-        NSArray *termIds = [responseObject allKeys];
-        NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termIds.count];
-        for (id key in termIds) {
-            XujcTerm *term = [[XujcTerm alloc] init];
-            term.termId = key;
-            term.displayName = responseObject[key];
-            [termArray addObject:term];
-        }
-        DYNAMIC_DATA.terms = termArray;
-        [DYNAMIC_DATA flush];
-        [self scheduleCourseRequest:[[DYNAMIC_DATA.terms lastObject] termId]];
-#warning test
-        [self scheduleCourseRequest:@"20151"];
-    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
-    }];
+//    NSString *apiKey = DYNAMIC_DATA.APIKey;
+//    if (apiKey == nil){
+//        return;
+//    }
+//
+//    [XujcAPI terms:apiKey successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        TyLogDebug(@"Success Response: %@", (NSString *)responseObject);
+//        
+//        NSArray *termIds = [responseObject allKeys];
+//        NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termIds.count];
+//        for (id key in termIds) {
+//            XujcTerm *term = [[XujcTerm alloc] init];
+//            term.termId = key;
+//            term.displayName = responseObject[key];
+//            [termArray addObject:term];
+//        }
+//        DYNAMIC_DATA.terms = termArray;
+//        [DYNAMIC_DATA flush];
+//        [self scheduleCourseRequest:[[DYNAMIC_DATA.terms lastObject] termId]];
+//#warning test
+//        [self scheduleCourseRequest:@"20151"];
+//    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
+//    }];
 }
 
 - (void)scheduleCourseRequest:(NSString *)termId
 {
-    NSString *apiKey = DYNAMIC_DATA.APIKey;
-#warning need make it dynamic
-    [XujcAPI classSchedule:apiKey termId:termId successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        TyLogDebug(@"Success Response: %@", responseObject);
-        
-        NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
-        
-        for (id item in responseObject) {
-            XujcCourse *course = [[XujcCourse alloc] initWithJSONResopnse:item];
-            for (XujcCourseEvent* event in course.courseEvents) {
-                [courseEventArray addObject:event];
-            }
-        }
-        
-        [_courseEvents removeAllObjects];
-        
-        for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
-            [_courseEvents addObject:[ScheduleViewController coureEventsFromDayNumberOfWeek:courseEventArray dayNumberOfWeek:i + 1]];
-        }
-        [self.collectionViewCalendarLayout invalidateLayoutCache];
-        [self.collectionView reloadData];
-
-    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
-    }];
+//    NSString *apiKey = DYNAMIC_DATA.APIKey;
+//#warning need make it dynamic
+//    [XujcAPI classSchedule:apiKey termId:termId successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        TyLogDebug(@"Success Response: %@", responseObject);
+//        
+//        NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
+//        
+//        for (id item in responseObject) {
+//            XujcCourse *course = [[XujcCourse alloc] initWithJSONResopnse:item];
+//            for (XujcCourseEvent* event in course.courseEvents) {
+//                [courseEventArray addObject:event];
+//            }
+//        }
+//        
+//        [_courseEvents removeAllObjects];
+//        
+//        for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
+//            [_courseEvents addObject:[ScheduleViewController coureEventsFromDayNumberOfWeek:courseEventArray dayNumberOfWeek:i + 1]];
+//        }
+//        [self.collectionViewCalendarLayout invalidateLayoutCache];
+//        [self.collectionView reloadData];
+//
+//    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
+//    }];
 }
 
 #pragma mark - Helper

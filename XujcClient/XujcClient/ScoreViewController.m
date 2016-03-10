@@ -90,17 +90,17 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 {
     [_scores removeAllObjects];
 #warning test
-    [XujcAPI scores:DYNAMIC_DATA.APIKey termId:@"20142" successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSArray *scoreDatas = responseObject;
-        [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            XujcScore *xujcScore = [[XujcScore alloc] initWithJSONResopnse:obj];
-            TyLogDebug(@"%@", xujcScore);
-            [_scores addObject:xujcScore];
-        }];
-        [_tableView reloadData];
-    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
-    }];
+//    [XujcAPI scores:DYNAMIC_DATA.APIKey termId:@"20142" successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSArray *scoreDatas = responseObject;
+//        [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            XujcScore *xujcScore = [[XujcScore alloc] initWithJSONResopnse:obj];
+//            TyLogDebug(@"%@", xujcScore);
+//            [_scores addObject:xujcScore];
+//        }];
+//        [_tableView reloadData];
+//    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
+//    }];
 }
 
 @end
