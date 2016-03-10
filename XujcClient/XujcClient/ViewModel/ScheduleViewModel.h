@@ -7,10 +7,11 @@
 //
 
 #import "RequestViewModel.h"
+#import "XujcCourseEvent.h"
 
 @interface ScheduleViewModel : RequestViewModel
 
-@property (strong, nonatomic) NSArray *courseEvents;
+@property (strong, nonatomic) NSArray<NSArray<XujcCourseEvent *> *> *courseEvents;
 
 @property (strong, nonatomic) RACSignal *fetchScheduleCourseSignal;
 
