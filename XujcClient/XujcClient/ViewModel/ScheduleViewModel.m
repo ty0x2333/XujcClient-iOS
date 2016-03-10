@@ -9,15 +9,53 @@
 #import "ScheduleViewModel.h"
 #import "XujcServer.h"
 #import "DynamicData.h"
+#import "XujcCourse.h"
 #import "XujcTerm.h"
 
 @interface ScheduleViewModel()
 
+@property (strong, nonatomic) XujcCourse *xujcCourse;
 @property (strong, nonatomic) XujcTerm *selectedTerm;
 
 @end
 
 @implementation ScheduleViewModel
+
+
+- (RACSignal *)fetchScheduleCourseSignal
+{
+    @weakify(self);
+    RACSignal *fetchScheduleCourseSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"kb.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServerKeyTermId: self.selectedTerm.termId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
+    
+            for (id item in responseObject) {
+                XujcCourse *course = [[XujcCourse alloc] initWithJSONResopnse:item];
+                for (XujcCourseEvent* event in course.courseEvents) {
+                    [courseEventArray addObject:event];
+                }
+            }
+            
+            NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:kDayCountOfWeek];
+    
+            for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
+                [events addObject:[self p_coureEventsFromDayNumberOfWeek:courseEventArray dayNumberOfWeek:i + 1]];
+            }
+            self.courseEvents = [events copy];
+            
+            [subscriber sendNext:nil];
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    return fetchScheduleCourseSignal;
+}
 
 - (RACSignal *)fetchTermsSignal
 {
@@ -50,6 +88,19 @@
 }
 
 #pragma mark - Helper
+
+- (NSArray *)p_coureEventsFromDayNumberOfWeek:(NSArray *)allCourseEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (XujcCourseEvent *event in allCourseEvents) {
+        NSInteger currentDayNumberOfWeek = [NSDate dayNumberOfWeekFromString:event.studyDay];
+        if (currentDayNumberOfWeek == dayNumberOfWeek){
+            [result addObject:event];
+        }
+    }
+    return result;
+}
+
 - (void)p_saveTerms:(NSArray *)terms
 {
     NSMutableArray *termDataArray = [NSMutableArray arrayWithCapacity:terms.count];

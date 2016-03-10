@@ -10,6 +10,10 @@
 
 @interface ScheduleViewModel : RequestViewModel
 
+@property (strong, nonatomic) NSArray *courseEvents;
+
+@property (strong, nonatomic) RACSignal *fetchScheduleCourseSignal;
+
 @property (strong, nonatomic) RACSignal *fetchTermsSignal;
 
 @end

@@ -62,16 +62,29 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     [self.collectionViewCalendarLayout registerClass:MSTimeRowHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
     [self.collectionViewCalendarLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
     
-    _courseEvents = [NSMutableArray arrayWithCapacity:kDayCountOfWeek];
-    
     [self bindViewModel];
 }
 
 - (void)bindViewModel
 {
+    @weakify(self);
     [_viewModel.fetchTermsSignal subscribeNext:^(id x) {
+        @strongify(self);
         TyLogDebug(@"fetchTerms success");
+        [self.viewModel.fetchScheduleCourseSignal subscribeNext:^(id x) {
+            [self.collectionViewCalendarLayout invalidateLayoutCache];
+            [self.collectionView reloadData];
+            TyLogDebug(@"fetchScheduleSuccess success");
+        } error:^(NSError *error) {
+            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hub.detailsLabelText = error.localizedDescription;
+            [hub hide:YES afterDelay:kErrorHUDShowTime];
+            TyLogDebug(@"fetchScheduleCourse error");
+        }];
     } error:^(NSError *error) {
+        MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hub.detailsLabelText = error.localizedDescription;
+        [hub hide:YES afterDelay:kErrorHUDShowTime];
         TyLogDebug(@"fetchTerms error");
     }];
 }
@@ -139,14 +152,14 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
  */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [_courseEvents[section] count];
+    return [self.viewModel.courseEvents[section] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CourseEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCourseEventCellIdentifier forIndexPath:indexPath];
     
-    cell.event = [_courseEvents[indexPath.section] objectAtIndex:indexPath.row];
+    cell.event = [self.viewModel.courseEvents[indexPath.section] objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -184,95 +197,17 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout startClassSectionIndexForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] startSection] sectionIndex];
+    return [[[self.viewModel.courseEvents[indexPath.section] objectAtIndex:indexPath.row] startSection] sectionIndex];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout endClassSectionIndexForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[[_courseEvents[indexPath.section] objectAtIndex:indexPath.row] endSection] sectionIndex];
+    return [[[self.viewModel.courseEvents[indexPath.section] objectAtIndex:indexPath.row] endSection] sectionIndex];
 }
 
 - (NSDate *)currentTimeForCollectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout
 {
     return [NSDate date];
-}
-
-#pragma mark - Requests
-
-- (void)dataRequest
-{
-    
-}
-
-- (void)termRequest
-{
-//    NSString *apiKey = DYNAMIC_DATA.APIKey;
-//    if (apiKey == nil){
-//        return;
-//    }
-//
-//    [XujcAPI terms:apiKey successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        TyLogDebug(@"Success Response: %@", (NSString *)responseObject);
-//        
-//        NSArray *termIds = [responseObject allKeys];
-//        NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termIds.count];
-//        for (id key in termIds) {
-//            XujcTerm *term = [[XujcTerm alloc] init];
-//            term.termId = key;
-//            term.displayName = responseObject[key];
-//            [termArray addObject:term];
-//        }
-//        DYNAMIC_DATA.terms = termArray;
-//        [DYNAMIC_DATA flush];
-//        [self scheduleCourseRequest:[[DYNAMIC_DATA.terms lastObject] termId]];
-//#warning test
-//        [self scheduleCourseRequest:@"20151"];
-//    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
-//    }];
-}
-
-- (void)scheduleCourseRequest:(NSString *)termId
-{
-//    NSString *apiKey = DYNAMIC_DATA.APIKey;
-//#warning need make it dynamic
-//    [XujcAPI classSchedule:apiKey termId:termId successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        TyLogDebug(@"Success Response: %@", responseObject);
-//        
-//        NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
-//        
-//        for (id item in responseObject) {
-//            XujcCourse *course = [[XujcCourse alloc] initWithJSONResopnse:item];
-//            for (XujcCourseEvent* event in course.courseEvents) {
-//                [courseEventArray addObject:event];
-//            }
-//        }
-//        
-//        [_courseEvents removeAllObjects];
-//        
-//        for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
-//            [_courseEvents addObject:[ScheduleViewController coureEventsFromDayNumberOfWeek:courseEventArray dayNumberOfWeek:i + 1]];
-//        }
-//        [self.collectionViewCalendarLayout invalidateLayoutCache];
-//        [self.collectionView reloadData];
-//
-//    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
-//    }];
-}
-
-#pragma mark - Helper
-
-+ (NSArray *)coureEventsFromDayNumberOfWeek:(NSArray *)allCourseEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek
-{
-    NSMutableArray *result = [[NSMutableArray alloc] init];
-    for (XujcCourseEvent *event in allCourseEvents) {
-        NSInteger currentDayNumberOfWeek = [NSDate dayNumberOfWeekFromString:event.studyDay];
-        if (currentDayNumberOfWeek == dayNumberOfWeek){
-            [result addObject:event];
-        }
-    }
-    return result;
 }
 
 @end

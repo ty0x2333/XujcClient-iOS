@@ -14,5 +14,6 @@ static CGFloat const kSuccessHUDShowTime = 2.f;
 
 static NSString * const kUserDefaultsKeyApiKey = @"api_key";
 static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
+static NSString * const kUserDefaultsKeyXujcTerms = @"xujc_terms";
 
 #endif /* AppConfig_h */
