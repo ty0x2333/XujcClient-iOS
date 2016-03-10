@@ -83,6 +83,7 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
                     NSError *error = [NSError errorWithDomain:kBindingRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
                     [subscriber sendError:error];
                 } else {
+                    [self p_saveXujcKey:self.xujcApiKey];
                     [subscriber sendNext:responseObject];
                     [subscriber sendCompleted];
                 }
@@ -119,6 +120,13 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
 - (NSString *)xujcApiKey
 {
     return [NSString stringWithFormat:@"%@-%@", _studentId, _apiKeySuffix];
+}
+
+- (void)p_saveXujcKey:(NSString *)xujcKey
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:[xujcKey copy] forKey:kUserDefaultsKeyXujcKey];
+    [userDefaults synchronize];
 }
 
 @end
