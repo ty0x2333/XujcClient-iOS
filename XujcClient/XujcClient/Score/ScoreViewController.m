@@ -37,7 +37,7 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 {
     [super viewDidLoad];
     self.title = @"成绩查询";
-    _tableView = [[UITableView alloc] init];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -74,7 +74,14 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     cell.detailHidden = _currentSelected != indexPath.row;
     return cell;
 }
+
 #pragma mark - UITableViewDelegate
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return section == 0 ? CGFLOAT_MIN : tableView.sectionHeaderHeight;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // return 0, will be auto size
