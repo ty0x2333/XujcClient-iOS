@@ -7,6 +7,13 @@
 //
 
 #import "ScoreViewModel.h"
+#import "XujcScore.h"
+
+@interface ScoreViewModel()
+
+@property (strong, nonatomic) NSArray<XujcScore *> *scores;
+
+@end
 
 @implementation ScoreViewModel
 
