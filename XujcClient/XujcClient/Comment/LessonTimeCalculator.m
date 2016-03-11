@@ -35,6 +35,11 @@
     return self;
 }
 
++ (NSInteger)lastLessonNumber
+{
+    return 12;
+}
+
 + (NSTimeInterval)lessonDuration
 {
     return 45 * kTimeIntervalOfMinute;

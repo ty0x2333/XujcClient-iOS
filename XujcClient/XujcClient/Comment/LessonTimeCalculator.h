@@ -16,6 +16,8 @@
 
 + (NSTimeInterval)lessonDuration;
 
++ (NSInteger)lastLessonNumber;
+
 - (NSDate *)firstLessonStartTime;
 
 - (NSDate *)firstLessonStartTimeOfDay:(NSDate *)dayDate;

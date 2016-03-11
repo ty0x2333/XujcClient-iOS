@@ -71,7 +71,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 @property (nonatomic, assign) CGFloat cachedMaxColumnHeight;
 
 @property (nonatomic, assign) NSInteger cachedEarliestClassSection;
-@property (nonatomic, assign) NSInteger cachedLatestClassSection;
 
 @property (nonatomic, strong) NSMutableDictionary *cachedColumnHeights;
 @property (nonatomic, strong) NSMutableDictionary *cachedEarliestClassSectionIndexs;
@@ -116,7 +115,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
  *  @brief  最早课程节数
  */
 - (NSInteger)earliestClassSection;
-- (NSInteger)latestClassSection;
 - (NSInteger)earliestClassSectionForSection:(NSInteger)section;
 - (NSInteger)latestClassSectionForSection:(NSInteger)section;
 // Delegate Wrappers
@@ -222,9 +220,8 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     BOOL needsToPopulateVerticalGridlineAttributes = (self.verticalGridlineAttributes.count == 0);
     
     NSInteger earliestClassSectionIndex = [self earliestClassSection];
-    NSInteger latestClassSectionIndex = [self latestClassSection];
     
-    CGFloat sectionHeight = nearbyintf((_classSectionHeight * (latestClassSectionIndex - earliestClassSectionIndex + 1)));
+    CGFloat sectionHeight = nearbyintf((_classSectionHeight * ([LessonTimeCalculator lastLessonNumber] - earliestClassSectionIndex + 1)));
     CGFloat calendarGridMinX = (self.timeRowHeaderWidth);
     CGFloat calendarGridMinY = (self.dayColumnHeaderHeight);
     CGFloat calendarContentMinX = (self.timeRowHeaderWidth);
@@ -259,7 +256,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     // The current time is within the day
     XujcSection *earliestClassSection = [XujcSection sectionIndex:earliestClassSectionIndex];
-    XujcSection *latestClassSection = [XujcSection sectionIndex:latestClassSectionIndex];
+    XujcSection *latestClassSection = [XujcSection sectionIndex:[LessonTimeCalculator lastLessonNumber]];
     NSDateComponents *currentTimeDateComponents = [self currentTimeDateComponents];
     NSDate *currentTimeDate = [self currentTimeDate];
     
@@ -269,7 +266,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     if (currentTimeIndicatorVisible) {
         NSInteger currentClassSectionIndex = 0;
-        for (NSInteger index = earliestClassSectionIndex; index < latestClassSectionIndex; ++index) {
+        for (NSInteger index = earliestClassSectionIndex; index < [LessonTimeCalculator lastLessonNumber]; ++index) {
             XujcSection *section = [XujcSection sectionIndex:index];
             TyLogDebug(@"第 %d 节课的结束时间: %@", index, section.endTime);
             if ([section.endTime laterDate:currentTimeDate]){
@@ -310,7 +307,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     // Time Row Headers
     NSUInteger timeRowHeaderIndex = 0;
-    for (NSInteger index = earliestClassSectionIndex; index <= latestClassSectionIndex; index++) {
+    for (NSInteger index = earliestClassSectionIndex; index <= [LessonTimeCalculator lastLessonNumber]; index++) {
         NSIndexPath *timeRowHeaderIndexPath = [NSIndexPath indexPathForItem:timeRowHeaderIndex inSection:0];
         UICollectionViewLayoutAttributes *timeRowHeaderAttributes = [self layoutAttributesForSupplementaryViewAtIndexPath:timeRowHeaderIndexPath ofKind:MSCollectionElementKindTimeRowHeader withItemCache:self.timeRowHeaderAttributes];
         CGFloat titleRowHeaderMinY = (calendarContentMinY + (_classSectionHeight * (index - earliestClassSectionIndex)));
@@ -367,7 +364,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     // Horizontal Gridlines
     NSUInteger horizontalGridlineIndex = 0;
-    for (NSInteger index = earliestClassSectionIndex; index <= latestClassSectionIndex; index++) {
+    for (NSInteger index = earliestClassSectionIndex; index <= [LessonTimeCalculator lastLessonNumber]; index++) {
         NSIndexPath *horizontalGridlineIndexPath = [NSIndexPath indexPathForItem:horizontalGridlineIndex inSection:0];
         UICollectionViewLayoutAttributes *horizontalGridlineAttributes = [self layoutAttributesForDecorationViewAtIndexPath:horizontalGridlineIndexPath ofKind:MSCollectionElementKindHorizontalGridline withItemCache:self.horizontalGridlineAttributes];
         CGFloat horizontalGridlineMinY = nearbyintf(calendarContentMinY + (_classSectionHeight * (index - earliestClassSectionIndex))) - (self.horizontalGridlineHeight / 2.0);
@@ -554,7 +551,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     self.cachedCurrentDateComponents = [NSCache new];
     self.cachedMaxColumnHeight = CGFLOAT_MIN;
     self.cachedEarliestClassSection = -1;
-    self.cachedLatestClassSection = -1;
     self.cachedColumnHeights = [NSMutableDictionary new];
     self.cachedEarliestClassSectionIndexs = [NSMutableDictionary new];
     _cachedLatestClassSectionIndexs = [NSMutableDictionary new];
@@ -650,7 +646,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     // Invalidate cached interface sizing values
     self.cachedEarliestClassSection = -1;
-    self.cachedLatestClassSection = -1;
     self.cachedMaxColumnHeight = CGFLOAT_MIN;
     [self.cachedColumnHeights removeAllObjects];
     [self.cachedEarliestClassSectionIndexs removeAllObjects];
@@ -751,7 +746,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
         
         NSInteger earliestClassSection = [self earliestClassSection];
-        NSInteger latestClassSection = [self latestClassSection];
+        NSInteger latestClassSection = [LessonTimeCalculator lastLessonNumber];
         CGFloat sectionColumnHeight;
         if ((earliestClassSection != -1) && (latestClassSection != -1)) {
             sectionColumnHeight = (_classSectionHeight * (latestClassSection - earliestClassSection + 1));
@@ -879,27 +874,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     if (earliestClassSection != -1) {
         self.cachedEarliestClassSection = earliestClassSection;
         return earliestClassSection;
-    } else {
-        return 0;
-    }
-}
-
-- (NSInteger)latestClassSection
-{
-    if (self.cachedLatestClassSection != -1) {
-        return self.cachedLatestClassSection;
-    }
-    NSInteger latestClassSection = 12;
-//    NSInteger latestHour = NSIntegerMin;
-//    for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
-//        CGFloat sectionLatestHour = [self latestHourForSection:section];
-//        if ((sectionLatestHour > latestHour) && (sectionLatestHour != NSUndefinedDateComponent)) {
-//            latestHour = sectionLatestHour;
-//        }
-//    }
-    if (latestClassSection != -1) {
-        self.cachedLatestClassSection = latestClassSection;
-        return latestClassSection;
     } else {
         return 0;
     }
