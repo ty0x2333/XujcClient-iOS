@@ -16,4 +16,6 @@ static NSString * const kUserDefaultsKeyApiKey = @"api_key";
 static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
 static NSString * const kUserDefaultsKeyXujcTerms = @"xujc_terms";
 
+#define DOCUMENT_DIRECTORY [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+
 #endif /* AppConfig_h */
