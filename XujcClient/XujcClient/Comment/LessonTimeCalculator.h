@@ -20,4 +20,6 @@
 
 - (NSDate *)firstLessonStartTimeOfDay:(NSDate *)dayDate;
 
+- (NSTimeInterval)timeIntervalRelativeToFirstLessonStartTime:(NSInteger)lessonNumber;
+
 @end

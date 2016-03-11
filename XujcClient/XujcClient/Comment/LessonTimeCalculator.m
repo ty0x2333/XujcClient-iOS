@@ -56,5 +56,36 @@
     return [_calendar dateFromComponents:components];
 }
 
+- (NSTimeInterval)timeIntervalRelativeToFirstLessonStartTime:(NSInteger)lessonNumber
+{
+    NSTimeInterval interval;
+    if (lessonNumber == 1){
+        interval = 0;
+    } else if (lessonNumber == 2) {
+        interval = kTimeIntervalOfMinute * 55;
+    } else if (lessonNumber == 3) {
+        interval = kTimeIntervalOfHour * 2;
+    } else if (lessonNumber == 4) {
+        interval = kTimeIntervalOfHour * 2 + kTimeIntervalOfMinute * 55;
+    } else if (lessonNumber == 51) {
+        interval = kTimeIntervalOfHour * 4 + kTimeIntervalOfMinute * 30;
+    } else if (lessonNumber == 52) {
+        interval = kTimeIntervalOfHour * 5 + kTimeIntervalOfMinute * 25;
+    } else if (lessonNumber == 5) {
+        interval = kTimeIntervalOfHour * 6 + kTimeIntervalOfMinute * 30;
+    } else if (lessonNumber == 6) {
+        interval = kTimeIntervalOfHour * 7 + kTimeIntervalOfMinute * 25;
+    } else if (lessonNumber == 7) {
+        interval = kTimeIntervalOfHour * 8 + kTimeIntervalOfMinute * 30;
+    } else if (lessonNumber == 8) {
+        interval = kTimeIntervalOfHour * 9 + kTimeIntervalOfMinute * 25;
+    } else if (lessonNumber == 9) {
+        interval = kTimeIntervalOfHour * 11 + kTimeIntervalOfMinute * 30;
+    } else if (lessonNumber == 10) {
+        interval = kTimeIntervalOfHour * 12 + kTimeIntervalOfMinute * 25;
+    }
+    return interval;
+}
+
 
 @end
