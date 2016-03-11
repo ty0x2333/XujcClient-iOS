@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScoreViewModel.h"
 
 @interface ScoreViewController : UIViewController
+
+- (instancetype)initWithViewModel:(ScoreViewModel *)viewModel;
 
 @end

@@ -38,7 +38,6 @@
 		70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B681C85DD7D00B0C5DA /* BindingAccountViewController.m */; };
 		70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B6C1C85DDB100B0C5DA /* LoginViewController.m */; };
 		70443B6F1C85F09400B0C5DA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70443B6E1C85F09400B0C5DA /* logo.png */; };
-		7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057C49C1C6BD9F700351C98 /* ScoreViewController.m */; };
 		7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */; };
 		7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6841C89FC260074C716 /* NSString+Validator.m */; };
 		7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m */; };
@@ -55,6 +54,9 @@
 		7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B81C8F7A6B0074C716 /* FormButton.m */; };
 		7062B6BC1C921DC80074C716 /* CourseEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6BB1C921DC80074C716 /* CourseEventViewModel.m */; };
 		7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6BE1C9241DB0074C716 /* LessonTimeCalculator.m */; };
+		7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6C21C9331BD0074C716 /* ScoreTableViewCell.m */; };
+		7062B6C61C9331BD0074C716 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6C41C9331BD0074C716 /* ScoreViewController.m */; };
+		7062B6C91C9331D10074C716 /* ScoreViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6C81C9331D10074C716 /* ScoreViewModel.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -81,7 +83,6 @@
 		70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE721BE43AC3001D027C /* MSCurrentTimeGridline.m */; };
 		70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B01C7F8DEE00112038 /* NSString+Safe.m */; };
 		70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B31C7F9EDC00112038 /* XujcScore.m */; };
-		70FE64B71C8021DF00112038 /* ScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B61C8021DF00112038 /* ScoreTableViewCell.m */; };
 		D6AA2EAC9399777C75CF39CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F22B4B799576540B0102BE0C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -132,8 +133,6 @@
 		70443B6B1C85DDB100B0C5DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		70443B6C1C85DDB100B0C5DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		70443B6E1C85F09400B0C5DA /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		7057C49B1C6BD9F700351C98 /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
-		7057C49C1C6BD9F700351C98 /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
 		7062B67D1C887B020074C716 /* LoginTextFieldGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTextFieldGroupView.h; sourceTree = "<group>"; };
 		7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextFieldGroupView.m; sourceTree = "<group>"; };
 		7062B6831C89FC260074C716 /* NSString+Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validator.h"; sourceTree = "<group>"; };
@@ -171,6 +170,12 @@
 		7062B6BB1C921DC80074C716 /* CourseEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseEventViewModel.m; sourceTree = "<group>"; };
 		7062B6BD1C9241DB0074C716 /* LessonTimeCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonTimeCalculator.h; sourceTree = "<group>"; };
 		7062B6BE1C9241DB0074C716 /* LessonTimeCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonTimeCalculator.m; sourceTree = "<group>"; };
+		7062B6C11C9331BD0074C716 /* ScoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreTableViewCell.h; sourceTree = "<group>"; };
+		7062B6C21C9331BD0074C716 /* ScoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreTableViewCell.m; sourceTree = "<group>"; };
+		7062B6C31C9331BD0074C716 /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
+		7062B6C41C9331BD0074C716 /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
+		7062B6C71C9331D10074C716 /* ScoreViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewModel.h; sourceTree = "<group>"; };
+		7062B6C81C9331D10074C716 /* ScoreViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -218,8 +223,6 @@
 		70FE64B01C7F8DEE00112038 /* NSString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Safe.m"; sourceTree = "<group>"; };
 		70FE64B21C7F9EDC00112038 /* XujcScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcScore.h; sourceTree = "<group>"; };
 		70FE64B31C7F9EDC00112038 /* XujcScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcScore.m; sourceTree = "<group>"; };
-		70FE64B51C8021DF00112038 /* ScoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreTableViewCell.h; sourceTree = "<group>"; };
-		70FE64B61C8021DF00112038 /* ScoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreTableViewCell.m; sourceTree = "<group>"; };
 		809B7A975EDBE96102E85C69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F11D480843B2B5B2BA56FFB6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F22B4B799576540B0102BE0C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -356,6 +359,19 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		7062B6C01C9331BD0074C716 /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				7062B6C71C9331D10074C716 /* ScoreViewModel.h */,
+				7062B6C81C9331D10074C716 /* ScoreViewModel.m */,
+				7062B6C31C9331BD0074C716 /* ScoreViewController.h */,
+				7062B6C41C9331BD0074C716 /* ScoreViewController.m */,
+				7062B6C11C9331BD0074C716 /* ScoreTableViewCell.h */,
+				7062B6C21C9331BD0074C716 /* ScoreTableViewCell.m */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
 		70F7CE0D1BE3AC25001D027C = {
 			isa = PBXGroup;
 			children = (
@@ -385,18 +401,15 @@
 				70F7CE341BE3D1B8001D027C /* Comment */,
 				70F7CE301BE3BD4A001D027C /* API */,
 				70443B661C85DD7D00B0C5DA /* Login */,
+				7062B6C01C9331BD0074C716 /* Score */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
 				70F7CE4F1BE40A81001D027C /* MainTabBarController.h */,
 				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
 				70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */,
 				70F7CE4D1BE40A3C001D027C /* ScheduleViewController.m */,
-				7057C49B1C6BD9F700351C98 /* ScoreViewController.h */,
-				7057C49C1C6BD9F700351C98 /* ScoreViewController.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
 				702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */,
-				70FE64B51C8021DF00112038 /* ScoreTableViewCell.h */,
-				70FE64B61C8021DF00112038 /* ScoreTableViewCell.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
 				708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */,
 				70C2B0381C81ECAA00923B85 /* SettingsViewController.h */,
@@ -664,12 +677,12 @@
 				7062B6BC1C921DC80074C716 /* CourseEventViewModel.m in Sources */,
 				70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */,
 				70F7CE431BE3E832001D027C /* XujcUser.m in Sources */,
+				7062B6C91C9331D10074C716 /* ScoreViewModel.m in Sources */,
 				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				70C2B03A1C81ECAA00923B85 /* SettingsViewController.m in Sources */,
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
-				7057C49D1C6BD9F700351C98 /* ScoreViewController.m in Sources */,
 				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */,
 				7062B6941C8B842C0074C716 /* UserModel.m in Sources */,
 				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
@@ -691,11 +704,11 @@
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,
 				70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */,
 				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
+				7062B6C61C9331BD0074C716 /* ScoreViewController.m in Sources */,
 				702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */,
 				70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */,
 				70C2B0331C81349400923B85 /* UIColor+Theme.m in Sources */,
 				7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */,
-				70FE64B71C8021DF00112038 /* ScoreTableViewCell.m in Sources */,
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				7062B6A21C8E3AA20074C716 /* LoginViewModel.m in Sources */,
 				7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */,
@@ -709,6 +722,7 @@
 				7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */,
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */,
+				7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */,
 				70F7CE4E1BE40A3C001D027C /* ScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

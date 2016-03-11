@@ -16,6 +16,8 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
 @interface ScoreViewController ()<UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) ScoreViewModel *viewModel;
+
 @property (nonatomic, strong) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<XujcScore *> *scores;
 @property (assign, nonatomic) NSInteger currentSelected;
@@ -23,6 +25,14 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 @end
 
 @implementation ScoreViewController
+
+- (instancetype)initWithViewModel:(ScoreViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
