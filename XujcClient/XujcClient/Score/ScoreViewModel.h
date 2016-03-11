@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) RACSignal *fetchScoresSignal;
 
+- (NSInteger)scoreCount;
 
 - (ScoreTableViewCellViewModel *)scoreTableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath;
 

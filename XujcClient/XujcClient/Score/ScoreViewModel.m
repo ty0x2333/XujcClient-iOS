@@ -53,4 +53,9 @@
     return [[fetchScoresSignal setNameWithFormat:@"fetchScoresSignal"] logAll];
 }
 
+- (NSInteger)scoreCount
+{
+    return [_scores count];
+}
+
 @end
