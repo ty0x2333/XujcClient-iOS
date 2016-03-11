@@ -200,8 +200,8 @@
     [[self.loginViewModel.executeLogin.executionSignals concat] subscribeNext:^(id x) {
         @strongify(self);
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        BindingAccountViewController *viewController = [[BindingAccountViewController alloc] initWithViewModel:self.loginViewModel.bindingAccountViewModel];
-        [self presentViewController:viewController animated:YES completion:nil];
+//        BindingAccountViewController *viewController = [[BindingAccountViewController alloc] initWithViewModel:self.loginViewModel.bindingAccountViewModel];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
     
     [[self.loginViewModel.executeLogin.executing filter:^BOOL(id value) {

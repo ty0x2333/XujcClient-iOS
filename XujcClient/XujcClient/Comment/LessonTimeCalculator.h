@@ -16,4 +16,6 @@
 
 + (NSTimeInterval)lessonDuration;
 
+- (NSDate *)firstLessonStartTime;
+
 @end
