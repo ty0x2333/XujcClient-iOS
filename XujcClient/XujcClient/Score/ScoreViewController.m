@@ -14,7 +14,7 @@
 
 static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
-static CGFloat const kTableViewMarginHorizontal = 5.f;
+static CGFloat const kTableViewSectionHeaderHeight = 5.f;
 
 @interface ScoreViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -41,14 +41,16 @@ static CGFloat const kTableViewMarginHorizontal = 5.f;
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.sectionHeaderHeight = kTableViewSectionHeaderHeight;
+    _tableView.sectionFooterHeight = 0;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[ScoreTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
     
+    self.view.backgroundColor = _tableView.backgroundColor;
+    
     [_tableView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(self.view);
-        make.leading.equalTo(self.view).with.offset(kTableViewMarginHorizontal);
-        make.trailing.equalTo(self.view).with.offset(-kTableViewMarginHorizontal);
+        make.top.bottom.leading.trailing.equalTo(self.view);
     }];
     
     [self.viewModel.fetchScoresSignal subscribeNext:^(id x) {
@@ -63,13 +65,18 @@ static CGFloat const kTableViewMarginHorizontal = 5.f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return [self.viewModel scoreCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ScoreTableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
-    ScoreTableViewCellViewModel *viewModel = [self.viewModel scoreTableViewCellViewModelForRowAtIndex:indexPath.row];
+    ScoreTableViewCellViewModel *viewModel = [self.viewModel scoreTableViewCellViewModelForRowAtIndex:indexPath.section];
     cell.viewModel = viewModel;
     return cell;
 }
@@ -78,7 +85,8 @@ static CGFloat const kTableViewMarginHorizontal = 5.f;
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return section == 0 ? CGFLOAT_MIN : tableView.sectionHeaderHeight;
+//    return section == 0 ? CGFLOAT_MIN : tableView.sectionHeaderHeight;
+    return tableView.sectionHeaderHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
