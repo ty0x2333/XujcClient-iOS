@@ -12,10 +12,11 @@
 static const CGFloat kFontSize = 12.f;
 static const CGFloat kContentEdgeInsetVertical = 8.f;
 static const CGFloat kContentEdgeHorizontal = 12.f;
-static const CGFloat kArrowSize = 16.f;
 
 static const CGFloat kBorderWith = .5f;
 static const CGFloat kCornerRadius = 4.f;
+
+static const CGFloat kContentMarginHorizontal = 5.f;
 
 @interface ScoreTableViewCell()
 
@@ -32,10 +33,13 @@ static const CGFloat kCornerRadius = 4.f;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier]) {
-        self.layer.borderColor = [UIColor ty_border].CGColor;
-        self.layer.borderWidth = kBorderWith;
-        self.layer.cornerRadius = kCornerRadius;
+        self.contentView.layer.borderColor = [UIColor ty_border].CGColor;
+        self.contentView.layer.borderWidth = kBorderWith;
+        self.contentView.layer.cornerRadius = kCornerRadius;
+        self.contentView.layer.masksToBounds = true;
+        self.contentView.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundColor = [UIColor clearColor];
         _courseNameLabel = [[UILabel alloc] init];
         _courseNameLabel.textColor = [UIColor ty_textBlack];
         _courseNameLabel.font = [UIFont systemFontOfSize:kFontSize];
@@ -60,6 +64,11 @@ static const CGFloat kCornerRadius = 4.f;
         _creditLabel.textColor = [UIColor ty_textBlack];
         _creditLabel.font = [UIFont systemFontOfSize:kFontSize];
         [_courseDetailView addSubview:_creditLabel];
+        
+        [self.contentView makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(self).with.offset(kContentMarginHorizontal);
+            make.trailing.equalTo(self).with.offset(-kContentMarginHorizontal);
+        }];
         
         @weakify(self);
         [_scoreLabel makeConstraints:^(MASConstraintMaker *make) {
