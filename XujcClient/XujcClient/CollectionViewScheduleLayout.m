@@ -70,8 +70,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 @property (nonatomic, strong) NSCache *cachedCurrentDate;
 @property (nonatomic, assign) CGFloat cachedMaxColumnHeight;
 
-@property (nonatomic, assign) NSInteger cachedEarliestClassSection;
-
 @property (nonatomic, strong) NSMutableDictionary *cachedColumnHeights;
 @property (nonatomic, strong) NSMutableDictionary *cachedEarliestClassSectionIndexs;
 @property (nonatomic, strong) NSMutableDictionary *cachedLatestClassSectionIndexs;
@@ -111,10 +109,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 - (CGFloat)zIndexForElementKind:(NSString *)elementKind;
 - (CGFloat)zIndexForElementKind:(NSString *)elementKind floating:(BOOL)floating;
 // Hours
-/**
- *  @brief  最早课程节数
- */
-- (NSInteger)earliestClassSection;
 - (NSInteger)earliestClassSectionForSection:(NSInteger)section;
 - (NSInteger)latestClassSectionForSection:(NSInteger)section;
 // Delegate Wrappers
@@ -219,9 +213,9 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     BOOL needsToPopulateItemAttributes = (self.itemAttributes.count == 0);
     BOOL needsToPopulateVerticalGridlineAttributes = (self.verticalGridlineAttributes.count == 0);
     
-    NSInteger earliestClassSectionIndex = [self earliestClassSection];
+    NSInteger earliestLessonIndex = [LessonTimeCalculator earliestLessonNumber];
     
-    CGFloat sectionHeight = nearbyintf((_classSectionHeight * ([LessonTimeCalculator lastLessonNumber] - earliestClassSectionIndex + 1)));
+    CGFloat sectionHeight = nearbyintf((_classSectionHeight * ([LessonTimeCalculator lastLessonNumber] - earliestLessonIndex + 1)));
     CGFloat calendarGridMinX = (self.timeRowHeaderWidth);
     CGFloat calendarGridMinY = (self.dayColumnHeaderHeight);
     CGFloat calendarContentMinX = (self.timeRowHeaderWidth);
@@ -255,7 +249,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     UICollectionViewLayoutAttributes *currentTimeHorizontalGridlineAttributes = [self layoutAttributesForDecorationViewAtIndexPath:currentTimeHorizontalGridlineIndexPath ofKind:MSCollectionElementKindCurrentTimeHorizontalGridline withItemCache:self.currentTimeHorizontalGridlineAttributes];
     
     // The current time is within the day
-    XujcSection *earliestClassSection = [XujcSection sectionIndex:earliestClassSectionIndex];
+    XujcSection *earliestClassSection = [XujcSection sectionIndex:earliestLessonIndex];
     XujcSection *latestClassSection = [XujcSection sectionIndex:[LessonTimeCalculator lastLessonNumber]];
     NSDateComponents *currentTimeDateComponents = [self currentTimeDateComponents];
     NSDate *currentTimeDate = [self currentTimeDate];
@@ -265,18 +259,11 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     currentTimeHorizontalGridlineAttributes.hidden = !currentTimeIndicatorVisible;
     
     if (currentTimeIndicatorVisible) {
-        NSInteger currentClassSectionIndex = 0;
-        for (NSInteger index = earliestClassSectionIndex; index < [LessonTimeCalculator lastLessonNumber]; ++index) {
-            XujcSection *section = [XujcSection sectionIndex:index];
-            TyLogDebug(@"第 %d 节课的结束时间: %@", index, section.endTime);
-            if ([section.endTime laterDate:currentTimeDate]){
-                currentClassSectionIndex = index;
-            }
-        }
-        TyLogDebug(@"当前是第 %d 节", currentClassSectionIndex);
+        NSInteger currentLessonNumber = [LESSON_TIME_CALCULATOR currentLessonNumberByTime:currentTimeDate];
+        TyLogDebug(@"当前是第 %d 节", currentLessonNumber);
         
         // The y value of the current time
-        CGFloat timeY = (calendarContentMinY + nearbyintf(((currentClassSectionIndex - earliestClassSectionIndex) * _classSectionHeight) + ((currentTimeDateComponents.minute / [LessonTimeCalculator lessonDuration]) * self.minuteHeight)));
+        CGFloat timeY = (calendarContentMinY + nearbyintf(((currentLessonNumber - earliestLessonIndex) * _classSectionHeight) + ((currentTimeDateComponents.minute / [LessonTimeCalculator lessonDuration]) * self.minuteHeight)));
 
         CGFloat currentTimeIndicatorMinY = (timeY - nearbyintf(self.currentTimeIndicatorSize.height / 2.0));
         CGFloat currentTimeIndicatorMinX = (fmaxf(self.collectionView.contentOffset.x, 0.0) + (self.timeRowHeaderWidth - self.currentTimeIndicatorSize.width));
@@ -284,8 +271,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
         currentTimeIndicatorAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindCurrentTimeIndicator floating:timeRowHeaderFloating];
         
         CGFloat currentTimeHorizontalGridlineMinY = (timeY - nearbyintf(self.currentTimeHorizontalGridlineHeight / 2.0));
-        CGFloat currentTimeHorizontalGridlineXOffset = (calendarGridMinX);
-        CGFloat currentTimeHorizontalGridlineMinX = fmaxf(currentTimeHorizontalGridlineXOffset, self.collectionView.contentOffset.x + currentTimeHorizontalGridlineXOffset);
+        CGFloat currentTimeHorizontalGridlineMinX = fmaxf(calendarGridMinX, self.collectionView.contentOffset.x + calendarGridMinX);
         CGFloat currentTimehorizontalGridlineWidth = fminf(calendarGridWidth, self.collectionView.frame.size.width);
         currentTimeHorizontalGridlineAttributes.frame = CGRectMake(currentTimeHorizontalGridlineMinX, currentTimeHorizontalGridlineMinY, currentTimehorizontalGridlineWidth, self.currentTimeHorizontalGridlineHeight);
         currentTimeHorizontalGridlineAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
@@ -307,10 +293,10 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     // Time Row Headers
     NSUInteger timeRowHeaderIndex = 0;
-    for (NSInteger index = earliestClassSectionIndex; index <= [LessonTimeCalculator lastLessonNumber]; index++) {
+    for (NSInteger index = earliestLessonIndex; index <= [LessonTimeCalculator lastLessonNumber]; index++) {
         NSIndexPath *timeRowHeaderIndexPath = [NSIndexPath indexPathForItem:timeRowHeaderIndex inSection:0];
         UICollectionViewLayoutAttributes *timeRowHeaderAttributes = [self layoutAttributesForSupplementaryViewAtIndexPath:timeRowHeaderIndexPath ofKind:MSCollectionElementKindTimeRowHeader withItemCache:self.timeRowHeaderAttributes];
-        CGFloat titleRowHeaderMinY = (calendarContentMinY + (_classSectionHeight * (index - earliestClassSectionIndex)));
+        CGFloat titleRowHeaderMinY = (calendarContentMinY + (_classSectionHeight * (index - earliestLessonIndex)));
         timeRowHeaderAttributes.frame = CGRectMake(timeRowHeaderMinX, titleRowHeaderMinY, self.timeRowHeaderWidth, _classSectionHeight);
         timeRowHeaderAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindTimeRowHeader floating:timeRowHeaderFloating];
         timeRowHeaderIndex++;
@@ -346,7 +332,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
                 
                 NSInteger itemClassSectionDuration = [self endClassSectionIndexForIndexPath:itemIndexPath] - itemStartClassSectionIndex + 1;
                 
-                CGFloat startClassSecionIndexY = ((itemStartClassSectionIndex - earliestClassSectionIndex) * _classSectionHeight);
+                CGFloat startClassSecionIndexY = ((itemStartClassSectionIndex - earliestLessonIndex) * _classSectionHeight);
                 
                 CGFloat endClassSecionIndexY = startClassSecionIndexY + itemClassSectionDuration * _classSectionHeight;
                 
@@ -364,10 +350,10 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     // Horizontal Gridlines
     NSUInteger horizontalGridlineIndex = 0;
-    for (NSInteger index = earliestClassSectionIndex; index <= [LessonTimeCalculator lastLessonNumber]; index++) {
+    for (NSInteger index = earliestLessonIndex; index <= [LessonTimeCalculator lastLessonNumber]; index++) {
         NSIndexPath *horizontalGridlineIndexPath = [NSIndexPath indexPathForItem:horizontalGridlineIndex inSection:0];
         UICollectionViewLayoutAttributes *horizontalGridlineAttributes = [self layoutAttributesForDecorationViewAtIndexPath:horizontalGridlineIndexPath ofKind:MSCollectionElementKindHorizontalGridline withItemCache:self.horizontalGridlineAttributes];
-        CGFloat horizontalGridlineMinY = nearbyintf(calendarContentMinY + (_classSectionHeight * (index - earliestClassSectionIndex))) - (self.horizontalGridlineHeight / 2.0);
+        CGFloat horizontalGridlineMinY = nearbyintf(calendarContentMinY + (_classSectionHeight * (index - earliestLessonIndex))) - (self.horizontalGridlineHeight / 2.0);
         
         CGFloat horizontalGridlineMinX = fmaxf(calendarGridMinX, self.collectionView.contentOffset.x + calendarGridMinX);
         CGFloat horizontalGridlineWidth = fminf(calendarGridWidth, self.collectionView.frame.size.width);
@@ -550,7 +536,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     _cachedCurrentDate = [NSCache new];
     self.cachedCurrentDateComponents = [NSCache new];
     self.cachedMaxColumnHeight = CGFLOAT_MIN;
-    self.cachedEarliestClassSection = -1;
     self.cachedColumnHeights = [NSMutableDictionary new];
     self.cachedEarliestClassSectionIndexs = [NSMutableDictionary new];
     _cachedLatestClassSectionIndexs = [NSMutableDictionary new];
@@ -645,7 +630,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     [self.cachedCurrentDateComponents removeAllObjects];
     
     // Invalidate cached interface sizing values
-    self.cachedEarliestClassSection = -1;
     self.cachedMaxColumnHeight = CGFLOAT_MIN;
     [self.cachedColumnHeights removeAllObjects];
     [self.cachedEarliestClassSectionIndexs removeAllObjects];
@@ -666,7 +650,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 - (XujcSection *)classSectionForTimeRowHeaderAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger earliestClassSectionIndex = [self earliestClassSection];
+    NSInteger earliestClassSectionIndex = [LessonTimeCalculator earliestLessonNumber];
     XujcSection *classSection = [XujcSection sectionIndex:earliestClassSectionIndex + indexPath.item];
     return classSection;
 }
@@ -745,7 +729,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     CGFloat maxSectionHeight = 0.0;
     for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
         
-        NSInteger earliestClassSection = [self earliestClassSection];
+        NSInteger earliestClassSection = [LessonTimeCalculator earliestLessonNumber];
         NSInteger latestClassSection = [LessonTimeCalculator lastLessonNumber];
         CGFloat sectionColumnHeight;
         if ((earliestClassSection != -1) && (latestClassSection != -1)) {
@@ -857,27 +841,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 }
 
 #pragma mark Hours
-
-- (NSInteger)earliestClassSection
-{
-    if (self.cachedEarliestClassSection != -1) {
-        return self.cachedEarliestClassSection;
-    }
-    NSInteger earliestClassSection = 1;
-//    NSInteger earliestHour = NSIntegerMax;
-//    for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
-//        CGFloat sectionEarliestHour = [self earliestHourForSection:section];
-//        if ((sectionEarliestHour < earliestHour) && (sectionEarliestHour != NSUndefinedDateComponent)) {
-//            earliestHour = sectionEarliestHour;
-//        }
-//    }
-    if (earliestClassSection != -1) {
-        self.cachedEarliestClassSection = earliestClassSection;
-        return earliestClassSection;
-    } else {
-        return 0;
-    }
-}
 
 - (NSInteger)earliestClassSectionForSection:(NSInteger)section
 {

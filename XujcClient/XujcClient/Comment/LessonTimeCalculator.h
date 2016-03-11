@@ -26,4 +26,6 @@
 
 - (NSTimeInterval)timeIntervalRelativeToFirstLessonStartTime:(NSInteger)lessonNumber;
 
+- (NSInteger)currentLessonNumberByTime:(NSDate *)date;
+
 @end

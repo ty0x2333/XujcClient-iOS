@@ -97,5 +97,19 @@
     return interval;
 }
 
+- (NSInteger)currentLessonNumberByTime:(NSDate *)date
+{
+    NSInteger currentLessonNumbser = 0;
+    NSDateComponents *components = [_calendar components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
+    NSTimeInterval timeIntervalRelativeToFirstLessonStartTime = (components.hour - 8) * kTimeIntervalOfHour + components.minute * kTimeIntervalOfMinute;
+    for (NSInteger i = [LessonTimeCalculator earliestLessonNumber]; i < [LessonTimeCalculator lastLessonNumber]; ++i) {
+        NSTimeInterval interval = [self timeIntervalRelativeToFirstLessonStartTime:i] + [LessonTimeCalculator lessonDuration];
+        if (timeIntervalRelativeToFirstLessonStartTime < interval) {
+            currentLessonNumbser = i;
+            break;
+        }
+    }
+    return currentLessonNumbser;
+}
 
 @end
