@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
 #import "DynamicData.h"
+#import "CacheUtils.h"
 
 static const CGFloat kWindowCornerRadius = 4.f;
 @interface AppDelegate ()
@@ -18,7 +19,12 @@ static const CGFloat kWindowCornerRadius = 4.f;
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    TyLogDebug(@"Document Path: %@", DOCUMENT_DIRECTORY);
+    
+    [CacheUtils instance];
+    
     // Override point for customization after application launch.
     _masterViewModel = [[MasterViewModel alloc] init];
     
