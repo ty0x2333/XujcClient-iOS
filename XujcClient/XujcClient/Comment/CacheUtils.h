@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XujcTerm.h"
 
 @interface CacheUtils : NSObject
 
 + (instancetype)instance;
+
+- (BOOL)cacheTerms:(NSArray<XujcTerm *> *)terms;
 
 @end

@@ -35,4 +35,20 @@
     }];
 }
 
+- (BOOL)cacheTerms:(NSArray<XujcTerm *> *)terms
+{
+    __block BOOL isSuccess = NO;
+    
+    [[FMDatabaseQueue instance] inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        for (XujcTerm *term in terms) {
+            isSuccess = [db executeUpdate:@"INSERT OR REPLACE INTO term(id, name) VALUES (?, ?);", term.termId, term.displayName];
+            if (!isSuccess) {
+                *rollback = YES;
+                return;
+            }
+        }
+    }];
+    return isSuccess;
+}
+
 @end
