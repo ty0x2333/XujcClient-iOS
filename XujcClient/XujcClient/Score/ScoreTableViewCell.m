@@ -23,6 +23,8 @@ static const CGFloat kArrowSize = 16.f;
 @property (strong, nonatomic) UIView *courseDetailView;
 @property (strong, nonatomic) UILabel *detailStudyWayLabel;
 @property (strong, nonatomic) UILabel *creditLabel;
+
+@property (strong, nonatomic) MASConstraint *courseNameLabelBottomConstraint;
 @end
 
 @implementation ScoreTableViewCell
@@ -105,19 +107,24 @@ static const CGFloat kArrowSize = 16.f;
             make.bottom.equalTo(self.courseDetailView.mas_bottom).with.offset(-kContentEdgeInsetVertical);
         }];
         
+        [_courseNameLabel makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self);
+            make.left.equalTo(self.arrowImageView.mas_right);
+            make.top.equalTo(self.contentView).offset(kContentEdgeInsetVertical);
+            make.right.equalTo(self.scoreLabel.mas_left).with.offset(-kContentEdgeInsetVertical);
+            self.courseNameLabelBottomConstraint = make.bottom.equalTo(self.contentView).with.offset(-kContentEdgeInsetVertical);
+        }];
+        
         [RACObserve(self, detailHidden) subscribeNext:^(NSNumber *value) {
             BOOL hidden = [value boolValue];
             _courseDetailView.hidden = hidden;
             _arrowImageView.image = [UIImage imageNamed:hidden ? @"arrow_right" : @"arrow_down"];
-            [_courseNameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                @strongify(self);
-                make.left.equalTo(self.arrowImageView.mas_right);
-                make.top.equalTo(self.contentView).offset(kContentEdgeInsetVertical);
-                make.right.equalTo(self.scoreLabel.mas_left).with.offset(-kContentEdgeInsetVertical);
+            [_courseNameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+                [self.courseNameLabelBottomConstraint uninstall];
                 if (hidden) {
-                    make.bottom.equalTo(self.contentView).with.offset(-kContentEdgeInsetVertical);
+                    self.courseNameLabelBottomConstraint = make.bottom.equalTo(self.contentView).with.offset(-kContentEdgeInsetVertical);
                 } else {
-                    make.bottom.equalTo(_courseDetailView.mas_top).with.offset(-kContentEdgeInsetVertical);
+                    self.courseNameLabelBottomConstraint = make.bottom.equalTo(_courseDetailView.mas_top).with.offset(-kContentEdgeInsetVertical);
                 }
             }];
             [super updateConstraints];
