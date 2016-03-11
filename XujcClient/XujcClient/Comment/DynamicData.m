@@ -7,7 +7,6 @@
  */
 
 #import "DynamicData.h"
-#import "XujcTerm.h"
 static NSString* const kDataXujcUser = @"User";
 
 @implementation DynamicData
@@ -68,18 +67,6 @@ static NSString* const kDataXujcUser = @"User";
 - (NSString *)xujcKey
 {
     return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyXujcKey];
-}
-
-- (NSArray *)terms
-{
-    NSArray *termDataArray = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyXujcTerms];
-    NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termDataArray.count];
-    for (NSData *data in termDataArray) {
-        XujcTerm *term = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        [termArray addObject:term];
-    }
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"termId" ascending:YES];
-    return [termArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
 }
 
 #pragma mark - Other

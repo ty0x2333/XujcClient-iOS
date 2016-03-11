@@ -71,9 +71,7 @@
                 term.displayName = responseObject[key];
                 [termArray addObject:term];
             }
-            [self p_saveTerms:termArray];
             
-            self.selectedTerm = [DYNAMIC_DATA.terms lastObject];
             
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
@@ -113,15 +111,6 @@
         }
     }
     return result;
-}
-
-- (void)p_saveTerms:(NSArray *)terms
-{
-    NSMutableArray *termDataArray = [NSMutableArray arrayWithCapacity:terms.count];
-    for (XujcTerm *term in terms) {
-        [termDataArray addObject:[term data]];
-    }
-    [[NSUserDefaults standardUserDefaults] setObject:termDataArray forKey:kUserDefaultsKeyXujcTerms];
 }
 
 @end

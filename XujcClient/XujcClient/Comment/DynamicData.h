@@ -31,6 +31,4 @@
 
 @property (copy, readonly, nonatomic) NSString *xujcKey;
 
-@property (strong, readonly, nonatomic) NSArray *terms;
-
 @end
