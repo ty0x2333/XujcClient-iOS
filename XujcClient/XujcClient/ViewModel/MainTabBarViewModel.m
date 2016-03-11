@@ -25,4 +25,9 @@
     return [[SignupViewModel alloc] init];
 }
 
+- (ScoreViewModel *)scoreViewModel
+{
+    return [[ScoreViewModel alloc] init];
+}
+
 @end

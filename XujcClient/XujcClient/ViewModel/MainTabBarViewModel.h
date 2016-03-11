@@ -10,6 +10,7 @@
 #import "ScheduleViewModel.h"
 #import "LoginViewModel.h"
 #import "SignupViewModel.h"
+#import "ScoreViewModel.h"
 
 @interface MainTabBarViewModel : NSObject
 
@@ -18,5 +19,7 @@
 - (LoginViewModel *)loginViewModel;
 
 - (SignupViewModel *)signupViewModel;
+
+- (ScoreViewModel *)scoreViewModel;
 
 @end
