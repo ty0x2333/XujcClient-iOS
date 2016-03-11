@@ -11,11 +11,14 @@
 #import "DynamicData.h"
 #import "XujcCourse.h"
 #import "XujcTerm.h"
+#import "CacheUtils.h"
 
 @interface ScheduleViewModel()
 
 @property (strong, nonatomic) XujcCourse *xujcCourse;
 @property (strong, nonatomic) XujcTerm *selectedTerm;
+
+@property (strong, nonatomic) NSArray<XujcTerm *> *terms;
 
 @end
 
@@ -72,6 +75,11 @@
                 [termArray addObject:term];
             }
             
+            [[CacheUtils instance] cacheTerms:termArray];
+            
+            NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"termId" ascending:NO];
+            self.terms = [termArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+            self.selectedTerm = [self.terms firstObject];
             
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
