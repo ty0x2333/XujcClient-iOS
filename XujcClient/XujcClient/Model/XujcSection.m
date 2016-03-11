@@ -36,18 +36,9 @@
 
 - (NSDate *)startTime:(NSDate *)currentDay
 {
-    NSDate *date = [XujcSection firstSectionStartTime:currentDay];
+    NSDate *date = [LESSON_TIME_CALCULATOR firstLessonStartTimeOfDay:currentDay];
     NSTimeInterval interval = [self timeIntervalRelativeToFirstSectionStartTime];
     return [date dateByAddingTimeInterval:interval];
-}
-
-+ (NSDate *)firstSectionStartTime:(NSDate *)currentDay
-{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:currentDay];
-    components.hour = 8;
-    components.minute = 0;
-    return [calendar dateFromComponents:components];
 }
 
 - (NSDate *)endTime

@@ -18,4 +18,6 @@
 
 - (NSDate *)firstLessonStartTime;
 
+- (NSDate *)firstLessonStartTimeOfDay:(NSDate *)dayDate;
+
 @end

@@ -37,6 +37,4 @@
 - (NSDate *)endTime;
 - (NSDate *)endTime:(NSDate *)currentDay;
 
-+ (NSDate *)firstSectionStartTime:(NSDate *)currentDay;
-
 @end

@@ -9,7 +9,11 @@
 #import "LessonTimeCalculator.h"
 #import "NSDate+Week.h"
 
-#define LESSON_TIME_CALCULATOR [LessonTimeCalculator instance]
+@interface LessonTimeCalculator()
+
+@property (strong, nonatomic) NSCalendar *calendar;
+
+@end
 
 @implementation LessonTimeCalculator
 
@@ -23,9 +27,34 @@
     return shareLessonTimeCalculatorInstance;
 }
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _calendar = [NSCalendar currentCalendar];
+    }
+    return self;
+}
+
 + (NSTimeInterval)lessonDuration
 {
     return 45 * kTimeIntervalOfMinute;
 }
+
+- (NSDate *)firstLessonStartTime
+{
+    NSDateComponents *components = [_calendar components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate date]];
+    components.hour = 8;
+    components.minute = 0;
+    return [_calendar dateFromComponents:components];
+}
+
+- (NSDate *)firstLessonStartTimeOfDay:(NSDate *)dayDate
+{
+    NSDateComponents *components = [_calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:dayDate];
+    components.hour = 8;
+    components.minute = 0;
+    return [_calendar dateFromComponents:components];
+}
+
 
 @end
