@@ -19,7 +19,6 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 @property (strong, nonatomic) ScoreViewModel *viewModel;
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray<XujcScore *> *scores;
 @property (assign, nonatomic) NSInteger currentSelected;
 
 @end
@@ -46,9 +45,12 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     [_tableView registerClass:[ScoreTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
     _currentSelected = -1;
     
-    _scores = [[NSMutableArray alloc] init];
-#warning test
-    [self requestScores];
+    [self.viewModel.fetchScoresSignal subscribeNext:^(id x) {
+        TyLogDebug(@"success");
+        [_tableView reloadData];
+    } error:^(NSError *error) {
+        TyLogDebug(@"error");
+    }];
 }
 
 - (void)viewDidLayoutSubviews
@@ -61,17 +63,15 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _scores.count;
+    return [self.viewModel scoreCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [[UITableViewCell alloc] initWithStyle:<#(UITableViewCellStyle)#> reuseIdentifier:<#(nullable NSString *)#>]
     ScoreTableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
-//    XujcScore *score = _scores[indexPath.row];
     ScoreTableViewCellViewModel *viewModel = [self.viewModel scoreTableViewCellViewModelForRowAtIndexPath:indexPath];
     cell.viewModel = viewModel;
-//    cell.detailHidden = _currentSelected != indexPath.row;
+    cell.detailHidden = _currentSelected != indexPath.row;
     return cell;
 }
 #pragma mark - UITableViewDelegate
@@ -94,23 +94,6 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     _currentSelected = _currentSelected == indexPath.row ? -1 : indexPath.row;
 //    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [tableView reloadData];
-}
-
-- (void)requestScores
-{
-    [_scores removeAllObjects];
-#warning test
-//    [XujcAPI scores:DYNAMIC_DATA.APIKey termId:@"20142" successBlock:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSArray *scoreDatas = responseObject;
-//        [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            XujcScore *xujcScore = [[XujcScore alloc] initWithJSONResopnse:obj];
-//            TyLogDebug(@"%@", xujcScore);
-//            [_scores addObject:xujcScore];
-//        }];
-//        [_tableView reloadData];
-//    } failureBlock:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        TyLogFatal(@"Failure:\n\tstatusCode: %ld,\n\tdetail: %@", ((NSHTTPURLResponse *)(task.response)).statusCode, error);
-//    }];
 }
 
 @end
