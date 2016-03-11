@@ -204,6 +204,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (NSDate *)currentTimeForCollectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout
 {
+    TyLogDebug(@"当前时间: %@", [NSDate date]);
     return [NSDate date];
 }
 

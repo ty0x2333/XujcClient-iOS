@@ -35,6 +35,11 @@
     return self;
 }
 
++ (NSInteger)earliestLessonNumber
+{
+    return 1;
+}
+
 + (NSInteger)lastLessonNumber
 {
     return 12;
