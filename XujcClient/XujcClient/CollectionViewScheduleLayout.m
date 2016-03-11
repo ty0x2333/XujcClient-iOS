@@ -58,15 +58,11 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 // Minute Timer
 @property (nonatomic, strong) NSTimer *minuteTimer;
 
-// Minute Height
-@property (nonatomic, readonly) CGFloat minuteHeight;
-
 // Caches
 @property (nonatomic, assign) BOOL needsToPopulateAttributesForAllSections;
 @property (nonatomic, strong) NSCache *cachedDayDateComponents;
 @property (nonatomic, strong) NSCache *cachedStartClassSectionComponents;
 @property (nonatomic, strong) NSCache *cachedEndClassSectionComponents;
-@property (nonatomic, strong) NSCache *cachedCurrentDateComponents;
 @property (nonatomic, strong) NSCache *cachedCurrentDate;
 @property (nonatomic, assign) CGFloat cachedMaxColumnHeight;
 
@@ -104,7 +100,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 - (CGFloat)stackedSectionHeight;
 - (CGFloat)stackedSectionHeightUpToSection:(NSInteger)upToSection;
 - (CGFloat)sectionHeight:(NSInteger)section;
-- (CGFloat)minuteHeight;
 // Z Index
 - (CGFloat)zIndexForElementKind:(NSString *)elementKind;
 - (CGFloat)zIndexForElementKind:(NSString *)elementKind floating:(BOOL)floating;
@@ -116,7 +111,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 - (NSInteger)startClassSectionIndexForIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)endClassSectionIndexForIndexPath:(NSIndexPath *)indexPath;
 - (NSDate *)currentTimeDate;
-- (NSDateComponents *)currentTimeDateComponents;
 
 @end
 
@@ -251,7 +245,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     // The current time is within the day
     XujcSection *earliestClassSection = [XujcSection sectionIndex:earliestLessonIndex];
     XujcSection *latestClassSection = [XujcSection sectionIndex:[LessonTimeCalculator lastLessonNumber]];
-    NSDateComponents *currentTimeDateComponents = [self currentTimeDateComponents];
     NSDate *currentTimeDate = [self currentTimeDate];
     
     BOOL currentTimeIndicatorVisible = ([currentTimeDate earlierDate:latestClassSection.endTime] && [currentTimeDate laterDate:earliestClassSection.startTime]);
@@ -259,11 +252,11 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     currentTimeHorizontalGridlineAttributes.hidden = !currentTimeIndicatorVisible;
     
     if (currentTimeIndicatorVisible) {
-        NSInteger currentLessonNumber = [LESSON_TIME_CALCULATOR currentLessonNumberByTime:currentTimeDate];
-        TyLogDebug(@"当前是第 %d 节", currentLessonNumber);
+        CGFloat lessonProgress = [LESSON_TIME_CALCULATOR lessonProgress:currentTimeDate];
+        TyLogDebug(@"当前课程进度: %f", lessonProgress);
         
         // The y value of the current time
-        CGFloat timeY = (calendarContentMinY + nearbyintf(((currentLessonNumber - earliestLessonIndex) * _classSectionHeight) + ((currentTimeDateComponents.minute / [LessonTimeCalculator lessonDuration]) * self.minuteHeight)));
+        CGFloat timeY = calendarContentMinY + nearbyintf(lessonProgress * _classSectionHeight);
 
         CGFloat currentTimeIndicatorMinY = (timeY - nearbyintf(self.currentTimeIndicatorSize.height / 2.0));
         CGFloat currentTimeIndicatorMinX = (fmaxf(self.collectionView.contentOffset.x, 0.0) + (self.timeRowHeaderWidth - self.currentTimeIndicatorSize.width));
@@ -534,7 +527,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     _cachedStartClassSectionComponents = [NSCache new];
     _cachedEndClassSectionComponents = [NSCache new];
     _cachedCurrentDate = [NSCache new];
-    self.cachedCurrentDateComponents = [NSCache new];
     self.cachedMaxColumnHeight = CGFLOAT_MIN;
     self.cachedColumnHeights = [NSMutableDictionary new];
     self.cachedEarliestClassSectionIndexs = [NSMutableDictionary new];
@@ -582,7 +574,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 {
     // Invalidate cached current date componets (since the minute's changed!)
     [_cachedCurrentDate removeAllObjects];
-    [self.cachedCurrentDateComponents removeAllObjects];
     [self invalidateLayout];
 }
 
@@ -627,7 +618,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     [_cachedStartClassSectionComponents removeAllObjects];
     [_cachedEndClassSectionComponents removeAllObjects];
     [_cachedCurrentDate removeAllObjects];
-    [self.cachedCurrentDateComponents removeAllObjects];
     
     // Invalidate cached interface sizing values
     self.cachedMaxColumnHeight = CGFLOAT_MIN;
@@ -787,11 +777,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     }
 }
 
-- (CGFloat)minuteHeight
-{
-    return (_classSectionHeight / ([LessonTimeCalculator lessonDuration] / kTimeIntervalOfMinute));
-}
-
 #pragma mark Z Index
 
 - (CGFloat)zIndexForElementKind:(NSString *)elementKind
@@ -934,19 +919,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     [_cachedCurrentDate setObject:date forKey:@(0)];
     return date;
-}
-
-- (NSDateComponents *)currentTimeDateComponents
-{
-    if ([self.cachedCurrentDateComponents objectForKey:@(0)]) {
-        return [self.cachedCurrentDateComponents objectForKey:@(0)];
-    }
-    
-    NSDate *date = [self currentTimeDate];
-    NSDateComponents *currentTime = [[NSCalendar currentCalendar] components:(NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
-    
-    [self.cachedCurrentDateComponents setObject:currentTime forKey:@(0)];
-    return currentTime;
 }
 
 @end

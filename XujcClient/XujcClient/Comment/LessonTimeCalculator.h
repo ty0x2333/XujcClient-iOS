@@ -28,4 +28,6 @@
 
 - (NSInteger)currentLessonNumberByTime:(NSDate *)date;
 
+- (CGFloat)lessonProgress:(NSDate *)currentDate;
+
 @end

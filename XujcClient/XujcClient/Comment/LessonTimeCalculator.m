@@ -99,17 +99,36 @@
 
 - (NSInteger)currentLessonNumberByTime:(NSDate *)date
 {
-    NSInteger currentLessonNumbser = 0;
+    NSInteger currentLessonNumber = 0;
     NSDateComponents *components = [_calendar components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
     NSTimeInterval timeIntervalRelativeToFirstLessonStartTime = (components.hour - 8) * kTimeIntervalOfHour + components.minute * kTimeIntervalOfMinute;
     for (NSInteger i = [LessonTimeCalculator earliestLessonNumber]; i < [LessonTimeCalculator lastLessonNumber]; ++i) {
         NSTimeInterval interval = [self timeIntervalRelativeToFirstLessonStartTime:i] + [LessonTimeCalculator lessonDuration];
         if (timeIntervalRelativeToFirstLessonStartTime < interval) {
-            currentLessonNumbser = i;
+            currentLessonNumber = i;
             break;
         }
     }
-    return currentLessonNumbser;
+    return currentLessonNumber;
+}
+
+- (CGFloat)lessonProgress:(NSDate *)currentDate
+{
+    NSInteger currentLessonNumber = 0;
+    CGFloat currentLessProgress = 0;
+    NSDateComponents *components = [_calendar components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:currentDate];
+    NSTimeInterval timeIntervalRelativeToFirstLessonStartTime = (components.hour - 8) * kTimeIntervalOfHour + components.minute * kTimeIntervalOfMinute;
+    
+    NSTimeInterval lessonDuration = [LessonTimeCalculator lessonDuration];
+    for (NSInteger i = [LessonTimeCalculator earliestLessonNumber]; i < [LessonTimeCalculator lastLessonNumber]; ++i) {
+        NSTimeInterval interval = [self timeIntervalRelativeToFirstLessonStartTime:i] + lessonDuration;
+        if (timeIntervalRelativeToFirstLessonStartTime < interval) {
+            currentLessonNumber = i;
+            currentLessProgress = MAX(1 - (interval - timeIntervalRelativeToFirstLessonStartTime) / lessonDuration, 0.f);
+            break;
+        }
+    }
+    return currentLessonNumber - 1 + currentLessProgress;
 }
 
 @end
