@@ -14,6 +14,8 @@
 
 static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
+static CGFloat const kTableViewMarginHorizontal = 5.f;
+
 @interface ScoreViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) ScoreViewModel *viewModel;
@@ -43,18 +45,18 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     [self.view addSubview:_tableView];
     [_tableView registerClass:[ScoreTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
     
+    [_tableView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.equalTo(self.view);
+        make.leading.equalTo(self.view).with.offset(kTableViewMarginHorizontal);
+        make.trailing.equalTo(self.view).with.offset(-kTableViewMarginHorizontal);
+    }];
+    
     [self.viewModel.fetchScoresSignal subscribeNext:^(id x) {
         TyLogDebug(@"success");
         [_tableView reloadData];
     } error:^(NSError *error) {
         TyLogDebug(@"error");
     }];
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    _tableView.frame = [self.view bounds];
 }
 
 #pragma mark - UITableViewDataSource
