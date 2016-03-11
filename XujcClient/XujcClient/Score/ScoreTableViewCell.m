@@ -8,12 +8,14 @@
 
 #import "ScoreTableViewCell.h"
 #import "XujcScore.h"
-#import "UIView+BorderLine.h"
 
 static const CGFloat kFontSize = 12.f;
 static const CGFloat kContentEdgeInsetVertical = 8.f;
 static const CGFloat kContentEdgeHorizontal = 12.f;
 static const CGFloat kArrowSize = 16.f;
+
+static const CGFloat kBorderWith = .5f;
+static const CGFloat kCornerRadius = 4.f;
 
 @interface ScoreTableViewCell()
 
@@ -32,9 +34,9 @@ static const CGFloat kArrowSize = 16.f;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier]) {
-        self.ty_borderEdge = UIRectEdgeBottom;
-        self.ty_borderColor = [UIColor blackColor].CGColor;
-        self.ty_borderWidth = 0.2f;
+        self.layer.borderColor = [UIColor ty_border].CGColor;
+        self.layer.borderWidth = kBorderWith;
+        self.layer.cornerRadius = kCornerRadius;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         _courseNameLabel = [[UILabel alloc] init];
         _courseNameLabel.textColor = [UIColor ty_textBlack];
