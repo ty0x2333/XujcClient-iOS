@@ -7,6 +7,7 @@
  */
 #import "CollectionViewScheduleLayout.h"
 #import <CupertinoYankee/NSDate+CupertinoYankee.h>
+#import "LessonTimeCalculator.h"
 
 NSString * const MSCollectionElementKindTimeRowHeader = @"MSCollectionElementKindTimeRow";
 NSString * const MSCollectionElementKindDayColumnHeader = @"MSCollectionElementKindDayHeader";
@@ -270,13 +271,15 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
         NSInteger currentClassSectionIndex = 0;
         for (NSInteger index = earliestClassSectionIndex; index < latestClassSectionIndex; ++index) {
             XujcSection *section = [XujcSection sectionIndex:index];
+            TyLogDebug(@"第 %d 节课的结束时间: %@", index, section.endTime);
             if ([section.endTime laterDate:currentTimeDate]){
                 currentClassSectionIndex = index;
             }
         }
+        TyLogDebug(@"当前是第 %d 节", currentClassSectionIndex);
         
         // The y value of the current time
-        CGFloat timeY = (calendarContentMinY + nearbyintf(((currentClassSectionIndex - earliestClassSectionIndex) * _classSectionHeight) + ((currentTimeDateComponents.minute / [XujcSection sectionDuration]) * self.minuteHeight)));
+        CGFloat timeY = (calendarContentMinY + nearbyintf(((currentClassSectionIndex - earliestClassSectionIndex) * _classSectionHeight) + ((currentTimeDateComponents.minute / [LessonTimeCalculator lessonDuration]) * self.minuteHeight)));
 
         CGFloat currentTimeIndicatorMinY = (timeY - nearbyintf(self.currentTimeIndicatorSize.height / 2.0));
         CGFloat currentTimeIndicatorMinX = (fmaxf(self.collectionView.contentOffset.x, 0.0) + (self.timeRowHeaderWidth - self.currentTimeIndicatorSize.width));
@@ -807,7 +810,7 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 - (CGFloat)minuteHeight
 {
-    return (_classSectionHeight / ([XujcSection sectionDuration] / kTimeIntervalOfMinute));
+    return (_classSectionHeight / ([LessonTimeCalculator lessonDuration] / kTimeIntervalOfMinute));
 }
 
 #pragma mark Z Index

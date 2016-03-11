@@ -7,6 +7,7 @@
  */
 
 #import "XujcSection.h"
+#import "LessonTimeCalculator.h"
 
 @implementation XujcSection
 
@@ -60,12 +61,12 @@
 
 - (NSDate *)endTime
 {
-    return [[self startTime] dateByAddingTimeInterval:[XujcSection sectionDuration]];
+    return [[self startTime] dateByAddingTimeInterval:[LessonTimeCalculator lessonDuration]];
 }
 
 - (NSDate *)endTime:(NSDate *)currentDay
 {
-    return [[self startTime:currentDay] dateByAddingTimeInterval:[XujcSection sectionDuration]];
+    return [[self startTime:currentDay] dateByAddingTimeInterval:[LessonTimeCalculator lessonDuration]];
 }
 
 #pragma mark - Getter
@@ -73,11 +74,6 @@
 - (NSInteger)sectionIndex
 {
     return [XujcSection sectionIndexFromSectionNumber:self.sectionNumber];
-}
-
-+ (NSInteger)sectionDuration
-{
-    return 45 * kTimeIntervalOfMinute;
 }
 
 #pragma mark - Private Helper

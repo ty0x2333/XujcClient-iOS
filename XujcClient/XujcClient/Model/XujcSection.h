@@ -30,10 +30,6 @@
  *  @param sectionIndex 课程节的序号
  */
 + (instancetype)sectionIndex:(NSInteger)sectionIndex;
-/**
- *  @brief  课程节持续时间
- */
-+ (NSInteger)sectionDuration;
 
 - (NSDate *)startTime;
 - (NSDate *)startTime:(NSDate *)currentDay;
