@@ -6,10 +6,13 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "RequestViewModel.h"
 #import "ScoreTableViewCellViewModel.h"
 
-@interface ScoreViewModel : NSObject
+@interface ScoreViewModel : RequestViewModel
+
+@property (strong, nonatomic) RACSignal *fetchScoresSignal;
+
 
 - (ScoreTableViewCellViewModel *)scoreTableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath;
 
