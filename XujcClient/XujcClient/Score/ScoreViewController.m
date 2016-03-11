@@ -19,7 +19,6 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 @property (strong, nonatomic) ScoreViewModel *viewModel;
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (assign, nonatomic) NSInteger currentSelected;
 
 @end
 
@@ -43,7 +42,6 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[ScoreTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
-    _currentSelected = -1;
     
     [self.viewModel.fetchScoresSignal subscribeNext:^(id x) {
         TyLogDebug(@"success");
@@ -71,7 +69,6 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     ScoreTableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
     ScoreTableViewCellViewModel *viewModel = [self.viewModel scoreTableViewCellViewModelForRowAtIndexPath:indexPath];
     cell.viewModel = viewModel;
-    cell.detailHidden = _currentSelected != indexPath.row;
     return cell;
 }
 
@@ -95,12 +92,12 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 //    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 //}
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TyLogDebug(@"didSelectRowAtIndexPath: %d", indexPath.row);
-    _currentSelected = _currentSelected == indexPath.row ? -1 : indexPath.row;
-//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [tableView reloadData];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    TyLogDebug(@"didSelectRowAtIndexPath: %d", indexPath.row);
+//    _currentSelected = _currentSelected == indexPath.row ? -1 : indexPath.row;
+////    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    [tableView reloadData];
+//}
 
 @end

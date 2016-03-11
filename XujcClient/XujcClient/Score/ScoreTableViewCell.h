@@ -13,6 +13,4 @@
 
 @property (strong, nonatomic) ScoreTableViewCellViewModel *viewModel;
 
-@property (assign, nonatomic) BOOL detailHidden;
-
 @end

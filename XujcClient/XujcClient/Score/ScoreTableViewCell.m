@@ -21,12 +21,10 @@ static const CGFloat kCornerRadius = 4.f;
 
 @property (strong, nonatomic) UILabel *courseNameLabel;
 @property (strong, nonatomic) UILabel *scoreLabel;
-@property (strong, nonatomic) UIImageView *arrowImageView;
 @property (strong, nonatomic) UIView *courseDetailView;
 @property (strong, nonatomic) UILabel *detailStudyWayLabel;
 @property (strong, nonatomic) UILabel *creditLabel;
 
-@property (strong, nonatomic) MASConstraint *courseNameLabelBottomConstraint;
 @end
 
 @implementation ScoreTableViewCell
@@ -43,17 +41,12 @@ static const CGFloat kCornerRadius = 4.f;
         _courseNameLabel.font = [UIFont systemFontOfSize:kFontSize];
         [self.contentView addSubview:_courseNameLabel];
         
-        _arrowImageView = [[UIImageView alloc] init];
-        _arrowImageView.image = [UIImage imageNamed:@"arrow_right"];
-        [self.contentView addSubview:_arrowImageView];
-        
         _scoreLabel = [[UILabel alloc] init];
         _scoreLabel.textAlignment = NSTextAlignmentRight;
         _scoreLabel.font = [UIFont systemFontOfSize:kFontSize];
         [self.contentView addSubview:_scoreLabel];
         
         _courseDetailView = [[UIView alloc] init];
-        _courseDetailView.hidden = YES;
         _courseDetailView.backgroundColor = [UIColor ty_backgroundHighlight];
         [self.contentView addSubview:_courseDetailView];
         
@@ -68,18 +61,7 @@ static const CGFloat kCornerRadius = 4.f;
         _creditLabel.font = [UIFont systemFontOfSize:kFontSize];
         [_courseDetailView addSubview:_creditLabel];
         
-        _detailHidden = YES;
-        
         @weakify(self);
-        
-        [_arrowImageView makeConstraints:^(MASConstraintMaker *make) {
-            @strongify(self);
-            make.leading.equalTo(self.contentView).offset(kContentEdgeHorizontal);
-            make.height.equalTo(@(kArrowSize));
-            make.width.equalTo(self.arrowImageView.height);
-            make.top.equalTo(self.courseNameLabel);
-        }];
-        
         [_scoreLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.trailing.equalTo(self.contentView).offset(-kContentEdgeHorizontal);
@@ -111,25 +93,10 @@ static const CGFloat kCornerRadius = 4.f;
         
         [_courseNameLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.left.equalTo(self.arrowImageView.mas_right);
+            make.leading.equalTo(self.contentView).offset(kContentEdgeHorizontal);
             make.top.equalTo(self.contentView).offset(kContentEdgeInsetVertical);
             make.right.equalTo(self.scoreLabel.mas_left).with.offset(-kContentEdgeInsetVertical);
-            self.courseNameLabelBottomConstraint = make.bottom.equalTo(self.contentView).with.offset(-kContentEdgeInsetVertical);
-        }];
-        
-        [RACObserve(self, detailHidden) subscribeNext:^(NSNumber *value) {
-            BOOL hidden = [value boolValue];
-            _courseDetailView.hidden = hidden;
-            _arrowImageView.image = [UIImage imageNamed:hidden ? @"arrow_right" : @"arrow_down"];
-            [_courseNameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-                [self.courseNameLabelBottomConstraint uninstall];
-                if (hidden) {
-                    self.courseNameLabelBottomConstraint = make.bottom.equalTo(self.contentView).with.offset(-kContentEdgeInsetVertical);
-                } else {
-                    self.courseNameLabelBottomConstraint = make.bottom.equalTo(_courseDetailView.mas_top).with.offset(-kContentEdgeInsetVertical);
-                }
-            }];
-            [super updateConstraints];
+            make.bottom.equalTo(_courseDetailView.mas_top).with.offset(-kContentEdgeInsetVertical);
         }];
     }
     return self;
