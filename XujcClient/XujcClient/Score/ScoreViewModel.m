@@ -17,4 +17,10 @@
 
 @implementation ScoreViewModel
 
+- (ScoreTableViewCellViewModel *)scoreTableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+#warning test
+    return nil;
+}
+
 @end

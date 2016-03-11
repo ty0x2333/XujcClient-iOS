@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XujcScore.h"
 
 @interface ScoreTableViewCellViewModel : NSObject
+
+@property (strong, nonatomic) XujcScore *xujcScoreModel;
 
 @end

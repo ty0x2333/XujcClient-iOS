@@ -105,25 +105,6 @@ static const CGFloat kArrowSize = 16.f;
             make.bottom.equalTo(self.courseDetailView.mas_bottom).with.offset(-kContentEdgeInsetVertical);
         }];
         
-        RACSignal *scoreSignal = RACObserve(self, xujcScoreModel.score);
-        RAC(_scoreLabel, text) = [scoreSignal map:^id(NSNumber *value) {
-            return [value stringValue];
-        }];
-        
-        RAC(_scoreLabel, textColor) = [scoreSignal map:^id(NSNumber *value) {
-            return [value integerValue] > 59 ? [UIColor ty_textGreen] : [UIColor ty_textRed];
-        }];
-        
-        RAC(_courseNameLabel, text) = RACObserve(self, xujcScoreModel.courseName);
-        
-        RAC(_detailStudyWayLabel, text) = [RACObserve(self, xujcScoreModel.studyWay) map:^id(NSString *value) {
-            return [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"StudyWay", nil), value];
-        }];
-        
-        RAC(_creditLabel, text) = [RACObserve(self, xujcScoreModel.credit) map:^id(NSNumber *value) {
-            return [NSString stringWithFormat:@"%@: %ld", NSLocalizedString(@"Credit", nil), (long)[value integerValue]];
-        }];
-        
         [RACObserve(self, detailHidden) subscribeNext:^(NSNumber *value) {
             BOOL hidden = [value boolValue];
             _courseDetailView.hidden = hidden;
@@ -143,6 +124,32 @@ static const CGFloat kArrowSize = 16.f;
         }];
     }
     return self;
+}
+
+- (void)setViewModel:(ScoreTableViewCellViewModel *)viewModel
+{
+    if (_viewModel == viewModel) {
+        return;
+    }
+    _viewModel = viewModel;
+    RACSignal *scoreSignal = RACObserve(self, viewModel.xujcScoreModel.score);
+    RAC(_scoreLabel, text) = [scoreSignal map:^id(NSNumber *value) {
+        return [value stringValue];
+    }];
+    
+    RAC(_scoreLabel, textColor) = [scoreSignal map:^id(NSNumber *value) {
+        return [value integerValue] > 59 ? [UIColor ty_textGreen] : [UIColor ty_textRed];
+    }];
+    
+    RAC(_courseNameLabel, text) = RACObserve(self, viewModel.xujcScoreModel.courseName);
+    
+    RAC(_detailStudyWayLabel, text) = [RACObserve(self, viewModel.xujcScoreModel.studyWay) map:^id(NSString *value) {
+        return [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"StudyWay", nil), value];
+    }];
+    
+    RAC(_creditLabel, text) = [RACObserve(self, viewModel.xujcScoreModel.credit) map:^id(NSNumber *value) {
+        return [NSString stringWithFormat:@"%@: %ld", NSLocalizedString(@"Credit", nil), (long)[value integerValue]];
+    }];
 }
 
 @end

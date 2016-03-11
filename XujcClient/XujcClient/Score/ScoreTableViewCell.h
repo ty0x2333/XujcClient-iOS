@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class XujcScore;
+#import "ScoreTableViewCellViewModel.h"
 
 @interface ScoreTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) XujcScore *xujcScoreModel;
+@property (strong, nonatomic) ScoreTableViewCellViewModel *viewModel;
 
 @property (assign, nonatomic) BOOL detailHidden;
 

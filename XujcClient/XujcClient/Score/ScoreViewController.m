@@ -68,10 +68,10 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 {
 //    [[UITableViewCell alloc] initWithStyle:<#(UITableViewCellStyle)#> reuseIdentifier:<#(nullable NSString *)#>]
     ScoreTableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
-    XujcScore *score = _scores[indexPath.row];
-#warning xujcScoreModel is strong
-    cell.xujcScoreModel = score;
-    cell.detailHidden = _currentSelected != indexPath.row;
+//    XujcScore *score = _scores[indexPath.row];
+    ScoreTableViewCellViewModel *viewModel = [self.viewModel scoreTableViewCellViewModelForRowAtIndexPath:indexPath];
+    cell.viewModel = viewModel;
+//    cell.detailHidden = _currentSelected != indexPath.row;
     return cell;
 }
 #pragma mark - UITableViewDelegate
