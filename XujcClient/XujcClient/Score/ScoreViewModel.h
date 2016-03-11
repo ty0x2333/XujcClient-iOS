@@ -15,6 +15,6 @@
 
 - (NSInteger)scoreCount;
 
-- (ScoreTableViewCellViewModel *)scoreTableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (ScoreTableViewCellViewModel *)scoreTableViewCellViewModelForRowAtIndex:(NSUInteger)index;
 
 @end

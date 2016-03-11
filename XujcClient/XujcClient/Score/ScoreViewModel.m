@@ -19,10 +19,10 @@
 
 @implementation ScoreViewModel
 
-- (ScoreTableViewCellViewModel *)scoreTableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath
+- (ScoreTableViewCellViewModel *)scoreTableViewCellViewModelForRowAtIndex:(NSUInteger)index
 {
     ScoreTableViewCellViewModel *cellViewModel = [[ScoreTableViewCellViewModel alloc] init];
-    XujcScore *scoreModel = [_scores objectAtIndex:indexPath.row];
+    XujcScore *scoreModel = [_scores objectAtIndex:index];
     cellViewModel.xujcScoreModel = scoreModel;
     return cellViewModel;
 }
