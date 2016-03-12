@@ -32,10 +32,10 @@
             return [self selectedTermName];
         }];
         
-        _selectedTermIdSignal = [selectedIndexSignal map:^id(id value) {
+        _selectedTermIdSignal = [[selectedIndexSignal map:^id(id value) {
             @strongify(self);
             return [self selectedTermId];
-        }];
+        }] distinctUntilChanged];
     }
     return self;
 }
