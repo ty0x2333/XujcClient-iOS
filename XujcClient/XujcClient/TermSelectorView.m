@@ -7,10 +7,11 @@
 //
 
 #import "TermSelectorView.h"
+#import "TermTableViewCell.h"
 
-static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
+static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdentifier";
 
-@interface TermSelectorView()<UITableViewDataSource>
+@interface TermSelectorView()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 
@@ -39,7 +40,8 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     _tableView = [[UITableView alloc] init];
     _tableView.autoresizesSubviews = YES;
     _tableView.dataSource = self;
-    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
+    _tableView.delegate = self;
+    [_tableView registerClass:[TermTableViewCell class] forCellReuseIdentifier:kTermTableViewCellIdentifier];
     [self addSubview:_tableView];
     
     _tableView.backgroundColor = [UIColor greenColor];
@@ -60,21 +62,24 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     self.frame = (CGRect){self.frame.origin, CGSizeMake(width, CGRectGetHeight(_tableView.bounds))};
 }
 
+#pragma mark - UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 4;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TermTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTermTableViewCellIdentifier forIndexPath:indexPath];
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50.f;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    return cell;
 }
 
 @end
