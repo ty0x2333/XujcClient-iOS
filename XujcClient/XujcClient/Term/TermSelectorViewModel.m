@@ -57,6 +57,7 @@
             
             [[CacheUtils instance] cacheTerms:termArray];
             
+            // sort DESC
             NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"termId" ascending:NO];
             self.terms = [termArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
             self.selectedIndex = 0;
@@ -64,6 +65,10 @@
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            // load data from cache database
+            self.terms = [[CacheUtils instance] termsFormCache];
+            self.selectedIndex = 0;
+            
             [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
