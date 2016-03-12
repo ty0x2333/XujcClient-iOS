@@ -57,4 +57,11 @@
     return _terms.count;
 }
 
+- (TermTableViewCellViewModel *)termTableViewCellViewModelAtIndex:(NSInteger)index
+{
+    TermTableViewCellViewModel *viewModel = [[TermTableViewCellViewModel alloc] init];
+    viewModel.xujcTermModel = [_terms objectAtIndex:index];
+    return viewModel;
+}
+
 @end

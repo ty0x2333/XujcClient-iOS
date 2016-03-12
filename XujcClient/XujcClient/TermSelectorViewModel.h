@@ -8,6 +8,7 @@
 
 #import "RequestViewModel.h"
 #import "XujcTerm.h"
+#import "TermTableViewCellViewModel.h"
 
 @interface TermSelectorViewModel : RequestViewModel
 
@@ -16,5 +17,7 @@
 @property (strong, nonatomic) XujcTerm *selectedTerm;
 
 - (NSInteger)termCount;
+
+- (TermTableViewCellViewModel *)termTableViewCellViewModelAtIndex:(NSInteger)index;
 
 @end
