@@ -15,6 +15,8 @@ static CGFloat const kSuccessHUDShowTime = 2.f;
 static NSString * const kUserDefaultsKeyApiKey = @"api_key";
 static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
 
+#define SCREEN_SIZE [UIScreen mainScreen].bounds.size
+
 #define DOCUMENT_DIRECTORY [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
 
 #endif /* AppConfig_h */
