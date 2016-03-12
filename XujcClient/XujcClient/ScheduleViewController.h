@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ScheduleViewModel.h"
 
-@interface ScheduleViewController : UIViewController<UICollectionViewDataSource>
+@interface ScheduleViewController : UIViewController
 
 - (instancetype)initWithViewModel:(ScheduleViewModel *)viewModel;
 

@@ -31,7 +31,7 @@ static NSString * const kCourseEventCellIdentifier = @"CourseEventCellIdentifier
 static NSString * const kScheduleColumnHeaderReuseIdentifier = @"ScheduleColumnHeaderReuseIdentifier";
 static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderReuseIdentifier";
 
-@interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout>
+@interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout, UICollectionViewDataSource>
 
 @property (strong, nonatomic) ScheduleViewModel *viewModel;
 
@@ -95,6 +95,8 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     [self.collectionViewCalendarLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
     
     [self bindViewModel];
+    
+    [self setupCollectionView];
 }
 
 - (void)bindViewModel
@@ -120,35 +122,11 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self setupCollectionView];
-    
-    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Setup
 
 - (void)setupCollectionView
 {
-    CGFloat navigationBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
-    
-    CGFloat navigationBarBottomY = self.navigationController.navigationBar.frame.origin.y + navigationBarHeight;
-    
-    CGFloat statusBarHeight = CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]);
-    
-    CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
-    
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, navigationBarBottomY, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - navigationBarHeight - tabBarHeight - statusBarHeight)
-                                         collectionViewLayout:self.collectionViewCalendarLayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.collectionViewCalendarLayout];
     
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
@@ -163,11 +141,13 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     
     [self.view addSubview:_collectionView];
     
-    CGFloat width = CGRectGetWidth(_collectionView.bounds);
-    CGFloat timeRowHeaderWidth = self.collectionViewCalendarLayout.timeRowHeaderWidth;
-    //    CGFloat rightMargin = self.collectionViewCalendarLayout.contentMargin.right;
-    CGFloat layoutSectionWidth = (width - timeRowHeaderWidth) / 4;
+    [_collectionView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.leading.trailing.equalTo(self.view);
+    }];
     
+    CGFloat width = SCREEN_SIZE.width;
+    CGFloat timeRowHeaderWidth = self.collectionViewCalendarLayout.timeRowHeaderWidth;
+    CGFloat layoutSectionWidth = (width - timeRowHeaderWidth) / 4;
     self.collectionViewCalendarLayout.sectionWidth = layoutSectionWidth;
 
 }
