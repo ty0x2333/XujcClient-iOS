@@ -6,10 +6,10 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TermBaseViewController.h"
 #import "ScoreViewModel.h"
 
-@interface ScoreViewController : UIViewController
+@interface ScoreViewController : TermBaseViewController
 
 - (instancetype)initWithViewModel:(ScoreViewModel *)viewModel;
 

@@ -21,8 +21,6 @@
 #import "XujcTerm.h"
 #import "XujcCourse.h"
 #import "DynamicData.h"
-#import <LMDropdownView.h>
-#import "TermSelectorView.h"
 #import "ScheduleColumnHeader.h"
 
 static NSString * const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
@@ -38,9 +36,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 @property(nonatomic, strong) CollectionViewScheduleLayout *collectionViewCalendarLayout;
 @property(nonatomic, strong) UICollectionView *collectionView;
 
-@property (strong, nonatomic) LMDropdownView *dropdownView;
-@property (strong, nonatomic) UIButton *termButton;
-@property (strong, nonatomic) TermSelectorView *termSelectorView;
 @end
 
 @implementation ScheduleViewController
@@ -56,32 +51,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _termButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(200, 0)}];
-    [_termButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-
-    self.navigationItem.titleView = _termButton;
-    @weakify(self);
-    _termButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        TyLogDebug(@"term button clicked");
-        if ([self.dropdownView isOpen]) {
-            [self.dropdownView hide];
-        } else {
-            self.dropdownView.contentBackgroundColor = [UIColor colorWithRed:40.0/255 green:196.0/255 blue:80.0/255 alpha:1];
-            [self.dropdownView showInView:self.navigationController.visibleViewController.view withContentView:self.termSelectorView atOrigin:CGPointMake(0, CGRectGetMaxY(self.navigationController.navigationBar.frame))];
-        }
-        return [RACSignal empty];
-    }];
-    
-    _termSelectorView = [[TermSelectorView alloc] initWithViewModel:self.viewModel.termSelectorViewModel];
-    _termSelectorView.backgroundColor = [UIColor redColor];
-    
-    _dropdownView = [[LMDropdownView alloc] init];
-//    self.dropdownView.closedScale = 0.85;
-//    self.dropdownView.blurRadius = 5;
-//    self.dropdownView.blackMaskAlpha = 0.5;
-//    self.dropdownView.animationDuration = 0.5;
-//    self.dropdownView.animationBounceHeight = 20;
     
     self.collectionViewCalendarLayout = [[CollectionViewScheduleLayout alloc] init];
     self.collectionViewCalendarLayout.delegate = self;
@@ -101,13 +70,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (void)bindViewModel
 {
-    @weakify(self);
-    [self.viewModel.termSelectorViewModel.selectedTermNameSignal subscribeNext:^(NSString *value) {
-        @strongify(self);
-        [self.termButton setTitle:value forState:UIControlStateNormal];
-        [self.dropdownView hide];
-    }];
-    
     [self.viewModel.termSelectorViewModel.selectedTermIdSignal subscribeNext:^(id x) {
         [self.viewModel.fetchScheduleCourseSignal subscribeNext:^(id x) {
             [self.collectionViewCalendarLayout invalidateLayoutCache];

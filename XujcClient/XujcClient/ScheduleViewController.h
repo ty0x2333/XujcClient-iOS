@@ -6,10 +6,10 @@
  * @copyright   Copyright © 2015年 luckytianyiyan. All rights reserved.
  */
 
-#import <UIKit/UIKit.h>
+#import "TermBaseViewController.h"
 #import "ScheduleViewModel.h"
 
-@interface ScheduleViewController : UIViewController
+@interface ScheduleViewController : TermBaseViewController
 
 - (instancetype)initWithViewModel:(ScheduleViewModel *)viewModel;
 
