@@ -15,4 +15,11 @@
 
 - (BOOL)cacheTerms:(NSArray<XujcTerm *> *)terms;
 
+/**
+ *  @brief terms in cache database
+ *
+ *  @note  terms DESC
+ */
+- (NSArray<XujcTerm *> *)termsFormCache;
+
 @end

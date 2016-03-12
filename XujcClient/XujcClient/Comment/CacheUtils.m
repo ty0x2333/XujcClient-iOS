@@ -51,4 +51,24 @@
     return isSuccess;
 }
 
+- (NSArray<XujcTerm *> *)termsFormCache
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
+        NSString *sql = @"SELECT id, name FROM term ORDER BY id DESC;";
+        
+        FMResultSet *set = [db executeQuery:sql];
+        
+        while ([set next]) {
+            XujcTerm *term = [[XujcTerm alloc] init];
+            term.termId = [set objectForColumnName:@"id"];
+            term.displayName = [set objectForColumnName:@"name"];
+            [result addObject:term];
+        }
+
+        [set close];
+    }];
+    return result;
+}
+
 @end
