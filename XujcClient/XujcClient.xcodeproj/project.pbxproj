@@ -38,9 +38,6 @@
 		70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B681C85DD7D00B0C5DA /* BindingAccountViewController.m */; };
 		70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B6C1C85DDB100B0C5DA /* LoginViewController.m */; };
 		70443B6F1C85F09400B0C5DA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70443B6E1C85F09400B0C5DA /* logo.png */; };
-		705C4DF11C93A15700F8F196 /* TermSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705C4DF01C93A15700F8F196 /* TermSelectorView.m */; };
-		705C4DF41C93A30D00F8F196 /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705C4DF31C93A30D00F8F196 /* TermTableViewCell.m */; };
-		705C4DF71C9448F900F8F196 /* TermSelectorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 705C4DF61C9448F900F8F196 /* TermSelectorViewModel.m */; };
 		7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */; };
 		7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6841C89FC260074C716 /* NSString+Validator.m */; };
 		7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m */; };
@@ -63,7 +60,10 @@
 		7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6CB1C9333690074C716 /* ScoreTableViewCellViewModel.m */; };
 		7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6D31C9369F50074C716 /* FMDatabaseQueue+Utils.m */; };
 		7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6D61C93769A0074C716 /* CacheUtils.m */; };
-		70730D661C947857007CBEBB /* TermTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D651C947857007CBEBB /* TermTableViewCellViewModel.m */; };
+		70730D701C947A41007CBEBB /* TermSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D691C947A41007CBEBB /* TermSelectorView.m */; };
+		70730D711C947A41007CBEBB /* TermSelectorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6B1C947A41007CBEBB /* TermSelectorViewModel.m */; };
+		70730D721C947A41007CBEBB /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6D1C947A41007CBEBB /* TermTableViewCell.m */; };
+		70730D731C947A41007CBEBB /* TermTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -140,12 +140,6 @@
 		70443B6B1C85DDB100B0C5DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		70443B6C1C85DDB100B0C5DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		70443B6E1C85F09400B0C5DA /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		705C4DEF1C93A15700F8F196 /* TermSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermSelectorView.h; sourceTree = "<group>"; };
-		705C4DF01C93A15700F8F196 /* TermSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermSelectorView.m; sourceTree = "<group>"; };
-		705C4DF21C93A30D00F8F196 /* TermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermTableViewCell.h; sourceTree = "<group>"; };
-		705C4DF31C93A30D00F8F196 /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermTableViewCell.m; sourceTree = "<group>"; };
-		705C4DF51C9448F900F8F196 /* TermSelectorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermSelectorViewModel.h; sourceTree = "<group>"; };
-		705C4DF61C9448F900F8F196 /* TermSelectorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermSelectorViewModel.m; sourceTree = "<group>"; };
 		7062B67D1C887B020074C716 /* LoginTextFieldGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTextFieldGroupView.h; sourceTree = "<group>"; };
 		7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextFieldGroupView.m; sourceTree = "<group>"; };
 		7062B6831C89FC260074C716 /* NSString+Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validator.h"; sourceTree = "<group>"; };
@@ -195,8 +189,14 @@
 		7062B6D31C9369F50074C716 /* FMDatabaseQueue+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabaseQueue+Utils.m"; sourceTree = "<group>"; };
 		7062B6D51C9376990074C716 /* CacheUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheUtils.h; sourceTree = "<group>"; };
 		7062B6D61C93769A0074C716 /* CacheUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheUtils.m; sourceTree = "<group>"; };
-		70730D641C947857007CBEBB /* TermTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermTableViewCellViewModel.h; sourceTree = "<group>"; };
-		70730D651C947857007CBEBB /* TermTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermTableViewCellViewModel.m; sourceTree = "<group>"; };
+		70730D681C947A41007CBEBB /* TermSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermSelectorView.h; sourceTree = "<group>"; };
+		70730D691C947A41007CBEBB /* TermSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermSelectorView.m; sourceTree = "<group>"; };
+		70730D6A1C947A41007CBEBB /* TermSelectorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermSelectorViewModel.h; sourceTree = "<group>"; };
+		70730D6B1C947A41007CBEBB /* TermSelectorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermSelectorViewModel.m; sourceTree = "<group>"; };
+		70730D6C1C947A41007CBEBB /* TermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermTableViewCell.h; sourceTree = "<group>"; };
+		70730D6D1C947A41007CBEBB /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermTableViewCell.m; sourceTree = "<group>"; };
+		70730D6E1C947A41007CBEBB /* TermTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermTableViewCellViewModel.h; sourceTree = "<group>"; };
+		70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermTableViewCellViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -397,6 +397,21 @@
 			path = Score;
 			sourceTree = "<group>";
 		};
+		70730D671C947A41007CBEBB /* Term */ = {
+			isa = PBXGroup;
+			children = (
+				70730D681C947A41007CBEBB /* TermSelectorView.h */,
+				70730D691C947A41007CBEBB /* TermSelectorView.m */,
+				70730D6A1C947A41007CBEBB /* TermSelectorViewModel.h */,
+				70730D6B1C947A41007CBEBB /* TermSelectorViewModel.m */,
+				70730D6C1C947A41007CBEBB /* TermTableViewCell.h */,
+				70730D6D1C947A41007CBEBB /* TermTableViewCell.m */,
+				70730D6E1C947A41007CBEBB /* TermTableViewCellViewModel.h */,
+				70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */,
+			);
+			path = Term;
+			sourceTree = "<group>";
+		};
 		70F7CE0D1BE3AC25001D027C = {
 			isa = PBXGroup;
 			children = (
@@ -427,20 +442,13 @@
 				70F7CE301BE3BD4A001D027C /* API */,
 				70443B661C85DD7D00B0C5DA /* Login */,
 				7062B6C01C9331BD0074C716 /* Score */,
+				70730D671C947A41007CBEBB /* Term */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
 				70F7CE4F1BE40A81001D027C /* MainTabBarController.h */,
 				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
 				70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */,
 				70F7CE4D1BE40A3C001D027C /* ScheduleViewController.m */,
-				705C4DEF1C93A15700F8F196 /* TermSelectorView.h */,
-				705C4DF01C93A15700F8F196 /* TermSelectorView.m */,
-				705C4DF51C9448F900F8F196 /* TermSelectorViewModel.h */,
-				705C4DF61C9448F900F8F196 /* TermSelectorViewModel.m */,
-				70730D641C947857007CBEBB /* TermTableViewCellViewModel.h */,
-				70730D651C947857007CBEBB /* TermTableViewCellViewModel.m */,
-				705C4DF21C93A30D00F8F196 /* TermTableViewCell.h */,
-				705C4DF31C93A30D00F8F196 /* TermTableViewCell.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
 				702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
@@ -716,16 +724,15 @@
 				7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */,
 				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
-				705C4DF71C9448F900F8F196 /* TermSelectorViewModel.m in Sources */,
 				7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */,
 				70C2B03A1C81ECAA00923B85 /* SettingsViewController.m in Sources */,
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
+				70730D711C947A41007CBEBB /* TermSelectorViewModel.m in Sources */,
 				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */,
 				7062B6941C8B842C0074C716 /* UserModel.m in Sources */,
 				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
 				7023F9BB1BE681300046CF3B /* XujcCourseEvent.m in Sources */,
-				705C4DF41C93A30D00F8F196 /* TermTableViewCell.m in Sources */,
 				7062B6AC1C8F0B930074C716 /* ScheduleViewModel.m in Sources */,
 				7023F9AB1BE60F680046CF3B /* ScheduleRowHeader.m in Sources */,
 				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
@@ -734,8 +741,8 @@
 				7062B6A91C8E43BF0074C716 /* MainTabBarViewModel.m in Sources */,
 				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
-				70730D661C947857007CBEBB /* TermTableViewCellViewModel.m in Sources */,
 				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */,
+				70730D731C947A41007CBEBB /* TermTableViewCellViewModel.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
 				7062B6A31C8E3AA20074C716 /* SignupViewModel.m in Sources */,
 				7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */,
@@ -753,13 +760,14 @@
 				7062B6A21C8E3AA20074C716 /* LoginViewModel.m in Sources */,
 				7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */,
 				7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */,
-				705C4DF11C93A15700F8F196 /* TermSelectorView.m in Sources */,
+				70730D701C947A41007CBEBB /* TermSelectorView.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
 				7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
 				7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */,
 				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
+				70730D721C947A41007CBEBB /* TermTableViewCell.m in Sources */,
 				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
 				7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */,
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
