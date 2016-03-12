@@ -9,6 +9,7 @@
 #import "RequestViewModel.h"
 #import "CourseEventViewModel.h"
 #import "XujcCourseEvent.h"
+#import "TermSelectorViewModel.h"
 
 @interface ScheduleViewModel : RequestViewModel
 
@@ -19,6 +20,8 @@
 @property (strong, nonatomic) RACSignal *fetchTermsSignal;
 
 - (CourseEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
+
+- (TermSelectorViewModel *)termSelectorViewModel;
 
 - (NSInteger)numberOfCourseEventInSection:(NSInteger)section;
 

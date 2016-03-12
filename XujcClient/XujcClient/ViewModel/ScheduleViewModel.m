@@ -102,6 +102,11 @@
     return viewModel;
 }
 
+- (TermSelectorViewModel *)termSelectorViewModel
+{
+    return [[TermSelectorViewModel alloc] init];
+}
+
 - (NSInteger)numberOfCourseEventInSection:(NSInteger)section
 {
     return [[self.courseEvents objectAtIndex:section] count];
