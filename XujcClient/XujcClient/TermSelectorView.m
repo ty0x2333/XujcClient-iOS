@@ -13,23 +13,18 @@ static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdent
 
 @interface TermSelectorView()<UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) TermSelectorViewModel *viewModel;
+
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 @implementation TermSelectorView
 
-- (instancetype)init
+- (instancetype)initWithViewModel:(TermSelectorViewModel *)viewModel
 {
     if (self = [super init]) {
-        [self commentInit];
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame]) {
+        _viewModel = viewModel;
         [self commentInit];
     }
     return self;

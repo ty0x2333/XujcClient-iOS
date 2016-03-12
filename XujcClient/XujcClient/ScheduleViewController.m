@@ -72,7 +72,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         return [RACSignal empty];
     }];
     
-    _termSelectorView = [[TermSelectorView alloc] init];
+    _termSelectorView = [[TermSelectorView alloc] initWithViewModel:self.viewModel.termSelectorViewModel];
     _termSelectorView.backgroundColor = [UIColor redColor];
     
     _dropdownView = [[LMDropdownView alloc] init];

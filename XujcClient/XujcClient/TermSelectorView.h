@@ -11,6 +11,6 @@
 
 @interface TermSelectorView : UIView
 
-@property (strong, nonatomic) TermSelectorViewModel *viewModel;
+- (instancetype)initWithViewModel:(TermSelectorViewModel *)viewModel;
 
 @end
