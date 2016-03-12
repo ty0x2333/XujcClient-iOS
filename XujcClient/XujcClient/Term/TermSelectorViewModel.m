@@ -22,8 +22,19 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        _selectedTermNameSignal = [RACObserve(self, selectedIndex) map:^id(NSNumber *value) {
+        @weakify(self);
+        RACSignal *selectedIndexSignal = [RACObserve(self, selectedIndex) filter:^BOOL(NSNumber *value) {
+            @strongify(self);
+            return [self.terms objectAtIndex:[value integerValue]];
+        }];;
+        _selectedTermNameSignal = [selectedIndexSignal map:^id(NSNumber *value) {
+            @strongify(self);
             return [self selectedTermName];
+        }];
+        
+        _selectedTermIdSignal = [selectedIndexSignal map:^id(id value) {
+            @strongify(self);
+            return [self selectedTermId];
         }];
     }
     return self;

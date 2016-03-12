@@ -16,6 +16,8 @@
 
 @property (strong, nonatomic) RACSignal *selectedTermNameSignal;
 
+@property (strong, nonatomic) RACSignal *selectedTermIdSignal;
+
 @property (assign, nonatomic) NSInteger selectedIndex;
 
 - (NSInteger)termCount;

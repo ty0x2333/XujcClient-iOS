@@ -105,26 +105,18 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         [self.termButton setTitle:value forState:UIControlStateNormal];
     }];
     
-//    [_viewModel.termSelectorViewModel.fetchTermsSignal subscribeNext:^(id x) {
-//        @strongify(self);
-//        TyLogDebug(@"fetchTerms success");
-//        [self.viewModel.fetchScheduleCourseSignal subscribeNext:^(id x) {
-//            [self.collectionViewCalendarLayout invalidateLayoutCache];
-//            [self.collectionView reloadData];
-//            TyLogDebug(@"fetchScheduleSuccess success");
-//        } error:^(NSError *error) {
-//            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//            hub.detailsLabelText = error.localizedDescription;
-//            [hub hide:YES afterDelay:kErrorHUDShowTime];
-//            TyLogDebug(@"fetchScheduleCourse error");
-//        }];
-//    } error:^(NSError *error) {
-//        MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        hub.detailsLabelText = error.localizedDescription;
-//        [hub hide:YES afterDelay:kErrorHUDShowTime];
-//        TyLogDebug(@"fetchTerms error");
-//    }];
-    
+    [self.viewModel.termSelectorViewModel.selectedTermIdSignal subscribeNext:^(id x) {
+        [self.viewModel.fetchScheduleCourseSignal subscribeNext:^(id x) {
+            [self.collectionViewCalendarLayout invalidateLayoutCache];
+            [self.collectionView reloadData];
+            TyLogDebug(@"fetchScheduleSuccess success");
+        } error:^(NSError *error) {
+            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hub.detailsLabelText = error.localizedDescription;
+            [hub hide:YES afterDelay:kErrorHUDShowTime];
+            TyLogDebug(@"fetchScheduleCourse error");
+        }];
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
