@@ -17,11 +17,9 @@
 
 @property (strong, nonatomic) RACSignal *fetchScheduleCourseSignal;
 
-@property (strong, nonatomic) RACSignal *fetchTermsSignal;
-
 - (CourseEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
-- (TermSelectorViewModel *)termSelectorViewModel;
+@property (strong, readonly, nonatomic) TermSelectorViewModel *termSelectorViewModel;
 
 - (NSInteger)numberOfCourseEventInSection:(NSInteger)section;
 

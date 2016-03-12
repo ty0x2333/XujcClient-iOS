@@ -98,26 +98,26 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (void)bindViewModel
 {
-    @weakify(self);
-    [_viewModel.fetchTermsSignal subscribeNext:^(id x) {
-        @strongify(self);
-        TyLogDebug(@"fetchTerms success");
-        [self.viewModel.fetchScheduleCourseSignal subscribeNext:^(id x) {
-            [self.collectionViewCalendarLayout invalidateLayoutCache];
-            [self.collectionView reloadData];
-            TyLogDebug(@"fetchScheduleSuccess success");
-        } error:^(NSError *error) {
-            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hub.detailsLabelText = error.localizedDescription;
-            [hub hide:YES afterDelay:kErrorHUDShowTime];
-            TyLogDebug(@"fetchScheduleCourse error");
-        }];
-    } error:^(NSError *error) {
-        MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hub.detailsLabelText = error.localizedDescription;
-        [hub hide:YES afterDelay:kErrorHUDShowTime];
-        TyLogDebug(@"fetchTerms error");
-    }];
+//    @weakify(self);
+//    [_viewModel.termSelectorViewModel.fetchTermsSignal subscribeNext:^(id x) {
+//        @strongify(self);
+//        TyLogDebug(@"fetchTerms success");
+//        [self.viewModel.fetchScheduleCourseSignal subscribeNext:^(id x) {
+//            [self.collectionViewCalendarLayout invalidateLayoutCache];
+//            [self.collectionView reloadData];
+//            TyLogDebug(@"fetchScheduleSuccess success");
+//        } error:^(NSError *error) {
+//            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//            hub.detailsLabelText = error.localizedDescription;
+//            [hub hide:YES afterDelay:kErrorHUDShowTime];
+//            TyLogDebug(@"fetchScheduleCourse error");
+//        }];
+//    } error:^(NSError *error) {
+//        MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        hub.detailsLabelText = error.localizedDescription;
+//        [hub hide:YES afterDelay:kErrorHUDShowTime];
+//        TyLogDebug(@"fetchTerms error");
+//    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated

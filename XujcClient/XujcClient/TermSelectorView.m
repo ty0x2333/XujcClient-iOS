@@ -47,6 +47,13 @@ static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdent
         [self setNeedsLayout];
         [self layoutIfNeeded];
     }];
+    
+    [_viewModel.fetchTermsSignal subscribeNext:^(id x) {
+        
+    } completed:^{
+        @strongify(self);
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)layoutSubviews

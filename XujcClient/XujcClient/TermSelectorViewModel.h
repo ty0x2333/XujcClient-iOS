@@ -6,9 +6,14 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "RequestViewModel.h"
+#import "XujcTerm.h"
 
-@interface TermSelectorViewModel : NSObject
+@interface TermSelectorViewModel : RequestViewModel
+
+@property (strong, nonatomic) RACSignal *fetchTermsSignal;
+
+@property (strong, nonatomic) XujcTerm *selectedTerm;
 
 - (NSInteger)termCount;
 
