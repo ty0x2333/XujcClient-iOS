@@ -66,7 +66,7 @@ static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdent
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return [self.viewModel termCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
