@@ -6,20 +6,17 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "RequestViewModel.h"
+#import "TermBaseViewModel.h"
 #import "CourseEventViewModel.h"
 #import "XujcCourseEvent.h"
-#import "TermSelectorViewModel.h"
 
-@interface ScheduleViewModel : RequestViewModel
+@interface ScheduleViewModel : TermBaseViewModel
 
 @property (strong, nonatomic) NSArray<NSArray<XujcCourseEvent *> *> *courseEvents;
 
 @property (strong, nonatomic) RACSignal *fetchScheduleCourseSignal;
 
 - (CourseEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
-
-@property (strong, readonly, nonatomic) TermSelectorViewModel *termSelectorViewModel;
 
 - (NSInteger)numberOfCourseEventInSection:(NSInteger)section;
 

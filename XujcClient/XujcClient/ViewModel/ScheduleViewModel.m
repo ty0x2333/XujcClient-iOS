@@ -17,19 +17,9 @@
 
 @property (strong, nonatomic) XujcCourse *xujcCourse;
 
-@property (strong, nonatomic) TermSelectorViewModel *termSelectorViewModel;
-
 @end
 
 @implementation ScheduleViewModel
-
-- (instancetype)init
-{
-    if (self = [super init]) {
-        _termSelectorViewModel = [[TermSelectorViewModel alloc] init];
-    }
-    return self;
-}
 
 - (RACSignal *)fetchScheduleCourseSignal
 {
