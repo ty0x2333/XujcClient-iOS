@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TermTableViewCellViewModel.h"
 
 @interface TermTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) TermTableViewCellViewModel *viewModel;
 
 @end

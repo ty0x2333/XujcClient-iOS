@@ -74,6 +74,7 @@ static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdent
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TermTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTermTableViewCellIdentifier forIndexPath:indexPath];
+    cell.viewModel = [self.viewModel termTableViewCellViewModelAtIndex:indexPath.row];
     return cell;
 }
 
