@@ -53,11 +53,16 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
         make.top.bottom.leading.trailing.equalTo(self.view);
     }];
     
-    [self.viewModel.fetchScoresSignal subscribeNext:^(id x) {
-        TyLogDebug(@"success");
-        [_tableView reloadData];
-    } error:^(NSError *error) {
-        TyLogDebug(@"error");
+    [self.viewModel.termSelectorViewModel.selectedTermIdSignal subscribeNext:^(id x) {
+        [self.viewModel.fetchScoresSignal subscribeNext:^(id x) {
+            [_tableView reloadData];
+            TyLogDebug(@"fetchScores success");
+        } error:^(NSError *error) {
+            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hub.detailsLabelText = error.localizedDescription;
+            [hub hide:YES afterDelay:kErrorHUDShowTime];
+            TyLogDebug(@"fetchScores error");
+        }];
     }];
 }
 

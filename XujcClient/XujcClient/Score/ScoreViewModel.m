@@ -30,8 +30,7 @@
 - (RACSignal *)fetchScoresSignal
 {
     RACSignal *fetchScoresSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-#warning test termId
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"score.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServerKeyTermId: @"20151"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"score.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServerKeyTermId: [self.termSelectorViewModel selectedTermId]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSArray *scoreDatas = responseObject;
             NSMutableArray *scoreModels = [[NSMutableArray alloc] initWithCapacity:scoreDatas.count];
             [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
