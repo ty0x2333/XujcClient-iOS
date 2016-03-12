@@ -38,6 +38,7 @@
 		70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B681C85DD7D00B0C5DA /* BindingAccountViewController.m */; };
 		70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70443B6C1C85DDB100B0C5DA /* LoginViewController.m */; };
 		70443B6F1C85F09400B0C5DA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70443B6E1C85F09400B0C5DA /* logo.png */; };
+		705C4DF11C93A15700F8F196 /* TermSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705C4DF01C93A15700F8F196 /* TermSelectorView.m */; };
 		7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */; };
 		7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6841C89FC260074C716 /* NSString+Validator.m */; };
 		7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m */; };
@@ -136,6 +137,8 @@
 		70443B6B1C85DDB100B0C5DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		70443B6C1C85DDB100B0C5DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		70443B6E1C85F09400B0C5DA /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		705C4DEF1C93A15700F8F196 /* TermSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermSelectorView.h; sourceTree = "<group>"; };
+		705C4DF01C93A15700F8F196 /* TermSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermSelectorView.m; sourceTree = "<group>"; };
 		7062B67D1C887B020074C716 /* LoginTextFieldGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTextFieldGroupView.h; sourceTree = "<group>"; };
 		7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextFieldGroupView.m; sourceTree = "<group>"; };
 		7062B6831C89FC260074C716 /* NSString+Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validator.h"; sourceTree = "<group>"; };
@@ -421,6 +424,8 @@
 				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
 				70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */,
 				70F7CE4D1BE40A3C001D027C /* ScheduleViewController.m */,
+				705C4DEF1C93A15700F8F196 /* TermSelectorView.h */,
+				705C4DF01C93A15700F8F196 /* TermSelectorView.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
 				702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
@@ -730,6 +735,7 @@
 				7062B6A21C8E3AA20074C716 /* LoginViewModel.m in Sources */,
 				7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */,
 				7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */,
+				705C4DF11C93A15700F8F196 /* TermSelectorView.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
 				7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
