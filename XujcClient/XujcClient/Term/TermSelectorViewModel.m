@@ -19,6 +19,16 @@
 
 @implementation TermSelectorViewModel
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _selectedTermNameSignal = [RACObserve(self, selectedIndex) map:^id(NSNumber *value) {
+            return [self selectedTermName];
+        }];
+    }
+    return self;
+}
+
 - (RACSignal *)fetchTermsSignal
 {
     @weakify(self);
@@ -38,7 +48,7 @@
             
             NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"termId" ascending:NO];
             self.terms = [termArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-            self.selectedTerm = [self.terms firstObject];
+            self.selectedIndex = 0;
             
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
@@ -55,6 +65,16 @@
 - (NSInteger)termCount
 {
     return _terms.count;
+}
+
+- (NSString *)selectedTermId
+{
+    return [_terms objectAtIndex:_selectedIndex].termId;
+}
+
+- (NSString *)selectedTermName
+{
+    return [_terms objectAtIndex:_selectedIndex].displayName;
 }
 
 - (TermTableViewCellViewModel *)termTableViewCellViewModelAtIndex:(NSInteger)index

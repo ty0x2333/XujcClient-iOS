@@ -14,9 +14,13 @@
 
 @property (strong, nonatomic) RACSignal *fetchTermsSignal;
 
-@property (strong, nonatomic) XujcTerm *selectedTerm;
+@property (strong, nonatomic) RACSignal *selectedTermNameSignal;
+
+@property (assign, nonatomic) NSInteger selectedIndex;
 
 - (NSInteger)termCount;
+
+- (NSString *)selectedTermId;
 
 - (TermTableViewCellViewModel *)termTableViewCellViewModelAtIndex:(NSInteger)index;
 

@@ -78,6 +78,11 @@ static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdent
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.viewModel.selectedIndex = indexPath.row;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -56,8 +56,9 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _termButton = [[UIButton alloc] init];
-    [_termButton setTitle:@"当前学期" forState:UIControlStateNormal];
+    _termButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(200, 0)}];
+    [_termButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
     self.navigationItem.titleView = _termButton;
     @weakify(self);
     _termButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
@@ -98,7 +99,12 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (void)bindViewModel
 {
-//    @weakify(self);
+    @weakify(self);
+    [self.viewModel.termSelectorViewModel.selectedTermNameSignal subscribeNext:^(NSString *value) {
+        @strongify(self);
+        [self.termButton setTitle:value forState:UIControlStateNormal];
+    }];
+    
 //    [_viewModel.termSelectorViewModel.fetchTermsSignal subscribeNext:^(id x) {
 //        @strongify(self);
 //        TyLogDebug(@"fetchTerms success");
@@ -118,6 +124,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 //        [hub hide:YES afterDelay:kErrorHUDShowTime];
 //        TyLogDebug(@"fetchTerms error");
 //    }];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
