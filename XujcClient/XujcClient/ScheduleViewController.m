@@ -103,6 +103,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     [self.viewModel.termSelectorViewModel.selectedTermNameSignal subscribeNext:^(NSString *value) {
         @strongify(self);
         [self.termButton setTitle:value forState:UIControlStateNormal];
+        [self.dropdownView hide];
     }];
     
     [self.viewModel.termSelectorViewModel.selectedTermIdSignal subscribeNext:^(id x) {
