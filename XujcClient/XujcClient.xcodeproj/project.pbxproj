@@ -199,8 +199,8 @@
 		70730D6D1C947A41007CBEBB /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermTableViewCell.m; sourceTree = "<group>"; };
 		70730D6E1C947A41007CBEBB /* TermTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermTableViewCellViewModel.h; sourceTree = "<group>"; };
 		70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermTableViewCellViewModel.m; sourceTree = "<group>"; };
-		70730D741C94A039007CBEBB /* TermBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermBaseViewController.h; sourceTree = "<group>"; };
-		70730D751C94A039007CBEBB /* TermBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermBaseViewController.m; sourceTree = "<group>"; };
+		70730D741C94A039007CBEBB /* TermBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermBaseViewController.h; path = XujcClient/TermBaseViewController.h; sourceTree = SOURCE_ROOT; };
+		70730D751C94A039007CBEBB /* TermBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermBaseViewController.m; path = XujcClient/TermBaseViewController.m; sourceTree = SOURCE_ROOT; };
 		70730D771C94A13A007CBEBB /* TermBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermBaseViewModel.h; sourceTree = "<group>"; };
 		70730D781C94A13A007CBEBB /* TermBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermBaseViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
@@ -416,6 +416,8 @@
 				70730D6D1C947A41007CBEBB /* TermTableViewCell.m */,
 				70730D6E1C947A41007CBEBB /* TermTableViewCellViewModel.h */,
 				70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */,
+				70730D741C94A039007CBEBB /* TermBaseViewController.h */,
+				70730D751C94A039007CBEBB /* TermBaseViewController.m */,
 			);
 			path = Term;
 			sourceTree = "<group>";
@@ -455,8 +457,6 @@
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
 				70F7CE4F1BE40A81001D027C /* MainTabBarController.h */,
 				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
-				70730D741C94A039007CBEBB /* TermBaseViewController.h */,
-				70730D751C94A039007CBEBB /* TermBaseViewController.m */,
 				70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */,
 				70F7CE4D1BE40A3C001D027C /* ScheduleViewController.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
