@@ -28,6 +28,6 @@ else
   convert "$SRC_FILE" -resize 144x144   "$DST_PATH/Icon-72@2x.png"
   convert "$SRC_FILE" -resize 152x152   "$DST_PATH/Icon-76@2x.png"
   convert "$SRC_FILE" -resize 180x180   "$DST_PATH/Icon-60@3x.png"
-  convert "$SRC_FILE" -resize 512x512   "$DST_PATH/iTunesArtwork"
-  convert "$SRC_FILE" -resize 1024x1024 "$DST_PATH/iTunesArtwork@2x"
+  # convert "$SRC_FILE" -resize 512x512   "$DST_PATH/iTunesArtwork"
+  # convert "$SRC_FILE" -resize 1024x1024 "$DST_PATH/iTunesArtwork@2x"
 fi
