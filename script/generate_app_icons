@@ -1,0 +1,4 @@
+#!/bin/sh
+current_dir=$(dirname $0)
+
+$current_dir/generate_ios_icons $current_dir/../ImageSource/app_icon.png $current_dir/../XujcClient/XujcClient/Assets.xcassets/AppIcon.appiconset
