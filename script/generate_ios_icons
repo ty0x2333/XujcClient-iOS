@@ -6,6 +6,12 @@ if [ -z "$DST_PATH" ]; then
     DST_PATH=$(dirname $0)
 fi
 
+error() {
+     local red="\033[1;31m"
+     local normal="\033[0m"
+     echo "[${red}ERROR${normal}] $1"
+}
+
 # Check ImageMagick
 command -v convert >/dev/null 2>&1 || { error >&2 "The ImageMagick is not installed. Please install it first.see http://www.imagemagick.org/"; exit -1; }
 
