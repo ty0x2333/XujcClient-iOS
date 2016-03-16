@@ -46,12 +46,11 @@
                              personalNavViewController
                              ];
     
-    NSArray *titles = @[@"课程表", @"考试安排", @"成绩查询", @"个人"];
     NSArray *images = @[@"tabbar-schedule", @"tabbar-exam", @"tabbar-search", @"tabbar-personal"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
-        [item setTitle:titles[idx]];
         [item setImage:[UIImage imageNamed:images[idx]]];
         [item setSelectedImage:[UIImage imageNamed:[images[idx] stringByAppendingString:@"-selected"]]];
+        item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     }];
 }
 

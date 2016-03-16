@@ -38,7 +38,6 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"成绩查询";
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;

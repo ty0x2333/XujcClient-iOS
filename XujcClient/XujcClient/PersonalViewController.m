@@ -25,7 +25,7 @@ static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIden
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"Personal", nil);
+    self.navigationItem.title = NSLocalizedString(@"Personal", nil);
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
