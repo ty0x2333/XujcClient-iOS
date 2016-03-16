@@ -12,7 +12,7 @@
 
 static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
 
-static CGFloat const kPersonalHeaderViewHeight = 135.f;
+static CGFloat const kPersonalHeaderViewHeight = 140.5f;
 
 @interface PersonalViewController()<UITableViewDataSource, UITableViewDelegate>
 
