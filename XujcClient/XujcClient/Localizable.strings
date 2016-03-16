@@ -41,3 +41,9 @@
 "Account binding successfully" = "帐号绑定成功";
 //"Authentication failed" = "认证失败";
 "Xujc Key authentication failed" = "教务系统 ApiKey 验证失败";
+
+
+/**
+ * Empty Data Message
+ */
+"There is no score data for the current semester." = "当前学期没有成绩数据";

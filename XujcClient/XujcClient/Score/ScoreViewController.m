@@ -11,12 +11,13 @@
 #import "DynamicData.h"
 #import "XujcScore.h"
 #import "ScoreTableViewCell.h"
+#import <UIScrollView+EmptyDataSet.h>
 
 static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
 static CGFloat const kTableViewSectionHeaderHeight = 5.f;
 
-@interface ScoreViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface ScoreViewController ()<UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (strong, nonatomic) ScoreViewModel *viewModel;
 
@@ -44,6 +45,8 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
     _tableView.sectionHeaderHeight = kTableViewSectionHeaderHeight;
     _tableView.sectionFooterHeight = 0;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.emptyDataSetSource = self;
+    _tableView.emptyDataSetDelegate = self;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[ScoreTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
     
@@ -100,19 +103,15 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
     return 0;
 }
 
-//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    TyLogDebug(@"didDeselectRowAtIndexPath: %d", indexPath.row);
-//    _currentSelected = indexPath.row;
-//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//}
+#pragma mark - DZNEmptyDataSetSource
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    TyLogDebug(@"didSelectRowAtIndexPath: %d", indexPath.row);
-//    _currentSelected = _currentSelected == indexPath.row ? -1 : indexPath.row;
-////    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    [tableView reloadData];
-//}
-
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = NSLocalizedString(@"There is no score data for the current semester.", nil);
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
 @end
