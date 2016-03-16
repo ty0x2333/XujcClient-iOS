@@ -49,6 +49,7 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSInteger statusCode = ((NSHTTPURLResponse *)(task.response)).statusCode;
             if (statusCode == 400) {
+                self.scores = nil;
                 [subscriber sendNext:nil];
                 [subscriber sendCompleted];
             } else {
