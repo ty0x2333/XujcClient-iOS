@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XujcTerm.h"
+#import "XujcSemesterModel.h"
 #import "XujcScore.h"
 
 @interface CacheUtils : NSObject
 
 + (instancetype)instance;
 
-- (BOOL)cacheTerms:(NSArray<XujcTerm *> *)terms;
+- (BOOL)cacheTerms:(NSArray<XujcSemesterModel *> *)terms;
 
 - (BOOL)cacheScore:(NSArray<XujcScore *> *)scores inTerm:(NSString *)termId;
 
@@ -23,7 +23,7 @@
  *
  *  @note  terms DESC
  */
-- (NSArray<XujcTerm *> *)termsFormCache;
+- (NSArray<XujcSemesterModel *> *)termsFormCache;
 
 - (NSArray<XujcScore *> *)scoresFormCacheWithTerm:(NSString *)termId;
 

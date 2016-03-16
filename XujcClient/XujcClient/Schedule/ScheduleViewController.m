@@ -18,7 +18,7 @@
 #import "NSDate+Week.h"
 #import "CollectionViewScheduleLayout.h"
 #import "XujcAPI.h"
-#import "XujcTerm.h"
+#import "XujcSemesterModel.h"
 #import "XujcCourse.h"
 #import "DynamicData.h"
 #import "ScheduleColumnHeader.h"

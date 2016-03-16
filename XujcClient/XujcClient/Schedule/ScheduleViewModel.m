@@ -10,7 +10,7 @@
 #import "XujcServer.h"
 #import "DynamicData.h"
 #import "XujcCourse.h"
-#import "XujcTerm.h"
+#import "XujcSemesterModel.h"
 #import "CacheUtils.h"
 
 @interface ScheduleViewModel()

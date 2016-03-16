@@ -25,7 +25,7 @@
 
 - (void)setViewModel:(TermTableViewCellViewModel *)viewModel
 {
-    RAC(self.textLabel, text) = [RACObserve(viewModel.xujcTermModel, displayName) takeUntil:self.rac_prepareForReuseSignal];
+    RAC(self.textLabel, text) = [RACObserve(viewModel.semesterModel, displayName) takeUntil:self.rac_prepareForReuseSignal];
 }
 
 @end

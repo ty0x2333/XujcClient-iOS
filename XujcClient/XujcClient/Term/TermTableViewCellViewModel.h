@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XujcTerm.h"
+#import "XujcSemesterModel.h"
 
 @interface TermTableViewCellViewModel : NSObject
 
-@property (strong, nonatomic) XujcTerm *xujcTermModel;
+@property (strong, nonatomic) XujcSemesterModel *semesterModel;
 
 @end

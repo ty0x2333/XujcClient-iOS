@@ -13,7 +13,7 @@
 
 @interface TermSelectorViewModel()
 
-@property (strong, nonatomic) NSArray<XujcTerm *> *terms;
+@property (strong, nonatomic) NSArray<XujcSemesterModel *> *terms;
 
 @end
 
@@ -49,7 +49,7 @@
             NSArray *termIds = [responseObject allKeys];
             NSMutableArray *termArray = [NSMutableArray arrayWithCapacity:termIds.count];
             for (id key in termIds) {
-                XujcTerm *term = [[XujcTerm alloc] init];
+                XujcSemesterModel *term = [[XujcSemesterModel alloc] init];
                 term.termId = key;
                 term.displayName = responseObject[key];
                 [termArray addObject:term];
@@ -96,7 +96,7 @@
 - (TermTableViewCellViewModel *)termTableViewCellViewModelAtIndex:(NSInteger)index
 {
     TermTableViewCellViewModel *viewModel = [[TermTableViewCellViewModel alloc] init];
-    viewModel.xujcTermModel = [_terms objectAtIndex:index];
+    viewModel.semesterModel = [_terms objectAtIndex:index];
     return viewModel;
 }
 

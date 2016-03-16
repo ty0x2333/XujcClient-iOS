@@ -11,7 +11,7 @@
 		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; };
 		7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */; };
 		7023F9AB1BE60F680046CF3B /* ScheduleRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AA1BE60F680046CF3B /* ScheduleRowHeader.m */; };
-		7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcTerm.m */; };
+		7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */; };
 		7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcCourse.m */; };
 		7023F9BB1BE681300046CF3B /* XujcCourseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcCourseEvent.m */; };
 		7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */; };
@@ -105,8 +105,8 @@
 		7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleColumnHeader.m; sourceTree = "<group>"; };
 		7023F9A91BE60F680046CF3B /* ScheduleRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleRowHeader.h; sourceTree = "<group>"; };
 		7023F9AA1BE60F680046CF3B /* ScheduleRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRowHeader.m; sourceTree = "<group>"; };
-		7023F9AC1BE6550A0046CF3B /* XujcTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcTerm.h; sourceTree = "<group>"; };
-		7023F9AD1BE6550A0046CF3B /* XujcTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcTerm.m; sourceTree = "<group>"; };
+		7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSemesterModel.h; sourceTree = "<group>"; };
+		7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSemesterModel.m; sourceTree = "<group>"; };
 		7023F9B21BE678E60046CF3B /* XujcCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcCourse.h; sourceTree = "<group>"; };
 		7023F9B31BE678E60046CF3B /* XujcCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcCourse.m; sourceTree = "<group>"; };
 		7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XujcRequestKeys.h; sourceTree = "<group>"; };
@@ -568,8 +568,8 @@
 				70F7CE421BE3E832001D027C /* XujcUser.m */,
 				70FE64B21C7F9EDC00112038 /* XujcScore.h */,
 				70FE64B31C7F9EDC00112038 /* XujcScore.m */,
-				7023F9AC1BE6550A0046CF3B /* XujcTerm.h */,
-				7023F9AD1BE6550A0046CF3B /* XujcTerm.m */,
+				7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */,
+				7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */,
 				7023F9B21BE678E60046CF3B /* XujcCourse.h */,
 				7023F9B31BE678E60046CF3B /* XujcCourse.m */,
 				7023F9B91BE681300046CF3B /* XujcCourseEvent.h */,
@@ -821,7 +821,7 @@
 				7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */,
 				70730D701C947A41007CBEBB /* TermSelectorView.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
-				7023F9AE1BE6550A0046CF3B /* XujcTerm.m in Sources */,
+				7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
 				7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */,

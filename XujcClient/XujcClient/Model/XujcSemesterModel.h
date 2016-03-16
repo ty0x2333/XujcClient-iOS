@@ -1,5 +1,5 @@
 /**
- * @file XujcTerm.h
+ * @file XujcSemesterModel.h
  *
  * @author luckytianyiyan@gmail.com
  * @date 15/11/1
@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@interface XujcTerm : BaseModel
+@interface XujcSemesterModel : BaseModel
 
 @property(nonatomic, strong)NSString *termId;
 @property(nonatomic, strong)NSString *displayName;

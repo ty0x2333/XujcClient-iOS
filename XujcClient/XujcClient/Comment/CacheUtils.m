@@ -48,12 +48,12 @@
     }];
 }
 
-- (BOOL)cacheTerms:(NSArray<XujcTerm *> *)terms
+- (BOOL)cacheTerms:(NSArray<XujcSemesterModel *> *)terms
 {
     __block BOOL isSuccess = NO;
     
     [[FMDatabaseQueue instance] inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        for (XujcTerm *term in terms) {
+        for (XujcSemesterModel *term in terms) {
             isSuccess = [db executeUpdate:@"INSERT OR REPLACE INTO term(id, name) VALUES (?, ?);", term.termId, term.displayName];
             if (!isSuccess) {
                 *rollback = YES;
@@ -83,7 +83,7 @@
     return isSuccess;
 }
 
-- (NSArray<XujcTerm *> *)termsFormCache
+- (NSArray<XujcSemesterModel *> *)termsFormCache
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
@@ -92,7 +92,7 @@
         FMResultSet *set = [db executeQuery:sql];
         
         while ([set next]) {
-            XujcTerm *term = [[XujcTerm alloc] init];
+            XujcSemesterModel *term = [[XujcSemesterModel alloc] init];
             term.termId = [set objectForColumnName:@"id"];
             term.displayName = [set objectForColumnName:@"name"];
             [result addObject:term];

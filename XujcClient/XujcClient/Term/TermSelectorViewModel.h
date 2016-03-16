@@ -7,7 +7,7 @@
 //
 
 #import "RequestViewModel.h"
-#import "XujcTerm.h"
+#import "XujcSemesterModel.h"
 #import "TermTableViewCellViewModel.h"
 
 @interface TermSelectorViewModel : RequestViewModel
