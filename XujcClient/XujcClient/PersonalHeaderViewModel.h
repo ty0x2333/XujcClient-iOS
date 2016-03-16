@@ -10,4 +10,6 @@
 
 @interface PersonalHeaderViewModel : NSObject
 
+@property (copy, readonly, nonatomic) NSString *nickname;
+
 @end

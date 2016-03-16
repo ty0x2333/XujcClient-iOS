@@ -50,9 +50,10 @@ static CGFloat const kAvatarImageViewMarginTop = 10.f;
             make.bottom.equalTo(self.nicknameLabel);
         }];
         
+        RAC(self.nicknameLabel, text) = RACObserve(self.viewModel, nickname);
+        
 #warning test
         _avatarImageView.backgroundColor = [UIColor redColor];
-        _nicknameLabel.text = @"asdklfklsajdf";
     }
     return self;
 }
