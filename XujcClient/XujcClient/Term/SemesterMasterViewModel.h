@@ -14,8 +14,6 @@
 
 @property (strong, nonatomic) RACSignal *fetchSemestersSignal;
 
-- (NSInteger)semesterCount;
-
 - (ScoreViewModel *)scoreViewModel;
 
 - (ScheduleViewModel *)scheduleViewModel;

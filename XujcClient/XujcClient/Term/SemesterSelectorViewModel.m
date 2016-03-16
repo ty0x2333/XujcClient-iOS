@@ -31,6 +31,13 @@
             @strongify(self);
             return [self selectedSemesterId];
         }] distinctUntilChanged];
+        
+        _semestersSignal = [[RACObserve(self, semesters) setNameWithFormat:@"SemesterSelectorViewModel semestersSignal"] logAll];
+        
+        [self.semestersSignal subscribeNext:^(id x) {
+            @strongify(self);
+            self.selectedIndex = 0;
+        }];
     }
     return self;
 }
@@ -43,6 +50,11 @@
 - (NSString *)selectedSemesterName
 {
     return [_semesters objectAtIndex:_selectedIndex].displayName;
+}
+
+- (NSInteger)semesterCount
+{
+    return _semesters.count;
 }
 
 - (SemesterTableViewCellViewModel *)semesterTableViewCellViewModelAtIndex:(NSInteger)index

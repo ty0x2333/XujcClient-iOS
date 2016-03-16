@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) NSArray<XujcSemesterModel *> *semesters;
 
+@property (strong, nonatomic) RACSignal *semestersSignal;
+
 @property (strong, nonatomic) RACSignal *selectedSemesterNameSignal;
 
 @property (strong, nonatomic) RACSignal *selectedSemesterIdSignal;
@@ -21,6 +23,8 @@
 @property (assign, nonatomic) NSInteger selectedIndex;
 
 - (NSString *)selectedSemesterId;
+
+- (NSInteger)semesterCount;
 
 - (SemesterTableViewCellViewModel *)semesterTableViewCellViewModelAtIndex:(NSInteger)index;
 

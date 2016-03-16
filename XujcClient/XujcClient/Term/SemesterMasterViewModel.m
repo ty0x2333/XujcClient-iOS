@@ -56,11 +56,6 @@
     return [[fetchSemestersSignal setNameWithFormat:@"fetchSemestersSignal"] logAll];
 }
 
-- (NSInteger)semesterCount
-{
-    return _semesters.count;
-}
-
 - (ScoreViewModel *)scoreViewModel
 {
     ScoreViewModel *viewModel = [[ScoreViewModel alloc] init];
