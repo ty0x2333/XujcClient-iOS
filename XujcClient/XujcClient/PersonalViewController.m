@@ -10,7 +10,9 @@
 #import "SettingsViewController.h"
 #import "PersonalView.h"
 
-@interface PersonalViewController()
+static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
+
+@interface PersonalViewController()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 
@@ -25,7 +27,11 @@
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Personal", nil);
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    _personalView = [[PersonalView alloc] init];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellReuseIdentifier];
+    
+    _personalView = [[PersonalView alloc] initWithFrame:CGRectMake(0, 0, 0, 135)];
     _tableView.tableHeaderView = _personalView;
     [self.view addSubview:_tableView];
     
@@ -36,8 +42,8 @@
     
     [_tableView makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
-        make.top.equalTo(self.mas_topLayoutGuideBottom);
-        make.bottom.equalTo(self.mas_bottomLayoutGuideTop);
+        make.top.equalTo(self.mas_topLayoutGuideTop);
+        make.bottom.equalTo(self.mas_bottomLayoutGuideBottom);
     }];
     
     UIButton *settingsButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(25, 25)}];
@@ -53,5 +59,19 @@
         return [RACSignal empty];
     }];
 }
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellReuseIdentifier forIndexPath:indexPath];
+    return cell;
+}
+
 
 @end

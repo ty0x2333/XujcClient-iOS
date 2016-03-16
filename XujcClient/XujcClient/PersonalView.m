@@ -19,9 +19,9 @@ static CGFloat const kAvatarImageViewMarginTop = 10.f;
 
 @implementation PersonalView
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    if (self = [super init]) {
+    if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         _avatarImageView = [[UIImageView alloc] init];
         _avatarImageView.layer.cornerRadius = 100.f / 2.f;
