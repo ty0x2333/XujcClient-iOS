@@ -7,13 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ScheduleViewModel.h"
 #import "LoginViewModel.h"
 #import "SignupViewModel.h"
-#import "ScoreViewModel.h"
+#import "SemesterMasterViewModel.h"
 
 @interface MainTabBarViewModel : NSObject
 
+@property (strong, nonatomic) RACSignal *apiKeyInactiveSignal;
+
+
+@property (assign, nonatomic, getter = isActive) BOOL active;
+
+@property (strong, nonatomic, readonly) RACSignal *didBecomeActiveSignal;
 
 - (LoginViewModel *)loginViewModel;
 

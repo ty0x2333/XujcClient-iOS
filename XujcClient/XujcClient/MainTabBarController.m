@@ -11,7 +11,9 @@
 #import "ScoreViewController.h"
 #import "PersonalViewController.h"
 #import "LoginViewController.h"
+#import "BindingAccountViewController.h"
 #import "DynamicData.h"
+
 @interface MainTabBarController ()
 
 @end
@@ -27,6 +29,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.viewModel.active = YES;
 }
 
 - (void)setViewModel:(MainTabBarViewModel *)viewModel
@@ -47,6 +50,17 @@
         [item setImage:[UIImage imageNamed:images[idx]]];
         [item setSelectedImage:[UIImage imageNamed:[images[idx] stringByAppendingString:@"-selected"]]];
         item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    }];
+    
+    RACSignal *activeSignal = [[[RACObserve(self.viewModel, active) filter:^BOOL(NSNumber *value) {
+        return [value boolValue];
+    }] setNameWithFormat:@"activeSignal"] logAll];
+    
+    @weakify(self);
+    [[RACSignal combineLatest:@[activeSignal, self.viewModel.apiKeyInactiveSignal]] subscribeNext:^(id x) {
+        @strongify(self);
+        LoginViewController *viewController = [[LoginViewController alloc] initWithLoginViewModel:_viewModel.loginViewModel andSignupViewModel:_viewModel.signupViewModel];
+        [self presentViewController:viewController animated:NO completion:nil];
     }];
 }
 
