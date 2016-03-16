@@ -10,9 +10,7 @@
 
 @interface MainTabBarViewModel()
 
-@property (strong, nonatomic) RACSignal *apiActiveKeySignal;
-
-@property (strong, nonatomic) RACSignal *didBecomeActiveSignal;
+@property (strong, nonatomic) RACSignal *xujcActiveKeySignal;
 
 @property (strong, nonatomic) SemesterMasterViewModel *semesterMasterViewModel;
 
@@ -26,34 +24,33 @@
         _semesterMasterViewModel = [[SemesterMasterViewModel alloc] init];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         RACSignal *apiKeySignal = [userDefaults rac_channelTerminalForKey:kUserDefaultsKeyApiKey];
+        RACSignal *xujcKeySignal = [userDefaults rac_channelTerminalForKey:kUserDefaultsKeyXujcKey];
+        
         _apiActiveKeySignal = [[[apiKeySignal filter:^BOOL(NSString *value) {
             return ![NSString isEmpty:value];
         }] setNameWithFormat:@"MainTabBarViewModel apiActiveKeySignal"] logAll];
         
+        _xujcActiveKeySignal = [[[xujcKeySignal filter:^BOOL(NSString *value) {
+            return ![NSString isEmpty:value];
+        }] setNameWithFormat:@"MainTabBarViewModel xujcKeySignal"] logAll];
         
         _apiKeyInactiveSignal = [[[apiKeySignal filter:^BOOL(NSString *value) {
             return [NSString isEmpty:value];
         }] setNameWithFormat:@"MainTabBarViewModel apiKeyInactiveSignal"] logAll];
+        
+        _xujcKeyInactiveSignal = [[[xujcKeySignal filter:^BOOL(NSString *value) {
+            return [NSString isEmpty:value];
+        }] setNameWithFormat:@"MainTabBarViewModel xujcKeyInactiveSignal"] logAll];
+        
+        @weakify(self);
+        [_xujcActiveKeySignal subscribeNext:^(id x) {
+            @strongify(self);
+            [self.semesterMasterViewModel.fetchSemestersSignal subscribeCompleted:^{
+                
+            }];
+        }];
     }
     return self;
-}
-
-- (RACSignal *)didBecomeActiveSignal
-{
-    if (_didBecomeActiveSignal == nil) {
-        @weakify(self);
-        _didBecomeActiveSignal = [[[RACObserve(self, active)
-                                    filter:^(NSNumber *active) {
-                                        return active.boolValue;
-                                    }]
-                                   map:^(id _) {
-                                       @strongify(self);
-                                       return self;
-                                   }]
-                                  setNameWithFormat:@"%@ -didBecomeActiveSignal", self];
-    }
-    
-    return _didBecomeActiveSignal;
 }
 
 - (LoginViewModel *)loginViewModel

@@ -13,12 +13,11 @@
 
 @interface MainTabBarViewModel : NSObject
 
+@property (strong, nonatomic) RACSignal *apiActiveKeySignal;
+
 @property (strong, nonatomic) RACSignal *apiKeyInactiveSignal;
 
-
-@property (assign, nonatomic, getter = isActive) BOOL active;
-
-@property (strong, nonatomic, readonly) RACSignal *didBecomeActiveSignal;
+@property (strong, nonatomic) RACSignal *xujcKeyInactiveSignal;
 
 - (LoginViewModel *)loginViewModel;
 
