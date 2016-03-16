@@ -46,31 +46,46 @@ static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIden
         make.bottom.equalTo(self.mas_bottomLayoutGuideBottom);
     }];
     
-    UIButton *settingsButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(25, 25)}];
-    [settingsButton setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
-    UIBarButtonItem *settingsButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
-    self.navigationItem.rightBarButtonItem = settingsButtonItem;
-    
-    @weakify(self);
-    settingsButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
-        [self.navigationController pushViewController:settingsViewController animated:YES];
-        return [RACSignal empty];
-    }];
+//    UIButton *settingsButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(25, 25)}];
+//    [settingsButton setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
+//    UIBarButtonItem *settingsButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
+//    self.navigationItem.rightBarButtonItem = settingsButtonItem;
+//    
+//    @weakify(self);
+//    settingsButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+//        @strongify(self);
+//        SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
+//        [self.navigationController pushViewController:settingsViewController animated:YES];
+//        return [RACSignal empty];
+//    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellReuseIdentifier forIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.imageView.image = [UIImage imageNamed:@"settings"];
+    cell.textLabel.text = NSLocalizedString(@"Settings", nil);
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
+    [self.navigationController pushViewController:settingsViewController animated:YES];
 }
 
 
