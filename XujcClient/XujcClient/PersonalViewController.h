@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PersonalViewModel.h"
 
 @interface PersonalViewController : UIViewController
+
+- (instancetype)initWithViewModel:(PersonalViewModel *)viewModel;
 
 @end

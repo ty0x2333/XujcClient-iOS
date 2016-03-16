@@ -14,6 +14,8 @@ static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIden
 
 @interface PersonalViewController()<UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) PersonalViewModel *viewModel;
+
 @property (strong, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) PersonalHeaderView *personalHeaderView;
@@ -21,6 +23,14 @@ static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIden
 @end
 
 @implementation PersonalViewController
+
+- (instancetype)initWithViewModel:(PersonalViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {

@@ -70,6 +70,7 @@
 		70730D951C99BDF8007CBEBB /* SemesterMasterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D941C99BDF8007CBEBB /* SemesterMasterViewModel.m */; };
 		70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D981C99F567007CBEBB /* MainTabBarController.m */; };
 		70730D9C1C99F580007CBEBB /* MainTabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D9B1C99F580007CBEBB /* MainTabBarViewModel.m */; };
+		70730DA21C99F842007CBEBB /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DA11C99F842007CBEBB /* PersonalViewModel.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -213,6 +214,8 @@
 		70730D981C99F567007CBEBB /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		70730D9A1C99F580007CBEBB /* MainTabBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewModel.h; sourceTree = "<group>"; };
 		70730D9B1C99F580007CBEBB /* MainTabBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewModel.m; sourceTree = "<group>"; };
+		70730DA01C99F842007CBEBB /* PersonalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewModel.h; sourceTree = "<group>"; };
+		70730DA11C99F842007CBEBB /* PersonalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -517,6 +520,8 @@
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
 				70730D8E1C999E7F007CBEBB /* PersonalHeaderView.h */,
 				70730D8F1C999E7F007CBEBB /* PersonalHeaderView.m */,
+				70730DA01C99F842007CBEBB /* PersonalViewModel.h */,
+				70730DA11C99F842007CBEBB /* PersonalViewModel.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
 				702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
@@ -839,6 +844,7 @@
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
 				7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */,
 				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
+				70730DA21C99F842007CBEBB /* PersonalViewModel.m in Sources */,
 				70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */,
 				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
 				7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */,

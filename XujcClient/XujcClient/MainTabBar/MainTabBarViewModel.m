@@ -78,4 +78,9 @@
     return [[BindingAccountViewModel alloc] init];
 }
 
+- (PersonalViewModel *)personalViewModel
+{
+    return [[PersonalViewModel alloc] init];
+}
+
 @end

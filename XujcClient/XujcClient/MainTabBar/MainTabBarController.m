@@ -50,7 +50,7 @@
     _viewModel = viewModel;
     UINavigationController *scheduleNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScheduleViewController alloc] initWithViewModel:self.viewModel.scheduleViewModel]];
     UINavigationController *scoreNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScoreViewController alloc] initWithViewModel:self.viewModel.scoreViewModel]];
-    UINavigationController *personalNavViewController = [[UINavigationController alloc] initWithRootViewController:[[PersonalViewController alloc] init]];
+    UINavigationController *personalNavViewController = [[UINavigationController alloc] initWithRootViewController:[[PersonalViewController alloc] initWithViewModel:self.viewModel.personalViewModel]];
     self.viewControllers = @[
                              scheduleNavViewController,
 //                             [[UIViewController alloc] init],
