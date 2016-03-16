@@ -30,4 +30,9 @@
     return [[ScoreViewModel alloc] init];
 }
 
+- (BindingAccountViewModel *)bindingAccountViewModel
+{
+    return [[BindingAccountViewModel alloc] init];
+}
+
 @end

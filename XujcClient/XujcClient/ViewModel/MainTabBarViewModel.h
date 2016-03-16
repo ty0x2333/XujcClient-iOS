@@ -14,12 +14,15 @@
 
 @interface MainTabBarViewModel : NSObject
 
-- (ScheduleViewModel *)scheduleViewModel;
 
 - (LoginViewModel *)loginViewModel;
 
 - (SignupViewModel *)signupViewModel;
 
 - (ScoreViewModel *)scoreViewModel;
+
+- (ScheduleViewModel *)scheduleViewModel;
+
+- (BindingAccountViewModel *)bindingAccountViewModel;
 
 @end
