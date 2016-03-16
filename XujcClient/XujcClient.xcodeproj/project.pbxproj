@@ -45,7 +45,6 @@
 		7062B6941C8B842C0074C716 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6931C8B842C0074C716 /* UserModel.m */; };
 		7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6991C8E14780074C716 /* AccountViewModel.m */; };
 		7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6A51C8E3CCE0074C716 /* MasterViewModel.m */; };
-		7062B6A91C8E43BF0074C716 /* MainTabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6A81C8E43BF0074C716 /* MainTabBarViewModel.m */; };
 		7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */; };
 		7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */; };
 		7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B81C8F7A6B0074C716 /* FormButton.m */; };
@@ -69,6 +68,8 @@
 		70730D8D1C999DF2007CBEBB /* CourseEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D8C1C999DF2007CBEBB /* CourseEventViewModel.m */; };
 		70730D901C999E7F007CBEBB /* PersonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D8F1C999E7F007CBEBB /* PersonalView.m */; };
 		70730D951C99BDF8007CBEBB /* SemesterMasterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D941C99BDF8007CBEBB /* SemesterMasterViewModel.m */; };
+		70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D981C99F567007CBEBB /* MainTabBarController.m */; };
+		70730D9C1C99F580007CBEBB /* MainTabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D9B1C99F580007CBEBB /* MainTabBarViewModel.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -87,7 +88,6 @@
 		70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE3C1BE3E806001D027C /* BaseModel.m */; };
 		70F7CE431BE3E832001D027C /* XujcUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE421BE3E832001D027C /* XujcUser.m */; };
 		70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE481BE3ECAE001D027C /* DynamicData.m */; };
-		70F7CE511BE40A81001D027C /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE501BE40A81001D027C /* MainTabBarController.m */; };
 		70F7CE611BE42391001D027C /* MSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE601BE42391001D027C /* MSEvent.m */; };
 		70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE6D1BE43A4E001D027C /* MSGridline.m */; };
 		70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */; };
@@ -161,8 +161,6 @@
 		7062B6991C8E14780074C716 /* AccountViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewModel.m; sourceTree = "<group>"; };
 		7062B6A41C8E3CCE0074C716 /* MasterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewModel.h; sourceTree = "<group>"; };
 		7062B6A51C8E3CCE0074C716 /* MasterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewModel.m; sourceTree = "<group>"; };
-		7062B6A71C8E43BF0074C716 /* MainTabBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewModel.h; sourceTree = "<group>"; };
-		7062B6A81C8E43BF0074C716 /* MainTabBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewModel.m; sourceTree = "<group>"; };
 		7062B6AD1C8F1D620074C716 /* BindingAccountViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingAccountViewModel.h; sourceTree = "<group>"; };
 		7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingAccountViewModel.m; sourceTree = "<group>"; };
 		7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+XujcServer.h"; sourceTree = "<group>"; };
@@ -211,6 +209,10 @@
 		70730D8F1C999E7F007CBEBB /* PersonalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalView.m; sourceTree = "<group>"; };
 		70730D931C99BDF8007CBEBB /* SemesterMasterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterMasterViewModel.h; sourceTree = "<group>"; };
 		70730D941C99BDF8007CBEBB /* SemesterMasterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterMasterViewModel.m; sourceTree = "<group>"; };
+		70730D971C99F567007CBEBB /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		70730D981C99F567007CBEBB /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		70730D9A1C99F580007CBEBB /* MainTabBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewModel.h; sourceTree = "<group>"; };
+		70730D9B1C99F580007CBEBB /* MainTabBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -241,8 +243,6 @@
 		70F7CE421BE3E832001D027C /* XujcUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcUser.m; sourceTree = "<group>"; };
 		70F7CE471BE3ECAE001D027C /* DynamicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicData.h; sourceTree = "<group>"; };
 		70F7CE481BE3ECAE001D027C /* DynamicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicData.m; sourceTree = "<group>"; };
-		70F7CE4F1BE40A81001D027C /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
-		70F7CE501BE40A81001D027C /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		70F7CE5F1BE42391001D027C /* MSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEvent.h; sourceTree = "<group>"; };
 		70F7CE601BE42391001D027C /* MSEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEvent.m; sourceTree = "<group>"; };
 		70F7CE6B1BE4394D001D027C /* XujcClient-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XujcClient-prefix.pch"; sourceTree = "<group>"; };
@@ -375,8 +375,6 @@
 			children = (
 				7062B6A41C8E3CCE0074C716 /* MasterViewModel.h */,
 				7062B6A51C8E3CCE0074C716 /* MasterViewModel.m */,
-				7062B6A71C8E43BF0074C716 /* MainTabBarViewModel.h */,
-				7062B6A81C8E43BF0074C716 /* MainTabBarViewModel.m */,
 				7062B68C1C8B0F480074C716 /* RequestViewModel.h */,
 				7062B68D1C8B0F480074C716 /* RequestViewModel.m */,
 			);
@@ -406,7 +404,6 @@
 				70730D741C94A039007CBEBB /* SemesterBaseViewController.h */,
 				70730D751C94A039007CBEBB /* SemesterBaseViewController.m */,
 			);
-			name = Semester;
 			path = Semester;
 			sourceTree = "<group>";
 		};
@@ -472,6 +469,17 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
+		70730D961C99F567007CBEBB /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				70730D971C99F567007CBEBB /* MainTabBarController.h */,
+				70730D981C99F567007CBEBB /* MainTabBarController.m */,
+				70730D9A1C99F580007CBEBB /* MainTabBarViewModel.h */,
+				70730D9B1C99F580007CBEBB /* MainTabBarViewModel.m */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
 		70F7CE0D1BE3AC25001D027C = {
 			isa = PBXGroup;
 			children = (
@@ -504,10 +512,9 @@
 				7062B6C01C9331BD0074C716 /* Score */,
 				70730D671C947A41007CBEBB /* Semester */,
 				70730D831C999DA9007CBEBB /* Schedule */,
+				70730D961C99F567007CBEBB /* MainTabBar */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
-				70F7CE4F1BE40A81001D027C /* MainTabBarController.h */,
-				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
 				70730D8E1C999E7F007CBEBB /* PersonalView.h */,
 				70730D8F1C999E7F007CBEBB /* PersonalView.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
@@ -789,6 +796,7 @@
 				70730D901C999E7F007CBEBB /* PersonalView.m in Sources */,
 				7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */,
 				70C2B03A1C81ECAA00923B85 /* SettingsViewController.m in Sources */,
+				70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */,
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
 				70730D8D1C999DF2007CBEBB /* CourseEventViewModel.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
@@ -802,9 +810,7 @@
 				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
 				70730D8A1C999DD5007CBEBB /* ScheduleViewModel.m in Sources */,
 				70730D791C94A13A007CBEBB /* SemesterBaseViewModel.m in Sources */,
-				70F7CE511BE40A81001D027C /* MainTabBarController.m in Sources */,
 				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
-				7062B6A91C8E43BF0074C716 /* MainTabBarViewModel.m in Sources */,
 				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
 				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */,
@@ -838,6 +844,7 @@
 				7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */,
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */,
+				70730D9C1C99F580007CBEBB /* MainTabBarViewModel.m in Sources */,
 				7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
