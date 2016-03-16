@@ -53,12 +53,17 @@
     UINavigationController *personalNavViewController = [[UINavigationController alloc] initWithRootViewController:[[PersonalViewController alloc] init]];
     self.viewControllers = @[
                              scheduleNavViewController,
-                             [[UIViewController alloc] init],
+//                             [[UIViewController alloc] init],
                              scoreNavViewController,
                              personalNavViewController
                              ];
     
-    NSArray *images = @[@"tabbar-schedule", @"tabbar-exam", @"tabbar-search", @"tabbar-personal"];
+    NSArray *images = @[@"tabbar-schedule",
+//                        @"tabbar-exam",
+                        @"tabbar-search",
+                        @"tabbar-personal"
+                        ];
+    
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setImage:[UIImage imageNamed:images[idx]]];
         [item setSelectedImage:[UIImage imageNamed:[images[idx] stringByAppendingString:@"-selected"]]];
