@@ -407,7 +407,7 @@
 				70730D751C94A039007CBEBB /* SemesterBaseViewController.m */,
 			);
 			name = Semester;
-			path = Term;
+			path = Semester;
 			sourceTree = "<group>";
 		};
 		70730D7A1C999CF9007CBEBB /* ViewModel */ = {
