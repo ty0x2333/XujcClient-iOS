@@ -11,8 +11,6 @@
 
 @interface MasterViewModel : NSObject
 
-@property (strong, nonatomic) RACSignal *apiKeyChangedSignal;
-
 - (MainTabBarViewModel *)mainTabBarViewModel;
 
 @end

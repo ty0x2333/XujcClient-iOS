@@ -12,15 +12,6 @@ static NSString * const kUserDefaultsKeyUser = @"user";
 
 @implementation MasterViewModel
 
-- (instancetype)init
-{
-    if (self = [super init]) {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        _apiKeyChangedSignal = [userDefaults rac_channelTerminalForKey:kUserDefaultsKeyApiKey];
-    }
-    return self;
-}
-
 - (MainTabBarViewModel *)mainTabBarViewModel
 {
     return [[MainTabBarViewModel alloc] init];
