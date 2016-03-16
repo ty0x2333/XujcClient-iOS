@@ -1,23 +1,23 @@
 //
-//  PersonalView.m
+//  PersonalHeaderView.m
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/16.
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "PersonalView.h"
+#import "PersonalHeaderView.h"
 
 static CGFloat const kAvatarImageViewMarginTop = 10.f;
 
-@interface PersonalView()
+@interface PersonalHeaderView()
 
 @property (strong, nonatomic) UIImageView *avatarImageView;
 @property (strong, nonatomic) UILabel *nicknameLabel;
 
 @end
 
-@implementation PersonalView
+@implementation PersonalHeaderView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

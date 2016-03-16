@@ -66,7 +66,7 @@
 		70730D861C999DBD007CBEBB /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D851C999DBD007CBEBB /* ScheduleViewController.m */; };
 		70730D8A1C999DD5007CBEBB /* ScheduleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D891C999DD5007CBEBB /* ScheduleViewModel.m */; };
 		70730D8D1C999DF2007CBEBB /* CourseEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D8C1C999DF2007CBEBB /* CourseEventViewModel.m */; };
-		70730D901C999E7F007CBEBB /* PersonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D8F1C999E7F007CBEBB /* PersonalView.m */; };
+		70730D901C999E7F007CBEBB /* PersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D8F1C999E7F007CBEBB /* PersonalHeaderView.m */; };
 		70730D951C99BDF8007CBEBB /* SemesterMasterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D941C99BDF8007CBEBB /* SemesterMasterViewModel.m */; };
 		70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D981C99F567007CBEBB /* MainTabBarController.m */; };
 		70730D9C1C99F580007CBEBB /* MainTabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D9B1C99F580007CBEBB /* MainTabBarViewModel.m */; };
@@ -205,8 +205,8 @@
 		70730D891C999DD5007CBEBB /* ScheduleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewModel.m; sourceTree = "<group>"; };
 		70730D8B1C999DF2007CBEBB /* CourseEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEventViewModel.h; sourceTree = "<group>"; };
 		70730D8C1C999DF2007CBEBB /* CourseEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseEventViewModel.m; sourceTree = "<group>"; };
-		70730D8E1C999E7F007CBEBB /* PersonalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalView.h; sourceTree = "<group>"; };
-		70730D8F1C999E7F007CBEBB /* PersonalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalView.m; sourceTree = "<group>"; };
+		70730D8E1C999E7F007CBEBB /* PersonalHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalHeaderView.h; sourceTree = "<group>"; };
+		70730D8F1C999E7F007CBEBB /* PersonalHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalHeaderView.m; sourceTree = "<group>"; };
 		70730D931C99BDF8007CBEBB /* SemesterMasterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterMasterViewModel.h; sourceTree = "<group>"; };
 		70730D941C99BDF8007CBEBB /* SemesterMasterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterMasterViewModel.m; sourceTree = "<group>"; };
 		70730D971C99F567007CBEBB /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
@@ -515,8 +515,8 @@
 				70730D961C99F567007CBEBB /* MainTabBar */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
-				70730D8E1C999E7F007CBEBB /* PersonalView.h */,
-				70730D8F1C999E7F007CBEBB /* PersonalView.m */,
+				70730D8E1C999E7F007CBEBB /* PersonalHeaderView.h */,
+				70730D8F1C999E7F007CBEBB /* PersonalHeaderView.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
 				702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
@@ -793,7 +793,7 @@
 				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */,
-				70730D901C999E7F007CBEBB /* PersonalView.m in Sources */,
+				70730D901C999E7F007CBEBB /* PersonalHeaderView.m in Sources */,
 				7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */,
 				70C2B03A1C81ECAA00923B85 /* SettingsViewController.m in Sources */,
 				70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */,

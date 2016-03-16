@@ -1,5 +1,5 @@
 //
-//  PersonalView.h
+//  PersonalHeaderView.h
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PersonalView : UIView
+@interface PersonalHeaderView : UIView
 
 @end

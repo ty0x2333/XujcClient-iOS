@@ -8,7 +8,7 @@
 
 #import "PersonalViewController.h"
 #import "SettingsViewController.h"
-#import "PersonalView.h"
+#import "PersonalHeaderView.h"
 
 static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
 
@@ -16,7 +16,7 @@ static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIden
 
 @property (strong, nonatomic) UITableView *tableView;
 
-@property (strong, nonatomic) PersonalView *personalView;
+@property (strong, nonatomic) PersonalHeaderView *personalHeaderView;
 
 @end
 
@@ -26,16 +26,16 @@ static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIden
 {
     [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"Personal", nil);
+    _personalHeaderView = [[PersonalHeaderView alloc] initWithFrame:CGRectMake(0, 0, 0, 135)];
+    
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellReuseIdentifier];
-    
-    _personalView = [[PersonalView alloc] initWithFrame:CGRectMake(0, 0, 0, 135)];
-    _tableView.tableHeaderView = _personalView;
+    _tableView.tableHeaderView = _personalHeaderView;
     [self.view addSubview:_tableView];
     
-    [_personalView makeConstraints:^(MASConstraintMaker *make) {
+    [_personalHeaderView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.tableView);
         make.width.equalTo(self.tableView);
     }];
