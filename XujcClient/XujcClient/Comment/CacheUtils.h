@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "XujcTerm.h"
+#import "XujcScore.h"
 
 @interface CacheUtils : NSObject
 
 + (instancetype)instance;
 
 - (BOOL)cacheTerms:(NSArray<XujcTerm *> *)terms;
+
+- (BOOL)cacheScore:(NSArray<XujcScore *> *)scores inTerm:(NSString *)termId;
 
 /**
  *  @brief terms in cache database
