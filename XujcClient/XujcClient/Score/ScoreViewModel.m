@@ -43,7 +43,13 @@
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [subscriber sendError:error];
+            NSInteger statusCode = ((NSHTTPURLResponse *)(task.response)).statusCode;
+            if (statusCode == 400) {
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:error];
+            }
         }];
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
