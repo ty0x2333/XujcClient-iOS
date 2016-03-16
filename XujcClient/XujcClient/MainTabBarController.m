@@ -21,6 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tabBar setValue:@(YES) forKeyPath:@"_hidesShadow"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
