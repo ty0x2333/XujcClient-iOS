@@ -44,15 +44,11 @@
 		7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B68D1C8B0F480074C716 /* RequestViewModel.m */; };
 		7062B6941C8B842C0074C716 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6931C8B842C0074C716 /* UserModel.m */; };
 		7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6991C8E14780074C716 /* AccountViewModel.m */; };
-		7062B6A21C8E3AA20074C716 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B69F1C8E3AA20074C716 /* LoginViewModel.m */; };
-		7062B6A31C8E3AA20074C716 /* SignupViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6A11C8E3AA20074C716 /* SignupViewModel.m */; };
 		7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6A51C8E3CCE0074C716 /* MasterViewModel.m */; };
 		7062B6A91C8E43BF0074C716 /* MainTabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6A81C8E43BF0074C716 /* MainTabBarViewModel.m */; };
-		7062B6AC1C8F0B930074C716 /* ScheduleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6AB1C8F0B930074C716 /* ScheduleViewModel.m */; };
 		7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */; };
 		7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */; };
 		7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B81C8F7A6B0074C716 /* FormButton.m */; };
-		7062B6BC1C921DC80074C716 /* CourseEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6BB1C921DC80074C716 /* CourseEventViewModel.m */; };
 		7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6BE1C9241DB0074C716 /* LessonTimeCalculator.m */; };
 		7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6C21C9331BD0074C716 /* ScoreTableViewCell.m */; };
 		7062B6C61C9331BD0074C716 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6C41C9331BD0074C716 /* ScoreViewController.m */; };
@@ -66,6 +62,11 @@
 		70730D731C947A41007CBEBB /* TermTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */; };
 		70730D761C94A039007CBEBB /* TermBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D751C94A039007CBEBB /* TermBaseViewController.m */; };
 		70730D791C94A13A007CBEBB /* TermBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D781C94A13A007CBEBB /* TermBaseViewModel.m */; };
+		70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D7E1C999D67007CBEBB /* LoginViewModel.m */; };
+		70730D821C999D67007CBEBB /* SignupViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D801C999D67007CBEBB /* SignupViewModel.m */; };
+		70730D861C999DBD007CBEBB /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D851C999DBD007CBEBB /* ScheduleViewController.m */; };
+		70730D8A1C999DD5007CBEBB /* ScheduleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D891C999DD5007CBEBB /* ScheduleViewModel.m */; };
+		70730D8D1C999DF2007CBEBB /* CourseEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D8C1C999DF2007CBEBB /* CourseEventViewModel.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -84,7 +85,6 @@
 		70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE3C1BE3E806001D027C /* BaseModel.m */; };
 		70F7CE431BE3E832001D027C /* XujcUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE421BE3E832001D027C /* XujcUser.m */; };
 		70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE481BE3ECAE001D027C /* DynamicData.m */; };
-		70F7CE4E1BE40A3C001D027C /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE4D1BE40A3C001D027C /* ScheduleViewController.m */; };
 		70F7CE511BE40A81001D027C /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE501BE40A81001D027C /* MainTabBarController.m */; };
 		70F7CE611BE42391001D027C /* MSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE601BE42391001D027C /* MSEvent.m */; };
 		70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE6D1BE43A4E001D027C /* MSGridline.m */; };
@@ -157,16 +157,10 @@
 		7062B6931C8B842C0074C716 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		7062B6981C8E14780074C716 /* AccountViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewModel.h; sourceTree = "<group>"; };
 		7062B6991C8E14780074C716 /* AccountViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewModel.m; sourceTree = "<group>"; };
-		7062B69E1C8E3AA20074C716 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
-		7062B69F1C8E3AA20074C716 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
-		7062B6A01C8E3AA20074C716 /* SignupViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewModel.h; sourceTree = "<group>"; };
-		7062B6A11C8E3AA20074C716 /* SignupViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewModel.m; sourceTree = "<group>"; };
 		7062B6A41C8E3CCE0074C716 /* MasterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewModel.h; sourceTree = "<group>"; };
 		7062B6A51C8E3CCE0074C716 /* MasterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewModel.m; sourceTree = "<group>"; };
 		7062B6A71C8E43BF0074C716 /* MainTabBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewModel.h; sourceTree = "<group>"; };
 		7062B6A81C8E43BF0074C716 /* MainTabBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewModel.m; sourceTree = "<group>"; };
-		7062B6AA1C8F0B930074C716 /* ScheduleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewModel.h; sourceTree = "<group>"; };
-		7062B6AB1C8F0B930074C716 /* ScheduleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewModel.m; sourceTree = "<group>"; };
 		7062B6AD1C8F1D620074C716 /* BindingAccountViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingAccountViewModel.h; sourceTree = "<group>"; };
 		7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingAccountViewModel.m; sourceTree = "<group>"; };
 		7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+XujcServer.h"; sourceTree = "<group>"; };
@@ -175,8 +169,6 @@
 		7062B6B61C8F6E770074C716 /* XujcServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcServer.h; sourceTree = "<group>"; };
 		7062B6B71C8F7A6B0074C716 /* FormButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormButton.h; sourceTree = "<group>"; };
 		7062B6B81C8F7A6B0074C716 /* FormButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormButton.m; sourceTree = "<group>"; };
-		7062B6BA1C921DC80074C716 /* CourseEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEventViewModel.h; sourceTree = "<group>"; };
-		7062B6BB1C921DC80074C716 /* CourseEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseEventViewModel.m; sourceTree = "<group>"; };
 		7062B6BD1C9241DB0074C716 /* LessonTimeCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonTimeCalculator.h; sourceTree = "<group>"; };
 		7062B6BE1C9241DB0074C716 /* LessonTimeCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonTimeCalculator.m; sourceTree = "<group>"; };
 		7062B6C11C9331BD0074C716 /* ScoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreTableViewCell.h; sourceTree = "<group>"; };
@@ -203,6 +195,16 @@
 		70730D751C94A039007CBEBB /* TermBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermBaseViewController.m; path = XujcClient/TermBaseViewController.m; sourceTree = SOURCE_ROOT; };
 		70730D771C94A13A007CBEBB /* TermBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermBaseViewModel.h; sourceTree = "<group>"; };
 		70730D781C94A13A007CBEBB /* TermBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermBaseViewModel.m; sourceTree = "<group>"; };
+		70730D7D1C999D67007CBEBB /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
+		70730D7E1C999D67007CBEBB /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		70730D7F1C999D67007CBEBB /* SignupViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewModel.h; sourceTree = "<group>"; };
+		70730D801C999D67007CBEBB /* SignupViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewModel.m; sourceTree = "<group>"; };
+		70730D841C999DBD007CBEBB /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		70730D851C999DBD007CBEBB /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		70730D881C999DD5007CBEBB /* ScheduleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewModel.h; sourceTree = "<group>"; };
+		70730D891C999DD5007CBEBB /* ScheduleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewModel.m; sourceTree = "<group>"; };
+		70730D8B1C999DF2007CBEBB /* CourseEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEventViewModel.h; sourceTree = "<group>"; };
+		70730D8C1C999DF2007CBEBB /* CourseEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseEventViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -233,8 +235,6 @@
 		70F7CE421BE3E832001D027C /* XujcUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcUser.m; sourceTree = "<group>"; };
 		70F7CE471BE3ECAE001D027C /* DynamicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicData.h; sourceTree = "<group>"; };
 		70F7CE481BE3ECAE001D027C /* DynamicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicData.m; sourceTree = "<group>"; };
-		70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
-		70F7CE4D1BE40A3C001D027C /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		70F7CE4F1BE40A81001D027C /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		70F7CE501BE40A81001D027C /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		70F7CE5F1BE42391001D027C /* MSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEvent.h; sourceTree = "<group>"; };
@@ -325,12 +325,9 @@
 		70443B661C85DD7D00B0C5DA /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				70730D7B1C999D0F007CBEBB /* ViewModel */,
 				7062B6B71C8F7A6B0074C716 /* FormButton.h */,
 				7062B6B81C8F7A6B0074C716 /* FormButton.m */,
-				7062B6981C8E14780074C716 /* AccountViewModel.h */,
-				7062B6991C8E14780074C716 /* AccountViewModel.m */,
-				7062B6AD1C8F1D620074C716 /* BindingAccountViewModel.h */,
-				7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */,
 				7062B67D1C887B020074C716 /* LoginTextFieldGroupView.h */,
 				7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */,
 				70443B6A1C85DDB100B0C5DA /* LoginLayoutConfigs.h */,
@@ -374,16 +371,8 @@
 				7062B6A51C8E3CCE0074C716 /* MasterViewModel.m */,
 				7062B6A71C8E43BF0074C716 /* MainTabBarViewModel.h */,
 				7062B6A81C8E43BF0074C716 /* MainTabBarViewModel.m */,
-				7062B6AA1C8F0B930074C716 /* ScheduleViewModel.h */,
-				7062B6AB1C8F0B930074C716 /* ScheduleViewModel.m */,
 				7062B68C1C8B0F480074C716 /* RequestViewModel.h */,
 				7062B68D1C8B0F480074C716 /* RequestViewModel.m */,
-				7062B69E1C8E3AA20074C716 /* LoginViewModel.h */,
-				7062B69F1C8E3AA20074C716 /* LoginViewModel.m */,
-				7062B6A01C8E3AA20074C716 /* SignupViewModel.h */,
-				7062B6A11C8E3AA20074C716 /* SignupViewModel.m */,
-				7062B6BA1C921DC80074C716 /* CourseEventViewModel.h */,
-				7062B6BB1C921DC80074C716 /* CourseEventViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -391,12 +380,9 @@
 		7062B6C01C9331BD0074C716 /* Score */ = {
 			isa = PBXGroup;
 			children = (
-				7062B6C71C9331D10074C716 /* ScoreViewModel.h */,
-				7062B6C81C9331D10074C716 /* ScoreViewModel.m */,
+				70730D7A1C999CF9007CBEBB /* ViewModel */,
 				7062B6C31C9331BD0074C716 /* ScoreViewController.h */,
 				7062B6C41C9331BD0074C716 /* ScoreViewController.m */,
-				7062B6CA1C9333690074C716 /* ScoreTableViewCellViewModel.h */,
-				7062B6CB1C9333690074C716 /* ScoreTableViewCellViewModel.m */,
 				7062B6C11C9331BD0074C716 /* ScoreTableViewCell.h */,
 				7062B6C21C9331BD0074C716 /* ScoreTableViewCell.m */,
 			);
@@ -406,20 +392,75 @@
 		70730D671C947A41007CBEBB /* Term */ = {
 			isa = PBXGroup;
 			children = (
-				70730D771C94A13A007CBEBB /* TermBaseViewModel.h */,
-				70730D781C94A13A007CBEBB /* TermBaseViewModel.m */,
+				70730D7C1C999D36007CBEBB /* ViewModel */,
 				70730D681C947A41007CBEBB /* TermSelectorView.h */,
 				70730D691C947A41007CBEBB /* TermSelectorView.m */,
-				70730D6A1C947A41007CBEBB /* TermSelectorViewModel.h */,
-				70730D6B1C947A41007CBEBB /* TermSelectorViewModel.m */,
 				70730D6C1C947A41007CBEBB /* TermTableViewCell.h */,
 				70730D6D1C947A41007CBEBB /* TermTableViewCell.m */,
-				70730D6E1C947A41007CBEBB /* TermTableViewCellViewModel.h */,
-				70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */,
 				70730D741C94A039007CBEBB /* TermBaseViewController.h */,
 				70730D751C94A039007CBEBB /* TermBaseViewController.m */,
 			);
 			path = Term;
+			sourceTree = "<group>";
+		};
+		70730D7A1C999CF9007CBEBB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7062B6C71C9331D10074C716 /* ScoreViewModel.h */,
+				7062B6C81C9331D10074C716 /* ScoreViewModel.m */,
+				7062B6CA1C9333690074C716 /* ScoreTableViewCellViewModel.h */,
+				7062B6CB1C9333690074C716 /* ScoreTableViewCellViewModel.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		70730D7B1C999D0F007CBEBB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7062B6981C8E14780074C716 /* AccountViewModel.h */,
+				7062B6991C8E14780074C716 /* AccountViewModel.m */,
+				7062B6AD1C8F1D620074C716 /* BindingAccountViewModel.h */,
+				7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */,
+				70730D7D1C999D67007CBEBB /* LoginViewModel.h */,
+				70730D7E1C999D67007CBEBB /* LoginViewModel.m */,
+				70730D7F1C999D67007CBEBB /* SignupViewModel.h */,
+				70730D801C999D67007CBEBB /* SignupViewModel.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		70730D7C1C999D36007CBEBB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				70730D771C94A13A007CBEBB /* TermBaseViewModel.h */,
+				70730D781C94A13A007CBEBB /* TermBaseViewModel.m */,
+				70730D6E1C947A41007CBEBB /* TermTableViewCellViewModel.h */,
+				70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */,
+				70730D6A1C947A41007CBEBB /* TermSelectorViewModel.h */,
+				70730D6B1C947A41007CBEBB /* TermSelectorViewModel.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		70730D831C999DA9007CBEBB /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				70730D871C999DCB007CBEBB /* ViewModel */,
+				70730D841C999DBD007CBEBB /* ScheduleViewController.h */,
+				70730D851C999DBD007CBEBB /* ScheduleViewController.m */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		70730D871C999DCB007CBEBB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				70730D8B1C999DF2007CBEBB /* CourseEventViewModel.h */,
+				70730D8C1C999DF2007CBEBB /* CourseEventViewModel.m */,
+				70730D881C999DD5007CBEBB /* ScheduleViewModel.h */,
+				70730D891C999DD5007CBEBB /* ScheduleViewModel.m */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		70F7CE0D1BE3AC25001D027C = {
@@ -453,12 +494,11 @@
 				70443B661C85DD7D00B0C5DA /* Login */,
 				7062B6C01C9331BD0074C716 /* Score */,
 				70730D671C947A41007CBEBB /* Term */,
+				70730D831C999DA9007CBEBB /* Schedule */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
 				70F7CE4F1BE40A81001D027C /* MainTabBarController.h */,
 				70F7CE501BE40A81001D027C /* MainTabBarController.m */,
-				70F7CE4C1BE40A3C001D027C /* ScheduleViewController.h */,
-				70F7CE4D1BE40A3C001D027C /* ScheduleViewController.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
 				702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
@@ -727,7 +767,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7062B6BC1C921DC80074C716 /* CourseEventViewModel.m in Sources */,
 				70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */,
 				70F7CE431BE3E832001D027C /* XujcUser.m in Sources */,
 				7062B6C91C9331D10074C716 /* ScoreViewModel.m in Sources */,
@@ -735,18 +774,21 @@
 				70730D761C94A039007CBEBB /* TermBaseViewController.m in Sources */,
 				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
+				70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */,
 				7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */,
 				70C2B03A1C81ECAA00923B85 /* SettingsViewController.m in Sources */,
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
+				70730D8D1C999DF2007CBEBB /* CourseEventViewModel.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
 				70730D711C947A41007CBEBB /* TermSelectorViewModel.m in Sources */,
 				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */,
 				7062B6941C8B842C0074C716 /* UserModel.m in Sources */,
 				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
 				7023F9BB1BE681300046CF3B /* XujcCourseEvent.m in Sources */,
-				7062B6AC1C8F0B930074C716 /* ScheduleViewModel.m in Sources */,
 				7023F9AB1BE60F680046CF3B /* ScheduleRowHeader.m in Sources */,
+				70730D821C999D67007CBEBB /* SignupViewModel.m in Sources */,
 				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
+				70730D8A1C999DD5007CBEBB /* ScheduleViewModel.m in Sources */,
 				70730D791C94A13A007CBEBB /* TermBaseViewModel.m in Sources */,
 				70F7CE511BE40A81001D027C /* MainTabBarController.m in Sources */,
 				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
@@ -756,20 +798,19 @@
 				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */,
 				70730D731C947A41007CBEBB /* TermTableViewCellViewModel.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
-				7062B6A31C8E3AA20074C716 /* SignupViewModel.m in Sources */,
 				7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */,
 				7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,
 				70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */,
 				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
+				70730D861C999DBD007CBEBB /* ScheduleViewController.m in Sources */,
 				7062B6C61C9331BD0074C716 /* ScoreViewController.m in Sources */,
 				702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */,
 				70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */,
 				70C2B0331C81349400923B85 /* UIColor+Theme.m in Sources */,
 				7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */,
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
-				7062B6A21C8E3AA20074C716 /* LoginViewModel.m in Sources */,
 				7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */,
 				7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */,
 				70730D701C947A41007CBEBB /* TermSelectorView.m in Sources */,
@@ -785,7 +826,6 @@
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */,
 				7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */,
-				70F7CE4E1BE40A3C001D027C /* ScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
