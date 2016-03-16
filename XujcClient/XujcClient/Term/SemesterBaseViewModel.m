@@ -20,6 +20,7 @@
 {
     if (self = [super init]) {
         _semesterSelectorViewModel = [[SemesterSelectorViewModel alloc] init];
+        RACChannelTo(_semesterSelectorViewModel, semesters) = RACChannelTo(self, semesters);
     }
     return self;
 }

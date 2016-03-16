@@ -8,11 +8,23 @@
 
 #import "MainTabBarViewModel.h"
 
+@interface MainTabBarViewModel()
+
+@property (strong, nonatomic) SemesterMasterViewModel *semesterMasterViewModel;
+
+@end
+
 @implementation MainTabBarViewModel
 
-- (ScheduleViewModel *)scheduleViewModel
+- (instancetype)init
 {
-    return [[ScheduleViewModel alloc] init];
+    if (self = [super init]) {
+        _semesterMasterViewModel = [[SemesterMasterViewModel alloc] init];
+    }
+    return self;
+}
+
+{
 }
 
 - (LoginViewModel *)loginViewModel
@@ -25,9 +37,14 @@
     return [[SignupViewModel alloc] init];
 }
 
+- (ScheduleViewModel *)scheduleViewModel
+{
+    return [self.semesterMasterViewModel scheduleViewModel];
+}
+
 - (ScoreViewModel *)scoreViewModel
 {
-    return [[ScoreViewModel alloc] init];
+    return [self.semesterMasterViewModel scoreViewModel];
 }
 
 - (BindingAccountViewModel *)bindingAccountViewModel

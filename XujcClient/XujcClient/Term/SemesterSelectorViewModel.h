@@ -12,15 +12,13 @@
 
 @interface SemesterSelectorViewModel : RequestViewModel
 
-@property (strong, nonatomic) RACSignal *fetchSemestersSignal;
+@property (strong, nonatomic) NSArray<XujcSemesterModel *> *semesters;
 
 @property (strong, nonatomic) RACSignal *selectedSemesterNameSignal;
 
 @property (strong, nonatomic) RACSignal *selectedSemesterIdSignal;
 
 @property (assign, nonatomic) NSInteger selectedIndex;
-
-- (NSInteger)semesterCount;
 
 - (NSString *)selectedSemesterId;
 

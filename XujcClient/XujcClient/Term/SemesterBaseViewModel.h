@@ -11,6 +11,8 @@
 
 @interface SemesterBaseViewModel : RequestViewModel
 
+@property (strong, nonatomic) NSArray<XujcSemesterModel *> *semesters;
+
 @property (strong, readonly, nonatomic) SemesterSelectorViewModel *semesterSelectorViewModel;
 
 @end

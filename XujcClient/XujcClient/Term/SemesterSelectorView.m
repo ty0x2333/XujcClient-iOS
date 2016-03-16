@@ -48,12 +48,12 @@ static NSString * const kSemesterTableViewCellIdentifier = @"kSemesterTableViewC
         [self layoutIfNeeded];
     }];
     
-    [_viewModel.fetchSemestersSignal subscribeNext:^(id x) {
-        
-    } completed:^{
-        @strongify(self);
-        [self.tableView reloadData];
-    }];
+//    [_viewModel.fetchSemestersSignal subscribeNext:^(id x) {
+//        
+//    } completed:^{
+//        @strongify(self);
+//        [self.tableView reloadData];
+//    }];
 }
 
 - (void)layoutSubviews
@@ -68,7 +68,8 @@ static NSString * const kSemesterTableViewCellIdentifier = @"kSemesterTableViewC
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.viewModel semesterCount];
+//    return [self.viewModel semesterCount];
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
