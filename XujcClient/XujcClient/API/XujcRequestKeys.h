@@ -16,9 +16,9 @@ static NSString* const kResponseName = @"xj_xm";
 static NSString* const kResponseGrade = @"xj_nj";
 static NSString* const kResponseProfessional = @"zy_mc";
 
-#pragma mark - Term
+#pragma mark - Semester
 
-static NSString* const kResponseTermId = @"tm_id";
+static NSString* const kResponseSemesterId = @"tm_id";
 
 #pragma mark - Xujc Course
 
@@ -42,8 +42,8 @@ static NSString* const kResponseCourseEvents = @"kcb_sksd";
 
 static NSString* const kResponseCourseSorce = @"zcj";
 static NSString* const kResponseCourseSorceLevel = @"zcj_dj";
-static NSString* const kResponseMidTermStatus = @"ksqk_qz";
-static NSString* const kResponseEndTermStatus = @"ksqk_qm";
+static NSString* const kResponseMidSemesterStatus = @"ksqk_qz";
+static NSString* const kResponseEndSemesterStatus = @"ksqk_qm";
 static NSString* const kResponseScoreStudyWay = @"xkfs";
 
 #pragma mark - Xujc Course Event

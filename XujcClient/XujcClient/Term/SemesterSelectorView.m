@@ -1,27 +1,27 @@
 //
-//  TermSelectorView.m
+//  SemesterSelectorView.m
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/12.
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "TermSelectorView.h"
-#import "TermTableViewCell.h"
+#import "SemesterSelectorView.h"
+#import "SemesterTableViewCell.h"
 
-static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdentifier";
+static NSString * const kSemesterTableViewCellIdentifier = @"kSemesterTableViewCellIdentifier";
 
-@interface TermSelectorView()<UITableViewDataSource, UITableViewDelegate>
+@interface SemesterSelectorView()<UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) TermSelectorViewModel *viewModel;
+@property (strong, nonatomic) SemesterSelectorViewModel *viewModel;
 
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
-@implementation TermSelectorView
+@implementation SemesterSelectorView
 
-- (instancetype)initWithViewModel:(TermSelectorViewModel *)viewModel
+- (instancetype)initWithViewModel:(SemesterSelectorViewModel *)viewModel
 {
     if (self = [super init]) {
         _viewModel = viewModel;
@@ -36,7 +36,7 @@ static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdent
     _tableView.autoresizesSubviews = YES;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    [_tableView registerClass:[TermTableViewCell class] forCellReuseIdentifier:kTermTableViewCellIdentifier];
+    [_tableView registerClass:[SemesterTableViewCell class] forCellReuseIdentifier:kSemesterTableViewCellIdentifier];
     [self addSubview:_tableView];
     
     _tableView.backgroundColor = [UIColor greenColor];
@@ -48,7 +48,7 @@ static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdent
         [self layoutIfNeeded];
     }];
     
-    [_viewModel.fetchTermsSignal subscribeNext:^(id x) {
+    [_viewModel.fetchSemestersSignal subscribeNext:^(id x) {
         
     } completed:^{
         @strongify(self);
@@ -68,13 +68,13 @@ static NSString * const kTermTableViewCellIdentifier = @"kTermTableViewCellIdent
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.viewModel termCount];
+    return [self.viewModel semesterCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TermTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTermTableViewCellIdentifier forIndexPath:indexPath];
-    cell.viewModel = [self.viewModel termTableViewCellViewModelAtIndex:indexPath.row];
+    SemesterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSemesterTableViewCellIdentifier forIndexPath:indexPath];
+    cell.viewModel = [self.viewModel semesterTableViewCellViewModelAtIndex:indexPath.row];
     return cell;
 }
 

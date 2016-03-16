@@ -11,6 +11,6 @@
 
 static NSString* const XujcServerKeyApiKey = @"apikey";
 
-static NSString* const XujcServerKeyTermId = @"tm_id";
+static NSString* const XujcServerKeySemesterId = @"tm_id";
 
 #endif /* XujcServerKeys_h */

@@ -18,17 +18,17 @@ typedef void (^ResponseFailureBlock)(NSURLSessionDataTask * _Nullable task, NSEr
           successBlock:(nullable ResponseSuccessBlock)success
           failureBlock:(nullable ResponseFailureBlock)failure;
 
-+ (void)terms:(nonnull NSString *)APIKey
++ (void)semesters:(nonnull NSString *)APIKey
  successBlock:(nullable ResponseSuccessBlock)success
  failureBlock:(nullable ResponseFailureBlock)failure;
 
 + (void)classSchedule:(nonnull NSString *)APIKey
-               termId:(nonnull NSString *)termId
+               semesterId:(nonnull NSString *)semesterId
          successBlock:(nullable ResponseSuccessBlock)success
          failureBlock:(nullable ResponseFailureBlock)failure;
 
 + (void)scores:(nonnull NSString *)APIKey
-        termId:(nonnull NSString *)termId
+        semesterId:(nonnull NSString *)semesterId
   successBlock:(nullable ResponseSuccessBlock)success
   failureBlock:(nullable ResponseFailureBlock)failure;
 @end

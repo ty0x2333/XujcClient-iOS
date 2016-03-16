@@ -26,35 +26,35 @@
 {
     [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
         
-        NSString *termTableSQL = @"CREATE TABLE IF NOT EXISTS term ("
+        NSString *semesterTableSQL = @"CREATE TABLE IF NOT EXISTS semester ("
                                  @"id integer PRIMARY KEY NOT NULL,"
                                  @"name text"
                                  @");";
         
         NSString *scoreTableSQL = @"CREATE TABLE IF NOT EXISTS score ("
-                                  @"term_id text NOT NULL,"
+                                  @"semester_id text NOT NULL,"
                                   @"name text NOT NULL,"
                                   @"credit integer,"
                                   @"score integer,"
                                   @"study_way text,"
                                   @"score_level text,"
-                                  @"mid_term_status text,"
-                                  @"end_term_status text,"
-                                  @"PRIMARY KEY(term_id, name)"
+                                  @"mid_semester_status text,"
+                                  @"end_semester_status text,"
+                                  @"PRIMARY KEY(semester_id, name)"
                                   @");";
         
-        [db executeUpdate:termTableSQL];
+        [db executeUpdate:semesterTableSQL];
         [db executeUpdate:scoreTableSQL];
     }];
 }
 
-- (BOOL)cacheTerms:(NSArray<XujcSemesterModel *> *)terms
+- (BOOL)cacheSemesters:(NSArray<XujcSemesterModel *> *)semesters
 {
     __block BOOL isSuccess = NO;
     
     [[FMDatabaseQueue instance] inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        for (XujcSemesterModel *term in terms) {
-            isSuccess = [db executeUpdate:@"INSERT OR REPLACE INTO term(id, name) VALUES (?, ?);", term.termId, term.displayName];
+        for (XujcSemesterModel *semester in semesters) {
+            isSuccess = [db executeUpdate:@"INSERT OR REPLACE INTO semester(id, name) VALUES (?, ?);", semester.semesterId, semester.displayName];
             if (!isSuccess) {
                 *rollback = YES;
                 return;
@@ -64,16 +64,16 @@
     return isSuccess;
 }
 
-- (BOOL)cacheScore:(NSArray<XujcScore *> *)scores inTerm:(NSString *)termId
+- (BOOL)cacheScore:(NSArray<XujcScore *> *)scores inSemester:(NSString *)semesterId
 {
     __block BOOL isSuccess = NO;
     
     [[FMDatabaseQueue instance] inTransaction:^(FMDatabase *db, BOOL *rollback) {
         
-        [db executeUpdate:@"DELETE FROM score WHERE term_id=?;", termId];
+        [db executeUpdate:@"DELETE FROM score WHERE semester_id=?;", semesterId];
         
         for (XujcScore *score in scores) {
-            isSuccess = [db executeUpdate:@"INSERT INTO score(name, term_id, credit, score, study_way, score_level, mid_term_status, end_term_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", score.courseName, termId, @(score.credit), @(score.score), score.studyWay, score.scoreLevel, score.midTermStatus, score.endTermStatus];
+            isSuccess = [db executeUpdate:@"INSERT INTO score(name, semester_id, credit, score, study_way, score_level, mid_semester_status, end_semester_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", score.courseName, semesterId, @(score.credit), @(score.score), score.studyWay, score.scoreLevel, score.midSemesterStatus, score.endSemesterStatus];
             if (!isSuccess) {
                 *rollback = YES;
                 return;
@@ -83,19 +83,19 @@
     return isSuccess;
 }
 
-- (NSArray<XujcSemesterModel *> *)termsFormCache
+- (NSArray<XujcSemesterModel *> *)semestersFormCacheFormCache
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
-        NSString *sql = @"SELECT id, name FROM term ORDER BY id DESC;";
+        NSString *sql = @"SELECT id, name FROM semester ORDER BY id DESC;";
         
         FMResultSet *set = [db executeQuery:sql];
         
         while ([set next]) {
-            XujcSemesterModel *term = [[XujcSemesterModel alloc] init];
-            term.termId = [set objectForColumnName:@"id"];
-            term.displayName = [set objectForColumnName:@"name"];
-            [result addObject:term];
+            XujcSemesterModel *semester = [[XujcSemesterModel alloc] init];
+            semester.semesterId = [set objectForColumnName:@"id"];
+            semester.displayName = [set objectForColumnName:@"name"];
+            [result addObject:semester];
         }
 
         [set close];
@@ -103,13 +103,13 @@
     return result;
 }
 
-- (NSArray<XujcScore *> *)scoresFormCacheWithTerm:(NSString *)termId
+- (NSArray<XujcScore *> *)scoresFormCacheWithSemester:(NSString *)semesterId
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
-        NSString *sqlFormat = @"SELECT name, credit, score, study_way, score_level, mid_term_status, end_term_status FROM score WHERE term_id=?;";
+        NSString *sqlFormat = @"SELECT name, credit, score, study_way, score_level, mid_semester_status, end_semester_status FROM score WHERE semester_id=?;";
         
-        FMResultSet *set = [db executeQuery:sqlFormat, termId];
+        FMResultSet *set = [db executeQuery:sqlFormat, semesterId];
         
         while ([set next]) {
             XujcScore *score = [[XujcScore alloc] init];
@@ -118,8 +118,8 @@
             score.score = [[set objectForColumnName:@"score"] integerValue];
             score.studyWay = [set objectForColumnName:@"study_way"];
             score.scoreLevel = [set objectForColumnName:@"score_level"];
-            score.midTermStatus = [set objectForColumnName:@"mid_term_status"];
-            score.endTermStatus = [set objectForColumnName:@"end_term_status"];
+            score.midSemesterStatus = [set objectForColumnName:@"mid_semester_status"];
+            score.endSemesterStatus = [set objectForColumnName:@"end_semester_status"];
             [result addObject:score];
         }
         

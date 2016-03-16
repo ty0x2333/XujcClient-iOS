@@ -12,8 +12,8 @@
 
 @property (nonatomic, copy) NSString *courseName;
 @property (nonatomic, assign) NSInteger score;
-@property (nonatomic, copy) NSString *midTermStatus;
-@property (nonatomic, copy) NSString *endTermStatus;
+@property (nonatomic, copy) NSString *midSemesterStatus;
+@property (nonatomic, copy) NSString *endSemesterStatus;
 @property (nonatomic, copy) NSString *scoreLevel;
 @property (nonatomic, copy) NSString *studyWay;
 /**

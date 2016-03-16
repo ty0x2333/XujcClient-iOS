@@ -6,10 +6,10 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "TermBaseViewModel.h"
+#import "SemesterBaseViewModel.h"
 #import "ScoreTableViewCellViewModel.h"
 
-@interface ScoreViewModel : TermBaseViewModel
+@interface ScoreViewModel : SemesterBaseViewModel
 
 @property (strong, nonatomic) RACSignal *fetchScoresSignal;
 

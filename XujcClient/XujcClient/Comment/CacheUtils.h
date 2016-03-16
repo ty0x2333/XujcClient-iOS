@@ -14,17 +14,17 @@
 
 + (instancetype)instance;
 
-- (BOOL)cacheTerms:(NSArray<XujcSemesterModel *> *)terms;
+- (BOOL)cacheSemesters:(NSArray<XujcSemesterModel *> *)semesters;
 
-- (BOOL)cacheScore:(NSArray<XujcScore *> *)scores inTerm:(NSString *)termId;
+- (BOOL)cacheScore:(NSArray<XujcScore *> *)scores inSemester:(NSString *)semesterId;
 
 /**
- *  @brief terms in cache database
+ *  @brief semesters in cache database
  *
- *  @note  terms DESC
+ *  @note  semesters DESC
  */
-- (NSArray<XujcSemesterModel *> *)termsFormCache;
+- (NSArray<XujcSemesterModel *> *)semestersFormCache;
 
-- (NSArray<XujcScore *> *)scoresFormCacheWithTerm:(NSString *)termId;
+- (NSArray<XujcScore *> *)scoresFormCacheWithSemester:(NSString *)semesterId;
 
 @end

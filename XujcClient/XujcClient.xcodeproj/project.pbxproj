@@ -56,12 +56,12 @@
 		7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6CB1C9333690074C716 /* ScoreTableViewCellViewModel.m */; };
 		7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6D31C9369F50074C716 /* FMDatabaseQueue+Utils.m */; };
 		7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6D61C93769A0074C716 /* CacheUtils.m */; };
-		70730D701C947A41007CBEBB /* TermSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D691C947A41007CBEBB /* TermSelectorView.m */; };
-		70730D711C947A41007CBEBB /* TermSelectorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6B1C947A41007CBEBB /* TermSelectorViewModel.m */; };
-		70730D721C947A41007CBEBB /* TermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6D1C947A41007CBEBB /* TermTableViewCell.m */; };
-		70730D731C947A41007CBEBB /* TermTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */; };
-		70730D761C94A039007CBEBB /* TermBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D751C94A039007CBEBB /* TermBaseViewController.m */; };
-		70730D791C94A13A007CBEBB /* TermBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D781C94A13A007CBEBB /* TermBaseViewModel.m */; };
+		70730D701C947A41007CBEBB /* SemesterSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D691C947A41007CBEBB /* SemesterSelectorView.m */; };
+		70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6B1C947A41007CBEBB /* SemesterSelectorViewModel.m */; };
+		70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6D1C947A41007CBEBB /* SemesterTableViewCell.m */; };
+		70730D731C947A41007CBEBB /* SemesterTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6F1C947A41007CBEBB /* SemesterTableViewCellViewModel.m */; };
+		70730D761C94A039007CBEBB /* SemesterBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D751C94A039007CBEBB /* SemesterBaseViewController.m */; };
+		70730D791C94A13A007CBEBB /* SemesterBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D781C94A13A007CBEBB /* SemesterBaseViewModel.m */; };
 		70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D7E1C999D67007CBEBB /* LoginViewModel.m */; };
 		70730D821C999D67007CBEBB /* SignupViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D801C999D67007CBEBB /* SignupViewModel.m */; };
 		70730D861C999DBD007CBEBB /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D851C999DBD007CBEBB /* ScheduleViewController.m */; };
@@ -184,18 +184,18 @@
 		7062B6D31C9369F50074C716 /* FMDatabaseQueue+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabaseQueue+Utils.m"; sourceTree = "<group>"; };
 		7062B6D51C9376990074C716 /* CacheUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheUtils.h; sourceTree = "<group>"; };
 		7062B6D61C93769A0074C716 /* CacheUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheUtils.m; sourceTree = "<group>"; };
-		70730D681C947A41007CBEBB /* TermSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermSelectorView.h; sourceTree = "<group>"; };
-		70730D691C947A41007CBEBB /* TermSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermSelectorView.m; sourceTree = "<group>"; };
-		70730D6A1C947A41007CBEBB /* TermSelectorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermSelectorViewModel.h; sourceTree = "<group>"; };
-		70730D6B1C947A41007CBEBB /* TermSelectorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermSelectorViewModel.m; sourceTree = "<group>"; };
-		70730D6C1C947A41007CBEBB /* TermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermTableViewCell.h; sourceTree = "<group>"; };
-		70730D6D1C947A41007CBEBB /* TermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermTableViewCell.m; sourceTree = "<group>"; };
-		70730D6E1C947A41007CBEBB /* TermTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermTableViewCellViewModel.h; sourceTree = "<group>"; };
-		70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermTableViewCellViewModel.m; sourceTree = "<group>"; };
-		70730D741C94A039007CBEBB /* TermBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermBaseViewController.h; path = XujcClient/TermBaseViewController.h; sourceTree = SOURCE_ROOT; };
-		70730D751C94A039007CBEBB /* TermBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermBaseViewController.m; path = XujcClient/TermBaseViewController.m; sourceTree = SOURCE_ROOT; };
-		70730D771C94A13A007CBEBB /* TermBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermBaseViewModel.h; sourceTree = "<group>"; };
-		70730D781C94A13A007CBEBB /* TermBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermBaseViewModel.m; sourceTree = "<group>"; };
+		70730D681C947A41007CBEBB /* SemesterSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorView.h; sourceTree = "<group>"; };
+		70730D691C947A41007CBEBB /* SemesterSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterSelectorView.m; sourceTree = "<group>"; };
+		70730D6A1C947A41007CBEBB /* SemesterSelectorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorViewModel.h; sourceTree = "<group>"; };
+		70730D6B1C947A41007CBEBB /* SemesterSelectorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterSelectorViewModel.m; sourceTree = "<group>"; };
+		70730D6C1C947A41007CBEBB /* SemesterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterTableViewCell.h; sourceTree = "<group>"; };
+		70730D6D1C947A41007CBEBB /* SemesterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterTableViewCell.m; sourceTree = "<group>"; };
+		70730D6E1C947A41007CBEBB /* SemesterTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterTableViewCellViewModel.h; sourceTree = "<group>"; };
+		70730D6F1C947A41007CBEBB /* SemesterTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterTableViewCellViewModel.m; sourceTree = "<group>"; };
+		70730D741C94A039007CBEBB /* SemesterBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemesterBaseViewController.h; path = XujcClient/SemesterBaseViewController.h; sourceTree = SOURCE_ROOT; };
+		70730D751C94A039007CBEBB /* SemesterBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemesterBaseViewController.m; path = XujcClient/SemesterBaseViewController.m; sourceTree = SOURCE_ROOT; };
+		70730D771C94A13A007CBEBB /* SemesterBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterBaseViewModel.h; sourceTree = "<group>"; };
+		70730D781C94A13A007CBEBB /* SemesterBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterBaseViewModel.m; sourceTree = "<group>"; };
 		70730D7D1C999D67007CBEBB /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		70730D7E1C999D67007CBEBB /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		70730D7F1C999D67007CBEBB /* SignupViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewModel.h; sourceTree = "<group>"; };
@@ -392,17 +392,18 @@
 			path = Score;
 			sourceTree = "<group>";
 		};
-		70730D671C947A41007CBEBB /* Term */ = {
+		70730D671C947A41007CBEBB /* Semester */ = {
 			isa = PBXGroup;
 			children = (
 				70730D7C1C999D36007CBEBB /* ViewModel */,
-				70730D681C947A41007CBEBB /* TermSelectorView.h */,
-				70730D691C947A41007CBEBB /* TermSelectorView.m */,
-				70730D6C1C947A41007CBEBB /* TermTableViewCell.h */,
-				70730D6D1C947A41007CBEBB /* TermTableViewCell.m */,
-				70730D741C94A039007CBEBB /* TermBaseViewController.h */,
-				70730D751C94A039007CBEBB /* TermBaseViewController.m */,
+				70730D681C947A41007CBEBB /* SemesterSelectorView.h */,
+				70730D691C947A41007CBEBB /* SemesterSelectorView.m */,
+				70730D6C1C947A41007CBEBB /* SemesterTableViewCell.h */,
+				70730D6D1C947A41007CBEBB /* SemesterTableViewCell.m */,
+				70730D741C94A039007CBEBB /* SemesterBaseViewController.h */,
+				70730D751C94A039007CBEBB /* SemesterBaseViewController.m */,
 			);
+			name = Semester;
 			path = Term;
 			sourceTree = "<group>";
 		};
@@ -435,12 +436,12 @@
 		70730D7C1C999D36007CBEBB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				70730D771C94A13A007CBEBB /* TermBaseViewModel.h */,
-				70730D781C94A13A007CBEBB /* TermBaseViewModel.m */,
-				70730D6E1C947A41007CBEBB /* TermTableViewCellViewModel.h */,
-				70730D6F1C947A41007CBEBB /* TermTableViewCellViewModel.m */,
-				70730D6A1C947A41007CBEBB /* TermSelectorViewModel.h */,
-				70730D6B1C947A41007CBEBB /* TermSelectorViewModel.m */,
+				70730D771C94A13A007CBEBB /* SemesterBaseViewModel.h */,
+				70730D781C94A13A007CBEBB /* SemesterBaseViewModel.m */,
+				70730D6E1C947A41007CBEBB /* SemesterTableViewCellViewModel.h */,
+				70730D6F1C947A41007CBEBB /* SemesterTableViewCellViewModel.m */,
+				70730D6A1C947A41007CBEBB /* SemesterSelectorViewModel.h */,
+				70730D6B1C947A41007CBEBB /* SemesterSelectorViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -496,7 +497,7 @@
 				70F7CE301BE3BD4A001D027C /* API */,
 				70443B661C85DD7D00B0C5DA /* Login */,
 				7062B6C01C9331BD0074C716 /* Score */,
-				70730D671C947A41007CBEBB /* Term */,
+				70730D671C947A41007CBEBB /* Semester */,
 				70730D831C999DA9007CBEBB /* Schedule */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
@@ -776,7 +777,7 @@
 				70F7CE431BE3E832001D027C /* XujcUser.m in Sources */,
 				7062B6C91C9331D10074C716 /* ScoreViewModel.m in Sources */,
 				7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */,
-				70730D761C94A039007CBEBB /* TermBaseViewController.m in Sources */,
+				70730D761C94A039007CBEBB /* SemesterBaseViewController.m in Sources */,
 				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */,
@@ -786,7 +787,7 @@
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
 				70730D8D1C999DF2007CBEBB /* CourseEventViewModel.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
-				70730D711C947A41007CBEBB /* TermSelectorViewModel.m in Sources */,
+				70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */,
 				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */,
 				7062B6941C8B842C0074C716 /* UserModel.m in Sources */,
 				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
@@ -795,14 +796,14 @@
 				70730D821C999D67007CBEBB /* SignupViewModel.m in Sources */,
 				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
 				70730D8A1C999DD5007CBEBB /* ScheduleViewModel.m in Sources */,
-				70730D791C94A13A007CBEBB /* TermBaseViewModel.m in Sources */,
+				70730D791C94A13A007CBEBB /* SemesterBaseViewModel.m in Sources */,
 				70F7CE511BE40A81001D027C /* MainTabBarController.m in Sources */,
 				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
 				7062B6A91C8E43BF0074C716 /* MainTabBarViewModel.m in Sources */,
 				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
 				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */,
-				70730D731C947A41007CBEBB /* TermTableViewCellViewModel.m in Sources */,
+				70730D731C947A41007CBEBB /* SemesterTableViewCellViewModel.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
 				7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */,
 				7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */,
@@ -819,14 +820,14 @@
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */,
 				7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */,
-				70730D701C947A41007CBEBB /* TermSelectorView.m in Sources */,
+				70730D701C947A41007CBEBB /* SemesterSelectorView.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
 				7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
 				7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */,
 				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
-				70730D721C947A41007CBEBB /* TermTableViewCell.m in Sources */,
+				70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */,
 				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
 				7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */,
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,

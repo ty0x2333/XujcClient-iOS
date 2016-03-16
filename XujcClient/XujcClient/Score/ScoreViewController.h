@@ -6,10 +6,10 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "TermBaseViewController.h"
+#import "SemesterBaseViewController.h"
 #import "ScoreViewModel.h"
 
-@interface ScoreViewController : TermBaseViewController
+@interface ScoreViewController : SemesterBaseViewController
 
 - (instancetype)initWithViewModel:(ScoreViewModel *)viewModel;
 

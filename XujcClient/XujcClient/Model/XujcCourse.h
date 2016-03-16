@@ -14,7 +14,7 @@
 @property(nonatomic, copy) NSString *name;
 @property(nonatomic, copy) NSString *courseClassId;
 @property(nonatomic, copy) NSString *courseClass;
-@property(nonatomic, copy) NSString *termId;
+@property(nonatomic, copy) NSString *semesterId;
 @property(nonatomic, copy) NSString *teacherDescription;
 /**
  *  @brief  学分

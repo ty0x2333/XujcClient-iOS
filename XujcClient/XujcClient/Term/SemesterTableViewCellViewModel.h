@@ -1,5 +1,5 @@
 //
-//  TermTableViewCellViewModel.h
+//  SemesterTableViewCellViewModel.h
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/13.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "XujcSemesterModel.h"
 
-@interface TermTableViewCellViewModel : NSObject
+@interface SemesterTableViewCellViewModel : NSObject
 
 @property (strong, nonatomic) XujcSemesterModel *semesterModel;
 

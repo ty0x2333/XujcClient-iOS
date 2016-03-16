@@ -70,7 +70,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (void)bindViewModel
 {
-    [self.viewModel.termSelectorViewModel.selectedTermIdSignal subscribeNext:^(id x) {
+    [self.viewModel.semesterSelectorViewModel.selectedSemesterIdSignal subscribeNext:^(id x) {
         [self.viewModel.fetchScheduleCourseSignal subscribeNext:^(id x) {
             [self.collectionViewCalendarLayout invalidateLayoutCache];
             [self.collectionView reloadData];

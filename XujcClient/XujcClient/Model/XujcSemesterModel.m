@@ -8,8 +8,8 @@
 
 #import "XujcSemesterModel.h"
 
-static NSString* const kDataTermId = @"TermId";
-static NSString* const kDataTermDisplayName = @"TermDisplayName";
+static NSString* const kDataSemesterId = @"SemesterId";
+static NSString* const kDataSemesterDisplayName = @"SemesterDisplayName";
 
 
 @implementation XujcSemesterModel
@@ -17,16 +17,16 @@ static NSString* const kDataTermDisplayName = @"TermDisplayName";
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
     if(self = [super init]){
-        _termId = [decoder decodeObjectForKey:kDataTermId];
-        _displayName = [decoder decodeObjectForKey:kDataTermDisplayName];
+        _semesterId = [decoder decodeObjectForKey:kDataSemesterId];
+        _displayName = [decoder decodeObjectForKey:kDataSemesterDisplayName];
     }
     return  self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
-    [encoder encodeObject:_termId forKey:kDataTermId];
-    [encoder encodeObject:_displayName forKey:kDataTermDisplayName];
+    [encoder encodeObject:_semesterId forKey:kDataSemesterId];
+    [encoder encodeObject:_displayName forKey:kDataSemesterDisplayName];
 }
 
 @end

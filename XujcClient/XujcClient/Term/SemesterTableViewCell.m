@@ -1,18 +1,18 @@
 //
-//  TermTableViewCell.m
+//  SemesterTableViewCell.m
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/12.
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "TermTableViewCell.h"
+#import "SemesterTableViewCell.h"
 
-@interface TermTableViewCell()
+@interface SemesterTableViewCell()
 
 @end
 
-@implementation TermTableViewCell
+@implementation SemesterTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -23,7 +23,7 @@
     return self;
 }
 
-- (void)setViewModel:(TermTableViewCellViewModel *)viewModel
+- (void)setViewModel:(SemesterTableViewCellViewModel *)viewModel
 {
     RAC(self.textLabel, text) = [RACObserve(viewModel.semesterModel, displayName) takeUntil:self.rac_prepareForReuseSignal];
 }

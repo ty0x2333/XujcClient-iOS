@@ -31,8 +31,8 @@
 - (RACSignal *)fetchScoresSignal
 {
     RACSignal *fetchScoresSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSString *termId = [self.termSelectorViewModel selectedTermId];
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"score.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServerKeyTermId: termId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *semesterId = [self.semesterSelectorViewModel selectedSemesterId];
+        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"score.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServerKeySemesterId: semesterId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSArray *scoreDatas = responseObject;
             NSMutableArray *scoreModels = [[NSMutableArray alloc] initWithCapacity:scoreDatas.count];
             [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -42,7 +42,7 @@
             }];
             self.scores = [scoreModels copy];
             
-            [[CacheUtils instance] cacheScore:[scoreModels copy] inTerm:termId];
+            [[CacheUtils instance] cacheScore:[scoreModels copy] inSemester:semesterId];
             
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
@@ -52,7 +52,7 @@
                 [subscriber sendNext:nil];
                 [subscriber sendCompleted];
             } else {
-                self.scores = [[CacheUtils instance] scoresFormCacheWithTerm:termId];
+                self.scores = [[CacheUtils instance] scoresFormCacheWithSemester:semesterId];
                 
                 [subscriber sendError:error];
             }

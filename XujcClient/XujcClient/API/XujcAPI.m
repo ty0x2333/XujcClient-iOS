@@ -22,7 +22,7 @@ static const NSString* kXujcAPIBaseURL = @"http://jw.xujc.com/api/";
 #pragma mark - Request Keys
 
 static NSString* const kRequestKeyAPIKey = @"apikey";
-static NSString* const kRequestKeyTermId = @"tm_id";
+static NSString* const kRequestKeySemesterId = @"tm_id";
 
 @implementation XujcAPI
 
@@ -38,7 +38,7 @@ static NSString* const kRequestKeyTermId = @"tm_id";
      ];
 }
 
-+ (void)terms:(nonnull NSString *)APIKey
++ (void)semesters:(nonnull NSString *)APIKey
  successBlock:(nullable ResponseSuccessBlock)success
  failureBlock:(nullable ResponseFailureBlock)failure
 {
@@ -51,12 +51,12 @@ static NSString* const kRequestKeyTermId = @"tm_id";
 }
 
 + (void)classSchedule:(nonnull NSString *)APIKey
-               termId:(nonnull NSString *)termId
+               semesterId:(nonnull NSString *)semesterId
          successBlock:(nullable ResponseSuccessBlock)success
          failureBlock:(nullable ResponseFailureBlock)failure
 {
     [[XujcAPI XujcManager] GET:XUJCAPI_CLASS_SCHEDULE
-                    parameters:@{kRequestKeyAPIKey: APIKey, kRequestKeyTermId:termId}
+                    parameters:@{kRequestKeyAPIKey: APIKey, kRequestKeySemesterId:semesterId}
                       progress:nil
                        success:success
                        failure:failure
@@ -64,12 +64,12 @@ static NSString* const kRequestKeyTermId = @"tm_id";
 }
 
 + (void)scores:(nonnull NSString *)APIKey
-        termId:(nonnull NSString *)termId
+        semesterId:(nonnull NSString *)semesterId
   successBlock:(nullable ResponseSuccessBlock)success
   failureBlock:(nullable ResponseFailureBlock)failure
 {
     [[XujcAPI XujcManager] GET:XUJCAPI_CLASS_SCORE
-                    parameters:@{kRequestKeyAPIKey: APIKey, kRequestKeyTermId:termId}
+                    parameters:@{kRequestKeyAPIKey: APIKey, kRequestKeySemesterId:semesterId}
                       progress:nil
                        success:success
                        failure:failure

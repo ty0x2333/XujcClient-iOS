@@ -10,7 +10,7 @@
 
 @interface XujcSemesterModel : BaseModel
 
-@property(nonatomic, strong)NSString *termId;
-@property(nonatomic, strong)NSString *displayName;
+@property (strong, nonatomic) NSString *semesterId;
+@property (strong, nonatomic) NSString *displayName;
 
 @end

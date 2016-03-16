@@ -17,8 +17,8 @@
         _credit = [[self checkForNull:json[kResponseCredit]] integerValue];
         _score = [[self checkForNull:json[kResponseCourseSorce]] integerValue];
         _scoreLevel = [self checkForNull:json[kResponseCourseSorceLevel]];
-        _midTermStatus = [self checkForNull:json[kResponseMidTermStatus]];
-        _endTermStatus = [self checkForNull:json[kResponseEndTermStatus]];
+        _midSemesterStatus = [self checkForNull:json[kResponseMidSemesterStatus]];
+        _endSemesterStatus = [self checkForNull:json[kResponseEndSemesterStatus]];
         _studyWay = [self checkForNull:json[kResponseScoreStudyWay]];
     }
     return self;
@@ -32,8 +32,8 @@
     [description appendFormat:@"\n\tcredit: %d", _credit];
     [description appendFormat:@"\n\tscore: %d", _score];
     [description appendFormat:@"\n\tscoreLevel: %@", _scoreLevel];
-    [description appendFormat:@"\n\tmidTermStatus: %@", _midTermStatus];
-    [description appendFormat:@"\n\tendTermStatus: %@", _endTermStatus];
+    [description appendFormat:@"\n\tmidSemesterStatus: %@", _midSemesterStatus];
+    [description appendFormat:@"\n\tendSemesterStatus: %@", _endSemesterStatus];
     [description appendFormat:@"\n\tstudyWay: %@", _studyWay];
     [description appendFormat:@"\n}"];
     return description;

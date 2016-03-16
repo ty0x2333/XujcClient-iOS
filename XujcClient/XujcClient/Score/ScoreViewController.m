@@ -56,7 +56,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
         make.top.bottom.leading.trailing.equalTo(self.view);
     }];
     
-    [self.viewModel.termSelectorViewModel.selectedTermIdSignal subscribeNext:^(id x) {
+    [self.viewModel.semesterSelectorViewModel.selectedSemesterIdSignal subscribeNext:^(id x) {
         [self.viewModel.fetchScoresSignal subscribeNext:^(id x) {
             [_tableView reloadData];
             TyLogDebug(@"fetchScores success");

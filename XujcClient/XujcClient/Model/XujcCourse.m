@@ -16,7 +16,7 @@
         _name = [self checkForNull:json[kResponseCourseName]];
         _courseClassId = [self checkForNull:json[kResponseCourseClassId]];
         _courseClass = [self checkForNull:json[kResponseCourseClass]];
-        _termId = [self checkForNull:json[kResponseTermId]];
+        _semesterId = [self checkForNull:json[kResponseSemesterId]];
         _teacherDescription = [self checkForNull:json[kResponseTeacherDescription]];
         _credit = [[self checkForNull:json[kResponseCredit]] integerValue];
         _studyWay = [self checkForNull:json[kResponseStudyWay]];

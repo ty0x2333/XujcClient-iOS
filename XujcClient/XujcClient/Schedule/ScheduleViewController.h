@@ -6,10 +6,10 @@
  * @copyright   Copyright © 2015年 luckytianyiyan. All rights reserved.
  */
 
-#import "TermBaseViewController.h"
+#import "SemesterBaseViewController.h"
 #import "ScheduleViewModel.h"
 
-@interface ScheduleViewController : TermBaseViewController
+@interface ScheduleViewController : SemesterBaseViewController
 
 - (instancetype)initWithViewModel:(ScheduleViewModel *)viewModel;
 
