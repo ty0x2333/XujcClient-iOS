@@ -103,4 +103,29 @@
     return result;
 }
 
+- (NSArray<XujcScore *> *)scoresFormCacheWithTerm:(NSString *)termId
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
+        NSString *sqlFormat = @"SELECT name, credit, score, study_way, score_level, mid_term_status, end_term_status FROM score WHERE term_id=?;";
+        
+        FMResultSet *set = [db executeQuery:sqlFormat, termId];
+        
+        while ([set next]) {
+            XujcScore *score = [[XujcScore alloc] init];
+            score.courseName = [set objectForColumnName:@"name"];
+            score.credit = [[set objectForColumnName:@"credit"] integerValue];
+            score.score = [[set objectForColumnName:@"score"] integerValue];
+            score.studyWay = [set objectForColumnName:@"study_way"];
+            score.scoreLevel = [set objectForColumnName:@"score_level"];
+            score.midTermStatus = [set objectForColumnName:@"mid_term_status"];
+            score.endTermStatus = [set objectForColumnName:@"end_term_status"];
+            [result addObject:score];
+        }
+        
+        [set close];
+    }];
+    return result;
+}
+
 @end

@@ -25,4 +25,6 @@
  */
 - (NSArray<XujcTerm *> *)termsFormCache;
 
+- (NSArray<XujcScore *> *)scoresFormCacheWithTerm:(NSString *)termId;
+
 @end
