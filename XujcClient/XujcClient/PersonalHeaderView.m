@@ -12,6 +12,8 @@ static CGFloat const kAvatarImageViewMarginTop = 10.f;
 
 @interface PersonalHeaderView()
 
+@property (strong, nonatomic) PersonalHeaderViewModel *viewModel;
+
 @property (strong, nonatomic) UIImageView *avatarImageView;
 @property (strong, nonatomic) UILabel *nicknameLabel;
 
@@ -19,9 +21,10 @@ static CGFloat const kAvatarImageViewMarginTop = 10.f;
 
 @implementation PersonalHeaderView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame andViewModel:(PersonalHeaderViewModel *)viewModel
 {
     if (self = [super initWithFrame:frame]) {
+        _viewModel = viewModel;
         self.backgroundColor = [UIColor whiteColor];
         _avatarImageView = [[UIImageView alloc] init];
         _avatarImageView.layer.cornerRadius = 100.f / 2.f;
@@ -50,7 +53,6 @@ static CGFloat const kAvatarImageViewMarginTop = 10.f;
 #warning test
         _avatarImageView.backgroundColor = [UIColor redColor];
         _nicknameLabel.text = @"asdklfklsajdf";
-        
     }
     return self;
 }

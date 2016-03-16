@@ -1,5 +1,5 @@
 //
-//  PersonalViewModel.h
+//  PersonalHeaderViewModel.h
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/17.
@@ -7,10 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PersonalHeaderViewModel.h"
 
-@interface PersonalViewModel : NSObject
-
-- (PersonalHeaderViewModel *)personalHeaderViewModel;
+@interface PersonalHeaderViewModel : NSObject
 
 @end

@@ -10,4 +10,9 @@
 
 @implementation PersonalViewModel
 
+- (PersonalHeaderViewModel *)personalHeaderViewModel
+{
+    return [[PersonalHeaderViewModel alloc] init];
+}
+
 @end

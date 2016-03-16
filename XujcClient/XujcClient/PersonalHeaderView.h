@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PersonalHeaderViewModel.h"
 
 @interface PersonalHeaderView : UIView
+
+- (instancetype)initWithFrame:(CGRect)frame andViewModel:(PersonalHeaderViewModel *)viewModel;
 
 @end

@@ -12,6 +12,8 @@
 
 static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
 
+static CGFloat const kPersonalHeaderViewHeight = 135.f;
+
 @interface PersonalViewController()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) PersonalViewModel *viewModel;
@@ -36,7 +38,8 @@ static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIden
 {
     [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"Personal", nil);
-    _personalHeaderView = [[PersonalHeaderView alloc] initWithFrame:CGRectMake(0, 0, 0, 135)];
+    _personalHeaderView = [[PersonalHeaderView alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(0, kPersonalHeaderViewHeight)} andViewModel:self.viewModel.personalHeaderViewModel];
+    _personalHeaderView.translatesAutoresizingMaskIntoConstraints = NO;
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
