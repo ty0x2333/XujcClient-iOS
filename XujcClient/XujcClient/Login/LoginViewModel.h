@@ -15,8 +15,6 @@
 
 @property (strong, nonatomic) RACSignal *loginActiveSignal;
 
-- (BindingAccountViewModel *)bindingAccountViewModel;
-
 - (NSString *)currentAccount;
 - (NSString *)currentAccountPassword;
 
