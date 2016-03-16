@@ -65,6 +65,9 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
             hub.detailsLabelText = error.localizedDescription;
             [hub hide:YES afterDelay:kErrorHUDShowTime];
             TyLogDebug(@"fetchScores error");
+            
+            // load data from cache
+            [_tableView reloadData];
         }];
     }];
 }

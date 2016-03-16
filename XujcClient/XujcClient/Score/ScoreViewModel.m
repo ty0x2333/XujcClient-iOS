@@ -52,6 +52,8 @@
                 [subscriber sendNext:nil];
                 [subscriber sendCompleted];
             } else {
+                self.scores = [[CacheUtils instance] scoresFormCacheWithTerm:termId];
+                
                 [subscriber sendError:error];
             }
         }];
