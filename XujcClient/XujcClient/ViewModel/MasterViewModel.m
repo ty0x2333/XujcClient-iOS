@@ -8,8 +8,6 @@
 
 #import "MasterViewModel.h"
 
-static NSString * const kUserDefaultsKeyUser = @"user";
-
 @implementation MasterViewModel
 
 - (MainTabBarViewModel *)mainTabBarViewModel

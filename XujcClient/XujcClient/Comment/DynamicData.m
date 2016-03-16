@@ -7,7 +7,6 @@
  */
 
 #import "DynamicData.h"
-static NSString* const kDataXujcUser = @"User";
 
 @implementation DynamicData
 
@@ -36,14 +35,14 @@ static NSString* const kDataXujcUser = @"User";
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    _user = [NSKeyedUnarchiver unarchiveObjectWithData:[userDefaults objectForKey:kDataXujcUser]];
+    _user = [NSKeyedUnarchiver unarchiveObjectWithData:[userDefaults objectForKey:kUserDefaultsKeyUser]];
     TyLogDebug(@"DynamicData Loaded:%@", [self description]);
 }
 
 - (void)flush
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:[_user data] forKey:kDataXujcUser];
+    [userDefaults setObject:[_user data] forKey:kUserDefaultsKeyUser];
     
     TyLogDebug(@"DynamicData Flush:%@", [self description]);
     

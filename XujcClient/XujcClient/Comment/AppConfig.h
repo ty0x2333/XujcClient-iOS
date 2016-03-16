@@ -14,6 +14,7 @@ static CGFloat const kSuccessHUDShowTime = 2.f;
 
 static NSString * const kUserDefaultsKeyApiKey = @"api_key";
 static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
+static NSString * const kUserDefaultsKeyUser = @"user";
 
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
 
