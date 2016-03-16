@@ -17,3 +17,4 @@ Dependencies
 - [CupertinoYankee](https://github.com/mattt/CupertinoYankee)
 - [SSKeychain](https://github.com/soffes/sskeychain)
 - [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
+- [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet)
