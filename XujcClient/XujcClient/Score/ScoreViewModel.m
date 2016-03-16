@@ -10,6 +10,7 @@
 #import "XujcScore.h"
 #import "XujcServer.h"
 #import "DynamicData.h"
+#import "CacheUtils.h"
 
 @interface ScoreViewModel()
 
@@ -30,7 +31,8 @@
 - (RACSignal *)fetchScoresSignal
 {
     RACSignal *fetchScoresSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"score.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServerKeyTermId: [self.termSelectorViewModel selectedTermId]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *termId = [self.termSelectorViewModel selectedTermId];
+        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"score.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServerKeyTermId: termId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSArray *scoreDatas = responseObject;
             NSMutableArray *scoreModels = [[NSMutableArray alloc] initWithCapacity:scoreDatas.count];
             [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -39,6 +41,8 @@
                 [scoreModels addObject:xujcScore];
             }];
             self.scores = [scoreModels copy];
+            
+            [[CacheUtils instance] cacheScore:[scoreModels copy] inTerm:termId];
             
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
