@@ -79,7 +79,7 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
 - (void)p_saveXujcKey:(NSString *)xujcKey
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:[xujcKey copy] forKey:kUserDefaultsKeyXujcKey];
+    [userDefaults setValue:[NSString safeString:xujcKey] forKey:kUserDefaultsKeyXujcKey];
     [userDefaults synchronize];
 }
 
