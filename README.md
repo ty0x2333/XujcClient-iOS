@@ -21,3 +21,4 @@ Dependencies
 - [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet)
 - [MMPopupView](https://github.com/adad184/MMPopupView)
 - [AliyunOSSiOS](https://github.com/aliyun/aliyun-oss-ios-sdk)
+- [SDWebImage](https://github.com/rs/SDWebImage)
