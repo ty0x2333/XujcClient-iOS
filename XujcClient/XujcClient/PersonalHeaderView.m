@@ -10,6 +10,7 @@
 #import <MMSheetView.h>
 #import <MMPopupItem.h>
 #import "AppUtils.h"
+#import <UIImageView+WebCache.h>
 
 static CGFloat const kAvatarImageViewMarginTop = 10.f;
 
@@ -104,9 +105,12 @@ static CGFloat const kAvatarImageViewCornerRadius = kAvatarImageViewHeight / 2.f
         }];
         
         RAC(self.nicknameLabel, text) = RACObserve(self.viewModel, nickname);
-        
-#warning test
-        _avatarImageView.backgroundColor = [UIColor redColor];
+        [[RACObserve(self.viewModel, avater) filter:^BOOL(NSString *value) {
+            return ![NSString isEmpty:value];
+        }] subscribeNext:^(NSString *avatarURL) {
+            @strongify(self);
+            [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL]];
+        }];
     }
     return self;
 }
