@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *nikename;
 @property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSString *avatar;
 
 @property (strong, nonatomic) NSString *createdTime;
 @end

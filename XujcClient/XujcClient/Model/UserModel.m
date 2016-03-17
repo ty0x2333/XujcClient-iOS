@@ -17,6 +17,7 @@
         _nikename = [self checkForNull:json[TYServerKeyNickname]];
         _email = [self checkForNull:json[TYServerKeyEmail]];
         _createdTime = [self checkForNull:json[TYServerKeyCreatedTime]];
+        _avatar = [self checkForNull:json[TYServerKeyAvatar]];
     }
     return self;
 }
@@ -26,6 +27,7 @@
     if(self = [super init]){
         _nikename = [decoder decodeObjectForKey:TYServerKeyNickname];
         _email = [decoder decodeObjectForKey:TYServerKeyEmail];
+        _avatar = [decoder decodeObjectForKey:TYServerKeyAvatar];
         _createdTime = [decoder decodeObjectForKey:TYServerKeyCreatedTime];
     }
     return  self;
@@ -36,6 +38,7 @@
     [encoder encodeObject:_nikename forKey:TYServerKeyNickname];
     [encoder encodeObject:_email forKey:TYServerKeyEmail];
     [encoder encodeObject:_createdTime forKey:TYServerKeyCreatedTime];
+    [encoder encodeObject:_avatar forKey:TYServerKeyAvatar];
 }
 
 - (NSString *)description
@@ -52,6 +55,7 @@
              TYServerKeyNickname: _nikename ?: null,
              TYServerKeyEmail: _email ?: null,
              TYServerKeyCreatedTime: _createdTime ?: null,
+             TYServerKeyAvatar: _avatar ?: null
              };
 }
 
