@@ -72,6 +72,7 @@
 		70730D9C1C99F580007CBEBB /* MainTabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D9B1C99F580007CBEBB /* MainTabBarViewModel.m */; };
 		70730DA21C99F842007CBEBB /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DA11C99F842007CBEBB /* PersonalViewModel.m */; };
 		70730DA51C99F973007CBEBB /* PersonalHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DA41C99F973007CBEBB /* PersonalHeaderViewModel.m */; };
+		70730DA81C9A3FFF007CBEBB /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DA71C9A3FFF007CBEBB /* AppUtils.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -219,6 +220,8 @@
 		70730DA11C99F842007CBEBB /* PersonalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewModel.m; sourceTree = "<group>"; };
 		70730DA31C99F973007CBEBB /* PersonalHeaderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalHeaderViewModel.h; sourceTree = "<group>"; };
 		70730DA41C99F973007CBEBB /* PersonalHeaderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalHeaderViewModel.m; sourceTree = "<group>"; };
+		70730DA61C9A3FFF007CBEBB /* AppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtils.h; sourceTree = "<group>"; };
+		70730DA71C9A3FFF007CBEBB /* AppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtils.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -576,6 +579,8 @@
 				7062B6831C89FC260074C716 /* NSString+Validator.h */,
 				7062B6841C89FC260074C716 /* NSString+Validator.m */,
 				7062B6911C8B427E0074C716 /* AppConfig.h */,
+				70730DA61C9A3FFF007CBEBB /* AppUtils.h */,
+				70730DA71C9A3FFF007CBEBB /* AppUtils.m */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -818,6 +823,7 @@
 				7023F9BB1BE681300046CF3B /* XujcCourseEvent.m in Sources */,
 				7023F9AB1BE60F680046CF3B /* ScheduleRowHeader.m in Sources */,
 				70730D821C999D67007CBEBB /* SignupViewModel.m in Sources */,
+				70730DA81C9A3FFF007CBEBB /* AppUtils.m in Sources */,
 				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
 				70730D8A1C999DD5007CBEBB /* ScheduleViewModel.m in Sources */,
 				70730D791C94A13A007CBEBB /* SemesterBaseViewModel.m in Sources */,
