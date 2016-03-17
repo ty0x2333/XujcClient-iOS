@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
+  - AliyunOSSiOS (2.2.0.1)
   - CupertinoYankee (1.0.2)
   - DZNEmptyDataSet (1.7.3)
   - FMDB (2.6):
@@ -36,6 +37,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AliyunOSSiOS (~> 2.2.0)
   - CupertinoYankee
   - DZNEmptyDataSet
   - FMDB
@@ -49,6 +51,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  AliyunOSSiOS: c6cdb91d82c31b70f8174ed12001d3107f245136
   CupertinoYankee: c288994087c791657fce35a43d2a604e64eef23e
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
