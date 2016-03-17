@@ -73,6 +73,7 @@
 		70730DA21C99F842007CBEBB /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DA11C99F842007CBEBB /* PersonalViewModel.m */; };
 		70730DA51C99F973007CBEBB /* PersonalHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DA41C99F973007CBEBB /* PersonalHeaderViewModel.m */; };
 		70730DA81C9A3FFF007CBEBB /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DA71C9A3FFF007CBEBB /* AppUtils.m */; };
+		70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DAA1C9A6152007CBEBB /* UIImage+Coding.m */; };
 		70730DAE1C9A6222007CBEBB /* NSData+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DAD1C9A6222007CBEBB /* NSData+Coding.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
@@ -223,6 +224,8 @@
 		70730DA41C99F973007CBEBB /* PersonalHeaderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalHeaderViewModel.m; sourceTree = "<group>"; };
 		70730DA61C9A3FFF007CBEBB /* AppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtils.h; sourceTree = "<group>"; };
 		70730DA71C9A3FFF007CBEBB /* AppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtils.m; sourceTree = "<group>"; };
+		70730DA91C9A6152007CBEBB /* UIImage+Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Coding.h"; sourceTree = "<group>"; };
+		70730DAA1C9A6152007CBEBB /* UIImage+Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Coding.m"; sourceTree = "<group>"; };
 		70730DAC1C9A6222007CBEBB /* NSData+Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Coding.h"; sourceTree = "<group>"; };
 		70730DAD1C9A6222007CBEBB /* NSData+Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Coding.m"; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 				70FE64B01C7F8DEE00112038 /* NSString+Safe.m */,
 				7062B6D21C9369F50074C716 /* FMDatabaseQueue+Utils.h */,
 				7062B6D31C9369F50074C716 /* FMDatabaseQueue+Utils.m */,
+				70730DA91C9A6152007CBEBB /* UIImage+Coding.h */,
+				70730DAA1C9A6152007CBEBB /* UIImage+Coding.m */,
 				70730DAC1C9A6222007CBEBB /* NSData+Coding.h */,
 				70730DAD1C9A6222007CBEBB /* NSData+Coding.m */,
 			);
@@ -860,6 +865,7 @@
 				7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
+				70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */,
 				7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */,
 				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
 				70730DA21C99F842007CBEBB /* PersonalViewModel.m in Sources */,
