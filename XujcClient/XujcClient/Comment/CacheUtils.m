@@ -83,7 +83,7 @@
     return isSuccess;
 }
 
-- (NSArray<XujcSemesterModel *> *)semestersFormCacheFormCache
+- (NSArray<XujcSemesterModel *> *)semestersFormCache
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
