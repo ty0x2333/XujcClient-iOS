@@ -12,6 +12,7 @@
 #import "TYServer.h"
 #import "DynamicData.h"
 #import "UIImage+Coding.h"
+#import "NSData+Coding.h"
 
 static NSString * const kOSSParamCallbackURL = @"callbackUrl";
 static NSString * const kOSSParamCallbackBody = @"callbackBody";
@@ -80,19 +81,21 @@ static NSString * const kOSSParamCallbackBody = @"callbackBody";
 
 + (RACSignal *)updateAvatarSignalWithImage:(UIImage *)image
 {
+    NSData *imageData = [image imageData];
+    NSString *imageMD5 = [imageData MD5];
     RACSignal *updateAvatarSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
         OSSPutObjectRequest * putRequest = [[OSSPutObjectRequest alloc] init];
         putRequest.bucketName = @"xujc-client";
-        putRequest.objectKey = @"avatars/test";
-        putRequest.uploadingData = [image imageData];
+        putRequest.objectKey = [NSString stringWithFormat:@"%@/%@", @"avatars", imageMD5];
+        putRequest.uploadingData = imageData;
         putRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
             [subscriber sendNext:@(totalByteSent * 1.f / totalBytesExpectedToSend)];
         };
         NSString *callbackURL = [NSString stringWithFormat:@"%@%@", [AFHTTPSessionManager ty_serviceBaseURL], @"updateAvater"];
         putRequest.callbackParam = @{
                                      kOSSParamCallbackURL: callbackURL,
-                                     kOSSParamCallbackBody: [NSString stringWithFormat:@"filename=${object}&authorization=%@", DYNAMIC_DATA.apiKey]
+                                     kOSSParamCallbackBody: [NSString stringWithFormat:@"filename=%@&authorization=%@", imageMD5, DYNAMIC_DATA.apiKey]
                                      };
         OSSTask * putTask = [[OssService client] putObject:putRequest];
         
