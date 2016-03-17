@@ -8,7 +8,11 @@
 
 #import "AFHTTPSessionManager+TYServer.h"
 
-static NSString* const kTYServerHost = @"http://192.168.1.101:8080/";
+// Local
+//static NSString* const kTYServerHost = @"http://192.168.1.101:8080/";
+// Online
+static NSString* const kTYServerHost = @"http://xujcservice.tianyiyan.com/";
+
 static NSString* const kTYServerAPIVersion = @"v1/";
 
 @implementation AFHTTPSessionManager (TYServer)
