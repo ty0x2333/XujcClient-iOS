@@ -12,6 +12,8 @@
 
 @property (copy, readonly, nonatomic) NSString *nickname;
 
+@property (copy, readonly, nonatomic) NSString *avater;
+
 - (RACSignal *)updateAvatarSignalWithImage:(UIImage *)image;
 
 @end

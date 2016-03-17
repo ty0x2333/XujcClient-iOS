@@ -24,6 +24,10 @@
         RAC(self, nickname) = [userSignal map:^id(UserModel *value) {
             return value.nikename;
         }];
+        
+        RAC(self, avater) = [userSignal map:^id(UserModel *value) {
+            return value.avatar;
+        }];
     }
     return self;
 }
