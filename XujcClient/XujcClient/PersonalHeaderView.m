@@ -47,23 +47,35 @@ static CGFloat const kAvatarImageViewCornerRadius = kAvatarImageViewHeight / 2.f
             NSArray *items = @[
                                MMItemMake(NSLocalizedString(@"Take a picture", nil), MMItemTypeNormal, ^(NSInteger index){}),
                                MMItemMake(NSLocalizedString(@"From photo library", nil), MMItemTypeNormal, ^(NSInteger index){
+                                   UIViewController *viewController = [AppUtils viewController:self];
+                                   
                                    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
                                    pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                                    pickerController.allowsEditing = YES;
-                  
+                                   
+                                   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:viewController.view animated:YES];
                                    [pickerController.rac_imageSelectedSignal subscribeNext:^(NSDictionary *userInfo) {
                                        @strongify(self);
                                        self.avatarImageView.image = userInfo[UIImagePickerControllerEditedImage];
-                                       TyLogDebug(@"userInfo: %@", userInfo);
+//                                       TyLogDebug(@"userInfo: %@", userInfo);
                                        [[self.viewModel updateAvatarSignalWithImage:self.avatarImageView.image] subscribeNext:^(NSNumber *progress) {
-                                           TyLogDebug(@"progress: %@", progress);
+                                           hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+                                           hud.progress = [progress floatValue];
+                                       } error:^(NSError *error) {
+                                           hud.mode = MBProgressHUDModeText;
+                                           hud.detailsLabelText = [error localizedDescription];
+                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                               [hud hide:YES afterDelay:kErrorHUDShowTime];
+                                           });
                                        } completed:^{
-                                           TyLogDebug(@"completed");
+                                           hud.mode = MBProgressHUDModeText;
+                                           hud.detailsLabelText = NSLocalizedString(@"Upload to complete", nil);
+                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                               [hud hide:YES afterDelay:kSuccessHUDShowTime];
+                                           });
                                        }];
                                        [pickerController dismissViewControllerAnimated:YES completion:nil];
                                    }];
-                  
-                                   UIViewController *viewController = [AppUtils viewController:self];
                                    [viewController presentViewController:pickerController animated:NO completion:nil];
                                })
                                ];
