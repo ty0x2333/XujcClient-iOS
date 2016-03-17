@@ -22,6 +22,8 @@ PODS:
   - LMDropdownView (1.0.3)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
+  - MMPopupView (1.7):
+    - Masonry
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -40,6 +42,7 @@ DEPENDENCIES:
   - LMDropdownView
   - Masonry
   - MBProgressHUD
+  - MMPopupView
   - ReactiveCocoa
   - SSKeychain
   - UIColor-HexString
@@ -52,6 +55,7 @@ SPEC CHECKSUMS:
   LMDropdownView: f03fadfe65908c735580f63d04c47e6d7c5325f3
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MMPopupView: e836128b7db1a0c3c61a17fb701a6b3fb4bcc3ff
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SSKeychain: 04c4ec40f4c3deda524e269bc76e5f30e638a174
   UIColor-HexString: ef5608be035bb21354d9a69b50251525b431a1e9

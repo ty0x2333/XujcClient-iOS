@@ -19,3 +19,4 @@ Dependencies
 - [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
 - [FMDB](https://github.com/ccgus/fmdb)
 - [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet)
+- [MMPopupView](https://github.com/adad184/MMPopupView)
