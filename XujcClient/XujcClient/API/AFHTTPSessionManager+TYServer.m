@@ -15,9 +15,13 @@ static NSString* const kTYServerAPIVersion = @"v1/";
 
 + (instancetype)ty_manager
 {
-    NSString* baseURL = [NSString stringWithFormat:@"%@%@", kTYServerHost, kTYServerAPIVersion];
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:[self ty_serviceBaseURL]]];
     return manager;
+}
+
++ (NSString *)ty_serviceBaseURL
+{
+    return [NSString stringWithFormat:@"%@%@", kTYServerHost, kTYServerAPIVersion];
 }
 
 @end

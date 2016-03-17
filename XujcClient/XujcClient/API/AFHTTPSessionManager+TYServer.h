@@ -12,4 +12,6 @@
 
 + (instancetype)ty_manager;
 
++ (NSString *)ty_serviceBaseURL;
+
 @end
