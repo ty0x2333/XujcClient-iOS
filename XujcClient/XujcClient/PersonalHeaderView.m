@@ -55,6 +55,11 @@ static CGFloat const kAvatarImageViewCornerRadius = kAvatarImageViewHeight / 2.f
                                        @strongify(self);
                                        self.avatarImageView.image = userInfo[UIImagePickerControllerEditedImage];
                                        TyLogDebug(@"userInfo: %@", userInfo);
+                                       [[self.viewModel updateAvatarSignalWithImage:self.avatarImageView.image] subscribeNext:^(NSNumber *progress) {
+                                           TyLogDebug(@"progress: %@", progress);
+                                       } completed:^{
+                                           TyLogDebug(@"completed");
+                                       }];
                                        [pickerController dismissViewControllerAnimated:YES completion:nil];
                                    }];
                   

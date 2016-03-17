@@ -8,6 +8,7 @@
 
 #import "PersonalHeaderViewModel.h"
 #import "UserModel.h"
+#import "OssService.h"
 
 @implementation PersonalHeaderViewModel
 
@@ -25,6 +26,11 @@
         }];
     }
     return self;
+}
+
+- (RACSignal *)updateAvatarSignalWithImage:(UIImage *)image
+{
+    return [OssService updateAvatarSignalWithImage:image];
 }
 
 @end
