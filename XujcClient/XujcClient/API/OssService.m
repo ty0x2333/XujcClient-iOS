@@ -13,6 +13,9 @@
 #import "DynamicData.h"
 #import "UIImage+Coding.h"
 
+static NSString * const kOSSParamCallbackURL = @"callbackUrl";
+static NSString * const kOSSParamCallbackBody = @"callbackBody";
+
 @implementation OssService
 
 + (OSSClient *)client
@@ -49,7 +52,7 @@
                 NSDictionary * responseObject = [NSJSONSerialization JSONObjectWithData:tcs.task.result
                                                                                 options:kNilOptions
                                                                                   error:nil];
-                
+                NSLog(@"%@", [[NSString alloc] initWithData:tcs.task.result encoding:NSUTF8StringEncoding]);
                 NSString *accessKeyId = [responseObject objectForKey:TYServerKeyAccessKeyId];
                 NSString *accessKeySecret = [responseObject objectForKey:TYServerKeyAccessKeySecret];
                 NSString *expiration = [responseObject objectForKey:TYServerKeyExpiration];
@@ -79,17 +82,24 @@
 {
     RACSignal *updateAvatarSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
-        OSSPutObjectRequest * put = [[OSSPutObjectRequest alloc] init];
-        put.bucketName = @"xujc-client";
-        put.objectKey = @"avatars/test";
-        put.uploadingData = [image imageData];
-        put.uploadProgress = ^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
+        OSSPutObjectRequest * putRequest = [[OSSPutObjectRequest alloc] init];
+        putRequest.bucketName = @"xujc-client";
+        putRequest.objectKey = @"avatars/test";
+        putRequest.uploadingData = [image imageData];
+        putRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
             [subscriber sendNext:@(totalByteSent * 1.f / totalBytesExpectedToSend)];
         };
-        OSSTask * putTask = [[OssService client] putObject:put];
+        NSString *callbackURL = [NSString stringWithFormat:@"%@%@", [AFHTTPSessionManager ty_serviceBaseURL], @"updateAvater"];
+        putRequest.callbackParam = @{
+                                     kOSSParamCallbackURL: callbackURL,
+                                     kOSSParamCallbackBody: [NSString stringWithFormat:@"filename=${object}&authorization=%@", DYNAMIC_DATA.apiKey]
+                                     };
+        OSSTask * putTask = [[OssService client] putObject:putRequest];
         
         [putTask continueWithBlock:^id(OSSTask *task) {
             if (!task.error) {
+//                OSSInitMultipartUploadResult *result = task.result;
+//                TyLogDebug(@"result: %@", result);
                 [subscriber sendCompleted];
             } else {
                 [subscriber sendError:task.error];
@@ -98,7 +108,7 @@
         }];
         
         return [RACDisposable disposableWithBlock:^{
-            [put cancel];
+            [putRequest cancel];
         }];
     }];
     
