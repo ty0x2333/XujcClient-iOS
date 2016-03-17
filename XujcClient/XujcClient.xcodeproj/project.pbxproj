@@ -75,6 +75,7 @@
 		70730DA81C9A3FFF007CBEBB /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DA71C9A3FFF007CBEBB /* AppUtils.m */; };
 		70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DAA1C9A6152007CBEBB /* UIImage+Coding.m */; };
 		70730DAE1C9A6222007CBEBB /* NSData+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DAD1C9A6222007CBEBB /* NSData+Coding.m */; };
+		70730DB41C9A635F007CBEBB /* OssService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DB31C9A635F007CBEBB /* OssService.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -228,6 +229,8 @@
 		70730DAA1C9A6152007CBEBB /* UIImage+Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Coding.m"; sourceTree = "<group>"; };
 		70730DAC1C9A6222007CBEBB /* NSData+Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Coding.h"; sourceTree = "<group>"; };
 		70730DAD1C9A6222007CBEBB /* NSData+Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Coding.m"; sourceTree = "<group>"; };
+		70730DB21C9A635F007CBEBB /* OssService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OssService.h; sourceTree = "<group>"; };
+		70730DB31C9A635F007CBEBB /* OssService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OssService.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -570,6 +573,8 @@
 			children = (
 				7062B6871C8A21320074C716 /* TYServer */,
 				7062B6861C8A21200074C716 /* Xujc */,
+				70730DB21C9A635F007CBEBB /* OssService.h */,
+				70730DB31C9A635F007CBEBB /* OssService.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -816,6 +821,7 @@
 				7062B6C91C9331D10074C716 /* ScoreViewModel.m in Sources */,
 				7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */,
 				70730D761C94A039007CBEBB /* SemesterBaseViewController.m in Sources */,
+				70730DB41C9A635F007CBEBB /* OssService.m in Sources */,
 				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */,
