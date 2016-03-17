@@ -7,6 +7,9 @@
 //
 
 #import "PersonalHeaderView.h"
+#import <MMSheetView.h>
+#import <MMPopupItem.h>
+#import "AppUtils.h"
 
 static CGFloat const kAvatarImageViewMarginTop = 10.f;
 
@@ -35,7 +38,35 @@ static CGFloat const kAvatarImageViewCornerRadius = kAvatarImageViewHeight / 2.f
         _avatarImageView = [[UIImageView alloc] init];
         _avatarImageView.layer.cornerRadius = kAvatarImageViewCornerRadius;
         _avatarImageView.layer.masksToBounds = YES;
+        _avatarImageView.userInteractionEnabled = YES;
         [self addSubview:_avatarImageView];
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
+        @weakify(self);
+        [tapGestureRecognizer.rac_gestureSignal subscribeNext:^(id x) {
+            NSArray *items = @[
+                               MMItemMake(NSLocalizedString(@"Take a picture", nil), MMItemTypeNormal, ^(NSInteger index){}),
+                               MMItemMake(NSLocalizedString(@"From photo library", nil), MMItemTypeNormal, ^(NSInteger index){
+                                   UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+                                   pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                   pickerController.allowsEditing = YES;
+                  
+                                   [pickerController.rac_imageSelectedSignal subscribeNext:^(NSDictionary *userInfo) {
+                                       @strongify(self);
+                                       self.avatarImageView.image = userInfo[UIImagePickerControllerEditedImage];
+                                       TyLogDebug(@"userInfo: %@", userInfo);
+                                       [pickerController dismissViewControllerAnimated:YES completion:nil];
+                                   }];
+                  
+                                   UIViewController *viewController = [AppUtils viewController:self];
+                                   [viewController presentViewController:pickerController animated:NO completion:nil];
+                               })
+                               ];
+            [[[MMSheetView alloc] initWithTitle:nil items:items] showWithBlock:^(MMPopupView * view, BOOL finished){
+                
+            }];
+        }];
+        [_avatarImageView addGestureRecognizer:tapGestureRecognizer];
         
         _nicknameLabel = [[UILabel alloc] init];
         [self addSubview:_nicknameLabel];

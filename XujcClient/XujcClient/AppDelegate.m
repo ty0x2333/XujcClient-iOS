@@ -10,6 +10,7 @@
 #import "MainTabBarController.h"
 #import "DynamicData.h"
 #import "CacheUtils.h"
+#import <MMPopupWindow.h>
 
 static const CGFloat kWindowCornerRadius = 4.f;
 @interface AppDelegate ()
@@ -24,6 +25,8 @@ static const CGFloat kWindowCornerRadius = 4.f;
     TyLogDebug(@"Document Path: %@", DOCUMENT_DIRECTORY);
     
     [CacheUtils instance];
+    
+    [MMPopupWindow sharedWindow].touchWildToHide = YES;
     
     // Override point for customization after application launch.
     _masterViewModel = [[MasterViewModel alloc] init];
