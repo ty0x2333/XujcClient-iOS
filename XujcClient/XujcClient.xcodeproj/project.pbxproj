@@ -76,6 +76,7 @@
 		70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DAA1C9A6152007CBEBB /* UIImage+Coding.m */; };
 		70730DAE1C9A6222007CBEBB /* NSData+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DAD1C9A6222007CBEBB /* NSData+Coding.m */; };
 		70730DB41C9A635F007CBEBB /* OssService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DB31C9A635F007CBEBB /* OssService.m */; };
+		70730DB71C9B7C9D007CBEBB /* SettingsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DB61C9B7C9D007CBEBB /* SettingsViewModel.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -231,6 +232,8 @@
 		70730DAD1C9A6222007CBEBB /* NSData+Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Coding.m"; sourceTree = "<group>"; };
 		70730DB21C9A635F007CBEBB /* OssService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OssService.h; sourceTree = "<group>"; };
 		70730DB31C9A635F007CBEBB /* OssService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OssService.m; sourceTree = "<group>"; };
+		70730DB51C9B7C9D007CBEBB /* SettingsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewModel.h; sourceTree = "<group>"; };
+		70730DB61C9B7C9D007CBEBB /* SettingsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -547,6 +550,8 @@
 				702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
 				708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */,
+				70730DB51C9B7C9D007CBEBB /* SettingsViewModel.h */,
+				70730DB61C9B7C9D007CBEBB /* SettingsViewModel.m */,
 				70C2B0381C81ECAA00923B85 /* SettingsViewController.h */,
 				70C2B0391C81ECAA00923B85 /* SettingsViewController.m */,
 				70F7CE251BE3AC25001D027C /* Assets.xcassets */,
@@ -862,6 +867,7 @@
 				70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */,
 				70C2B0331C81349400923B85 /* UIColor+Theme.m in Sources */,
 				7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */,
+				70730DB71C9B7C9D007CBEBB /* SettingsViewModel.m in Sources */,
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				70730D951C99BDF8007CBEBB /* SemesterMasterViewModel.m in Sources */,
 				7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */,
