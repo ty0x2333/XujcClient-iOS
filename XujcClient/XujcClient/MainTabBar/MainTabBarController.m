@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "BindingAccountViewController.h"
 #import "DynamicData.h"
+#import "UITabBarController+animation.h"
 
 @interface MainTabBarController ()
 
@@ -48,9 +49,10 @@
 - (void)setViewModel:(MainTabBarViewModel *)viewModel
 {
     _viewModel = viewModel;
-    UINavigationController *scheduleNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScheduleViewController alloc] initWithViewModel:self.viewModel.scheduleViewModel]];
-    UINavigationController *scoreNavViewController = [[UINavigationController alloc] initWithRootViewController:[[ScoreViewController alloc] initWithViewModel:self.viewModel.scoreViewModel]];
-    UINavigationController *personalNavViewController = [[UINavigationController alloc] initWithRootViewController:[[PersonalViewController alloc] initWithViewModel:self.viewModel.personalViewModel]];
+    UINavigationController *scheduleNavViewController = [self p_navigationControllerWithRootViewController:[[ScheduleViewController alloc] initWithViewModel:self.viewModel.scheduleViewModel]];
+    UINavigationController *scoreNavViewController = [self p_navigationControllerWithRootViewController:[[ScoreViewController alloc] initWithViewModel:self.viewModel.scoreViewModel]];
+
+    UINavigationController *personalNavViewController = [self p_navigationControllerWithRootViewController:[[PersonalViewController alloc] initWithViewModel:self.viewModel.personalViewModel]];
     self.viewControllers = @[
                              scheduleNavViewController,
 //                             [[UIViewController alloc] init],
@@ -71,14 +73,35 @@
     }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UINavigationController *)p_navigationControllerWithRootViewController:(UIViewController *)viewController
+{
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    @weakify(self);
+    RACSignal *popToRootSignal = [navController rac_signalForSelector:@selector(popToRootViewControllerAnimated:)];
+    RACSignal *popToViewControllerSignal = [[navController rac_signalForSelector:@selector(popToViewController:animated:)] filter:^BOOL(id value) {
+        return @(navController.viewControllers.count < 2);
+    }];
+    RACSignal *popViewControllerSignal = [[navController rac_signalForSelector:@selector(popViewControllerAnimated:)] filter:^BOOL(id value) {
+        return @(navController.viewControllers.count < 2);
+    }];
+    RACSignal *popSignal = [RACSignal merge:@[popToRootSignal, popToViewControllerSignal, popViewControllerSignal]];
+    
+    [[popSignal filter:^BOOL(id value) {
+        @strongify(self);
+        return ![self ty_tabBarIsVisible];
+    }] subscribeNext:^(id x) {
+        @strongify(self);
+        [self ty_setTabBarVisible:YES animated:YES completion:nil];
+    }];
+    
+    [[[navController rac_signalForSelector:@selector(pushViewController:animated:)] filter:^BOOL(id value) {
+        @strongify(self);
+        return [self ty_tabBarIsVisible];
+    }] subscribeNext:^(id x) {
+        @strongify(self);
+        [self ty_setTabBarVisible:NO animated:YES completion:nil];
+    }];
+    return navController;
 }
-*/
 
 @end
