@@ -105,11 +105,9 @@ static CGFloat const kAvatarImageViewCornerRadius = kAvatarImageViewHeight / 2.f
         }];
         
         RAC(self.nicknameLabel, text) = RACObserve(self.viewModel, nickname);
-        [[RACObserve(self.viewModel, avater) filter:^BOOL(NSString *value) {
-            return ![NSString isEmpty:value];
-        }] subscribeNext:^(NSString *avatarURL) {
+        [RACObserve(self.viewModel, avater) subscribeNext:^(NSString *avatarURL) {
             @strongify(self);
-            [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL]];
+            [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
         }];
     }
     return self;

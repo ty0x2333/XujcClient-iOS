@@ -77,6 +77,7 @@
 		70730DAE1C9A6222007CBEBB /* NSData+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DAD1C9A6222007CBEBB /* NSData+Coding.m */; };
 		70730DB41C9A635F007CBEBB /* OssService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DB31C9A635F007CBEBB /* OssService.m */; };
 		70730DB71C9B7C9D007CBEBB /* SettingsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DB61C9B7C9D007CBEBB /* SettingsViewModel.m */; };
+		70730DBB1C9B9DE9007CBEBB /* default_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70730DBA1C9B9DE9007CBEBB /* default_avatar@2x.png */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -234,6 +235,7 @@
 		70730DB31C9A635F007CBEBB /* OssService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OssService.m; sourceTree = "<group>"; };
 		70730DB51C9B7C9D007CBEBB /* SettingsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewModel.h; sourceTree = "<group>"; };
 		70730DB61C9B7C9D007CBEBB /* SettingsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewModel.m; sourceTree = "<group>"; };
+		70730DBA1C9B9DE9007CBEBB /* default_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_avatar@2x.png"; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 			isa = PBXGroup;
 			children = (
 				70443B6E1C85F09400B0C5DA /* logo.png */,
+				70730DBA1C9B9DE9007CBEBB /* default_avatar@2x.png */,
 				70C2B0341C81E38800923B85 /* settings@2x.png */,
 				70C2B0351C81E38800923B85 /* settings@3x.png */,
 				70C2B0291C81294700923B85 /* arrow_down@2x.png */,
@@ -741,6 +744,7 @@
 				702F99D61C7D08F9003B35A7 /* tabbar-exam@3x.png in Resources */,
 				70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */,
 				70C2B0371C81E38800923B85 /* settings@3x.png in Resources */,
+				70730DBB1C9B9DE9007CBEBB /* default_avatar@2x.png in Resources */,
 				70F7CE291BE3AC25001D027C /* LaunchScreen.storyboard in Resources */,
 				702F99EB1C7D246A003B35A7 /* Localizable.strings in Resources */,
 				70C2B02F1C81294700923B85 /* arrow_right@2x.png in Resources */,

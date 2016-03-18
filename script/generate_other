@@ -3,3 +3,4 @@ current_dir=$(dirname $0)
 target_dir=$current_dir/../XujcClient/XujcClient/Resource
 convert $current_dir/../ImageSource/settings.png -resize 'x50>' $target_dir/settings@2x.png;
 convert $current_dir/../ImageSource/settings.png -resize 'x75>' $target_dir/settings@3x.png;
+convert $current_dir/../ImageSource/default_avatar.png -resize 'x500>' $target_dir/default_avatar@2x.png;
