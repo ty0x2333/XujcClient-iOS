@@ -79,6 +79,7 @@
 		70730DB71C9B7C9D007CBEBB /* SettingsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DB61C9B7C9D007CBEBB /* SettingsViewModel.m */; };
 		70730DBB1C9B9DE9007CBEBB /* default_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70730DBA1C9B9DE9007CBEBB /* default_avatar@2x.png */; };
 		70730DC11C9CB9BB007CBEBB /* UITabBarController+animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DC01C9CB9BB007CBEBB /* UITabBarController+animation.m */; };
+		70730DC51C9CC0E6007CBEBB /* TextIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DC41C9CC0E6007CBEBB /* TextIconView.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -239,6 +240,8 @@
 		70730DBA1C9B9DE9007CBEBB /* default_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_avatar@2x.png"; sourceTree = "<group>"; };
 		70730DBF1C9CB9BB007CBEBB /* UITabBarController+animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+animation.h"; sourceTree = "<group>"; };
 		70730DC01C9CB9BB007CBEBB /* UITabBarController+animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+animation.m"; sourceTree = "<group>"; };
+		70730DC31C9CC0E6007CBEBB /* TextIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextIconView.h; sourceTree = "<group>"; };
+		70730DC41C9CC0E6007CBEBB /* TextIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextIconView.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -512,6 +515,15 @@
 			path = MainTabBar;
 			sourceTree = "<group>";
 		};
+		70730DC21C9CC0DC007CBEBB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70730DC31C9CC0E6007CBEBB /* TextIconView.h */,
+				70730DC41C9CC0E6007CBEBB /* TextIconView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		70F7CE0D1BE3AC25001D027C = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +551,7 @@
 				70F7CE3A1BE3E7E7001D027C /* Model */,
 				7062B68B1C8B0F350074C716 /* ViewModel */,
 				70F7CE341BE3D1B8001D027C /* Comment */,
+				70730DC21C9CC0DC007CBEBB /* View */,
 				70F7CE301BE3BD4A001D027C /* API */,
 				70443B661C85DD7D00B0C5DA /* Login */,
 				7062B6C01C9331BD0074C716 /* Score */,
@@ -873,6 +886,7 @@
 				70730D861C999DBD007CBEBB /* ScheduleViewController.m in Sources */,
 				7062B6C61C9331BD0074C716 /* ScoreViewController.m in Sources */,
 				702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */,
+				70730DC51C9CC0E6007CBEBB /* TextIconView.m in Sources */,
 				70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */,
 				70730DC11C9CB9BB007CBEBB /* UITabBarController+animation.m in Sources */,
 				70C2B0331C81349400923B85 /* UIColor+Theme.m in Sources */,
