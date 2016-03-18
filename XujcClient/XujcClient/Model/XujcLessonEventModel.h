@@ -1,5 +1,5 @@
 /**
- * @file XujcCourseEvent.h
+ * @file XujcLessonEventModel.h
  *
  * @author luckytianyiyan@gmail.com
  * @date 15/11/2
@@ -9,7 +9,7 @@
 #import "BaseModel.h"
 #import "XujcSection.h"
 
-@interface XujcCourseEvent : BaseModel
+@interface XujcLessonEventModel : BaseModel
 
 @property(nonatomic, copy) NSString *name;
 @property(nonatomic, copy) NSString *courseClassId;

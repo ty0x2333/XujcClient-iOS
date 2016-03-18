@@ -8,11 +8,11 @@
 
 #import "SemesterBaseViewModel.h"
 #import "CourseEventViewModel.h"
-#import "XujcCourseEvent.h"
+#import "XujcLessonEventModel.h"
 
 @interface ScheduleViewModel : SemesterBaseViewModel
 
-@property (strong, nonatomic) NSArray<NSArray<XujcCourseEvent *> *> *courseEvents;
+@property (strong, nonatomic) NSArray<NSArray<XujcLessonEventModel *> *> *courseEvents;
 
 @property (strong, nonatomic) RACSignal *fetchScheduleCourseSignal;
 

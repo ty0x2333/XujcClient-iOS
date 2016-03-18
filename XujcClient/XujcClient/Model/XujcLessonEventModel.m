@@ -1,15 +1,15 @@
 /**
- * @file XujcCourseEvent.m
+ * @file XujcLessonEventModel.m
  *
  * @author luckytianyiyan@gmail.com
  * @date 15/11/2
  * @copyright   Copyright © 2015年 luckytianyiyan. All rights reserved.
  */
 
-#import "XujcCourseEvent.h"
+#import "XujcLessonEventModel.h"
 #import "NSDate+Week.h"
 
-@implementation XujcCourseEvent
+@implementation XujcLessonEventModel
 
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {

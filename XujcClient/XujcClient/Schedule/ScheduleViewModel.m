@@ -31,7 +31,7 @@
     
             for (id item in responseObject) {
                 XujcLessonModel *course = [[XujcLessonModel alloc] initWithJSONResopnse:item];
-                for (XujcCourseEvent* event in course.courseEvents) {
+                for (XujcLessonEventModel* event in course.courseEvents) {
                     [courseEventArray addObject:event];
                 }
             }
@@ -58,7 +58,7 @@
 
 - (CourseEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath
 {
-    XujcCourseEvent *courseEvent = [self.courseEvents[indexPath.section] objectAtIndex:indexPath.row];
+    XujcLessonEventModel *courseEvent = [self.courseEvents[indexPath.section] objectAtIndex:indexPath.row];
     CourseEventViewModel *viewModel = [[CourseEventViewModel alloc] init];
     viewModel.name = courseEvent.name;
     viewModel.location = courseEvent.location;
@@ -75,7 +75,7 @@
 - (NSArray *)p_coureEventsFromDayNumberOfWeek:(NSArray *)allCourseEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
-    for (XujcCourseEvent *event in allCourseEvents) {
+    for (XujcLessonEventModel *event in allCourseEvents) {
         NSInteger currentDayNumberOfWeek = [NSDate dayNumberOfWeekFromString:event.studyDay];
         if (currentDayNumberOfWeek == dayNumberOfWeek){
             [result addObject:event];
