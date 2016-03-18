@@ -22,11 +22,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
         
         self.time = [UILabel new];
         self.time.font = [UIFont boldSystemFontOfSize:10.0];
-        self.time.textColor = [UIColor colorWithHexString:@"fd3935"];
+        self.time.textColor = [UIColor ty_textRed];
         [self addSubview:self.time];
         
         [self.time makeConstraints:^(MASConstraintMaker *make) {
