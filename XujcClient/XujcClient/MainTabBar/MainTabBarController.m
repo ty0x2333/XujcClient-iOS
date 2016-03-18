@@ -15,6 +15,8 @@
 #import "DynamicData.h"
 #import "UITabBarController+animation.h"
 
+static CGFloat const kTabBarOpacity = .9f;
+
 @interface MainTabBarController ()
 
 @end
@@ -24,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tabBar.layer.opacity = kTabBarOpacity;
     [self.tabBar setValue:@(YES) forKeyPath:@"_hidesShadow"];
 }
 
