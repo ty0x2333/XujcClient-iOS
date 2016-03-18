@@ -1,14 +1,14 @@
 /**
- * @file XujcCourse.m
+ * @file XujcLessonModel.m
  *
  * @author luckytianyiyan@gmail.com
  * @date 15/11/2
  * @copyright   Copyright © 2015年 luckytianyiyan. All rights reserved.
  */
 
-#import "XujcCourse.h"
+#import "XujcLessonModel.h"
 
-@implementation XujcCourse
+@implementation XujcLessonModel
 
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {

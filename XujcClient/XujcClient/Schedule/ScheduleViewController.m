@@ -19,7 +19,7 @@
 #import "CollectionViewScheduleLayout.h"
 #import "XujcAPI.h"
 #import "XujcSemesterModel.h"
-#import "XujcCourse.h"
+#import "XujcLessonModel.h"
 #import "DynamicData.h"
 #import "ScheduleColumnHeader.h"
 

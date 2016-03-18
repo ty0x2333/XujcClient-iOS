@@ -12,7 +12,7 @@
 		7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */; };
 		7023F9AB1BE60F680046CF3B /* ScheduleRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AA1BE60F680046CF3B /* ScheduleRowHeader.m */; };
 		7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */; };
-		7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcCourse.m */; };
+		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcCourseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcCourseEvent.m */; };
 		7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */; };
 		7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9C11BE72F280046CF3B /* NSDate+Week.m */; };
@@ -116,8 +116,8 @@
 		7023F9AA1BE60F680046CF3B /* ScheduleRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRowHeader.m; sourceTree = "<group>"; };
 		7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSemesterModel.h; sourceTree = "<group>"; };
 		7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSemesterModel.m; sourceTree = "<group>"; };
-		7023F9B21BE678E60046CF3B /* XujcCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcCourse.h; sourceTree = "<group>"; };
-		7023F9B31BE678E60046CF3B /* XujcCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcCourse.m; sourceTree = "<group>"; };
+		7023F9B21BE678E60046CF3B /* XujcLessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcLessonModel.h; sourceTree = "<group>"; };
+		7023F9B31BE678E60046CF3B /* XujcLessonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcLessonModel.m; sourceTree = "<group>"; };
 		7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XujcRequestKeys.h; sourceTree = "<group>"; };
 		7023F9B91BE681300046CF3B /* XujcCourseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcCourseEvent.h; sourceTree = "<group>"; };
 		7023F9BA1BE681300046CF3B /* XujcCourseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcCourseEvent.m; sourceTree = "<group>"; };
@@ -620,8 +620,8 @@
 				70FE64B31C7F9EDC00112038 /* XujcScore.m */,
 				7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */,
 				7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */,
-				7023F9B21BE678E60046CF3B /* XujcCourse.h */,
-				7023F9B31BE678E60046CF3B /* XujcCourse.m */,
+				7023F9B21BE678E60046CF3B /* XujcLessonModel.h */,
+				7023F9B31BE678E60046CF3B /* XujcLessonModel.m */,
 				7023F9B91BE681300046CF3B /* XujcCourseEvent.h */,
 				7023F9BA1BE681300046CF3B /* XujcCourseEvent.m */,
 				708661331BE75B7400AD64C2 /* XujcSection.h */,
@@ -859,7 +859,7 @@
 				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */,
 				70730D731C947A41007CBEBB /* SemesterTableViewCellViewModel.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
-				7023F9B41BE678E60046CF3B /* XujcCourse.m in Sources */,
+				7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */,
 				7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,

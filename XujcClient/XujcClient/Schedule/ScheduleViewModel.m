@@ -9,13 +9,13 @@
 #import "ScheduleViewModel.h"
 #import "XujcServer.h"
 #import "DynamicData.h"
-#import "XujcCourse.h"
+#import "XujcLessonModel.h"
 #import "XujcSemesterModel.h"
 #import "CacheUtils.h"
 
 @interface ScheduleViewModel()
 
-@property (strong, nonatomic) XujcCourse *xujcCourse;
+@property (strong, nonatomic) XujcLessonModel *xujcCourse;
 
 @end
 
@@ -30,7 +30,7 @@
             NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
     
             for (id item in responseObject) {
-                XujcCourse *course = [[XujcCourse alloc] initWithJSONResopnse:item];
+                XujcLessonModel *course = [[XujcLessonModel alloc] initWithJSONResopnse:item];
                 for (XujcCourseEvent* event in course.courseEvents) {
                     [courseEventArray addObject:event];
                 }
