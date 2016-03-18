@@ -1,0 +1,29 @@
+digraph ViewModel{
+	node[shape = record];
+
+	MasterViewModel->MainTabBarViewModel;
+
+	MainTabBarViewModel->LoginViewModel;
+	MainTabBarViewModel->SignupViewModel;
+	MainTabBarViewModel->SemesterMasterViewModel[style = dashed];
+	MainTabBarViewModel->BindingAccountViewModel;
+	MainTabBarViewModel->PersonalViewModel;
+
+	SemesterMasterViewModel[style = dashed];
+	SemesterMasterViewModel->ScheduleViewModel;
+	SemesterMasterViewModel->ScoreViewModel;
+
+	ScheduleViewModel->CourseEventViewModel[style = dashed];
+	ScheduleViewModel->SemesterSelectorViewModel[style = dashed];
+	CourseEventViewModel[style = dashed];
+
+	ScoreViewModel->ScoreTableViewCellViewModel[style = dashed];
+	ScoreViewModel->SemesterSelectorViewModel[style = dashed];
+	ScoreTableViewCellViewModel[style = dashed];
+
+	SemesterSelectorViewModel[style = dashed];
+
+	PersonalViewModel->SettingsViewModel;
+	PersonalViewModel->PersonalHeaderViewModel[style = dashed];
+	PersonalHeaderViewModel[style = dashed];
+}
