@@ -7,16 +7,27 @@
 //
 
 #import "SettingsViewController.h"
+#import "SettingsViewModel.h"
 
 static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
 
 @interface SettingsViewController()<UITableViewDataSource>
+
+@property (strong, nonatomic) SettingsViewModel *viewModel;
 
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 @implementation SettingsViewController
+
+- (instancetype)initWithViewModel:(SettingsViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SettingsViewModel;
 
 @interface SettingsViewController : UIViewController
+
+- (instancetype)initWithViewModel:(SettingsViewModel *)viewModel;
 
 @end
