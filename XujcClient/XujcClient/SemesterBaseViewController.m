@@ -41,11 +41,10 @@
     @weakify(self);
     _semesterButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
-        TyLogDebug(@"semester button clicked");
         if ([self.dropdownView isOpen]) {
             [self.dropdownView hide];
         } else {
-            self.dropdownView.contentBackgroundColor = [UIColor colorWithRed:40.0/255 green:196.0/255 blue:80.0/255 alpha:1];
+            self.dropdownView.contentBackgroundColor = [UIColor ty_backgroundHighlight];
             [self.dropdownView showInView:self.navigationController.visibleViewController.view withContentView:self.semesterSelectorView atOrigin:CGPointMake(0, CGRectGetMaxY(self.navigationController.navigationBar.frame))];
         }
         return [RACSignal empty];

@@ -39,8 +39,6 @@ static NSString * const kSemesterTableViewCellIdentifier = @"kSemesterTableViewC
     [_tableView registerClass:[SemesterTableViewCell class] forCellReuseIdentifier:kSemesterTableViewCellIdentifier];
     [self addSubview:_tableView];
     
-    _tableView.backgroundColor = [UIColor greenColor];
-    
     @weakify(self);
     [[RACObserve(_tableView, contentSize) distinctUntilChanged] subscribeNext:^(id x) {
         @strongify(self);
