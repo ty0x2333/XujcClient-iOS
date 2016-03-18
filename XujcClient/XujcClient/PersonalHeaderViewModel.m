@@ -16,18 +16,18 @@
 {
     if (self = [super init]) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        RACSignal *userSignal = [[[[userDefaults rac_channelTerminalForKey:kUserDefaultsKeyUser] map:^id(NSData *value) {
+        RACSignal *userSignal = [[userDefaults rac_channelTerminalForKey:kUserDefaultsKeyUser] map:^id(NSData *value) {
             UserModel *user = [NSKeyedUnarchiver unarchiveObjectWithData:value];
             return user;
-        }] setNameWithFormat:@"PersonalHeaderViewModel userSignal"] logAll];
+        }];
         
-        RAC(self, nickname) = [userSignal map:^id(UserModel *value) {
+        RAC(self, nickname) = [[[userSignal map:^id(UserModel *value) {
             return value.nikename;
-        }];
+        }] setNameWithFormat:@"PersonalHeaderViewModel nikenameSignal"] logAll];
         
-        RAC(self, avater) = [userSignal map:^id(UserModel *value) {
+        RAC(self, avater) = [[[userSignal map:^id(UserModel *value) {
             return value.avatar;
-        }];
+        }] setNameWithFormat:@"PersonalHeaderViewModel avaterSignal"] logAll];
     }
     return self;
 }
