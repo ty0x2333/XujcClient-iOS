@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "PersonalHeaderViewModel.h"
+#import "SettingsViewModel.h"
 
 @interface PersonalViewModel : NSObject
 
 - (PersonalHeaderViewModel *)personalHeaderViewModel;
+
+- (SettingsViewModel *)settingsViewModel;
 
 @end

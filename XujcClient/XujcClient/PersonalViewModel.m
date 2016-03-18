@@ -15,4 +15,9 @@
     return [[PersonalHeaderViewModel alloc] init];
 }
 
+- (SettingsViewModel *)settingsViewModel
+{
+    return [[SettingsViewModel alloc] init];
+}
+
 @end
