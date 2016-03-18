@@ -8,10 +8,11 @@
 
 #import "SettingsViewController.h"
 #import "SettingsViewModel.h"
+#import "DynamicData.h"
 
 static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
 
-@interface SettingsViewController()<UITableViewDataSource>
+@interface SettingsViewController()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) SettingsViewModel *viewModel;
 
@@ -34,6 +35,7 @@ static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
     [super viewDidLoad];
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
+    _tableView.delegate = self;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableCellReuseIdentifier];
     
@@ -42,6 +44,19 @@ static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
         @strongify(self);
         make.edges.equalTo(self.view);
     }];
+    
+    [[self.viewModel.executeLoginout.executing filter:^BOOL(NSNumber *value) {
+        return [value boolValue];
+    }] subscribeNext:^(id x) {
+        @strongify(self);
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -56,6 +71,13 @@ static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellReuseIdentifier forIndexPath:indexPath];
     cell.textLabel.text = NSLocalizedString(@"Logout", nil);
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.viewModel.executeLoginout execute:nil];
 }
 
 @end
