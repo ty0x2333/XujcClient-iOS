@@ -40,6 +40,10 @@ static CGFloat const kCurrentTextIconMarginRight = 5.f;
         }];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        RAC(self, backgroundColor) = [RACObserve(self, selected) map:^id(NSNumber *value) {
+            return [value boolValue] ? [UIColor ty_backgroundHighlight] : [UIColor clearColor];
+        }];
     }
     return self;
 }

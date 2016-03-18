@@ -71,12 +71,25 @@ static NSString * const kSemesterTableViewCellIdentifier = @"kSemesterTableViewC
 {
     SemesterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSemesterTableViewCellIdentifier forIndexPath:indexPath];
     cell.viewModel = [self.viewModel semesterTableViewCellViewModelAtIndex:indexPath.row];
+    if (self.viewModel.selectedIndex == indexPath.row) {
+        cell.selected = self.viewModel.selectedIndex == indexPath.row;
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    SemesterTableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    selectedCell.selected = YES;
+    
     self.viewModel.selectedIndex = indexPath.row;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SemesterTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selected = NO;
 }
 
 #pragma mark - UITableViewDelegate
