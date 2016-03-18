@@ -63,6 +63,7 @@
 {
     SemesterTableViewCellViewModel *viewModel = [[SemesterTableViewCellViewModel alloc] init];
     viewModel.semesterModel = [_semesters objectAtIndex:index];
+    viewModel.isCurrent = index == 0;
     return viewModel;
 }
 

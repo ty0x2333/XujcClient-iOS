@@ -7,8 +7,14 @@
 //
 
 #import "SemesterTableViewCell.h"
+#import "TextIconView.h"
+
+static CGFloat const kCurrentTextIconMarginRight = 5.f;
 
 @interface SemesterTableViewCell()
+
+@property (strong, nonatomic) UILabel *nameLabel;
+@property (strong, nonatomic) TextIconView *currentTextIcon;
 
 @end
 
@@ -17,15 +23,31 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        _nameLabel = [[UILabel alloc] init];
+        [self.contentView addSubview:_nameLabel];
+        
+        _currentTextIcon = [[TextIconView alloc] init];
+        _currentTextIcon.text = NSLocalizedString(@"Current Semester", nil);
+        [self addSubview:_currentTextIcon];
+
+        [_nameLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self.contentView);
+        }];
+        
+        [_currentTextIcon makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.nameLabel.mas_left).with.offset(-kCurrentTextIconMarginRight);
+            make.centerY.equalTo(self.nameLabel);
+        }];
+        
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.textLabel.textAlignment = NSTextAlignmentCenter;
     }
     return self;
 }
 
 - (void)setViewModel:(SemesterTableViewCellViewModel *)viewModel
 {
-    RAC(self.textLabel, text) = [RACObserve(viewModel.semesterModel, displayName) takeUntil:self.rac_prepareForReuseSignal];
+    RAC(self.nameLabel, text) = [RACObserve(viewModel.semesterModel, displayName) takeUntil:self.rac_prepareForReuseSignal];
+    RAC(self.currentTextIcon, hidden) = [RACObserve(viewModel, isCurrent) not];
 }
 
 @end

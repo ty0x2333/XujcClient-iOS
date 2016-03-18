@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) XujcSemesterModel *semesterModel;
 
+@property (assign, nonatomic) BOOL isCurrent;
+
 @end
