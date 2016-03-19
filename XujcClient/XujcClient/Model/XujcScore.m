@@ -13,10 +13,10 @@
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {
     if (self = [super init]) {
-        _courseName = [self checkForNull:json[XujcServiceKeyCourseName]];
+        _lessonName = [self checkForNull:json[XujcServiceKeyLessonName]];
         _credit = [[self checkForNull:json[XujcServiceKeyCredit]] integerValue];
-        _score = [[self checkForNull:json[XujcServiceKeyCourseSorce]] integerValue];
-        _scoreLevel = [self checkForNull:json[XujcServiceKeyCourseSorceLevel]];
+        _score = [[self checkForNull:json[XujcServiceKeyLessonSorce]] integerValue];
+        _scoreLevel = [self checkForNull:json[XujcServiceKeyLessonSorceLevel]];
         _midSemesterStatus = [self checkForNull:json[XujcServiceKeyMidSemesterStatus]];
         _endSemesterStatus = [self checkForNull:json[XujcServiceKeyEndSemesterStatus]];
         _studyWay = [self checkForNull:json[XujcServiceKeyScoreStudyWay]];
@@ -28,7 +28,7 @@
 {
     NSMutableString *description = [[super description] mutableCopy];
     [description appendFormat:@"{\n"];
-    [description appendFormat:@"\n\tcourseName: %@", _courseName];
+    [description appendFormat:@"\n\tlessonName: %@", _lessonName];
     [description appendFormat:@"\n\tcredit: %d", _credit];
     [description appendFormat:@"\n\tscore: %d", _score];
     [description appendFormat:@"\n\tscoreLevel: %@", _scoreLevel];

@@ -7,7 +7,7 @@
  */
 
 #import "ScheduleViewController.h"
-#import "CourseEventCell.h"
+#import "LessonEventCell.h"
 #import "MSEvent.h"
 #import "MSGridline.h"
 #import "ScheduleRowHeader.h"
@@ -25,7 +25,7 @@
 
 static NSString * const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
 
-static NSString * const kCourseEventCellIdentifier = @"CourseEventCellIdentifier";
+static NSString * const kLessonEventCellIdentifier = @"LessonEventCellIdentifier";
 static NSString * const kScheduleColumnHeaderReuseIdentifier = @"ScheduleColumnHeaderReuseIdentifier";
 static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderReuseIdentifier";
 
@@ -71,7 +71,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 - (void)bindViewModel
 {
     [self.viewModel.semesterSelectorViewModel.selectedSemesterIdSignal subscribeNext:^(id x) {
-        [self.viewModel.fetchScheduleCourseSignal subscribeNext:^(id x) {
+        [self.viewModel.fetchScheduleLessonSignal subscribeNext:^(id x) {
             [self.collectionViewCalendarLayout invalidateLayoutCache];
             [self.collectionView reloadData];
             TyLogDebug(@"fetchScheduleSuccess success");
@@ -79,7 +79,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
             MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hub.detailsLabelText = error.localizedDescription;
             [hub hide:YES afterDelay:kErrorHUDShowTime];
-            TyLogDebug(@"fetchScheduleCourse error");
+            TyLogDebug(@"fetchScheduleLesson error");
         }];
     }];
 }
@@ -97,7 +97,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
-    [self.collectionView registerClass:CourseEventCell.class forCellWithReuseIdentifier:kCourseEventCellIdentifier];
+    [self.collectionView registerClass:LessonEventCell.class forCellWithReuseIdentifier:kLessonEventCellIdentifier];
     [self.collectionView registerClass:ScheduleColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:kScheduleColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:ScheduleRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:kScheduleRowHeaderReuseIdentifier];
     
@@ -123,12 +123,12 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.viewModel numberOfCourseEventInSection:section];
+    return [self.viewModel numberOfLessonEventInSection:section];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CourseEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCourseEventCellIdentifier forIndexPath:indexPath];
+    LessonEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLessonEventCellIdentifier forIndexPath:indexPath];
     cell.viewModel = [self.viewModel cellViewModelAtIndexPath:indexPath];
     return cell;
 }
@@ -167,12 +167,12 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout startClassSectionIndexForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[[self.viewModel.courseEvents[indexPath.section] objectAtIndex:indexPath.row] startSection] sectionIndex];
+    return [[[self.viewModel.lessonEvents[indexPath.section] objectAtIndex:indexPath.row] startSection] sectionIndex];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout endClassSectionIndexForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[[self.viewModel.courseEvents[indexPath.section] objectAtIndex:indexPath.row] endSection] sectionIndex];
+    return [[[self.viewModel.lessonEvents[indexPath.section] objectAtIndex:indexPath.row] endSection] sectionIndex];
 }
 
 - (NSDate *)currentTimeForCollectionView:(UICollectionView *)collectionView layout:(CollectionViewScheduleLayout *)collectionViewLayout

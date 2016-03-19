@@ -73,7 +73,7 @@
         [db executeUpdate:@"DELETE FROM score WHERE semester_id=?;", semesterId];
         
         for (XujcScore *score in scores) {
-            isSuccess = [db executeUpdate:@"INSERT INTO score(name, semester_id, credit, score, study_way, score_level, mid_semester_status, end_semester_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", score.courseName, semesterId, @(score.credit), @(score.score), score.studyWay, score.scoreLevel, score.midSemesterStatus, score.endSemesterStatus];
+            isSuccess = [db executeUpdate:@"INSERT INTO score(name, semester_id, credit, score, study_way, score_level, mid_semester_status, end_semester_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", score.lessonName, semesterId, @(score.credit), @(score.score), score.studyWay, score.scoreLevel, score.midSemesterStatus, score.endSemesterStatus];
             if (!isSuccess) {
                 *rollback = YES;
                 return;
@@ -113,7 +113,7 @@
         
         while ([set next]) {
             XujcScore *score = [[XujcScore alloc] init];
-            score.courseName = [set objectForColumnName:@"name"];
+            score.lessonName = [set objectForColumnName:@"name"];
             score.credit = [[set objectForColumnName:@"credit"] integerValue];
             score.score = [[set objectForColumnName:@"score"] integerValue];
             score.studyWay = [set objectForColumnName:@"study_way"];

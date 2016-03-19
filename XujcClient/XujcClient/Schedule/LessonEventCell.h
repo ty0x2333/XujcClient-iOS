@@ -1,5 +1,5 @@
 /**
- * @file CourseEventCell.h
+ * @file LessonEventCell.h
  *
  * @author luckytianyiyan@gmail.com
  * @date 15/11/2
@@ -7,11 +7,11 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "CourseEventViewModel.h"
+#import "LessonEventViewModel.h"
 
-@interface CourseEventCell : UICollectionViewCell
+@interface LessonEventCell : UICollectionViewCell
 
-@property (strong, nonatomic) CourseEventViewModel *viewModel;
+@property (strong, nonatomic) LessonEventViewModel *viewModel;
 
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UILabel *location;

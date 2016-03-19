@@ -14,15 +14,15 @@
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {
     if (self = [super init]) {
-        _courseClassId = [self checkForNull:json[XujcServiceKeyCourseClassId]];
-        _eventDescription = [self checkForNull:json[XujcServiceKeyCourseEventDescription]];
-        _studyDay = [self checkForNull:json[XujcServiceKeyCourseEventStudyDay]];
-        _weekInterval = [self checkForNull:json[XujcServiceKeyCourseEventWeekInterval]];
-        _startSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyCourseEventStartSection]] integerValue]];
-        _endSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyCourseEventEndSection]] integerValue]];
-        _startWeek = [[self checkForNull:json[XujcServiceKeyCourseEventStartWeek]] integerValue];
-        _endWeek = [[self checkForNull:json[XujcServiceKeyCourseEventEndWeek]] integerValue];
-        _location = [self checkForNull:json[XujcServiceKeyCourseEventLocation]];
+        _lessonClassId = [self checkForNull:json[XujcServiceKeyLessonClassId]];
+        _eventDescription = [self checkForNull:json[XujcServiceKeyLessonEventDescription]];
+        _studyDay = [self checkForNull:json[XujcServiceKeyLessonEventStudyDay]];
+        _weekInterval = [self checkForNull:json[XujcServiceKeyLessonEventWeekInterval]];
+        _startSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyLessonEventStartSection]] integerValue]];
+        _endSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyLessonEventEndSection]] integerValue]];
+        _startWeek = [[self checkForNull:json[XujcServiceKeyLessonEventStartWeek]] integerValue];
+        _endWeek = [[self checkForNull:json[XujcServiceKeyLessonEventEndWeek]] integerValue];
+        _location = [self checkForNull:json[XujcServiceKeyLessonEventLocation]];
     }
     return self;
 }

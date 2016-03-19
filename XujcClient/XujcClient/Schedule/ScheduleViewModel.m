@@ -15,33 +15,33 @@
 
 @interface ScheduleViewModel()
 
-@property (strong, nonatomic) XujcLessonModel *xujcCourse;
+@property (strong, nonatomic) XujcLessonModel *xujcLesson;
 
 @end
 
 @implementation ScheduleViewModel
 
-- (RACSignal *)fetchScheduleCourseSignal
+- (RACSignal *)fetchScheduleLessonSignal
 {
     @weakify(self);
-    RACSignal *fetchScheduleCourseSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    RACSignal *fetchScheduleLessonSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
         NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"kb.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServiceKeySemesterId: self.semesterSelectorViewModel.selectedSemesterId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
+            NSMutableArray *lessonEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
     
             for (id item in responseObject) {
-                XujcLessonModel *course = [[XujcLessonModel alloc] initWithJSONResopnse:item];
-                for (XujcLessonEventModel* event in course.courseEvents) {
-                    [courseEventArray addObject:event];
+                XujcLessonModel *lesson = [[XujcLessonModel alloc] initWithJSONResopnse:item];
+                for (XujcLessonEventModel* event in lesson.lessonEvents) {
+                    [lessonEventArray addObject:event];
                 }
             }
             
             NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:kDayCountOfWeek];
     
             for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
-                [events addObject:[self p_coureEventsFromDayNumberOfWeek:courseEventArray dayNumberOfWeek:i + 1]];
+                [events addObject:[self p_coureEventsFromDayNumberOfWeek:lessonEventArray dayNumberOfWeek:i + 1]];
             }
-            self.courseEvents = [events copy];
+            self.lessonEvents = [events copy];
             
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
@@ -53,29 +53,29 @@
             [task cancel];
         }];
     }];
-    return fetchScheduleCourseSignal;
+    return fetchScheduleLessonSignal;
 }
 
-- (CourseEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath
+- (LessonEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath
 {
-    XujcLessonEventModel *courseEvent = [self.courseEvents[indexPath.section] objectAtIndex:indexPath.row];
-    CourseEventViewModel *viewModel = [[CourseEventViewModel alloc] init];
-    viewModel.name = courseEvent.name;
-    viewModel.location = courseEvent.location;
+    XujcLessonEventModel *lessonEvent = [self.lessonEvents[indexPath.section] objectAtIndex:indexPath.row];
+    LessonEventViewModel *viewModel = [[LessonEventViewModel alloc] init];
+    viewModel.name = lessonEvent.name;
+    viewModel.location = lessonEvent.location;
     return viewModel;
 }
 
-- (NSInteger)numberOfCourseEventInSection:(NSInteger)section
+- (NSInteger)numberOfLessonEventInSection:(NSInteger)section
 {
-    return [[self.courseEvents objectAtIndex:section] count];
+    return [[self.lessonEvents objectAtIndex:section] count];
 }
 
 #pragma mark - Helper
 
-- (NSArray *)p_coureEventsFromDayNumberOfWeek:(NSArray *)allCourseEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek
+- (NSArray *)p_coureEventsFromDayNumberOfWeek:(NSArray *)allLessonEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
-    for (XujcLessonEventModel *event in allCourseEvents) {
+    for (XujcLessonEventModel *event in allLessonEvents) {
         NSInteger currentDayNumberOfWeek = [NSDate dayNumberOfWeekFromString:event.studyDay];
         if (currentDayNumberOfWeek == dayNumberOfWeek){
             [result addObject:event];

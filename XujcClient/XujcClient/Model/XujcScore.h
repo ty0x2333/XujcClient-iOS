@@ -10,7 +10,7 @@
 
 @interface XujcScore : BaseModel
 
-@property (nonatomic, copy) NSString *courseName;
+@property (nonatomic, copy) NSString *lessonName;
 @property (nonatomic, assign) NSInteger score;
 @property (nonatomic, copy) NSString *midSemesterStatus;
 @property (nonatomic, copy) NSString *endSemesterStatus;

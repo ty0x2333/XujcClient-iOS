@@ -1,5 +1,5 @@
 //
-//  CourseEventViewModel.h
+//  LessonEventViewModel.h
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/11.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CourseEventViewModel : NSObject
+@interface LessonEventViewModel : NSObject
 
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *location;

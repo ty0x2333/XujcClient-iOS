@@ -13,23 +13,23 @@
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {
     if (self = [super init]) {
-        _name = [self checkForNull:json[XujcServiceKeyCourseName]];
-        _courseClassId = [self checkForNull:json[XujcServiceKeyCourseClassId]];
-        _courseClass = [self checkForNull:json[XujcServiceKeyCourseClass]];
+        _name = [self checkForNull:json[XujcServiceKeyLessonName]];
+        _lessonClassId = [self checkForNull:json[XujcServiceKeyLessonClassId]];
+        _lessonClass = [self checkForNull:json[XujcServiceKeyLessonClass]];
         _semesterId = [self checkForNull:json[XujcServiceKeySemesterId]];
         _teacherDescription = [self checkForNull:json[XujcServiceKeyTeacherDescription]];
         _credit = [[self checkForNull:json[XujcServiceKeyCredit]] integerValue];
         _studyWay = [self checkForNull:json[XujcServiceKeyStudyWay]];
         _studyWeekRange = [self checkForNull:json[XujcServiceKeyStudyWeekRange]];
-        _courseEventDescription = [self checkForNull:json[XujcServiceKeyCourseCourseEventDescription]];
-        NSArray *courseEventDataArray = json[XujcServiceKeyCourseEvents];
-        NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:courseEventDataArray.count];
-        for (id courseEventData in courseEventDataArray) {
-            XujcLessonEventModel *event = [[XujcLessonEventModel alloc] initWithJSONResopnse:courseEventData];
+        _lessonEventDescription = [self checkForNull:json[XujcServiceKeyLessonLessonEventDescription]];
+        NSArray *lessonEventDataArray = json[XujcServiceKeyLessonEvents];
+        NSMutableArray *lessonEventArray = [NSMutableArray arrayWithCapacity:lessonEventDataArray.count];
+        for (id lessonEventData in lessonEventDataArray) {
+            XujcLessonEventModel *event = [[XujcLessonEventModel alloc] initWithJSONResopnse:lessonEventData];
             event.name = _name;
-            [courseEventArray addObject:event];
+            [lessonEventArray addObject:event];
         }
-        _courseEvents = courseEventArray;
+        _lessonEvents = lessonEventArray;
         // TODO: unknow kcb_bz, kcb_rs
     }
     return self;

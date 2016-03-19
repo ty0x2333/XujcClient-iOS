@@ -12,7 +12,7 @@
 @interface XujcLessonEventModel : BaseModel
 
 @property(nonatomic, copy) NSString *name;
-@property(nonatomic, copy) NSString *courseClassId;
+@property(nonatomic, copy) NSString *lessonClassId;
 @property(nonatomic, copy) NSString *eventDescription;
 /**
  *  @brief  周几

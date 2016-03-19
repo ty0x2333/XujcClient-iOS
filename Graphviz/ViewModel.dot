@@ -13,9 +13,9 @@ digraph ViewModel{
 	SemesterMasterViewModel->ScheduleViewModel;
 	SemesterMasterViewModel->ScoreViewModel;
 
-	ScheduleViewModel->CourseEventViewModel[style = dashed];
+	ScheduleViewModel->LessonEventViewModel[style = dashed];
 	ScheduleViewModel->SemesterSelectorViewModel[style = dashed];
-	CourseEventViewModel[style = dashed];
+	LessonEventViewModel[style = dashed];
 
 	ScoreViewModel->ScoreTableViewCellViewModel[style = dashed];
 	ScoreViewModel->SemesterSelectorViewModel[style = dashed];

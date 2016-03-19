@@ -1,20 +1,20 @@
 /**
- * @file CourseEventCell.m
+ * @file LessonEventCell.m
  *
  * @author luckytianyiyan@gmail.com
  * @date 15/11/2
  * @copyright   Copyright © 2015年 luckytianyiyan. All rights reserved.
  */
 
-#import "CourseEventCell.h"
+#import "LessonEventCell.h"
 
-@interface CourseEventCell()
+@interface LessonEventCell()
 
 @property (nonatomic, strong) UIView *borderView;
 
 @end
 
-@implementation CourseEventCell
+@implementation LessonEventCell
 
 #pragma mark - UIView
 
@@ -97,7 +97,7 @@
 
 #pragma mark - MSEventCell
 
-- (void)setViewModel:(CourseEventViewModel *)viewModel
+- (void)setViewModel:(LessonEventViewModel *)viewModel
 {
     if (_viewModel == viewModel) {
         return;

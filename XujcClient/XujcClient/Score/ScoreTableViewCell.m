@@ -20,9 +20,9 @@ static const CGFloat kContentMarginHorizontal = 5.f;
 
 @interface ScoreTableViewCell()
 
-@property (strong, nonatomic) UILabel *courseNameLabel;
+@property (strong, nonatomic) UILabel *lessonNameLabel;
 @property (strong, nonatomic) UILabel *scoreLabel;
-@property (strong, nonatomic) UIView *courseDetailView;
+@property (strong, nonatomic) UIView *lessonDetailView;
 @property (strong, nonatomic) UILabel *detailStudyWayLabel;
 @property (strong, nonatomic) UILabel *creditLabel;
 
@@ -40,30 +40,30 @@ static const CGFloat kContentMarginHorizontal = 5.f;
         self.contentView.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor clearColor];
-        _courseNameLabel = [[UILabel alloc] init];
-        _courseNameLabel.textColor = [UIColor ty_textBlack];
-        _courseNameLabel.font = [UIFont systemFontOfSize:kFontSize];
-        [self.contentView addSubview:_courseNameLabel];
+        _lessonNameLabel = [[UILabel alloc] init];
+        _lessonNameLabel.textColor = [UIColor ty_textBlack];
+        _lessonNameLabel.font = [UIFont systemFontOfSize:kFontSize];
+        [self.contentView addSubview:_lessonNameLabel];
         
         _scoreLabel = [[UILabel alloc] init];
         _scoreLabel.textAlignment = NSTextAlignmentRight;
         _scoreLabel.font = [UIFont systemFontOfSize:kFontSize];
         [self.contentView addSubview:_scoreLabel];
         
-        _courseDetailView = [[UIView alloc] init];
-        _courseDetailView.backgroundColor = [UIColor ty_backgroundHighlight];
-        [self.contentView addSubview:_courseDetailView];
+        _lessonDetailView = [[UIView alloc] init];
+        _lessonDetailView.backgroundColor = [UIColor ty_backgroundHighlight];
+        [self.contentView addSubview:_lessonDetailView];
         
         _detailStudyWayLabel = [[UILabel alloc] init];
         _detailStudyWayLabel.textColor = [UIColor ty_textBlack];
         _detailStudyWayLabel.font = [UIFont systemFontOfSize:kFontSize];
         _detailStudyWayLabel.numberOfLines = 0;
-        [_courseDetailView addSubview:_detailStudyWayLabel];
+        [_lessonDetailView addSubview:_detailStudyWayLabel];
         
         _creditLabel = [[UILabel alloc] init];
         _creditLabel.textColor = [UIColor ty_textBlack];
         _creditLabel.font = [UIFont systemFontOfSize:kFontSize];
-        [_courseDetailView addSubview:_creditLabel];
+        [_lessonDetailView addSubview:_creditLabel];
         
         [self.contentView makeConstraints:^(MASConstraintMaker *make) {
             make.leading.equalTo(self).with.offset(kContentMarginHorizontal);
@@ -74,11 +74,11 @@ static const CGFloat kContentMarginHorizontal = 5.f;
         [_scoreLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.trailing.equalTo(self.contentView).offset(-kContentEdgeHorizontal);
-            make.height.equalTo(self.courseNameLabel);
-            make.top.equalTo(self.courseNameLabel);
+            make.height.equalTo(self.lessonNameLabel);
+            make.top.equalTo(self.lessonNameLabel);
         }];
         
-        [_courseDetailView makeConstraints:^(MASConstraintMaker *make) {
+        [_lessonDetailView makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.bottom.equalTo(self.contentView);
             make.leading.equalTo(self.contentView);
@@ -87,25 +87,25 @@ static const CGFloat kContentMarginHorizontal = 5.f;
         
         [_detailStudyWayLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.top.equalTo(self.courseDetailView.mas_top).with.offset(kContentEdgeInsetVertical);
-            make.trailing.equalTo(self.courseDetailView);
-            make.leading.equalTo(self.courseNameLabel);
+            make.top.equalTo(self.lessonDetailView.mas_top).with.offset(kContentEdgeInsetVertical);
+            make.trailing.equalTo(self.lessonDetailView);
+            make.leading.equalTo(self.lessonNameLabel);
         }];
         
         [_creditLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.top.equalTo(self.detailStudyWayLabel.mas_bottom);
-            make.trailing.equalTo(self.courseDetailView);
-            make.leading.equalTo(self.courseNameLabel);
-            make.bottom.equalTo(self.courseDetailView.mas_bottom).with.offset(-kContentEdgeInsetVertical);
+            make.trailing.equalTo(self.lessonDetailView);
+            make.leading.equalTo(self.lessonNameLabel);
+            make.bottom.equalTo(self.lessonDetailView.mas_bottom).with.offset(-kContentEdgeInsetVertical);
         }];
         
-        [_courseNameLabel makeConstraints:^(MASConstraintMaker *make) {
+        [_lessonNameLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.contentView).offset(kContentEdgeHorizontal);
             make.top.equalTo(self.contentView).offset(kContentEdgeInsetVertical);
             make.right.equalTo(self.scoreLabel.mas_left).with.offset(-kContentEdgeInsetVertical);
-            make.bottom.equalTo(_courseDetailView.mas_top).with.offset(-kContentEdgeInsetVertical);
+            make.bottom.equalTo(_lessonDetailView.mas_top).with.offset(-kContentEdgeInsetVertical);
         }];
     }
     return self;
@@ -126,7 +126,7 @@ static const CGFloat kContentMarginHorizontal = 5.f;
         return [value integerValue] > 59 ? [UIColor ty_textGreen] : [UIColor ty_textRed];
     }];
     
-    RAC(_courseNameLabel, text) = [RACObserve(self.viewModel, xujcScoreModel.courseName) takeUntil:self.rac_prepareForReuseSignal];
+    RAC(_lessonNameLabel, text) = [RACObserve(self.viewModel, xujcScoreModel.lessonName) takeUntil:self.rac_prepareForReuseSignal];
     
     RAC(_detailStudyWayLabel, text) = [[RACObserve(self.viewModel, xujcScoreModel.studyWay) map:^id(NSString *value) {
         return [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"StudyWay", nil), value];

@@ -14,7 +14,6 @@
 		7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */; };
 		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
-		7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */; };
 		7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9C11BE72F280046CF3B /* NSDate+Week.m */; };
 		702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */; };
 		702F99D31C7D08F9003B35A7 /* tabbar-exam-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */; };
@@ -65,7 +64,7 @@
 		70730D821C999D67007CBEBB /* SignupViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D801C999D67007CBEBB /* SignupViewModel.m */; };
 		70730D861C999DBD007CBEBB /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D851C999DBD007CBEBB /* ScheduleViewController.m */; };
 		70730D8A1C999DD5007CBEBB /* ScheduleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D891C999DD5007CBEBB /* ScheduleViewModel.m */; };
-		70730D8D1C999DF2007CBEBB /* CourseEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D8C1C999DF2007CBEBB /* CourseEventViewModel.m */; };
+		70730D8D1C999DF2007CBEBB /* LessonEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D8C1C999DF2007CBEBB /* LessonEventViewModel.m */; };
 		70730D901C999E7F007CBEBB /* PersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D8F1C999E7F007CBEBB /* PersonalHeaderView.m */; };
 		70730D951C99BDF8007CBEBB /* SemesterMasterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D941C99BDF8007CBEBB /* SemesterMasterViewModel.m */; };
 		70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D981C99F567007CBEBB /* MainTabBarController.m */; };
@@ -80,6 +79,7 @@
 		70730DBB1C9B9DE9007CBEBB /* default_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70730DBA1C9B9DE9007CBEBB /* default_avatar@2x.png */; };
 		70730DC11C9CB9BB007CBEBB /* UITabBarController+animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DC01C9CB9BB007CBEBB /* UITabBarController+animation.m */; };
 		70730DC51C9CC0E6007CBEBB /* TextIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DC41C9CC0E6007CBEBB /* TextIconView.m */; };
+		70730DC81C9D99A7007CBEBB /* LessonEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DC71C9D99A7007CBEBB /* LessonEventCell.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -122,8 +122,6 @@
 		7023F9B31BE678E60046CF3B /* XujcLessonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcLessonModel.m; sourceTree = "<group>"; };
 		7023F9B91BE681300046CF3B /* XujcLessonEventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcLessonEventModel.h; sourceTree = "<group>"; };
 		7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcLessonEventModel.m; sourceTree = "<group>"; };
-		7023F9BC1BE70BB10046CF3B /* CourseEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEventCell.h; sourceTree = "<group>"; };
-		7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseEventCell.m; sourceTree = "<group>"; };
 		7023F9C01BE72F280046CF3B /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		7023F9C11BE72F280046CF3B /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
 		702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
@@ -212,8 +210,8 @@
 		70730D851C999DBD007CBEBB /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		70730D881C999DD5007CBEBB /* ScheduleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewModel.h; sourceTree = "<group>"; };
 		70730D891C999DD5007CBEBB /* ScheduleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewModel.m; sourceTree = "<group>"; };
-		70730D8B1C999DF2007CBEBB /* CourseEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEventViewModel.h; sourceTree = "<group>"; };
-		70730D8C1C999DF2007CBEBB /* CourseEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseEventViewModel.m; sourceTree = "<group>"; };
+		70730D8B1C999DF2007CBEBB /* LessonEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonEventViewModel.h; sourceTree = "<group>"; };
+		70730D8C1C999DF2007CBEBB /* LessonEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonEventViewModel.m; sourceTree = "<group>"; };
 		70730D8E1C999E7F007CBEBB /* PersonalHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalHeaderView.h; sourceTree = "<group>"; };
 		70730D8F1C999E7F007CBEBB /* PersonalHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalHeaderView.m; sourceTree = "<group>"; };
 		70730D931C99BDF8007CBEBB /* SemesterMasterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterMasterViewModel.h; sourceTree = "<group>"; };
@@ -241,6 +239,8 @@
 		70730DC01C9CB9BB007CBEBB /* UITabBarController+animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+animation.m"; sourceTree = "<group>"; };
 		70730DC31C9CC0E6007CBEBB /* TextIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextIconView.h; sourceTree = "<group>"; };
 		70730DC41C9CC0E6007CBEBB /* TextIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextIconView.m; sourceTree = "<group>"; };
+		70730DC61C9D99A7007CBEBB /* LessonEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonEventCell.h; sourceTree = "<group>"; };
+		70730DC71C9D99A7007CBEBB /* LessonEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonEventCell.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -485,6 +485,8 @@
 			isa = PBXGroup;
 			children = (
 				70730D871C999DCB007CBEBB /* ViewModel */,
+				70730DC61C9D99A7007CBEBB /* LessonEventCell.h */,
+				70730DC71C9D99A7007CBEBB /* LessonEventCell.m */,
 				70730D841C999DBD007CBEBB /* ScheduleViewController.h */,
 				70730D851C999DBD007CBEBB /* ScheduleViewController.m */,
 			);
@@ -494,8 +496,8 @@
 		70730D871C999DCB007CBEBB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				70730D8B1C999DF2007CBEBB /* CourseEventViewModel.h */,
-				70730D8C1C999DF2007CBEBB /* CourseEventViewModel.m */,
+				70730D8B1C999DF2007CBEBB /* LessonEventViewModel.h */,
+				70730D8C1C999DF2007CBEBB /* LessonEventViewModel.m */,
 				70730D881C999DD5007CBEBB /* ScheduleViewModel.h */,
 				70730D891C999DD5007CBEBB /* ScheduleViewModel.m */,
 			);
@@ -545,7 +547,6 @@
 			children = (
 				7023F9BF1BE72E5E0046CF3B /* Category */,
 				70F7CE621BE426FF001D027C /* Collection View Reusable Views */,
-				70F7CE5B1BE422B2001D027C /* Collection View Cells */,
 				70F7CE3A1BE3E7E7001D027C /* Model */,
 				7062B68B1C8B0F350074C716 /* ViewModel */,
 				70F7CE341BE3D1B8001D027C /* Comment */,
@@ -662,15 +663,6 @@
 				702F99BE1C7D08F9003B35A7 /* tabbar */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		70F7CE5B1BE422B2001D027C /* Collection View Cells */ = {
-			isa = PBXGroup;
-			children = (
-				7023F9BC1BE70BB10046CF3B /* CourseEventCell.h */,
-				7023F9BD1BE70BB10046CF3B /* CourseEventCell.m */,
-			);
-			path = "Collection View Cells";
 			sourceTree = "<group>";
 		};
 		70F7CE621BE426FF001D027C /* Collection View Reusable Views */ = {
@@ -847,7 +839,6 @@
 				7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */,
 				70730D761C94A039007CBEBB /* SemesterBaseViewController.m in Sources */,
 				70730DB41C9A635F007CBEBB /* OssService.m in Sources */,
-				7023F9BE1BE70BB10046CF3B /* CourseEventCell.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */,
 				70730D901C999E7F007CBEBB /* PersonalHeaderView.m in Sources */,
@@ -856,7 +847,7 @@
 				70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */,
 				70730DA51C99F973007CBEBB /* PersonalHeaderViewModel.m in Sources */,
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
-				70730D8D1C999DF2007CBEBB /* CourseEventViewModel.m in Sources */,
+				70730D8D1C999DF2007CBEBB /* LessonEventViewModel.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
 				70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */,
 				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m in Sources */,
@@ -899,6 +890,7 @@
 				7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */,
 				70F7CE1B1BE3AC25001D027C /* main.m in Sources */,
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
+				70730DC81C9D99A7007CBEBB /* LessonEventCell.m in Sources */,
 				70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */,
 				7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */,
 				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
