@@ -45,11 +45,24 @@ static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
         make.edges.equalTo(self.view);
     }];
     
-    [[self.viewModel.executeLoginout.executing filter:^BOOL(NSNumber *value) {
+    [[self.viewModel.executeLoginout.executionSignals concat] subscribeNext:^(id x) {
+        @strongify(self);
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }];
+    
+    [[self.viewModel.executeCleanCache.executing filter:^BOOL(id value) {
         return [value boolValue];
     }] subscribeNext:^(id x) {
         @strongify(self);
-        [self.navigationController popToRootViewControllerAnimated:NO];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }];
+    
+    [[self.viewModel.executeCleanCache.executionSignals concat] subscribeNext:^(id x) {
+        @strongify(self);
+        MBProgressHUD *hub = [MBProgressHUD HUDForView:self.view];
+        hub.mode = MBProgressHUDModeText;
+        hub.detailsLabelText = NSLocalizedString(@"Clean Cache Success", nil);
+        [hub hide:YES afterDelay:kSuccessHUDShowTime];
     }];
 }
 
@@ -61,15 +74,20 @@ static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self.viewModel numberOfSections];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [self.viewModel numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellReuseIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = NSLocalizedString(@"Logout", nil);
+    cell.textLabel.text = [self.viewModel localizedTextForRowAtIndexPath:indexPath];
     return cell;
 }
 
@@ -77,7 +95,8 @@ static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.viewModel.executeLoginout execute:nil];
+    [[self.viewModel executeCommandForRowAtIndexPath:indexPath] execute:nil];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 @end

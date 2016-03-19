@@ -23,6 +23,8 @@
 "Binding" = "绑定";
 
 "Settings" = "设置";
+"Clean cache" = "清除缓存";
+"Clean Cache Success" = "清除缓存成功";
 
 "Take a picture" = "拍照";
 "From photo library" = "从相册中选择";
