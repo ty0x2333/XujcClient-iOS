@@ -162,4 +162,33 @@
     return result;
 }
 
+- (NSArray<XujcLessonEventModel *> *)lessonEventFormCacheWithSemester:(NSString *)semesterId
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
+        NSString *sqlFormat = @"SELECT name, lesson_class_id, description, study_day, week_interval, start_section, end_section, start_week, end_week, location FROM lesson_event WHERE semester_id=?;";
+        
+        FMResultSet *set = [db executeQuery:sqlFormat, semesterId];
+        
+        while ([set next]) {
+            XujcLessonEventModel *event = [[XujcLessonEventModel alloc] init];
+            event.name = [set objectForColumnName:@"name"];
+            event.lessonClassId = [set objectForColumnName:@"lesson_class_id"];
+            event.eventDescription = [set objectForColumnName:@"description"];
+            event.studyDay = [set objectForColumnName:@"study_day"];
+            event.weekInterval = [set objectForColumnName:@"week_interval"];
+            [event setStartSectionWithSectionNumbser:[[set objectForColumnName:@"start_section"] integerValue]];
+            [event setEndSectionWithSectionNumbser:[[set objectForColumnName:@"end_section"] integerValue]];
+            event.startWeek = [[set objectForColumnName:@"start_week"] integerValue];
+            event.endWeek = [[set objectForColumnName:@"end_week"] integerValue];
+            event.location = [set objectForColumnName:@"location"];
+            
+            [result addObject:event];
+        }
+        
+        [set close];
+    }];
+    return result;
+}
+
 @end

@@ -30,4 +30,6 @@
 
 - (NSArray<XujcScore *> *)scoresFormCacheWithSemester:(NSString *)semesterId;
 
+- (NSArray<XujcLessonEventModel *> *)lessonEventFormCacheWithSemester:(NSString *)semesterId;
+
 @end
