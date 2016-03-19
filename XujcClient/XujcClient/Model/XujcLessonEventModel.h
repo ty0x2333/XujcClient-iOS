@@ -31,6 +31,9 @@
 
 @property(nonatomic, copy) NSString *location;
 
+- (void)setStartSectionWithSectionNumbser:(NSInteger)sectionNumbser;
+- (void)setEndSectionWithSectionNumbser:(NSInteger)sectionNumbser;
+
 - (NSDate *)startTime:(NSDate *)date;
 
 - (NSDate *)endTime:(NSDate *)date;

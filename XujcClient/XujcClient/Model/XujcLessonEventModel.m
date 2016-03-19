@@ -27,6 +27,16 @@
     return self;
 }
 
+- (void)setStartSectionWithSectionNumbser:(NSInteger)sectionNumbser
+{
+    self.startSection = [XujcSection section:sectionNumbser];
+}
+
+- (void)setEndSectionWithSectionNumbser:(NSInteger)sectionNumbser
+{
+    self.endSection = [XujcSection section:sectionNumbser];
+}
+
 - (NSDate *)startTime:(NSDate *)date
 {
     return [_startSection startTime:date];
