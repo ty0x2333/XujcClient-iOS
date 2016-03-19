@@ -49,6 +49,16 @@
             [subscriber sendNext:nil];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+            NSArray *lessonEventArray = [[CacheUtils instance] lessonEventFormCacheWithSemester:semesterId];
+            
+            NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:kDayCountOfWeek];
+            
+            for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
+                [events addObject:[self p_coureEventsFromDayNumberOfWeek:lessonEventArray dayNumberOfWeek:i + 1]];
+            }
+            self.lessonEvents = [events copy];
+            
             [subscriber sendError:error];
         }];
         
