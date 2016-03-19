@@ -7,7 +7,7 @@
 //
 
 #import "BindingAccountViewModel.h"
-#import "XujcServer.h"
+#import "XujcService.h"
 #import "XujcUser.h"
 #import "DynamicData.h"
 #import "TYServer.h"
@@ -58,7 +58,7 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
     RACSignal *executeBindingSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
         __block NSURLSessionDataTask *subTask = nil;
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"me.php" parameters:@{XujcServerKeyApiKey: self.xujcApiKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"me.php" parameters:@{XujcServiceKeyApiKey: self.xujcApiKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             TyLogDebug(@"Success Response: %@", responseObject);
             XujcUser *user = [[XujcUser alloc] initWithJSONResopnse:responseObject];
             TyLogDebug(@"User Infomation: %@", [user description]);

@@ -9,7 +9,7 @@
 #import "SemesterMasterViewModel.h"
 #import "XujcSemesterModel.h"
 #import "CacheUtils.h"
-#import "XujcServer.h"
+#import "XujcService.h"
 #import "DynamicData.h"
 
 @interface SemesterMasterViewModel()
@@ -24,7 +24,7 @@
 {
     @weakify(self);
     RACSignal *fetchSemestersSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"kb.php" parameters:@{XujcServerKeyApiKey: DYNAMIC_DATA.xujcKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"kb.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             @strongify(self);
             NSArray *semesterIds = [responseObject allKeys];
             NSMutableArray *semesterArray = [NSMutableArray arrayWithCapacity:semesterIds.count];

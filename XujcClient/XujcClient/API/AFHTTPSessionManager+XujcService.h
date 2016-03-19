@@ -1,5 +1,5 @@
 //
-//  AFHTTPSessionManager+XujcServer.h
+//  AFHTTPSessionManager+XujcService.h
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/9.
@@ -8,7 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-@interface AFHTTPSessionManager (XujcServer)
+@interface AFHTTPSessionManager (XujcService)
 
 + (instancetype)xujc_manager;
 

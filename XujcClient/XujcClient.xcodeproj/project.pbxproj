@@ -46,7 +46,7 @@
 		7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6991C8E14780074C716 /* AccountViewModel.m */; };
 		7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6A51C8E3CCE0074C716 /* MasterViewModel.m */; };
 		7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */; };
-		7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */; };
+		7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m */; };
 		7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6B81C8F7A6B0074C716 /* FormButton.m */; };
 		7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6BE1C9241DB0074C716 /* LessonTimeCalculator.m */; };
 		7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6C21C9331BD0074C716 /* ScoreTableViewCell.m */; };
@@ -173,10 +173,10 @@
 		7062B6A51C8E3CCE0074C716 /* MasterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewModel.m; sourceTree = "<group>"; };
 		7062B6AD1C8F1D620074C716 /* BindingAccountViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingAccountViewModel.h; sourceTree = "<group>"; };
 		7062B6AE1C8F1D620074C716 /* BindingAccountViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingAccountViewModel.m; sourceTree = "<group>"; };
-		7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+XujcServer.h"; sourceTree = "<group>"; };
-		7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+XujcServer.m"; sourceTree = "<group>"; };
-		7062B6B51C8F6E560074C716 /* XujcServerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcServerKeys.h; sourceTree = "<group>"; };
-		7062B6B61C8F6E770074C716 /* XujcServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcServer.h; sourceTree = "<group>"; };
+		7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+XujcService.h"; sourceTree = "<group>"; };
+		7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+XujcService.m"; sourceTree = "<group>"; };
+		7062B6B51C8F6E560074C716 /* XujcServiceKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcServiceKeys.h; sourceTree = "<group>"; };
+		7062B6B61C8F6E770074C716 /* XujcService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcService.h; sourceTree = "<group>"; };
 		7062B6B71C8F7A6B0074C716 /* FormButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormButton.h; sourceTree = "<group>"; };
 		7062B6B81C8F7A6B0074C716 /* FormButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormButton.m; sourceTree = "<group>"; };
 		7062B6BD1C9241DB0074C716 /* LessonTimeCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonTimeCalculator.h; sourceTree = "<group>"; };
@@ -383,10 +383,10 @@
 		7062B6861C8A21200074C716 /* Xujc */ = {
 			isa = PBXGroup;
 			children = (
-				7062B6B61C8F6E770074C716 /* XujcServer.h */,
-				7062B6B51C8F6E560074C716 /* XujcServerKeys.h */,
-				7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.h */,
-				7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m */,
+				7062B6B61C8F6E770074C716 /* XujcService.h */,
+				7062B6B51C8F6E560074C716 /* XujcServiceKeys.h */,
+				7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.h */,
+				7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m */,
 				7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */,
 				70F7CE311BE3BDF0001D027C /* XujcAPI.h */,
 				70F7CE321BE3BDF0001D027C /* XujcAPI.m */,
@@ -861,7 +861,7 @@
 				70730D8D1C999DF2007CBEBB /* CourseEventViewModel.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
 				70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */,
-				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcServer.m in Sources */,
+				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m in Sources */,
 				7062B6941C8B842C0074C716 /* UserModel.m in Sources */,
 				70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */,
 				7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */,

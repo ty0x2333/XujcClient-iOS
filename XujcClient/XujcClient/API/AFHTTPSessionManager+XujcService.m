@@ -1,20 +1,20 @@
 //
-//  AFHTTPSessionManager+XujcServer.m
+//  AFHTTPSessionManager+XujcService.m
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/9.
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "AFHTTPSessionManager+XujcServer.h"
+#import "AFHTTPSessionManager+XujcService.h"
 
-static NSString* const kXujcServerHost = @"http://jw.xujc.com/api/";
+static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
 
-@implementation AFHTTPSessionManager (XujcServer)
+@implementation AFHTTPSessionManager (XujcService)
 
 + (instancetype)xujc_manager
 {
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:[kXujcServerHost copy]]];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:[kXujcServiceHost copy]]];
     NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
     manager.requestSerializer.stringEncoding = encoding;
     return manager;

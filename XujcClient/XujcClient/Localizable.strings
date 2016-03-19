@@ -44,7 +44,7 @@
 "You are successfully registered." = "注册成功";
 
 /**
- * XujcServer Message
+ * XujcService Message
  */
 "Account binding successfully" = "帐号绑定成功";
 //"Authentication failed" = "认证失败";

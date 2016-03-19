@@ -12,6 +12,9 @@
 
 @interface ScheduleViewModel : SemesterBaseViewModel
 
+/**
+ *  @brief courseEvents[numberOfWeek][numberOfEvent]
+ */
 @property (strong, nonatomic) NSArray<NSArray<XujcLessonEventModel *> *> *courseEvents;
 
 @property (strong, nonatomic) RACSignal *fetchScheduleCourseSignal;
