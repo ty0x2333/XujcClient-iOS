@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  XujcClient
+
+  Created by 田奕焰 on 16/2/24.
+  Copyright © 2016年 luckytianyiyan. All rights reserved.
+*/
+
+"Login" = "登录";
+"Signup" = "注册";
+"Personal" = "个人";
+"StudyWay" = "修读方式";
+"Credit" = "学分";
+"Logout" = "退出登录";
+
+"EmailOrPhone" = "邮箱或手机号";
+"Password" = "密码";
+"SwitchToLogin" = "登录帐号";
+"SwitchToSignup" = "注册帐号";
+"Nickname" = "昵称";
+"Email" = "邮箱";
+
+"Binding" = "绑定";
+
+"Settings" = "设置";
+"Clean cache" = "清除缓存";
+"Clean Cache Success" = "清除缓存成功";
+
+"Take a picture" = "拍照";
+"From photo library" = "从相册中选择";
+"Upload to complete" = "上传成功";
+
+"Current Semester" = "当前学期";
+
+/**
+ * TYService Message
+ */
+"An error occurred." = "发生未知错误, 请重试";
+"Account or password is not correct." = "帐号或密码错误";
+
+"Email address is not valid." = "邮箱格式错误";
+"Username is not valid." = "用户名格式错误";
+"Password is not valid." = "密码格式错误";
+
+"Email already existed." = "邮箱已存在";
+"You are successfully registered." = "注册成功";
+
+/**
+ * XujcService Message
+ */
+"Account binding successfully" = "帐号绑定成功";
+//"Authentication failed" = "认证失败";
+"Xujc Key authentication failed" = "教务系统 ApiKey 验证失败";
+
+
+/**
+ * Empty Data Message
+ */
+"There is no score data for the current semester." = "当前学期没有成绩数据";
