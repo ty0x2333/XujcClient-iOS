@@ -11,6 +11,7 @@
 #import "DynamicData.h"
 #import "CacheUtils.h"
 #import <MMPopupWindow.h>
+#import <Instabug/Instabug.h>
 
 static const CGFloat kWindowCornerRadius = 4.f;
 @interface AppDelegate ()
@@ -23,6 +24,12 @@ static const CGFloat kWindowCornerRadius = 4.f;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     TyLogDebug(@"Document Path: %@", DOCUMENT_DIRECTORY);
+    
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    TyLogDebug (@"Current Language: %@" , currentLanguage);
+    
+    [Instabug startWithToken:kInstabugToken invocationEvent:IBGInvocationEventShake];
     
     [CacheUtils instance];
     
