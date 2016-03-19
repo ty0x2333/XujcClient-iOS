@@ -13,16 +13,16 @@
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {
     if (self = [super init]) {
-        _name = [self checkForNull:json[kResponseCourseName]];
-        _courseClassId = [self checkForNull:json[kResponseCourseClassId]];
-        _courseClass = [self checkForNull:json[kResponseCourseClass]];
-        _semesterId = [self checkForNull:json[kResponseSemesterId]];
-        _teacherDescription = [self checkForNull:json[kResponseTeacherDescription]];
-        _credit = [[self checkForNull:json[kResponseCredit]] integerValue];
-        _studyWay = [self checkForNull:json[kResponseStudyWay]];
-        _studyWeekRange = [self checkForNull:json[kResponseStudyWeekRange]];
-        _courseEventDescription = [self checkForNull:json[kResponseCourseCourseEventDescription]];
-        NSArray *courseEventDataArray = json[kResponseCourseEvents];
+        _name = [self checkForNull:json[XujcServiceKeyCourseName]];
+        _courseClassId = [self checkForNull:json[XujcServiceKeyCourseClassId]];
+        _courseClass = [self checkForNull:json[XujcServiceKeyCourseClass]];
+        _semesterId = [self checkForNull:json[XujcServiceKeySemesterId]];
+        _teacherDescription = [self checkForNull:json[XujcServiceKeyTeacherDescription]];
+        _credit = [[self checkForNull:json[XujcServiceKeyCredit]] integerValue];
+        _studyWay = [self checkForNull:json[XujcServiceKeyStudyWay]];
+        _studyWeekRange = [self checkForNull:json[XujcServiceKeyStudyWeekRange]];
+        _courseEventDescription = [self checkForNull:json[XujcServiceKeyCourseCourseEventDescription]];
+        NSArray *courseEventDataArray = json[XujcServiceKeyCourseEvents];
         NSMutableArray *courseEventArray = [NSMutableArray arrayWithCapacity:courseEventDataArray.count];
         for (id courseEventData in courseEventDataArray) {
             XujcLessonEventModel *event = [[XujcLessonEventModel alloc] initWithJSONResopnse:courseEventData];

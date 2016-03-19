@@ -13,13 +13,13 @@
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {
     if (self = [super init]) {
-        _courseName = [self checkForNull:json[kResponseCourseName]];
-        _credit = [[self checkForNull:json[kResponseCredit]] integerValue];
-        _score = [[self checkForNull:json[kResponseCourseSorce]] integerValue];
-        _scoreLevel = [self checkForNull:json[kResponseCourseSorceLevel]];
-        _midSemesterStatus = [self checkForNull:json[kResponseMidSemesterStatus]];
-        _endSemesterStatus = [self checkForNull:json[kResponseEndSemesterStatus]];
-        _studyWay = [self checkForNull:json[kResponseScoreStudyWay]];
+        _courseName = [self checkForNull:json[XujcServiceKeyCourseName]];
+        _credit = [[self checkForNull:json[XujcServiceKeyCredit]] integerValue];
+        _score = [[self checkForNull:json[XujcServiceKeyCourseSorce]] integerValue];
+        _scoreLevel = [self checkForNull:json[XujcServiceKeyCourseSorceLevel]];
+        _midSemesterStatus = [self checkForNull:json[XujcServiceKeyMidSemesterStatus]];
+        _endSemesterStatus = [self checkForNull:json[XujcServiceKeyEndSemesterStatus]];
+        _studyWay = [self checkForNull:json[XujcServiceKeyScoreStudyWay]];
     }
     return self;
 }

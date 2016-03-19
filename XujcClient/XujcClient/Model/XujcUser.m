@@ -18,10 +18,10 @@ static NSString* const kDataProfessional = @"Professional";
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {
     if (self = [super init]) {
-        _studentId = [self checkForNull:json[kResponseStudentId]];
-        _name = [self checkForNull:json[kResponseName]];
-        _professional = [self checkForNull:json[kResponseProfessional]];
-        _grade = [self checkForNull:json[kResponseGrade]];
+        _studentId = [self checkForNull:json[XujcServiceKeyStudentId]];
+        _name = [self checkForNull:json[XujcServiceKeyName]];
+        _professional = [self checkForNull:json[XujcServiceKeyProfessional]];
+        _grade = [self checkForNull:json[XujcServiceKeyGrade]];
     }
     return self;
 }

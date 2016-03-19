@@ -120,7 +120,6 @@
 		7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSemesterModel.m; sourceTree = "<group>"; };
 		7023F9B21BE678E60046CF3B /* XujcLessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcLessonModel.h; sourceTree = "<group>"; };
 		7023F9B31BE678E60046CF3B /* XujcLessonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcLessonModel.m; sourceTree = "<group>"; };
-		7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XujcRequestKeys.h; sourceTree = "<group>"; };
 		7023F9B91BE681300046CF3B /* XujcLessonEventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcLessonEventModel.h; sourceTree = "<group>"; };
 		7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcLessonEventModel.m; sourceTree = "<group>"; };
 		7023F9BC1BE70BB10046CF3B /* CourseEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEventCell.h; sourceTree = "<group>"; };
@@ -387,7 +386,6 @@
 				7062B6B51C8F6E560074C716 /* XujcServiceKeys.h */,
 				7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.h */,
 				7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m */,
-				7023F9B51BE679C40046CF3B /* XujcRequestKeys.h */,
 				70F7CE311BE3BDF0001D027C /* XujcAPI.h */,
 				70F7CE321BE3BDF0001D027C /* XujcAPI.m */,
 			);
