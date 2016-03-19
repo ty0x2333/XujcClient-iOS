@@ -16,6 +16,8 @@
 
 @property (strong, readonly, nonatomic) UIButton *semesterButton;
 
+@property (strong, readonly, nonatomic) UILabel *semesterLabel;
+
 @property (strong, readonly, nonatomic) LMDropdownView *dropdownView;
 
 @end
