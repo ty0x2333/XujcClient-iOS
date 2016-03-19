@@ -43,8 +43,23 @@
                                   @"PRIMARY KEY(semester_id, name)"
                                   @");";
         
+        NSString *lessonEventTableSQL = @"CREATE TABLE IF NOT EXISTS lesson_event ("
+                                        @"semester_id text NOT NULL,"
+                                        @"name text NOT NULL,"
+                                        @"lesson_class_id text,"
+                                        @"description text,"
+                                        @"study_day text,"
+                                        @"week_interval text,"
+                                        @"start_section integer,"
+                                        @"end_section integer,"
+                                        @"start_week integer,"
+                                        @"end_week integer,"
+                                        @"location text"
+                                        @");";
+        
         [db executeUpdate:semesterTableSQL];
         [db executeUpdate:scoreTableSQL];
+        [db executeUpdate:lessonEventTableSQL];
     }];
 }
 
@@ -74,6 +89,25 @@
         
         for (XujcScore *score in scores) {
             isSuccess = [db executeUpdate:@"INSERT INTO score(name, semester_id, credit, score, study_way, score_level, mid_semester_status, end_semester_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", score.lessonName, semesterId, @(score.credit), @(score.score), score.studyWay, score.scoreLevel, score.midSemesterStatus, score.endSemesterStatus];
+            if (!isSuccess) {
+                *rollback = YES;
+                return;
+            }
+        }
+    }];
+    return isSuccess;
+}
+
+- (BOOL)cacheLessonEvent:(NSArray<XujcLessonEventModel *> *)lessonEvents inSemester:(NSString *)semesterId
+{
+    __block BOOL isSuccess = NO;
+    
+    [[FMDatabaseQueue instance] inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        
+        [db executeUpdate:@"DELETE FROM lesson_event WHERE semester_id=?;", semesterId];
+
+        for (XujcLessonEventModel *event in lessonEvents) {
+            isSuccess = [db executeUpdate:@"INSERT INTO lesson_event(semester_id, name, lesson_class_id, description, study_day, week_interval, start_section, end_section, start_week, end_week, location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", semesterId, event.name, event.lessonClassId, event.eventDescription, event.studyDay, event.weekInterval, @(event.startSection.sectionNumber), @(event.endSection.sectionNumber), @(event.startWeek), @(event.endWeek), event.location];
             if (!isSuccess) {
                 *rollback = YES;
                 return;
