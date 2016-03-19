@@ -26,7 +26,8 @@
     @weakify(self);
     RACSignal *fetchScheduleLessonSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"kb.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServiceKeySemesterId: self.semesterSelectorViewModel.selectedSemesterId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *semesterId = self.semesterSelectorViewModel.selectedSemesterId;
+        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"kb.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServiceKeySemesterId: semesterId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSMutableArray *lessonEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
     
             for (id item in responseObject) {
@@ -35,6 +36,8 @@
                     [lessonEventArray addObject:event];
                 }
             }
+            
+            [[CacheUtils instance] cacheLessonEvent:lessonEventArray inSemester:semesterId];
             
             NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:kDayCountOfWeek];
     
