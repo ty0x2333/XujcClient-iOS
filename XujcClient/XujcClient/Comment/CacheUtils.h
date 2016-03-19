@@ -32,4 +32,6 @@
 
 - (NSArray<XujcLessonEventModel *> *)lessonEventFormCacheWithSemester:(NSString *)semesterId;
 
+- (void)cleanCache;
+
 @end

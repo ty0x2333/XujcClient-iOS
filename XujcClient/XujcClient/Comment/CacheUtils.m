@@ -9,6 +9,37 @@
 #import "CacheUtils.h"
 #import "FMDatabaseQueue+Utils.h"
 
+static NSString * const kSemesterTableInitSQL = @"CREATE TABLE IF NOT EXISTS semester ("
+                                                @"id integer PRIMARY KEY NOT NULL,"
+                                                @"name text"
+                                                @");";
+
+static NSString * const kScoreTableInitSQL = @"CREATE TABLE IF NOT EXISTS score ("
+                                             @"semester_id text NOT NULL,"
+                                             @"name text NOT NULL,"
+                                             @"credit integer,"
+                                             @"score integer,"
+                                             @"study_way text,"
+                                             @"score_level text,"
+                                             @"mid_semester_status text,"
+                                             @"end_semester_status text,"
+                                             @"PRIMARY KEY(semester_id, name)"
+                                             @");";
+
+static NSString * const kLessonEventTableInitSQL = @"CREATE TABLE IF NOT EXISTS lesson_event ("
+                                                   @"semester_id text NOT NULL,"
+                                                   @"name text NOT NULL,"
+                                                   @"lesson_class_id text,"
+                                                   @"description text,"
+                                                   @"study_day text,"
+                                                   @"week_interval text,"
+                                                   @"start_section integer,"
+                                                   @"end_section integer,"
+                                                   @"start_week integer,"
+                                                   @"end_week integer,"
+                                                   @"location text"
+                                                   @");";
+
 @implementation CacheUtils
 
 + (instancetype)instance
@@ -26,40 +57,18 @@
 {
     [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
         
-        NSString *semesterTableSQL = @"CREATE TABLE IF NOT EXISTS semester ("
-                                 @"id integer PRIMARY KEY NOT NULL,"
-                                 @"name text"
-                                 @");";
-        
-        NSString *scoreTableSQL = @"CREATE TABLE IF NOT EXISTS score ("
-                                  @"semester_id text NOT NULL,"
-                                  @"name text NOT NULL,"
-                                  @"credit integer,"
-                                  @"score integer,"
-                                  @"study_way text,"
-                                  @"score_level text,"
-                                  @"mid_semester_status text,"
-                                  @"end_semester_status text,"
-                                  @"PRIMARY KEY(semester_id, name)"
-                                  @");";
-        
-        NSString *lessonEventTableSQL = @"CREATE TABLE IF NOT EXISTS lesson_event ("
-                                        @"semester_id text NOT NULL,"
-                                        @"name text NOT NULL,"
-                                        @"lesson_class_id text,"
-                                        @"description text,"
-                                        @"study_day text,"
-                                        @"week_interval text,"
-                                        @"start_section integer,"
-                                        @"end_section integer,"
-                                        @"start_week integer,"
-                                        @"end_week integer,"
-                                        @"location text"
-                                        @");";
-        
-        [db executeUpdate:semesterTableSQL];
-        [db executeUpdate:scoreTableSQL];
-        [db executeUpdate:lessonEventTableSQL];
+        [db executeUpdate:kSemesterTableInitSQL];
+        [db executeUpdate:kScoreTableInitSQL];
+        [db executeUpdate:kLessonEventTableInitSQL];
+    }];
+}
+
+- (void)cleanCache
+{
+    [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
+        [db executeUpdate:@"DELETE FROM semester"];
+        [db executeUpdate:@"DELETE FROM score"];
+        [db executeUpdate:@"DELETE FROM lesson_event"];
     }];
 }
 
