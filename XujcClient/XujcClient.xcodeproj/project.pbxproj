@@ -40,7 +40,7 @@
 		70443B6F1C85F09400B0C5DA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70443B6E1C85F09400B0C5DA /* logo.png */; };
 		7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */; };
 		7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6841C89FC260074C716 /* NSString+Validator.m */; };
-		7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m */; };
+		7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m */; };
 		7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B68D1C8B0F480074C716 /* RequestViewModel.m */; };
 		7062B6941C8B842C0074C716 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6931C8B842C0074C716 /* UserModel.m */; };
 		7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6991C8E14780074C716 /* AccountViewModel.m */; };
@@ -158,12 +158,12 @@
 		7062B67E1C887B020074C716 /* LoginTextFieldGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextFieldGroupView.m; sourceTree = "<group>"; };
 		7062B6831C89FC260074C716 /* NSString+Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validator.h"; sourceTree = "<group>"; };
 		7062B6841C89FC260074C716 /* NSString+Validator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validator.m"; sourceTree = "<group>"; };
-		7062B6881C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+TYServer.h"; sourceTree = "<group>"; };
-		7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+TYServer.m"; sourceTree = "<group>"; };
+		7062B6881C8A21BF0074C716 /* AFHTTPSessionManager+TYService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+TYService.h"; sourceTree = "<group>"; };
+		7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+TYService.m"; sourceTree = "<group>"; };
 		7062B68C1C8B0F480074C716 /* RequestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestViewModel.h; sourceTree = "<group>"; };
 		7062B68D1C8B0F480074C716 /* RequestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestViewModel.m; sourceTree = "<group>"; };
-		7062B68F1C8B1EC90074C716 /* TYServerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYServerKeys.h; sourceTree = "<group>"; };
-		7062B6901C8B1F950074C716 /* TYServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYServer.h; sourceTree = "<group>"; };
+		7062B68F1C8B1EC90074C716 /* TYServiceKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYServiceKeys.h; sourceTree = "<group>"; };
+		7062B6901C8B1F950074C716 /* TYService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYService.h; sourceTree = "<group>"; };
 		7062B6911C8B427E0074C716 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		7062B6921C8B842C0074C716 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		7062B6931C8B842C0074C716 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
@@ -394,15 +394,15 @@
 			name = Xujc;
 			sourceTree = "<group>";
 		};
-		7062B6871C8A21320074C716 /* TYServer */ = {
+		7062B6871C8A21320074C716 /* TYService */ = {
 			isa = PBXGroup;
 			children = (
-				7062B6901C8B1F950074C716 /* TYServer.h */,
-				7062B68F1C8B1EC90074C716 /* TYServerKeys.h */,
-				7062B6881C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.h */,
-				7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m */,
+				7062B6901C8B1F950074C716 /* TYService.h */,
+				7062B68F1C8B1EC90074C716 /* TYServiceKeys.h */,
+				7062B6881C8A21BF0074C716 /* AFHTTPSessionManager+TYService.h */,
+				7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m */,
 			);
-			name = TYServer;
+			name = TYService;
 			sourceTree = "<group>";
 		};
 		7062B68B1C8B0F350074C716 /* ViewModel */ = {
@@ -596,7 +596,7 @@
 		70F7CE301BE3BD4A001D027C /* API */ = {
 			isa = PBXGroup;
 			children = (
-				7062B6871C8A21320074C716 /* TYServer */,
+				7062B6871C8A21320074C716 /* TYService */,
 				7062B6861C8A21200074C716 /* Xujc */,
 				70730DB21C9A635F007CBEBB /* OssService.h */,
 				70730DB31C9A635F007CBEBB /* OssService.m */,
@@ -874,7 +874,7 @@
 				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
 				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
-				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYServer.m in Sources */,
+				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m in Sources */,
 				70730D731C947A41007CBEBB /* SemesterTableViewCellViewModel.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
 				7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */,

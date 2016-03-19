@@ -8,7 +8,7 @@
 
 #import "SignupViewModel.h"
 #import <SSKeychain.h>
-#import "TYServer.h"
+#import "TYService.h"
 #import "UserModel.h"
 #import "DynamicData.h"
 #import "NSString+Validator.h"
@@ -44,9 +44,9 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
     RACSignal *executeSignupSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
         
-        NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServerKeyNickname: self.nickname, TYServerKeyEmail: self.account, TYServerKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
-            BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
-            NSString *message = [responseObject objectForKey:TYServerKeyMessage];
+        NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServiceKeyNickname: self.nickname, TYServiceKeyEmail: self.account, TYServiceKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
+            NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
             if (isError) {
                 NSError *error = [NSError errorWithDomain:kSignupRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
                 [subscriber sendError:error];

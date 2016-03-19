@@ -8,7 +8,7 @@
 
 #import "LoginViewModel.h"
 #import "NSString+Validator.h"
-#import "TYServer.h"
+#import "TYService.h"
 #import <SSKeychain.h>
 #import "UserModel.h"
 #import "DynamicData.h"
@@ -37,11 +37,11 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
     @weakify(self);
     RACSignal *executeLoginSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{TYServerKeyEmail: self.account, TYServerKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
-            BOOL isError = [[responseObject objectForKey:TYServerKeyError] boolValue];
+        NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{TYServiceKeyEmail: self.account, TYServiceKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
             
             if (isError) {
-                NSString *message = [responseObject objectForKey:TYServerKeyMessage];
+                NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
                 NSError *error = [NSError errorWithDomain:kLoginRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
                 [subscriber sendError:error];
             } else {
@@ -51,9 +51,9 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
                 [DYNAMIC_DATA flush];
                 TyLogDebug(@"%@", user);
                 
-                NSString *apiKey = [responseObject objectForKey:TYServerKeyAPIKey];
+                NSString *apiKey = [responseObject objectForKey:TYServiceKeyAPIKey];
                 [self p_saveApiKey:apiKey];
-                NSString *xujcKey = [responseObject objectForKey:TYServerKeyXujcKey];
+                NSString *xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
                 [self p_saveXujcKey:xujcKey];
                 
                 [subscriber sendNext:responseObject];

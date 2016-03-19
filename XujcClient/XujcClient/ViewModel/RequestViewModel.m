@@ -7,7 +7,7 @@
 //
 
 #import "RequestViewModel.h"
-#import "TYServer.h"
+#import "TYService.h"
 #import "XujcService.h"
 
 @interface RequestViewModel()

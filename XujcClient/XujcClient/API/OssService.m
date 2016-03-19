@@ -9,7 +9,7 @@
 #import "OssService.h"
 #import <OSSClient.h>
 #import <OSSModel.h>
-#import "TYServer.h"
+#import "TYService.h"
 #import "DynamicData.h"
 #import "UIImage+Coding.h"
 #import "NSData+Coding.h"
@@ -29,7 +29,7 @@ static NSString * const kOSSParamCallbackBody = @"callbackBody";
             NSMutableURLRequest * mutableRequest = [NSMutableURLRequest requestWithURL:url];
             mutableRequest.HTTPMethod = @"POST";
             [mutableRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-            mutableRequest.HTTPBody = [[[NSString alloc] initWithFormat:@"%@=%@", TYServerKeyAuthorization, DYNAMIC_DATA.apiKey] dataUsingEncoding:NSUTF8StringEncoding];
+            mutableRequest.HTTPBody = [[[NSString alloc] initWithFormat:@"%@=%@", TYServiceKeyAuthorization, DYNAMIC_DATA.apiKey] dataUsingEncoding:NSUTF8StringEncoding];
             
             OSSTaskCompletionSource * tcs = [OSSTaskCompletionSource taskCompletionSource];
             NSURLSession * session = [NSURLSession sharedSession];
@@ -54,10 +54,10 @@ static NSString * const kOSSParamCallbackBody = @"callbackBody";
                                                                                 options:kNilOptions
                                                                                   error:nil];
                 NSLog(@"%@", [[NSString alloc] initWithData:tcs.task.result encoding:NSUTF8StringEncoding]);
-                NSString *accessKeyId = [responseObject objectForKey:TYServerKeyAccessKeyId];
-                NSString *accessKeySecret = [responseObject objectForKey:TYServerKeyAccessKeySecret];
-                NSString *expiration = [responseObject objectForKey:TYServerKeyExpiration];
-                NSString *securityToken = [responseObject objectForKey:TYServerKeySecurityToken];
+                NSString *accessKeyId = [responseObject objectForKey:TYServiceKeyAccessKeyId];
+                NSString *accessKeySecret = [responseObject objectForKey:TYServiceKeyAccessKeySecret];
+                NSString *expiration = [responseObject objectForKey:TYServiceKeyExpiration];
+                NSString *securityToken = [responseObject objectForKey:TYServiceKeySecurityToken];
                 
                 OSSFederationToken * token = [[OSSFederationToken alloc] init];
                 token.tAccessKey = accessKeyId;

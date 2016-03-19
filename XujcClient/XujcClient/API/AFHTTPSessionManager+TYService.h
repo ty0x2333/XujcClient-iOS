@@ -1,5 +1,5 @@
 //
-//  AFHTTPSessionManager+TYServer.h
+//  AFHTTPSessionManager+TYService.h
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/3/5.
@@ -8,7 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-@interface AFHTTPSessionManager (TYServer)
+@interface AFHTTPSessionManager (TYService)
 
 + (instancetype)ty_manager;
 

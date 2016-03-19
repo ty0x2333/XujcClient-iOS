@@ -7,17 +7,17 @@
 //
 
 #import "UserModel.h"
-#import "TYServer.h"
+#import "TYService.h"
 
 @implementation UserModel
 
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {
     if (self = [super init]) {
-        _nikename = [self checkForNull:json[TYServerKeyNickname]];
-        _email = [self checkForNull:json[TYServerKeyEmail]];
-        _createdTime = [self checkForNull:json[TYServerKeyCreatedTime]];
-        _avatar = [self checkForNull:json[TYServerKeyAvatar]];
+        _nikename = [self checkForNull:json[TYServiceKeyNickname]];
+        _email = [self checkForNull:json[TYServiceKeyEmail]];
+        _createdTime = [self checkForNull:json[TYServiceKeyCreatedTime]];
+        _avatar = [self checkForNull:json[TYServiceKeyAvatar]];
     }
     return self;
 }
@@ -25,20 +25,20 @@
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
     if(self = [super init]){
-        _nikename = [decoder decodeObjectForKey:TYServerKeyNickname];
-        _email = [decoder decodeObjectForKey:TYServerKeyEmail];
-        _avatar = [decoder decodeObjectForKey:TYServerKeyAvatar];
-        _createdTime = [decoder decodeObjectForKey:TYServerKeyCreatedTime];
+        _nikename = [decoder decodeObjectForKey:TYServiceKeyNickname];
+        _email = [decoder decodeObjectForKey:TYServiceKeyEmail];
+        _avatar = [decoder decodeObjectForKey:TYServiceKeyAvatar];
+        _createdTime = [decoder decodeObjectForKey:TYServiceKeyCreatedTime];
     }
     return  self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
-    [encoder encodeObject:_nikename forKey:TYServerKeyNickname];
-    [encoder encodeObject:_email forKey:TYServerKeyEmail];
-    [encoder encodeObject:_createdTime forKey:TYServerKeyCreatedTime];
-    [encoder encodeObject:_avatar forKey:TYServerKeyAvatar];
+    [encoder encodeObject:_nikename forKey:TYServiceKeyNickname];
+    [encoder encodeObject:_email forKey:TYServiceKeyEmail];
+    [encoder encodeObject:_createdTime forKey:TYServiceKeyCreatedTime];
+    [encoder encodeObject:_avatar forKey:TYServiceKeyAvatar];
 }
 
 - (NSString *)description
@@ -52,10 +52,10 @@
 {
     NSString *null = @"";
     return @{
-             TYServerKeyNickname: _nikename ?: null,
-             TYServerKeyEmail: _email ?: null,
-             TYServerKeyCreatedTime: _createdTime ?: null,
-             TYServerKeyAvatar: _avatar ?: null
+             TYServiceKeyNickname: _nikename ?: null,
+             TYServiceKeyEmail: _email ?: null,
+             TYServiceKeyCreatedTime: _createdTime ?: null,
+             TYServiceKeyAvatar: _avatar ?: null
              };
 }
 
