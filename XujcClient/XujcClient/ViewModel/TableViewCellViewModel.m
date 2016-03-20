@@ -10,4 +10,13 @@
 
 @implementation TableViewCellViewModel
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _accessoryType = UITableViewCellAccessoryNone;
+        _selectionStyle = UITableViewCellSelectionStyleDefault;
+    }
+    return self;
+}
+
 @end

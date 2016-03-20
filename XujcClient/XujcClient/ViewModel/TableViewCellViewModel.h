@@ -12,6 +12,8 @@
 
 @property (assign, nonatomic) UITableViewCellAccessoryType accessoryType;
 
+@property (nonatomic) UITableViewCellSelectionStyle selectionStyle;
+
 @property (copy, nonatomic) NSString *imageNamed;
 
 @property (copy, nonatomic) NSString *localizedText;
