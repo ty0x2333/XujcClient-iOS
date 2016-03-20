@@ -86,6 +86,7 @@
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70A88CFB1C9F230C0067DB77 /* SupportCenterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A88CFA1C9F230C0067DB77 /* SupportCenterViewModel.m */; };
+		70A88CFE1C9F37380067DB77 /* NSUserDefaults+TYSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A88CFD1C9F37380067DB77 /* NSUserDefaults+TYSupport.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
 		70C2B02E1C81294700923B85 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02A1C81294700923B85 /* arrow_down@3x.png */; };
 		70C2B02F1C81294700923B85 /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02B1C81294700923B85 /* arrow_right@2x.png */; };
@@ -258,6 +259,8 @@
 		708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewScheduleLayout.m; sourceTree = "<group>"; };
 		70A88CF91C9F230C0067DB77 /* SupportCenterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportCenterViewModel.h; sourceTree = "<group>"; };
 		70A88CFA1C9F230C0067DB77 /* SupportCenterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportCenterViewModel.m; sourceTree = "<group>"; };
+		70A88CFC1C9F37380067DB77 /* NSUserDefaults+TYSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+TYSupport.h"; sourceTree = "<group>"; };
+		70A88CFD1C9F37380067DB77 /* NSUserDefaults+TYSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+TYSupport.m"; sourceTree = "<group>"; };
 		70C2B0291C81294700923B85 /* arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
 		70C2B02A1C81294700923B85 /* arrow_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@3x.png"; sourceTree = "<group>"; };
 		70C2B02B1C81294700923B85 /* arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_right@2x.png"; sourceTree = "<group>"; };
@@ -346,6 +349,8 @@
 				70730DAD1C9A6222007CBEBB /* NSData+Coding.m */,
 				70730DBF1C9CB9BB007CBEBB /* UITabBarController+animation.h */,
 				70730DC01C9CB9BB007CBEBB /* UITabBarController+animation.m */,
+				70A88CFC1C9F37380067DB77 /* NSUserDefaults+TYSupport.h */,
+				70A88CFD1C9F37380067DB77 /* NSUserDefaults+TYSupport.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -882,6 +887,7 @@
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
 				70730D8D1C999DF2007CBEBB /* LessonEventViewModel.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
+				70A88CFE1C9F37380067DB77 /* NSUserDefaults+TYSupport.m in Sources */,
 				70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */,
 				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m in Sources */,
 				7062B6941C8B842C0074C716 /* UserModel.m in Sources */,

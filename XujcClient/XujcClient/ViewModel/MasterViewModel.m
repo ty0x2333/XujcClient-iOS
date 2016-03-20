@@ -16,7 +16,7 @@
 {
     if (self = [super init]) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        RACSignal *shakingReportStatusSignal = [[[userDefaults rac_channelTerminalForKey:kUserDefaultsKeyShakingReportStatus] setNameWithFormat:@"MasterViewModel shakingReportStatusChannel"] logAll];
+        RACSignal *shakingReportStatusSignal = [[[userDefaults ty_channelTerminalForShakingReportStatus] setNameWithFormat:@"MasterViewModel shakingReportStatusChannel"] logAll];
         [shakingReportStatusSignal subscribeNext:^(NSNumber *value) {
             [Instabug setInvocationEvent:[value boolValue] ? IBGInvocationEventShake : IBGInvocationEventNone];
         }];

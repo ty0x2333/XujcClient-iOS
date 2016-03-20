@@ -22,16 +22,7 @@
 {
     if (self = [super init]) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        RACChannelTo(self, shakingReportStatus, @(NO)) = [userDefaults rac_channelTerminalForKey:kUserDefaultsKeyShakingReportStatus];
-//        RACChannelTerminal *shakingReortStatusChannel = [userDefaults rac_channelTerminalForKey:kUserDefaultsKeyShakingReportStatus];
-//        RACChannelTerminal *shakingReortStatusChannel = [[[[userDefaults rac_channelTerminalForKey:kUserDefaultsKeyShakingReportStatus] map:^id(NSNumber *value) {
-//            return value ? value : @(NO);
-//        }] setNameWithFormat:@"SupportCenterViewModel shakingReportStatusSignal"] logAll];
-//        
-//        [[RACObserve(self, shakingReportStatus) distinctUntilChanged] subscribeNext:^(id x) {
-//            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//            [userDefaults setBool:[x boolValue] forKey:kUserDefaultsKeyShakingReportStatus];
-//        }];
+        RACChannelTo(self, shakingReportStatus, @(NO)) = [userDefaults ty_channelTerminalForShakingReportStatus];
         
         _texts = @[@[@"Feedback problems"], @[@"Capture feedback BUG by shaking"]];
     }

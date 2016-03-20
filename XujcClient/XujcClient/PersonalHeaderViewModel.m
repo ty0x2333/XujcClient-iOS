@@ -16,7 +16,7 @@
 {
     if (self = [super init]) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        RACSignal *userSignal = [[userDefaults rac_channelTerminalForKey:kUserDefaultsKeyUser] map:^id(NSData *value) {
+        RACSignal *userSignal = [[userDefaults ty_channelTerminalForUser] map:^id(NSData *value) {
             UserModel *user = [NSKeyedUnarchiver unarchiveObjectWithData:value];
             return user;
         }];

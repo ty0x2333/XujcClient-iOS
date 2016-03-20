@@ -23,8 +23,8 @@
     if (self = [super init]) {
         _semesterMasterViewModel = [[SemesterMasterViewModel alloc] init];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        RACSignal *apiKeySignal = [userDefaults rac_channelTerminalForKey:kUserDefaultsKeyApiKey];
-        RACSignal *xujcKeySignal = [userDefaults rac_channelTerminalForKey:kUserDefaultsKeyXujcKey];
+        RACSignal *apiKeySignal = [userDefaults ty_channelTerminalForApiKey];
+        RACSignal *xujcKeySignal = [userDefaults ty_channelTerminalForXujcKey];
         
         _apiActiveKeySignal = [[[apiKeySignal filter:^BOOL(NSString *value) {
             return ![NSString isEmpty:value];
