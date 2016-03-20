@@ -100,7 +100,7 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        SupportCenterViewController *viewController = [[SupportCenterViewController alloc] init];
+        SupportCenterViewController *viewController = [[SupportCenterViewController alloc] initWithViewModel:[self.viewModel supportCenterViewModel]];
         [self.navigationController pushViewController:viewController animated:YES];
     } else if (indexPath.row == 1) {
         SettingsViewController *viewController = [[SettingsViewController alloc] initWithViewModel:[self.viewModel settingsViewModel]];

@@ -48,4 +48,9 @@
     return viewModel;
 }
 
+- (SupportCenterViewModel *)supportCenterViewModel
+{
+    return [[SupportCenterViewModel alloc] init];
+}
+
 @end

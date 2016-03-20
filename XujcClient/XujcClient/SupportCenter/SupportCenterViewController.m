@@ -13,11 +13,21 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
 @interface SupportCenterViewController()<UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) SupportCenterViewModel *viewModel;
+
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 @implementation SupportCenterViewController
+
+- (instancetype)initWithViewModel:(SupportCenterViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -38,15 +48,21 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self.viewModel numberOfSections];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [self.viewModel numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = NSLocalizedString(@"Feedback problems", nil);
+    TableViewCellViewModel *viewModel = [self.viewModel tableViewCellViewModelForRowAtIndexPath:indexPath];
+    cell.textLabel.text = viewModel.localizedText;
     return cell;
 }
 

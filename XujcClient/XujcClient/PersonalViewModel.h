@@ -10,12 +10,15 @@
 #import "PersonalHeaderViewModel.h"
 #import "SettingsViewModel.h"
 #import "TableViewCellViewModel.h"
+#import "SupportCenterViewModel.h"
 
 @interface PersonalViewModel : NSObject
 
 - (PersonalHeaderViewModel *)personalHeaderViewModel;
 
 - (SettingsViewModel *)settingsViewModel;
+
+- (SupportCenterViewModel *)supportCenterViewModel;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 

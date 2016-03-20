@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SupportCenterViewModel.h"
 
 @interface SupportCenterViewController : UIViewController
+
+- (instancetype)initWithViewModel:(SupportCenterViewModel *)viewModel;
 
 @end
