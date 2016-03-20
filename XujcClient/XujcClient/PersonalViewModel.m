@@ -20,4 +20,18 @@
     return [[SettingsViewModel alloc] init];
 }
 
+- (NSInteger)numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (TableViewCellViewModel *)tableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableViewCellViewModel *viewModel = [[TableViewCellViewModel alloc] init];
+    viewModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    viewModel.imageNamed = @"settings";
+    viewModel.text = NSLocalizedString(@"Settings", nil);
+    return viewModel;
+}
+
 @end

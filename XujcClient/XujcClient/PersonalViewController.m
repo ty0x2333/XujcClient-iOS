@@ -83,15 +83,16 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [self.viewModel numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellReuseIdentifier forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.imageView.image = [UIImage imageNamed:@"settings"];
-    cell.textLabel.text = NSLocalizedString(@"Settings", nil);
+    TableViewCellViewModel *viewModel = [self.viewModel tableViewCellViewModelForRowAtIndexPath:indexPath];
+    cell.accessoryType = viewModel.accessoryType;
+    cell.imageView.image = [UIImage imageNamed:viewModel.imageNamed];
+    cell.textLabel.text = NSLocalizedString(viewModel.text, nil);
     return cell;
 }
 
