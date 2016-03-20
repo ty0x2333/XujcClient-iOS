@@ -81,6 +81,7 @@
 		70730DCE1C9DF2D0007CBEBB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DCB1C9DF2D0007CBEBB /* SettingsViewController.m */; };
 		70730DCF1C9DF2D0007CBEBB /* SettingsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DCD1C9DF2D0007CBEBB /* SettingsViewModel.m */; };
 		70730DEA1C9E11A8007CBEBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 70730DE81C9E11A8007CBEBB /* Localizable.strings */; };
+		70730DFF1C9E1CBB007CBEBB /* SupportCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DFE1C9E1CBB007CBEBB /* SupportCenterViewController.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -245,6 +246,8 @@
 		70730DE91C9E11A8007CBEBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		70730DEB1C9E11C4007CBEBB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		70730DEC1C9E11C4007CBEBB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		70730DFD1C9E1CBB007CBEBB /* SupportCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportCenterViewController.h; sourceTree = "<group>"; };
+		70730DFE1C9E1CBB007CBEBB /* SupportCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportCenterViewController.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -537,6 +540,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		70730DFC1C9E1CA9007CBEBB /* SupportCenter */ = {
+			isa = PBXGroup;
+			children = (
+				70730DFD1C9E1CBB007CBEBB /* SupportCenterViewController.h */,
+				70730DFE1C9E1CBB007CBEBB /* SupportCenterViewController.m */,
+			);
+			path = SupportCenter;
+			sourceTree = "<group>";
+		};
 		70F7CE0D1BE3AC25001D027C = {
 			isa = PBXGroup;
 			children = (
@@ -571,6 +583,7 @@
 				70730D831C999DA9007CBEBB /* Schedule */,
 				70730D961C99F567007CBEBB /* MainTabBar */,
 				70730DC91C9DF2D0007CBEBB /* Settings */,
+				70730DFC1C9E1CA9007CBEBB /* SupportCenter */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
 				70730DA31C99F973007CBEBB /* PersonalHeaderViewModel.h */,
@@ -905,6 +918,7 @@
 				70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */,
 				7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */,
 				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
+				70730DFF1C9E1CBB007CBEBB /* SupportCenterViewController.m in Sources */,
 				70730DA21C99F842007CBEBB /* PersonalViewModel.m in Sources */,
 				70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */,
 				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
