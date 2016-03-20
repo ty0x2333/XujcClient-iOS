@@ -23,7 +23,10 @@ digraph ViewModel{
 
 	SemesterSelectorViewModel[style = dashed];
 
+	TableViewCellViewModel[style = dashed];
+
 	PersonalViewModel->SettingsViewModel;
 	PersonalViewModel->PersonalHeaderViewModel[style = dashed];
+	PersonalViewModel->TableViewCellViewModel[style = dashed];
 	PersonalHeaderViewModel[style = dashed];
 }
