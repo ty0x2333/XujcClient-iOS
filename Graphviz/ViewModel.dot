@@ -30,4 +30,6 @@ digraph ViewModel{
 	PersonalViewModel->PersonalHeaderViewModel[style = dashed];
 	PersonalViewModel->TableViewCellViewModel[style = dashed];
 	PersonalHeaderViewModel[style = dashed];
+
+	SupportCenterViewModel->TableViewCellViewModel[style = dashed];
 }
