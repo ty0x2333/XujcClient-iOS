@@ -9,6 +9,7 @@
 #import "PersonalViewController.h"
 #import "SettingsViewController.h"
 #import "PersonalHeaderView.h"
+#import "SupportCenterViewController.h"
 
 static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
 
@@ -98,8 +99,13 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SettingsViewController *settingsViewController = [[SettingsViewController alloc] initWithViewModel:[self.viewModel settingsViewModel]];
-    [self.navigationController pushViewController:settingsViewController animated:YES];
+    if (indexPath.row == 0) {
+        SupportCenterViewController *viewController = [[SupportCenterViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else if (indexPath.row == 1) {
+        SettingsViewController *viewController = [[SettingsViewController alloc] initWithViewModel:[self.viewModel settingsViewModel]];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 

@@ -8,7 +8,21 @@
 
 #import "PersonalViewModel.h"
 
+@interface PersonalViewModel()
+
+@property (strong, nonatomic) NSArray *texts;
+
+@end
+
 @implementation PersonalViewModel
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _texts = @[@"Feedback and Help", @"Settings"];
+    }
+    return self;
+}
 
 - (PersonalHeaderViewModel *)personalHeaderViewModel
 {
@@ -22,7 +36,7 @@
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return _texts.count;
 }
 
 - (TableViewCellViewModel *)tableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -30,7 +44,7 @@
     TableViewCellViewModel *viewModel = [[TableViewCellViewModel alloc] init];
     viewModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     viewModel.imageNamed = @"settings";
-    viewModel.text = NSLocalizedString(@"Settings", nil);
+    viewModel.text = NSLocalizedString([_texts objectAtIndex:indexPath.row], nil);
     return viewModel;
 }
 
