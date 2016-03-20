@@ -29,7 +29,7 @@ static const CGFloat kWindowCornerRadius = 4.f;
     NSString *currentLanguage = [languages objectAtIndex:0];
     TyLogDebug (@"Current Language: %@" , currentLanguage);
     
-    [Instabug startWithToken:kInstabugToken invocationEvent:IBGInvocationEventShake];
+    [Instabug startWithToken:kInstabugToken invocationEvent:IBGInvocationEventNone];
     
     [CacheUtils instance];
     

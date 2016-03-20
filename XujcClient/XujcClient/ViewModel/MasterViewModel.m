@@ -7,8 +7,22 @@
 //
 
 #import "MasterViewModel.h"
+#import "DynamicData.h"
+#import <Instabug/Instabug.h>
 
 @implementation MasterViewModel
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        RACSignal *shakingReportStatusSignal = [[[userDefaults rac_channelTerminalForKey:kUserDefaultsKeyShakingReportStatus] setNameWithFormat:@"MasterViewModel shakingReportStatusChannel"] logAll];
+        [shakingReportStatusSignal subscribeNext:^(NSNumber *value) {
+            [Instabug setInvocationEvent:[value boolValue] ? IBGInvocationEventShake : IBGInvocationEventNone];
+        }];
+    }
+    return self;
+}
 
 - (MainTabBarViewModel *)mainTabBarViewModel
 {
