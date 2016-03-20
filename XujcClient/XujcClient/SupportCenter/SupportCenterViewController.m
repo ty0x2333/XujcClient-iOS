@@ -63,6 +63,13 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
     TableViewCellViewModel *viewModel = [self.viewModel tableViewCellViewModelForRowAtIndexPath:indexPath];
     cell.textLabel.text = viewModel.localizedText;
+    cell.selectionStyle = viewModel.selectionStyle;
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        UISwitch *switchView = [[UISwitch alloc] init];
+        RAC(switchView, on) = [RACChannelTo(self.viewModel, shakingReportStatus) takeUntil:cell.rac_prepareForReuseSignal];
+        [switchView.rac_newOnChannel subscribe:RACChannelTo(self.viewModel, shakingReportStatus)];
+        cell.accessoryView = switchView;
+    }
     return cell;
 }
 
@@ -70,8 +77,10 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [Instabug invokeWithInvocationMode:IBGInvocationModeFeedbackSender];
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    if (!(indexPath.section == 1 && indexPath.row == 0)) {
+        [Instabug invokeWithInvocationMode:IBGInvocationModeFeedbackSender];
+        [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    }
 }
 
 @end

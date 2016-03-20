@@ -11,6 +11,8 @@
 
 @interface SupportCenterViewModel : NSObject
 
+@property (assign, nonatomic) BOOL shakingReportStatus;
+
 - (NSInteger)numberOfSections;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
