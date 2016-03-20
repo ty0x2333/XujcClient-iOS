@@ -82,6 +82,7 @@
 		70730DCF1C9DF2D0007CBEBB /* SettingsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DCD1C9DF2D0007CBEBB /* SettingsViewModel.m */; };
 		70730DEA1C9E11A8007CBEBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 70730DE81C9E11A8007CBEBB /* Localizable.strings */; };
 		70730DFF1C9E1CBB007CBEBB /* SupportCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730DFE1C9E1CBB007CBEBB /* SupportCenterViewController.m */; };
+		70730E051C9EE556007CBEBB /* TableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730E041C9EE556007CBEBB /* TableViewCellViewModel.m */; };
 		708661351BE75B7400AD64C2 /* XujcSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661341BE75B7400AD64C2 /* XujcSection.m */; };
 		708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
@@ -248,6 +249,8 @@
 		70730DEC1C9E11C4007CBEBB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		70730DFD1C9E1CBB007CBEBB /* SupportCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportCenterViewController.h; sourceTree = "<group>"; };
 		70730DFE1C9E1CBB007CBEBB /* SupportCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportCenterViewController.m; sourceTree = "<group>"; };
+		70730E031C9EE556007CBEBB /* TableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCellViewModel.h; sourceTree = "<group>"; };
+		70730E041C9EE556007CBEBB /* TableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCellViewModel.m; sourceTree = "<group>"; };
 		708661331BE75B7400AD64C2 /* XujcSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSection.h; sourceTree = "<group>"; };
 		708661341BE75B7400AD64C2 /* XujcSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSection.m; sourceTree = "<group>"; };
 		708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewScheduleLayout.h; sourceTree = "<group>"; };
@@ -415,6 +418,8 @@
 				7062B6A51C8E3CCE0074C716 /* MasterViewModel.m */,
 				7062B68C1C8B0F480074C716 /* RequestViewModel.h */,
 				7062B68D1C8B0F480074C716 /* RequestViewModel.m */,
+				70730E031C9EE556007CBEBB /* TableViewCellViewModel.h */,
+				70730E041C9EE556007CBEBB /* TableViewCellViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -882,6 +887,7 @@
 				70730DA81C9A3FFF007CBEBB /* AppUtils.m in Sources */,
 				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
 				70730D8A1C999DD5007CBEBB /* ScheduleViewModel.m in Sources */,
+				70730E051C9EE556007CBEBB /* TableViewCellViewModel.m in Sources */,
 				70730D791C94A13A007CBEBB /* SemesterBaseViewModel.m in Sources */,
 				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
 				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
