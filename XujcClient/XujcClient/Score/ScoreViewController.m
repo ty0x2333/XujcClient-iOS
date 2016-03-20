@@ -12,6 +12,7 @@
 #import "XujcScore.h"
 #import "ScoreTableViewCell.h"
 #import <UIScrollView+EmptyDataSet.h>
+#import <MJRefresh.h>
 
 static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
@@ -54,11 +55,18 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
     [_tableView makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.leading.trailing.equalTo(self.view);
     }];
+    @weakify(self);
     
     [self.viewModel.semesterSelectorViewModel.selectedSemesterIdSignal subscribeNext:^(id x) {
+        @strongify(self);
+        [self.tableView.mj_header beginRefreshing];
+    }];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self);
         [self.viewModel.fetchScoresSignal subscribeNext:^(id x) {
-            [_tableView reloadData];
+            [self.tableView reloadData];
             TyLogDebug(@"fetchScores success");
+            [self.tableView.mj_header endRefreshing];
         } error:^(NSError *error) {
             MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hub.detailsLabelText = error.localizedDescription;
@@ -67,6 +75,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
             
             // load data from cache
             [_tableView reloadData];
+            [self.tableView.mj_header endRefreshing];
         }];
     }];
 }
