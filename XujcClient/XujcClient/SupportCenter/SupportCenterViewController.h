@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SupportCenterViewController : UITableViewController
+@interface SupportCenterViewController : UIViewController
 
 @end
