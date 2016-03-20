@@ -31,4 +31,6 @@
 
 @property (copy, readonly, nonatomic) NSString *xujcKey;
 
+@property (assign, readonly, nonatomic) BOOL shakingReportStatus;
+
 @end

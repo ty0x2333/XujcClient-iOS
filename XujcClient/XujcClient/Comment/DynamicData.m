@@ -63,6 +63,11 @@
     return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyApiKey];
 }
 
+- (BOOL)shakingReportStatus
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kUserDefaultsKeyShakingReportStatus];
+}
+
 - (NSString *)xujcKey
 {
     return [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsKeyXujcKey];

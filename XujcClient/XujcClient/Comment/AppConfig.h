@@ -13,6 +13,7 @@ static CGFloat const kErrorHUDShowTime = 2.f;
 static CGFloat const kSuccessHUDShowTime = 2.f;
 
 static NSString * const kUserDefaultsKeyApiKey = @"api_key";
+static NSString * const kUserDefaultsKeyShakingReportStatus = @"shaking_report";
 static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
 static NSString * const kUserDefaultsKeyUser = @"user";
 
