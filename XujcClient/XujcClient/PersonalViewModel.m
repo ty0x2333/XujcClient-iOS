@@ -44,7 +44,7 @@
     TableViewCellViewModel *viewModel = [[TableViewCellViewModel alloc] init];
     viewModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     viewModel.imageNamed = @"settings";
-    viewModel.text = NSLocalizedString([_texts objectAtIndex:indexPath.row], nil);
+    viewModel.localizedText = NSLocalizedString([_texts objectAtIndex:indexPath.row], nil);
     return viewModel;
 }
 

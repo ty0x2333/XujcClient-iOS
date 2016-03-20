@@ -14,6 +14,6 @@
 
 @property (copy, nonatomic) NSString *imageNamed;
 
-@property (copy, nonatomic) NSString *text;
+@property (copy, nonatomic) NSString *localizedText;
 
 @end

@@ -93,7 +93,7 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
     TableViewCellViewModel *viewModel = [self.viewModel tableViewCellViewModelForRowAtIndexPath:indexPath];
     cell.accessoryType = viewModel.accessoryType;
     cell.imageView.image = [UIImage imageNamed:viewModel.imageNamed];
-    cell.textLabel.text = NSLocalizedString(viewModel.text, nil);
+    cell.textLabel.text = viewModel.localizedText;
     return cell;
 }
 
