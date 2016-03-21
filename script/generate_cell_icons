@@ -1,0 +1,12 @@
+#!/bin/sh
+current_dir=$(dirname $0)
+target_dir=$current_dir/../XujcClient/XujcClient/Resource
+for item in `find $current_dir/../ImageSource -name "cell_icon_*.png" -maxdepth 1`;
+do
+  item_without_type=${item%.*}
+  icon_2x=${item_without_type}"@2x.png"
+  icon_3x=${item_without_type}"@3x.png"
+  convert $item -resize 'x40>' $target_dir/${icon_2x##*/};
+  convert $item -resize 'x80>' $target_dir/${icon_3x##*/};
+  echo 'generate '${item}
+done
