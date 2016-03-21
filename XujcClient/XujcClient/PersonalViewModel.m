@@ -11,6 +11,7 @@
 @interface PersonalViewModel()
 
 @property (strong, nonatomic) NSArray *texts;
+@property (strong, nonatomic) NSArray *imageNames;
 
 @end
 
@@ -20,6 +21,7 @@
 {
     if (self = [super init]) {
         _texts = @[@"Feedback and Help", @"Settings"];
+        _imageNames = @[@"cell_icon_home", @"cell_icon_settings"];
     }
     return self;
 }
@@ -43,7 +45,7 @@
 {
     TableViewCellViewModel *viewModel = [[TableViewCellViewModel alloc] init];
     viewModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    viewModel.imageNamed = @"settings";
+    viewModel.imageNamed = [_imageNames objectAtIndex:indexPath.row];
     viewModel.localizedText = NSLocalizedString([_texts objectAtIndex:indexPath.row], nil);
     return viewModel;
 }
