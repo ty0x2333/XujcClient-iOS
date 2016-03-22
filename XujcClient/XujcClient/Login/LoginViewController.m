@@ -32,6 +32,8 @@
 @property (strong, nonatomic) UIButton *switchButton;
 
 @property (strong, nonatomic) MASConstraint *loginTextFieldGroupViewRightConstraint;
+@property (strong, nonatomic) MASConstraint *logoTopConstraint;
+@property (strong, nonatomic) MASConstraint *logoBottomConstraint;
 
 @property (strong, nonatomic) LoginViewModel *loginViewModel;
 @property (strong, nonatomic) SignupViewModel *signupViewModel;
@@ -114,7 +116,7 @@
 - (void)initConstraints
 {
     [_logoImageView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_topLayoutGuideBottom);
+        self.logoTopConstraint = make.top.equalTo(self.mas_topLayoutGuideBottom);
         make.centerX.equalTo(self.view);
         make.width.equalTo(self.view.mas_width).with.multipliedBy(0.5f);
         make.width.equalTo(_logoImageView.mas_height);
@@ -149,6 +151,58 @@
     [_switchButton makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_loginButton.mas_bottom);
         make.centerX.equalTo(_loginButton.mas_centerX);
+    }];
+    
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    @weakify(self);
+    [[defaultCenter ty_keyboardWillShowSignal] subscribeNext:^(NSNotification *note) {
+        @strongify(self);
+        NSDictionary *userInfo = note.userInfo;
+        // Get keyboard animation.
+        NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
+        NSTimeInterval animationDuration = durationValue.doubleValue;
+        
+        NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+        UIViewAnimationCurve animationCurve = curveValue.intValue;
+        
+        [self.logoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.logoTopConstraint uninstall];
+            [self.logoBottomConstraint uninstall];
+            self.logoBottomConstraint = make.bottom.equalTo(self.mas_topLayoutGuideBottom);
+        }];
+        
+        [UIView animateWithDuration:animationDuration
+                              delay:0.0
+                            options:(animationCurve << 16)
+                         animations:^{
+                             [self.view layoutIfNeeded];
+                         }
+                         completion:nil];
+    }];
+    
+    [[defaultCenter ty_keyboardWillHideSignal] subscribeNext:^(NSNotification *note) {
+        @strongify(self);
+        NSDictionary *userInfo = note.userInfo;
+        // Get keyboard animation.
+        NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
+        NSTimeInterval animationDuration = durationValue.doubleValue;
+        
+        NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+        UIViewAnimationCurve animationCurve = curveValue.intValue;
+        
+        [self.logoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.logoTopConstraint uninstall];
+            [self.logoBottomConstraint uninstall];
+            self.logoTopConstraint = make.top.equalTo(self.mas_topLayoutGuideBottom);
+        }];
+        
+        [UIView animateWithDuration:animationDuration
+                              delay:0.0
+                            options:(animationCurve << 16)
+                         animations:^{
+                             [self.view layoutIfNeeded];
+                         }
+                         completion:nil];
     }];
 }
 
