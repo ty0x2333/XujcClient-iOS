@@ -1,7 +1,7 @@
 digraph ViewModel{
 	node[shape = record];
 
-  MainTabBarController->LoginViewController;
+  MainTabBarController->LoginViewController->ServiceProtocolViewController;
   MainTabBarController->BindingAccountViewController;
 
   MainTabBarController->ScheduleViewController;
