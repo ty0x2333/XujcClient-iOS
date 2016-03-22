@@ -1089,6 +1089,7 @@
 			baseConfigurationReference = 809B7A975EDBE96102E85C69 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XujcClient/XujcClient-prefix.pch";
 				INFOPLIST_FILE = XujcClient/Info.plist;
@@ -1105,6 +1106,7 @@
 			baseConfigurationReference = F11D480843B2B5B2BA56FFB6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XujcClient/XujcClient-prefix.pch";
 				INFOPLIST_FILE = XujcClient/Info.plist;

@@ -24,7 +24,7 @@ else
   convert "$SRC_FILE" -resize 50x50     "$DST_PATH/Icon-Small-50.png"
   convert "$SRC_FILE" -resize 57x57     "$DST_PATH/Icon.png"
   convert "$SRC_FILE" -resize 58x58     "$DST_PATH/Icon-Small@2x.png"
-  convert "$SRC_FILE" -resize 60x60     "$DST_PATH/Icon-60.png"
+  # convert "$SRC_FILE" -resize 60x60     "$DST_PATH/Icon-60.png"
   convert "$SRC_FILE" -resize 72x72     "$DST_PATH/Icon-72.png"
   convert "$SRC_FILE" -resize 76x76     "$DST_PATH/Icon-76.png"
   convert "$SRC_FILE" -resize 80x80     "$DST_PATH/Icon-Small-40@2x.png"
