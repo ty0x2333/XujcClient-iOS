@@ -51,6 +51,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     _accountTextField.ty_borderColor = [UIColor ty_border].CGColor;
     _accountTextField.ty_borderEdge = UIRectEdgeBottom;
     _accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _accountTextField.placeholder = NSLocalizedString(@"Student ID", nil);
     [self.view addSubview:_accountTextField];
     
     _apiKeyLeftView = [[UILabel alloc] init];
@@ -59,6 +60,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     _apiKeyTextField = [[UITextField alloc] init];
     _apiKeyTextField.ty_borderColor = [UIColor ty_border].CGColor;
     _apiKeyTextField.ty_borderEdge = UIRectEdgeBottom;
+    _apiKeyTextField.placeholder = NSLocalizedString(@"API Key", nil);
     _apiKeyTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _apiKeyTextField.leftView = _apiKeyLeftView;
     _apiKeyTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -80,7 +82,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     }];
     
     // Bing apiKeyLeftView.text = _accountTextField.text
-    RAC(self.apiKeyLeftView, text) = [_accountTextField.rac_textSignal map:^id(NSString *text) {
+    RAC(self.apiKeyLeftView, text) = [[_accountTextField.rac_textSignal merge:RACObserve(_accountTextField, text)] map:^id(NSString *text) {
         return [NSString isEmpty:text] ? text : [NSString stringWithFormat:@"%@-", text];
     }];
     
@@ -97,12 +99,7 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     
 #ifdef DEBUG
     _accountTextField.text = @"swe12023";
-    [_accountTextField sendActionsForControlEvents:UIControlEventEditingChanged];
     _apiKeyTextField.text = @"szyufvxh";
-    
-    _bindingButton.backgroundColor = [UIColor blueColor];
-//    _accountTextField.backgroundColor = [UIColor redColor];
-//    _apiKeyTextField.backgroundColor = [UIColor redColor];
 #endif
 }
 
