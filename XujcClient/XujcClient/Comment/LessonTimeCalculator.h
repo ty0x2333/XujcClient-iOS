@@ -20,6 +20,10 @@
 
 + (NSInteger)lastLessonNumber;
 
++ (NSInteger)sectionIndexFromSectionNumber:(NSInteger)sectionNumber;
+
++ (NSInteger)sectionNumberFromSectionIndex:(NSInteger)sectionIndex;
+
 - (NSDate *)firstLessonStartTime;
 
 - (NSDate *)firstLessonStartTimeOfDay:(NSDate *)dayDate;

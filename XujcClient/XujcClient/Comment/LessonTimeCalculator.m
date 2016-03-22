@@ -131,4 +131,34 @@
     return currentLessonNumber - 1 + currentLessProgress;
 }
 
++ (NSInteger)sectionIndexFromSectionNumber:(NSInteger)sectionNumber
+{
+    NSInteger sectionIndex = 0;
+    if (sectionNumber < 5) {
+        sectionIndex = sectionNumber;
+    }else if (sectionNumber == 51) {
+        sectionIndex = 5;
+    }else if (sectionNumber == 52) {
+        sectionIndex = 6;
+    }else if (sectionIndex < 11) {
+        sectionIndex = sectionNumber + 2;
+    }
+    return sectionIndex;
+}
+
++ (NSInteger)sectionNumberFromSectionIndex:(NSInteger)sectionIndex
+{
+    NSInteger sectionNumber = 0;
+    if (sectionIndex < 5) {
+        sectionNumber = sectionIndex;
+    }else if (sectionIndex == 5) {
+        sectionNumber = 51;
+    }else if (sectionIndex == 6) {
+        sectionNumber = 52;
+    }else if (sectionIndex < 13) {
+        sectionNumber = sectionIndex - 2;
+    }
+    return sectionNumber;
+}
+
 @end
