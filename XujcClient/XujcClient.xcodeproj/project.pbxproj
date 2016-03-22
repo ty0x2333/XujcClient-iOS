@@ -91,6 +91,7 @@
 		70B167CB1CA03BF800AF8322 /* cell_icon_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B167C91CA03BF800AF8322 /* cell_icon_home@2x.png */; };
 		70B167CC1CA03BF800AF8322 /* cell_icon_home@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B167CA1CA03BF800AF8322 /* cell_icon_home@3x.png */; };
 		70B167CE1CA0CC6A00AF8322 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B167CD1CA0CC6A00AF8322 /* logo@2x.png */; };
+		70B167D11CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B167D01CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
 		70C2B02E1C81294700923B85 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02A1C81294700923B85 /* arrow_down@3x.png */; };
 		70C2B02F1C81294700923B85 /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02B1C81294700923B85 /* arrow_right@2x.png */; };
@@ -267,6 +268,8 @@
 		70B167C91CA03BF800AF8322 /* cell_icon_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_home@2x.png"; sourceTree = "<group>"; };
 		70B167CA1CA03BF800AF8322 /* cell_icon_home@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_home@3x.png"; sourceTree = "<group>"; };
 		70B167CD1CA0CC6A00AF8322 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		70B167CF1CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+KeyboardSupport.h"; sourceTree = "<group>"; };
+		70B167D01CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+KeyboardSupport.m"; sourceTree = "<group>"; };
 		70C2B0291C81294700923B85 /* arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
 		70C2B02A1C81294700923B85 /* arrow_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@3x.png"; sourceTree = "<group>"; };
 		70C2B02B1C81294700923B85 /* arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_right@2x.png"; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 				70730DC01C9CB9BB007CBEBB /* UITabBarController+animation.m */,
 				70A88CFC1C9F37380067DB77 /* NSUserDefaults+TYSupport.h */,
 				70A88CFD1C9F37380067DB77 /* NSUserDefaults+TYSupport.m */,
+				70B167CF1CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.h */,
+				70B167D01CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -910,6 +915,7 @@
 				70730D791C94A13A007CBEBB /* SemesterBaseViewModel.m in Sources */,
 				70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */,
 				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
+				70B167D11CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m in Sources */,
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
 				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m in Sources */,
 				70730D731C947A41007CBEBB /* SemesterTableViewCellViewModel.m in Sources */,

@@ -30,6 +30,7 @@
 #import <ReactiveCocoa.h>
 #import <MBProgressHUD.h>
 #import "NSUserDefaults+TYSupport.h"
+#import "NSNotificationCenter+KeyboardSupport.h"
 
 // Pod Configuration
 #define MAS_SHORTHAND
