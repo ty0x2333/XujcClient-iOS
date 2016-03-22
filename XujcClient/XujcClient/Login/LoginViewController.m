@@ -19,6 +19,8 @@ static CGFloat const kServiceProtocolLabelFontSize = 12.f;
 
 static CGFloat const kButtonMarginBottom = 12.f;
 
+static CGFloat const kSwitchButtonFontSize = 15.f;
+
 @interface LoginViewController()<TTTAttributedLabelDelegate>
 
 @property (strong, nonatomic) LoginTextFieldGroupView *loginTextFieldGroupView;
@@ -99,15 +101,17 @@ static CGFloat const kButtonMarginBottom = 12.f;
     [self.view addSubview:_signupButton];
     
     _switchButton = [[UIButton alloc] init];
-    [_switchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_switchButton setTitleColor:[UIColor ty_textGray] forState:UIControlStateNormal];
+    _switchButton.titleLabel.font = [UIFont systemFontOfSize:kSwitchButtonFontSize];
     [self.view addSubview:_switchButton];
     
     _serviceProtocolLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
     _serviceProtocolLabel.textAlignment = NSTextAlignmentCenter;
     _serviceProtocolLabel.numberOfLines = 0;
+    _serviceProtocolLabel.textColor = [UIColor ty_textGray];
     _serviceProtocolLabel.font = [UIFont systemFontOfSize:kServiceProtocolLabelFontSize];
     _serviceProtocolLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
-//    _servicProtocolLabel.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName: [NSNumber numberWithBool:NO]};
+    _serviceProtocolLabel.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName: [NSNumber numberWithBool:NO], (NSString*)kCTForegroundColorAttributeName: (id)[UIColor ty_textLink].CGColor};
     _serviceProtocolLabel.text = [NSString stringWithFormat:@"%@%@", @"点击「注册」按钮\n代表你已阅读并同意", NSLocalizedString(@"Service Protocol", nil)];
     _serviceProtocolLabel.delegate = self;
     NSURL *useAgreementUrl = [NSURL URLWithString:NSStringFromClass([ServiceProtocolViewController class])];

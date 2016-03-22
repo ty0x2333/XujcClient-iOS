@@ -30,6 +30,16 @@
     return [UIColor ty_border];
 }
 
++ (UIColor *)ty_textGray
+{
+    return [UIColor colorWithHexString:@"#939395"];
+}
+
++ (UIColor *)ty_textLink
+{
+    return [UIColor colorWithHexString:@"#1492ff"];
+}
+
 + (UIColor *)ty_backgroundHighlight
 {
     return [UIColor colorWithHexString:@"#f5f5f5"];
