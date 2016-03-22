@@ -29,8 +29,8 @@
     NSMutableString *description = [[super description] mutableCopy];
     [description appendFormat:@"{\n"];
     [description appendFormat:@"\n\tlessonName: %@", _lessonName];
-    [description appendFormat:@"\n\tcredit: %d", _credit];
-    [description appendFormat:@"\n\tscore: %d", _score];
+    [description appendFormat:@"\n\tcredit: %zd", _credit];
+    [description appendFormat:@"\n\tscore: %zd", _score];
     [description appendFormat:@"\n\tscoreLevel: %@", _scoreLevel];
     [description appendFormat:@"\n\tmidSemesterStatus: %@", _midSemesterStatus];
     [description appendFormat:@"\n\tendSemesterStatus: %@", _endSemesterStatus];

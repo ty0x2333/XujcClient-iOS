@@ -20,7 +20,7 @@
         @weakify(self);
         RACSignal *selectedIndexSignal = [RACObserve(self, selectedIndex) filter:^BOOL(NSNumber *value) {
             @strongify(self);
-            return [self.semesters objectAtIndex:[value integerValue]];
+            return [self.semesters objectAtIndex:[value integerValue]] != nil;
         }];;
         _selectedSemesterNameSignal = [selectedIndexSignal map:^id(NSNumber *value) {
             @strongify(self);

@@ -83,10 +83,10 @@ static CGFloat const kTabBarOpacity = .9f;
     @weakify(self);
     RACSignal *popToRootSignal = [navController rac_signalForSelector:@selector(popToRootViewControllerAnimated:)];
     RACSignal *popToViewControllerSignal = [[navController rac_signalForSelector:@selector(popToViewController:animated:)] filter:^BOOL(id value) {
-        return @(navController.viewControllers.count < 2);
+        return navController.viewControllers.count < 2;
     }];
     RACSignal *popViewControllerSignal = [[navController rac_signalForSelector:@selector(popViewControllerAnimated:)] filter:^BOOL(id value) {
-        return @(navController.viewControllers.count < 2);
+        return navController.viewControllers.count < 2;
     }];
     RACSignal *popSignal = [RACSignal merge:@[popToRootSignal, popToViewControllerSignal, popViewControllerSignal]];
     
