@@ -243,16 +243,15 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     UICollectionViewLayoutAttributes *currentTimeHorizontalGridlineAttributes = [self layoutAttributesForDecorationViewAtIndexPath:currentTimeHorizontalGridlineIndexPath ofKind:MSCollectionElementKindCurrentTimeHorizontalGridline withItemCache:self.currentTimeHorizontalGridlineAttributes];
     
     // The current time is within the day
-    XujcSection *earliestClassSection = [XujcSection sectionIndex:earliestLessonIndex];
-    XujcSection *latestClassSection = [XujcSection sectionIndex:[LessonTimeCalculator lastLessonNumber]];
     NSDate *currentTimeDate = [self currentTimeDate];
     
-    BOOL currentTimeIndicatorVisible = ([currentTimeDate earlierDate:latestClassSection.endTime] && [currentTimeDate laterDate:earliestClassSection.startTime]);
+    CGFloat lessonProgress = [LESSON_TIME_CALCULATOR lessonProgress:currentTimeDate];
+    
+    BOOL currentTimeIndicatorVisible = lessonProgress > 0 || lessonProgress >= [LessonTimeCalculator lastLessonNumber];
     currentTimeIndicatorAttributes.hidden = !currentTimeIndicatorVisible;
     currentTimeHorizontalGridlineAttributes.hidden = !currentTimeIndicatorVisible;
     
     if (currentTimeIndicatorVisible) {
-        CGFloat lessonProgress = [LESSON_TIME_CALCULATOR lessonProgress:currentTimeDate];
         TyLogDebug(@"当前课程进度: %f", lessonProgress);
         
         // The y value of the current time
