@@ -21,8 +21,6 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
 
 @interface BindingAccountViewModel()
 
-@property (strong, nonatomic) AFHTTPSessionManager *xujcSessionManager;
-
 @end
 
 @implementation BindingAccountViewModel
