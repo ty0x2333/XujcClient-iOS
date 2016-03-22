@@ -17,6 +17,8 @@
 
 static const CGFloat kLoginButtonMarginVertical = 15.f;
 
+static const CGFloat kDescriptionLabelFontSize = 10.f;
+
 @interface BindingAccountViewController()
 
 @property (strong, nonatomic) BindingAccountViewModel *viewModel;
@@ -31,6 +33,9 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
 
 @property (strong, nonatomic) MASConstraint *logoTopConstraint;
 @property (strong, nonatomic) MASConstraint *logoBottomConstraint;
+
+@property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) UILabel *descriptionLabel;
 
 @end
 
@@ -65,6 +70,20 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
     _apiKeyTextField.leftView = _apiKeyLeftView;
     _apiKeyTextField.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:_apiKeyTextField];
+    
+    _titleLabel = [[UILabel alloc] init];
+    _titleLabel.textColor = [UIColor ty_textGray];
+    _titleLabel.textAlignment = NSTextAlignmentCenter;
+    _titleLabel.text = NSLocalizedString(@"Bind Account", nil);
+    [self.view addSubview:_titleLabel];
+    
+    _descriptionLabel = [[UILabel alloc] init];
+    _descriptionLabel.textColor = [UIColor ty_textGray];
+    _descriptionLabel.textAlignment = NSTextAlignmentCenter;
+    _descriptionLabel.font = [UIFont systemFontOfSize:kDescriptionLabelFontSize];
+    _descriptionLabel.text = NSLocalizedString(@"Bind Description", nil);
+    _descriptionLabel.numberOfLines = 0;
+    [self.view addSubview:_descriptionLabel];
     
     _bindingButton = [[FormButton alloc] init];
     [_bindingButton setTitle:NSLocalizedString(@"Binding", nil) forState:UIControlStateNormal];
@@ -149,8 +168,22 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
         make.width.equalTo(self.imageView.mas_height);
     }];
     
-    [_accountTextField makeConstraints:^(MASConstraintMaker *make) {
+    [_titleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.imageView.mas_bottom);
+        make.left.equalTo(self.view).with.offset(kLoginContentMarginHorizontal);
+        make.right.equalTo(self.view).with.offset(-kLoginContentMarginHorizontal);
+        make.height.equalTo(@(kLoginTextFieldHeight));
+    }];
+    
+    [_descriptionLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel.mas_bottom);
+        make.left.equalTo(self.view).with.offset(kLoginContentMarginHorizontal);
+        make.right.equalTo(self.view).with.offset(-kLoginContentMarginHorizontal);
+        make.height.equalTo(@(kLoginTextFieldHeight));
+    }];
+    
+    [_accountTextField makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.descriptionLabel.mas_bottom);
         make.left.equalTo(self.view).with.offset(kLoginContentMarginHorizontal);
         make.right.equalTo(self.view).with.offset(-kLoginContentMarginHorizontal);
         make.height.equalTo(@(kLoginTextFieldHeight));

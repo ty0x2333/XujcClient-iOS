@@ -14,6 +14,8 @@
 "Logout" = "退出登录";
 "Student ID" = "学号";
 "API Key" = "API Key";
+"Bind Account" = "绑定帐号";
+"Bind Description" = "请登录学院教务系统, 进入 常用链接-基本信息-手机客户端, 在手机客户端页面找到 API Key 并填写在下面.";
 
 "EmailOrPhone" = "邮箱或手机号";
 "Password" = "密码";
