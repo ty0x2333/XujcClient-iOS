@@ -12,8 +12,14 @@
 #import "LoginTextFieldGroupView.h"
 #import "BindingAccountViewController.h"
 #import "FormButton.h"
+#import <TTTAttributedLabel.h>
+#import "ServiceProtocolViewController.h"
 
-@interface LoginViewController()
+static CGFloat const kServiceProtocolLabelFontSize = 12.f;
+
+static CGFloat const kButtonMarginBottom = 12.f;
+
+@interface LoginViewController()<TTTAttributedLabelDelegate>
 
 @property (strong, nonatomic) LoginTextFieldGroupView *loginTextFieldGroupView;
 @property (strong, nonatomic) LoginTextFieldGroupView *signupTextFieldGroupView;
@@ -37,6 +43,9 @@
 
 @property (strong, nonatomic) LoginViewModel *loginViewModel;
 @property (strong, nonatomic) SignupViewModel *signupViewModel;
+
+@property (strong, nonatomic) TTTAttributedLabel *servicProtocolLabel;
+
 @end
 
 @implementation LoginViewController
@@ -93,18 +102,23 @@
     [_switchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:_switchButton];
     
+    _servicProtocolLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
+    _servicProtocolLabel.textAlignment = NSTextAlignmentCenter;
+    _servicProtocolLabel.numberOfLines = 0;
+    _servicProtocolLabel.font = [UIFont systemFontOfSize:kServiceProtocolLabelFontSize];
+    _servicProtocolLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+//    _servicProtocolLabel.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName: [NSNumber numberWithBool:NO]};
+    _servicProtocolLabel.text = [NSString stringWithFormat:@"%@%@", @"点击「注册」按钮\n代表你已阅读并同意", NSLocalizedString(@"Service Protocol", nil)];
+    _servicProtocolLabel.delegate = self;
+    NSURL *useAgreementUrl = [NSURL URLWithString:NSStringFromClass([ServiceProtocolViewController class])];
+    NSRange range = [_servicProtocolLabel.text rangeOfString:NSLocalizedString(@"Service Protocol", nil)];
+    [_servicProtocolLabel addLinkToURL:useAgreementUrl withRange:range];
+    [self.view addSubview:_servicProtocolLabel];
+    
     [self initConstraints];
     
     // Binding
     [self bindSwitchAnimation];
-    
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] init];
-    @weakify(self);
-    [singleTap.rac_gestureSignal subscribeNext:^(id x) {
-        @strongify(self);
-        [self.view endEditing:YES];
-    }];
-    [self.view addGestureRecognizer:singleTap];
     
     [self bindViewModel];
     
@@ -113,44 +127,69 @@
     self.passwordTextField.text = [_loginViewModel currentAccountPassword];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+}
+
+- (void)attributedLabel:(TTTAttributedLabel *)label
+   didSelectLinkWithURL:(NSURL *)url
+{
+    Class viewControllerClass = NSClassFromString(url.absoluteString);
+    id viewController = [[viewControllerClass alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 - (void)initConstraints
 {
     [_logoImageView makeConstraints:^(MASConstraintMaker *make) {
         self.logoTopConstraint = make.top.equalTo(self.mas_topLayoutGuideBottom);
         make.centerX.equalTo(self.view);
         make.width.equalTo(self.view.mas_width).with.multipliedBy(0.5f);
-        make.width.equalTo(_logoImageView.mas_height);
+        make.width.equalTo(self.logoImageView.mas_height);
     }];
     
     [_signupTextFieldGroupView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_logoImageView.mas_bottom);
-        make.left.equalTo(_loginTextFieldGroupView.mas_right).with.offset(2 * kLoginContentMarginHorizontal);
+        make.top.equalTo(self.logoImageView.mas_bottom);
+        make.left.equalTo(self.loginTextFieldGroupView.mas_right).with.offset(2 * kLoginContentMarginHorizontal);
         make.width.equalTo(self.view.mas_width).with.offset(-2 * kLoginContentMarginHorizontal);
     }];
     
     [_loginTextFieldGroupView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_signupEmailTextField);
+        make.top.equalTo(self.signupEmailTextField);
         self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
-        make.width.equalTo(_signupTextFieldGroupView);
+        make.width.equalTo(self.signupTextFieldGroupView);
     }];
     
     [_loginButton makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_passwordTextField.mas_bottom).with.offset(kLoginButtonMarginTop);
-        make.width.equalTo(_signupNicknameTextField);
+        make.top.equalTo(self.passwordTextField.mas_bottom).with.offset(kLoginButtonMarginTop);
+        make.width.equalTo(self.signupNicknameTextField);
         make.centerX.equalTo(self.view);
         make.height.equalTo(@(kLoginButtonHeight));
     }];
     
     [_signupButton makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_loginButton);
-        make.width.equalTo(_loginButton);
-        make.centerX.equalTo(_loginButton);
-        make.height.equalTo(_loginButton);
+        make.top.equalTo(self.loginButton);
+        make.width.equalTo(self.loginButton);
+        make.centerX.equalTo(self.loginButton);
+        make.height.equalTo(self.loginButton);
+    }];
+    
+    [_servicProtocolLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.signupButton.mas_bottom).with.offset(kButtonMarginBottom);
+        make.centerX.equalTo(self.signupButton);
     }];
     
     [_switchButton makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_loginButton.mas_bottom);
-        make.centerX.equalTo(_loginButton.mas_centerX);
+        make.top.equalTo(self.signupButton.mas_bottom).with.offset(kButtonMarginBottom);
+        make.centerX.equalTo(self.servicProtocolLabel.mas_centerX);
     }];
     
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
@@ -176,6 +215,8 @@
                             options:(animationCurve << 16)
                          animations:^{
                              [self.view layoutIfNeeded];
+                             self.servicProtocolLabel.layer.opacity = 1.f;
+                             self.switchButton.layer.opacity = 0;
                          }
                          completion:nil];
     }];
@@ -201,6 +242,8 @@
                             options:(animationCurve << 16)
                          animations:^{
                              [self.view layoutIfNeeded];
+                             self.servicProtocolLabel.layer.opacity = 0;
+                             self.switchButton.layer.opacity = 1.f;
                          }
                          completion:nil];
     }];
@@ -232,8 +275,10 @@
     }], [RACSignal return:@(UIControlStateNormal)], nil];
     
     // Button Hidden
+    RACSignal *signupShowSignal = [switchButtonStatusChangedSignal not];
     RAC(_loginButton, hidden) = switchButtonStatusChangedSignal;
-    RAC(_signupButton, hidden) = [RACObserve(_loginButton, hidden) not];
+    RAC(_signupButton, hidden) = signupShowSignal;
+    RAC(_servicProtocolLabel, hidden) = signupShowSignal;
     
     // Selected change
     _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {

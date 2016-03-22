@@ -39,7 +39,8 @@ static CGFloat const kTabBarOpacity = .9f;
     [[[[[RACSignal combineLatest:@[self.viewModel.apiKeyInactiveSignal]] takeUntil:disappearSignal] setNameWithFormat:@"MainTabBarController loginSignal"] logAll] subscribeNext:^(id x) {
         @strongify(self);
         LoginViewController *viewController = [[LoginViewController alloc] initWithLoginViewModel:_viewModel.loginViewModel andSignupViewModel:_viewModel.signupViewModel];
-        [self presentViewController:viewController animated:NO completion:nil];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        [self presentViewController:navController animated:NO completion:nil];
     }];
     
     [[[[[RACSignal combineLatest:@[self.viewModel.apiActiveKeySignal, self.viewModel.xujcKeyInactiveSignal]] takeUntil:disappearSignal] setNameWithFormat:@"MainTabBarController bindingSignal"] logAll] subscribeNext:^(id x) {
