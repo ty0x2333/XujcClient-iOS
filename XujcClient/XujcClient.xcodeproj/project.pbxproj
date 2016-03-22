@@ -94,6 +94,7 @@
 		70B167D11CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B167D01CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m */; };
 		70B167D41CA0EEE200AF8322 /* ServiceProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B167D31CA0EEE200AF8322 /* ServiceProtocolViewController.m */; };
 		70B167D71CA106F700AF8322 /* Service Protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = 70B167D61CA106F700AF8322 /* Service Protocol.html */; };
+		70B68BAA1CA18664001284E7 /* libUMessage_Sdk_1.2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70B68BA81CA18664001284E7 /* libUMessage_Sdk_1.2.6.a */; };
 		70C2B02D1C81294700923B85 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B0291C81294700923B85 /* arrow_down@2x.png */; };
 		70C2B02E1C81294700923B85 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02A1C81294700923B85 /* arrow_down@3x.png */; };
 		70C2B02F1C81294700923B85 /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02B1C81294700923B85 /* arrow_right@2x.png */; };
@@ -275,6 +276,8 @@
 		70B167D21CA0EEE200AF8322 /* ServiceProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProtocolViewController.h; sourceTree = "<group>"; };
 		70B167D31CA0EEE200AF8322 /* ServiceProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProtocolViewController.m; sourceTree = "<group>"; };
 		70B167D61CA106F700AF8322 /* Service Protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Service Protocol.html"; sourceTree = "<group>"; };
+		70B68BA81CA18664001284E7 /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
+		70B68BA91CA18664001284E7 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		70C2B0291C81294700923B85 /* arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
 		70C2B02A1C81294700923B85 /* arrow_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@3x.png"; sourceTree = "<group>"; };
 		70C2B02B1C81294700923B85 /* arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_right@2x.png"; sourceTree = "<group>"; };
@@ -320,6 +323,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70B68BAA1CA18664001284E7 /* libUMessage_Sdk_1.2.6.a in Frameworks */,
 				D6AA2EAC9399777C75CF39CE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,6 +590,15 @@
 			path = html;
 			sourceTree = "<group>";
 		};
+		70B68BA71CA18664001284E7 /* UMessage_Sdk_1.2.6 */ = {
+			isa = PBXGroup;
+			children = (
+				70B68BA81CA18664001284E7 /* libUMessage_Sdk_1.2.6.a */,
+				70B68BA91CA18664001284E7 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.2.6;
+			sourceTree = "<group>";
+		};
 		70F7CE0D1BE3AC25001D027C = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +620,7 @@
 		70F7CE181BE3AC25001D027C /* XujcClient */ = {
 			isa = PBXGroup;
 			children = (
+				70B68BA71CA18664001284E7 /* UMessage_Sdk_1.2.6 */,
 				7023F9BF1BE72E5E0046CF3B /* Category */,
 				70F7CE621BE426FF001D027C /* Collection View Reusable Views */,
 				70F7CE3A1BE3E7E7001D027C /* Model */,
@@ -786,6 +800,11 @@
 					70F7CE151BE3AC25001D027C = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 9KYD7S7AZY;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1091,12 +1110,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XujcClient/XujcClient-prefix.pch";
 				INFOPLIST_FILE = XujcClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XujcClient/UMessage_Sdk_1.2.6",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1108,12 +1133,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XujcClient/XujcClient-prefix.pch";
 				INFOPLIST_FILE = XujcClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XujcClient/UMessage_Sdk_1.2.6",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
