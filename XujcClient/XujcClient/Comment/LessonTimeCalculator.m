@@ -66,7 +66,7 @@
     return [_calendar dateFromComponents:components];
 }
 
-- (NSTimeInterval)timeIntervalRelativeToFirstLessonStartTime:(NSInteger)lessonNumber
+- (NSTimeInterval)timeIntervalRelativeToFirstLessonStartTimeWithLessonNumber:(NSInteger)lessonNumber
 {
     NSTimeInterval interval;
     if (lessonNumber == 1){
@@ -97,14 +97,19 @@
     return interval;
 }
 
+- (NSTimeInterval)timeIntervalRelativeToFirstLessonStartTimeWithLessonIndex:(NSInteger)lessonIndex
+{
+    return [self timeIntervalRelativeToFirstLessonStartTimeWithLessonNumber:[LessonTimeCalculator sectionNumberFromSectionIndex:lessonIndex]];
+}
+
 - (NSInteger)currentLessonNumberByTime:(NSDate *)date
 {
     NSInteger currentLessonNumber = 0;
     NSDateComponents *components = [_calendar components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
     NSTimeInterval timeIntervalRelativeToFirstLessonStartTime = (components.hour - 8) * kTimeIntervalOfHour + components.minute * kTimeIntervalOfMinute;
     for (NSInteger i = [LessonTimeCalculator earliestLessonNumber]; i < [LessonTimeCalculator lastLessonNumber]; ++i) {
-        NSTimeInterval interval = [self timeIntervalRelativeToFirstLessonStartTime:i] + [LessonTimeCalculator lessonDuration];
-        if (timeIntervalRelativeToFirstLessonStartTime < interval) {
+        NSTimeInterval overLessonInterval = [self timeIntervalRelativeToFirstLessonStartTimeWithLessonIndex:i] + [LessonTimeCalculator lessonDuration];
+        if (timeIntervalRelativeToFirstLessonStartTime < overLessonInterval) {
             currentLessonNumber = i;
             break;
         }
@@ -121,10 +126,10 @@
     
     NSTimeInterval lessonDuration = [LessonTimeCalculator lessonDuration];
     for (NSInteger i = [LessonTimeCalculator earliestLessonNumber]; i < [LessonTimeCalculator lastLessonNumber]; ++i) {
-        NSTimeInterval interval = [self timeIntervalRelativeToFirstLessonStartTime:i] + lessonDuration;
-        if (timeIntervalRelativeToFirstLessonStartTime < interval) {
+        NSTimeInterval overLessonInterval = [self timeIntervalRelativeToFirstLessonStartTimeWithLessonIndex:i] + lessonDuration;
+        if (timeIntervalRelativeToFirstLessonStartTime < overLessonInterval) {
             currentLessonNumber = i;
-            currentLessProgress = MAX(1 - (interval - timeIntervalRelativeToFirstLessonStartTime) / lessonDuration, 0.f);
+            currentLessProgress = MAX(1 - (overLessonInterval - timeIntervalRelativeToFirstLessonStartTime) / lessonDuration, 0.f);
             break;
         }
     }
