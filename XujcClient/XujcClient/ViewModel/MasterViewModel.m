@@ -8,6 +8,7 @@
 
 #import "MasterViewModel.h"
 #import "DynamicData.h"
+#import "UserModel.h"
 #import <Instabug/Instabug.h>
 
 @implementation MasterViewModel
@@ -19,6 +20,15 @@
         RACSignal *shakingReportStatusSignal = [[[userDefaults ty_channelTerminalForShakingReportStatus] setNameWithFormat:@"MasterViewModel shakingReportStatusChannel"] logAll];
         [shakingReportStatusSignal subscribeNext:^(NSNumber *value) {
             [Instabug setInvocationEvent:[value boolValue] ? IBGInvocationEventShake : IBGInvocationEventNone];
+        }];
+        
+        RACSignal *userSignal = [[[[userDefaults ty_channelTerminalForUser] map:^id(NSData *value) {
+            UserModel *user = [NSKeyedUnarchiver unarchiveObjectWithData:value];
+            return user;
+        }] setNameWithFormat:@"MasterViewModel userSignal"] logAll];
+
+        [userSignal subscribeNext:^(UserModel *model) {
+            [Instabug setUserEmail:model.email];
         }];
     }
     return self;
