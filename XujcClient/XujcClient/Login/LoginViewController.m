@@ -276,6 +276,7 @@ static CGFloat const kButtonMarginBottom = 12.f;
     RACSignal *signupShowSignal = [switchButtonStatusChangedSignal not];
     RAC(self.loginButton, hidden) = switchButtonStatusChangedSignal;
     RAC(self.signupButton, hidden) = signupShowSignal;
+    RAC(self.serviceProtocolLabel, hidden) = signupShowSignal;
     RAC(self.serviceProtocolLabel, layer.opacity) = [RACObserve(self.switchButton, layer.opacity) map:^id(NSNumber *value) {
         return @(1 - [value floatValue]);
     }];
