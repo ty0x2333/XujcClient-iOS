@@ -81,6 +81,13 @@ static const CGFloat kLoginButtonMarginVertical = 15.f;
         return [NSString isEmpty:text] ? text : [NSString stringWithFormat:@"%@-", text];
     }];
     
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] init];
+    [singleTap.rac_gestureSignal subscribeNext:^(id x) {
+        @strongify(self);
+        [self.view endEditing:YES];
+    }];
+    [self.view addGestureRecognizer:singleTap];
+    
     [self initViewConstraints];
     
     [self bindViewModel];

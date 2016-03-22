@@ -96,7 +96,12 @@
     // Binding
     [self bindSwitchAnimation];
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] init];
+    @weakify(self);
+    [singleTap.rac_gestureSignal subscribeNext:^(id x) {
+        @strongify(self);
+        [self.view endEditing:YES];
+    }];
     [self.view addGestureRecognizer:singleTap];
     
     [self bindViewModel];
@@ -250,13 +255,6 @@
         [hud hide:YES afterDelay:kErrorHUDShowTime];
     }];
 
-}
-
-#pragma mark - Event Response
-
-- (void)handleSingleTap:(UITapGestureRecognizer *)sender
-{
-    [self.view endEditing:YES];
 }
 
 #pragma mark - Helper
