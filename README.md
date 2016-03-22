@@ -24,3 +24,4 @@ Dependencies
 - [SDWebImage](https://github.com/rs/SDWebImage)
 - [Instabug](https://github.com/Instabug/Instabug-iOS.git)
 - [MJRefresh](https://github.com/CoderMJLee/MJRefresh)
+- [TTTAttributedLabel](https://github.com/TTTAttributedLabel/TTTAttributedLabel)
