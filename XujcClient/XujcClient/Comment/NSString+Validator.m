@@ -12,7 +12,7 @@ static NSString* const kPhoneRegex = @"^1[0-9]{10}$";
 static NSString* const kPasswordRegex = @"^[A-Za-z0-9]{6,30}$";
 //static NSString* const kNumberRegex = @"^\\d+$";
 static NSString* const kNicknameRegex = @"^\\w{2,20}$";
-static NSString* const kEmailRegex = @"^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$";
+static NSString* const kEmailRegex = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
 
 @implementation NSString (Validator)
 
