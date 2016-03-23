@@ -62,7 +62,7 @@ static CGFloat const kClassSectionNumberTitleFontSize = 16.0f;
     }else if (sectionNumber == 52){
         _classSectionNumberTitle.text = @"午2";
     }else{
-        _classSectionNumberTitle.text = [NSString stringWithFormat:@"%ld", _classSection.sectionNumber];
+        _classSectionNumberTitle.text = [NSString stringWithFormat:@"%zd", _classSection.sectionNumber];
     }
     [self setNeedsLayout];
 }

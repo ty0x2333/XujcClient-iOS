@@ -19,6 +19,8 @@ static CGFloat const kServiceProtocolLabelFontSize = 12.f;
 
 static CGFloat const kButtonMarginBottom = 12.f;
 
+static CGFloat const kSwitchButtonFontSize = 15.f;
+
 @interface LoginViewController()<TTTAttributedLabelDelegate>
 
 @property (strong, nonatomic) LoginTextFieldGroupView *loginTextFieldGroupView;
@@ -44,7 +46,7 @@ static CGFloat const kButtonMarginBottom = 12.f;
 @property (strong, nonatomic) LoginViewModel *loginViewModel;
 @property (strong, nonatomic) SignupViewModel *signupViewModel;
 
-@property (strong, nonatomic) TTTAttributedLabel *servicProtocolLabel;
+@property (strong, nonatomic) TTTAttributedLabel *serviceProtocolLabel;
 
 @end
 
@@ -99,21 +101,23 @@ static CGFloat const kButtonMarginBottom = 12.f;
     [self.view addSubview:_signupButton];
     
     _switchButton = [[UIButton alloc] init];
-    [_switchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_switchButton setTitleColor:[UIColor ty_textGray] forState:UIControlStateNormal];
+    _switchButton.titleLabel.font = [UIFont systemFontOfSize:kSwitchButtonFontSize];
     [self.view addSubview:_switchButton];
     
-    _servicProtocolLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
-    _servicProtocolLabel.textAlignment = NSTextAlignmentCenter;
-    _servicProtocolLabel.numberOfLines = 0;
-    _servicProtocolLabel.font = [UIFont systemFontOfSize:kServiceProtocolLabelFontSize];
-    _servicProtocolLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
-//    _servicProtocolLabel.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName: [NSNumber numberWithBool:NO]};
-    _servicProtocolLabel.text = [NSString stringWithFormat:@"%@%@", @"点击「注册」按钮\n代表你已阅读并同意", NSLocalizedString(@"Service Protocol", nil)];
-    _servicProtocolLabel.delegate = self;
+    _serviceProtocolLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
+    _serviceProtocolLabel.textAlignment = NSTextAlignmentCenter;
+    _serviceProtocolLabel.numberOfLines = 0;
+    _serviceProtocolLabel.textColor = [UIColor ty_textGray];
+    _serviceProtocolLabel.font = [UIFont systemFontOfSize:kServiceProtocolLabelFontSize];
+    _serviceProtocolLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    _serviceProtocolLabel.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName: [NSNumber numberWithBool:NO], (NSString*)kCTForegroundColorAttributeName: (id)[UIColor ty_textLink].CGColor};
+    _serviceProtocolLabel.text = [NSString stringWithFormat:@"%@%@", @"点击「注册」按钮\n代表你已阅读并同意", NSLocalizedString(@"Service Protocol", nil)];
+    _serviceProtocolLabel.delegate = self;
     NSURL *useAgreementUrl = [NSURL URLWithString:NSStringFromClass([ServiceProtocolViewController class])];
-    NSRange range = [_servicProtocolLabel.text rangeOfString:NSLocalizedString(@"Service Protocol", nil)];
-    [_servicProtocolLabel addLinkToURL:useAgreementUrl withRange:range];
-    [self.view addSubview:_servicProtocolLabel];
+    NSRange range = [_serviceProtocolLabel.text rangeOfString:NSLocalizedString(@"Service Protocol", nil)];
+    [_serviceProtocolLabel addLinkToURL:useAgreementUrl withRange:range];
+    [self.view addSubview:_serviceProtocolLabel];
     
     [self initConstraints];
     
@@ -182,14 +186,14 @@ static CGFloat const kButtonMarginBottom = 12.f;
         make.height.equalTo(self.loginButton);
     }];
     
-    [_servicProtocolLabel makeConstraints:^(MASConstraintMaker *make) {
+    [_serviceProtocolLabel makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.signupButton.mas_bottom).with.offset(kButtonMarginBottom);
         make.centerX.equalTo(self.signupButton);
     }];
     
     [_switchButton makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.signupButton.mas_bottom).with.offset(kButtonMarginBottom);
-        make.centerX.equalTo(self.servicProtocolLabel.mas_centerX);
+        make.centerX.equalTo(self.serviceProtocolLabel.mas_centerX);
     }];
     
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
@@ -215,7 +219,6 @@ static CGFloat const kButtonMarginBottom = 12.f;
                             options:(animationCurve << 16)
                          animations:^{
                              [self.view layoutIfNeeded];
-                             self.servicProtocolLabel.layer.opacity = 1.f;
                              self.switchButton.layer.opacity = 0;
                          }
                          completion:nil];
@@ -242,7 +245,6 @@ static CGFloat const kButtonMarginBottom = 12.f;
                             options:(animationCurve << 16)
                          animations:^{
                              [self.view layoutIfNeeded];
-                             self.servicProtocolLabel.layer.opacity = 0;
                              self.switchButton.layer.opacity = 1.f;
                          }
                          completion:nil];
@@ -276,9 +278,12 @@ static CGFloat const kButtonMarginBottom = 12.f;
     
     // Button Hidden
     RACSignal *signupShowSignal = [switchButtonStatusChangedSignal not];
-    RAC(_loginButton, hidden) = switchButtonStatusChangedSignal;
-    RAC(_signupButton, hidden) = signupShowSignal;
-    RAC(_servicProtocolLabel, hidden) = signupShowSignal;
+    RAC(self.loginButton, hidden) = switchButtonStatusChangedSignal;
+    RAC(self.signupButton, hidden) = signupShowSignal;
+    RAC(self.serviceProtocolLabel, hidden) = signupShowSignal;
+    RAC(self.serviceProtocolLabel, layer.opacity) = [RACObserve(self.switchButton, layer.opacity) map:^id(NSNumber *value) {
+        return @(1 - [value floatValue]);
+    }];
     
     // Selected change
     _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {

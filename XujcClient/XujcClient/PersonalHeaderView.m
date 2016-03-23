@@ -46,38 +46,11 @@ static CGFloat const kAvatarImageViewCornerRadius = kAvatarImageViewHeight / 2.f
         @weakify(self);
         [tapGestureRecognizer.rac_gestureSignal subscribeNext:^(id x) {
             NSArray *items = @[
-                               MMItemMake(NSLocalizedString(@"Take a picture", nil), MMItemTypeNormal, ^(NSInteger index){}),
+                               MMItemMake(NSLocalizedString(@"Take a picture", nil), MMItemTypeNormal, ^(NSInteger index){
+                                   [self p_presentImagePickerControllerWithSourceType:UIImagePickerControllerSourceTypeCamera];
+                               }),
                                MMItemMake(NSLocalizedString(@"From photo library", nil), MMItemTypeNormal, ^(NSInteger index){
-                                   UIViewController *viewController = [AppUtils viewController:self];
-                                   
-                                   UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
-                                   pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                                   pickerController.allowsEditing = YES;
-                                   
-                                   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:viewController.view animated:YES];
-                                   [pickerController.rac_imageSelectedSignal subscribeNext:^(NSDictionary *userInfo) {
-                                       @strongify(self);
-                                       self.avatarImageView.image = userInfo[UIImagePickerControllerEditedImage];
-//                                       TyLogDebug(@"userInfo: %@", userInfo);
-                                       [[self.viewModel updateAvatarSignalWithImage:self.avatarImageView.image] subscribeNext:^(NSNumber *progress) {
-                                           hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-                                           hud.progress = [progress floatValue];
-                                       } error:^(NSError *error) {
-                                           hud.mode = MBProgressHUDModeText;
-                                           hud.detailsLabelText = [error localizedDescription];
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               [hud hide:YES afterDelay:kErrorHUDShowTime];
-                                           });
-                                       } completed:^{
-                                           hud.mode = MBProgressHUDModeText;
-                                           hud.detailsLabelText = NSLocalizedString(@"Upload to complete", nil);
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               [hud hide:YES afterDelay:kSuccessHUDShowTime];
-                                           });
-                                       }];
-                                       [pickerController dismissViewControllerAnimated:YES completion:nil];
-                                   }];
-                                   [viewController presentViewController:pickerController animated:NO completion:nil];
+                                   [self p_presentImagePickerControllerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
                                })
                                ];
             [[[MMSheetView alloc] initWithTitle:nil items:items] showWithBlock:^(MMPopupView * view, BOOL finished){
@@ -111,6 +84,45 @@ static CGFloat const kAvatarImageViewCornerRadius = kAvatarImageViewHeight / 2.f
         }];
     }
     return self;
+}
+
+- (void)p_presentImagePickerControllerWithSourceType:(UIImagePickerControllerSourceType)sourceType
+{
+    UIViewController *viewController = [AppUtils viewController:self];
+    
+    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+    pickerController.sourceType = sourceType;
+    pickerController.allowsEditing = YES;
+    
+    RACSignal *imageSelectedSignal = pickerController.rac_imageSelectedSignal;
+    @weakify(self);
+    [imageSelectedSignal subscribeNext:^(NSDictionary *userInfo) {
+        @strongify(self);
+        self.avatarImageView.image = userInfo[UIImagePickerControllerEditedImage];
+        //                                       TyLogDebug(@"userInfo: %@", userInfo);
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:viewController.view animated:YES];
+        [[self.viewModel updateAvatarSignalWithImage:self.avatarImageView.image] subscribeNext:^(NSNumber *progress) {
+            hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+            hud.progress = [progress floatValue];
+        } error:^(NSError *error) {
+            hud.mode = MBProgressHUDModeText;
+            hud.detailsLabelText = [error localizedDescription];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hide:YES afterDelay:kErrorHUDShowTime];
+            });
+        } completed:^{
+            hud.mode = MBProgressHUDModeText;
+            hud.detailsLabelText = NSLocalizedString(@"Upload to complete", nil);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hide:YES afterDelay:kSuccessHUDShowTime];
+            });
+        }];
+        [pickerController dismissViewControllerAnimated:YES completion:nil];
+    } completed:^{
+        [pickerController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [viewController presentViewController:pickerController animated:NO completion:nil];
 }
 
 @end

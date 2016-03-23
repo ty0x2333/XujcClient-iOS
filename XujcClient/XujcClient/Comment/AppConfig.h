@@ -19,6 +19,8 @@ static NSString * const kUserDefaultsKeyUser = @"user";
 
 static NSString * const kInstabugToken = @"f0a9d84167a85899070415ed37f5d1b2";
 
+static NSString * const kUMengAppKey = @"56f14cc1e0f55a639e001151";
+
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
 
 #define DOCUMENT_DIRECTORY [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
