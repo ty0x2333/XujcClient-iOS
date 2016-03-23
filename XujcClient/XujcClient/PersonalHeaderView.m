@@ -54,11 +54,12 @@ static CGFloat const kAvatarImageViewCornerRadius = kAvatarImageViewHeight / 2.f
                                    pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                                    pickerController.allowsEditing = YES;
                                    
-                                   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:viewController.view animated:YES];
-                                   [pickerController.rac_imageSelectedSignal subscribeNext:^(NSDictionary *userInfo) {
+                                   RACSignal *imageSelectedSignal = pickerController.rac_imageSelectedSignal;
+                                   [imageSelectedSignal subscribeNext:^(NSDictionary *userInfo) {
                                        @strongify(self);
                                        self.avatarImageView.image = userInfo[UIImagePickerControllerEditedImage];
 //                                       TyLogDebug(@"userInfo: %@", userInfo);
+                                       MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:viewController.view animated:YES];
                                        [[self.viewModel updateAvatarSignalWithImage:self.avatarImageView.image] subscribeNext:^(NSNumber *progress) {
                                            hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
                                            hud.progress = [progress floatValue];
@@ -76,7 +77,10 @@ static CGFloat const kAvatarImageViewCornerRadius = kAvatarImageViewHeight / 2.f
                                            });
                                        }];
                                        [pickerController dismissViewControllerAnimated:YES completion:nil];
+                                   } completed:^{
+                                       [pickerController dismissViewControllerAnimated:YES completion:nil];
                                    }];
+                                   
                                    [viewController presentViewController:pickerController animated:NO completion:nil];
                                })
                                ];
