@@ -66,7 +66,7 @@
             [task cancel];
         }];
     }];
-    return fetchScheduleLessonSignal;
+    return [[fetchScheduleLessonSignal setNameWithFormat:@"ScheduleViewModel fetchScheduleLessonSignal"] logError];
 }
 
 - (LessonEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath

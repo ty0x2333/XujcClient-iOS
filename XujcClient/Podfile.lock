@@ -42,7 +42,8 @@ PODS:
   - UIColor-HexString (1.3.0)
 
 DEPENDENCIES:
-  - AFNetworking
+  - AFNetworking (from `https://github.com/luckytianyiyan/AFNetworking.git`, branch
+    `ty_no_unescaped_ctrl_char`)
   - AliyunOSSiOS (~> 2.2.0)
   - CupertinoYankee
   - DZNEmptyDataSet
@@ -58,6 +59,16 @@ DEPENDENCIES:
   - SSKeychain
   - TTTAttributedLabel
   - UIColor-HexString
+
+EXTERNAL SOURCES:
+  AFNetworking:
+    :branch: ty_no_unescaped_ctrl_char
+    :git: https://github.com/luckytianyiyan/AFNetworking.git
+
+CHECKOUT OPTIONS:
+  AFNetworking:
+    :commit: 976a73d17b933de4efa8a7266ff554a9991d4b48
+    :git: https://github.com/luckytianyiyan/AFNetworking.git
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
