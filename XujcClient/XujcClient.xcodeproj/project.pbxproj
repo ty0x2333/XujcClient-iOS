@@ -15,6 +15,7 @@
 		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
 		7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9C11BE72F280046CF3B /* NSDate+Week.m */; };
+		702CF8C81CA43BBE007820B5 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702CF8C71CA43BBE007820B5 /* UserDetailViewController.m */; };
 		702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */; };
 		702F99D31C7D08F9003B35A7 /* tabbar-exam-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */; };
 		702F99D41C7D08F9003B35A7 /* tabbar-exam-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99C01C7D08F9003B35A7 /* tabbar-exam-selected@3x.png */; };
@@ -134,6 +135,8 @@
 		7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcLessonEventModel.m; sourceTree = "<group>"; };
 		7023F9C01BE72F280046CF3B /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		7023F9C11BE72F280046CF3B /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
+		702CF8C61CA43BBE007820B5 /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
+		702CF8C71CA43BBE007820B5 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
 		702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
 		702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
 		702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-exam-selected@2x.png"; sourceTree = "<group>"; };
@@ -645,6 +648,8 @@
 				70730DA11C99F842007CBEBB /* PersonalViewModel.m */,
 				702F99BB1C7CFC15003B35A7 /* PersonalViewController.h */,
 				702F99BC1C7CFC15003B35A7 /* PersonalViewController.m */,
+				702CF8C61CA43BBE007820B5 /* UserDetailViewController.h */,
+				702CF8C71CA43BBE007820B5 /* UserDetailViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
 				708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */,
 				70B167D21CA0EEE200AF8322 /* ServiceProtocolViewController.h */,
@@ -956,6 +961,7 @@
 				702F99BD1C7CFC15003B35A7 /* PersonalViewController.m in Sources */,
 				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m in Sources */,
 				70730D731C947A41007CBEBB /* SemesterTableViewCellViewModel.m in Sources */,
+				702CF8C81CA43BBE007820B5 /* UserDetailViewController.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
 				7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */,
 				7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */,
