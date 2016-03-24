@@ -10,4 +10,7 @@
 
 @interface UserDetailViewModel : NSObject
 
+@property (copy, nonatomic) NSString *nickname;
+@property (copy, nonatomic) NSString *avatar;
+
 @end

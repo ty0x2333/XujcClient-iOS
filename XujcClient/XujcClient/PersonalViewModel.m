@@ -7,6 +7,7 @@
 //
 
 #import "PersonalViewModel.h"
+#import "UserModel.h"
 
 @interface PersonalViewModel()
 
@@ -38,7 +39,22 @@
 
 - (UserDetailViewModel *)userDetailViewModel
 {
-    return [[UserDetailViewModel alloc] init];
+    UserDetailViewModel *viewModel = [[UserDetailViewModel alloc] init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    RACSignal *userSignal = [[userDefaults ty_channelTerminalForUser] map:^id(NSData *value) {
+        UserModel *user = [NSKeyedUnarchiver unarchiveObjectWithData:value];
+        return user;
+    }];
+    
+    RAC(viewModel, nickname) = [[[userSignal map:^id(UserModel *value) {
+        return value.nikename;
+    }] setNameWithFormat:@"PersonalViewModel nikenameSignal"] logAll];
+    
+    RAC(viewModel, avatar) = [[[userSignal map:^id(UserModel *value) {
+        return value.avatar;
+    }] setNameWithFormat:@"PersonalViewModel avatarSignal"] logAll];
+    
+    return viewModel;
 }
 
 - (NSInteger)numberOfSections
