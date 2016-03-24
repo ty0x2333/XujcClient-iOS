@@ -20,6 +20,8 @@
 
 - (SupportCenterViewModel *)supportCenterViewModel;
 
+- (NSInteger)numberOfSections;
+
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 
 - (TableViewCellViewModel *)tableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath;

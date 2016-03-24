@@ -10,6 +10,7 @@
 #import "SettingsViewController.h"
 #import "PersonalHeaderView.h"
 #import "SupportCenterViewController.h"
+#import "UserDetailViewController.h"
 
 static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
 
@@ -59,19 +60,6 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
         make.top.equalTo(self.mas_topLayoutGuideTop);
         make.bottom.equalTo(self.mas_bottomLayoutGuideBottom);
     }];
-    
-//    UIButton *settingsButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(25, 25)}];
-//    [settingsButton setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
-//    UIBarButtonItem *settingsButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
-//    self.navigationItem.rightBarButtonItem = settingsButtonItem;
-//    
-//    @weakify(self);
-//    settingsButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-//        @strongify(self);
-//        SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
-//        [self.navigationController pushViewController:settingsViewController animated:YES];
-//        return [RACSignal empty];
-//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,6 +69,11 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
 }
 
 #pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self.viewModel numberOfSections];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -99,12 +92,17 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        SupportCenterViewController *viewController = [[SupportCenterViewController alloc] initWithViewModel:[self.viewModel supportCenterViewModel]];
+    if (indexPath.section == 0) {
+        UserDetailViewController *viewController = [[UserDetailViewController alloc] init];
         [self.navigationController pushViewController:viewController animated:YES];
-    } else if (indexPath.row == 1) {
-        SettingsViewController *viewController = [[SettingsViewController alloc] initWithViewModel:[self.viewModel settingsViewModel]];
-        [self.navigationController pushViewController:viewController animated:YES];
+    } else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            SupportCenterViewController *viewController = [[SupportCenterViewController alloc] initWithViewModel:[self.viewModel supportCenterViewModel]];
+            [self.navigationController pushViewController:viewController animated:YES];
+        } else if (indexPath.row == 1) {
+            SettingsViewController *viewController = [[SettingsViewController alloc] initWithViewModel:[self.viewModel settingsViewModel]];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
     }
 }
 

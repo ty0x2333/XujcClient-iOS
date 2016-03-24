@@ -10,8 +10,8 @@
 
 @interface PersonalViewModel()
 
-@property (strong, nonatomic) NSArray *texts;
-@property (strong, nonatomic) NSArray *imageNames;
+@property (strong, nonatomic) NSArray<NSArray<NSString *> *> *texts;
+@property (strong, nonatomic) NSArray<NSArray<NSString *> *> *imageNames;
 
 @end
 
@@ -20,8 +20,8 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        _texts = @[@"Feedback and Help", @"Settings"];
-        _imageNames = @[@"cell_icon_home", @"cell_icon_settings"];
+        _texts = @[@[@"Personal Detail"], @[@"Feedback and Help", @"Settings"]];
+        _imageNames = @[@[@"cell_icon_home"], @[@"cell_icon_home", @"cell_icon_settings"]];
     }
     return self;
 }
@@ -36,17 +36,22 @@
     return [[SettingsViewModel alloc] init];
 }
 
-- (NSInteger)numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfSections
 {
     return _texts.count;
+}
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section
+{
+    return [[_texts objectAtIndex:section] count];
 }
 
 - (TableViewCellViewModel *)tableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TableViewCellViewModel *viewModel = [[TableViewCellViewModel alloc] init];
     viewModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    viewModel.imageNamed = [_imageNames objectAtIndex:indexPath.row];
-    viewModel.localizedText = NSLocalizedString([_texts objectAtIndex:indexPath.row], nil);
+    viewModel.imageNamed = [[_imageNames objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    viewModel.localizedText = NSLocalizedString([[_texts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row], nil);
     return viewModel;
 }
 
