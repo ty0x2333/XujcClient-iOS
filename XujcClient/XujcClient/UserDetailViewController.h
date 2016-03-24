@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class UserDetailViewModel;
 
 @interface UserDetailViewController : UIViewController
+
+- (instancetype)initWithViewModel:(UserDetailViewModel *)viewModel;
 
 @end

@@ -36,6 +36,11 @@
     return [[SettingsViewModel alloc] init];
 }
 
+- (UserDetailViewModel *)userDetailViewModel
+{
+    return [[UserDetailViewModel alloc] init];
+}
+
 - (NSInteger)numberOfSections
 {
     return _texts.count;

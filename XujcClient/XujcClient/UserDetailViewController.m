@@ -7,8 +7,23 @@
 //
 
 #import "UserDetailViewController.h"
+#import "UserDetailViewModel.h"
+
+@interface UserDetailViewController()
+
+@property (strong, nonatomic) UserDetailViewModel *viewModel;
+
+@end
 
 @implementation UserDetailViewController
+
+- (instancetype)initWithViewModel:(UserDetailViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
