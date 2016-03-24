@@ -32,7 +32,7 @@
     [self makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.mas_height);
     }];
-    RAC(self, layer.cornerRadius) = [[[[RACSignal merge:@[RACObserve(self, frame), RACObserve(self, bounds)]] distinctUntilChanged] logNext]
+    RAC(self, layer.cornerRadius) = [[[RACSignal merge:@[RACObserve(self, frame), RACObserve(self, bounds)]] distinctUntilChanged]
                                      map:^(NSValue *value) {
                                          return @(CGRectGetWidth([value CGRectValue]) / 2.f);
                                      }];

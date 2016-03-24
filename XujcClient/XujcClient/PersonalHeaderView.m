@@ -75,7 +75,7 @@ static CGFloat const kAvatarImageViewHeight = 100.f;
         }];
         
         RAC(self.nicknameLabel, text) = RACObserve(self.viewModel, nickname);
-        [RACObserve(self.viewModel, avater) subscribeNext:^(NSString *avatarURL) {
+        [RACObserve(self.viewModel, avatar) subscribeNext:^(NSString *avatarURL) {
             @strongify(self);
             [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
         }];

@@ -25,9 +25,9 @@
             return value.nikename;
         }] setNameWithFormat:@"PersonalHeaderViewModel nikenameSignal"] logAll];
         
-        RAC(self, avater) = [[[userSignal map:^id(UserModel *value) {
+        RAC(self, avatar) = [[[userSignal map:^id(UserModel *value) {
             return value.avatar;
-        }] setNameWithFormat:@"PersonalHeaderViewModel avaterSignal"] logAll];
+        }] setNameWithFormat:@"PersonalHeaderViewModel avatarSignal"] logAll];
     }
     return self;
 }
