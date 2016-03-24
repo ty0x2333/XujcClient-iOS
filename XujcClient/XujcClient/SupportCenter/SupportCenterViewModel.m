@@ -47,4 +47,10 @@
     return viewModel;
 }
 
+- (NSString *)versionDescription
+{
+    NSDictionary *info= [[NSBundle mainBundle] infoDictionary];
+    return [NSString stringWithFormat:@"XujcClient iOS Version %@ (%@)", info[@"CFBundleShortVersionString"], info[@"CFBundleVersion"]];
+}
+
 @end
