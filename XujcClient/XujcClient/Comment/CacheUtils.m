@@ -65,7 +65,7 @@ static NSString * const kLessonEventTableInitSQL = @"CREATE TABLE IF NOT EXISTS 
 
 - (void)cleanCache
 {
-    [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
+    [[FMDatabaseQueue instance] inTransaction:^(FMDatabase *db, BOOL *rollback) {
         [db executeUpdate:@"DELETE FROM semester"];
         [db executeUpdate:@"DELETE FROM score"];
         [db executeUpdate:@"DELETE FROM lesson_event"];
