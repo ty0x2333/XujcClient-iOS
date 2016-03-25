@@ -8,6 +8,7 @@
 
 #import "SupportCenterViewController.h"
 #import <Instabug/Instabug.h>
+#import "ServiceProtocolViewController.h"
 
 static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 static CGFloat const kTableViewTableFooterHeight = 40.f;
@@ -89,10 +90,13 @@ static CGFloat const kVersionLabelFontSize = 14.f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!(indexPath.section == 1 && indexPath.row == 0)) {
+    if (indexPath.section == 0) {
         [Instabug invokeWithInvocationMode:IBGInvocationModeFeedbackSender];
-        [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    } else if (indexPath.section == 2) {
+        ServiceProtocolViewController *viewController = [[ServiceProtocolViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
     }
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 @end

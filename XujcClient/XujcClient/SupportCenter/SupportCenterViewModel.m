@@ -24,7 +24,7 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         RACChannelTo(self, shakingReportStatus, @(NO)) = [userDefaults ty_channelTerminalForShakingReportStatus];
         
-        _texts = @[@[@"Feedback problems"], @[@"Capture feedback BUG by shaking"]];
+        _texts = @[@[@"Feedback problems"], @[@"Capture feedback BUG by shaking"], @[@"Service Protocol"]];
     }
     return self;
 }

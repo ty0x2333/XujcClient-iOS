@@ -20,13 +20,16 @@
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Service Protocol", nil);
+    self.automaticallyAdjustsScrollViewInsets = NO;
     _webView = [[UIWebView alloc] init];
     _webView.scalesPageToFit = YES;
     [self.view addSubview:_webView];
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Service Protocol"
                                                                                                                   ofType:@"html"]]]];
     [_webView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.leading.trailing.equalTo(self.view);
+        make.leading.trailing.equalTo(self.view);
+        make.top.equalTo(self.mas_topLayoutGuideBottom);
+        make.bottom.equalTo(self.mas_bottomLayoutGuideBottom);
     }];
 }
 
