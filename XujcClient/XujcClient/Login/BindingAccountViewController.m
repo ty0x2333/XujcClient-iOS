@@ -10,7 +10,7 @@
 #import "XujcAPI.h"
 #import "DynamicData.h"
 #import "UIView+BorderLine.h"
-#import "XujcUser.h"
+#import "XujcUserModel.h"
 #import "SSKeychain.h"
 #import "LoginLayoutConfigs.h"
 #import "FormButton.h"

@@ -8,7 +8,7 @@
 
 #import "BindingAccountViewModel.h"
 #import "XujcService.h"
-#import "XujcUser.h"
+#import "XujcUserModel.h"
 #import "DynamicData.h"
 #import "TYService.h"
 #import "AppDelegate.h"
@@ -58,7 +58,7 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
         __block NSURLSessionDataTask *subTask = nil;
         NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"me.php" parameters:@{XujcServiceKeyApiKey: self.xujcApiKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             TyLogDebug(@"Success Response: %@", responseObject);
-            XujcUser *user = [[XujcUser alloc] initWithJSONResopnse:responseObject];
+            XujcUserModel *user = [[XujcUserModel alloc] initWithJSONResopnse:responseObject];
             TyLogDebug(@"User Infomation: %@", [user description]);
             
             subTask = [self.sessionManager PUT:@"bindXujcAccount" parameters:@{TYServiceKeyAuthorization: DYNAMIC_DATA.apiKey, TYServiceKeyXujcKey: self.xujcApiKey} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

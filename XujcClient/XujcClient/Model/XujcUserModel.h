@@ -1,5 +1,5 @@
 /**
- * @file XujcUser.h
+ * @file XujcUserModel.h
  *
  * @author luckytianyiyan@gmail.com
  * @date 15/10/31
@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@interface XujcUser : BaseModel
+@interface XujcUserModel : BaseModel
 
 @property(nonatomic, strong)NSString *studentId;
 @property(nonatomic, strong)NSString *name;

@@ -1,19 +1,19 @@
 /**
- * @file XujcUser.m
+ * @file XujcUserModel.m
  *
  * @author luckytianyiyan@gmail.com
  * @date 15/10/31
  * @copyright   Copyright © 2015年 luckytianyiyan. All rights reserved.
  */
 
-#import "XujcUser.h"
+#import "XujcUserModel.h"
 
 static NSString* const kDataStudentId = @"StudentId";
 static NSString* const kDataName = @"Name";
 static NSString* const kDataGrade = @"Grade";
 static NSString* const kDataProfessional = @"Professional";
 
-@implementation XujcUser
+@implementation XujcUserModel
 
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {

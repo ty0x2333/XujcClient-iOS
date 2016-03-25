@@ -109,7 +109,7 @@
 		70F7CE291BE3AC25001D027C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */; };
 		70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE321BE3BDF0001D027C /* XujcAPI.m */; };
 		70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE3C1BE3E806001D027C /* BaseModel.m */; };
-		70F7CE431BE3E832001D027C /* XujcUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE421BE3E832001D027C /* XujcUser.m */; };
+		70F7CE431BE3E832001D027C /* XujcUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE421BE3E832001D027C /* XujcUserModel.m */; };
 		70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE481BE3ECAE001D027C /* DynamicData.m */; };
 		70F7CE611BE42391001D027C /* MSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE601BE42391001D027C /* MSEvent.m */; };
 		70F7CE6E1BE43A4F001D027C /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE6D1BE43A4E001D027C /* MSGridline.m */; };
@@ -305,8 +305,8 @@
 		70F7CE351BE3D1B8001D027C /* TyLog_Objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyLog_Objc.h; sourceTree = "<group>"; };
 		70F7CE3B1BE3E806001D027C /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		70F7CE3C1BE3E806001D027C /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
-		70F7CE411BE3E832001D027C /* XujcUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcUser.h; sourceTree = "<group>"; };
-		70F7CE421BE3E832001D027C /* XujcUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcUser.m; sourceTree = "<group>"; };
+		70F7CE411BE3E832001D027C /* XujcUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcUserModel.h; sourceTree = "<group>"; };
+		70F7CE421BE3E832001D027C /* XujcUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcUserModel.m; sourceTree = "<group>"; };
 		70F7CE471BE3ECAE001D027C /* DynamicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicData.h; sourceTree = "<group>"; };
 		70F7CE481BE3ECAE001D027C /* DynamicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicData.m; sourceTree = "<group>"; };
 		70F7CE5F1BE42391001D027C /* MSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEvent.h; sourceTree = "<group>"; };
@@ -722,8 +722,8 @@
 				70F7CE601BE42391001D027C /* MSEvent.m */,
 				70F7CE3B1BE3E806001D027C /* BaseModel.h */,
 				70F7CE3C1BE3E806001D027C /* BaseModel.m */,
-				70F7CE411BE3E832001D027C /* XujcUser.h */,
-				70F7CE421BE3E832001D027C /* XujcUser.m */,
+				70F7CE411BE3E832001D027C /* XujcUserModel.h */,
+				70F7CE421BE3E832001D027C /* XujcUserModel.m */,
 				70FE64B21C7F9EDC00112038 /* XujcScore.h */,
 				70FE64B31C7F9EDC00112038 /* XujcScore.m */,
 				7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */,
@@ -936,7 +936,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */,
-				70F7CE431BE3E832001D027C /* XujcUser.m in Sources */,
+				70F7CE431BE3E832001D027C /* XujcUserModel.m in Sources */,
 				70730DAE1C9A6222007CBEBB /* NSData+Coding.m in Sources */,
 				7062B6C91C9331D10074C716 /* ScoreViewModel.m in Sources */,
 				702CF8CB1CA445C7007820B5 /* UserDetailViewModel.m in Sources */,
