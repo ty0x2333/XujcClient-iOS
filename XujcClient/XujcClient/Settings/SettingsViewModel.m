@@ -51,6 +51,7 @@
         [userDefaults setValue:@"" forKey:kUserDefaultsKeyXujcKey];
         [userDefaults setValue:[[[UserModel alloc] init] data] forKey:kUserDefaultsKeyUser];
         [userDefaults synchronize];
+        [[CacheUtils instance] cleanCache];
         [subscriber sendNext:nil];
         [subscriber sendCompleted];
         return [RACDisposable disposableWithBlock:^{}];
