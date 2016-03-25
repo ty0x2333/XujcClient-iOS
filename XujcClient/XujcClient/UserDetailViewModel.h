@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@class UserModel;
 
 @interface UserDetailViewModel : NSObject
 
 @property (copy, nonatomic) NSString *nickname;
 @property (copy, nonatomic) NSString *avatar;
+@property (copy, nonatomic) NSString *email;
 
 @end
