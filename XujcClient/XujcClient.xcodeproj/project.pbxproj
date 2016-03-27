@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		191B2E8C1CA8578E00B16148 /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E861CA8578E00B16148 /* libSocialWechat.a */; };
 		191B2E8D1CA8578E00B16148 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E871CA8578E00B16148 /* libWeChatSDK.a */; };
+		19370EC51CA8790700B96042 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19370EC11CA8790700B96042 /* libSocialQQ.a */; };
+		19370EC61CA8790700B96042 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19370EC21CA8790700B96042 /* TencentOpenAPI.framework */; };
+		19370EC71CA8790700B96042 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19370EC31CA8790700B96042 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */; };
 		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; };
 		7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */; };
@@ -129,6 +132,10 @@
 		191B2E891CA8578E00B16148 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		191B2E8A1CA8578E00B16148 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		191B2E8B1CA8578E00B16148 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		19370EC11CA8790700B96042 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
+		19370EC21CA8790700B96042 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		19370EC31CA8790700B96042 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		19370EC41CA8790700B96042 /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
 		7023F9A01BE52F6B0046CF3B /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
 		7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
 		7023F9A31BE52FA10046CF3B /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
@@ -340,6 +347,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19370EC51CA8790700B96042 /* libSocialQQ.a in Frameworks */,
+				19370EC61CA8790700B96042 /* TencentOpenAPI.framework in Frameworks */,
 				70B68BAA1CA18664001284E7 /* libUMessage_Sdk_1.2.6.a in Frameworks */,
 				191B2E8C1CA8578E00B16148 /* libSocialWechat.a in Frameworks */,
 				191B2E8D1CA8578E00B16148 /* libWeChatSDK.a in Frameworks */,
@@ -361,6 +370,17 @@
 				191B2E8B1CA8578E00B16148 /* WXApiObject.h */,
 			);
 			path = Wechat;
+			sourceTree = "<group>";
+		};
+		19370EC01CA8790700B96042 /* TencentOpenAPI */ = {
+			isa = PBXGroup;
+			children = (
+				19370EC11CA8790700B96042 /* libSocialQQ.a */,
+				19370EC21CA8790700B96042 /* TencentOpenAPI.framework */,
+				19370EC31CA8790700B96042 /* TencentOpenApi_IOS_Bundle.bundle */,
+				19370EC41CA8790700B96042 /* UMSocialQQHandler.h */,
+			);
+			path = TencentOpenAPI;
 			sourceTree = "<group>";
 		};
 		34B4EF0F9104D9147B0C3989 /* Pods */ = {
@@ -656,6 +676,7 @@
 			children = (
 				191B2E851CA8578E00B16148 /* Wechat */,
 				70B68BA71CA18664001284E7 /* UMessage_Sdk_1.2.6 */,
+				19370EC01CA8790700B96042 /* TencentOpenAPI */,
 				7023F9BF1BE72E5E0046CF3B /* Category */,
 				70F7CE621BE426FF001D027C /* Collection View Reusable Views */,
 				70F7CE3A1BE3E7E7001D027C /* Model */,
@@ -899,6 +920,7 @@
 				702F99E21C7D08F9003B35A7 /* tabbar-schedule@3x.png in Resources */,
 				702F99E61C7D08F9003B35A7 /* tabbar-search@3x.png in Resources */,
 				70B167CC1CA03BF800AF8322 /* cell_icon_home@3x.png in Resources */,
+				19370EC71CA8790700B96042 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				702F99DB1C7D08F9003B35A7 /* tabbar-personal-selected@2x.png in Resources */,
 				702F99E31C7D08F9003B35A7 /* tabbar-search-selected@2x.png in Resources */,
 			);
@@ -1154,6 +1176,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XujcClient/TencentOpenAPI",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XujcClient/XujcClient-prefix.pch";
 				INFOPLIST_FILE = XujcClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1162,6 +1188,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XujcClient/UMessage_Sdk_1.2.6",
 					"$(PROJECT_DIR)/XujcClient/Wechat",
+					"$(PROJECT_DIR)/XujcClient/TencentOpenAPI",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1179,6 +1206,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XujcClient/TencentOpenAPI",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XujcClient/XujcClient-prefix.pch";
 				INFOPLIST_FILE = XujcClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1187,6 +1218,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XujcClient/UMessage_Sdk_1.2.6",
 					"$(PROJECT_DIR)/XujcClient/Wechat",
+					"$(PROJECT_DIR)/XujcClient/TencentOpenAPI",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
