@@ -45,7 +45,7 @@ static const CGFloat kWindowCornerRadius = 4.f;
                                               secret:kSinaSecret
                                          RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     
-    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
+    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline, UMShareToSina]];
 #if DEBUG
     [UMSocialData openLog:YES];
 #endif
