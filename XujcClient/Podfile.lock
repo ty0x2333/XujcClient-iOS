@@ -17,10 +17,10 @@ PODS:
   - AliyunOSSiOS (2.2.0.1)
   - CupertinoYankee (1.0.2)
   - DZNEmptyDataSet (1.7.3)
-  - FMDB (2.6):
-    - FMDB/standard (= 2.6)
-  - FMDB/standard (2.6)
-  - Instabug (5.1.2)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - Instabug (5.2)
   - LMDropdownView (1.0.3)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
@@ -75,8 +75,8 @@ SPEC CHECKSUMS:
   AliyunOSSiOS: c6cdb91d82c31b70f8174ed12001d3107f245136
   CupertinoYankee: c288994087c791657fce35a43d2a604e64eef23e
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
-  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
-  Instabug: c315abe1a1c4cbd3ea1cc6ec8f9954d6c5371c39
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  Instabug: 48c60e29b1dc8adb2bd80e7eb3c58bceba4ffb8e
   LMDropdownView: f03fadfe65908c735580f63d04c47e6d7c5325f3
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
