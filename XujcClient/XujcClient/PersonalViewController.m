@@ -110,7 +110,7 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
                                              appKey:kUMengAppKey
                                           shareText:@"嘉庚教务iOS客户端"
                                          shareImage:[UIImage imageNamed:@"logo"]
-                                    shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline, UMShareToQQ, UMShareToQzone, UMShareToSina]
+                                    shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline, UMShareToQQ, UMShareToQzone, UMShareToSina, UMShareToSms]
                                            delegate:self];
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     }
