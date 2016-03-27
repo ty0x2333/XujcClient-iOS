@@ -21,8 +21,8 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        _texts = @[@[@"Personal Detail"], @[@"Feedback and Help", @"Settings"]];
-        _imageNames = @[@[@"cell_icon_home"], @[@"cell_icon_home", @"cell_icon_settings"]];
+        _texts = @[@[@"Personal Detail"], @[@"Feedback and Help", @"Settings"], @[@"Share"]];
+        _imageNames = @[@[@"cell_icon_home"], @[@"cell_icon_home", @"cell_icon_settings"], @[@"cell_icon_home"]];
     }
     return self;
 }
@@ -74,9 +74,9 @@
 - (TableViewCellViewModel *)tableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TableViewCellViewModel *viewModel = [[TableViewCellViewModel alloc] init];
-    viewModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     viewModel.imageNamed = [[_imageNames objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     viewModel.localizedText = NSLocalizedString([[_texts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row], nil);
+    viewModel.accessoryType = indexPath.section != 2 ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
     return viewModel;
 }
 

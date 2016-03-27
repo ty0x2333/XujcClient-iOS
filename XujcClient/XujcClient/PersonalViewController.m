@@ -11,12 +11,13 @@
 #import "PersonalHeaderView.h"
 #import "SupportCenterViewController.h"
 #import "UserDetailViewController.h"
+#import <UMSocial.h>
 
 static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
 
 static CGFloat const kPersonalHeaderViewHeight = 140.5f;
 
-@interface PersonalViewController()<UITableViewDataSource, UITableViewDelegate>
+@interface PersonalViewController()<UITableViewDataSource, UITableViewDelegate, UMSocialUIDelegate>
 
 @property (strong, nonatomic) PersonalViewModel *viewModel;
 
@@ -99,12 +100,28 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
         if (indexPath.row == 0) {
             SupportCenterViewController *viewController = [[SupportCenterViewController alloc] initWithViewModel:[self.viewModel supportCenterViewModel]];
             [self.navigationController pushViewController:viewController animated:YES];
+            
         } else if (indexPath.row == 1) {
             SettingsViewController *viewController = [[SettingsViewController alloc] initWithViewModel:[self.viewModel settingsViewModel]];
             [self.navigationController pushViewController:viewController animated:YES];
         }
+    } else if (indexPath.section == 2) {
+        [UMSocialSnsService presentSnsIconSheetView:self
+                                             appKey:kUMengAppKey
+                                          shareText:@"嘉庚教务iOS客户端"
+                                         shareImage:[UIImage imageNamed:@"logo"]
+                                    shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline]
+                                           delegate:self];
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     }
 }
 
+#pragma mark - UMSocialUIDelegate
+- (void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    if (response.responseCode == UMSResponseCodeSuccess) {
+        TyLogDebug(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
+}
 
 @end
