@@ -40,6 +40,9 @@ static const CGFloat kWindowCornerRadius = 4.f;
     [UMSocialData setAppKey:kUMengAppKey];
     [UMSocialWechatHandler setWXAppId:kWechatAppID appSecret:kWechatSecret url:@"http://www.tianyiyan.com"];
     [UMSocialQQHandler setQQWithAppId:kQQAppID appKey:kQQAppKey url:@"http://www.tianyiyan.com"];
+#if DEBUG
+    [UMSocialData openLog:YES];
+#endif
     
     [UMessage startWithAppkey:kUMengAppKey launchOptions:launchOptions];
     
