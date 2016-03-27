@@ -26,6 +26,8 @@
 		19370EEB1CA88D4200B96042 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 19370EEA1CA88D4200B96042 /* libz.tbd */; };
 		19370EEE1CA89B0700B96042 /* cell_icon_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19370EEC1CA89B0700B96042 /* cell_icon_share@2x.png */; };
 		19370EEF1CA89B0700B96042 /* cell_icon_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19370EED1CA89B0700B96042 /* cell_icon_share@3x.png */; };
+		19370EF21CA89DA000B96042 /* cell_icon_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19370EF01CA89DA000B96042 /* cell_icon_detail@2x.png */; };
+		19370EF31CA89DA000B96042 /* cell_icon_detail@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19370EF11CA89DA000B96042 /* cell_icon_detail@3x.png */; };
 		7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */; };
 		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; };
 		7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */; };
@@ -175,6 +177,8 @@
 		19370EEA1CA88D4200B96042 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		19370EEC1CA89B0700B96042 /* cell_icon_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_share@2x.png"; sourceTree = "<group>"; };
 		19370EED1CA89B0700B96042 /* cell_icon_share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_share@3x.png"; sourceTree = "<group>"; };
+		19370EF01CA89DA000B96042 /* cell_icon_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_detail@2x.png"; sourceTree = "<group>"; };
+		19370EF11CA89DA000B96042 /* cell_icon_detail@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_detail@3x.png"; sourceTree = "<group>"; };
 		7023F9A01BE52F6B0046CF3B /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
 		7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
 		7023F9A31BE52FA10046CF3B /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
@@ -878,6 +882,8 @@
 				70B167C61CA03B9200AF8322 /* cell_icon_settings@3x.png */,
 				19370EEC1CA89B0700B96042 /* cell_icon_share@2x.png */,
 				19370EED1CA89B0700B96042 /* cell_icon_share@3x.png */,
+				19370EF01CA89DA000B96042 /* cell_icon_detail@2x.png */,
+				19370EF11CA89DA000B96042 /* cell_icon_detail@3x.png */,
 				70730DBA1C9B9DE9007CBEBB /* default_avatar@2x.png */,
 				70C2B0291C81294700923B85 /* arrow_down@2x.png */,
 				70C2B02A1C81294700923B85 /* arrow_down@3x.png */,
@@ -982,6 +988,7 @@
 				70730DEA1C9E11A8007CBEBB /* Localizable.strings in Resources */,
 				70730DBB1C9B9DE9007CBEBB /* default_avatar@2x.png in Resources */,
 				70F7CE291BE3AC25001D027C /* LaunchScreen.storyboard in Resources */,
+				19370EF31CA89DA000B96042 /* cell_icon_detail@3x.png in Resources */,
 				19370EEE1CA89B0700B96042 /* cell_icon_share@2x.png in Resources */,
 				19370EEF1CA89B0700B96042 /* cell_icon_share@3x.png in Resources */,
 				70C2B02F1C81294700923B85 /* arrow_right@2x.png in Resources */,
@@ -990,6 +997,7 @@
 				702F99E51C7D08F9003B35A7 /* tabbar-search@2x.png in Resources */,
 				70B167CE1CA0CC6A00AF8322 /* logo@2x.png in Resources */,
 				70C2B02E1C81294700923B85 /* arrow_down@3x.png in Resources */,
+				19370EF21CA89DA000B96042 /* cell_icon_detail@2x.png in Resources */,
 				702F99D41C7D08F9003B35A7 /* tabbar-exam-selected@3x.png in Resources */,
 				702F99E11C7D08F9003B35A7 /* tabbar-schedule@2x.png in Resources */,
 				19370ED91CA883C700B96042 /* WeiboSDK.bundle in Resources */,
