@@ -43,7 +43,9 @@ static const CGFloat kWindowCornerRadius = 4.f;
     [UMSocialQQHandler setQQWithAppId:kQQAppID appKey:kQQAppKey url:@"http://www.tianyiyan.com"];
     [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:kSinaAppKey
                                               secret:kSinaSecret
-                                         RedirectURL:@"http://www.tianyiyan.com"];
+                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    
+    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
 #if DEBUG
     [UMSocialData openLog:YES];
 #endif
