@@ -1139,7 +1139,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "23b9081e-3dd0-4047-b1e9-3350ca269b3e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1162,7 +1162,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "23b9081e-3dd0-4047-b1e9-3350ca269b3e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
