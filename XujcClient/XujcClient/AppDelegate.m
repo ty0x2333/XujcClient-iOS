@@ -12,6 +12,8 @@
 #import "CacheUtils.h"
 #import <MMPopupWindow.h>
 #import <Instabug/Instabug.h>
+#import <UMSocial.h>
+#import "UMSocialWechatHandler.h"
 #import "UMessage.h"
 
 #define UMSYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -28,10 +30,14 @@ static const CGFloat kWindowCornerRadius = 4.f;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     TyLogDebug(@"Document Path: %@", DOCUMENT_DIRECTORY);
-    
+#if DEBUG
     NSArray *languages = [NSLocale preferredLanguages];
     NSString *currentLanguage = [languages objectAtIndex:0];
     TyLogDebug (@"Current Language: %@" , currentLanguage);
+#endif
+    
+    [UMSocialData setAppKey:kUMengAppKey];
+    [UMSocialWechatHandler setWXAppId:kWechatAppID appSecret:kWechatSecret url:@"http://www.tianyiyan.com"];
     
     [UMessage startWithAppkey:kUMengAppKey launchOptions:launchOptions];
     
