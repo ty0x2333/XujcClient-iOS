@@ -12,7 +12,7 @@ Dependencies
 ---
 - [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)
 - [Masonry](https://github.com/SnapKit/Masonry)
-- [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+- [luckytianyiyan/AFNetworking (branch: ty_no_unescaped_ctrl_char)](https://github.com/luckytianyiyan/AFNetworking/tree/ty_no_unescaped_ctrl_char)
 - [UIColor-HexString](https://github.com/kevinrenskers/UIColor-HexString)
 - [CupertinoYankee](https://github.com/mattt/CupertinoYankee)
 - [SSKeychain](https://github.com/soffes/sskeychain)

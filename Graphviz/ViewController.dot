@@ -8,6 +8,7 @@ digraph ViewModel{
   MainTabBarController->ScoreViewController;
   MainTabBarController->PersonalViewController;
 
+	PersonalViewController->UserDetailViewController;
   PersonalViewController->SettingsViewController;
   PersonalViewController->SupportCenterViewController
 }

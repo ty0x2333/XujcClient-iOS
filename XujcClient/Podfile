@@ -1,17 +1,22 @@
 platform :ios, '7.0'
-pod "AFNetworking"
 pod 'UIColor-HexString'
-pod 'Masonry'
 pod 'CupertinoYankee'
 pod 'SSKeychain'
-pod 'ReactiveCocoa'
 pod 'MBProgressHUD'
-pod 'FMDB'
 pod 'LMDropdownView'
 pod 'DZNEmptyDataSet'
 pod 'MMPopupView'
-pod 'AliyunOSSiOS', '~> 2.2.0'
-pod 'SDWebImage'
-pod 'Instabug'
 pod 'MJRefresh'
 pod 'TTTAttributedLabel'
+
+# Core Frameworks
+pod 'ReactiveCocoa'
+pod 'Masonry'
+pod "AFNetworking", :git => 'https://github.com/luckytianyiyan/AFNetworking.git', :branch => 'ty_no_unescaped_ctrl_char'
+pod 'SDWebImage'
+pod 'FMDB'
+
+# Services
+pod 'Instabug'
+pod 'AliyunOSSiOS', '~> 2.2.0'
+pod 'UMengSocial', :inhibit_warnings => true

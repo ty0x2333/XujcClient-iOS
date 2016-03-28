@@ -8,14 +8,19 @@
 
 #import "SupportCenterViewController.h"
 #import <Instabug/Instabug.h>
+#import "ServiceProtocolViewController.h"
 
 static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
+static CGFloat const kTableViewTableFooterHeight = 40.f;
+static CGFloat const kVersionLabelFontSize = 14.f;
 
 @interface SupportCenterViewController()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) SupportCenterViewModel *viewModel;
 
 @property (strong, nonatomic) UITableView *tableView;
+
+@property (strong, nonatomic) UILabel *versionLabel;
 
 @end
 
@@ -35,10 +40,18 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
     self.title = NSLocalizedString(@"Feedback and Help", nil);
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    _tableView.sectionFooterHeight = 0;
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
     [self.view addSubview:_tableView];
+    
+    _versionLabel = [[UILabel alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(0, kTableViewTableFooterHeight)}];
+    _versionLabel.font = [UIFont systemFontOfSize:kVersionLabelFontSize];
+    _versionLabel.textAlignment = NSTextAlignmentCenter;
+    _versionLabel.textColor = [UIColor ty_textGray];
+    _versionLabel.text = [self.viewModel versionDescription];
+    _tableView.tableFooterView = _versionLabel;
     
     [_tableView makeConstraints:^(MASConstraintMaker *make) {
         make.top.leading.trailing.bottom.equalTo(self.view);
@@ -77,10 +90,13 @@ static NSString * const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!(indexPath.section == 1 && indexPath.row == 0)) {
+    if (indexPath.section == 0) {
         [Instabug invokeWithInvocationMode:IBGInvocationModeFeedbackSender];
-        [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    } else if (indexPath.section == 2) {
+        ServiceProtocolViewController *viewController = [[ServiceProtocolViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
     }
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 @end

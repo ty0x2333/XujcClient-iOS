@@ -17,6 +17,8 @@
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 
+- (NSString *)versionDescription;
+
 - (TableViewCellViewModel *)tableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

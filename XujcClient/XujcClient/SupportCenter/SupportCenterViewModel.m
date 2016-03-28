@@ -24,7 +24,7 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         RACChannelTo(self, shakingReportStatus, @(NO)) = [userDefaults ty_channelTerminalForShakingReportStatus];
         
-        _texts = @[@[@"Feedback problems"], @[@"Capture feedback BUG by shaking"]];
+        _texts = @[@[@"Feedback problems"], @[@"Capture feedback BUG by shaking"], @[@"Service Protocol"]];
     }
     return self;
 }
@@ -45,6 +45,12 @@
     viewModel.localizedText = NSLocalizedString([(NSArray *)[_texts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row], nil);
     viewModel.selectionStyle = (indexPath.section == 1 && indexPath.row == 0) ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
     return viewModel;
+}
+
+- (NSString *)versionDescription
+{
+    NSDictionary *info= [[NSBundle mainBundle] infoDictionary];
+    return [NSString stringWithFormat:@"XujcClient iOS Version %@ (%@)", info[@"CFBundleShortVersionString"], info[@"CFBundleVersion"]];
 }
 
 @end

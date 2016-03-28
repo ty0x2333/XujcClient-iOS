@@ -16,6 +16,7 @@
 "API Key" = "API Key";
 "Bind Account" = "绑定帐号";
 "Bind Description" = "请登录学院教务系统, 进入 常用链接-基本信息-手机客户端, 在手机客户端页面找到 API Key 并填写在下面.";
+"Personal Detail" = "个人详情";
 
 "EmailOrPhone" = "邮箱或手机号";
 "Password" = "密码";
@@ -23,6 +24,8 @@
 "SwitchToSignup" = "注册帐号";
 "Nickname" = "昵称";
 "Email" = "邮箱";
+
+"Share" = "分享";
 
 "Binding" = "绑定";
 
