@@ -19,6 +19,11 @@
                                   return @([NSString ty_validateEmail:text]);
                               }] distinctUntilChanged];
         
+        _validPhoneSignal = [[RACObserve(self, account)
+                              map:^id(NSString *text) {
+                                  return @([NSString ty_validatePhone:text]);
+                              }] distinctUntilChanged];
+        
         _validPasswordSignal = [[RACObserve(self, password)
                                  map:^id(NSString *text) {
                                      return @([NSString ty_validatePassword:text]);

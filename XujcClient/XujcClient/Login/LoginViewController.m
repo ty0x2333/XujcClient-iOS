@@ -33,7 +33,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
 @property (strong, nonatomic) FormButton *loginButton;
 
 @property (strong, nonatomic) UITextField *signupNicknameTextField;
-@property (strong, nonatomic) UITextField *signupEmailTextField;
+@property (strong, nonatomic) UITextField *signupPhoneTextField;
 @property (strong, nonatomic) UITextField *signupPasswordTextField;
 @property (strong, nonatomic) FormButton *signupButton;
 
@@ -85,9 +85,9 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     _signupNicknameTextField = [self p_textFieldWithPlaceholder:@"Nickname"];
     [_signupTextFieldGroupView addSubview:_signupNicknameTextField];
     
-    _signupEmailTextField = [self p_textFieldWithPlaceholder:@"Email"];
-    _signupEmailTextField.keyboardType = UIKeyboardTypeEmailAddress;
-    [_signupTextFieldGroupView addSubview:_signupEmailTextField];
+    _signupPhoneTextField = [self p_textFieldWithPlaceholder:@"Phone(Only support China inland)"];
+    _signupPhoneTextField.keyboardType = UIKeyboardTypeNumberPad;
+    [_signupTextFieldGroupView addSubview:_signupPhoneTextField];
     
     _signupPasswordTextField = [self p_textFieldWithPlaceholder:@"Password"];
     [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
@@ -167,7 +167,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     }];
     
     [_loginTextFieldGroupView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.signupEmailTextField);
+        make.top.equalTo(self.signupPhoneTextField);
         self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
         make.width.equalTo(self.signupTextFieldGroupView);
     }];
@@ -328,7 +328,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     // Signup
     _signupButton.rac_command = self.signupViewModel.executeSignup;
     RAC(self.signupViewModel, nickname) = [RACSignal merge:@[self.signupNicknameTextField.rac_textSignal, RACObserve(self.signupNicknameTextField, text)]];
-    RAC(self.signupViewModel, account) = [RACSignal merge:@[self.signupEmailTextField.rac_textSignal, RACObserve(self.signupEmailTextField, text)]];
+    RAC(self.signupViewModel, account) = [RACSignal merge:@[self.signupPhoneTextField.rac_textSignal, RACObserve(self.signupPhoneTextField, text)]];
     RAC(self.signupViewModel, password) = [RACSignal merge:@[self.signupPasswordTextField.rac_textSignal, RACObserve(self.signupPasswordTextField, text)]];
 
     [self.signupViewModel.executeSignup.executionSignals subscribeNext:^(id x) {

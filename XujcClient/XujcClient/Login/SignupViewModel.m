@@ -25,9 +25,9 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
                                      return @([NSString ty_validateUsername:text]);
                                  }] distinctUntilChanged];
         
-        _signupActiveSignal = [RACSignal combineLatest:@[self.validEmailSignal, self.validPasswordSignal, self.validNicknameSignal]
-                                                reduce:^id(NSNumber *emailValid, NSNumber *usernameValid, NSNumber *passwordValid) {
-                                                    return @([emailValid boolValue] && [usernameValid boolValue] && [passwordValid boolValue]);
+        _signupActiveSignal = [RACSignal combineLatest:@[self.validPhoneSignal, self.validPasswordSignal, self.validNicknameSignal]
+                                                reduce:^id(NSNumber *phoneValid, NSNumber *usernameValid, NSNumber *passwordValid) {
+                                                    return @([phoneValid boolValue] && [usernameValid boolValue] && [passwordValid boolValue]);
                                                 }];
 
         _executeSignup = [[RACCommand alloc] initWithEnabled:_signupActiveSignal signalBlock:^RACSignal *(id input) {
@@ -44,7 +44,7 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
     RACSignal *executeSignupSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
         
-        NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServiceKeyNickname: self.nickname, TYServiceKeyEmail: self.account, TYServiceKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+        NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServiceKeyNickname: self.nickname, TYServiceKeyPhone: self.account, TYServiceKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
             BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
             NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
             if (isError) {

@@ -15,6 +15,7 @@
 @property (copy, nonatomic) NSString *password;
 
 @property (strong, nonatomic) RACSignal *validEmailSignal;
+@property (strong, nonatomic) RACSignal *validPhoneSignal;
 @property (strong, nonatomic) RACSignal *validPasswordSignal;
 
 @end
