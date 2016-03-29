@@ -21,6 +21,9 @@ static CGFloat const kButtonMarginBottom = 12.f;
 
 static CGFloat const kSwitchButtonFontSize = 15.f;
 
+static CGFloat const kVerificationButtonWidth = 100.f;
+static CGFloat const kVerificationButtonHeight = 34.f;
+
 @interface LoginViewController()<TTTAttributedLabelDelegate>
 
 @property (strong, nonatomic) LoginTextFieldGroupView *loginTextFieldGroupView;
@@ -35,6 +38,8 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
 @property (strong, nonatomic) UITextField *signupNicknameTextField;
 @property (strong, nonatomic) UITextField *signupPhoneTextField;
 @property (strong, nonatomic) UITextField *signupPasswordTextField;
+@property (strong, nonatomic) UITextField *signupVerificationCodeTextField;
+@property (strong, nonatomic) UIButton *signupVerificationButton;
 @property (strong, nonatomic) FormButton *signupButton;
 
 @property (strong, nonatomic) UIButton *switchButton;
@@ -88,6 +93,20 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     _signupPhoneTextField = [self p_textFieldWithPlaceholder:@"Phone(Only support China inland)"];
     _signupPhoneTextField.keyboardType = UIKeyboardTypeNumberPad;
     [_signupTextFieldGroupView addSubview:_signupPhoneTextField];
+    
+    _signupVerificationCodeTextField = [self p_textFieldWithPlaceholder:@"Verification Code"];
+    _signupVerificationCodeTextField.keyboardType = UIKeyboardTypeNumberPad;
+    _signupVerificationButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(kVerificationButtonWidth, kVerificationButtonHeight)}];
+    _signupVerificationButton.layer.borderWidth = .5f;
+    _signupVerificationButton.layer.cornerRadius = 4.f;
+    _signupVerificationButton.layer.borderColor = [UIColor ty_border].CGColor;
+    _signupVerificationButton.titleLabel.font = _signupVerificationCodeTextField.font;
+    _signupVerificationButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5);
+    [_signupVerificationButton setTitle:NSLocalizedString(@"Get Code", nil) forState:UIControlStateNormal];
+    [_signupVerificationButton setTitleColor:[UIColor ty_textBlack] forState:UIControlStateNormal];
+    _signupVerificationCodeTextField.rightView = _signupVerificationButton;
+    _signupVerificationCodeTextField.rightViewMode = UITextFieldViewModeAlways;
+    [_signupTextFieldGroupView addSubview:_signupVerificationCodeTextField];
     
     _signupPasswordTextField = [self p_textFieldWithPlaceholder:@"Password"];
     [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
@@ -167,7 +186,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     }];
     
     [_loginTextFieldGroupView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.signupPhoneTextField);
+        make.top.equalTo(self.signupVerificationCodeTextField);
         self.loginTextFieldGroupViewRightConstraint = make.right.equalTo(self.view.mas_right).with.offset(-kLoginContentMarginHorizontal);
         make.width.equalTo(self.signupTextFieldGroupView);
     }];
