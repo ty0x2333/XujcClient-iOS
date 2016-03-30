@@ -74,7 +74,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     _loginTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
     [self.view addSubview:_loginTextFieldGroupView];
     
-    _accountTextField = [self p_textFieldWithPlaceholder:@"EmailOrPhone"];
+    _accountTextField = [self p_textFieldWithPlaceholder:@"Phone"];
     _accountTextField.keyboardType = UIKeyboardTypeEmailAddress;
     [_loginTextFieldGroupView addSubview:_accountTextField];
     
@@ -132,7 +132,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     [self bindViewModel];
     
     // load account cache
-    self.accountTextField.text = [_loginViewModel currentAccount];
+    self.accountTextField.text = [_loginViewModel currentAccountPhone];
     self.passwordTextField.text = [_loginViewModel currentAccountPassword];
 }
 

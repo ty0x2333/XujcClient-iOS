@@ -20,6 +20,7 @@
 "Phone(Only support China inland)" = "手机号(只支持中国大陆)";
 "Verification Code" = "验证码";
 "Get Code" = "获取验证码";
+"Phone" = "手机号";
 
 "EmailOrPhone" = "邮箱或手机号";
 "Password" = "密码";
