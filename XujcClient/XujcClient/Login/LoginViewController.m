@@ -349,7 +349,9 @@ static CGFloat const kVerificationButtonHeight = 34.f;
     RAC(self.signupViewModel, nickname) = [RACSignal merge:@[self.signupNicknameTextField.rac_textSignal, RACObserve(self.signupNicknameTextField, text)]];
     RAC(self.signupViewModel, account) = [RACSignal merge:@[self.signupPhoneTextField.rac_textSignal, RACObserve(self.signupPhoneTextField, text)]];
     RAC(self.signupViewModel, password) = [RACSignal merge:@[self.signupPasswordTextField.rac_textSignal, RACObserve(self.signupPasswordTextField, text)]];
-
+    RAC(self.signupViewModel, verificationCode) = [RACSignal merge:@[self.signupVerificationCodeTextField.rac_textSignal, RACObserve(self.signupVerificationCodeTextField, text)]];
+    _signupVerificationButton.rac_command = self.signupViewModel.executeGetVerificationCode;
+    
     [self.signupViewModel.executeSignup.executionSignals subscribeNext:^(id x) {
         @strongify(self);
         [self.view endEditing:YES];
@@ -376,6 +378,17 @@ static CGFloat const kVerificationButtonHeight = 34.f;
         hud.mode = MBProgressHUDModeText;
         hud.detailsLabelText = error.localizedDescription;
         [hud hide:YES afterDelay:kErrorHUDShowTime];
+    }];
+    
+    [[self.signupViewModel.executeGetVerificationCode.executionSignals concat] subscribeNext:^(NSNumber *value) {
+        @strongify(self);
+        [self.signupVerificationButton setTitle:[NSString stringWithFormat:@"%zd", [value integerValue]] forState:UIControlStateNormal];
+    }];
+    
+    [[self.signupViewModel.executeGetVerificationCode.executing filter:^BOOL(NSNumber *value) {
+        return ![value boolValue];
+    }] subscribeNext:^(id x) {
+        [self.signupVerificationButton setTitle:NSLocalizedString(@"Get Code", nil) forState:UIControlStateNormal];
     }];
 
 }

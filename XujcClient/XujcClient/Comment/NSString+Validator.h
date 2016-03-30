@@ -18,4 +18,6 @@
 
 + (BOOL)ty_validatePassword:(NSString *)value;
 
++ (BOOL)ty_validateVerificationCode:(NSString *)value;
+
 @end

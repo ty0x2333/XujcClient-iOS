@@ -15,11 +15,31 @@
 
 static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
 
+static NSInteger const kCountdownTime = 10;
+
+@interface SignupViewModel()
+
+@property (assign, nonatomic) NSInteger countdown;
+
+@end
+
 @implementation SignupViewModel
 
 - (instancetype)init
 {
     if (self = [super init]) {
+        RACSignal *validVerificationCodeSignal = [[RACObserve(self, verificationCode)
+                                                   map:^id(NSString *text) {
+                                                       return @([NSString ty_validateVerificationCode:text]);
+                                                   }] distinctUntilChanged];
+        
+        @weakify(self);
+        _timerSignal = [[[[[RACSignal interval:1.0f onScheduler:[RACScheduler mainThreadScheduler]] take:kCountdownTime] startWith:@(1)] map:^id(id x) {
+            @strongify(self);
+            self.countdown--;
+            return @(self.countdown == 0);
+        }] takeUntil:self.rac_willDeallocSignal];
+        
         _validNicknameSignal = [[RACObserve(self, nickname)
                                  map:^id(NSString *text) {
                                      return @([NSString ty_validateUsername:text]);
@@ -34,6 +54,11 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
             TyLogDebug(@"executeSignup");
             return [[[self executeSignupSignal] setNameWithFormat:@"executeSignupSignal"] logAll];
         }];
+        
+        _executeGetVerificationCode = [[RACCommand alloc] initWithEnabled:self.validPhoneSignal signalBlock:^RACSignal *(id input) {
+//            self.countdown = kCountdownTime;
+            return [self executeGetVerificationCodeSignal];
+        }];
     }
     return self;
 }
@@ -43,7 +68,6 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
     @weakify(self);
     RACSignal *executeSignupSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        
         NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServiceKeyNickname: self.nickname, TYServiceKeyPhone: self.account, TYServiceKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
             BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
             NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
@@ -62,6 +86,28 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
         }];
     }];
     return executeSignupSignal;
+}
+
+- (RACSignal *)executeGetVerificationCodeSignal
+{
+    RACSignal *executeGetVerificationCodeSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        __block NSInteger number = kCountdownTime;
+        RACSignal *timerSignal = [[[RACSignal interval:1.0f onScheduler:[RACScheduler mainThreadScheduler]] take:number] map:^id(id x) {
+            return @(--number);
+        }];
+        
+        [subscriber sendNext:@(number)];
+        [timerSignal subscribeNext:^(NSNumber *value) {
+            [subscriber sendNext:value];
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            //            [task cancel];
+        }];
+    }];
+    return executeGetVerificationCodeSignal;
 }
 
 @end
