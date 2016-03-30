@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class VerificationCodeTextFieldViewModel;
 
 @interface VerificationCodeTextField : UITextField
+
+- (instancetype)initWithViewModel:(VerificationCodeTextFieldViewModel *)viewModel;
 
 @property (readonly, strong, nonatomic) UIButton *button;
 

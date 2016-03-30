@@ -7,21 +7,18 @@
 //
 
 #import "AccountViewModel.h"
+@class VerificationCodeTextFieldViewModel;
 
 @interface SignupViewModel : AccountViewModel
 
 @property (copy, nonatomic) NSString *nickname;
 
-@property (copy, nonatomic) NSString *verificationCode;
-
-@property (strong, nonatomic) RACSignal *timerSignal;
-
 @property (strong, nonatomic) RACCommand *executeSignup;
-
-@property (strong, nonatomic) RACCommand *executeGetVerificationCode;
 
 @property (strong, nonatomic) RACSignal *signupActiveSignal;
 
 @property (strong, nonatomic) RACSignal *validNicknameSignal;
+
+@property (readonly, strong, nonatomic) VerificationCodeTextFieldViewModel *verificationCodeTextFieldViewModel;
 
 @end

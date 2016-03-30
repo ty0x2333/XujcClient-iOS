@@ -29,6 +29,7 @@
 		19370EF21CA89DA000B96042 /* cell_icon_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19370EF01CA89DA000B96042 /* cell_icon_detail@2x.png */; };
 		19370EF31CA89DA000B96042 /* cell_icon_detail@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19370EF11CA89DA000B96042 /* cell_icon_detail@3x.png */; };
 		19781B9C1CAB6EE700D078A6 /* VerificationCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 19781B9B1CAB6EE700D078A6 /* VerificationCodeTextField.m */; };
+		19781BA01CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19781B9F1CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.m */; };
 		7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */; };
 		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; };
 		7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */; };
@@ -182,6 +183,8 @@
 		19370EF11CA89DA000B96042 /* cell_icon_detail@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_detail@3x.png"; sourceTree = "<group>"; };
 		19781B9A1CAB6EE700D078A6 /* VerificationCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeTextField.h; sourceTree = "<group>"; };
 		19781B9B1CAB6EE700D078A6 /* VerificationCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeTextField.m; sourceTree = "<group>"; };
+		19781B9E1CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeTextFieldViewModel.h; sourceTree = "<group>"; };
+		19781B9F1CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeTextFieldViewModel.m; sourceTree = "<group>"; };
 		7023F9A01BE52F6B0046CF3B /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
 		7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
 		7023F9A31BE52FA10046CF3B /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
@@ -461,6 +464,15 @@
 			path = SinaSSO;
 			sourceTree = "<group>";
 		};
+		19781B9D1CAB709500D078A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				19781B9E1CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.h */,
+				19781B9F1CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
 		34B4EF0F9104D9147B0C3989 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,6 +705,7 @@
 		70730DC21C9CC0DC007CBEBB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				19781B9D1CAB709500D078A6 /* ViewModel */,
 				19781B9A1CAB6EE700D078A6 /* VerificationCodeTextField.h */,
 				19781B9B1CAB6EE700D078A6 /* VerificationCodeTextField.m */,
 				70730DC31C9CC0E6007CBEBB /* TextIconView.h */,
@@ -1171,6 +1184,7 @@
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */,
 				70730D9C1C99F580007CBEBB /* MainTabBarViewModel.m in Sources */,
+				19781BA01CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.m in Sources */,
 				19781B9C1CAB6EE700D078A6 /* VerificationCodeTextField.m in Sources */,
 				702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */,
 				7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */,

@@ -91,7 +91,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     _signupPhoneTextField.keyboardType = UIKeyboardTypeNumberPad;
     [_signupTextFieldGroupView addSubview:_signupPhoneTextField];
     
-    _signupVerificationCodeTextField = [VerificationCodeTextField init];
+    _signupVerificationCodeTextField = [[VerificationCodeTextField alloc] initWithViewModel:[self.signupViewModel verificationCodeTextFieldViewModel]];
     [_signupTextFieldGroupView addSubview:_signupVerificationCodeTextField];
     
     _signupPasswordTextField = [self p_textFieldWithPlaceholder:@"Password"];
@@ -335,8 +335,6 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     RAC(self.signupViewModel, nickname) = [RACSignal merge:@[self.signupNicknameTextField.rac_textSignal, RACObserve(self.signupNicknameTextField, text)]];
     RAC(self.signupViewModel, account) = [RACSignal merge:@[self.signupPhoneTextField.rac_textSignal, RACObserve(self.signupPhoneTextField, text)]];
     RAC(self.signupViewModel, password) = [RACSignal merge:@[self.signupPasswordTextField.rac_textSignal, RACObserve(self.signupPasswordTextField, text)]];
-    RAC(self.signupViewModel, verificationCode) = [RACSignal merge:@[self.signupVerificationCodeTextField.rac_textSignal, RACObserve(self.signupVerificationCodeTextField, text)]];
-    self.signupVerificationCodeTextField.button.rac_command = self.signupViewModel.executeGetVerificationCode;
     
     [self.signupViewModel.executeSignup.executionSignals subscribeNext:^(id x) {
         @strongify(self);
@@ -365,26 +363,6 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
         hud.detailsLabelText = error.localizedDescription;
         [hud hide:YES afterDelay:kErrorHUDShowTime];
     }];
-    
-    [[self.signupViewModel.executeGetVerificationCode.executionSignals concat] subscribeNext:^(NSNumber *value) {
-        @strongify(self);
-        [self.signupVerificationCodeTextField.button setTitle:[NSString stringWithFormat:@"%zd", [value integerValue]] forState:UIControlStateNormal];
-    }];
-    
-    [[self.signupViewModel.executeGetVerificationCode.executing filter:^BOOL(NSNumber *value) {
-        return ![value boolValue];
-    }] subscribeNext:^(id x) {
-        [self.signupVerificationCodeTextField.button setTitle:NSLocalizedString(@"Get Code", nil) forState:UIControlStateNormal];
-    }];
-    
-    [self.signupViewModel.executeGetVerificationCode.errors subscribeNext:^(NSError *error) {
-        @strongify(self);
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.detailsLabelText = error.localizedDescription;
-        [hud hide:YES afterDelay:kErrorHUDShowTime];
-    }];
-
 }
 
 #pragma mark - Helper
