@@ -14,15 +14,13 @@
 #import "FormButton.h"
 #import <TTTAttributedLabel.h>
 #import "ServiceProtocolViewController.h"
+#import "VerificationCodeTextField.h"
 
 static CGFloat const kServiceProtocolLabelFontSize = 12.f;
 
 static CGFloat const kButtonMarginBottom = 12.f;
 
 static CGFloat const kSwitchButtonFontSize = 15.f;
-
-static CGFloat const kVerificationButtonWidth = 100.f;
-static CGFloat const kVerificationButtonHeight = 34.f;
 
 @interface LoginViewController()<TTTAttributedLabelDelegate>
 
@@ -38,8 +36,7 @@ static CGFloat const kVerificationButtonHeight = 34.f;
 @property (strong, nonatomic) UITextField *signupNicknameTextField;
 @property (strong, nonatomic) UITextField *signupPhoneTextField;
 @property (strong, nonatomic) UITextField *signupPasswordTextField;
-@property (strong, nonatomic) UITextField *signupVerificationCodeTextField;
-@property (strong, nonatomic) UIButton *signupVerificationButton;
+@property (strong, nonatomic) VerificationCodeTextField *signupVerificationCodeTextField;
 @property (strong, nonatomic) FormButton *signupButton;
 
 @property (strong, nonatomic) UIButton *switchButton;
@@ -94,18 +91,7 @@ static CGFloat const kVerificationButtonHeight = 34.f;
     _signupPhoneTextField.keyboardType = UIKeyboardTypeNumberPad;
     [_signupTextFieldGroupView addSubview:_signupPhoneTextField];
     
-    _signupVerificationCodeTextField = [self p_textFieldWithPlaceholder:@"Verification Code"];
-    _signupVerificationCodeTextField.keyboardType = UIKeyboardTypeNumberPad;
-    _signupVerificationButton = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(kVerificationButtonWidth, kVerificationButtonHeight)}];
-    _signupVerificationButton.layer.borderWidth = .5f;
-    _signupVerificationButton.layer.cornerRadius = 4.f;
-    _signupVerificationButton.layer.borderColor = [UIColor ty_border].CGColor;
-    _signupVerificationButton.titleLabel.font = _signupVerificationCodeTextField.font;
-    _signupVerificationButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5);
-    [_signupVerificationButton setTitle:NSLocalizedString(@"Get Code", nil) forState:UIControlStateNormal];
-    [_signupVerificationButton setTitleColor:[UIColor ty_textBlack] forState:UIControlStateNormal];
-    _signupVerificationCodeTextField.rightView = _signupVerificationButton;
-    _signupVerificationCodeTextField.rightViewMode = UITextFieldViewModeAlways;
+    _signupVerificationCodeTextField = [VerificationCodeTextField init];
     [_signupTextFieldGroupView addSubview:_signupVerificationCodeTextField];
     
     _signupPasswordTextField = [self p_textFieldWithPlaceholder:@"Password"];
@@ -350,7 +336,7 @@ static CGFloat const kVerificationButtonHeight = 34.f;
     RAC(self.signupViewModel, account) = [RACSignal merge:@[self.signupPhoneTextField.rac_textSignal, RACObserve(self.signupPhoneTextField, text)]];
     RAC(self.signupViewModel, password) = [RACSignal merge:@[self.signupPasswordTextField.rac_textSignal, RACObserve(self.signupPasswordTextField, text)]];
     RAC(self.signupViewModel, verificationCode) = [RACSignal merge:@[self.signupVerificationCodeTextField.rac_textSignal, RACObserve(self.signupVerificationCodeTextField, text)]];
-    _signupVerificationButton.rac_command = self.signupViewModel.executeGetVerificationCode;
+    self.signupVerificationCodeTextField.button.rac_command = self.signupViewModel.executeGetVerificationCode;
     
     [self.signupViewModel.executeSignup.executionSignals subscribeNext:^(id x) {
         @strongify(self);
@@ -382,13 +368,13 @@ static CGFloat const kVerificationButtonHeight = 34.f;
     
     [[self.signupViewModel.executeGetVerificationCode.executionSignals concat] subscribeNext:^(NSNumber *value) {
         @strongify(self);
-        [self.signupVerificationButton setTitle:[NSString stringWithFormat:@"%zd", [value integerValue]] forState:UIControlStateNormal];
+        [self.signupVerificationCodeTextField.button setTitle:[NSString stringWithFormat:@"%zd", [value integerValue]] forState:UIControlStateNormal];
     }];
     
     [[self.signupViewModel.executeGetVerificationCode.executing filter:^BOOL(NSNumber *value) {
         return ![value boolValue];
     }] subscribeNext:^(id x) {
-        [self.signupVerificationButton setTitle:NSLocalizedString(@"Get Code", nil) forState:UIControlStateNormal];
+        [self.signupVerificationCodeTextField.button setTitle:NSLocalizedString(@"Get Code", nil) forState:UIControlStateNormal];
     }];
     
     [self.signupViewModel.executeGetVerificationCode.errors subscribeNext:^(NSError *error) {
