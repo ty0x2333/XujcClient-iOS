@@ -63,6 +63,8 @@
 "Email already existed." = "邮箱已存在";
 "You are successfully registered." = "注册成功";
 
+"Verification Code error." = "验证码错误";
+
 /**
  * XujcService Message
  */
