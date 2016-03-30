@@ -25,7 +25,7 @@ static NSString * const kOSSParamCallbackBody = @"callbackBody";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         id<OSSCredentialProvider> credential = [[OSSFederationCredentialProvider alloc] initWithFederationTokenGetter:^OSSFederationToken * {
-            NSURL * url = [NSURL URLWithString:@"changeAvatar" relativeToURL:[NSURL URLWithString:[AFHTTPSessionManager ty_serviceBaseURL]]];
+            NSURL * url = [NSURL URLWithString:@"avatar" relativeToURL:[NSURL URLWithString:[AFHTTPSessionManager ty_serviceBaseURL]]];
             NSMutableURLRequest * mutableRequest = [NSMutableURLRequest requestWithURL:url];
             mutableRequest.HTTPMethod = @"POST";
             [mutableRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
