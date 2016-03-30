@@ -69,6 +69,7 @@
 "Account binding successfully" = "帐号绑定成功";
 //"Authentication failed" = "认证失败";
 "Xujc Key authentication failed" = "教务系统 ApiKey 验证失败";
+"Requests are too frequent." = "发送短信太频繁，请稍后再试";
 
 
 /**

@@ -390,6 +390,14 @@ static CGFloat const kVerificationButtonHeight = 34.f;
     }] subscribeNext:^(id x) {
         [self.signupVerificationButton setTitle:NSLocalizedString(@"Get Code", nil) forState:UIControlStateNormal];
     }];
+    
+    [self.signupViewModel.executeGetVerificationCode.errors subscribeNext:^(NSError *error) {
+        @strongify(self);
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.detailsLabelText = error.localizedDescription;
+        [hud hide:YES afterDelay:kErrorHUDShowTime];
+    }];
 
 }
 
