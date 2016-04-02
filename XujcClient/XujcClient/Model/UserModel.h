@@ -11,6 +11,7 @@
 @interface UserModel : BaseModel
 
 @property (strong, nonatomic) NSString *nikename;
+@property (strong, nonatomic) NSString *phone;
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *avatar;
 

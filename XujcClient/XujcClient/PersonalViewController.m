@@ -11,7 +11,7 @@
 #import "PersonalHeaderView.h"
 #import "SupportCenterViewController.h"
 #import "UserDetailViewController.h"
-#import <UMSocial.h>
+#import "UMSocial.h"
 
 static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
 

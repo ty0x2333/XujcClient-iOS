@@ -5,6 +5,8 @@ digraph ViewModel{
 
 	MainTabBarViewModel->LoginViewModel;
 	MainTabBarViewModel->SignupViewModel;
+	SignupViewModel->VerificationCodeTextFieldViewModel[style = dashed];
+	VerificationCodeTextFieldViewModel[style = dashed];
 	MainTabBarViewModel->SemesterMasterViewModel[style = dashed];
 	MainTabBarViewModel->BindingAccountViewModel;
 	MainTabBarViewModel->PersonalViewModel;

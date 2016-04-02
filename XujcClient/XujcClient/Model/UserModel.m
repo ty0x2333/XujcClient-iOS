@@ -15,6 +15,7 @@
 {
     if (self = [super init]) {
         _nikename = [self checkForNull:json[TYServiceKeyNickname]];
+        _phone = [self checkForNull:json[TYServiceKeyPhone]];
         _email = [self checkForNull:json[TYServiceKeyEmail]];
         _createdTime = [self checkForNull:json[TYServiceKeyCreatedTime]];
         _avatar = [self checkForNull:json[TYServiceKeyAvatar]];
@@ -26,6 +27,7 @@
 {
     if(self = [super init]){
         _nikename = [decoder decodeObjectForKey:TYServiceKeyNickname];
+        _phone = [decoder decodeObjectForKey:TYServiceKeyPhone];
         _email = [decoder decodeObjectForKey:TYServiceKeyEmail];
         _avatar = [decoder decodeObjectForKey:TYServiceKeyAvatar];
         _createdTime = [decoder decodeObjectForKey:TYServiceKeyCreatedTime];
@@ -36,6 +38,7 @@
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:_nikename forKey:TYServiceKeyNickname];
+    [encoder encodeObject:_phone forKey:TYServiceKeyPhone];
     [encoder encodeObject:_email forKey:TYServiceKeyEmail];
     [encoder encodeObject:_createdTime forKey:TYServiceKeyCreatedTime];
     [encoder encodeObject:_avatar forKey:TYServiceKeyAvatar];
@@ -53,6 +56,7 @@
     NSString *null = @"";
     return @{
              TYServiceKeyNickname: _nikename ?: null,
+             TYServiceKeyPhone: _phone ?: null,
              TYServiceKeyEmail: _email ?: null,
              TYServiceKeyCreatedTime: _createdTime ?: null,
              TYServiceKeyAvatar: _avatar ?: null

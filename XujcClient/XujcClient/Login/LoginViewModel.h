@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) RACSignal *loginActiveSignal;
 
-- (NSString *)currentAccount;
+- (NSString *)currentAccountPhone;
 - (NSString *)currentAccountPassword;
 
 @end

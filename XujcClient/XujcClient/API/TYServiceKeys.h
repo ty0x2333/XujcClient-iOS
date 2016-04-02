@@ -13,11 +13,13 @@ static NSString* const TYServiceName = @"TYService";
 
 static NSString * const TYServiceKeyNickname = @"name";
 static NSString * const TYServiceKeyEmail = @"email";
+static NSString * const TYServiceKeyPhone = @"phone";
 static NSString * const TYServiceKeyPassword = @"password";
 static NSString * const TYServiceKeyAPIKey = @"api_key";
 static NSString * const TYServiceKeyXujcKey = @"xujc_key";
 static NSString * const TYServiceKeyCreatedTime = @"created_time";
 static NSString * const TYServiceKeyAvatar = @"avatar";
+static NSString * const TYServiceKeyVerificationCode = @"code";
 
 static NSString * const TYServiceKeyAuthorization = @"authorization";
 

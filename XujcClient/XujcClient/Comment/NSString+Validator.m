@@ -9,6 +9,7 @@
 #import "NSString+Validator.h"
 
 static NSString* const kPhoneRegex = @"^1[0-9]{10}$";
+static NSString* const kVerificationCodeRegex = @"^[0-9]{6}$";
 static NSString* const kPasswordRegex = @"^[A-Za-z0-9]{6,30}$";
 //static NSString* const kNumberRegex = @"^\\d+$";
 static NSString* const kNicknameRegex = @"^\\w{2,20}$";
@@ -24,6 +25,11 @@ static NSString* const kEmailRegex = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[
 + (BOOL)ty_validatePhone:(NSString *)value
 {
     return [NSString ty_p_isValidate:value regex:kPhoneRegex];
+}
+
++ (BOOL)ty_validateVerificationCode:(NSString *)value
+{
+    return [NSString ty_p_isValidate:value regex:kVerificationCodeRegex];
 }
 
 + (BOOL)ty_validateUsername:(NSString *)value

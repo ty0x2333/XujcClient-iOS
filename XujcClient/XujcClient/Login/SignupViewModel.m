@@ -12,22 +12,34 @@
 #import "UserModel.h"
 #import "DynamicData.h"
 #import "NSString+Validator.h"
+#import "VerificationCodeTextFieldViewModel.h"
 
 static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
+
+@interface SignupViewModel()
+
+@property (assign, nonatomic) NSInteger countdown;
+@property (strong, nonatomic) VerificationCodeTextFieldViewModel *verificationCodeTextFieldViewModel;
+
+@end
 
 @implementation SignupViewModel
 
 - (instancetype)init
 {
     if (self = [super init]) {
+        _verificationCodeTextFieldViewModel = [[VerificationCodeTextFieldViewModel alloc] init];
+        
+        RACChannelTo(_verificationCodeTextFieldViewModel, phone) = RACChannelTo(self, account);
+        
         _validNicknameSignal = [[RACObserve(self, nickname)
                                  map:^id(NSString *text) {
                                      return @([NSString ty_validateUsername:text]);
                                  }] distinctUntilChanged];
         
-        _signupActiveSignal = [RACSignal combineLatest:@[self.validEmailSignal, self.validPasswordSignal, self.validNicknameSignal]
-                                                reduce:^id(NSNumber *emailValid, NSNumber *usernameValid, NSNumber *passwordValid) {
-                                                    return @([emailValid boolValue] && [usernameValid boolValue] && [passwordValid boolValue]);
+        _signupActiveSignal = [RACSignal combineLatest:@[self.validPhoneSignal, self.validPasswordSignal, self.validNicknameSignal]
+                                                reduce:^id(NSNumber *phoneValid, NSNumber *usernameValid, NSNumber *passwordValid) {
+                                                    return @([phoneValid boolValue] && [usernameValid boolValue] && [passwordValid boolValue]);
                                                 }];
 
         _executeSignup = [[RACCommand alloc] initWithEnabled:_signupActiveSignal signalBlock:^RACSignal *(id input) {
@@ -43,8 +55,7 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
     @weakify(self);
     RACSignal *executeSignupSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        
-        NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServiceKeyNickname: self.nickname, TYServiceKeyEmail: self.account, TYServiceKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+        NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServiceKeyNickname: self.nickname, TYServiceKeyPhone: self.account, TYServiceKeyPassword: self.password, TYServiceKeyVerificationCode: self.verificationCodeTextFieldViewModel.verificationCode} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
             BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
             NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
             if (isError) {

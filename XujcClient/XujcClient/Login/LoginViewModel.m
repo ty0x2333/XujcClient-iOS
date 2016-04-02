@@ -20,9 +20,9 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
 - (instancetype)init
 {
     if (self = [super init]) {
-        _loginActiveSignal = [[self.validEmailSignal combineLatestWith:self.validPasswordSignal]
-                              reduceEach:^id(NSNumber *usernameValid, NSNumber *passwordValid) {
-                                  return @([usernameValid boolValue] && [passwordValid boolValue]);
+        _loginActiveSignal = [[self.validPhoneSignal combineLatestWith:self.validPasswordSignal]
+                              reduceEach:^id(NSNumber *phoneValid, NSNumber *passwordValid) {
+                                  return @([phoneValid boolValue] && [passwordValid boolValue]);
                               }];
         
         _executeLogin = [[RACCommand alloc] initWithEnabled:_loginActiveSignal signalBlock:^RACSignal *(id input) {
@@ -37,7 +37,7 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
     @weakify(self);
     RACSignal *executeLoginSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{TYServiceKeyEmail: self.account, TYServiceKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+        NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{TYServiceKeyPhone: self.account, TYServiceKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
             BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
             
             if (isError) {
@@ -83,14 +83,14 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
     [userDefaults synchronize];
 }
 
-- (NSString *)currentAccount
+- (NSString *)currentAccountPhone
 {
-    return DYNAMIC_DATA.user.email;
+    return DYNAMIC_DATA.user.phone;
 }
 
 - (NSString *)currentAccountPassword
 {
-    return [SSKeychain passwordForService:TYServiceName account:[self currentAccount]];
+    return [SSKeychain passwordForService:TYServiceName account:[self currentAccountPhone]];
 }
 
 @end

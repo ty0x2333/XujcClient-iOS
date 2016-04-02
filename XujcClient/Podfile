@@ -19,4 +19,3 @@ pod 'FMDB'
 # Services
 pod 'Instabug'
 pod 'AliyunOSSiOS', '~> 2.2.0'
-pod 'UMengSocial', :inhibit_warnings => true
