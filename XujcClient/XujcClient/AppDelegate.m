@@ -12,7 +12,7 @@
 #import "CacheUtils.h"
 #import <MMPopupWindow.h>
 #import <Instabug/Instabug.h>
-#import <UMSocial.h>
+#import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
 #import "UMSocialQQHandler.h"
 #import "UMSocialSinaSSOHandler.h"
@@ -42,10 +42,9 @@ static const CGFloat kWindowCornerRadius = 4.f;
     [UMSocialWechatHandler setWXAppId:kWechatAppID appSecret:kWechatSecret url:@"http://www.tianyiyan.com"];
     [UMSocialQQHandler setQQWithAppId:kQQAppID appKey:kQQAppKey url:@"http://www.tianyiyan.com"];
     [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:kSinaAppKey
-                                              secret:kSinaSecret
                                          RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     
-    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline, UMShareToSina]];
+    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
 #if DEBUG
     [UMSocialData openLog:YES];
 #endif
@@ -122,6 +121,19 @@ static const CGFloat kWindowCornerRadius = 4.f;
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     TyLogFatal(@"Fail To Register For Remote Notifications: %@", error);
+}
+
+#pragma UMSocialSnsService
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [UMSocialSnsService handleOpenURL:url];
+}
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return  [UMSocialSnsService handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
