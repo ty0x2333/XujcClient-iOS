@@ -26,3 +26,11 @@ Dependencies
 - [Instabug](https://github.com/Instabug/Instabug-iOS.git)
 - [MJRefresh](https://github.com/CoderMJLee/MJRefresh)
 - [TTTAttributedLabel](https://github.com/TTTAttributedLabel/TTTAttributedLabel)
+
+ViewControllers
+---
+![ViewControllers](README_RES/ViewController.png)
+
+License
+---
+`XujcClient` is available under the GPLv3 license. See the LICENSE file for more info.
