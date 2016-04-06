@@ -11,21 +11,27 @@ $ pod install
 
 Dependencies
 ---
+### Frameworks
 - [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)
 - [Masonry](https://github.com/SnapKit/Masonry)
 - [luckytianyiyan/AFNetworking (branch: ty_no_unescaped_ctrl_char)](https://github.com/luckytianyiyan/AFNetworking/tree/ty_no_unescaped_ctrl_char)
-- [UIColor-HexString](https://github.com/kevinrenskers/UIColor-HexString)
-- [CupertinoYankee](https://github.com/mattt/CupertinoYankee)
+- [SDWebImage](https://github.com/rs/SDWebImage)
+- [FMDB](https://github.com/ccgus/fmdb)
+
+### Services
+- [Instabug](https://github.com/Instabug/Instabug-iOS.git)
+- [AliyunOSSiOS](https://github.com/aliyun/aliyun-oss-ios-sdk)
+- [Google/Analytics](https://www.google.com/analytics/)
+
+### Other
 - [SSKeychain](https://github.com/soffes/sskeychain)
 - [MBProgressHUD](https://github.com/jdg/MBProgressHUD)
-- [FMDB](https://github.com/ccgus/fmdb)
+- [TTTAttributedLabel](https://github.com/TTTAttributedLabel/TTTAttributedLabel)
+- [UIColor-HexString](https://github.com/kevinrenskers/UIColor-HexString)
+- [CupertinoYankee](https://github.com/mattt/CupertinoYankee)
 - [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet)
 - [MMPopupView](https://github.com/adad184/MMPopupView)
-- [AliyunOSSiOS](https://github.com/aliyun/aliyun-oss-ios-sdk)
-- [SDWebImage](https://github.com/rs/SDWebImage)
-- [Instabug](https://github.com/Instabug/Instabug-iOS.git)
 - [MJRefresh](https://github.com/CoderMJLee/MJRefresh)
-- [TTTAttributedLabel](https://github.com/TTTAttributedLabel/TTTAttributedLabel)
 
 ViewControllers
 ---
