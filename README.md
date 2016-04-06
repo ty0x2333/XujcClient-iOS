@@ -4,6 +4,7 @@ The Educational Administration System Client of Xiamen University Tan Kah Kee Co
 
 [![Build Status](https://travis-ci.com/luckytianyiyan/XujcIOSClient.svg?token=KxwDz7Dpc3VEyK4zS63h&branch=master)](https://travis-ci.com/luckytianyiyan/XujcIOSClient)
 [![GitHub license](https://img.shields.io/github/license/luckytianyiyan/XujcIOSClient.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
+[![GitHub release](https://img.shields.io/github/tag/luckytianyiyan/XujcIOSClient.svg)](https://github.com/luckytianyiyan/XujcIOSClient/tags)
 GetStart
 ---
 XujcClient uses [CocoaPods](http://cocoapods.org/) to install and manage dependencies. Open a terminal window and navigate to the location of the Xcode project.
