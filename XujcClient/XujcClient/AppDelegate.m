@@ -12,6 +12,7 @@
 #import "CacheUtils.h"
 #import <MMPopupWindow.h>
 #import <Instabug/Instabug.h>
+#import <Google/Analytics.h>
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
 #import "UMSocialQQHandler.h"
@@ -84,6 +85,18 @@ static const CGFloat kWindowCornerRadius = 4.f;
     
 #if DEBUG
     [UMessage setLogEnabled:YES];
+#endif
+    
+    // Configure tracker from GoogleService-Info.plist.
+    NSError *configureError;
+    [[GGLContext sharedInstance] configureWithError:&configureError];
+    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+    
+    // Optional: configure GAI options.
+    GAI *gai = [GAI sharedInstance];
+    gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
+#if DEBUG
+    gai.logger.logLevel = kGAILogLevelWarning;  // remove before app release
 #endif
     
     [Instabug startWithToken:kInstabugToken invocationEvent:IBGInvocationEventNone];

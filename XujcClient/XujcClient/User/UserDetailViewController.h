@@ -6,10 +6,10 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 @class UserDetailViewModel;
 
-@interface UserDetailViewController : UIViewController
+@interface UserDetailViewController : BaseViewController
 
 - (instancetype)initWithViewModel:(UserDetailViewModel *)viewModel;
 

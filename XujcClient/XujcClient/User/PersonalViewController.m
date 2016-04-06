@@ -40,6 +40,7 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"Personal Screen";
     self.navigationItem.title = NSLocalizedString(@"Personal", nil);
     _personalHeaderView = [[PersonalHeaderView alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(0, kPersonalHeaderViewHeight)} andViewModel:self.viewModel.personalHeaderViewModel];
     _personalHeaderView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -47,6 +48,7 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.sectionFooterHeight = 0;
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellReuseIdentifier];
     _tableView.tableHeaderView = _personalHeaderView;
     [self.view addSubview:_tableView];

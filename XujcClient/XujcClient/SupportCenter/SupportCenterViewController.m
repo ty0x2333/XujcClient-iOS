@@ -37,6 +37,7 @@ static CGFloat const kVersionLabelFontSize = 14.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"Support Center Screen";
     self.title = NSLocalizedString(@"Feedback and Help", nil);
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];

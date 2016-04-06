@@ -52,6 +52,8 @@ static const CGFloat kDescriptionLabelFontSize = 10.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"Binding Account Screen";
+    
     _accountTextField = [[UITextField alloc] init];
     _accountTextField.ty_borderColor = [UIColor ty_border].CGColor;
     _accountTextField.ty_borderEdge = UIRectEdgeBottom;

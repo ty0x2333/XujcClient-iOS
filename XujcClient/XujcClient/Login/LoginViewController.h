@@ -6,11 +6,11 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "LoginViewModel.h"
 #import "SignupViewModel.h"
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : BaseViewController
 
 - (instancetype)initWithLoginViewModel:(LoginViewModel *)loginViewModel andSignupViewModel:(SignupViewModel *)signupViewModel;
 

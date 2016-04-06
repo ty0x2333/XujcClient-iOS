@@ -19,6 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"Service Protocol Screen";
     self.title = NSLocalizedString(@"Service Protocol", nil);
     self.automaticallyAdjustsScrollViewInsets = NO;
     _webView = [[UIWebView alloc] init];

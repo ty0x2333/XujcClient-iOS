@@ -44,6 +44,7 @@ static CGFloat const kContentMarginHorizontal = 10.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"User Detail Screen";
     self.title = NSLocalizedString(@"Personal Detail", nil);
     _scrollView = [[UIScrollView alloc] init];
     _scrollView.backgroundColor = [UIColor whiteColor];

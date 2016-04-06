@@ -6,10 +6,10 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "SupportCenterViewModel.h"
 
-@interface SupportCenterViewController : UIViewController
+@interface SupportCenterViewController : BaseViewController
 
 - (instancetype)initWithViewModel:(SupportCenterViewModel *)viewModel;
 
