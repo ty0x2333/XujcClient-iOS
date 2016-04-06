@@ -6,10 +6,10 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "PersonalViewModel.h"
 
-@interface PersonalViewController : UIViewController
+@interface PersonalViewController : BaseViewController
 
 - (instancetype)initWithViewModel:(PersonalViewModel *)viewModel;
 

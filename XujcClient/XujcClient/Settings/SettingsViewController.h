@@ -6,10 +6,10 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 @class SettingsViewModel;
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : BaseViewController
 
 - (instancetype)initWithViewModel:(SettingsViewModel *)viewModel;
 

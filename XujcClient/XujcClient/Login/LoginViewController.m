@@ -66,7 +66,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.screenName = @"Login Screen";
     _logoImageView = [[UIImageView alloc] init];
     _logoImageView.image = [UIImage imageNamed:@"logo"];
     [self.view addSubview:_logoImageView];

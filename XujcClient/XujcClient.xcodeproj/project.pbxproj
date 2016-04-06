@@ -48,6 +48,7 @@
 		19FAB3231CB4F01100179484 /* PersonalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAB31B1CB4F01100179484 /* PersonalViewModel.m */; };
 		19FAB3241CB4F01100179484 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAB31D1CB4F01100179484 /* UserDetailViewController.m */; };
 		19FAB3251CB4F01100179484 /* UserDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAB31F1CB4F01100179484 /* UserDetailViewModel.m */; };
+		19FAB3291CB4F0E600179484 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FAB3281CB4F0E600179484 /* BaseViewController.m */; };
 		7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */; };
 		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; };
 		7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */; };
@@ -232,6 +233,8 @@
 		19FAB31D1CB4F01100179484 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
 		19FAB31E1CB4F01100179484 /* UserDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewModel.h; sourceTree = "<group>"; };
 		19FAB31F1CB4F01100179484 /* UserDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewModel.m; sourceTree = "<group>"; };
+		19FAB3271CB4F0E500179484 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		19FAB3281CB4F0E600179484 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		7023F9A01BE52F6B0046CF3B /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
 		7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
 		7023F9A31BE52FA10046CF3B /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
@@ -913,6 +916,8 @@
 				19FAB3131CB4EFED00179484 /* User */,
 				70F7CE1C1BE3AC25001D027C /* AppDelegate.h */,
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
+				19FAB3271CB4F0E500179484 /* BaseViewController.h */,
+				19FAB3281CB4F0E600179484 /* BaseViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
 				708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */,
 				70B167D21CA0EEE200AF8322 /* ServiceProtocolViewController.h */,
@@ -1305,6 +1310,7 @@
 				702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */,
 				19FAB3211CB4F01100179484 /* PersonalHeaderViewModel.m in Sources */,
 				7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */,
+				19FAB3291CB4F0E600179484 /* BaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

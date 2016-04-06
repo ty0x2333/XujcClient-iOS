@@ -51,7 +51,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.screenName = @"Schedule Screen";
     self.collectionViewCalendarLayout = [[CollectionViewScheduleLayout alloc] init];
     self.collectionViewCalendarLayout.delegate = self;
     

@@ -6,10 +6,10 @@
  * @copyright   Copyright © 2015年 luckytianyiyan. All rights reserved.
  */
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "BindingAccountViewModel.h"
 
-@interface BindingAccountViewController : UIViewController
+@interface BindingAccountViewController : BaseViewController
 
 - (instancetype)initWithViewModel:(BindingAccountViewModel *)viewModel;
 

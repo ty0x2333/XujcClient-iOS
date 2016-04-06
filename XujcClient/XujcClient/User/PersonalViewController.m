@@ -40,6 +40,7 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"Personal Screen";
     self.navigationItem.title = NSLocalizedString(@"Personal", nil);
     _personalHeaderView = [[PersonalHeaderView alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(0, kPersonalHeaderViewHeight)} andViewModel:self.viewModel.personalHeaderViewModel];
     _personalHeaderView.translatesAutoresizingMaskIntoConstraints = NO;

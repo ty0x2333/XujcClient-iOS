@@ -6,11 +6,11 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <LMDropdownView.h>
 #import "SemesterBaseViewModel.h"
+#import "BaseViewController.h"
 
-@interface SemesterBaseViewController : UIViewController
+@interface SemesterBaseViewController : BaseViewController
 
 - (instancetype)initWithViewModel:(SemesterBaseViewModel *)viewModel;
 

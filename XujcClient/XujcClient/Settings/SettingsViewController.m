@@ -33,6 +33,7 @@ static NSString* const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"Settings Screen";
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;

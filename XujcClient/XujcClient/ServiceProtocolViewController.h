@@ -6,8 +6,8 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ServiceProtocolViewController : UIViewController
+@interface ServiceProtocolViewController : BaseViewController
 
 @end

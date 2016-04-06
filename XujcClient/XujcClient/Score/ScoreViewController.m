@@ -39,6 +39,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"Score Screen";
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
