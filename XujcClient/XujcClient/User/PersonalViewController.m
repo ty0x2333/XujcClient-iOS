@@ -48,6 +48,7 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.sectionFooterHeight = 0;
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellReuseIdentifier];
     _tableView.tableHeaderView = _personalHeaderView;
     [self.view addSubview:_tableView];
