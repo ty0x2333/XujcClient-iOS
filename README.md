@@ -4,10 +4,14 @@ XujcClient
 [![GitHub license](https://img.shields.io/github/license/luckytianyiyan/XujcIOSClient.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 GetStart
 ---
+XujcClient uses [CocoaPods](http://cocoapods.org/) to install and manage dependencies. Open a terminal window and navigate to the location of the Xcode project.
+
 ```
 $ cd XujcClient
 $ pod install
 ```
+
+This creates an `XujcClient.xcworkspace` file. Use this file for all future development.
 
 Dependencies
 ---
