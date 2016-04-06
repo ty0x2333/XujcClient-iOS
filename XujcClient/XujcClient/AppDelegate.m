@@ -95,7 +95,9 @@ static const CGFloat kWindowCornerRadius = 4.f;
     // Optional: configure GAI options.
     GAI *gai = [GAI sharedInstance];
     gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
-    gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
+#if DEBUG
+    gai.logger.logLevel = kGAILogLevelWarning;  // remove before app release
+#endif
     
     [Instabug startWithToken:kInstabugToken invocationEvent:IBGInvocationEventNone];
     
