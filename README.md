@@ -1,5 +1,7 @@
-XujcClient
-===
+![XujcClient icon](README_RES/icon.png)
+
+The Educational Administration System Client of Xiamen University Tan Kah Kee College
+
 [![Build Status](https://travis-ci.com/luckytianyiyan/XujcIOSClient.svg?token=KxwDz7Dpc3VEyK4zS63h&branch=master)](https://travis-ci.com/luckytianyiyan/XujcIOSClient)
 [![GitHub license](https://img.shields.io/github/license/luckytianyiyan/XujcIOSClient.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 GetStart
