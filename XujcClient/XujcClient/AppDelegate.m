@@ -23,6 +23,7 @@
 #define _IPHONE80_ 80000
 
 static const CGFloat kWindowCornerRadius = 4.f;
+
 @interface AppDelegate ()
 
 @end
@@ -46,6 +47,18 @@ static const CGFloat kWindowCornerRadius = 4.f;
                                          RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     
     [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
+    
+    UIImage *shareImage = [UIImage imageNamed:@"logo"];
+    UMSocialExtConfig *defaultExtConfig = [UMSocialData defaultData].extConfig;
+    // QQ
+    defaultExtConfig.qqData.title = kShareTitle;
+    defaultExtConfig.qqData.shareText = kShareText;
+    defaultExtConfig.qqData.shareImage = shareImage;
+    // QZone
+    defaultExtConfig.qzoneData.title = kShareTitle;
+    defaultExtConfig.qzoneData.shareText = kShareText;
+    defaultExtConfig.qzoneData.shareImage = shareImage;
+    
 #if DEBUG
     [UMSocialData openLog:YES];
 #endif

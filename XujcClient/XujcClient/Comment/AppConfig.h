@@ -34,4 +34,10 @@ static NSString * const kSinaSecret = @"9b66b1dc435bf08b43b99325415af1f8";
 
 #define DOCUMENT_DIRECTORY [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
 
+/**
+ *  Share
+ */
+static NSString * const kShareTitle = @"嘉庚教务App";
+static NSString * const kShareText = @"嘉庚生活，尽在掌握";
+
 #endif /* AppConfig_h */

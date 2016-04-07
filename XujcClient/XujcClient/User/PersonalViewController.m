@@ -110,8 +110,8 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
     } else if (indexPath.section == 2) {
         [UMSocialSnsService presentSnsIconSheetView:self
                                              appKey:kUMengAppKey
-                                          shareText:@"嘉庚教务iOS客户端"
-                                         shareImage:[UIImage imageNamed:@"logo"]
+                                          shareText:nil
+                                         shareImage:nil
                                     shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline, UMShareToQQ, UMShareToQzone, UMShareToSina, UMShareToSms]
                                            delegate:self];
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
