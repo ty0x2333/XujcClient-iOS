@@ -65,6 +65,9 @@ static const CGFloat kWindowCornerRadius = 4.f;
     defaultExtConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeApp;
     defaultExtConfig.wechatTimelineData.title = [NSString stringWithFormat:@"%@\n%@", kShareTitle, kShareText];
     defaultExtConfig.wechatTimelineData.shareImage = shareImage;
+    // Sina
+    defaultExtConfig.sinaData.shareText = [NSString stringWithFormat:@"%@\n%@\n%@", kShareTitle, kShareText, kShareURL];
+    defaultExtConfig.sinaData.shareImage = shareImage;
     // SMS
     defaultExtConfig.smsData.shareText = [NSString stringWithFormat:@"%@\n%@\n%@", kShareTitle, kShareText, kShareURL];
     defaultExtConfig.smsData.shareImage = shareImage;
