@@ -41,8 +41,8 @@ static const CGFloat kWindowCornerRadius = 4.f;
 #endif
     
     [UMSocialData setAppKey:kUMengAppKey];
-    [UMSocialWechatHandler setWXAppId:kWechatAppID appSecret:kWechatSecret url:@"http://www.tianyiyan.com"];
-    [UMSocialQQHandler setQQWithAppId:kQQAppID appKey:kQQAppKey url:@"http://www.tianyiyan.com"];
+    [UMSocialWechatHandler setWXAppId:kWechatAppID appSecret:kWechatSecret url:kShareURL];
+    [UMSocialQQHandler setQQWithAppId:kQQAppID appKey:kQQAppKey url:kShareURL];
     [UMSocialSinaSSOHandler openNewSinaSSOWithRedirectURL:nil];
     
     [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
@@ -65,6 +65,9 @@ static const CGFloat kWindowCornerRadius = 4.f;
     defaultExtConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeApp;
     defaultExtConfig.wechatTimelineData.title = [NSString stringWithFormat:@"%@\n%@", kShareTitle, kShareText];
     defaultExtConfig.wechatTimelineData.shareImage = shareImage;
+    // SMS
+    defaultExtConfig.smsData.shareText = [NSString stringWithFormat:@"%@\n%@\n%@", kShareTitle, kShareText, kShareURL];
+    defaultExtConfig.smsData.shareImage = shareImage;
 #if DEBUG
     [UMSocialData openLog:YES];
 #endif
