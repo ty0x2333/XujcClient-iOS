@@ -58,7 +58,14 @@ static const CGFloat kWindowCornerRadius = 4.f;
     defaultExtConfig.qzoneData.title = kShareTitle;
     defaultExtConfig.qzoneData.shareText = kShareText;
     defaultExtConfig.qzoneData.shareImage = shareImage;
-    
+    // Wechat
+    defaultExtConfig.wechatSessionData.title = kShareTitle;
+    defaultExtConfig.wechatSessionData.shareText = kShareText;
+    defaultExtConfig.wechatSessionData.shareImage = shareImage;
+    // Wechat Timeline
+    defaultExtConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeApp;
+    defaultExtConfig.wechatTimelineData.title = [NSString stringWithFormat:@"%@\n%@", kShareTitle, kShareText];
+    defaultExtConfig.wechatTimelineData.shareImage = shareImage;
 #if DEBUG
     [UMSocialData openLog:YES];
 #endif
