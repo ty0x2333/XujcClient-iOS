@@ -2,7 +2,7 @@
 
 The Educational Administration System Client of Xiamen University Tan Kah Kee College
 
-[![Build Status](https://travis-ci.org/luckytianyiyan/XujcIOSClient.svg?token=KxwDz7Dpc3VEyK4zS63h&branch=master)](https://travis-ci.org/luckytianyiyan/XujcIOSClient)
+[![Build Status](https://travis-ci.org/luckytianyiyan/XujcIOSClient.svg?branch=master)](https://travis-ci.org/luckytianyiyan/XujcIOSClient)
 [![GitHub license](https://img.shields.io/github/license/luckytianyiyan/XujcIOSClient.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![GitHub release](https://img.shields.io/github/tag/luckytianyiyan/XujcIOSClient.svg)](https://github.com/luckytianyiyan/XujcIOSClient/tags)
 GetStart
