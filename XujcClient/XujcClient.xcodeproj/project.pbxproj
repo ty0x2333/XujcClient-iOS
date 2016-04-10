@@ -98,6 +98,7 @@
 		706B199E1CBABDA4003B4F47 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B199D1CBABDA4003B4F47 /* ChangePasswordViewController.m */; };
 		706B19A51CBAC80A003B4F47 /* UITextField+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19A41CBAC80A003B4F47 /* UITextField+Theme.m */; };
 		706B19A81CBAC81C003B4F47 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19A71CBAC81C003B4F47 /* UIColor+Theme.m */; };
+		706B19AB1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19AA1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m */; };
 		70730D701C947A41007CBEBB /* SemesterSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D691C947A41007CBEBB /* SemesterSelectorView.m */; };
 		70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6B1C947A41007CBEBB /* SemesterSelectorViewModel.m */; };
 		70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6D1C947A41007CBEBB /* SemesterTableViewCell.m */; };
@@ -325,6 +326,8 @@
 		706B19A41CBAC80A003B4F47 /* UITextField+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Theme.m"; sourceTree = "<group>"; };
 		706B19A61CBAC81C003B4F47 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
 		706B19A71CBAC81C003B4F47 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
+		706B19A91CBAC868003B4F47 /* TTTAttributedLabel+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTTAttributedLabel+Theme.h"; sourceTree = "<group>"; };
+		706B19AA1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTTAttributedLabel+Theme.m"; sourceTree = "<group>"; };
 		70730D681C947A41007CBEBB /* SemesterSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorView.h; sourceTree = "<group>"; };
 		70730D691C947A41007CBEBB /* SemesterSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterSelectorView.m; sourceTree = "<group>"; };
 		70730D6A1C947A41007CBEBB /* SemesterSelectorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorViewModel.h; sourceTree = "<group>"; };
@@ -757,6 +760,8 @@
 				706B19A71CBAC81C003B4F47 /* UIColor+Theme.m */,
 				706B19A31CBAC80A003B4F47 /* UITextField+Theme.h */,
 				706B19A41CBAC80A003B4F47 /* UITextField+Theme.m */,
+				706B19A91CBAC868003B4F47 /* TTTAttributedLabel+Theme.h */,
+				706B19AA1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -1252,6 +1257,7 @@
 				70F7CE431BE3E832001D027C /* XujcUserModel.m in Sources */,
 				70730DAE1C9A6222007CBEBB /* NSData+Coding.m in Sources */,
 				7062B6C91C9331D10074C716 /* ScoreViewModel.m in Sources */,
+				706B19AB1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m in Sources */,
 				7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */,
 				70730D761C94A039007CBEBB /* SemesterBaseViewController.m in Sources */,
 				70730DB41C9A635F007CBEBB /* OssService.m in Sources */,

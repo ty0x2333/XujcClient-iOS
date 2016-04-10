@@ -17,8 +17,7 @@
 #import "VerificationCodeTextField.h"
 #import "ChangePasswordViewController.h"
 #import "UITextField+Theme.h"
-
-static CGFloat const kSmallLabelFontSize = 12.f;
+#import "TTTAttributedLabel+Theme.h"
 
 static CGFloat const kButtonMarginBottom = 12.f;
 
@@ -118,7 +117,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     _switchButton.titleLabel.font = [UIFont systemFontOfSize:kSwitchButtonFontSize];
     [self.view addSubview:_switchButton];
     
-    _serviceProtocolLabel = [self p_smallLabel];
+    _serviceProtocolLabel = [TTTAttributedLabel ty_smallLabel];
     _serviceProtocolLabel.text = [NSString stringWithFormat:@"%@%@", @"点击「注册」按钮\n代表你已阅读并同意", NSLocalizedString(@"Service Protocol", nil)];
     _serviceProtocolLabel.delegate = self;
     NSURL *useAgreementUrl = [NSURL URLWithString:NSStringFromClass([ServiceProtocolViewController class])];
@@ -126,7 +125,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     [_serviceProtocolLabel addLinkToURL:useAgreementUrl withRange:range];
     [self.view addSubview:_serviceProtocolLabel];
     
-    _forgetPasswordLabel = [self p_smallLabel];
+    _forgetPasswordLabel = [TTTAttributedLabel ty_smallLabel];
     _forgetPasswordLabel.text = NSLocalizedString(@"Forget Password?", nil);
     _forgetPasswordLabel.delegate = self;
     NSURL *forgetPasswordUrl = [NSURL URLWithString:NSStringFromClass([ChangePasswordViewController class])];
@@ -381,20 +380,6 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
         hud.detailsLabelText = error.localizedDescription;
         [hud hide:YES afterDelay:kErrorHUDShowTime];
     }];
-}
-
-#pragma mark - Helper
-
-- (TTTAttributedLabel *)p_smallLabel
-{
-    TTTAttributedLabel *label = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.numberOfLines = 0;
-    label.textColor = [UIColor ty_textGray];
-    label.font = [UIFont systemFontOfSize:kSmallLabelFontSize];
-    label.enabledTextCheckingTypes = NSTextCheckingTypeLink;
-    label.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName: [NSNumber numberWithBool:NO], (NSString*)kCTForegroundColorAttributeName: (id)[UIColor ty_textLink].CGColor};
-    return label;
 }
 
 @end
