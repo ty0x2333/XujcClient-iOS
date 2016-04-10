@@ -15,6 +15,7 @@
 #import <TTTAttributedLabel.h>
 #import "ServiceProtocolViewController.h"
 #import "VerificationCodeTextField.h"
+#import "ChangePasswordViewController.h"
 
 static CGFloat const kSmallLabelFontSize = 12.f;
 
@@ -120,9 +121,9 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     [self.view addSubview:_serviceProtocolLabel];
     
     _forgetPasswordLabel = [self p_smallLabel];
-    _forgetPasswordLabel.text = [NSString stringWithFormat:@"忘记密码?"];
+    _forgetPasswordLabel.text = NSLocalizedString(@"Forget Password?", nil);
     _forgetPasswordLabel.delegate = self;
-    NSURL *forgetPasswordUrl = [NSURL URLWithString:NSStringFromClass([ServiceProtocolViewController class])];
+    NSURL *forgetPasswordUrl = [NSURL URLWithString:NSStringFromClass([ChangePasswordViewController class])];
     [_forgetPasswordLabel addLinkToURL:forgetPasswordUrl withRange:NSMakeRange(0, [_forgetPasswordLabel.text length])];
     [self.view addSubview:_forgetPasswordLabel];
     

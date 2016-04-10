@@ -21,6 +21,8 @@
 "Verification Code" = "验证码";
 "Get Code" = "获取验证码";
 "Phone" = "手机号";
+"Forget Password?" = "忘记密码?";
+"Change Password" = "修改密码";
 
 "EmailOrPhone" = "邮箱或手机号";
 "Password" = "密码";
