@@ -16,7 +16,7 @@
 #import "ServiceProtocolViewController.h"
 #import "VerificationCodeTextField.h"
 
-static CGFloat const kServiceProtocolLabelFontSize = 12.f;
+static CGFloat const kSmallLabelFontSize = 12.f;
 
 static CGFloat const kButtonMarginBottom = 12.f;
 
@@ -49,6 +49,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
 @property (strong, nonatomic) SignupViewModel *signupViewModel;
 
 @property (strong, nonatomic) TTTAttributedLabel *serviceProtocolLabel;
+@property (strong, nonatomic) TTTAttributedLabel *forgetPasswordLabel;
 
 @end
 
@@ -110,19 +111,20 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     _switchButton.titleLabel.font = [UIFont systemFontOfSize:kSwitchButtonFontSize];
     [self.view addSubview:_switchButton];
     
-    _serviceProtocolLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
-    _serviceProtocolLabel.textAlignment = NSTextAlignmentCenter;
-    _serviceProtocolLabel.numberOfLines = 0;
-    _serviceProtocolLabel.textColor = [UIColor ty_textGray];
-    _serviceProtocolLabel.font = [UIFont systemFontOfSize:kServiceProtocolLabelFontSize];
-    _serviceProtocolLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
-    _serviceProtocolLabel.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName: [NSNumber numberWithBool:NO], (NSString*)kCTForegroundColorAttributeName: (id)[UIColor ty_textLink].CGColor};
+    _serviceProtocolLabel = [self p_smallLabel];
     _serviceProtocolLabel.text = [NSString stringWithFormat:@"%@%@", @"点击「注册」按钮\n代表你已阅读并同意", NSLocalizedString(@"Service Protocol", nil)];
     _serviceProtocolLabel.delegate = self;
     NSURL *useAgreementUrl = [NSURL URLWithString:NSStringFromClass([ServiceProtocolViewController class])];
     NSRange range = [_serviceProtocolLabel.text rangeOfString:NSLocalizedString(@"Service Protocol", nil)];
     [_serviceProtocolLabel addLinkToURL:useAgreementUrl withRange:range];
     [self.view addSubview:_serviceProtocolLabel];
+    
+    _forgetPasswordLabel = [self p_smallLabel];
+    _forgetPasswordLabel.text = [NSString stringWithFormat:@"忘记密码?"];
+    _forgetPasswordLabel.delegate = self;
+    NSURL *forgetPasswordUrl = [NSURL URLWithString:NSStringFromClass([ServiceProtocolViewController class])];
+    [_forgetPasswordLabel addLinkToURL:forgetPasswordUrl withRange:NSMakeRange(0, [_forgetPasswordLabel.text length])];
+    [self.view addSubview:_forgetPasswordLabel];
     
     [self initConstraints];
     
@@ -194,6 +196,11 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     [_serviceProtocolLabel makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.signupButton.mas_bottom).with.offset(kButtonMarginBottom);
         make.centerX.equalTo(self.signupButton);
+    }];
+    
+    [_forgetPasswordLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.loginButton.mas_bottom).with.offset(kButtonMarginBottom);
+        make.centerX.equalTo(self.loginButton);
     }];
     
     [_switchButton makeConstraints:^(MASConstraintMaker *make) {
@@ -286,9 +293,13 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     RAC(self.loginButton, hidden) = switchButtonStatusChangedSignal;
     RAC(self.signupButton, hidden) = signupShowSignal;
     RAC(self.serviceProtocolLabel, hidden) = signupShowSignal;
-    RAC(self.serviceProtocolLabel, layer.opacity) = [RACObserve(self.switchButton, layer.opacity) map:^id(NSNumber *value) {
+    RACSignal *smallLabelOpacitySignal = [RACObserve(self.switchButton, layer.opacity) map:^id(NSNumber *value) {
         return @(1 - [value floatValue]);
     }];
+    RAC(self.serviceProtocolLabel, layer.opacity) = smallLabelOpacitySignal;
+    
+    RAC(self.forgetPasswordLabel, hidden) = switchButtonStatusChangedSignal;
+    RAC(self.forgetPasswordLabel, layer.opacity) = smallLabelOpacitySignal;
     
     // Selected change
     _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
@@ -376,6 +387,18 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.placeholder = NSLocalizedString(placeholder, nil);
     return textField;
+}
+
+- (TTTAttributedLabel *)p_smallLabel
+{
+    TTTAttributedLabel *label = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    label.textColor = [UIColor ty_textGray];
+    label.font = [UIFont systemFontOfSize:kSmallLabelFontSize];
+    label.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    label.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName: [NSNumber numberWithBool:NO], (NSString*)kCTForegroundColorAttributeName: (id)[UIColor ty_textLink].CGColor};
+    return label;
 }
 
 @end
