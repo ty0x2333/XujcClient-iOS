@@ -16,6 +16,7 @@
 #import "ServiceProtocolViewController.h"
 #import "VerificationCodeTextField.h"
 #import "ChangePasswordViewController.h"
+#import "UITextField+Theme.h"
 
 static CGFloat const kSmallLabelFontSize = 12.f;
 
@@ -76,27 +77,32 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     _loginTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
     [self.view addSubview:_loginTextFieldGroupView];
     
-    _accountTextField = [self p_textFieldWithPlaceholder:@"Phone"];
+    _accountTextField = [UITextField ty_textField];
+    _accountTextField.placeholder = NSLocalizedString(@"Phone", nil);
     _accountTextField.keyboardType = UIKeyboardTypeEmailAddress;
     [_loginTextFieldGroupView addSubview:_accountTextField];
     
-    _passwordTextField = [self p_textFieldWithPlaceholder:@"Password"];
+    _passwordTextField = [UITextField ty_textField];
+    _passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
     [_loginTextFieldGroupView addSubview:_passwordTextField];
     
     _signupTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
     [self.view addSubview:_signupTextFieldGroupView];
     
-    _signupNicknameTextField = [self p_textFieldWithPlaceholder:@"Nickname"];
+    _signupNicknameTextField = [UITextField ty_textField];
+    _signupNicknameTextField.placeholder = NSLocalizedString(@"Nickname", nil);
     [_signupTextFieldGroupView addSubview:_signupNicknameTextField];
     
-    _signupPhoneTextField = [self p_textFieldWithPlaceholder:@"Phone(Only support China inland)"];
+    _signupPhoneTextField = [UITextField ty_textField];
+    _signupPhoneTextField.placeholder = NSLocalizedString(@"Phone(Only support China inland)", nil);
     _signupPhoneTextField.keyboardType = UIKeyboardTypeNumberPad;
     [_signupTextFieldGroupView addSubview:_signupPhoneTextField];
     
     _signupVerificationCodeTextField = [[VerificationCodeTextField alloc] initWithViewModel:[self.signupViewModel verificationCodeTextFieldViewModel]];
     [_signupTextFieldGroupView addSubview:_signupVerificationCodeTextField];
     
-    _signupPasswordTextField = [self p_textFieldWithPlaceholder:@"Password"];
+    _signupPasswordTextField = [UITextField ty_textField];
+    _signupPasswordTextField.placeholder = NSLocalizedString(@"Password", nil);
     [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
     
     _loginButton = [[FormButton alloc] init];
@@ -378,17 +384,6 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
 }
 
 #pragma mark - Helper
-
-- (UITextField *)p_textFieldWithPlaceholder:(NSString *)placeholder
-{
-    UITextField *textField = [[UITextField alloc] init];
-    textField.ty_borderColor = [UIColor ty_border].CGColor;
-    textField.ty_borderEdge = UIRectEdgeBottom;
-    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    textField.placeholder = NSLocalizedString(placeholder, nil);
-    return textField;
-}
 
 - (TTTAttributedLabel *)p_smallLabel
 {
