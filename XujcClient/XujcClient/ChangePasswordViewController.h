@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+@class ChangePasswordViewModel;
 
 @interface ChangePasswordViewController : BaseViewController
+
+- (instancetype)initWithViewModel:(ChangePasswordViewModel *)viewModel;
 
 @end

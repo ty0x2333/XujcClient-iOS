@@ -381,10 +381,13 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
 {
     NSString *className = url.absoluteString;
     Class viewControllerClass = NSClassFromString(className);
+    id viewController;
     if ([className isEqualToString:NSStringFromClass([ServiceProtocolViewController class])]) {
-        id viewController = [[viewControllerClass alloc] initWithViewModel:[_signupViewModel serviceProtocolViewModel]];
-        [self.navigationController pushViewController:viewController animated:YES];
+        viewController = [[viewControllerClass alloc] initWithViewModel:[_signupViewModel serviceProtocolViewModel]];
+    } else {
+        viewController = [[viewControllerClass alloc] initWithViewModel:[_loginViewModel changePasswordViewModel]];
     }
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

@@ -101,6 +101,8 @@
 		706B19AB1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19AA1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m */; };
 		706B19AE1CBBA14C003B4F47 /* InputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19AD1CBBA14C003B4F47 /* InputTableViewCell.m */; };
 		706B19B71CBBC1D5003B4F47 /* ServiceProtocolViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19B61CBBC1D5003B4F47 /* ServiceProtocolViewModel.m */; };
+		706B19B11CBBBC79003B4F47 /* VerificationCodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19B01CBBBC79003B4F47 /* VerificationCodeTableViewCell.m */; };
+		706B19B41CBBBECB003B4F47 /* ChangePasswordViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19B31CBBBECB003B4F47 /* ChangePasswordViewModel.m */; };
 		70730D701C947A41007CBEBB /* SemesterSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D691C947A41007CBEBB /* SemesterSelectorView.m */; };
 		70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6B1C947A41007CBEBB /* SemesterSelectorViewModel.m */; };
 		70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6D1C947A41007CBEBB /* SemesterTableViewCell.m */; };
@@ -334,6 +336,10 @@
 		706B19AD1CBBA14C003B4F47 /* InputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTableViewCell.m; sourceTree = "<group>"; };
 		706B19B51CBBC1D5003B4F47 /* ServiceProtocolViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProtocolViewModel.h; sourceTree = "<group>"; };
 		706B19B61CBBC1D5003B4F47 /* ServiceProtocolViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProtocolViewModel.m; sourceTree = "<group>"; };
+		706B19AF1CBBBC79003B4F47 /* VerificationCodeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeTableViewCell.h; sourceTree = "<group>"; };
+		706B19B01CBBBC79003B4F47 /* VerificationCodeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeTableViewCell.m; sourceTree = "<group>"; };
+		706B19B21CBBBECB003B4F47 /* ChangePasswordViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewModel.h; sourceTree = "<group>"; };
+		706B19B31CBBBECB003B4F47 /* ChangePasswordViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewModel.m; sourceTree = "<group>"; };
 		70730D681C947A41007CBEBB /* SemesterSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorView.h; sourceTree = "<group>"; };
 		70730D691C947A41007CBEBB /* SemesterSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterSelectorView.m; sourceTree = "<group>"; };
 		70730D6A1C947A41007CBEBB /* SemesterSelectorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorViewModel.h; sourceTree = "<group>"; };
@@ -952,6 +958,10 @@
 				706B199D1CBABDA4003B4F47 /* ChangePasswordViewController.m */,
 				706B19AC1CBBA14C003B4F47 /* InputTableViewCell.h */,
 				706B19AD1CBBA14C003B4F47 /* InputTableViewCell.m */,
+				706B19AF1CBBBC79003B4F47 /* VerificationCodeTableViewCell.h */,
+				706B19B01CBBBC79003B4F47 /* VerificationCodeTableViewCell.m */,
+				706B19B21CBBBECB003B4F47 /* ChangePasswordViewModel.h */,
+				706B19B31CBBBECB003B4F47 /* ChangePasswordViewModel.m */,
 				70B167D21CA0EEE200AF8322 /* ServiceProtocolViewController.h */,
 				70B167D31CA0EEE200AF8322 /* ServiceProtocolViewController.m */,
 				706B19B51CBBC1D5003B4F47 /* ServiceProtocolViewModel.h */,
@@ -1336,6 +1346,7 @@
 				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
 				70730DFF1C9E1CBB007CBEBB /* SupportCenterViewController.m in Sources */,
 				70A88CFB1C9F230C0067DB77 /* SupportCenterViewModel.m in Sources */,
+				706B19B11CBBBC79003B4F47 /* VerificationCodeTableViewCell.m in Sources */,
 				70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */,
 				706B19AE1CBBA14C003B4F47 /* InputTableViewCell.m in Sources */,
 				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
@@ -1343,6 +1354,7 @@
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */,
 				70730D9C1C99F580007CBEBB /* MainTabBarViewModel.m in Sources */,
+				706B19B41CBBBECB003B4F47 /* ChangePasswordViewModel.m in Sources */,
 				19781BA01CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.m in Sources */,
 				19781B9C1CAB6EE700D078A6 /* VerificationCodeTextField.m in Sources */,
 				702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */,

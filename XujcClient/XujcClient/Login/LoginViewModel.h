@@ -8,6 +8,7 @@
 
 #import "AccountViewModel.h"
 #import "BindingAccountViewModel.h"
+#import "ChangePasswordViewModel.h"
 
 @interface LoginViewModel : AccountViewModel
 
@@ -17,5 +18,7 @@
 
 - (NSString *)currentAccountPhone;
 - (NSString *)currentAccountPassword;
+
+- (ChangePasswordViewModel *)changePasswordViewModel;
 
 @end
