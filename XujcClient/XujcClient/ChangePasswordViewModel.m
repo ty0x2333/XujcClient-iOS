@@ -33,11 +33,12 @@
                                      return @([NSString ty_validatePassword:text]);
                                  }] distinctUntilChanged];
         
-        _changePasswordActiveSignal = [RACSignal combineLatest:@[validPhoneSignal, validPasswordSignal]
-                                                reduce:^id(NSNumber *phoneValid, NSNumber *passwordValid) {
-                                                    return @([phoneValid boolValue] && [passwordValid boolValue]);
+        _changePasswordActiveSignal = [RACSignal combineLatest:@[validPhoneSignal, validPasswordSignal, _verificationCodeTextFieldViewModel.validVerificationCodeSignal]
+                                                reduce:^id(NSNumber *phoneValid, NSNumber *passwordValid, NSNumber *verificationCodeValid) {
+                                                    return @([phoneValid boolValue] && [passwordValid boolValue] && [verificationCodeValid boolValue]);
                                                 }];
         _executeChangePassword = [[RACCommand alloc] initWithEnabled:_changePasswordActiveSignal signalBlock:^RACSignal *(id input) {
+            TyLogDebug(@"executeChangePassword");
 //            return [[[self executeChangePasswordSignal] setNameWithFormat:@"executeChangePasswordSignal"] logAll];
             return [RACSignal empty];
         }];
