@@ -36,6 +36,7 @@ static CGFloat const kInputLabelMarginHorizontal = 10.f;
         [_textField makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.right.equalTo(self.contentView);
             make.left.equalTo(self.inputLabel.mas_right).with.offset(kInputLabelMarginHorizontal);
+            make.width.greaterThanOrEqualTo(self.contentView.mas_width).multipliedBy(0.5f);
         }];
     }
     return self;
