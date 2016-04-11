@@ -10,6 +10,11 @@
 #import "ChangePasswordViewModel.h"
 #import "InputTableViewCell.h"
 #import "VerificationCodeTableViewCell.h"
+#import "FormButton.h"
+
+static CGFloat const kTableViewTableFooterHeight = 40.f;
+
+static CGFloat const kOKButtonMarginHorizontal = 10.f;
 
 static NSString * const kInputTableViewCellReuseIdentifier = @"InputTableViewCellReuseIdentifier";
 static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"VerificationCodeTableViewCellReuseIdentifier";
@@ -21,6 +26,8 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
 
 @property (nonatomic, strong) UITextField *phoneTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
+
+@property (nonatomic, strong) FormButton *okButton;
 
 @end
 
@@ -39,7 +46,17 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
     [super viewDidLoad];
     self.screenName = @"Change Password Screen";
     self.title = NSLocalizedString(@"Change Password", nil);
+    
+    UIView *tableFooterView = [[UIView alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(0, kTableViewTableFooterHeight)}];
+    
+    _okButton = [[FormButton alloc] init];
+    [_okButton setTitle:@"完成" forState:UIControlStateNormal];
+    _okButton.backgroundColor = [UIColor ty_buttonBackground];
+    
+    [tableFooterView addSubview:_okButton];
+    
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    _tableView.tableFooterView = tableFooterView;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[InputTableViewCell class] forCellReuseIdentifier:kInputTableViewCellReuseIdentifier];
     [_tableView registerClass:[VerificationCodeTableViewCell class] forCellReuseIdentifier:kVerificationCodeTableViewCellReuseIdentifier];
@@ -48,11 +65,19 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
         make.top.bottom.left.right.equalTo(self.view);
     }];
     
+    [_okButton makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(tableFooterView).with.offset(kOKButtonMarginHorizontal);
+        make.width.equalTo(self.tableView).with.offset(-2 * kOKButtonMarginHorizontal);
+        make.top.bottom.equalTo(tableFooterView);
+    }];
+    
     _phoneTextField = [[UITextField alloc] init];
     _phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     _passwordTextField = [[UITextField alloc] init];
     _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    
+    _okButton.rac_command = self.viewModel.executeChangePassword;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -80,10 +105,17 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
     if (indexPath.row == 0) {
         _phoneTextField = cell.textField;
         cell.inputLabel.text = @"手机号";
+        RAC(self.viewModel, phone) = [[RACSignal merge:@[RACObserve(self.phoneTextField, text), self.phoneTextField.rac_textSignal]] takeUntil:cell.rac_prepareForReuseSignal];
     } else if (indexPath.row == 2) {
         _passwordTextField = cell.textField;
         cell.inputLabel.text = @"新密码";
+        RAC(self.viewModel, password) = [[RACSignal merge:@[RACObserve(self.passwordTextField, text), self.passwordTextField.rac_textSignal]] takeUntil:cell.rac_prepareForReuseSignal];
     }
+    
+#warning test
+    _phoneTextField.text = @"18559499636";
+    _passwordTextField.text = @"111111";
+    
     return cell;
 }
 
