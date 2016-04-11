@@ -4,7 +4,7 @@ digraph ViewModel{
 	MasterViewModel->MainTabBarViewModel;
 
 	MainTabBarViewModel->LoginViewModel;
-	MainTabBarViewModel->SignupViewModel;
+	MainTabBarViewModel->SignupViewModel->ServiceProtocolViewModel;
 	SignupViewModel->VerificationCodeTextFieldViewModel[style = dashed];
 	VerificationCodeTextFieldViewModel[style = dashed];
 	MainTabBarViewModel->SemesterMasterViewModel[style = dashed];
@@ -34,4 +34,5 @@ digraph ViewModel{
 	PersonalHeaderViewModel[style = dashed];
 
 	SupportCenterViewModel->TableViewCellViewModel[style = dashed];
+	SupportCenterViewModel->ServiceProtocolViewModel;
 }
