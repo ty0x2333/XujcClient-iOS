@@ -100,6 +100,7 @@
 		706B19A81CBAC81C003B4F47 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19A71CBAC81C003B4F47 /* UIColor+Theme.m */; };
 		706B19AB1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19AA1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m */; };
 		706B19AE1CBBA14C003B4F47 /* InputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19AD1CBBA14C003B4F47 /* InputTableViewCell.m */; };
+		706B19B71CBBC1D5003B4F47 /* ServiceProtocolViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19B61CBBC1D5003B4F47 /* ServiceProtocolViewModel.m */; };
 		70730D701C947A41007CBEBB /* SemesterSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D691C947A41007CBEBB /* SemesterSelectorView.m */; };
 		70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6B1C947A41007CBEBB /* SemesterSelectorViewModel.m */; };
 		70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6D1C947A41007CBEBB /* SemesterTableViewCell.m */; };
@@ -331,6 +332,8 @@
 		706B19AA1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTTAttributedLabel+Theme.m"; sourceTree = "<group>"; };
 		706B19AC1CBBA14C003B4F47 /* InputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTableViewCell.h; sourceTree = "<group>"; };
 		706B19AD1CBBA14C003B4F47 /* InputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTableViewCell.m; sourceTree = "<group>"; };
+		706B19B51CBBC1D5003B4F47 /* ServiceProtocolViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProtocolViewModel.h; sourceTree = "<group>"; };
+		706B19B61CBBC1D5003B4F47 /* ServiceProtocolViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProtocolViewModel.m; sourceTree = "<group>"; };
 		70730D681C947A41007CBEBB /* SemesterSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorView.h; sourceTree = "<group>"; };
 		70730D691C947A41007CBEBB /* SemesterSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterSelectorView.m; sourceTree = "<group>"; };
 		70730D6A1C947A41007CBEBB /* SemesterSelectorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorViewModel.h; sourceTree = "<group>"; };
@@ -951,6 +954,8 @@
 				706B19AD1CBBA14C003B4F47 /* InputTableViewCell.m */,
 				70B167D21CA0EEE200AF8322 /* ServiceProtocolViewController.h */,
 				70B167D31CA0EEE200AF8322 /* ServiceProtocolViewController.m */,
+				706B19B51CBBC1D5003B4F47 /* ServiceProtocolViewModel.h */,
+				706B19B61CBBC1D5003B4F47 /* ServiceProtocolViewModel.m */,
 				70F7CE251BE3AC25001D027C /* Assets.xcassets */,
 				70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */,
 				70F7CE2A1BE3AC25001D027C /* Info.plist */,
@@ -1257,6 +1262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706B19B71CBBC1D5003B4F47 /* ServiceProtocolViewModel.m in Sources */,
 				70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */,
 				706B19A81CBAC81C003B4F47 /* UIColor+Theme.m in Sources */,
 				70F7CE431BE3E832001D027C /* XujcUserModel.m in Sources */,

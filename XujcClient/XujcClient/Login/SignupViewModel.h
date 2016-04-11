@@ -7,6 +7,7 @@
 //
 
 #import "AccountViewModel.h"
+@class ServiceProtocolViewModel;
 @class VerificationCodeTextFieldViewModel;
 
 @interface SignupViewModel : AccountViewModel
@@ -20,5 +21,7 @@
 @property (strong, nonatomic) RACSignal *validNicknameSignal;
 
 @property (readonly, strong, nonatomic) VerificationCodeTextFieldViewModel *verificationCodeTextFieldViewModel;
+
+- (ServiceProtocolViewModel *)serviceProtocolViewModel;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TableViewCellViewModel.h"
+#import "ServiceProtocolViewModel.h"
 
 @interface SupportCenterViewModel : NSObject
 
@@ -20,5 +21,7 @@
 - (NSString *)versionDescription;
 
 - (TableViewCellViewModel *)tableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+- (ServiceProtocolViewModel *)serviceProtocolViewModel;
 
 @end

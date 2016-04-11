@@ -13,6 +13,7 @@
 #import "DynamicData.h"
 #import "NSString+Validator.h"
 #import "VerificationCodeTextFieldViewModel.h"
+#import "ServiceProtocolViewModel.h"
 
 static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
 
@@ -73,6 +74,11 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
         }];
     }];
     return executeSignupSignal;
+}
+
+- (ServiceProtocolViewModel *)serviceProtocolViewModel
+{
+    return [[ServiceProtocolViewModel alloc] init];
 }
 
 @end

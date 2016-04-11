@@ -156,14 +156,6 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     [self.view endEditing:YES];
 }
 
-- (void)attributedLabel:(TTTAttributedLabel *)label
-   didSelectLinkWithURL:(NSURL *)url
-{
-    Class viewControllerClass = NSClassFromString(url.absoluteString);
-    id viewController = [[viewControllerClass alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-
 - (void)initConstraints
 {
     [_logoImageView makeConstraints:^(MASConstraintMaker *make) {
@@ -380,6 +372,19 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
         hud.detailsLabelText = error.localizedDescription;
         [hud hide:YES afterDelay:kErrorHUDShowTime];
     }];
+}
+
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label
+   didSelectLinkWithURL:(NSURL *)url
+{
+    NSString *className = url.absoluteString;
+    Class viewControllerClass = NSClassFromString(className);
+    if ([className isEqualToString:NSStringFromClass([ServiceProtocolViewController class])]) {
+        id viewController = [[viewControllerClass alloc] initWithViewModel:[_signupViewModel serviceProtocolViewModel]];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 @end
