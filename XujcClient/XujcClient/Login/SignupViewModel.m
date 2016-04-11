@@ -38,9 +38,9 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
                                      return @([NSString ty_validateUsername:text]);
                                  }] distinctUntilChanged];
         
-        _signupActiveSignal = [RACSignal combineLatest:@[self.validPhoneSignal, self.validPasswordSignal, self.validNicknameSignal]
-                                                reduce:^id(NSNumber *phoneValid, NSNumber *usernameValid, NSNumber *passwordValid) {
-                                                    return @([phoneValid boolValue] && [usernameValid boolValue] && [passwordValid boolValue]);
+        _signupActiveSignal = [RACSignal combineLatest:@[self.validPhoneSignal, self.validPasswordSignal, self.validNicknameSignal, _verificationCodeTextFieldViewModel.validVerificationCodeSignal]
+                                                reduce:^id(NSNumber *phoneValid, NSNumber *usernameValid, NSNumber *passwordValid, NSNumber *VerificationCodeValid) {
+                                                    return @([phoneValid boolValue] && [usernameValid boolValue] && [passwordValid boolValue] && [VerificationCodeValid boolValue]);
                                                 }];
 
         _executeSignup = [[RACCommand alloc] initWithEnabled:_signupActiveSignal signalBlock:^RACSignal *(id input) {
