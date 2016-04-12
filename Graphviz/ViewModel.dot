@@ -3,7 +3,7 @@ digraph ViewModel{
 
 	MasterViewModel->MainTabBarViewModel;
 
-	MainTabBarViewModel->LoginViewModel;
+	MainTabBarViewModel->LoginViewModel->ChangePasswordViewModel;
 	MainTabBarViewModel->SignupViewModel->ServiceProtocolViewModel;
 	SignupViewModel->VerificationCodeTextFieldViewModel[style = dashed];
 	VerificationCodeTextFieldViewModel[style = dashed];
