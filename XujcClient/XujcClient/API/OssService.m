@@ -13,6 +13,9 @@
 #import "DynamicData.h"
 #import "UIImage+Coding.h"
 #import "NSData+Coding.h"
+#import <SDWebImageManager.h>
+
+NSString * const kUpdateAvatarRequestDomain = @"UpdateAvatarRequestDomain";
 
 static NSString * const kOSSParamCallbackURL = @"callbackUrl";
 static NSString * const kOSSParamCallbackBody = @"callbackBody";
@@ -92,7 +95,7 @@ static NSString * const kOSSParamCallbackBody = @"callbackBody";
         putRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
             [subscriber sendNext:@(totalByteSent * 1.f / totalBytesExpectedToSend)];
         };
-        NSString *callbackURL = [NSString stringWithFormat:@"%@%@", [AFHTTPSessionManager ty_serviceBaseURL], @"updateAvater"];
+        NSString *callbackURL = [NSString stringWithFormat:@"%@%@", [AFHTTPSessionManager ty_serviceBaseURL], @"update_avatar"];
         putRequest.callbackParam = @{
                                      kOSSParamCallbackURL: callbackURL,
                                      kOSSParamCallbackBody: [NSString stringWithFormat:@"filename=%@&authorization=%@", imageMD5, DYNAMIC_DATA.apiKey]
@@ -101,9 +104,27 @@ static NSString * const kOSSParamCallbackBody = @"callbackBody";
         
         [putTask continueWithBlock:^id(OSSTask *task) {
             if (!task.error) {
-//                OSSInitMultipartUploadResult *result = task.result;
-//                TyLogDebug(@"result: %@", result);
-                [subscriber sendCompleted];
+                OSSPutObjectResult *result = task.result;
+                NSError *encodeError;
+                NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:[result.serverReturnJsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:&encodeError];
+                if (encodeError) {
+                    [subscriber sendError:encodeError];
+                    return nil;
+                }
+                BOOL isSuccess = ![[responseObject objectForKey:TYServiceKeyError] boolValue];
+                if (isSuccess) {
+                    NSString *avatar = [responseObject objectForKey:TYServiceKeyAvatar];
+                    // cache avatar
+                    [[SDWebImageManager sharedManager] saveImageToCache:image forURL:[NSURL URLWithString:avatar]];
+                    // update user avatar
+                    DYNAMIC_DATA.user.avatar = avatar;
+                    [DYNAMIC_DATA flush];
+                    [subscriber sendCompleted];
+                } else {
+                    NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
+                    NSError *error = [NSError errorWithDomain:kUpdateAvatarRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
+                    [subscriber sendError:error];
+                }
             } else {
                 [subscriber sendError:task.error];
             }
