@@ -104,10 +104,12 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
     InputTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kInputTableViewCellReuseIdentifier forIndexPath:indexPath];
     if (indexPath.row == 0) {
         _phoneTextField = cell.textField;
+        cell.textField.keyboardType = UIKeyboardTypeNumberPad;
         cell.inputLabel.text = @"手机号";
         RAC(self.viewModel, phone) = [[RACSignal merge:@[RACObserve(self.phoneTextField, text), self.phoneTextField.rac_textSignal]] takeUntil:cell.rac_prepareForReuseSignal];
     } else if (indexPath.row == 2) {
         _passwordTextField = cell.textField;
+        cell.textField.secureTextEntry = YES;
         cell.inputLabel.text = @"新密码";
         RAC(self.viewModel, password) = [[RACSignal merge:@[RACObserve(self.passwordTextField, text), self.passwordTextField.rac_textSignal]] takeUntil:cell.rac_prepareForReuseSignal];
     }

@@ -26,6 +26,7 @@ static CGFloat const kInputLabelMarginHorizontal = 10.f;
         _inputLabel = [[UILabel alloc] init];
         [self.contentView addSubview:_inputLabel];
         _textField = [[UITextField alloc] init];
+        _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         [self.contentView addSubview:_textField];
         [_inputLabel makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView).with.offset(kInputLabelMarginHorizontal);
