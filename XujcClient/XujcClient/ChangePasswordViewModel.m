@@ -8,6 +8,9 @@
 
 #import "ChangePasswordViewModel.h"
 #import "NSString+Validator.h"
+#import "TYService.h"
+
+static NSString * const kChangePasswordRequestDomain = @"ChangePasswordRequestDomain";
 
 @interface ChangePasswordViewModel()
 
@@ -38,37 +41,36 @@
                                                     return @([phoneValid boolValue] && [passwordValid boolValue] && [verificationCodeValid boolValue]);
                                                 }];
         _executeChangePassword = [[RACCommand alloc] initWithEnabled:_changePasswordActiveSignal signalBlock:^RACSignal *(id input) {
-            TyLogDebug(@"executeChangePassword");
-//            return [[[self executeChangePasswordSignal] setNameWithFormat:@"executeChangePasswordSignal"] logAll];
-            return [RACSignal empty];
+            return [[[self executeChangePasswordSignal] setNameWithFormat:@"executeChangePasswordSignal"] logAll];
         }];
     }
     return self;
 }
 
-//- (RACSignal *)executeChangePasswordSignal
-//{
-//    @weakify(self);
-//    RACSignal *executeChangePasswordSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-//        @strongify(self);
-//        NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServiceKeyNickname: self.nickname, TYServiceKeyPhone: self.account, TYServiceKeyPassword: self.password, TYServiceKeyVerificationCode: self.verificationCodeTextFieldViewModel.verificationCode} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
-//            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
-//            NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
-//            if (isError) {
-//                NSError *error = [NSError errorWithDomain:kSignupRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
-//                [subscriber sendError:error];
-//            } else {
-//                [subscriber sendNext:message];
-//                [subscriber sendCompleted];
-//            }
-//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//            [subscriber sendError:error];
-//        }];
-//        return [RACDisposable disposableWithBlock:^{
-//            [task cancel];
-//        }];
-//    }];
-//    return executeSignupSignal;
-//}
+- (RACSignal *)executeChangePasswordSignal
+{
+    @weakify(self);
+    RACSignal *executeChangePasswordSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self.sessionManager PUT:@"password" parameters:@{TYServiceKeyPhone: self.phone, TYServiceKeyPassword: self.password, TYServiceKeyVerificationCode: self.verificationCodeTextFieldViewModel.verificationCode} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
+            NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
+            if (isError) {
+                NSError *error = [NSError errorWithDomain:kChangePasswordRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
+                [subscriber sendError:error];
+            } else {
+                [subscriber sendNext:message];
+                [subscriber sendCompleted];
+            }
+
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    return executeChangePasswordSignal;
+}
 
 @end
