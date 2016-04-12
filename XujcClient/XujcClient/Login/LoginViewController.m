@@ -83,6 +83,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     
     _passwordTextField = [UITextField ty_textField];
     _passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
+    _passwordTextField.secureTextEntry = YES;
     [_loginTextFieldGroupView addSubview:_passwordTextField];
     
     _signupTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
@@ -102,6 +103,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     
     _signupPasswordTextField = [UITextField ty_textField];
     _signupPasswordTextField.placeholder = NSLocalizedString(@"Password", nil);
+    _signupPasswordTextField.secureTextEntry = YES;
     [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
     
     _loginButton = [[FormButton alloc] init];
