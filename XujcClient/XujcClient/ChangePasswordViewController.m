@@ -78,6 +78,26 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
     _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     _okButton.rac_command = self.viewModel.executeChangePassword;
+    
+    @weakify(self);
+    [[self.viewModel.executeChangePassword.executionSignals concat] subscribeNext:^(id x) {
+        @strongify(self);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    [[self.viewModel.executeChangePassword.executing filter:^BOOL(id value) {
+        return [value boolValue];
+    }] subscribeNext:^(id x) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }];
+    
+    [self.viewModel.executeChangePassword.errors subscribeNext:^(NSError *error) {
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+        hud.mode = MBProgressHUDModeText;
+        hud.detailsLabelText = error.localizedDescription;
+        [hud hide:YES afterDelay:kErrorHUDShowTime];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
