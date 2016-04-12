@@ -134,10 +134,6 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
         RAC(self.viewModel, password) = [[RACSignal merge:@[RACObserve(self.passwordTextField, text), self.passwordTextField.rac_textSignal]] takeUntil:cell.rac_prepareForReuseSignal];
     }
     
-#warning test
-    _phoneTextField.text = @"18559499636";
-    _passwordTextField.text = @"111111";
-    
     return cell;
 }
 
