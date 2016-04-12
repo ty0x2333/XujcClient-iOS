@@ -25,11 +25,11 @@ static NSString * const kOSSParamCallbackBody = @"callbackBody";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         id<OSSCredentialProvider> credential = [[OSSFederationCredentialProvider alloc] initWithFederationTokenGetter:^OSSFederationToken * {
-            NSURL * url = [NSURL URLWithString:@"avatar" relativeToURL:[NSURL URLWithString:[AFHTTPSessionManager ty_serviceBaseURL]]];
+            NSString *urlString = [NSString stringWithFormat:@"avatar_token?%@=%@", TYServiceKeyAuthorization, DYNAMIC_DATA.apiKey];
+            NSURL * url = [NSURL URLWithString:urlString relativeToURL:[NSURL URLWithString:[AFHTTPSessionManager ty_serviceBaseURL]]];
             NSMutableURLRequest * mutableRequest = [NSMutableURLRequest requestWithURL:url];
-            mutableRequest.HTTPMethod = @"POST";
+            mutableRequest.HTTPMethod = @"GET";
             [mutableRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-            mutableRequest.HTTPBody = [[[NSString alloc] initWithFormat:@"%@=%@", TYServiceKeyAuthorization, DYNAMIC_DATA.apiKey] dataUsingEncoding:NSUTF8StringEncoding];
             
             OSSTaskCompletionSource * tcs = [OSSTaskCompletionSource taskCompletionSource];
             NSURLSession * session = [NSURLSession sharedSession];
