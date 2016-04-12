@@ -85,33 +85,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 @property (nonatomic, strong) NSMutableDictionary *currentTimeIndicatorAttributes;
 @property (nonatomic, strong) NSMutableDictionary *currentTimeHorizontalGridlineAttributes;
 
-- (void)initialize;
-// Minute Updates
-- (void)minuteTick:(id)sender;
-// Layout
-- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewAtIndexPath:(NSIndexPath *)indexPath ofKind:(NSString *)kind withItemCache:(NSMutableDictionary *)itemCache;
-- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewAtIndexPath:(NSIndexPath *)indexPath ofKind:(NSString *)kind withItemCache:(NSMutableDictionary *)itemCache;
-- (UICollectionViewLayoutAttributes *)layoutAttributesForCellAtIndexPath:(NSIndexPath *)indexPath withItemCache:(NSMutableDictionary *)itemCache;
-// Scrolling
-- (NSInteger)closestSectionToCurrentTime;
-// Section Sizing
-- (CGRect)rectForSection:(NSInteger)section;
-- (CGFloat)maxSectionHeight;
-- (CGFloat)stackedSectionHeight;
-- (CGFloat)stackedSectionHeightUpToSection:(NSInteger)upToSection;
-- (CGFloat)sectionHeight:(NSInteger)section;
-// Z Index
-- (CGFloat)zIndexForElementKind:(NSString *)elementKind;
-- (CGFloat)zIndexForElementKind:(NSString *)elementKind floating:(BOOL)floating;
-// Hours
-- (NSInteger)earliestClassSectionForSection:(NSInteger)section;
-- (NSInteger)latestClassSectionForSection:(NSInteger)section;
-// Delegate Wrappers
-- (NSDateComponents *)dayForSection:(NSInteger)section;
-- (NSInteger)startClassSectionIndexForIndexPath:(NSIndexPath *)indexPath;
-- (NSInteger)endClassSectionIndexForIndexPath:(NSIndexPath *)indexPath;
-- (NSDate *)currentTimeDate;
-
 @end
 
 @implementation CollectionViewScheduleLayout
@@ -252,8 +225,6 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     currentTimeHorizontalGridlineAttributes.hidden = !currentTimeIndicatorVisible;
     
     if (currentTimeIndicatorVisible) {
-        TyLogDebug(@"当前课程进度: %f", lessonProgress);
-        
         // The y value of the current time
         CGFloat timeY = calendarContentMinY + nearbyintf(lessonProgress * _classSectionHeight);
 

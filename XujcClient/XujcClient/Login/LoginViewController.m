@@ -15,8 +15,9 @@
 #import <TTTAttributedLabel.h>
 #import "ServiceProtocolViewController.h"
 #import "VerificationCodeTextField.h"
-
-static CGFloat const kServiceProtocolLabelFontSize = 12.f;
+#import "ChangePasswordViewController.h"
+#import "UITextField+Theme.h"
+#import "TTTAttributedLabel+Theme.h"
 
 static CGFloat const kButtonMarginBottom = 12.f;
 
@@ -49,6 +50,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
 @property (strong, nonatomic) SignupViewModel *signupViewModel;
 
 @property (strong, nonatomic) TTTAttributedLabel *serviceProtocolLabel;
+@property (strong, nonatomic) TTTAttributedLabel *forgetPasswordLabel;
 
 @end
 
@@ -74,27 +76,34 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     _loginTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
     [self.view addSubview:_loginTextFieldGroupView];
     
-    _accountTextField = [self p_textFieldWithPlaceholder:@"Phone"];
+    _accountTextField = [UITextField ty_textField];
+    _accountTextField.placeholder = NSLocalizedString(@"Phone", nil);
     _accountTextField.keyboardType = UIKeyboardTypeEmailAddress;
     [_loginTextFieldGroupView addSubview:_accountTextField];
     
-    _passwordTextField = [self p_textFieldWithPlaceholder:@"Password"];
+    _passwordTextField = [UITextField ty_textField];
+    _passwordTextField.placeholder = NSLocalizedString(@"Password", nil);
+    _passwordTextField.secureTextEntry = YES;
     [_loginTextFieldGroupView addSubview:_passwordTextField];
     
     _signupTextFieldGroupView = [[LoginTextFieldGroupView alloc] initWithItemHeight:kLoginTextFieldHeight];
     [self.view addSubview:_signupTextFieldGroupView];
     
-    _signupNicknameTextField = [self p_textFieldWithPlaceholder:@"Nickname"];
+    _signupNicknameTextField = [UITextField ty_textField];
+    _signupNicknameTextField.placeholder = NSLocalizedString(@"Nickname", nil);
     [_signupTextFieldGroupView addSubview:_signupNicknameTextField];
     
-    _signupPhoneTextField = [self p_textFieldWithPlaceholder:@"Phone(Only support China inland)"];
+    _signupPhoneTextField = [UITextField ty_textField];
+    _signupPhoneTextField.placeholder = NSLocalizedString(@"Phone(Only support China inland)", nil);
     _signupPhoneTextField.keyboardType = UIKeyboardTypeNumberPad;
     [_signupTextFieldGroupView addSubview:_signupPhoneTextField];
     
     _signupVerificationCodeTextField = [[VerificationCodeTextField alloc] initWithViewModel:[self.signupViewModel verificationCodeTextFieldViewModel]];
     [_signupTextFieldGroupView addSubview:_signupVerificationCodeTextField];
     
-    _signupPasswordTextField = [self p_textFieldWithPlaceholder:@"Password"];
+    _signupPasswordTextField = [UITextField ty_textField];
+    _signupPasswordTextField.placeholder = NSLocalizedString(@"Password", nil);
+    _signupPasswordTextField.secureTextEntry = YES;
     [_signupTextFieldGroupView addSubview:_signupPasswordTextField];
     
     _loginButton = [[FormButton alloc] init];
@@ -110,19 +119,20 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     _switchButton.titleLabel.font = [UIFont systemFontOfSize:kSwitchButtonFontSize];
     [self.view addSubview:_switchButton];
     
-    _serviceProtocolLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
-    _serviceProtocolLabel.textAlignment = NSTextAlignmentCenter;
-    _serviceProtocolLabel.numberOfLines = 0;
-    _serviceProtocolLabel.textColor = [UIColor ty_textGray];
-    _serviceProtocolLabel.font = [UIFont systemFontOfSize:kServiceProtocolLabelFontSize];
-    _serviceProtocolLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
-    _serviceProtocolLabel.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName: [NSNumber numberWithBool:NO], (NSString*)kCTForegroundColorAttributeName: (id)[UIColor ty_textLink].CGColor};
+    _serviceProtocolLabel = [TTTAttributedLabel ty_smallLabel];
     _serviceProtocolLabel.text = [NSString stringWithFormat:@"%@%@", @"点击「注册」按钮\n代表你已阅读并同意", NSLocalizedString(@"Service Protocol", nil)];
     _serviceProtocolLabel.delegate = self;
     NSURL *useAgreementUrl = [NSURL URLWithString:NSStringFromClass([ServiceProtocolViewController class])];
     NSRange range = [_serviceProtocolLabel.text rangeOfString:NSLocalizedString(@"Service Protocol", nil)];
     [_serviceProtocolLabel addLinkToURL:useAgreementUrl withRange:range];
     [self.view addSubview:_serviceProtocolLabel];
+    
+    _forgetPasswordLabel = [TTTAttributedLabel ty_smallLabel];
+    _forgetPasswordLabel.text = NSLocalizedString(@"Forget Password?", nil);
+    _forgetPasswordLabel.delegate = self;
+    NSURL *forgetPasswordUrl = [NSURL URLWithString:NSStringFromClass([ChangePasswordViewController class])];
+    [_forgetPasswordLabel addLinkToURL:forgetPasswordUrl withRange:NSMakeRange(0, [_forgetPasswordLabel.text length])];
+    [self.view addSubview:_forgetPasswordLabel];
     
     [self initConstraints];
     
@@ -146,14 +156,6 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
 {
     [super touchesBegan:touches withEvent:event];
     [self.view endEditing:YES];
-}
-
-- (void)attributedLabel:(TTTAttributedLabel *)label
-   didSelectLinkWithURL:(NSURL *)url
-{
-    Class viewControllerClass = NSClassFromString(url.absoluteString);
-    id viewController = [[viewControllerClass alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)initConstraints
@@ -194,6 +196,11 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     [_serviceProtocolLabel makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.signupButton.mas_bottom).with.offset(kButtonMarginBottom);
         make.centerX.equalTo(self.signupButton);
+    }];
+    
+    [_forgetPasswordLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.loginButton.mas_bottom).with.offset(kButtonMarginBottom);
+        make.centerX.equalTo(self.loginButton);
     }];
     
     [_switchButton makeConstraints:^(MASConstraintMaker *make) {
@@ -286,9 +293,13 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     RAC(self.loginButton, hidden) = switchButtonStatusChangedSignal;
     RAC(self.signupButton, hidden) = signupShowSignal;
     RAC(self.serviceProtocolLabel, hidden) = signupShowSignal;
-    RAC(self.serviceProtocolLabel, layer.opacity) = [RACObserve(self.switchButton, layer.opacity) map:^id(NSNumber *value) {
+    RACSignal *smallLabelOpacitySignal = [RACObserve(self.switchButton, layer.opacity) map:^id(NSNumber *value) {
         return @(1 - [value floatValue]);
     }];
+    RAC(self.serviceProtocolLabel, layer.opacity) = smallLabelOpacitySignal;
+    
+    RAC(self.forgetPasswordLabel, hidden) = switchButtonStatusChangedSignal;
+    RAC(self.forgetPasswordLabel, layer.opacity) = smallLabelOpacitySignal;
     
     // Selected change
     _switchButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
@@ -365,17 +376,20 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     }];
 }
 
-#pragma mark - Helper
+#pragma mark - TTTAttributedLabelDelegate
 
-- (UITextField *)p_textFieldWithPlaceholder:(NSString *)placeholder
+- (void)attributedLabel:(TTTAttributedLabel *)label
+   didSelectLinkWithURL:(NSURL *)url
 {
-    UITextField *textField = [[UITextField alloc] init];
-    textField.ty_borderColor = [UIColor ty_border].CGColor;
-    textField.ty_borderEdge = UIRectEdgeBottom;
-    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    textField.placeholder = NSLocalizedString(placeholder, nil);
-    return textField;
+    NSString *className = url.absoluteString;
+    Class viewControllerClass = NSClassFromString(className);
+    id viewController;
+    if ([className isEqualToString:NSStringFromClass([ServiceProtocolViewController class])]) {
+        viewController = [[viewControllerClass alloc] initWithViewModel:[_signupViewModel serviceProtocolViewModel]];
+    } else {
+        viewController = [[viewControllerClass alloc] initWithViewModel:[_loginViewModel changePasswordViewModel]];
+    }
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

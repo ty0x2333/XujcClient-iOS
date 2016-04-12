@@ -53,4 +53,9 @@
     return [NSString stringWithFormat:@"XujcClient iOS Version %@ (%@)", info[@"CFBundleShortVersionString"], info[@"CFBundleVersion"]];
 }
 
+- (ServiceProtocolViewModel *)serviceProtocolViewModel
+{
+    return [[ServiceProtocolViewModel alloc] init];
+}
+
 @end

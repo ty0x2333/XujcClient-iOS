@@ -94,7 +94,7 @@ static CGFloat const kVersionLabelFontSize = 14.f;
     if (indexPath.section == 0) {
         [Instabug invokeWithInvocationMode:IBGInvocationModeFeedbackSender];
     } else if (indexPath.section == 2) {
-        ServiceProtocolViewController *viewController = [[ServiceProtocolViewController alloc] init];
+        ServiceProtocolViewController *viewController = [[ServiceProtocolViewController alloc] initWithViewModel:[_viewModel serviceProtocolViewModel]];
         [self.navigationController pushViewController:viewController animated:YES];
     }
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];

@@ -13,6 +13,6 @@
 
 @property (copy, nonatomic) NSString *nickname;
 @property (copy, nonatomic) NSString *avatar;
-@property (copy, nonatomic) NSString *email;
+@property (copy, nonatomic) NSString *phone;
 
 @end

@@ -10,11 +10,21 @@
 
 @interface ServiceProtocolViewController()
 
-@property (strong, nonatomic) UIWebView *webView;
+@property (nonatomic, strong) ServiceProtocolViewModel *viewModel;
+
+@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
 @implementation ServiceProtocolViewController
+
+- (instancetype)initWithViewModel:(ServiceProtocolViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -25,8 +35,7 @@
     _webView = [[UIWebView alloc] init];
     _webView.scalesPageToFit = YES;
     [self.view addSubview:_webView];
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Service Protocol"
-                                                                                                                  ofType:@"html"]]]];
+    [_webView loadRequest:_viewModel.urlRequest];
     [_webView makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.equalTo(self.view);
         make.top.equalTo(self.mas_topLayoutGuideBottom);

@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "ServiceProtocolViewModel.h"
 
 @interface ServiceProtocolViewController : BaseViewController
+
+- (instancetype)initWithViewModel:(ServiceProtocolViewModel *)viewModel;
 
 @end

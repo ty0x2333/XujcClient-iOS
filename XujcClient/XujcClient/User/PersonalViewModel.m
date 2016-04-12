@@ -54,9 +54,9 @@
         return value.avatar;
     }] setNameWithFormat:@"PersonalViewModel avatarSignal"] logAll];
     
-    RAC(viewModel, email) = [[[userSignal map:^id(UserModel *value) {
-        return value.email;
-    }] setNameWithFormat:@"PersonalViewModel emailSignal"] logAll];
+    RAC(viewModel, phone) = [[[userSignal map:^id(UserModel *value) {
+        return value.phone;
+    }] setNameWithFormat:@"PersonalViewModel phoneSignal"] logAll];
     
     return viewModel;
 }

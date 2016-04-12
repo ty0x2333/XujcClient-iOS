@@ -95,6 +95,14 @@
 		7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6CB1C9333690074C716 /* ScoreTableViewCellViewModel.m */; };
 		7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6D31C9369F50074C716 /* FMDatabaseQueue+Utils.m */; };
 		7062B6D71C93769A0074C716 /* CacheUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062B6D61C93769A0074C716 /* CacheUtils.m */; };
+		706B199E1CBABDA4003B4F47 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B199D1CBABDA4003B4F47 /* ChangePasswordViewController.m */; };
+		706B19A51CBAC80A003B4F47 /* UITextField+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19A41CBAC80A003B4F47 /* UITextField+Theme.m */; };
+		706B19A81CBAC81C003B4F47 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19A71CBAC81C003B4F47 /* UIColor+Theme.m */; };
+		706B19AB1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19AA1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m */; };
+		706B19AE1CBBA14C003B4F47 /* InputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19AD1CBBA14C003B4F47 /* InputTableViewCell.m */; };
+		706B19B11CBBBC79003B4F47 /* VerificationCodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19B01CBBBC79003B4F47 /* VerificationCodeTableViewCell.m */; };
+		706B19B41CBBBECB003B4F47 /* ChangePasswordViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19B31CBBBECB003B4F47 /* ChangePasswordViewModel.m */; };
+		706B19B71CBBC1D5003B4F47 /* ServiceProtocolViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B19B61CBBC1D5003B4F47 /* ServiceProtocolViewModel.m */; };
 		70730D701C947A41007CBEBB /* SemesterSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D691C947A41007CBEBB /* SemesterSelectorView.m */; };
 		70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6B1C947A41007CBEBB /* SemesterSelectorViewModel.m */; };
 		70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730D6D1C947A41007CBEBB /* SemesterTableViewCell.m */; };
@@ -138,7 +146,6 @@
 		70C2B02E1C81294700923B85 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02A1C81294700923B85 /* arrow_down@3x.png */; };
 		70C2B02F1C81294700923B85 /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02B1C81294700923B85 /* arrow_right@2x.png */; };
 		70C2B0301C81294700923B85 /* arrow_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C2B02C1C81294700923B85 /* arrow_right@3x.png */; };
-		70C2B0331C81349400923B85 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C2B0321C81349400923B85 /* UIColor+Theme.m */; };
 		70F7CE1B1BE3AC25001D027C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1A1BE3AC25001D027C /* main.m */; };
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
 		70F7CE261BE3AC25001D027C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE251BE3AC25001D027C /* Assets.xcassets */; };
@@ -317,6 +324,22 @@
 		7062B6D31C9369F50074C716 /* FMDatabaseQueue+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabaseQueue+Utils.m"; sourceTree = "<group>"; };
 		7062B6D51C9376990074C716 /* CacheUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheUtils.h; sourceTree = "<group>"; };
 		7062B6D61C93769A0074C716 /* CacheUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheUtils.m; sourceTree = "<group>"; };
+		706B199C1CBABDA4003B4F47 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		706B199D1CBABDA4003B4F47 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		706B19A31CBAC80A003B4F47 /* UITextField+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Theme.h"; sourceTree = "<group>"; };
+		706B19A41CBAC80A003B4F47 /* UITextField+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Theme.m"; sourceTree = "<group>"; };
+		706B19A61CBAC81C003B4F47 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
+		706B19A71CBAC81C003B4F47 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
+		706B19A91CBAC868003B4F47 /* TTTAttributedLabel+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTTAttributedLabel+Theme.h"; sourceTree = "<group>"; };
+		706B19AA1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTTAttributedLabel+Theme.m"; sourceTree = "<group>"; };
+		706B19AC1CBBA14C003B4F47 /* InputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTableViewCell.h; sourceTree = "<group>"; };
+		706B19AD1CBBA14C003B4F47 /* InputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTableViewCell.m; sourceTree = "<group>"; };
+		706B19AF1CBBBC79003B4F47 /* VerificationCodeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeTableViewCell.h; sourceTree = "<group>"; };
+		706B19B01CBBBC79003B4F47 /* VerificationCodeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeTableViewCell.m; sourceTree = "<group>"; };
+		706B19B21CBBBECB003B4F47 /* ChangePasswordViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewModel.h; sourceTree = "<group>"; };
+		706B19B31CBBBECB003B4F47 /* ChangePasswordViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewModel.m; sourceTree = "<group>"; };
+		706B19B51CBBC1D5003B4F47 /* ServiceProtocolViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProtocolViewModel.h; sourceTree = "<group>"; };
+		706B19B61CBBC1D5003B4F47 /* ServiceProtocolViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProtocolViewModel.m; sourceTree = "<group>"; };
 		70730D681C947A41007CBEBB /* SemesterSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorView.h; sourceTree = "<group>"; };
 		70730D691C947A41007CBEBB /* SemesterSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterSelectorView.m; sourceTree = "<group>"; };
 		70730D6A1C947A41007CBEBB /* SemesterSelectorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterSelectorViewModel.h; sourceTree = "<group>"; };
@@ -393,8 +416,6 @@
 		70C2B02A1C81294700923B85 /* arrow_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@3x.png"; sourceTree = "<group>"; };
 		70C2B02B1C81294700923B85 /* arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_right@2x.png"; sourceTree = "<group>"; };
 		70C2B02C1C81294700923B85 /* arrow_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_right@3x.png"; sourceTree = "<group>"; };
-		70C2B0311C81349400923B85 /* UIColor+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Theme.h"; sourceTree = "<group>"; };
-		70C2B0321C81349400923B85 /* UIColor+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Theme.m"; sourceTree = "<group>"; };
 		70F7CE161BE3AC25001D027C /* XujcClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XujcClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F7CE1A1BE3AC25001D027C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70F7CE1C1BE3AC25001D027C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -744,6 +765,19 @@
 			path = Score;
 			sourceTree = "<group>";
 		};
+		706B19A21CBAC80A003B4F47 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				706B19A61CBAC81C003B4F47 /* UIColor+Theme.h */,
+				706B19A71CBAC81C003B4F47 /* UIColor+Theme.m */,
+				706B19A31CBAC80A003B4F47 /* UITextField+Theme.h */,
+				706B19A41CBAC80A003B4F47 /* UITextField+Theme.m */,
+				706B19A91CBAC868003B4F47 /* TTTAttributedLabel+Theme.h */,
+				706B19AA1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		70730D671C947A41007CBEBB /* Semester */ = {
 			isa = PBXGroup;
 			children = (
@@ -905,6 +939,7 @@
 				70F7CE341BE3D1B8001D027C /* Comment */,
 				70730DC21C9CC0DC007CBEBB /* View */,
 				70F7CE301BE3BD4A001D027C /* API */,
+				706B19A21CBAC80A003B4F47 /* Theme */,
 				70443B661C85DD7D00B0C5DA /* Login */,
 				7062B6C01C9331BD0074C716 /* Score */,
 				70730D671C947A41007CBEBB /* Semester */,
@@ -919,8 +954,18 @@
 				19FAB3281CB4F0E600179484 /* BaseViewController.m */,
 				708661361BE775DB00AD64C2 /* CollectionViewScheduleLayout.h */,
 				708661371BE775DB00AD64C2 /* CollectionViewScheduleLayout.m */,
+				706B19B21CBBBECB003B4F47 /* ChangePasswordViewModel.h */,
+				706B19B31CBBBECB003B4F47 /* ChangePasswordViewModel.m */,
+				706B199C1CBABDA4003B4F47 /* ChangePasswordViewController.h */,
+				706B199D1CBABDA4003B4F47 /* ChangePasswordViewController.m */,
+				706B19AC1CBBA14C003B4F47 /* InputTableViewCell.h */,
+				706B19AD1CBBA14C003B4F47 /* InputTableViewCell.m */,
+				706B19AF1CBBBC79003B4F47 /* VerificationCodeTableViewCell.h */,
+				706B19B01CBBBC79003B4F47 /* VerificationCodeTableViewCell.m */,
 				70B167D21CA0EEE200AF8322 /* ServiceProtocolViewController.h */,
 				70B167D31CA0EEE200AF8322 /* ServiceProtocolViewController.m */,
+				706B19B51CBBC1D5003B4F47 /* ServiceProtocolViewModel.h */,
+				706B19B61CBBC1D5003B4F47 /* ServiceProtocolViewModel.m */,
 				70F7CE251BE3AC25001D027C /* Assets.xcassets */,
 				70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */,
 				70F7CE2A1BE3AC25001D027C /* Info.plist */,
@@ -963,8 +1008,6 @@
 				70F7CE471BE3ECAE001D027C /* DynamicData.h */,
 				70F7CE481BE3ECAE001D027C /* DynamicData.m */,
 				70F7CE351BE3D1B8001D027C /* TyLog_Objc.h */,
-				70C2B0311C81349400923B85 /* UIColor+Theme.h */,
-				70C2B0321C81349400923B85 /* UIColor+Theme.m */,
 				7062B6831C89FC260074C716 /* NSString+Validator.h */,
 				7062B6841C89FC260074C716 /* NSString+Validator.m */,
 				7062B6911C8B427E0074C716 /* AppConfig.h */,
@@ -1056,7 +1099,6 @@
 				70F7CE141BE3AC25001D027C /* Resources */,
 				AD59B45E58504EB86000E3BC /* Copy Pods Resources */,
 				C9F090DD24B53E8F8F48E747 /* Embed Pods Frameworks */,
-				19F8268C1CA8AEF100B37C50 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1164,19 +1206,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19F8268C1CA8AEF100B37C50 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    xcrun agvtool next-version -all\nfi";
-		};
 		4044B8D20CE8952DF291306E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1229,10 +1258,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706B19B71CBBC1D5003B4F47 /* ServiceProtocolViewModel.m in Sources */,
 				70443B691C85DD7D00B0C5DA /* BindingAccountViewController.m in Sources */,
+				706B19A81CBAC81C003B4F47 /* UIColor+Theme.m in Sources */,
 				70F7CE431BE3E832001D027C /* XujcUserModel.m in Sources */,
 				70730DAE1C9A6222007CBEBB /* NSData+Coding.m in Sources */,
 				7062B6C91C9331D10074C716 /* ScoreViewModel.m in Sources */,
+				706B19AB1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m in Sources */,
 				7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */,
 				70730D761C94A039007CBEBB /* SemesterBaseViewController.m in Sources */,
 				70730DB41C9A635F007CBEBB /* OssService.m in Sources */,
@@ -1241,6 +1273,7 @@
 				7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */,
 				70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */,
 				708661381BE775DB00AD64C2 /* CollectionViewScheduleLayout.m in Sources */,
+				706B19A51CBAC80A003B4F47 /* UITextField+Theme.m in Sources */,
 				19FAB3221CB4F01100179484 /* PersonalViewController.m in Sources */,
 				70730D8D1C999DF2007CBEBB /* LessonEventViewModel.m in Sources */,
 				7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */,
@@ -1271,6 +1304,7 @@
 				19FAB3241CB4F01100179484 /* UserDetailViewController.m in Sources */,
 				7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
+				706B199E1CBABDA4003B4F47 /* ChangePasswordViewController.m in Sources */,
 				7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */,
 				70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */,
 				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
@@ -1281,7 +1315,6 @@
 				70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */,
 				70730DC11C9CB9BB007CBEBB /* UITabBarController+animation.m in Sources */,
 				70730DCF1C9DF2D0007CBEBB /* SettingsViewModel.m in Sources */,
-				70C2B0331C81349400923B85 /* UIColor+Theme.m in Sources */,
 				7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */,
 				7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */,
 				70730D951C99BDF8007CBEBB /* SemesterMasterViewModel.m in Sources */,
@@ -1299,12 +1332,15 @@
 				7062B6851C89FC260074C716 /* NSString+Validator.m in Sources */,
 				70730DFF1C9E1CBB007CBEBB /* SupportCenterViewController.m in Sources */,
 				70A88CFB1C9F230C0067DB77 /* SupportCenterViewModel.m in Sources */,
+				706B19B11CBBBC79003B4F47 /* VerificationCodeTableViewCell.m in Sources */,
 				70730D721C947A41007CBEBB /* SemesterTableViewCell.m in Sources */,
+				706B19AE1CBBA14C003B4F47 /* InputTableViewCell.m in Sources */,
 				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
 				7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */,
 				70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */,
 				7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */,
 				70730D9C1C99F580007CBEBB /* MainTabBarViewModel.m in Sources */,
+				706B19B41CBBBECB003B4F47 /* ChangePasswordViewModel.m in Sources */,
 				19781BA01CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.m in Sources */,
 				19781B9C1CAB6EE700D078A6 /* VerificationCodeTextField.m in Sources */,
 				702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */,
@@ -1433,9 +1469,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
-				CURRENT_PROJECT_VERSION = 6;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
+				CURRENT_PROJECT_VERSION = 7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1465,7 +1501,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23b9081e-3dd0-4047-b1e9-3350ca269b3e";
+				PROVISIONING_PROFILE = "a8c8bebb-e9e5-4682-b716-b9d549948d56";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "";
 			};
@@ -1477,9 +1513,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
-				CURRENT_PROJECT_VERSION = 6;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
+				CURRENT_PROJECT_VERSION = 7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1509,7 +1545,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23b9081e-3dd0-4047-b1e9-3350ca269b3e";
+				PROVISIONING_PROFILE = "a8c8bebb-e9e5-4682-b716-b9d549948d56";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

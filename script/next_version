@@ -1,0 +1,4 @@
+#!/bin/sh
+current_dir=$(dirname $0)
+cd $current_dir/../XujcClient
+xcrun agvtool next-version -all

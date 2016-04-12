@@ -27,7 +27,7 @@ static CGFloat const kContentMarginHorizontal = 10.f;
 @property (strong, nonatomic) AvatarImageView *avatarImageView;
 
 @property (strong, nonatomic) UILabel *nicknameLabel;
-@property (strong, nonatomic) UILabel *emailLabel;
+@property (strong, nonatomic) UILabel *phoneLabel;
 
 @end
 
@@ -64,8 +64,8 @@ static CGFloat const kContentMarginHorizontal = 10.f;
     _nicknameLabel.ty_borderEdge = UIRectEdgeBottom;
     [_scrollView addSubview:_nicknameLabel];
     
-    _emailLabel = [[UILabel alloc] init];
-    [_scrollView addSubview:_emailLabel];
+    _phoneLabel = [[UILabel alloc] init];
+    [_scrollView addSubview:_phoneLabel];
     
     [_nicknameLabel makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.avatarImageView.centerY);
@@ -74,7 +74,7 @@ static CGFloat const kContentMarginHorizontal = 10.f;
         make.height.equalTo(self.avatarImageView).with.multipliedBy(.5f);
     }];
     
-    [_emailLabel makeConstraints:^(MASConstraintMaker *make) {
+    [_phoneLabel makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.avatarImageView.mas_bottom);
         make.left.equalTo(self.nicknameLabel);
         make.width.equalTo(self.nicknameLabel);
@@ -86,7 +86,7 @@ static CGFloat const kContentMarginHorizontal = 10.f;
     }];
     
     RAC(self.nicknameLabel, text) = RACObserve(self.viewModel, nickname);
-    RAC(self.emailLabel, text) = RACObserve(self.viewModel, email);
+    RAC(self.phoneLabel, text) = RACObserve(self.viewModel, phone);
     @weakify(self);
     [RACObserve(self.viewModel, avatar) subscribeNext:^(NSString *avatarURL) {
         @strongify(self);

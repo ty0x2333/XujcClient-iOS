@@ -93,4 +93,9 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
     return [SSKeychain passwordForService:TYServiceName account:[self currentAccountPhone]];
 }
 
+- (ChangePasswordViewModel *)changePasswordViewModel
+{
+    return [[ChangePasswordViewModel alloc] init];
+}
+
 @end
