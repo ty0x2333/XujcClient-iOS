@@ -50,6 +50,7 @@
 		19FAB3751CB4F52600179484 /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19FAB35C1CB4F52600179484 /* UMSocialSDKResourcesNew.bundle */; };
 		19FAB3761CB4F52600179484 /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FAB35F1CB4F52600179484 /* libSocialWechat.a */; };
 		19FAB3771CB4F52600179484 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FAB3601CB4F52600179484 /* libWeChatSDK.a */; };
+		3FD55C1711385BB6C4C5F085 /* libPods-XujcClientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBE7B96CF2BA8072608936A /* libPods-XujcClientTests.a */; };
 		701583D41CBEA25A003567F7 /* XujcClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 701583D31CBEA25A003567F7 /* XujcClientTests.m */; };
 		7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */; };
 		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; };
@@ -255,6 +256,8 @@
 		19FAB3611CB4F52600179484 /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
 		19FAB3621CB4F52600179484 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		19FAB3631CB4F52600179484 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		32B0BA9FE447E80E5594CF49 /* Pods-XujcClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientTests/Pods-XujcClientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		50F373E5963C19446E3F233B /* Pods-XujcClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientTests/Pods-XujcClientTests.release.xcconfig"; sourceTree = "<group>"; };
 		701583D11CBEA25A003567F7 /* XujcClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XujcClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		701583D31CBEA25A003567F7 /* XujcClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XujcClientTests.m; sourceTree = "<group>"; };
 		701583D51CBEA25A003567F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -460,6 +463,7 @@
 		70FE64B21C7F9EDC00112038 /* XujcScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcScore.h; sourceTree = "<group>"; };
 		70FE64B31C7F9EDC00112038 /* XujcScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcScore.m; sourceTree = "<group>"; };
 		809B7A975EDBE96102E85C69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8EBE7B96CF2BA8072608936A /* libPods-XujcClientTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XujcClientTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11D480843B2B5B2BA56FFB6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F22B4B799576540B0102BE0C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -469,6 +473,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FD55C1711385BB6C4C5F085 /* libPods-XujcClientTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +656,8 @@
 			children = (
 				809B7A975EDBE96102E85C69 /* Pods.debug.xcconfig */,
 				F11D480843B2B5B2BA56FFB6 /* Pods.release.xcconfig */,
+				32B0BA9FE447E80E5594CF49 /* Pods-XujcClientTests.debug.xcconfig */,
+				50F373E5963C19446E3F233B /* Pods-XujcClientTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -668,6 +675,7 @@
 				19370EDC1CA88CAD00B96042 /* Security.framework */,
 				19370EDA1CA8840500B96042 /* ImageIO.framework */,
 				F22B4B799576540B0102BE0C /* libPods.a */,
+				8EBE7B96CF2BA8072608936A /* libPods-XujcClientTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1125,9 +1133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 701583DA1CBEA25A003567F7 /* Build configuration list for PBXNativeTarget "XujcClientTests" */;
 			buildPhases = (
+				83DD7CA20E94BCB949336666 /* Check Pods Manifest.lock */,
 				701583CD1CBEA25A003567F7 /* Sources */,
 				701583CE1CBEA25A003567F7 /* Frameworks */,
 				701583CF1CBEA25A003567F7 /* Resources */,
+				50A3B488EB9382DA5850DE47 /* Embed Pods Frameworks */,
+				27C5AEBC593BC4E8BEDBC2B0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1268,7 +1279,52 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		27C5AEBC593BC4E8BEDBC2B0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XujcClientTests/Pods-XujcClientTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4044B8D20CE8952DF291306E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		50A3B488EB9382DA5850DE47 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XujcClientTests/Pods-XujcClientTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83DD7CA20E94BCB949336666 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1463,6 +1519,7 @@
 /* Begin XCBuildConfiguration section */
 		701583D81CBEA25A003567F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32B0BA9FE447E80E5594CF49 /* Pods-XujcClientTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = XujcClientTests/Info.plist;
@@ -1476,6 +1533,7 @@
 		};
 		701583D91CBEA25A003567F7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50F373E5963C19446E3F233B /* Pods-XujcClientTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = XujcClientTests/Info.plist;
@@ -1665,6 +1723,7 @@
 				701583D91CBEA25A003567F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		70F7CE111BE3AC25001D027C /* Build configuration list for PBXProject "XujcClient" */ = {
 			isa = XCConfigurationList;
