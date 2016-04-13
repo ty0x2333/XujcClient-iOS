@@ -50,6 +50,7 @@
 		19FAB3751CB4F52600179484 /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19FAB35C1CB4F52600179484 /* UMSocialSDKResourcesNew.bundle */; };
 		19FAB3761CB4F52600179484 /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FAB35F1CB4F52600179484 /* libSocialWechat.a */; };
 		19FAB3771CB4F52600179484 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FAB3601CB4F52600179484 /* libWeChatSDK.a */; };
+		701583D41CBEA25A003567F7 /* XujcClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 701583D31CBEA25A003567F7 /* XujcClientTests.m */; };
 		7023F9A21BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */; };
 		7023F9A51BE52FA10046CF3B /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A41BE52FA10046CF3B /* MSTimeRowHeaderBackground.m */; };
 		7023F9A81BE551030046CF3B /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9A71BE551030046CF3B /* ScheduleColumnHeader.m */; };
@@ -163,6 +164,16 @@
 		D6AA2EAC9399777C75CF39CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F22B4B799576540B0102BE0C /* libPods.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		701583D61CBEA25A003567F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 70F7CE0E1BE3AC25001D027C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70F7CE151BE3AC25001D027C;
+			remoteInfo = XujcClient;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		19370EDA1CA8840500B96042 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		19370EDC1CA88CAD00B96042 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -244,6 +255,9 @@
 		19FAB3611CB4F52600179484 /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
 		19FAB3621CB4F52600179484 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		19FAB3631CB4F52600179484 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		701583D11CBEA25A003567F7 /* XujcClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XujcClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		701583D31CBEA25A003567F7 /* XujcClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XujcClientTests.m; sourceTree = "<group>"; };
+		701583D51CBEA25A003567F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7023F9A01BE52F6B0046CF3B /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
 		7023F9A11BE52F6B0046CF3B /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
 		7023F9A31BE52FA10046CF3B /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
@@ -451,6 +465,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		701583CE1CBEA25A003567F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70F7CE131BE3AC25001D027C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -649,6 +670,15 @@
 				F22B4B799576540B0102BE0C /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		701583D21CBEA25A003567F7 /* XujcClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				701583D31CBEA25A003567F7 /* XujcClientTests.m */,
+				701583D51CBEA25A003567F7 /* Info.plist */,
+			);
+			path = XujcClientTests;
 			sourceTree = "<group>";
 		};
 		7023F9BF1BE72E5E0046CF3B /* Category */ = {
@@ -915,6 +945,7 @@
 			isa = PBXGroup;
 			children = (
 				70F7CE181BE3AC25001D027C /* XujcClient */,
+				701583D21CBEA25A003567F7 /* XujcClientTests */,
 				70F7CE171BE3AC25001D027C /* Products */,
 				34B4EF0F9104D9147B0C3989 /* Pods */,
 				5A4C8CA49D7012FCB8256C25 /* Frameworks */,
@@ -925,6 +956,7 @@
 			isa = PBXGroup;
 			children = (
 				70F7CE161BE3AC25001D027C /* XujcClient.app */,
+				701583D11CBEA25A003567F7 /* XujcClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1089,6 +1121,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		701583D01CBEA25A003567F7 /* XujcClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 701583DA1CBEA25A003567F7 /* Build configuration list for PBXNativeTarget "XujcClientTests" */;
+			buildPhases = (
+				701583CD1CBEA25A003567F7 /* Sources */,
+				701583CE1CBEA25A003567F7 /* Frameworks */,
+				701583CF1CBEA25A003567F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				701583D71CBEA25A003567F7 /* PBXTargetDependency */,
+			);
+			name = XujcClientTests;
+			productName = XujcClientTests;
+			productReference = 701583D11CBEA25A003567F7 /* XujcClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		70F7CE151BE3AC25001D027C /* XujcClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70F7CE2D1BE3AC25001D027C /* Build configuration list for PBXNativeTarget "XujcClient" */;
@@ -1118,6 +1168,10 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = luckytianyiyan;
 				TargetAttributes = {
+					701583D01CBEA25A003567F7 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 70F7CE151BE3AC25001D027C;
+					};
 					70F7CE151BE3AC25001D027C = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 9KYD7S7AZY;
@@ -1144,11 +1198,19 @@
 			projectRoot = "";
 			targets = (
 				70F7CE151BE3AC25001D027C /* XujcClient */,
+				701583D01CBEA25A003567F7 /* XujcClientTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		701583CF1CBEA25A003567F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70F7CE141BE3AC25001D027C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1254,6 +1316,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		701583CD1CBEA25A003567F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				701583D41CBEA25A003567F7 /* XujcClientTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70F7CE121BE3AC25001D027C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1352,6 +1422,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		701583D71CBEA25A003567F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70F7CE151BE3AC25001D027C /* XujcClient */;
+			targetProxy = 701583D61CBEA25A003567F7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		19FAB3441CB4F52600179484 /* UMSocialLocalizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -1383,6 +1461,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		701583D81CBEA25A003567F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = XujcClientTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.XujcClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XujcClient.app/XujcClient";
+			};
+			name = Debug;
+		};
+		701583D91CBEA25A003567F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = XujcClientTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.XujcClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XujcClient.app/XujcClient";
+			};
+			name = Release;
+		};
 		70F7CE2B1BE3AC25001D027C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1554,6 +1658,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		701583DA1CBEA25A003567F7 /* Build configuration list for PBXNativeTarget "XujcClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				701583D81CBEA25A003567F7 /* Debug */,
+				701583D91CBEA25A003567F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		70F7CE111BE3AC25001D027C /* Build configuration list for PBXProject "XujcClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
