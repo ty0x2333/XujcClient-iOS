@@ -7,7 +7,7 @@
 //
 
 #import "ScoreTableViewCell.h"
-#import "XujcScore.h"
+#import "XujcScoreModel.h"
 
 static const CGFloat kFontSize = 12.f;
 static const CGFloat kContentEdgeInsetVertical = 8.f;

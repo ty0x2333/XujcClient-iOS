@@ -161,7 +161,7 @@
 		70F7CE711BE43AA6001D027C /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE701BE43AA6001D027C /* MSCurrentTimeIndicator.m */; };
 		70F7CE741BE43AC3001D027C /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE721BE43AC3001D027C /* MSCurrentTimeGridline.m */; };
 		70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B01C7F8DEE00112038 /* NSString+Safe.m */; };
-		70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B31C7F9EDC00112038 /* XujcScore.m */; };
+		70FE64B41C7F9EDC00112038 /* XujcScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B31C7F9EDC00112038 /* XujcScoreModel.m */; };
 		D6AA2EAC9399777C75CF39CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F22B4B799576540B0102BE0C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -460,8 +460,8 @@
 		70F7CE731BE43AC3001D027C /* MSCurrentTimeIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeIndicator.h; sourceTree = "<group>"; };
 		70FE64AF1C7F8DEE00112038 /* NSString+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Safe.h"; sourceTree = "<group>"; };
 		70FE64B01C7F8DEE00112038 /* NSString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Safe.m"; sourceTree = "<group>"; };
-		70FE64B21C7F9EDC00112038 /* XujcScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcScore.h; sourceTree = "<group>"; };
-		70FE64B31C7F9EDC00112038 /* XujcScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcScore.m; sourceTree = "<group>"; };
+		70FE64B21C7F9EDC00112038 /* XujcScoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcScoreModel.h; sourceTree = "<group>"; };
+		70FE64B31C7F9EDC00112038 /* XujcScoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcScoreModel.m; sourceTree = "<group>"; };
 		809B7A975EDBE96102E85C69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8EBE7B96CF2BA8072608936A /* libPods-XujcClientTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XujcClientTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11D480843B2B5B2BA56FFB6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -1066,8 +1066,8 @@
 				70F7CE3C1BE3E806001D027C /* BaseModel.m */,
 				70F7CE411BE3E832001D027C /* XujcUserModel.h */,
 				70F7CE421BE3E832001D027C /* XujcUserModel.m */,
-				70FE64B21C7F9EDC00112038 /* XujcScore.h */,
-				70FE64B31C7F9EDC00112038 /* XujcScore.m */,
+				70FE64B21C7F9EDC00112038 /* XujcScoreModel.h */,
+				70FE64B31C7F9EDC00112038 /* XujcScoreModel.m */,
 				7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */,
 				7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */,
 				7023F9B21BE678E60046CF3B /* XujcLessonModel.h */,
@@ -1438,7 +1438,7 @@
 				7062B6C61C9331BD0074C716 /* ScoreViewController.m in Sources */,
 				702F99E91C7D1BF6003B35A7 /* UIView+BorderLine.m in Sources */,
 				70730DC51C9CC0E6007CBEBB /* TextIconView.m in Sources */,
-				70FE64B41C7F9EDC00112038 /* XujcScore.m in Sources */,
+				70FE64B41C7F9EDC00112038 /* XujcScoreModel.m in Sources */,
 				70730DC11C9CB9BB007CBEBB /* UITabBarController+animation.m in Sources */,
 				70730DCF1C9DF2D0007CBEBB /* SettingsViewModel.m in Sources */,
 				7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */,

@@ -9,7 +9,7 @@
 #import "ScoreViewController.h"
 #import "XujcAPI.h"
 #import "DynamicData.h"
-#import "XujcScore.h"
+#import "XujcScoreModel.h"
 #import "ScoreTableViewCell.h"
 #import <UIScrollView+EmptyDataSet.h>
 #import <MJRefresh.h>
