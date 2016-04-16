@@ -11,6 +11,15 @@
 
 @interface ScoreTableViewCellViewModel : NSObject
 
-@property (strong, nonatomic) XujcScoreModel *xujcScoreModel;
+- (instancetype)initWithModel:(XujcScoreModel *)xujcScoreModel;
+
+@property (nonatomic, readonly, copy) NSString *lessonName;
+
+@property (nonatomic, readonly, assign) NSInteger score;
+
+@property (nonatomic, readonly, copy) NSString *studyWay;
+
+@property (nonatomic, readonly, assign) NSInteger credit;
+
 
 @end

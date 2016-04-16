@@ -117,7 +117,7 @@ static const CGFloat kContentMarginHorizontal = 5.f;
         return;
     }
     _viewModel = viewModel;
-    RACSignal *scoreSignal = [RACObserve(self.viewModel, xujcScoreModel.score) takeUntil:self.rac_prepareForReuseSignal];
+    RACSignal *scoreSignal = [RACObserve(self.viewModel, score) takeUntil:self.rac_prepareForReuseSignal];
     RAC(_scoreLabel, text) = [scoreSignal map:^id(NSNumber *value) {
         return [value stringValue];
     }];
@@ -126,13 +126,13 @@ static const CGFloat kContentMarginHorizontal = 5.f;
         return [value integerValue] > 59 ? [UIColor ty_textGreen] : [UIColor ty_textRed];
     }];
     
-    RAC(_lessonNameLabel, text) = [RACObserve(self.viewModel, xujcScoreModel.lessonName) takeUntil:self.rac_prepareForReuseSignal];
+    RAC(_lessonNameLabel, text) = [RACObserve(self.viewModel, lessonName) takeUntil:self.rac_prepareForReuseSignal];
     
-    RAC(_detailStudyWayLabel, text) = [[RACObserve(self.viewModel, xujcScoreModel.studyWay) map:^id(NSString *value) {
+    RAC(_detailStudyWayLabel, text) = [[RACObserve(self.viewModel, studyWay) map:^id(NSString *value) {
         return [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"StudyWay", nil), value];
     }] takeUntil:self.rac_prepareForReuseSignal];
     
-    RAC(_creditLabel, text) = [[RACObserve(self.viewModel, xujcScoreModel.credit) map:^id(NSNumber *value) {
+    RAC(_creditLabel, text) = [[RACObserve(self.viewModel, credit) map:^id(NSNumber *value) {
         return [NSString stringWithFormat:@"%@: %ld", NSLocalizedString(@"Credit", nil), (long)[value integerValue]];
     }] takeUntil:self.rac_prepareForReuseSignal];
 }

@@ -22,9 +22,8 @@
 
 - (ScoreTableViewCellViewModel *)scoreTableViewCellViewModelForRowAtIndex:(NSUInteger)index
 {
-    ScoreTableViewCellViewModel *cellViewModel = [[ScoreTableViewCellViewModel alloc] init];
     XujcScoreModel *scoreModel = [_scores objectAtIndex:index];
-    cellViewModel.xujcScoreModel = scoreModel;
+    ScoreTableViewCellViewModel *cellViewModel = [[ScoreTableViewCellViewModel alloc] initWithModel:scoreModel];
     return cellViewModel;
 }
 
