@@ -76,6 +76,9 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
             [self.collectionView reloadData];
             TyLogDebug(@"fetchScheduleSuccess success");
         } error:^(NSError *error) {
+            [self.collectionViewCalendarLayout invalidateLayoutCache];
+            [self.collectionView reloadData];
+            
             MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hub.detailsLabelText = error.localizedDescription;
             [hub hide:YES afterDelay:kErrorHUDShowTime];
