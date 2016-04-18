@@ -66,6 +66,7 @@
 		7015840C1CC4E675003567F7 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584031CC4E675003567F7 /* MSTimeRowHeaderBackground.m */; };
 		7015840D1CC4E675003567F7 /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584051CC4E675003567F7 /* ScheduleColumnHeader.m */; };
 		7015840E1CC4E675003567F7 /* ScheduleRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584071CC4E675003567F7 /* ScheduleRowHeader.m */; };
+		701584111CC5215B003567F7 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584101CC5215B003567F7 /* ExamViewController.m */; };
 		7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */; };
 		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
@@ -289,6 +290,8 @@
 		701584051CC4E675003567F7 /* ScheduleColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleColumnHeader.m; sourceTree = "<group>"; };
 		701584061CC4E675003567F7 /* ScheduleRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleRowHeader.h; sourceTree = "<group>"; };
 		701584071CC4E675003567F7 /* ScheduleRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRowHeader.m; sourceTree = "<group>"; };
+		7015840F1CC5215B003567F7 /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
+		701584101CC5215B003567F7 /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
 		7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSemesterModel.h; sourceTree = "<group>"; };
 		7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSemesterModel.m; sourceTree = "<group>"; };
 		7023F9B21BE678E60046CF3B /* XujcLessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcLessonModel.h; sourceTree = "<group>"; };
@@ -1034,6 +1037,8 @@
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
 				19FAB3271CB4F0E500179484 /* BaseViewController.h */,
 				19FAB3281CB4F0E600179484 /* BaseViewController.m */,
+				7015840F1CC5215B003567F7 /* ExamViewController.h */,
+				701584101CC5215B003567F7 /* ExamViewController.m */,
 				701583EF1CC4E620003567F7 /* ServiceProtocol */,
 				70F7CE251BE3AC25001D027C /* Assets.xcassets */,
 				70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */,
@@ -1427,6 +1432,7 @@
 				70B167D11CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m in Sources */,
 				19FAB3201CB4F01100179484 /* PersonalHeaderView.m in Sources */,
 				701583F81CC4E656003567F7 /* CollectionViewScheduleLayout.m in Sources */,
+				701584111CC5215B003567F7 /* ExamViewController.m in Sources */,
 				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m in Sources */,
 				70730D731C947A41007CBEBB /* SemesterTableViewCellViewModel.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
