@@ -74,6 +74,7 @@
 		701584271CC52568003567F7 /* cell_icon_settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7015841D1CC52568003567F7 /* cell_icon_settings@3x.png */; };
 		701584281CC52568003567F7 /* cell_icon_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7015841E1CC52568003567F7 /* cell_icon_share@2x.png */; };
 		701584291CC52568003567F7 /* cell_icon_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7015841F1CC52568003567F7 /* cell_icon_share@3x.png */; };
+		7015842C1CC525DD003567F7 /* XujcExamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015842B1CC525DD003567F7 /* XujcExamModel.m */; };
 		7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */; };
 		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
@@ -303,6 +304,8 @@
 		7015841D1CC52568003567F7 /* cell_icon_settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_settings@3x.png"; sourceTree = "<group>"; };
 		7015841E1CC52568003567F7 /* cell_icon_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_share@2x.png"; sourceTree = "<group>"; };
 		7015841F1CC52568003567F7 /* cell_icon_share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_share@3x.png"; sourceTree = "<group>"; };
+		7015842A1CC525DD003567F7 /* XujcExamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcExamModel.h; sourceTree = "<group>"; };
+		7015842B1CC525DD003567F7 /* XujcExamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcExamModel.m; sourceTree = "<group>"; };
 		7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSemesterModel.h; sourceTree = "<group>"; };
 		7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSemesterModel.m; sourceTree = "<group>"; };
 		7023F9B21BE678E60046CF3B /* XujcLessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcLessonModel.h; sourceTree = "<group>"; };
@@ -1128,6 +1131,8 @@
 				70F7CE421BE3E832001D027C /* XujcUserModel.m */,
 				70FE64B21C7F9EDC00112038 /* XujcScoreModel.h */,
 				70FE64B31C7F9EDC00112038 /* XujcScoreModel.m */,
+				7015842A1CC525DD003567F7 /* XujcExamModel.h */,
+				7015842B1CC525DD003567F7 /* XujcExamModel.m */,
 				7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */,
 				7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */,
 				7023F9B21BE678E60046CF3B /* XujcLessonModel.h */,
@@ -1478,6 +1483,7 @@
 				7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */,
 				70730D951C99BDF8007CBEBB /* SemesterMasterViewModel.m in Sources */,
 				7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */,
+				7015842C1CC525DD003567F7 /* XujcExamModel.m in Sources */,
 				7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */,
 				70730D701C947A41007CBEBB /* SemesterSelectorView.m in Sources */,
 				70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */,
