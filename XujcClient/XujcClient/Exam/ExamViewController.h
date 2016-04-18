@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-#import "ExamViewModel.h";
+#import "ExamViewModel.h"
 
 @interface ExamViewController : BaseViewController
 
