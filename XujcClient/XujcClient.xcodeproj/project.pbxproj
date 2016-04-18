@@ -62,8 +62,6 @@
 		7015840C1CC4E675003567F7 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584031CC4E675003567F7 /* MSTimeRowHeaderBackground.m */; };
 		7015840D1CC4E675003567F7 /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584051CC4E675003567F7 /* ScheduleColumnHeader.m */; };
 		7015840E1CC4E675003567F7 /* ScheduleRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584071CC4E675003567F7 /* ScheduleRowHeader.m */; };
-		701584111CC5215B003567F7 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584101CC5215B003567F7 /* ExamViewController.m */; };
-		701584141CC521E5003567F7 /* ExamViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584131CC521E5003567F7 /* ExamViewModel.m */; };
 		701584201CC52568003567F7 /* cell_icon_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 701584161CC52568003567F7 /* cell_icon_detail@2x.png */; };
 		701584211CC52568003567F7 /* cell_icon_detail@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 701584171CC52568003567F7 /* cell_icon_detail@3x.png */; };
 		701584221CC52568003567F7 /* cell_icon_exam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 701584181CC52568003567F7 /* cell_icon_exam@2x.png */; };
@@ -76,6 +74,8 @@
 		701584291CC52568003567F7 /* cell_icon_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7015841F1CC52568003567F7 /* cell_icon_share@3x.png */; };
 		7015842C1CC525DD003567F7 /* XujcExamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015842B1CC525DD003567F7 /* XujcExamModel.m */; };
 		7015842F1CC52FAB003567F7 /* InformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015842E1CC52FAB003567F7 /* InformationTableViewCell.m */; };
+		701584351CC53103003567F7 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584321CC53103003567F7 /* ExamViewController.m */; };
+		701584361CC53103003567F7 /* ExamViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584341CC53103003567F7 /* ExamViewModel.m */; };
 		7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */; };
 		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
@@ -291,10 +291,6 @@
 		701584051CC4E675003567F7 /* ScheduleColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleColumnHeader.m; sourceTree = "<group>"; };
 		701584061CC4E675003567F7 /* ScheduleRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleRowHeader.h; sourceTree = "<group>"; };
 		701584071CC4E675003567F7 /* ScheduleRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRowHeader.m; sourceTree = "<group>"; };
-		7015840F1CC5215B003567F7 /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
-		701584101CC5215B003567F7 /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
-		701584121CC521E5003567F7 /* ExamViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewModel.h; sourceTree = "<group>"; };
-		701584131CC521E5003567F7 /* ExamViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewModel.m; sourceTree = "<group>"; };
 		701584161CC52568003567F7 /* cell_icon_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_detail@2x.png"; sourceTree = "<group>"; };
 		701584171CC52568003567F7 /* cell_icon_detail@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_detail@3x.png"; sourceTree = "<group>"; };
 		701584181CC52568003567F7 /* cell_icon_exam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_icon_exam@2x.png"; sourceTree = "<group>"; };
@@ -309,6 +305,10 @@
 		7015842B1CC525DD003567F7 /* XujcExamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcExamModel.m; sourceTree = "<group>"; };
 		7015842D1CC52FAB003567F7 /* InformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationTableViewCell.h; sourceTree = "<group>"; };
 		7015842E1CC52FAB003567F7 /* InformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationTableViewCell.m; sourceTree = "<group>"; };
+		701584311CC53103003567F7 /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
+		701584321CC53103003567F7 /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
+		701584331CC53103003567F7 /* ExamViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewModel.h; sourceTree = "<group>"; };
+		701584341CC53103003567F7 /* ExamViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewModel.m; sourceTree = "<group>"; };
 		7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSemesterModel.h; sourceTree = "<group>"; };
 		7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSemesterModel.m; sourceTree = "<group>"; };
 		7023F9B21BE678E60046CF3B /* XujcLessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcLessonModel.h; sourceTree = "<group>"; };
@@ -759,6 +759,25 @@
 			path = cell_icons;
 			sourceTree = "<group>";
 		};
+		701584301CC53103003567F7 /* Exam */ = {
+			isa = PBXGroup;
+			children = (
+				701584371CC5310D003567F7 /* ViewModel */,
+				701584311CC53103003567F7 /* ExamViewController.h */,
+				701584321CC53103003567F7 /* ExamViewController.m */,
+			);
+			path = Exam;
+			sourceTree = "<group>";
+		};
+		701584371CC5310D003567F7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				701584331CC53103003567F7 /* ExamViewModel.h */,
+				701584341CC53103003567F7 /* ExamViewModel.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
 		7023F9BF1BE72E5E0046CF3B /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1059,6 +1078,7 @@
 				706B19A21CBAC80A003B4F47 /* Theme */,
 				70443B661C85DD7D00B0C5DA /* Login */,
 				7062B6C01C9331BD0074C716 /* Score */,
+				701584301CC53103003567F7 /* Exam */,
 				70730D671C947A41007CBEBB /* Semester */,
 				70730D831C999DA9007CBEBB /* Schedule */,
 				70730D961C99F567007CBEBB /* MainTabBar */,
@@ -1069,10 +1089,6 @@
 				70F7CE1D1BE3AC25001D027C /* AppDelegate.m */,
 				19FAB3271CB4F0E500179484 /* BaseViewController.h */,
 				19FAB3281CB4F0E600179484 /* BaseViewController.m */,
-				7015840F1CC5215B003567F7 /* ExamViewController.h */,
-				701584101CC5215B003567F7 /* ExamViewController.m */,
-				701584121CC521E5003567F7 /* ExamViewModel.h */,
-				701584131CC521E5003567F7 /* ExamViewModel.m */,
 				701583EF1CC4E620003567F7 /* ServiceProtocol */,
 				70F7CE251BE3AC25001D027C /* Assets.xcassets */,
 				70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */,
@@ -1448,7 +1464,6 @@
 				70730D8D1C999DF2007CBEBB /* LessonEventViewModel.m in Sources */,
 				19FAB3231CB4F01100179484 /* PersonalViewModel.m in Sources */,
 				70A88CFE1C9F37380067DB77 /* NSUserDefaults+TYSupport.m in Sources */,
-				701584141CC521E5003567F7 /* ExamViewModel.m in Sources */,
 				70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */,
 				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m in Sources */,
 				19FAB3251CB4F01100179484 /* UserDetailViewModel.m in Sources */,
@@ -1464,7 +1479,6 @@
 				70B167D11CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m in Sources */,
 				19FAB3201CB4F01100179484 /* PersonalHeaderView.m in Sources */,
 				701583F81CC4E656003567F7 /* CollectionViewScheduleLayout.m in Sources */,
-				701584111CC5215B003567F7 /* ExamViewController.m in Sources */,
 				7062B68A1C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m in Sources */,
 				70730D731C947A41007CBEBB /* SemesterTableViewCellViewModel.m in Sources */,
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
@@ -1487,6 +1501,7 @@
 				70730DCF1C9DF2D0007CBEBB /* SettingsViewModel.m in Sources */,
 				7062B6BF1C9241DB0074C716 /* LessonTimeCalculator.m in Sources */,
 				70730D951C99BDF8007CBEBB /* SemesterMasterViewModel.m in Sources */,
+				701584351CC53103003567F7 /* ExamViewController.m in Sources */,
 				7062B6A61C8E3CCE0074C716 /* MasterViewModel.m in Sources */,
 				7015842C1CC525DD003567F7 /* XujcExamModel.m in Sources */,
 				7062B6B91C8F7A6B0074C716 /* FormButton.m in Sources */,
@@ -1499,6 +1514,7 @@
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
 				70730DC81C9D99A7007CBEBB /* LessonEventCell.m in Sources */,
 				70730DCE1C9DF2D0007CBEBB /* SettingsViewController.m in Sources */,
+				701584361CC53103003567F7 /* ExamViewModel.m in Sources */,
 				70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */,
 				7015842F1CC52FAB003567F7 /* InformationTableViewCell.m in Sources */,
 				701583ED1CC4E5ED003567F7 /* InputTableViewCell.m in Sources */,
