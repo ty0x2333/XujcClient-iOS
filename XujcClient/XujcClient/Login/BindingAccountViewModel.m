@@ -61,7 +61,7 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
             XujcUserModel *user = [[XujcUserModel alloc] initWithJSONResopnse:responseObject];
             TyLogDebug(@"User Infomation: %@", [user description]);
             
-            subTask = [self.sessionManager PUT:@"xujcaccount" parameters:@{TYServiceKeyAuthorization: DYNAMIC_DATA.apiKey, TYServiceKeyXujcKey: self.xujcApiKey} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            subTask = [self.sessionManager PUT:@"xujc_account" parameters:@{TYServiceKeyAuthorization: DYNAMIC_DATA.apiKey, TYServiceKeyXujcKey: self.xujcApiKey} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
                 if (isError) {
                     NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
