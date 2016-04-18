@@ -6,10 +6,10 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "InformationTableViewCell.h"
 #import "ScoreTableViewCellViewModel.h"
 
-@interface ScoreTableViewCell : UITableViewCell
+@interface ScoreTableViewCell : InformationTableViewCell
 
 @property (strong, nonatomic) ScoreTableViewCellViewModel *viewModel;
 

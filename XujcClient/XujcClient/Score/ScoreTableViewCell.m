@@ -13,9 +13,6 @@ static const CGFloat kFontSize = 12.f;
 static const CGFloat kContentEdgeInsetVertical = 8.f;
 static const CGFloat kContentEdgeHorizontal = 12.f;
 
-static const CGFloat kBorderWith = .5f;
-static const CGFloat kCornerRadius = 4.f;
-
 static const CGFloat kContentMarginHorizontal = 5.f;
 
 @interface ScoreTableViewCell()
@@ -33,13 +30,7 @@ static const CGFloat kContentMarginHorizontal = 5.f;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier]) {
-        self.contentView.layer.borderColor = [UIColor ty_border].CGColor;
-        self.contentView.layer.borderWidth = kBorderWith;
-        self.contentView.layer.cornerRadius = kCornerRadius;
-        self.contentView.layer.masksToBounds = true;
-        self.contentView.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = [UIColor clearColor];
         _lessonNameLabel = [[UILabel alloc] init];
         _lessonNameLabel.textColor = [UIColor ty_textBlack];
         _lessonNameLabel.font = [UIFont systemFontOfSize:kFontSize];
