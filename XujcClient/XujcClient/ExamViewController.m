@@ -10,9 +10,19 @@
 
 @interface ExamViewController ()
 
+@property (nonatomic, strong) ExamViewModel *viewModel;
+
 @end
 
 @implementation ExamViewController
+
+- (instancetype)initWithViewModel:(ExamViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

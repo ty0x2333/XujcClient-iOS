@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "ExamViewModel.h";
 
 @interface ExamViewController : BaseViewController
+
+- (instancetype)initWithViewModel:(ExamViewModel *)viewModel;
 
 @end
