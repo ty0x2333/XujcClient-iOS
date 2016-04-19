@@ -7,6 +7,7 @@
  */
 
 #import "LessonEventCell.h"
+#import "ScheduleTheme.h"
 
 @interface LessonEventCell()
 
@@ -106,33 +107,20 @@
     @weakify(self);
     RAC(self.title, attributedText) = [RACObserve(_viewModel, name) map:^id(NSString *value) {
         @strongify(self);
-        return [[NSAttributedString alloc] initWithString:value attributes:[self titleAttributesHighlighted:self.selected]];
+        return [[NSAttributedString alloc] initWithString:value attributes:[ScheduleTheme titleAttributesHighlighted:self.selected]];
     }];
     RAC(self.location, attributedText) = [RACObserve(_viewModel, location) map:^id(NSString *value) {
         @strongify(self);
-        return [[NSAttributedString alloc] initWithString:value attributes:[self titleAttributesHighlighted:self.selected]];
+        return [[NSAttributedString alloc] initWithString:value attributes:[ScheduleTheme titleAttributesHighlighted:self.selected]];
     }];
 }
 
 - (void)updateColors
 {
-    self.contentView.backgroundColor = [self backgroundColorHighlighted:self.selected];
+    self.contentView.backgroundColor = [ScheduleTheme backgroundColorHighlighted:self.selected];
     self.borderView.backgroundColor = [self borderColor];
-    self.title.textColor = [self textColorHighlighted:self.selected];
-    self.location.textColor = [self textColorHighlighted:self.selected];
-}
-
-- (NSDictionary *)titleAttributesHighlighted:(BOOL)highlighted
-{
-    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-    paragraphStyle.alignment = NSTextAlignmentLeft;
-    paragraphStyle.hyphenationFactor = 1.0;
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    return @{
-             NSFontAttributeName : [UIFont boldSystemFontOfSize:12.0],
-             NSForegroundColorAttributeName : [self textColorHighlighted:highlighted],
-             NSParagraphStyleAttributeName : paragraphStyle
-             };
+    self.title.textColor = [ScheduleTheme textColorHighlighted:self.selected];
+    self.location.textColor = [ScheduleTheme textColorHighlighted:self.selected];
 }
 
 - (NSDictionary *)subtitleAttributesHighlighted:(BOOL)highlighted
@@ -143,24 +131,14 @@
     paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
     return @{
              NSFontAttributeName : [UIFont systemFontOfSize:12.0],
-             NSForegroundColorAttributeName : [self textColorHighlighted:highlighted],
+             NSForegroundColorAttributeName : [ScheduleTheme textColorHighlighted:highlighted],
              NSParagraphStyleAttributeName : paragraphStyle
              };
 }
 
-- (UIColor *)backgroundColorHighlighted:(BOOL)selected
-{
-    return selected ? [UIColor colorWithHexString:@"35b1f1"] : [[UIColor colorWithHexString:@"35b1f1"] colorWithAlphaComponent:0.2];
-}
-
-- (UIColor *)textColorHighlighted:(BOOL)selected
-{
-    return selected ? [UIColor whiteColor] : [UIColor colorWithHexString:@"21729c"];
-}
-
 - (UIColor *)borderColor
 {
-    return [[self backgroundColorHighlighted:NO] colorWithAlphaComponent:1.0];
+    return [[ScheduleTheme backgroundColorHighlighted:NO] colorWithAlphaComponent:1.0];
 }
 
 
