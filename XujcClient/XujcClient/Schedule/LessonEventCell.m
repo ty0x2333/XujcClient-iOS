@@ -104,14 +104,12 @@
         return;
     }
     _viewModel = viewModel;
-    @weakify(self);
-    RAC(self.title, attributedText) = [RACObserve(_viewModel, name) map:^id(NSString *value) {
-        @strongify(self);
-        return [[NSAttributedString alloc] initWithString:value attributes:[ScheduleTheme titleAttributesHighlighted:self.selected]];
+    RAC(self.title, attributedText) = [RACSignal combineLatest:@[RACObserve(_viewModel, name), RACObserve(self, selected)] reduce:^id(NSString *name, NSNumber *selected){
+        return [[NSAttributedString alloc] initWithString:name attributes:[ScheduleTheme titleAttributesHighlighted:[selected boolValue]]];
     }];
-    RAC(self.location, attributedText) = [RACObserve(_viewModel, location) map:^id(NSString *value) {
-        @strongify(self);
-        return [[NSAttributedString alloc] initWithString:value attributes:[ScheduleTheme titleAttributesHighlighted:self.selected]];
+    
+    RAC(self.location, attributedText) = [RACSignal combineLatest:@[RACObserve(_viewModel, location), RACObserve(self, selected)] reduce:^id(NSString *location, NSNumber *selected){
+        return [[NSAttributedString alloc] initWithString:location attributes:[ScheduleTheme titleAttributesHighlighted:[selected boolValue]]];
     }];
 }
 
