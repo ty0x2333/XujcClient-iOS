@@ -23,11 +23,15 @@
         _model = model;
         RACChannelTo(self, lessonName) = RACChannelTo(self, model.lessonName);
         RACChannelTo(self, location) = RACChannelTo(self, model.location);
-        RACChannelTo(self, startData) = RACChannelTo(self, model.startData);
-        RACChannelTo(self, timePeriod) = RACChannelTo(self, model.timePeriod);
-        RACChannelTo(self, time) = RACChannelTo(self, model.time);
+        
+        RAC(self, dateDescription) = [RACSignal combineLatest:@[RACChannelTo(self, model.startDate), RACChannelTo(self, model.time), RACChannelTo(self, model.week)] reduce:^id(NSString *date, NSString *time){
+            return [NSString stringWithFormat:@"%@ %@", date, time];
+        }];
+        
+        RAC(self, weekDescription) = [RACSignal combineLatest:@[RACChannelTo(self, model.week), RACChannelTo(self, model.timePeriod)] reduce:^id(NSString *week, NSString *timePeriod){
+            return [NSString stringWithFormat:@"%@ %@ %@", NSLocalizedString(@"Week", nil), week, timePeriod];
+        }];
         RACChannelTo(self, way) = RACChannelTo(self, model.way);
-        RACChannelTo(self, week) = RACChannelTo(self, model.week);
         RACChannelTo(self, name) = RACChannelTo(self, model.name);
         RACChannelTo(self, status) = RACChannelTo(self, model.status);
     }
