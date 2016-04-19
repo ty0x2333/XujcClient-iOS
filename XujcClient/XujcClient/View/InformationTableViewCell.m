@@ -32,6 +32,7 @@ static const CGFloat kContentMarginHorizontal = 5.f;
         self.backgroundColor = [UIColor clearColor];
         
         [self.contentView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self);
             make.leading.equalTo(self).with.offset(kContentMarginHorizontal);
             make.trailing.equalTo(self).with.offset(-kContentMarginHorizontal);
         }];
