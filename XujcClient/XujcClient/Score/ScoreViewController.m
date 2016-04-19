@@ -103,7 +103,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
 //    return section == 0 ? CGFLOAT_MIN : tableView.sectionHeaderHeight;
     return tableView.sectionHeaderHeight;
