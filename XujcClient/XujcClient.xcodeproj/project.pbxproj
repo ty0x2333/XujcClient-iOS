@@ -77,6 +77,7 @@
 		701584351CC53103003567F7 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584321CC53103003567F7 /* ExamViewController.m */; };
 		701584361CC53103003567F7 /* ExamViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584341CC53103003567F7 /* ExamViewModel.m */; };
 		7015843A1CC536BF003567F7 /* ExamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584391CC536BF003567F7 /* ExamTableViewCell.m */; };
+		7015843D1CC55BCC003567F7 /* ExamTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015843C1CC55BCC003567F7 /* ExamTableViewCellViewModel.m */; };
 		7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */; };
 		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
@@ -312,6 +313,8 @@
 		701584341CC53103003567F7 /* ExamViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewModel.m; sourceTree = "<group>"; };
 		701584381CC536BF003567F7 /* ExamTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamTableViewCell.h; sourceTree = "<group>"; };
 		701584391CC536BF003567F7 /* ExamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTableViewCell.m; sourceTree = "<group>"; };
+		7015843B1CC55BCC003567F7 /* ExamTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamTableViewCellViewModel.h; sourceTree = "<group>"; };
+		7015843C1CC55BCC003567F7 /* ExamTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTableViewCellViewModel.m; sourceTree = "<group>"; };
 		7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSemesterModel.h; sourceTree = "<group>"; };
 		7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSemesterModel.m; sourceTree = "<group>"; };
 		7023F9B21BE678E60046CF3B /* XujcLessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcLessonModel.h; sourceTree = "<group>"; };
@@ -779,6 +782,8 @@
 			children = (
 				701584331CC53103003567F7 /* ExamViewModel.h */,
 				701584341CC53103003567F7 /* ExamViewModel.m */,
+				7015843B1CC55BCC003567F7 /* ExamTableViewCellViewModel.h */,
+				7015843C1CC55BCC003567F7 /* ExamTableViewCellViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -1458,6 +1463,7 @@
 				706B19AB1CBAC868003B4F47 /* TTTAttributedLabel+Theme.m in Sources */,
 				7062B6CC1C9333690074C716 /* ScoreTableViewCellViewModel.m in Sources */,
 				70730D761C94A039007CBEBB /* SemesterBaseViewController.m in Sources */,
+				7015843D1CC55BCC003567F7 /* ExamTableViewCellViewModel.m in Sources */,
 				70730DB41C9A635F007CBEBB /* OssService.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */,
