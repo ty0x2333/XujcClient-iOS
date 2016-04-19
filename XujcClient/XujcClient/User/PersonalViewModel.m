@@ -21,8 +21,8 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        _texts = @[@[@"Personal Detail"], @[@"Feedback and Help", @"Settings"], @[@"Share"]];
-        _imageNames = @[@[@"cell_icon_detail"], @[@"cell_icon_home", @"cell_icon_settings"], @[@"cell_icon_share"]];
+        _texts = @[@[@"Personal Detail"], @[@"Exam Arrangement"], @[@"Feedback and Help", @"Settings"], @[@"Share"]];
+        _imageNames = @[@[@"cell_icon_detail"], @[@"cell_icon_exam"], @[@"cell_icon_home", @"cell_icon_settings"], @[@"cell_icon_share"]];
     }
     return self;
 }
@@ -83,6 +83,11 @@
 - (SupportCenterViewModel *)supportCenterViewModel
 {
     return [[SupportCenterViewModel alloc] init];
+}
+
+- (ExamViewModel *)examViewModel
+{
+    return [[ExamViewModel alloc] init];
 }
 
 @end

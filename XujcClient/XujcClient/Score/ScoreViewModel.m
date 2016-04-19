@@ -7,14 +7,14 @@
 //
 
 #import "ScoreViewModel.h"
-#import "XujcScore.h"
+#import "XujcScoreModel.h"
 #import "XujcService.h"
 #import "DynamicData.h"
 #import "CacheUtils.h"
 
 @interface ScoreViewModel()
 
-@property (strong, nonatomic) NSArray<XujcScore *> *scores;
+@property (strong, nonatomic) NSArray<XujcScoreModel *> *scores;
 
 @end
 
@@ -22,9 +22,8 @@
 
 - (ScoreTableViewCellViewModel *)scoreTableViewCellViewModelForRowAtIndex:(NSUInteger)index
 {
-    ScoreTableViewCellViewModel *cellViewModel = [[ScoreTableViewCellViewModel alloc] init];
-    XujcScore *scoreModel = [_scores objectAtIndex:index];
-    cellViewModel.xujcScoreModel = scoreModel;
+    XujcScoreModel *scoreModel = [_scores objectAtIndex:index];
+    ScoreTableViewCellViewModel *cellViewModel = [[ScoreTableViewCellViewModel alloc] initWithModel:scoreModel];
     return cellViewModel;
 }
 
@@ -36,7 +35,7 @@
             NSArray *scoreDatas = responseObject;
             NSMutableArray *scoreModels = [[NSMutableArray alloc] initWithCapacity:scoreDatas.count];
             [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                XujcScore *xujcScore = [[XujcScore alloc] initWithJSONResopnse:obj];
+                XujcScoreModel *xujcScore = [[XujcScoreModel alloc] initWithJSONResopnse:obj];
                 TyLogDebug(@"Score: %@", xujcScore);
                 [scoreModels addObject:xujcScore];
             }];

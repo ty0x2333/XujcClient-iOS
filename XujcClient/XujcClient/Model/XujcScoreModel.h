@@ -1,5 +1,5 @@
 //
-//  XujcScore.h
+//  XujcScoreModel.h
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/2/26.
@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@interface XujcScore : BaseModel
+@interface XujcScoreModel : BaseModel
 
 @property (nonatomic, copy) NSString *lessonName;
 @property (nonatomic, assign) NSInteger score;

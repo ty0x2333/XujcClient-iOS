@@ -37,6 +37,7 @@ PODS:
   - GoogleUtilities (1.2.0):
     - GoogleSymbolUtilities (~> 1.0)
   - Instabug (5.2)
+  - Kiwi (2.4.0)
   - LMDropdownView (1.0.3)
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - FMDB
   - Google/Analytics
   - Instabug
+  - Kiwi
   - LMDropdownView
   - Masonry
   - MBProgressHUD
@@ -100,6 +102,7 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: eb3965ea12710569c7b80db198a39e39b18613f7
   GoogleUtilities: 85f8ad6b251544286a97163133d042ec95f889c5
   Instabug: 48c60e29b1dc8adb2bd80e7eb3c58bceba4ffb8e
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   LMDropdownView: f03fadfe65908c735580f63d04c47e6d7c5325f3
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

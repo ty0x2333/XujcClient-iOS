@@ -61,8 +61,8 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 // Caches
 @property (nonatomic, assign) BOOL needsToPopulateAttributesForAllSections;
 @property (nonatomic, strong) NSCache *cachedDayDateComponents;
-@property (nonatomic, strong) NSCache *cachedStartClassSectionComponents;
-@property (nonatomic, strong) NSCache *cachedEndClassSectionComponents;
+@property (nonatomic, strong) NSCache *cachedStartClassSection;
+@property (nonatomic, strong) NSCache *cachedEndClassSection;
 @property (nonatomic, strong) NSCache *cachedCurrentDate;
 @property (nonatomic, assign) CGFloat cachedMaxColumnHeight;
 
@@ -494,8 +494,8 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 {
     self.needsToPopulateAttributesForAllSections = YES;
     self.cachedDayDateComponents = [NSCache new];
-    _cachedStartClassSectionComponents = [NSCache new];
-    _cachedEndClassSectionComponents = [NSCache new];
+    _cachedStartClassSection = [NSCache new];
+    _cachedEndClassSection = [NSCache new];
     _cachedCurrentDate = [NSCache new];
     self.cachedMaxColumnHeight = CGFLOAT_MIN;
     self.cachedColumnHeights = [NSMutableDictionary new];
@@ -585,8 +585,8 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
     
     // Invalidate cached Components
     [self.cachedDayDateComponents removeAllObjects];
-    [_cachedStartClassSectionComponents removeAllObjects];
-    [_cachedEndClassSectionComponents removeAllObjects];
+    [_cachedStartClassSection removeAllObjects];
+    [_cachedEndClassSection removeAllObjects];
     [_cachedCurrentDate removeAllObjects];
     
     // Invalidate cached interface sizing values
@@ -857,25 +857,25 @@ static CGFloat const kTimeRowHeaderWidth = 40.0f;
 
 - (NSInteger)startClassSectionIndexForIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_cachedStartClassSectionComponents objectForKey:indexPath]) {
-        return [[_cachedStartClassSectionComponents objectForKey:indexPath] integerValue];
+    if ([_cachedStartClassSection objectForKey:indexPath]) {
+        return [[_cachedStartClassSection objectForKey:indexPath] integerValue];
     }
     
     NSInteger classSectionIndex = [self.delegate collectionView:self.collectionView layout:self startClassSectionIndexForItemAtIndexPath:indexPath];
     
-    [_cachedStartClassSectionComponents setObject:@(classSectionIndex) forKey:indexPath];
+    [_cachedStartClassSection setObject:@(classSectionIndex) forKey:indexPath];
     return classSectionIndex;
 }
 
 - (NSInteger)endClassSectionIndexForIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_cachedEndClassSectionComponents objectForKey:indexPath]) {
-        return [[_cachedEndClassSectionComponents objectForKey:indexPath] integerValue];
+    if ([_cachedEndClassSection objectForKey:indexPath]) {
+        return [[_cachedEndClassSection objectForKey:indexPath] integerValue];
     }
     
     NSInteger classSectionIndex = [self.delegate collectionView:self.collectionView layout:self endClassSectionIndexForItemAtIndexPath:indexPath];
     
-    [_cachedEndClassSectionComponents setObject:@(classSectionIndex) forKey:indexPath];
+    [_cachedEndClassSection setObject:@(classSectionIndex) forKey:indexPath];
     return classSectionIndex;
 }
 

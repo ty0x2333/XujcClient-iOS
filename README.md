@@ -24,6 +24,7 @@ Dependencies
 - [luckytianyiyan/AFNetworking (branch: ty_no_unescaped_ctrl_char)](https://github.com/luckytianyiyan/AFNetworking/tree/ty_no_unescaped_ctrl_char)
 - [SDWebImage](https://github.com/rs/SDWebImage)
 - [FMDB](https://github.com/ccgus/fmdb)
+- [Kiwi](https://github.com/kiwi-bdd/Kiwi)
 
 ### Services
 - [Instabug](https://github.com/Instabug/Instabug-iOS.git)

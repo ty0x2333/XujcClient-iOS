@@ -11,6 +11,7 @@
 #import "PersonalHeaderView.h"
 #import "SupportCenterViewController.h"
 #import "UserDetailViewController.h"
+#import "ExamViewController.h"
 #import "UMSocial.h"
 
 static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
@@ -99,6 +100,9 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
         UserDetailViewController *viewController = [[UserDetailViewController alloc] initWithViewModel:[self.viewModel userDetailViewModel]];
         [self.navigationController pushViewController:viewController animated:YES];
     } else if (indexPath.section == 1) {
+        ExamViewController *viewController = [[ExamViewController alloc] initWithViewModel:[self.viewModel examViewModel]];
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else if (indexPath.section == 2) {
         if (indexPath.row == 0) {
             SupportCenterViewController *viewController = [[SupportCenterViewController alloc] initWithViewModel:[self.viewModel supportCenterViewModel]];
             [self.navigationController pushViewController:viewController animated:YES];

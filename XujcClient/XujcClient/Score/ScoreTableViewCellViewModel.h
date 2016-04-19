@@ -7,10 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XujcScore.h"
+#import "XujcScoreModel.h"
 
 @interface ScoreTableViewCellViewModel : NSObject
 
-@property (strong, nonatomic) XujcScore *xujcScoreModel;
+- (instancetype)initWithModel:(XujcScoreModel *)xujcScoreModel;
+
+@property (nonatomic, readonly, copy) NSString *lessonName;
+
+@property (nonatomic, readonly, assign) NSInteger score;
+
+@property (nonatomic, readonly, copy) NSString *studyWay;
+
+@property (nonatomic, readonly, assign) NSInteger credit;
+
 
 @end

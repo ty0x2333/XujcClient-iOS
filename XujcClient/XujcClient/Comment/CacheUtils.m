@@ -88,7 +88,7 @@ static NSString * const kLessonEventTableInitSQL = @"CREATE TABLE IF NOT EXISTS 
     return isSuccess;
 }
 
-- (BOOL)cacheScore:(NSArray<XujcScore *> *)scores inSemester:(NSString *)semesterId
+- (BOOL)cacheScore:(NSArray<XujcScoreModel *> *)scores inSemester:(NSString *)semesterId
 {
     __block BOOL isSuccess = NO;
     
@@ -96,7 +96,7 @@ static NSString * const kLessonEventTableInitSQL = @"CREATE TABLE IF NOT EXISTS 
         
         [db executeUpdate:@"DELETE FROM score WHERE semester_id=?;", semesterId];
         
-        for (XujcScore *score in scores) {
+        for (XujcScoreModel *score in scores) {
             isSuccess = [db executeUpdate:@"INSERT INTO score(name, semester_id, credit, score, study_way, score_level, mid_semester_status, end_semester_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", score.lessonName, semesterId, @(score.credit), @(score.score), score.studyWay, score.scoreLevel, score.midSemesterStatus, score.endSemesterStatus];
             if (!isSuccess) {
                 *rollback = YES;
@@ -146,7 +146,7 @@ static NSString * const kLessonEventTableInitSQL = @"CREATE TABLE IF NOT EXISTS 
     return result;
 }
 
-- (NSArray<XujcScore *> *)scoresFormCacheWithSemester:(NSString *)semesterId
+- (NSArray<XujcScoreModel *> *)scoresFormCacheWithSemester:(NSString *)semesterId
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     [[FMDatabaseQueue instance] inDatabase:^(FMDatabase *db) {
@@ -155,7 +155,7 @@ static NSString * const kLessonEventTableInitSQL = @"CREATE TABLE IF NOT EXISTS 
         FMResultSet *set = [db executeQuery:sqlFormat, semesterId];
         
         while ([set next]) {
-            XujcScore *score = [[XujcScore alloc] init];
+            XujcScoreModel *score = [[XujcScoreModel alloc] init];
             score.lessonName = [set objectForColumnName:@"name"];
             score.credit = [[set objectForColumnName:@"credit"] integerValue];
             score.score = [[set objectForColumnName:@"score"] integerValue];

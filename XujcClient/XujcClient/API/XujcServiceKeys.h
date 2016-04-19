@@ -20,6 +20,16 @@ static NSString* const XujcServiceKeyName = @"xj_xm";
 static NSString* const XujcServiceKeyGrade = @"xj_nj";
 static NSString* const XujcServiceKeyProfessional = @"zy_mc";
 
+#pragma mark - Xujc Exam
+
+static NSString* const XujcServiceKeyExamStartDate = @"ksap_ksrq";
+static NSString* const XujcServiceKeyExamTimePeriod = @"ksap_kssd";
+static NSString* const XujcServiceKeyExamTime = @"ksap_kssj";
+static NSString* const XujcServiceKeyExamWay = @"ksap_khfs";
+static NSString* const XujcServiceKeyExamWeek = @"ksap_xq";
+static NSString* const XujcServiceKeyExamName = @"ks_mc";
+static NSString* const XujcServiceKeyExamStatus = @"kskc_zt";
+
 #pragma mark - Xujc Lesson
 
 static NSString* const XujcServiceKeyLessonClassId = @"kcb_id";

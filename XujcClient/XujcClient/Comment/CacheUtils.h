@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "XujcSemesterModel.h"
-#import "XujcScore.h"
+#import "XujcScoreModel.h"
 #import "XujcLessonEventModel.h"
 
 @interface CacheUtils : NSObject
@@ -17,7 +17,7 @@
 
 - (BOOL)cacheSemesters:(NSArray<XujcSemesterModel *> *)semesters;
 
-- (BOOL)cacheScore:(NSArray<XujcScore *> *)scores inSemester:(NSString *)semesterId;
+- (BOOL)cacheScore:(NSArray<XujcScoreModel *> *)scores inSemester:(NSString *)semesterId;
 
 - (BOOL)cacheLessonEvent:(NSArray<XujcLessonEventModel *> *)lessonEvents inSemester:(NSString *)semesterId;
 
@@ -28,7 +28,7 @@
  */
 - (NSArray<XujcSemesterModel *> *)semestersFormCache;
 
-- (NSArray<XujcScore *> *)scoresFormCacheWithSemester:(NSString *)semesterId;
+- (NSArray<XujcScoreModel *> *)scoresFormCacheWithSemester:(NSString *)semesterId;
 
 - (NSArray<XujcLessonEventModel *> *)lessonEventFormCacheWithSemester:(NSString *)semesterId;
 

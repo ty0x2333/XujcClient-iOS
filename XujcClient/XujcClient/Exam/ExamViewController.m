@@ -1,16 +1,13 @@
 //
-//  ScoreViewController.m
+//  ExamViewController.m
 //  XujcClient
 //
-//  Created by 田奕焰 on 16/2/11.
+//  Created by 田奕焰 on 16/4/18.
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "ScoreViewController.h"
-#import "XujcAPI.h"
-#import "DynamicData.h"
-#import "XujcScoreModel.h"
-#import "ScoreTableViewCell.h"
+#import "ExamViewController.h"
+#import "ExamTableViewCell.h"
 #import <UIScrollView+EmptyDataSet.h>
 #import <MJRefresh.h>
 
@@ -18,17 +15,17 @@ static NSString* const kTableViewCellIdentifier = @"TableViewCellIdentifier";
 
 static CGFloat const kTableViewSectionHeaderHeight = 5.f;
 
-@interface ScoreViewController ()<UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface ExamViewController()<UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
-@property (strong, nonatomic) ScoreViewModel *viewModel;
+@property (nonatomic, strong) ExamViewModel *viewModel;
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
 
-@implementation ScoreViewController
+@implementation ExamViewController
 
-- (instancetype)initWithViewModel:(ScoreViewModel *)viewModel
+- (instancetype)initWithViewModel:(ExamViewModel *)viewModel
 {
     if (self = [super init]) {
         _viewModel = viewModel;
@@ -36,10 +33,10 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    self.screenName = @"Score Screen";
+    self.screenName = @"Exam";
+    self.title = NSLocalizedString(@"Exam Arrangement", nil);
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
@@ -49,7 +46,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
     _tableView.emptyDataSetSource = self;
     _tableView.emptyDataSetDelegate = self;
     [self.view addSubview:_tableView];
-    [_tableView registerClass:[ScoreTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
+    [_tableView registerClass:[ExamTableViewCell class] forCellReuseIdentifier:kTableViewCellIdentifier];
     
     self.view.backgroundColor = _tableView.backgroundColor;
     
@@ -58,27 +55,26 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
     }];
     @weakify(self);
     
-    [self.viewModel.semesterSelectorViewModel.selectedSemesterIdSignal subscribeNext:^(id x) {
-        @strongify(self);
-        [self.tableView.mj_header beginRefreshing];
-    }];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);
-        [self.viewModel.fetchScoresSignal subscribeNext:^(id x) {
+        [self.viewModel.fetchExamsSignal subscribeNext:^(id x) {
             [self.tableView reloadData];
-            TyLogDebug(@"fetchScores success");
+            TyLogDebug(@"fetchExams success");
             [self.tableView.mj_header endRefreshing];
         } error:^(NSError *error) {
             MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hub.detailsLabelText = error.localizedDescription;
             [hub hide:YES afterDelay:kErrorHUDShowTime];
-            TyLogDebug(@"fetchScores error");
+            TyLogDebug(@"fetchExams error");
             
             // load data from cache
             [_tableView reloadData];
             [self.tableView.mj_header endRefreshing];
         }];
     }];
+
+    [self.tableView.mj_header beginRefreshing];
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -90,14 +86,13 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.viewModel scoreCount];
+    return [self.viewModel examCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ScoreTableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
-    ScoreTableViewCellViewModel *viewModel = [self.viewModel scoreTableViewCellViewModelForRowAtIndex:indexPath.section];
-    cell.viewModel = viewModel;
+    ExamTableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
+    cell.viewModel = [self.viewModel examTableViewCellViewModelForRowAtIndex:indexPath.section];
     return cell;
 }
 
@@ -105,7 +100,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-//    return section == 0 ? CGFLOAT_MIN : tableView.sectionHeaderHeight;
+    //    return section == 0 ? CGFLOAT_MIN : tableView.sectionHeaderHeight;
     return tableView.sectionHeaderHeight;
 }
 
@@ -126,4 +121,5 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
+
 @end

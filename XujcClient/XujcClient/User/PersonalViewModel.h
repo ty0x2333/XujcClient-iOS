@@ -12,6 +12,7 @@
 #import "TableViewCellViewModel.h"
 #import "SupportCenterViewModel.h"
 #import "UserDetailViewModel.h"
+#import "ExamViewModel.h"
 
 @interface PersonalViewModel : NSObject
 
@@ -22,6 +23,8 @@
 - (SupportCenterViewModel *)supportCenterViewModel;
 
 - (UserDetailViewModel *)userDetailViewModel;
+
+- (ExamViewModel *)examViewModel;
 
 - (NSInteger)numberOfSections;
 

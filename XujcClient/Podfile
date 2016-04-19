@@ -15,6 +15,9 @@ pod 'Masonry'
 pod "AFNetworking", :git => 'https://github.com/luckytianyiyan/AFNetworking.git', :branch => 'ty_no_unescaped_ctrl_char'
 pod 'SDWebImage'
 pod 'FMDB'
+target :XujcClientTests, :exclusive => true do
+  pod 'Kiwi'
+end
 
 # Services
 pod 'Instabug'

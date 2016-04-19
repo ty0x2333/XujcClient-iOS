@@ -1,0 +1,81 @@
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
+__author__ = 'luckytianyiyan'
+__version__ = '1.0'
+import os
+import re
+from optparse import OptionParser
+
+# Colors
+BLUE = '\033[94m'
+GREEN = '\033[92m'
+YELLOW = '\033[93m'
+RED = '\033[91m'
+ENDC = '\033[0m'
+
+def print_with_color(str, color):
+    print color, str, ENDC
+
+def string_with_color(str, color):
+    return '%s%s%s' % (color, str, ENDC)
+
+def get_args():
+    usage = '''
+    %prog [options] arg
+    ---
+    A tool to change travis ci icon url to git branch
+    Create By luckytianyiyan@gmail.com
+    you can get more help from http://www.tianyiyan.com'''
+    parser = OptionParser(usage)
+    parser.add_option("-b", "--branch", dest="branch", help="target branch.")
+    parser.add_option("-v", "--version", action="store_true", dest="version", help="script version.")
+    return parser.parse_args()
+
+
+if __name__ == '__main__':
+
+    (options, args) = get_args()
+
+    file_name = os.path.basename(os.path.realpath(__file__))
+
+    if options.version:
+        print '%s version: %s' % (string_with_color(file_name, BLUE),
+                                  string_with_color(__version__, BLUE))
+        exit(0)
+    if not options.branch:
+        print_with_color('[Error] unknow target branch.', RED)
+        print 'if you want to switch to %s branch\n\tuse like %s.' % (string_with_color('develop', BLUE), string_with_color('%s -b develop' % file_name, BLUE))
+        exit(1)
+
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+
+    pattern = re.compile('((?<=https://travis-ci\.org/)\S*?)((?<=\.svg\?branch=)\w+)')
+
+    readme_path = current_dir + '/../README.md'
+
+    readme_file = open(readme_path, 'r+')
+
+    lines = readme_file.readlines()
+
+    for index, line in enumerate(lines):
+
+        match = pattern.search(line)
+        if match:
+            current_travis_ci_branch = match.groups()[-1]
+
+            print_with_color('\nfind travis ci url in line: %s' % (index), GREEN)
+            print '---'
+            current_line_with_color = line_with_color = line[:match.start(2)] + string_with_color(current_travis_ci_branch, YELLOW) + line[match.end(2):]
+            print current_line_with_color
+
+            if current_travis_ci_branch == options.branch:
+                print_with_color('[WARNING] no change. current branch is same as the target branch.', YELLOW)
+            else:
+                lines[index] = line[:match.start(2)] + options.branch + line[match.end(2):]
+                line_with_color = line[:match.start(2)] + string_with_color(options.branch, BLUE) + line[match.end(2):]
+                print '\nreplace', string_with_color(current_travis_ci_branch, YELLOW), 'to', string_with_color(options.branch, BLUE)
+                print '---'
+                print line_with_color
+
+                open(readme_path,'w+').writelines(lines)
+

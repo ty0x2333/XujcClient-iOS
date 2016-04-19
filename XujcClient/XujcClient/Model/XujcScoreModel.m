@@ -1,14 +1,14 @@
 //
-//  XujcScore.m
+//  XujcScoreModel.m
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/2/26.
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "XujcScore.h"
+#import "XujcScoreModel.h"
 
-@implementation XujcScore
+@implementation XujcScoreModel
 
 - (instancetype)initWithJSONResopnse:(NSDictionary *)json
 {
