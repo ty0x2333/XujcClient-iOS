@@ -6,8 +6,15 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "RequestViewModel.h"
+@class ExamTableViewCellViewModel;
 
-@interface ExamViewModel : NSObject
+@interface ExamViewModel : RequestViewModel
+
+@property (strong, nonatomic) RACSignal *fetchExamsSignal;
+
+- (NSUInteger)examCount;
+
+- (ExamTableViewCellViewModel *)examTableViewCellViewModelForRowAtIndex:(NSUInteger)index;
 
 @end
