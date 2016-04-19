@@ -114,7 +114,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = NSLocalizedString(@"There is no score data for the current semester.", nil);
+    NSString *text = NSLocalizedString(@"There is no exam data.", nil);
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};

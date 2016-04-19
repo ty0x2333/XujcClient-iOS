@@ -83,3 +83,4 @@
  * Empty Data Message
  */
 "There is no score data for the current semester." = "当前学期没有成绩数据";
+"There is no exam data." = "当前没有考试数据";
