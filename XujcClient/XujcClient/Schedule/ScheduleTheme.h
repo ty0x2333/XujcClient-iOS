@@ -10,8 +10,6 @@
 
 @interface ScheduleTheme : NSObject
 
-+ (NSDictionary *)titleAttributesHighlighted:(BOOL)highlighted;
-
 + (UIColor *)textColorHighlighted:(BOOL)selected;
 
 + (UIColor *)backgroundColorHighlighted:(BOOL)selected;
