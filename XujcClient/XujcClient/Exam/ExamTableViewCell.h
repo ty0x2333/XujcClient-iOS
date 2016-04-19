@@ -7,7 +7,10 @@
 //
 
 #import "InformationTableViewCell.h"
+@class ExamTableViewCellViewModel;
 
 @interface ExamTableViewCell : InformationTableViewCell
+
+@property (strong, nonatomic) ExamTableViewCellViewModel *viewModel;
 
 @end
