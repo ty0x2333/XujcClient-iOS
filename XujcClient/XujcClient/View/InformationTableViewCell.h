@@ -10,4 +10,6 @@
 
 @interface InformationTableViewCell : UITableViewCell
 
+@property (strong, readonly, nonatomic) UIView *informationDetailView;
+
 @end

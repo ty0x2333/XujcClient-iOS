@@ -13,13 +13,10 @@ static const CGFloat kFontSize = 12.f;
 static const CGFloat kContentEdgeInsetVertical = 8.f;
 static const CGFloat kContentEdgeHorizontal = 12.f;
 
-static const CGFloat kContentMarginHorizontal = 5.f;
-
 @interface ScoreTableViewCell()
 
 @property (strong, nonatomic) UILabel *lessonNameLabel;
 @property (strong, nonatomic) UILabel *scoreLabel;
-@property (strong, nonatomic) UIView *lessonDetailView;
 @property (strong, nonatomic) UILabel *detailStudyWayLabel;
 @property (strong, nonatomic) UILabel *creditLabel;
 
@@ -41,25 +38,16 @@ static const CGFloat kContentMarginHorizontal = 5.f;
         _scoreLabel.font = [UIFont systemFontOfSize:kFontSize];
         [self.contentView addSubview:_scoreLabel];
         
-        _lessonDetailView = [[UIView alloc] init];
-        _lessonDetailView.backgroundColor = [UIColor ty_backgroundHighlight];
-        [self.contentView addSubview:_lessonDetailView];
-        
         _detailStudyWayLabel = [[UILabel alloc] init];
         _detailStudyWayLabel.textColor = [UIColor ty_textBlack];
         _detailStudyWayLabel.font = [UIFont systemFontOfSize:kFontSize];
         _detailStudyWayLabel.numberOfLines = 0;
-        [_lessonDetailView addSubview:_detailStudyWayLabel];
+        [self.informationDetailView addSubview:_detailStudyWayLabel];
         
         _creditLabel = [[UILabel alloc] init];
         _creditLabel.textColor = [UIColor ty_textBlack];
         _creditLabel.font = [UIFont systemFontOfSize:kFontSize];
-        [_lessonDetailView addSubview:_creditLabel];
-        
-        [self.contentView makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.equalTo(self).with.offset(kContentMarginHorizontal);
-            make.trailing.equalTo(self).with.offset(-kContentMarginHorizontal);
-        }];
+        [self.informationDetailView addSubview:_creditLabel];
         
         @weakify(self);
         [_scoreLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -69,26 +57,19 @@ static const CGFloat kContentMarginHorizontal = 5.f;
             make.top.equalTo(self.lessonNameLabel);
         }];
         
-        [_lessonDetailView makeConstraints:^(MASConstraintMaker *make) {
-            @strongify(self);
-            make.bottom.equalTo(self.contentView);
-            make.leading.equalTo(self.contentView);
-            make.right.equalTo(self.contentView);
-        }];
-        
         [_detailStudyWayLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.top.equalTo(self.lessonDetailView.mas_top).with.offset(kContentEdgeInsetVertical);
-            make.trailing.equalTo(self.lessonDetailView);
+            make.top.equalTo(self.informationDetailView.mas_top).with.offset(kContentEdgeInsetVertical);
+            make.trailing.equalTo(self.informationDetailView);
             make.leading.equalTo(self.lessonNameLabel);
         }];
         
         [_creditLabel makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.top.equalTo(self.detailStudyWayLabel.mas_bottom);
-            make.trailing.equalTo(self.lessonDetailView);
+            make.trailing.equalTo(self.informationDetailView);
             make.leading.equalTo(self.lessonNameLabel);
-            make.bottom.equalTo(self.lessonDetailView.mas_bottom).with.offset(-kContentEdgeInsetVertical);
+            make.bottom.equalTo(self.informationDetailView.mas_bottom).with.offset(-kContentEdgeInsetVertical);
         }];
         
         [_lessonNameLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -96,7 +77,7 @@ static const CGFloat kContentMarginHorizontal = 5.f;
             make.leading.equalTo(self.contentView).offset(kContentEdgeHorizontal);
             make.top.equalTo(self.contentView).offset(kContentEdgeInsetVertical);
             make.right.equalTo(self.scoreLabel.mas_left).with.offset(-kContentEdgeInsetVertical);
-            make.bottom.equalTo(_lessonDetailView.mas_top).with.offset(-kContentEdgeInsetVertical);
+            make.bottom.equalTo(self.informationDetailView.mas_top).with.offset(-kContentEdgeInsetVertical);
         }];
     }
     return self;
