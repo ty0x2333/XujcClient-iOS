@@ -15,7 +15,7 @@
     if (self = [super init]) {
         _lessonName = [self checkForNull:json[XujcServiceKeyLessonName]];
         _location = [self checkForNull:json[XujcServiceKeyLessonEventLocation]];
-        _startData = [self checkForNull:json[XujcServiceKeyExamStartDate]];
+        _startDate = [self checkForNull:json[XujcServiceKeyExamStartDate]];
         _timePeriod = [self checkForNull:json[XujcServiceKeyExamTimePeriod]];
         _time = [self checkForNull:json[XujcServiceKeyExamTime]];
         _way = [self checkForNull:json[XujcServiceKeyExamWay]];

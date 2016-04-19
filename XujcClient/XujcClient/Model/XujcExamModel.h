@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSString* lessonName;
 @property (nonatomic, copy) NSString* location;
 
-@property (nonatomic, copy) NSString* startData;
+@property (nonatomic, copy) NSString* startDate;
 @property (nonatomic, copy) NSString* timePeriod;
 @property (nonatomic, copy) NSString* time;
 @property (nonatomic, copy) NSString* way;
