@@ -1,2 +1,2 @@
 #!/bin/sh
-./$(dirname $0)/prepare_merge_branch -b develop
+$(dirname $0)/prepare_merge_branch -b develop
