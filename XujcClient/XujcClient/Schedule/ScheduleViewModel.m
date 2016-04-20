@@ -76,6 +76,12 @@
     return viewModel;
 }
 
+- (LessonEventPopViewModel *)lessonEventPopViewModelAtIndexPath:(NSIndexPath *)indexPath
+{
+    XujcLessonEventModel *lessonEvent = [self.lessonEvents[indexPath.section] objectAtIndex:indexPath.row];
+    return [[LessonEventPopViewModel alloc] initWithModel:lessonEvent];
+}
+
 - (NSInteger)numberOfLessonEventInSection:(NSInteger)section
 {
     return [[self.lessonEvents objectAtIndex:section] count];

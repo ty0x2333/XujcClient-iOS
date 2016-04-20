@@ -22,6 +22,7 @@
 #import "XujcLessonModel.h"
 #import "DynamicData.h"
 #import "ScheduleColumnHeader.h"
+#import "LessonEventPopView.h"
 
 static NSString * const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
 
@@ -29,7 +30,7 @@ static NSString * const kLessonEventCellIdentifier = @"LessonEventCellIdentifier
 static NSString * const kScheduleColumnHeaderReuseIdentifier = @"ScheduleColumnHeaderReuseIdentifier";
 static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderReuseIdentifier";
 
-@interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout, UICollectionViewDataSource>
+@interface ScheduleViewController ()<MSCollectionViewDelegateCalendarLayout, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) ScheduleViewModel *viewModel;
 
@@ -159,6 +160,22 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         view = timeRowHeader;
     }
     return view;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    LessonEventPopView *popView = [[LessonEventPopView alloc] initWithViewModel:[self.viewModel lessonEventPopViewModelAtIndexPath:indexPath]];
+    
+    @weakify(self);
+    popView.hideCompletionBlock = ^(MMPopupView *view, BOOL completion) {
+        @strongify(self);
+        [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+    };
+    
+    [popView show];
+    TyLogDebug(@"selected %@", indexPath);
 }
 
 #pragma mark - MSCollectionViewDelegateCalendarLayout
