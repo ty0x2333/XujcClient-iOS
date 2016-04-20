@@ -14,4 +14,6 @@
 
 + (NSString *)ty_serviceBaseURL;
 
++ (NSString *)ty_shareURL;
+
 @end
