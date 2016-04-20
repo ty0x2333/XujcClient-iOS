@@ -24,6 +24,8 @@
 #import "ScheduleColumnHeader.h"
 #import "LessonEventPopView.h"
 
+static NSUInteger const kSectionCountOneScreen = 3;
+
 static NSString * const kTableCellReuseIdentifier = @"TableCellReuseIdentifier";
 
 static NSString * const kLessonEventCellIdentifier = @"LessonEventCellIdentifier";
@@ -113,7 +115,7 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     
     CGFloat width = SCREEN_SIZE.width;
     CGFloat timeRowHeaderWidth = self.collectionViewCalendarLayout.timeRowHeaderWidth;
-    CGFloat layoutSectionWidth = (width - timeRowHeaderWidth) / 4;
+    CGFloat layoutSectionWidth = (width - timeRowHeaderWidth) / kSectionCountOneScreen;
     self.collectionViewCalendarLayout.sectionWidth = layoutSectionWidth;
 
 }
