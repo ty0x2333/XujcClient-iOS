@@ -72,6 +72,7 @@
 		701584361CC53103003567F7 /* ExamViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584341CC53103003567F7 /* ExamViewModel.m */; };
 		7015843A1CC536BF003567F7 /* ExamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584391CC536BF003567F7 /* ExamTableViewCell.m */; };
 		7015843D1CC55BCC003567F7 /* ExamTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015843C1CC55BCC003567F7 /* ExamTableViewCellViewModel.m */; };
+		701584401CC6A00A003567F7 /* LessonEventPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015843F1CC6A00A003567F7 /* LessonEventPopView.m */; };
 		701584501CC6A8FF003567F7 /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584431CC6A8FF003567F7 /* MSCurrentTimeGridline.m */; };
 		701584511CC6A8FF003567F7 /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584451CC6A8FF003567F7 /* MSCurrentTimeIndicator.m */; };
 		701584521CC6A8FF003567F7 /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584471CC6A8FF003567F7 /* MSDayColumnHeaderBackground.m */; };
@@ -305,6 +306,8 @@
 		701584391CC536BF003567F7 /* ExamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTableViewCell.m; sourceTree = "<group>"; };
 		7015843B1CC55BCC003567F7 /* ExamTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamTableViewCellViewModel.h; sourceTree = "<group>"; };
 		7015843C1CC55BCC003567F7 /* ExamTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTableViewCellViewModel.m; sourceTree = "<group>"; };
+		7015843E1CC6A00A003567F7 /* LessonEventPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonEventPopView.h; sourceTree = "<group>"; };
+		7015843F1CC6A00A003567F7 /* LessonEventPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonEventPopView.m; sourceTree = "<group>"; };
 		701584421CC6A8FF003567F7 /* MSCurrentTimeGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeGridline.h; sourceTree = "<group>"; };
 		701584431CC6A8FF003567F7 /* MSCurrentTimeGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeGridline.m; sourceTree = "<group>"; };
 		701584441CC6A8FF003567F7 /* MSCurrentTimeIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeIndicator.h; sourceTree = "<group>"; };
@@ -984,6 +987,8 @@
 				70730DC71C9D99A7007CBEBB /* LessonEventCell.m */,
 				701584571CC6AA6B003567F7 /* ScheduleTheme.h */,
 				701584581CC6AA6B003567F7 /* ScheduleTheme.m */,
+				7015843E1CC6A00A003567F7 /* LessonEventPopView.h */,
+				7015843F1CC6A00A003567F7 /* LessonEventPopView.m */,
 				701583F61CC4E656003567F7 /* CollectionViewScheduleLayout.h */,
 				701583F71CC4E656003567F7 /* CollectionViewScheduleLayout.m */,
 				70730D841C999DBD007CBEBB /* ScheduleViewController.h */,
@@ -1515,6 +1520,7 @@
 				7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,
 				70443B6D1C85DDB100B0C5DA /* LoginViewController.m in Sources */,
+				701584401CC6A00A003567F7 /* LessonEventPopView.m in Sources */,
 				708661351BE75B7400AD64C2 /* XujcSection.m in Sources */,
 				70730D861C999DBD007CBEBB /* ScheduleViewController.m in Sources */,
 				7062B6C61C9331BD0074C716 /* ScoreViewController.m in Sources */,
