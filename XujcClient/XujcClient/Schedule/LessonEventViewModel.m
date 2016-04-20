@@ -7,7 +7,24 @@
 //
 
 #import "LessonEventViewModel.h"
+#import "XujcLessonEventModel.h"
+
+@interface LessonEventViewModel()
+
+@property (nonatomic, strong) XujcLessonEventModel *model;
+
+@end
 
 @implementation LessonEventViewModel
+
+- (instancetype)initWithModel:(XujcLessonEventModel *)model
+{
+    if (self = [super init]) {
+        _model = model;
+        RACChannelTo(self, name) = RACChannelTo(model, name);
+        RACChannelTo(self, location) = RACChannelTo(model, location);
+    }
+    return self;
+}
 
 @end

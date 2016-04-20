@@ -39,6 +39,5 @@ static NSString * const kSinaSecret = @"9b66b1dc435bf08b43b99325415af1f8";
  */
 static NSString * const kShareTitle = @"嘉庚教务App";
 static NSString * const kShareText = @"嘉庚生活，尽在掌握";
-static NSString * const kShareURL = @"http://www.tianyiyan.com";
 
 #endif /* AppConfig_h */

@@ -23,16 +23,20 @@
 {
     RACSignal *fetchExamsSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"ksap.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSArray *examDatas = responseObject;
-            NSMutableArray *examModels = [[NSMutableArray alloc] initWithCapacity:examDatas.count];
-            [examDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                XujcExamModel *exam = [[XujcExamModel alloc] initWithJSONResopnse:obj];
-                TyLogDebug(@"Exam: %@", exam);
-                [examModels addObject:exam];
-            }];
-            self.exams = [examModels copy];
-            
-//            [[CacheUtils instance] cacheScore:[scoreModels copy] inSemester:semesterId];
+            if ([responseObject isKindOfClass:[NSArray class]]) {
+                NSArray *examDatas = responseObject;
+                NSMutableArray *examModels = [[NSMutableArray alloc] initWithCapacity:examDatas.count];
+                [examDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    XujcExamModel *exam = [[XujcExamModel alloc] initWithJSONResopnse:obj];
+                    TyLogDebug(@"Exam: %@", exam);
+                    [examModels addObject:exam];
+                }];
+                self.exams = [examModels copy];
+                
+//                [[CacheUtils instance] cacheScore:[scoreModels copy] inSemester:semesterId];
+            } else {
+                self.exams = nil;
+            }
             
             [subscriber sendNext:nil];
             [subscriber sendCompleted];

@@ -72,10 +72,14 @@
 - (LessonEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath
 {
     XujcLessonEventModel *lessonEvent = [self.lessonEvents[indexPath.section] objectAtIndex:indexPath.row];
-    LessonEventViewModel *viewModel = [[LessonEventViewModel alloc] init];
-    viewModel.name = lessonEvent.name;
-    viewModel.location = lessonEvent.location;
+    LessonEventViewModel *viewModel = [[LessonEventViewModel alloc] initWithModel:lessonEvent];
     return viewModel;
+}
+
+- (LessonEventPopViewModel *)lessonEventPopViewModelAtIndexPath:(NSIndexPath *)indexPath
+{
+    XujcLessonEventModel *lessonEvent = [self.lessonEvents[indexPath.section] objectAtIndex:indexPath.row];
+    return [[LessonEventPopViewModel alloc] initWithModel:lessonEvent];
 }
 
 - (NSInteger)numberOfLessonEventInSection:(NSInteger)section

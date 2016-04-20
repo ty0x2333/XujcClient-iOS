@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+@class XujcLessonEventModel;
 
 @interface LessonEventViewModel : NSObject
+
+- (instancetype)initWithModel:(XujcLessonEventModel *)model;
 
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *location;

@@ -28,4 +28,9 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
     return [NSString stringWithFormat:@"%@%@", kTYServiceHost, kTYServiceAPIVersion];
 }
 
++ (NSString *)ty_shareURL
+{
+    return [NSString stringWithFormat:@"%@/share", [self ty_serviceBaseURL]];
+}
+
 @end

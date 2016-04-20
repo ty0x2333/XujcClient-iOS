@@ -18,6 +18,7 @@
 #import "UMSocialQQHandler.h"
 #import "UMSocialSinaSSOHandler.h"
 #import "UMessage.h"
+#import "TYService.h"
 
 #define UMSYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define _IPHONE80_ 80000
@@ -40,9 +41,11 @@ static const CGFloat kWindowCornerRadius = 4.f;
     TyLogDebug (@"Current Language: %@" , currentLanguage);
 #endif
     
+    NSString *shareURL = [AFHTTPSessionManager ty_shareURL];
+    
     [UMSocialData setAppKey:kUMengAppKey];
-    [UMSocialWechatHandler setWXAppId:kWechatAppID appSecret:kWechatSecret url:kShareURL];
-    [UMSocialQQHandler setQQWithAppId:kQQAppID appKey:kQQAppKey url:kShareURL];
+    [UMSocialWechatHandler setWXAppId:kWechatAppID appSecret:kWechatSecret url:shareURL];
+    [UMSocialQQHandler setQQWithAppId:kQQAppID appKey:kQQAppKey url:shareURL];
     [UMSocialSinaSSOHandler openNewSinaSSOWithRedirectURL:nil];
     
     [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
@@ -66,10 +69,10 @@ static const CGFloat kWindowCornerRadius = 4.f;
     defaultExtConfig.wechatTimelineData.title = [NSString stringWithFormat:@"%@\n%@", kShareTitle, kShareText];
     defaultExtConfig.wechatTimelineData.shareImage = shareImage;
     // Sina
-    defaultExtConfig.sinaData.shareText = [NSString stringWithFormat:@"%@\n%@\n%@", kShareTitle, kShareText, kShareURL];
+    defaultExtConfig.sinaData.shareText = [NSString stringWithFormat:@"%@\n%@\n%@", kShareTitle, kShareText, shareURL];
     defaultExtConfig.sinaData.shareImage = shareImage;
     // SMS
-    defaultExtConfig.smsData.shareText = [NSString stringWithFormat:@"%@\n%@\n%@", kShareTitle, kShareText, kShareURL];
+    defaultExtConfig.smsData.shareText = [NSString stringWithFormat:@"%@\n%@\n%@", kShareTitle, kShareText, shareURL];
     defaultExtConfig.smsData.shareImage = shareImage;
 #if DEBUG
     [UMSocialData openLog:YES];

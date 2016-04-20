@@ -7,6 +7,9 @@
  */
 
 #import "LessonEventCell.h"
+#import "ScheduleTheme.h"
+
+static CGFloat const kFontSize = 12.f;
 
 @interface LessonEventCell()
 
@@ -32,19 +35,20 @@
         self.layer.shadowOpacity = 0.0;
         
         self.borderView = [UIView new];
+        self.borderView.backgroundColor = [self borderColor];
         [self.contentView addSubview:self.borderView];
         
         self.title = [UILabel new];
+        self.title.font = [UIFont systemFontOfSize:kFontSize];
         self.title.numberOfLines = 0;
         self.title.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.title];
         
         self.location = [UILabel new];
+        self.location.font = [UIFont systemFontOfSize:kFontSize];
         self.location.numberOfLines = 0;
         self.location.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.location];
-        
-        [self updateColors];
         
         CGFloat borderWidth = 2.0;
         CGFloat contentMargin = 2.0;
@@ -69,30 +73,34 @@
             make.right.equalTo(self.right).offset(-contentPadding.right);
             make.bottom.lessThanOrEqualTo(self.bottom).offset(-contentPadding.bottom);
         }];
+        
+        RACSignal *selectedSignal = RACObserve(self, selected);
+        
+        [selectedSignal subscribeNext:^(NSNumber *value) {
+            BOOL isSelected = [value boolValue];
+            self.contentView.backgroundColor = [ScheduleTheme backgroundColorHighlighted:isSelected];
+            
+            UIColor *textColor = [ScheduleTheme textColorHighlighted:isSelected];
+            
+            self.title.textColor = textColor;
+            self.location.textColor = textColor;
+            
+            if (isSelected) {
+                [UIView animateWithDuration:0.1 animations:^{
+                    self.transform = CGAffineTransformMakeScale(1.025, 1.025);
+                    self.layer.shadowOpacity = 0.2;
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.1 animations:^{
+                        self.transform = CGAffineTransformIdentity;
+                    }];
+                }];
+            } else {
+                self.layer.shadowOpacity = 0;
+            }
+        }];
+
     }
     return self;
-}
-
-#pragma mark - UICollectionViewCell
-
-- (void)setSelected:(BOOL)selected
-{
-    if (selected && (self.selected != selected)) {
-        [UIView animateWithDuration:0.1 animations:^{
-            self.transform = CGAffineTransformMakeScale(1.025, 1.025);
-            self.layer.shadowOpacity = 0.2;
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.1 animations:^{
-                self.transform = CGAffineTransformIdentity;
-            }];
-        }];
-    } else if (selected) {
-        self.layer.shadowOpacity = 0.2;
-    } else {
-        self.layer.shadowOpacity = 0.0;
-    }
-    [super setSelected:selected]; // Must be here for animation to fire
-    [self updateColors];
 }
 
 #pragma mark - MSEventCell
@@ -103,64 +111,15 @@
         return;
     }
     _viewModel = viewModel;
-    @weakify(self);
-    RAC(self.title, attributedText) = [RACObserve(_viewModel, name) map:^id(NSString *value) {
-        @strongify(self);
-        return [[NSAttributedString alloc] initWithString:value attributes:[self titleAttributesHighlighted:self.selected]];
-    }];
-    RAC(self.location, attributedText) = [RACObserve(_viewModel, location) map:^id(NSString *value) {
-        @strongify(self);
-        return [[NSAttributedString alloc] initWithString:value attributes:[self titleAttributesHighlighted:self.selected]];
-    }];
-}
-
-- (void)updateColors
-{
-    self.contentView.backgroundColor = [self backgroundColorHighlighted:self.selected];
-    self.borderView.backgroundColor = [self borderColor];
-    self.title.textColor = [self textColorHighlighted:self.selected];
-    self.location.textColor = [self textColorHighlighted:self.selected];
-}
-
-- (NSDictionary *)titleAttributesHighlighted:(BOOL)highlighted
-{
-    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-    paragraphStyle.alignment = NSTextAlignmentLeft;
-    paragraphStyle.hyphenationFactor = 1.0;
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    return @{
-             NSFontAttributeName : [UIFont boldSystemFontOfSize:12.0],
-             NSForegroundColorAttributeName : [self textColorHighlighted:highlighted],
-             NSParagraphStyleAttributeName : paragraphStyle
-             };
-}
-
-- (NSDictionary *)subtitleAttributesHighlighted:(BOOL)highlighted
-{
-    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-    paragraphStyle.alignment = NSTextAlignmentLeft;
-    paragraphStyle.hyphenationFactor = 1.0;
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    return @{
-             NSFontAttributeName : [UIFont systemFontOfSize:12.0],
-             NSForegroundColorAttributeName : [self textColorHighlighted:highlighted],
-             NSParagraphStyleAttributeName : paragraphStyle
-             };
-}
-
-- (UIColor *)backgroundColorHighlighted:(BOOL)selected
-{
-    return selected ? [UIColor colorWithHexString:@"35b1f1"] : [[UIColor colorWithHexString:@"35b1f1"] colorWithAlphaComponent:0.2];
-}
-
-- (UIColor *)textColorHighlighted:(BOOL)selected
-{
-    return selected ? [UIColor whiteColor] : [UIColor colorWithHexString:@"21729c"];
+    
+    RAC(self.title, text) = [RACObserve(_viewModel, name) takeUntil:self.rac_prepareForReuseSignal];
+    
+    RAC(self.location, text) = [RACObserve(_viewModel, location) takeUntil:self.rac_prepareForReuseSignal];
 }
 
 - (UIColor *)borderColor
 {
-    return [[self backgroundColorHighlighted:NO] colorWithAlphaComponent:1.0];
+    return [[ScheduleTheme backgroundColorHighlighted:NO] colorWithAlphaComponent:1.0];
 }
 
 

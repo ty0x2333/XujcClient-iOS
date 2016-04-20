@@ -76,7 +76,7 @@
     TableViewCellViewModel *viewModel = [[TableViewCellViewModel alloc] init];
     viewModel.imageNamed = [[_imageNames objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     viewModel.localizedText = NSLocalizedString([[_texts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row], nil);
-    viewModel.accessoryType = indexPath.section != 2 ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
+    viewModel.accessoryType = indexPath.section != 3 ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
     return viewModel;
 }
 

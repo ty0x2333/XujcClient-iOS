@@ -9,6 +9,7 @@
 #import "SemesterBaseViewModel.h"
 #import "LessonEventViewModel.h"
 #import "XujcLessonEventModel.h"
+#import "LessonEventPopViewModel.h"
 
 @interface ScheduleViewModel : SemesterBaseViewModel
 
@@ -20,6 +21,8 @@
 @property (strong, nonatomic) RACSignal *fetchScheduleLessonSignal;
 
 - (LessonEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
+
+- (LessonEventPopViewModel *)lessonEventPopViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
 - (NSInteger)numberOfLessonEventInSection:(NSInteger)section;
 

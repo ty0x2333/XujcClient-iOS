@@ -25,6 +25,7 @@
 "Change Password" = "修改密码";
 "Exam Arrangement" = "考试安排";
 "Week" = "星期";
+"%zd-%zd Week" = "%zd-%zd 周";
 
 "EmailOrPhone" = "邮箱或手机号";
 "Password" = "密码";
@@ -83,3 +84,4 @@
  * Empty Data Message
  */
 "There is no score data for the current semester." = "当前学期没有成绩数据";
+"There is no exam data." = "当前没有考试数据";

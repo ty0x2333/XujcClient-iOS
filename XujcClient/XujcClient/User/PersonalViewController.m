@@ -111,7 +111,7 @@ static CGFloat const kPersonalHeaderViewHeight = 140.5f;
             SettingsViewController *viewController = [[SettingsViewController alloc] initWithViewModel:[self.viewModel settingsViewModel]];
             [self.navigationController pushViewController:viewController animated:YES];
         }
-    } else if (indexPath.section == 2) {
+    } else if (indexPath.section == 3) {
         [UMSocialSnsService presentSnsIconSheetView:self
                                              appKey:kUMengAppKey
                                           shareText:nil
