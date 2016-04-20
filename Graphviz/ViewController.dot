@@ -12,4 +12,5 @@ digraph ViewModel{
 	PersonalViewController->UserDetailViewController;
   PersonalViewController->SettingsViewController;
   PersonalViewController->SupportCenterViewController
+	PersonalViewController->ExamViewController;
 }
