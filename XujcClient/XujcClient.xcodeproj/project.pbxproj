@@ -47,6 +47,7 @@
 		19FAB3761CB4F52600179484 /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FAB35F1CB4F52600179484 /* libSocialWechat.a */; };
 		19FAB3771CB4F52600179484 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FAB3601CB4F52600179484 /* libWeChatSDK.a */; };
 		3FD55C1711385BB6C4C5F085 /* libPods-XujcClientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBE7B96CF2BA8072608936A /* libPods-XujcClientTests.a */; };
+		700CE1481CC6B8A800B7EBA1 /* LessonEventPopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 700CE1471CC6B8A800B7EBA1 /* LessonEventPopViewModel.m */; };
 		701583E21CBEB1DD003567F7 /* ValidatorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 701583E11CBEB1DD003567F7 /* ValidatorSpec.m */; };
 		701583E51CC4E595003567F7 /* ChangePasswordViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 701583E41CC4E595003567F7 /* ChangePasswordViewModel.m */; };
 		701583E81CC4E5AB003567F7 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701583E71CC4E5AB003567F7 /* ChangePasswordViewController.m */; };
@@ -263,6 +264,8 @@
 		19FAB3631CB4F52600179484 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		32B0BA9FE447E80E5594CF49 /* Pods-XujcClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientTests/Pods-XujcClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		50F373E5963C19446E3F233B /* Pods-XujcClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientTests/Pods-XujcClientTests.release.xcconfig"; sourceTree = "<group>"; };
+		700CE1461CC6B8A800B7EBA1 /* LessonEventPopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonEventPopViewModel.h; sourceTree = "<group>"; };
+		700CE1471CC6B8A800B7EBA1 /* LessonEventPopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonEventPopViewModel.m; sourceTree = "<group>"; };
 		701583D11CBEA25A003567F7 /* XujcClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XujcClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		701583D51CBEA25A003567F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		701583E11CBEB1DD003567F7 /* ValidatorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidatorSpec.m; sourceTree = "<group>"; };
@@ -994,6 +997,8 @@
 			children = (
 				70730D8B1C999DF2007CBEBB /* LessonEventViewModel.h */,
 				70730D8C1C999DF2007CBEBB /* LessonEventViewModel.m */,
+				700CE1461CC6B8A800B7EBA1 /* LessonEventPopViewModel.h */,
+				700CE1471CC6B8A800B7EBA1 /* LessonEventPopViewModel.m */,
 				70730D881C999DD5007CBEBB /* ScheduleViewModel.h */,
 				70730D891C999DD5007CBEBB /* ScheduleViewModel.m */,
 			);
@@ -1484,6 +1489,7 @@
 				70730D711C947A41007CBEBB /* SemesterSelectorViewModel.m in Sources */,
 				7062B6B21C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m in Sources */,
 				19FAB3251CB4F01100179484 /* UserDetailViewModel.m in Sources */,
+				700CE1481CC6B8A800B7EBA1 /* LessonEventPopViewModel.m in Sources */,
 				7062B6941C8B842C0074C716 /* UserModel.m in Sources */,
 				7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */,
 				70730D821C999D67007CBEBB /* SignupViewModel.m in Sources */,
