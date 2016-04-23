@@ -54,7 +54,7 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
                 NSString *apiKey = [responseObject objectForKey:TYServiceKeyAPIKey];
                 [self p_saveApiKey:apiKey];
                 NSString *xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
-                [self p_saveXujcKey:xujcKey];
+                DYNAMIC_DATA.xujcKey = xujcKey;
                 
                 [subscriber sendNext:responseObject];
                 [subscriber sendCompleted];
@@ -73,13 +73,6 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:[apiKey copy] forKey:kUserDefaultsKeyApiKey];
-    [userDefaults synchronize];
-}
-
-- (void)p_saveXujcKey:(NSString *)xujcKey
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:[NSString safeString:xujcKey] forKey:kUserDefaultsKeyXujcKey];
     [userDefaults synchronize];
 }
 

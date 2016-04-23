@@ -56,6 +56,18 @@
     [self flush];
 }
 
+#pragma mark - Setter
+
+- (void)setXujcKey:(NSString *)xujcKey
+{
+    if ([xujcKey isEqualToString:self.xujcKey]) {
+        return;
+    }
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:[NSString safeString:xujcKey] forKey:kUserDefaultsKeyXujcKey];
+    [userDefaults synchronize];
+}
+
 #pragma mark - Getter
 
 - (NSString *)apiKey

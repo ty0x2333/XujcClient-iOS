@@ -29,7 +29,7 @@
 
 @property (copy, readonly, nonatomic) NSString *apiKey;
 
-@property (copy, readonly, nonatomic) NSString *xujcKey;
+@property (copy, nonatomic) NSString *xujcKey;
 
 @property (assign, readonly, nonatomic) BOOL shakingReportStatus;
 
