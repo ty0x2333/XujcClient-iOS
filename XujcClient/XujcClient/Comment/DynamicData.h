@@ -19,8 +19,6 @@
 
 - (void)loadingSettings;
 
-- (void)flush;
-
 - (void)cleanAll;
 
 - (void)cleanApiKey;

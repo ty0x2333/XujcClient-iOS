@@ -39,16 +39,6 @@
     TyLogDebug(@"DynamicData Loaded:%@", [self description]);
 }
 
-- (void)flush
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:[_user data] forKey:kUserDefaultsKeyUser];
-    
-    TyLogDebug(@"DynamicData Flush:%@", [self description]);
-    
-    [userDefaults synchronize];
-}
-
 - (void)cleanAll
 {
     UserModel *user = [[UserModel alloc] init];
