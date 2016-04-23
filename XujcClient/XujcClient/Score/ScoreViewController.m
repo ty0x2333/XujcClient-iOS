@@ -7,7 +7,6 @@
 //
 
 #import "ScoreViewController.h"
-#import "XujcAPI.h"
 #import "DynamicData.h"
 #import "XujcScoreModel.h"
 #import "ScoreTableViewCell.h"

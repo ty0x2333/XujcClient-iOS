@@ -17,7 +17,6 @@
 #import "MSDayColumnHeaderBackground.h"
 #import "NSDate+Week.h"
 #import "CollectionViewScheduleLayout.h"
-#import "XujcAPI.h"
 #import "XujcSemesterModel.h"
 #import "XujcLessonModel.h"
 #import "DynamicData.h"
