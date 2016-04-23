@@ -10,6 +10,7 @@
 #import "DynamicData.h"
 #import "XujcSemesterModel.h"
 #import "XujcUserModel.h"
+#import "XujcExamModel.h"
 #import "CacheUtils.h"
 
 static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
@@ -105,6 +106,37 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
         }];
     }];
     signal.name = [NSString stringWithFormat:@"requestScoresSignalWithSemesterId: %@", semesterId];
+    return [[signal replayLazily] ty_logAll];
+}
+
+- (RACSignal *)requestExamsSignal
+{
+    @weakify(self);
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self GET:@"ksap.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            if ([responseObject isKindOfClass:[NSArray class]]) {
+                NSArray *examDatas = responseObject;
+                NSMutableArray *examModels = [[NSMutableArray alloc] initWithCapacity:examDatas.count];
+                [examDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    XujcExamModel *exam = [[XujcExamModel alloc] initWithJSONResopnse:obj];
+                    [examModels addObject:exam];
+                }];
+                [subscriber sendNext:examModels];
+            } else {
+                [subscriber sendNext:nil];
+            }
+            
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    signal.name = @"requestExamsSignal";
     return [[signal replayLazily] ty_logAll];
 }
 
