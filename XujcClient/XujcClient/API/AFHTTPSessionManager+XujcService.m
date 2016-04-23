@@ -14,6 +14,8 @@
 #import "XujcLessonModel.h"
 #import "CacheUtils.h"
 
+NSString * const kXujcServiceRequestDomain = @"XujcServiceRequestDomain";
+
 static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
 
 @implementation AFHTTPSessionManager (XujcService)
@@ -49,10 +51,11 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendNext:[semesterArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]]];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if ([[self class] p_isAuthenticationError:task]) {
-                [DYNAMIC_DATA cleanXujcKey];
+            if ([[self class] p_cleanXujcKeyIfNeedWithTask:task]) {
+                [subscriber sendError:[[self class] p_authenticationError]];
+            } else {
+                [subscriber sendError:error];
             }
-            [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
@@ -74,10 +77,11 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendCompleted];
 
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if ([[self class] p_isAuthenticationError:task]) {
-                [DYNAMIC_DATA cleanXujcKey];
+            if ([[self class] p_cleanXujcKeyIfNeedWithTask:task]) {
+                [subscriber sendError:[[self class] p_authenticationError]];
+            } else {
+                [subscriber sendError:error];
             }
-            [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
@@ -106,10 +110,11 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendCompleted];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if ([[self class] p_isAuthenticationError:task]) {
-                [DYNAMIC_DATA cleanXujcKey];
+            if ([[self class] p_cleanXujcKeyIfNeedWithTask:task]) {
+                [subscriber sendError:[[self class] p_authenticationError]];
+            } else {
+                [subscriber sendError:error];
             }
-            [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
@@ -141,10 +146,11 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendCompleted];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if ([[self class] p_isAuthenticationError:task]) {
-                [DYNAMIC_DATA cleanXujcKey];
+            if ([[self class] p_cleanXujcKeyIfNeedWithTask:task]) {
+                [subscriber sendError:[[self class] p_authenticationError]];
+            } else {
+                [subscriber sendError:error];
             }
-            [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
@@ -175,10 +181,12 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if ([[self class] p_isAuthenticationError:task]) {
-                [DYNAMIC_DATA cleanXujcKey];
+            if ([[self class] p_cleanXujcKeyIfNeedWithTask:task]) {
+                [subscriber sendError:[[self class] p_authenticationError]];
+            } else {
+                [subscriber sendError:error];
             }
-            [subscriber sendError:error];
+            
         }];
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
@@ -189,6 +197,29 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
 }
 
 #pragma mark - Helper
+
++ (BOOL)p_cleanXujcKeyIfNeedWithTask:(NSURLSessionDataTask *)task
+{
+    if (![[self class] p_isAuthenticationError:task]) {
+        return NO;
+    }
+    [DYNAMIC_DATA cleanXujcKey];
+    return YES;
+}
+
++ (NSError *)p_authenticationError
+{
+    return [NSError errorWithDomain:kXujcServiceRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Xujc Key authentication failed", nil)}];
+}
+
++ (BOOL)p_processAuthenticationError:(NSError *)error andTask:(NSURLSessionDataTask *)task
+{
+    if (![[self class] p_isAuthenticationError:task]) {
+        return NO;
+    }
+    [DYNAMIC_DATA cleanXujcKey];
+    return YES;
+}
 
 + (BOOL)p_isAuthenticationError:(NSURLSessionDataTask *)task
 {

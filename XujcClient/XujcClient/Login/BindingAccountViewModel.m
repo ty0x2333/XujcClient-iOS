@@ -15,8 +15,6 @@
 
 NSString * const kBindingRequestDomain = @"BindingRequestDomain";
 
-NSString * const kXujcKeyAuthenticationFaildMessage = @"Xujc Key authentication failed";
-
 NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
 
 @interface BindingAccountViewModel()
