@@ -19,7 +19,7 @@
 
 - (void)loadingSettings;
 
-- (void)cleanAll;
+- (void)cleanAllIdentityInformation;
 
 - (void)cleanApiKey;
 

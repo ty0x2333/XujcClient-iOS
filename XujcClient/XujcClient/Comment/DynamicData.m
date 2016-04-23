@@ -39,7 +39,7 @@
     TyLogDebug(@"DynamicData Loaded:%@", [self description]);
 }
 
-- (void)cleanAll
+- (void)cleanAllIdentityInformation
 {
     UserModel *user = [[UserModel alloc] init];
     _user = user;

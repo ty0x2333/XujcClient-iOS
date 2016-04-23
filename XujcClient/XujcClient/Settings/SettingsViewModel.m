@@ -47,7 +47,7 @@
 - (RACSignal *)executeLoginoutSignal
 {
     RACSignal *executeLoginoutSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [DYNAMIC_DATA cleanAll];
+        [DYNAMIC_DATA cleanAllIdentityInformation];
         [[CacheUtils instance] cleanCache];
         [subscriber sendNext:nil];
         [subscriber sendCompleted];
