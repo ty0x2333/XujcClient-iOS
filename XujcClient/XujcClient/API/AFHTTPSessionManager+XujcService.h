@@ -14,4 +14,6 @@
 
 - (RACSignal *)requestSemestersSignal;
 
+- (RACSignal *)requestUserInformationSignalWithXujcKey:(NSString *)xujcKey;
+
 @end

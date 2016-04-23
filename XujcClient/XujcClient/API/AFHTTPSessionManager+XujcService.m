@@ -9,6 +9,7 @@
 #import "AFHTTPSessionManager+XujcService.h"
 #import "DynamicData.h"
 #import "XujcSemesterModel.h"
+#import "XujcUserModel.h"
 #import "CacheUtils.h"
 
 static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
@@ -53,6 +54,28 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
         }];
     }];
     signal.name = @"requestSemestersSignal";
+    return [[signal replayLazily] ty_logAll];
+}
+
+- (RACSignal *)requestUserInformationSignalWithXujcKey:(NSString *)xujcKey
+{
+    @weakify(self);
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self GET:@"me.php" parameters:@{XujcServiceKeyApiKey: xujcKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            XujcUserModel *user = [[XujcUserModel alloc] initWithJSONResopnse:responseObject];
+            [subscriber sendNext:user];
+            [subscriber sendCompleted];
+
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    signal.name = [NSString stringWithFormat:@"requestUserInformationSignalWithXujcKey: %@", xujcKey];
     return [[signal replayLazily] ty_logAll];
 }
 

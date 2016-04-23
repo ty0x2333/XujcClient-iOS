@@ -52,15 +52,14 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
 
 - (RACSignal *)executeBindingSignal
 {
-    @weakify(self);
-    RACSignal *executeBindingSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        @strongify(self);
+    RACSignal *userInfoSignal = [self.xujcSessionManager requestUserInformationSignalWithXujcKey:self.xujcApiKey];
+    
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         __block NSURLSessionDataTask *subTask = nil;
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"me.php" parameters:@{XujcServiceKeyApiKey: self.xujcApiKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            TyLogDebug(@"Success Response: %@", responseObject);
-            XujcUserModel *user = [[XujcUserModel alloc] initWithJSONResopnse:responseObject];
-            TyLogDebug(@"User Infomation: %@", [user description]);
-            
+        
+        [userInfoSignal subscribeNext:^(id x) {} error:^(NSError *error) {
+            [subscriber sendError:error];
+        } completed:^{
             subTask = [self.sessionManager PUT:@"xujc_account" parameters:@{TYServiceKeyAuthorization: DYNAMIC_DATA.apiKey, TYServiceKeyXujcKey: self.xujcApiKey} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
                 if (isError) {
@@ -83,23 +82,13 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
                     [subscriber sendError:error];
                 }
             }];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSInteger statusCode = ((NSHTTPURLResponse *)task.response).statusCode;
-            if (statusCode == 401) {
-                [subscriber sendError:[NSError errorWithDomain:kBindingRequestDomain
-                                                          code:0
-                                                      userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(kXujcKeyAuthenticationFaildMessage, nil)}
-                                       ]];
-            } else {
-                [subscriber sendError:error];
-            }
         }];
+        
         return [RACDisposable disposableWithBlock:^{
             [subTask cancel];
-            [task cancel];
         }];
     }];
-    return [[executeBindingSignal setNameWithFormat:@"executeBindingSignal"] logAll];
+    return signal;
 }
 
 - (NSString *)xujcApiKey
