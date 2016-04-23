@@ -12,4 +12,6 @@
 
 + (instancetype)xujc_manager;
 
+- (RACSignal *)requestSemestersSignal;
+
 @end

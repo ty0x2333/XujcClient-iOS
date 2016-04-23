@@ -85,7 +85,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
             MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hub.detailsLabelText = error.localizedDescription;
             [hub hide:YES afterDelay:kErrorHUDShowTime];
-            TyLogDebug(@"fetchScheduleLesson error");
         }];
     }];
 }

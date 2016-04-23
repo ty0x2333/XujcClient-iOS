@@ -7,6 +7,9 @@
 //
 
 #import "AFHTTPSessionManager+XujcService.h"
+#import "DynamicData.h"
+#import "XujcSemesterModel.h"
+#import "CacheUtils.h"
 
 static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
 
@@ -18,6 +21,39 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
     NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
     manager.requestSerializer.stringEncoding = encoding;
     return manager;
+}
+
+- (RACSignal *)requestSemestersSignal
+{
+    @weakify(self);
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self GET:@"kb.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSArray *semesterIds = [responseObject allKeys];
+            NSMutableArray *semesterArray = [NSMutableArray arrayWithCapacity:semesterIds.count];
+            for (id key in semesterIds) {
+                XujcSemesterModel *semester = [[XujcSemesterModel alloc] init];
+                semester.semesterId = key;
+                semester.displayName = responseObject[key];
+                [semesterArray addObject:semester];
+            }
+            
+            [[CacheUtils instance] cacheSemesters:semesterArray];
+            
+            // sort DESC
+            NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"semesterId" ascending:NO];
+            
+            [subscriber sendNext:sortDescriptor];
+            [subscriber sendCompleted];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    signal.name = @"requestSemestersSignal";
+    return [[signal replayLazily] ty_logAll];
 }
 
 @end
