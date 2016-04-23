@@ -20,20 +20,18 @@
 - (void)loadingSettings;
 
 - (void)flush;
-/**
- *  @brief  清除所有数据
- */
-- (void)clear;
+
+- (void)cleanAll;
+
+- (void)cleanApiKey;
+
+- (void)cleanXujcKey;
 
 @property(nonatomic, strong) UserModel *user;
 
 @property (copy, nonatomic) NSString *apiKey;
 
 @property (copy, nonatomic) NSString *xujcKey;
-
-- (void)cleanApiKey;
-
-- (void)cleanXujcKey;
 
 @property (assign, readonly, nonatomic) BOOL shakingReportStatus;
 

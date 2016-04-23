@@ -49,11 +49,15 @@
     [userDefaults synchronize];
 }
 
-- (void)clear
+- (void)cleanAll
 {
     UserModel *user = [[UserModel alloc] init];
     _user = user;
-    [self flush];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:@"" forKey:kUserDefaultsKeyApiKey];
+    [userDefaults setValue:@"" forKey:kUserDefaultsKeyXujcKey];
+    [userDefaults setValue:[user data] forKey:kUserDefaultsKeyUser];
+    [userDefaults synchronize];
 }
 
 - (void)cleanApiKey
