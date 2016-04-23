@@ -79,4 +79,33 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
     return [[signal replayLazily] ty_logAll];
 }
 
+- (RACSignal *)requestScoresSignalWithSemesterId:(NSString *)semesterId
+{
+    @weakify(self);
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self GET:@"score.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServiceKeySemesterId: semesterId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            NSArray *scoreDatas = responseObject;
+            NSMutableArray *scoreModels = [[NSMutableArray alloc] initWithCapacity:scoreDatas.count];
+            [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                XujcScoreModel *xujcScore = [[XujcScoreModel alloc] initWithJSONResopnse:obj];
+                [scoreModels addObject:xujcScore];
+            }];
+            [[CacheUtils instance] cacheScore:scoreModels inSemester:semesterId];
+            
+            [subscriber sendNext:[scoreModels copy]];
+            [subscriber sendCompleted];
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    signal.name = [NSString stringWithFormat:@"requestScoresSignalWithSemesterId: %@", semesterId];
+    return [[signal replayLazily] ty_logAll];
+}
+
 @end
