@@ -43,7 +43,7 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             // sort DESC
             NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"semesterId" ascending:NO];
             
-            [subscriber sendNext:sortDescriptor];
+            [subscriber sendNext:[semesterArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]]];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [subscriber sendError:error];
