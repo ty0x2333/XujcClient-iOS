@@ -23,50 +23,23 @@
 
 - (RACSignal *)fetchScheduleLessonSignal
 {
+    NSString *semesterId = self.semesterSelectorViewModel.selectedSemesterId;
     @weakify(self);
-    RACSignal *fetchScheduleLessonSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        NSString *semesterId = self.semesterSelectorViewModel.selectedSemesterId;
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"kb.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServiceKeySemesterId: semesterId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSMutableArray *lessonEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
-    
-            for (id item in responseObject) {
-                XujcLessonModel *lesson = [[XujcLessonModel alloc] initWithJSONResopnse:item];
-                for (XujcLessonEventModel* event in lesson.lessonEvents) {
-                    [lessonEventArray addObject:event];
-                }
-            }
-            
-            [[CacheUtils instance] cacheLessonEvent:lessonEventArray inSemester:semesterId];
-            
-            NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:kDayCountOfWeek];
-    
-            for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
-                [events addObject:[self p_coureEventsFromDayNumberOfWeek:lessonEventArray dayNumberOfWeek:i + 1]];
-            }
-            self.lessonEvents = [events copy];
+        return [[self.xujcSessionManager requestScheduleLessonSignalWithSemesterId:semesterId] subscribeNext:^(NSArray *lessonEvents) {
+            self.lessonEvents = [self p_sortLessonEvents:lessonEvents];
             
             [subscriber sendNext:nil];
-            [subscriber sendCompleted];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
-            NSArray *lessonEventArray = [[CacheUtils instance] lessonEventFormCacheWithSemester:semesterId];
-            
-            NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:kDayCountOfWeek];
-            
-            for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
-                [events addObject:[self p_coureEventsFromDayNumberOfWeek:lessonEventArray dayNumberOfWeek:i + 1]];
-            }
-            self.lessonEvents = [events copy];
+        } error:^(NSError *error) {
+            NSArray *lessonEvents = [[CacheUtils instance] lessonEventFormCacheWithSemester:semesterId];
+            self.lessonEvents = [self p_sortLessonEvents:lessonEvents];
             
             [subscriber sendError:error];
-        }];
-        
-        return [RACDisposable disposableWithBlock:^{
-            [task cancel];
+        } completed:^{
+            [subscriber sendCompleted];
         }];
     }];
-    return [[fetchScheduleLessonSignal setNameWithFormat:@"ScheduleViewModel fetchScheduleLessonSignal"] logError];
 }
 
 - (LessonEventViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath
@@ -88,6 +61,15 @@
 }
 
 #pragma mark - Helper
+
+- (NSArray *)p_sortLessonEvents:(NSArray *)lessonEvents
+{
+    NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:kDayCountOfWeek];
+    for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
+        [events addObject:[self p_coureEventsFromDayNumberOfWeek:lessonEvents dayNumberOfWeek:i + 1]];
+    }
+    return [events copy];
+}
 
 - (NSArray *)p_coureEventsFromDayNumberOfWeek:(NSArray *)allLessonEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek
 {

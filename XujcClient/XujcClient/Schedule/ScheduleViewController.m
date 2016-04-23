@@ -77,7 +77,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         [self.viewModel.fetchScheduleLessonSignal subscribeNext:^(id x) {
             [self.collectionViewCalendarLayout invalidateLayoutCache];
             [self.collectionView reloadData];
-            TyLogDebug(@"fetchScheduleSuccess success");
         } error:^(NSError *error) {
             [self.collectionViewCalendarLayout invalidateLayoutCache];
             [self.collectionView reloadData];

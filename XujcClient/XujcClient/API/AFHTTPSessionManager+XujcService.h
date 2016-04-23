@@ -18,6 +18,8 @@
 
 - (RACSignal *)requestScoresSignalWithSemesterId:(NSString *)semesterId;
 
+- (RACSignal *)requestScheduleLessonSignalWithSemesterId:(NSString *)semesterId;
+
 - (RACSignal *)requestExamsSignal;
 
 @end

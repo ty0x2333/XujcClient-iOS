@@ -11,6 +11,7 @@
 #import "XujcSemesterModel.h"
 #import "XujcUserModel.h"
 #import "XujcExamModel.h"
+#import "XujcLessonModel.h"
 #import "CacheUtils.h"
 
 static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
@@ -106,6 +107,38 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
         }];
     }];
     signal.name = [NSString stringWithFormat:@"requestScoresSignalWithSemesterId: %@", semesterId];
+    return [[signal replayLazily] ty_logAll];
+}
+
+- (RACSignal *)requestScheduleLessonSignalWithSemesterId:(NSString *)semesterId
+{
+    @weakify(self);
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self GET:@"kb.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServiceKeySemesterId: semesterId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            NSMutableArray *lessonEventArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
+            
+            for (id item in responseObject) {
+                XujcLessonModel *lesson = [[XujcLessonModel alloc] initWithJSONResopnse:item];
+                for (XujcLessonEventModel* event in lesson.lessonEvents) {
+                    [lessonEventArray addObject:event];
+                }
+            }
+            
+            [[CacheUtils instance] cacheLessonEvent:lessonEventArray inSemester:semesterId];
+
+            [subscriber sendNext:lessonEventArray];
+            [subscriber sendCompleted];
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    signal.name = [NSString stringWithFormat:@"requestScheduleLessonSignalWithSemesterId: %@", semesterId];
     return [[signal replayLazily] ty_logAll];
 }
 
