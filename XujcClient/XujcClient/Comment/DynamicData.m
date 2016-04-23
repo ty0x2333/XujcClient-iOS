@@ -56,6 +56,11 @@
     [self flush];
 }
 
+- (void)cleanApiKey
+{
+    [self setApiKey:@""];
+}
+
 - (void)cleanXujcKey
 {
     [self setXujcKey:@""];

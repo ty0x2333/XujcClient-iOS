@@ -31,6 +31,8 @@
 
 @property (copy, nonatomic) NSString *xujcKey;
 
+- (void)cleanApiKey;
+
 - (void)cleanXujcKey;
 
 @property (assign, readonly, nonatomic) BOOL shakingReportStatus;
