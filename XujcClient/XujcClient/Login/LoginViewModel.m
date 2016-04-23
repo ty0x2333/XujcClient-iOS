@@ -52,7 +52,7 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
                 TyLogDebug(@"%@", user);
                 
                 NSString *apiKey = [responseObject objectForKey:TYServiceKeyAPIKey];
-                [self p_saveApiKey:apiKey];
+                DYNAMIC_DATA.apiKey = apiKey;
                 NSString *xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
                 DYNAMIC_DATA.xujcKey = xujcKey;
                 
@@ -67,13 +67,6 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
         }];
     }];
     return [[executeLoginSignal setNameWithFormat:@"executeLoginSignal"] logAll];
-}
-
-- (void)p_saveApiKey:(NSString *)apiKey
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:[apiKey copy] forKey:kUserDefaultsKeyApiKey];
-    [userDefaults synchronize];
 }
 
 - (NSString *)currentAccountPhone

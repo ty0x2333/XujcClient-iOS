@@ -27,7 +27,7 @@
 
 @property(nonatomic, strong) UserModel *user;
 
-@property (copy, readonly, nonatomic) NSString *apiKey;
+@property (copy, nonatomic) NSString *apiKey;
 
 @property (copy, nonatomic) NSString *xujcKey;
 

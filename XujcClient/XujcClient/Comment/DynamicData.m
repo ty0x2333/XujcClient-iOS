@@ -58,6 +58,16 @@
 
 #pragma mark - Setter
 
+- (void)setApiKey:(NSString *)apiKey
+{
+    if ([apiKey isEqualToString:self.apiKey]) {
+        return;
+    }
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:[NSString safeString:apiKey] forKey:kUserDefaultsKeyApiKey];
+    [userDefaults synchronize];
+}
+
 - (void)setXujcKey:(NSString *)xujcKey
 {
     if ([xujcKey isEqualToString:self.xujcKey]) {
