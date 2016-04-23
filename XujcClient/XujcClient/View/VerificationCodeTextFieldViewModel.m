@@ -12,7 +12,11 @@
 
 static NSString * const kVerificationCodeRequestDomain = @"VerificationCodeRequestDomain";
 
+#if DEBUG
 static NSInteger const kCountdownTime = 10;
+#else
+static NSInteger const kCountdownTime = 60;
+#endif
 
 @implementation VerificationCodeTextFieldViewModel
 
