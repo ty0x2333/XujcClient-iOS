@@ -85,6 +85,7 @@
 		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
 		7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9C11BE72F280046CF3B /* NSDate+Week.m */; };
+		70246E211CCB88C900960190 /* RACSignal+TYDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */; };
 		702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */; };
 		702F99D31C7D08F9003B35A7 /* tabbar-exam-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */; };
 		702F99D41C7D08F9003B35A7 /* tabbar-exam-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99C01C7D08F9003B35A7 /* tabbar-exam-selected@3x.png */; };
@@ -332,6 +333,8 @@
 		7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcLessonEventModel.m; sourceTree = "<group>"; };
 		7023F9C01BE72F280046CF3B /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		7023F9C11BE72F280046CF3B /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
+		70246E1F1CCB88C900960190 /* RACSignal+TYDebugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RACSignal+TYDebugging.h"; sourceTree = "<group>"; };
+		70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACSignal+TYDebugging.m"; sourceTree = "<group>"; };
 		702CF8CC1CA44EE5007820B5 /* AvatarImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarImageView.h; sourceTree = "<group>"; };
 		702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarImageView.m; sourceTree = "<group>"; };
 		702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-exam-selected@2x.png"; sourceTree = "<group>"; };
@@ -817,6 +820,8 @@
 				70A88CFD1C9F37380067DB77 /* NSUserDefaults+TYSupport.m */,
 				70B167CF1CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.h */,
 				70B167D01CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m */,
+				70246E1F1CCB88C900960190 /* RACSignal+TYDebugging.h */,
+				70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1545,6 +1550,7 @@
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
 				70730DC81C9D99A7007CBEBB /* LessonEventCell.m in Sources */,
 				70730DCE1C9DF2D0007CBEBB /* SettingsViewController.m in Sources */,
+				70246E211CCB88C900960190 /* RACSignal+TYDebugging.m in Sources */,
 				701584361CC53103003567F7 /* ExamViewModel.m in Sources */,
 				70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */,
 				7015842F1CC52FAB003567F7 /* InformationTableViewCell.m in Sources */,
