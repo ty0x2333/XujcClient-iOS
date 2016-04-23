@@ -118,7 +118,6 @@ static NSString * const kOSSParamCallbackBody = @"callbackBody";
                     [[SDWebImageManager sharedManager] saveImageToCache:image forURL:[NSURL URLWithString:avatar]];
                     // update user avatar
                     DYNAMIC_DATA.user.avatar = avatar;
-                    [DYNAMIC_DATA flush];
                     [subscriber sendCompleted];
                 } else {
                     NSString *message = [responseObject objectForKey:TYServiceKeyMessage];

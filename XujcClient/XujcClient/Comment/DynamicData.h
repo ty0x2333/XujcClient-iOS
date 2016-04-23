@@ -27,7 +27,7 @@
 
 - (void)cleanXujcKey;
 
-@property(nonatomic, strong) UserModel *user;
+@property (nonatomic, strong) UserModel *user;
 
 @property (copy, nonatomic) NSString *apiKey;
 

@@ -48,7 +48,6 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
                 [SSKeychain setPassword:self.password forService:TYServiceName account:self.account];
                 UserModel *user = [[UserModel alloc] initWithJSONResopnse:responseObject];
                 DYNAMIC_DATA.user = user;
-                [DYNAMIC_DATA flush];
                 TyLogDebug(@"%@", user);
                 
                 NSString *apiKey = [responseObject objectForKey:TYServiceKeyAPIKey];

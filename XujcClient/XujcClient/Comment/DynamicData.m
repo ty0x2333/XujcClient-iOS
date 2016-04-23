@@ -92,6 +92,17 @@
     [userDefaults synchronize];
 }
 
+- (void)setUser:(UserModel *)user
+{
+    if (_user == user) {
+        return;
+    }
+    _user = user;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[_user data] forKey:kUserDefaultsKeyUser];
+    [userDefaults synchronize];
+}
+
 #pragma mark - Getter
 
 - (NSString *)apiKey
