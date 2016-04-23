@@ -49,6 +49,9 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendNext:[semesterArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]]];
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if ([[self class] p_isAuthenticationError:task]) {
+                [[self class] p_cleanXujcKey];
+            }
             [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
@@ -71,6 +74,9 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendCompleted];
 
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if ([[self class] p_isAuthenticationError:task]) {
+                [[self class] p_cleanXujcKey];
+            }
             [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
@@ -100,6 +106,9 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendCompleted];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if ([[self class] p_isAuthenticationError:task]) {
+                [[self class] p_cleanXujcKey];
+            }
             [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
@@ -132,6 +141,9 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendCompleted];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if ([[self class] p_isAuthenticationError:task]) {
+                [[self class] p_cleanXujcKey];
+            }
             [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
@@ -163,6 +175,9 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if ([[self class] p_isAuthenticationError:task]) {
+                [[self class] p_cleanXujcKey];
+            }
             [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
@@ -171,6 +186,23 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
     }];
     signal.name = @"requestExamsSignal";
     return [[signal replayLazily] ty_logAll];
+}
+
+#pragma mark - Helper
+
++ (BOOL)p_isAuthenticationError:(NSURLSessionDataTask *)task
+{
+    if (![task.response isKindOfClass:[NSHTTPURLResponse class]]) {
+        return NO;
+    }
+    return ((NSHTTPURLResponse *)task.response).statusCode == 401;
+}
+
++ (void)p_cleanXujcKey
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:@"" forKey:kUserDefaultsKeyXujcKey];
+    [userDefaults synchronize];
 }
 
 @end
