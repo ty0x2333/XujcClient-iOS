@@ -56,6 +56,11 @@
     [self flush];
 }
 
+- (void)cleanXujcKey
+{
+    [self setXujcKey:@""];
+}
+
 #pragma mark - Setter
 
 - (void)setApiKey:(NSString *)apiKey

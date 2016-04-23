@@ -50,7 +50,7 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             if ([[self class] p_isAuthenticationError:task]) {
-                [[self class] p_cleanXujcKey];
+                [DYNAMIC_DATA cleanXujcKey];
             }
             [subscriber sendError:error];
         }];
@@ -75,7 +75,7 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
 
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             if ([[self class] p_isAuthenticationError:task]) {
-                [[self class] p_cleanXujcKey];
+                [DYNAMIC_DATA cleanXujcKey];
             }
             [subscriber sendError:error];
         }];
@@ -107,7 +107,7 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             if ([[self class] p_isAuthenticationError:task]) {
-                [[self class] p_cleanXujcKey];
+                [DYNAMIC_DATA cleanXujcKey];
             }
             [subscriber sendError:error];
         }];
@@ -142,7 +142,7 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             if ([[self class] p_isAuthenticationError:task]) {
-                [[self class] p_cleanXujcKey];
+                [DYNAMIC_DATA cleanXujcKey];
             }
             [subscriber sendError:error];
         }];
@@ -176,7 +176,7 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             if ([[self class] p_isAuthenticationError:task]) {
-                [[self class] p_cleanXujcKey];
+                [DYNAMIC_DATA cleanXujcKey];
             }
             [subscriber sendError:error];
         }];
@@ -196,13 +196,6 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
         return NO;
     }
     return ((NSHTTPURLResponse *)task.response).statusCode == 401;
-}
-
-+ (void)p_cleanXujcKey
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:@"" forKey:kUserDefaultsKeyXujcKey];
-    [userDefaults synchronize];
 }
 
 @end
