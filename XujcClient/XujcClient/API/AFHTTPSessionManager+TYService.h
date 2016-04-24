@@ -24,4 +24,6 @@
 
 - (RACSignal *)requestChangePasswordSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andVertificationCode:(NSString *)code;
 
+- (RACSignal *)requestGetVerificationCodeSignalWithPhone:(NSString *)phone;
+
 @end
