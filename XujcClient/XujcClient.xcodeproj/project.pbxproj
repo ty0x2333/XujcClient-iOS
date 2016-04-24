@@ -87,6 +87,7 @@
 		7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9C11BE72F280046CF3B /* NSDate+Week.m */; };
 		70246E211CCB88C900960190 /* RACSignal+TYDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */; };
 		70246E241CCCBE8400960190 /* NSError+TYService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E231CCCBE8400960190 /* NSError+TYService.m */; };
+		70246E271CCCBF4500960190 /* NSError+XujcService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E261CCCBF4500960190 /* NSError+XujcService.m */; };
 		702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */; };
 		702F99D31C7D08F9003B35A7 /* tabbar-exam-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */; };
 		702F99D41C7D08F9003B35A7 /* tabbar-exam-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99C01C7D08F9003B35A7 /* tabbar-exam-selected@3x.png */; };
@@ -337,6 +338,8 @@
 		70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACSignal+TYDebugging.m"; sourceTree = "<group>"; };
 		70246E221CCCBE8400960190 /* NSError+TYService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+TYService.h"; sourceTree = "<group>"; };
 		70246E231CCCBE8400960190 /* NSError+TYService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+TYService.m"; sourceTree = "<group>"; };
+		70246E251CCCBF4500960190 /* NSError+XujcService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+XujcService.h"; sourceTree = "<group>"; };
+		70246E261CCCBF4500960190 /* NSError+XujcService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+XujcService.m"; sourceTree = "<group>"; };
 		702CF8CC1CA44EE5007820B5 /* AvatarImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarImageView.h; sourceTree = "<group>"; };
 		702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarImageView.m; sourceTree = "<group>"; };
 		702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-exam-selected@2x.png"; sourceTree = "<group>"; };
@@ -873,6 +876,8 @@
 				7062B6B51C8F6E560074C716 /* XujcServiceKeys.h */,
 				7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.h */,
 				7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m */,
+				70246E251CCCBF4500960190 /* NSError+XujcService.h */,
+				70246E261CCCBF4500960190 /* NSError+XujcService.m */,
 			);
 			name = Xujc;
 			sourceTree = "<group>";
@@ -1551,6 +1556,7 @@
 				70730DCE1C9DF2D0007CBEBB /* SettingsViewController.m in Sources */,
 				70246E211CCB88C900960190 /* RACSignal+TYDebugging.m in Sources */,
 				701584361CC53103003567F7 /* ExamViewModel.m in Sources */,
+				70246E271CCCBF4500960190 /* NSError+XujcService.m in Sources */,
 				70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */,
 				7015842F1CC52FAB003567F7 /* InformationTableViewCell.m in Sources */,
 				701583ED1CC4E5ED003567F7 /* InputTableViewCell.m in Sources */,
