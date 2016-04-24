@@ -9,8 +9,7 @@
 #import "AFHTTPSessionManager+TYService.h"
 #import "TYServiceKeys.h"
 #import "DynamicData.h"
-
-NSString * const kTYServiceRequestDomain = @"TYServiceRequestDomain";
+#import "NSError+TYService.h"
 
 // Local
 //static NSString* const kTYServiceHost = @"http://192.168.1.101:8080/";
@@ -47,7 +46,7 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
             BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
             if (isError) {
                 NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
-                NSError *error = [NSError errorWithDomain:kTYServiceRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
+                NSError *error = [NSError errorWithDomain:TYServiceRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
                 [subscriber sendError:error];
             } else {
                 [subscriber sendNext:xujcKey];
@@ -55,7 +54,7 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             if ([[self class] p_cleanApiKeyIfNeedWithTask:task]) {
-                [subscriber sendError:[[self class] p_ty_authenticationError]];
+                [subscriber sendError:[NSError ty_authenticationError]];
             } else {
                 [subscriber sendError:error];
             }
@@ -86,11 +85,6 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
         return NO;
     }
     return ((NSHTTPURLResponse *)task.response).statusCode == 401;
-}
-
-+ (NSError *)p_ty_authenticationError
-{
-    return [NSError errorWithDomain:kTYServiceRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Authentication failed", nil)}];
 }
 
 @end

@@ -86,6 +86,7 @@
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
 		7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9C11BE72F280046CF3B /* NSDate+Week.m */; };
 		70246E211CCB88C900960190 /* RACSignal+TYDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */; };
+		70246E241CCCBE8400960190 /* NSError+TYService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E231CCCBE8400960190 /* NSError+TYService.m */; };
 		702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */; };
 		702F99D31C7D08F9003B35A7 /* tabbar-exam-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */; };
 		702F99D41C7D08F9003B35A7 /* tabbar-exam-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99C01C7D08F9003B35A7 /* tabbar-exam-selected@3x.png */; };
@@ -334,6 +335,8 @@
 		7023F9C11BE72F280046CF3B /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
 		70246E1F1CCB88C900960190 /* RACSignal+TYDebugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RACSignal+TYDebugging.h"; sourceTree = "<group>"; };
 		70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACSignal+TYDebugging.m"; sourceTree = "<group>"; };
+		70246E221CCCBE8400960190 /* NSError+TYService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+TYService.h"; sourceTree = "<group>"; };
+		70246E231CCCBE8400960190 /* NSError+TYService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+TYService.m"; sourceTree = "<group>"; };
 		702CF8CC1CA44EE5007820B5 /* AvatarImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarImageView.h; sourceTree = "<group>"; };
 		702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarImageView.m; sourceTree = "<group>"; };
 		702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-exam-selected@2x.png"; sourceTree = "<group>"; };
@@ -881,6 +884,8 @@
 				7062B68F1C8B1EC90074C716 /* TYServiceKeys.h */,
 				7062B6881C8A21BF0074C716 /* AFHTTPSessionManager+TYService.h */,
 				7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m */,
+				70246E221CCCBE8400960190 /* NSError+TYService.h */,
+				70246E231CCCBE8400960190 /* NSError+TYService.m */,
 			);
 			name = TYService;
 			sourceTree = "<group>";
@@ -1563,6 +1568,7 @@
 				19781B9C1CAB6EE700D078A6 /* VerificationCodeTextField.m in Sources */,
 				701584511CC6A8FF003567F7 /* MSCurrentTimeIndicator.m in Sources */,
 				702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */,
+				70246E241CCCBE8400960190 /* NSError+TYService.m in Sources */,
 				701584561CC6A8FF003567F7 /* ScheduleRowHeader.m in Sources */,
 				19FAB3211CB4F01100179484 /* PersonalHeaderViewModel.m in Sources */,
 				7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */,
