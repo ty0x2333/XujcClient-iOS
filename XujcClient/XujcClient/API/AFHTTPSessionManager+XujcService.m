@@ -108,8 +108,12 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
             [subscriber sendCompleted];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSInteger statusCode = ((NSHTTPURLResponse *)task.response).statusCode;
             if ([[self class] p_cleanXujcKeyIfNeedWithTask:task]) {
                 [subscriber sendError:[NSError xujc_authenticationError]];
+            } else if (statusCode == 400){
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
             } else {
                 [subscriber sendError:error];
             }
