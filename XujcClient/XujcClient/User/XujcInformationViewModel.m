@@ -26,7 +26,7 @@
         RAC(self, grade) = [RACObserve(model, grade) map:^id(id value) {
             return [NSString stringWithFormat:@"%@", value];
         }];
-        RACChannelTo(self, professional) = RACChannelTo(model, professional);
+        RACChannelTo(self, major) = RACChannelTo(model, major);
     }
     return self;
 }

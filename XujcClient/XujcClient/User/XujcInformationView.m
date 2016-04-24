@@ -19,12 +19,12 @@ static CGFloat const kTitleLabelMarginRight = 5.f;
 @property (strong, nonatomic) UILabel *studentIdTitleLabel;
 @property (strong, nonatomic) UILabel *nameTitleLabel;
 @property (strong, nonatomic) UILabel *gradeTitleLabel;
-@property (strong, nonatomic) UILabel *professionalTitleLabel;
+@property (strong, nonatomic) UILabel *majorTitleLabel;
 
 @property (strong, nonatomic) UILabel *studentIdLabel;
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (strong, nonatomic) UILabel *gradeLabel;
-@property (strong, nonatomic) UILabel *professionalLabel;
+@property (strong, nonatomic) UILabel *majorLabel;
 
 @end
 
@@ -51,11 +51,11 @@ static CGFloat const kTitleLabelMarginRight = 5.f;
         _gradeLabel = [self p_createValueLabel];
         [self addSubview:_gradeLabel];
         
-        _professionalTitleLabel = [self p_createTitleLabel];
-        _professionalTitleLabel.text = NSLocalizedString(@"Major", nil);
-        [self addSubview:_professionalTitleLabel];
-        _professionalLabel = [self p_createValueLabel];
-        [self addSubview:_professionalLabel];
+        _majorTitleLabel = [self p_createTitleLabel];
+        _majorTitleLabel.text = NSLocalizedString(@"Major", nil);
+        [self addSubview:_majorTitleLabel];
+        _majorLabel = [self p_createValueLabel];
+        [self addSubview:_majorLabel];
         
         [self initLayout];
     }
@@ -98,12 +98,12 @@ static CGFloat const kTitleLabelMarginRight = 5.f;
         make.left.right.equalTo(self.nameLabel);
     }];
     
-    [_professionalTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+    [_majorTitleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.gradeTitleLabel.mas_bottom);
         make.width.height.equalTo(self.gradeTitleLabel);
         make.left.equalTo(self.gradeTitleLabel);
     }];
-    [_professionalLabel makeConstraints:^(MASConstraintMaker *make) {
+    [_majorLabel makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.gradeLabel.mas_bottom);
         make.width.height.equalTo(self.gradeLabel);
         make.left.right.equalTo(self.gradeLabel);
@@ -120,7 +120,7 @@ static CGFloat const kTitleLabelMarginRight = 5.f;
     RACChannelTo(self.studentIdLabel, text) = RACChannelTo(_viewModel, studentId);
     RACChannelTo(self.nameLabel, text) = RACChannelTo(_viewModel, name);
     RACChannelTo(self.gradeLabel, text) = RACChannelTo(_viewModel, grade);
-    RACChannelTo(self.professionalLabel, text) = RACChannelTo(_viewModel, professional);
+    RACChannelTo(self.majorLabel, text) = RACChannelTo(_viewModel, major);
 }
 
 #pragma mark - Helper

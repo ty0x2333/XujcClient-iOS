@@ -13,6 +13,6 @@
 @property (nonatomic, strong) NSString *studentId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSInteger grade;
-@property (nonatomic, strong) NSString *professional;
+@property (nonatomic, strong) NSString *major;
 
 @end

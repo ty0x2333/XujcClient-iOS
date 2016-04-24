@@ -30,7 +30,7 @@
                 self.xujcUserModel.studentId = model.studentId;
                 self.xujcUserModel.name = model.name;
                 self.xujcUserModel.grade = model.grade;
-                self.xujcUserModel.professional = model.professional;
+                self.xujcUserModel.major = model.major;
                 [subscriber sendNext:model];
             } error:^(NSError *error) {
                 [subscriber sendError:error];

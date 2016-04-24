@@ -16,6 +16,6 @@
 @property (nonatomic, readonly, strong) NSString *studentId;
 @property (nonatomic, readonly, strong) NSString *name;
 @property (nonatomic, readonly, strong) NSString *grade;
-@property (nonatomic, readonly, strong) NSString *professional;
+@property (nonatomic, readonly, strong) NSString *major;
 
 @end
