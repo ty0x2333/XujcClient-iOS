@@ -210,7 +210,8 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
     if (![task.response isKindOfClass:[NSHTTPURLResponse class]]) {
         return NO;
     }
-    return ((NSHTTPURLResponse *)task.response).statusCode == 401;
+    NSInteger statusCode = ((NSHTTPURLResponse *)task.response).statusCode;
+    return statusCode == 401 || statusCode == 403;
 }
 
 @end
