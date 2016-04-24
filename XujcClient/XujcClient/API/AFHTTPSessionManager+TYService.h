@@ -20,6 +20,8 @@
 
 - (RACSignal *)requestLoginSignalWithPhone:(NSString *)phone andPassword:(NSString *)password;
 
+- (RACSignal *)requestSignupSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andName:(NSString *)name andVertificationCode:(NSString *)code;
+
 - (RACSignal *)requestChangePasswordSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andVertificationCode:(NSString *)code;
 
 @end

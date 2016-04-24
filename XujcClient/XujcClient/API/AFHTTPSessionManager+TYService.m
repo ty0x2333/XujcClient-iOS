@@ -133,6 +133,33 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
     return [[signal replayLazily] ty_logAll];
 }
 
+- (RACSignal *)requestSignupSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andName:(NSString *)name andVertificationCode:(NSString *)code
+{
+    @weakify(self);
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self POST:@"register" parameters:@{TYServiceKeyNickname: name, TYServiceKeyPhone: phone, TYServiceKeyPassword: password, TYServiceKeyVerificationCode: code} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+            
+            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
+            NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
+            if (isError) {
+                NSError *error = [NSError errorWithDomain:TYServiceRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
+                [subscriber sendError:error];
+            } else {
+                [subscriber sendNext:message];
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    signal.name = [NSString stringWithFormat:@"requestSignupSignalWithPhone: %@ andPassword: %@ andName: %@ andVertificationCode: %@", phone, password, name, code];
+    return [[signal replayLazily] ty_logAll];
+}
+
 #pragma mark - Helper
 
 + (BOOL)p_ty_cleanApiKeyIfNeedWithTask:(NSURLSessionDataTask *)task
