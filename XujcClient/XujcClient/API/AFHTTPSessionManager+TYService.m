@@ -10,6 +10,7 @@
 #import "TYServiceKeys.h"
 #import "DynamicData.h"
 #import "NSError+TYService.h"
+#import <SSKeychain.h>
 
 // Local
 //static NSString* const kTYServiceHost = @"http://192.168.1.101:8080/";
@@ -92,6 +93,43 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
         }];
     }];
     signal.name = [NSString stringWithFormat:@"requestChangePasswordSignalWithPhone: %@ andPassword: %@ andVertificationCode: %@", phone, password, code];
+    return [[signal replayLazily] ty_logAll];
+}
+
+- (RACSignal *)requestLoginSignalWithPhone:(NSString *)phone andPassword:(NSString *)password
+{
+    @weakify(self);
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self POST:@"login" parameters:@{TYServiceKeyPhone: phone, TYServiceKeyPassword: password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+            
+            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
+            
+            if (isError) {
+                NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
+                NSError *error = [NSError errorWithDomain:TYServiceRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
+                [subscriber sendError:error];
+            } else {
+                [SSKeychain setPassword:password forService:TYServiceName account:phone];
+                
+                UserModel *user = [[UserModel alloc] initWithJSONResopnse:responseObject];
+                DYNAMIC_DATA.user = user;
+                NSString *apiKey = [responseObject objectForKey:TYServiceKeyAPIKey];
+                DYNAMIC_DATA.apiKey = apiKey;
+                NSString *xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
+                DYNAMIC_DATA.xujcKey = xujcKey;
+                
+                [subscriber sendNext:responseObject];
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    signal.name = [NSString stringWithFormat:@"requestLoginSignalWithPhone: %@ andPassword: %@", phone, password];
     return [[signal replayLazily] ty_logAll];
 }
 

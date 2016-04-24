@@ -34,38 +34,7 @@ NSString * const kLoginRequestDomain = @"LoginRequestDomain";
 
 - (RACSignal *)executeLoginSignal
 {
-    @weakify(self);
-    RACSignal *executeLoginSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        @strongify(self);
-        NSURLSessionDataTask *task = [self.sessionManager POST:@"login" parameters:@{TYServiceKeyPhone: self.account, TYServiceKeyPassword: self.password} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
-            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
-            
-            if (isError) {
-                NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
-                NSError *error = [NSError errorWithDomain:kLoginRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
-                [subscriber sendError:error];
-            } else {
-                [SSKeychain setPassword:self.password forService:TYServiceName account:self.account];
-                UserModel *user = [[UserModel alloc] initWithJSONResopnse:responseObject];
-                DYNAMIC_DATA.user = user;
-                TyLogDebug(@"%@", user);
-                
-                NSString *apiKey = [responseObject objectForKey:TYServiceKeyAPIKey];
-                DYNAMIC_DATA.apiKey = apiKey;
-                NSString *xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
-                DYNAMIC_DATA.xujcKey = xujcKey;
-                
-                [subscriber sendNext:responseObject];
-                [subscriber sendCompleted];
-            }
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [subscriber sendError:error];
-        }];
-        return [RACDisposable disposableWithBlock:^{
-            [task cancel];
-        }];
-    }];
-    return [[executeLoginSignal setNameWithFormat:@"executeLoginSignal"] logAll];
+    return [self.sessionManager requestLoginSignalWithPhone:self.account andPassword:self.password];
 }
 
 - (NSString *)currentAccountPhone
