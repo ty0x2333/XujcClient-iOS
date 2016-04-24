@@ -89,6 +89,7 @@
 		70246E241CCCBE8400960190 /* NSError+TYService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E231CCCBE8400960190 /* NSError+TYService.m */; };
 		70246E271CCCBF4500960190 /* NSError+XujcService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E261CCCBF4500960190 /* NSError+XujcService.m */; };
 		70246E2A1CCD06FC00960190 /* XujcInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E291CCD06FC00960190 /* XujcInformationView.m */; };
+		70246E2D1CCD078B00960190 /* XujcInformationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E2C1CCD078B00960190 /* XujcInformationViewModel.m */; };
 		702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */; };
 		702F99D31C7D08F9003B35A7 /* tabbar-exam-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */; };
 		702F99D41C7D08F9003B35A7 /* tabbar-exam-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99C01C7D08F9003B35A7 /* tabbar-exam-selected@3x.png */; };
@@ -343,6 +344,8 @@
 		70246E261CCCBF4500960190 /* NSError+XujcService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+XujcService.m"; sourceTree = "<group>"; };
 		70246E281CCD06FC00960190 /* XujcInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcInformationView.h; sourceTree = "<group>"; };
 		70246E291CCD06FC00960190 /* XujcInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcInformationView.m; sourceTree = "<group>"; };
+		70246E2B1CCD078B00960190 /* XujcInformationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcInformationViewModel.h; sourceTree = "<group>"; };
+		70246E2C1CCD078B00960190 /* XujcInformationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcInformationViewModel.m; sourceTree = "<group>"; };
 		702CF8CC1CA44EE5007820B5 /* AvatarImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarImageView.h; sourceTree = "<group>"; };
 		702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarImageView.m; sourceTree = "<group>"; };
 		702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-exam-selected@2x.png"; sourceTree = "<group>"; };
@@ -583,6 +586,8 @@
 				19FAB31B1CB4F01100179484 /* PersonalViewModel.m */,
 				19FAB31E1CB4F01100179484 /* UserDetailViewModel.h */,
 				19FAB31F1CB4F01100179484 /* UserDetailViewModel.m */,
+				70246E2B1CCD078B00960190 /* XujcInformationViewModel.h */,
+				70246E2C1CCD078B00960190 /* XujcInformationViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -1497,6 +1502,7 @@
 				70730DB41C9A635F007CBEBB /* OssService.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */,
+				70246E2D1CCD078B00960190 /* XujcInformationViewModel.m in Sources */,
 				7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */,
 				70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */,
 				701583EE1CC4E5ED003567F7 /* VerificationCodeTableViewCell.m in Sources */,

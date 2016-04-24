@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XujcInformationViewModel;
 
 @interface XujcInformationView : UIView
+
+@property (nonatomic, strong) XujcInformationViewModel *viewModel;
 
 @end
