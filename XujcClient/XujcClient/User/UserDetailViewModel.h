@@ -6,13 +6,18 @@
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "RequestViewModel.h"
 @class UserModel;
+@class XujcInformationViewModel;
 
-@interface UserDetailViewModel : NSObject
+@interface UserDetailViewModel : RequestViewModel
 
 @property (copy, nonatomic) NSString *nickname;
 @property (copy, nonatomic) NSString *avatar;
 @property (copy, nonatomic) NSString *phone;
+
+@property (strong, nonatomic) RACSignal *fetchXujcInformationSignal;
+
+- (XujcInformationViewModel *)xujcInformationViewModel;
 
 @end
