@@ -13,10 +13,6 @@
 #import "TYService.h"
 #import "AppDelegate.h"
 
-NSString * const kBindingRequestDomain = @"BindingRequestDomain";
-
-NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
-
 @interface BindingAccountViewModel()
 
 @end
@@ -50,41 +46,27 @@ NSString * const kApiKeyAuthenticationFaildMessage = @"Authentication failed";
 
 - (RACSignal *)executeBindingSignal
 {
-    RACSignal *userInfoSignal = [self.xujcSessionManager requestUserInformationSignalWithXujcKey:self.xujcApiKey];
+    RACSignal *userInfoSignal = [self.xujcSessionManager requestUserInformationSignalWithXujcKey:[self xujcApiKey]];
     
+    @weakify(self);
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        __block NSURLSessionDataTask *subTask = nil;
-        
         [userInfoSignal subscribeNext:^(id x) {} error:^(NSError *error) {
             [subscriber sendError:error];
         } completed:^{
-            subTask = [self.sessionManager PUT:@"xujc_account" parameters:@{TYServiceKeyAuthorization: DYNAMIC_DATA.apiKey, TYServiceKeyXujcKey: self.xujcApiKey} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
-                if (isError) {
-                    NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
-                    NSError *error = [NSError errorWithDomain:kBindingRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
-                    [subscriber sendError:error];
-                } else {
-                    DYNAMIC_DATA.xujcKey = self.xujcApiKey;
-                    [subscriber sendNext:responseObject];
-                    [subscriber sendCompleted];
-                }
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                NSInteger statusCode = ((NSHTTPURLResponse *)task.response).statusCode;
-                if (statusCode == 401) {
-                    [subscriber sendError:[NSError errorWithDomain:kBindingRequestDomain
-                                                              code:0
-                                                          userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(kApiKeyAuthenticationFaildMessage, nil)}
-                                           ]];
-                } else {
-                    [subscriber sendError:error];
-                }
+            @strongify(self);
+            RACSignal *bindingSignal = [self.sessionManager requestBindingXujcAccountSignalWithXujcKey:[self xujcApiKey]];
+            
+            [bindingSignal subscribeNext:^(NSString *xujcKey) {
+                DYNAMIC_DATA.xujcKey = xujcKey;
+                [subscriber sendNext:nil];
+            } error:^(NSError *error) {
+                [subscriber sendError:error];
+            } completed:^{
+                [subscriber sendCompleted];
             }];
         }];
         
-        return [RACDisposable disposableWithBlock:^{
-            [subTask cancel];
-        }];
+        return [RACDisposable disposableWithBlock:^{}];
     }];
     return signal;
 }

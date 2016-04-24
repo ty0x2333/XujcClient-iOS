@@ -16,4 +16,6 @@
 
 + (NSString *)ty_shareURL;
 
+- (RACSignal *)requestBindingXujcAccountSignalWithXujcKey:(NSString *)xujcKey;
+
 @end
