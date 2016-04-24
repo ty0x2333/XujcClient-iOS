@@ -21,7 +21,7 @@ static NSString* const kDataProfessional = @"Professional";
         _studentId = [self checkForNull:json[XujcServiceKeyStudentId]];
         _name = [self checkForNull:json[XujcServiceKeyName]];
         _professional = [self checkForNull:json[XujcServiceKeyProfessional]];
-        _grade = [self checkForNull:json[XujcServiceKeyGrade]];
+        _grade = [[self checkForNull:json[XujcServiceKeyGrade]] integerValue];
     }
     return self;
 }
@@ -32,7 +32,7 @@ static NSString* const kDataProfessional = @"Professional";
         _studentId = [decoder decodeObjectForKey:kDataStudentId];
         _name = [decoder decodeObjectForKey:kDataName];
         _professional = [decoder decodeObjectForKey:kDataGrade];
-        _grade = [decoder decodeObjectForKey:kDataProfessional];
+        _grade = [[decoder decodeObjectForKey:kDataProfessional] integerValue];
     }
     return  self;
 }
@@ -41,7 +41,7 @@ static NSString* const kDataProfessional = @"Professional";
 {
     [encoder encodeObject:_studentId forKey:kDataStudentId];
     [encoder encodeObject:_name forKey:kDataName];
-    [encoder encodeObject:_grade forKey:kDataProfessional];
+    [encoder encodeObject:@(_grade) forKey:kDataProfessional];
     [encoder encodeObject:_professional forKey:kDataGrade];
 }
 
@@ -58,7 +58,7 @@ static NSString* const kDataProfessional = @"Professional";
     return @{
              kDataStudentId: _studentId ?: null,
              kDataName: _name ?: null,
-             kDataGrade: _grade ?: null,
+             kDataGrade: @(_grade),
              kDataProfessional: _professional ?: null,
              };
 }
