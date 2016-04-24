@@ -53,7 +53,7 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
                 [subscriber sendCompleted];
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if ([[self class] p_cleanApiKeyIfNeedWithTask:task]) {
+            if ([[self class] p_ty_cleanApiKeyIfNeedWithTask:task]) {
                 [subscriber sendError:[NSError ty_authenticationError]];
             } else {
                 [subscriber sendError:error];
@@ -70,16 +70,16 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
 
 #pragma mark - Helper
 
-+ (BOOL)p_cleanApiKeyIfNeedWithTask:(NSURLSessionDataTask *)task
++ (BOOL)p_ty_cleanApiKeyIfNeedWithTask:(NSURLSessionDataTask *)task
 {
-    if (![[self class] p_isAuthenticationError:task]) {
+    if (![[self class] p_ty_isAuthenticationError:task]) {
         return NO;
     }
     [DYNAMIC_DATA cleanApiKey];
     return YES;
 }
 
-+ (BOOL)p_isAuthenticationError:(NSURLSessionDataTask *)task
++ (BOOL)p_ty_isAuthenticationError:(NSURLSessionDataTask *)task
 {
     if (![task.response isKindOfClass:[NSHTTPURLResponse class]]) {
         return NO;

@@ -198,23 +198,14 @@ static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
 
 + (BOOL)p_cleanXujcKeyIfNeedWithTask:(NSURLSessionDataTask *)task
 {
-    if (![[self class] p_isAuthenticationError:task]) {
+    if (![[self class] p_xujc_isAuthenticationError:task]) {
         return NO;
     }
     [DYNAMIC_DATA cleanXujcKey];
     return YES;
 }
 
-+ (BOOL)p_processAuthenticationError:(NSError *)error andTask:(NSURLSessionDataTask *)task
-{
-    if (![[self class] p_isAuthenticationError:task]) {
-        return NO;
-    }
-    [DYNAMIC_DATA cleanXujcKey];
-    return YES;
-}
-
-+ (BOOL)p_isAuthenticationError:(NSURLSessionDataTask *)task
++ (BOOL)p_xujc_isAuthenticationError:(NSURLSessionDataTask *)task
 {
     if (![task.response isKindOfClass:[NSHTTPURLResponse class]]) {
         return NO;
