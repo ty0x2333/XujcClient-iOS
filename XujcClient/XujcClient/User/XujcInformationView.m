@@ -8,8 +8,18 @@
 
 #import "XujcInformationView.h"
 #import "XujcInformationViewModel.h"
+#import "UIView+BorderLine.h"
+
+static CGFloat const kLabelHeight = 35.f;
+
+static CGFloat const kTitleLabelMarginRight = 5.f;
 
 @interface XujcInformationView()
+
+@property (strong, nonatomic) UILabel *studentIdTitleLabel;
+@property (strong, nonatomic) UILabel *nameTitleLabel;
+@property (strong, nonatomic) UILabel *gradeTitleLabel;
+@property (strong, nonatomic) UILabel *professionalTitleLabel;
 
 @property (strong, nonatomic) UILabel *studentIdLabel;
 @property (strong, nonatomic) UILabel *nameLabel;
@@ -23,34 +33,82 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        _studentIdLabel = [[UILabel alloc] init];
+        _studentIdTitleLabel = [self p_createTitleLabel];
+        _studentIdTitleLabel.text = NSLocalizedString(@"Student ID", nil);
+        [self addSubview:_studentIdTitleLabel];
+        _studentIdLabel = [self p_createValueLabel];
         [self addSubview:_studentIdLabel];
-        _nameLabel = [[UILabel alloc] init];
+        
+        _nameTitleLabel = [self p_createTitleLabel];
+        _nameTitleLabel.text = NSLocalizedString(@"Name", nil);
+        [self addSubview:_nameTitleLabel];
+        _nameLabel = [self p_createValueLabel];
         [self addSubview:_nameLabel];
-        _gradeLabel = [[UILabel alloc] init];
+        
+        _gradeTitleLabel = [self p_createTitleLabel];
+        _gradeTitleLabel.text = NSLocalizedString(@"Grade", nil);
+        [self addSubview:_gradeTitleLabel];
+        _gradeLabel = [self p_createValueLabel];
         [self addSubview:_gradeLabel];
-        _professionalLabel = [[UILabel alloc] init];
+        
+        _professionalTitleLabel = [self p_createTitleLabel];
+        _professionalTitleLabel.text = NSLocalizedString(@"Major", nil);
+        [self addSubview:_professionalTitleLabel];
+        _professionalLabel = [self p_createValueLabel];
         [self addSubview:_professionalLabel];
         
-        [_studentIdLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.top.right.equalTo(self);
-            make.left.equalTo(self);
-        }];
-        [_nameLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.studentIdLabel.mas_bottom);
-            make.left.right.equalTo(self.studentIdLabel);
-        }];
-        [_gradeLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.nameLabel.mas_bottom);
-            make.left.right.equalTo(self.nameLabel);
-        }];
-        [_professionalLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.gradeLabel.mas_bottom);
-            make.left.right.equalTo(self.gradeLabel);
-            make.bottom.equalTo(self);
-        }];
+        [self initLayout];
     }
     return self;
+}
+
+- (void)initLayout
+{
+    [_studentIdTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self);
+        make.height.equalTo(@(kLabelHeight));
+        make.left.equalTo(self);
+        make.width.priorityLow();
+    }];
+    [_studentIdLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.equalTo(self);
+        make.height.equalTo(@(kLabelHeight));
+        make.left.equalTo(self.studentIdTitleLabel.mas_right).with.offset(kTitleLabelMarginRight);
+    }];
+    
+    [_nameTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.studentIdTitleLabel.mas_bottom);
+        make.width.height.equalTo(self.studentIdTitleLabel);
+        make.left.equalTo(self.studentIdTitleLabel);
+    }];
+    [_nameLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.studentIdLabel.mas_bottom);
+        make.height.equalTo(self.studentIdLabel);
+        make.left.right.equalTo(self.studentIdLabel);
+    }];
+    
+    [_gradeTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.nameTitleLabel.mas_bottom);
+        make.width.height.equalTo(self.nameTitleLabel);
+        make.left.equalTo(self.nameTitleLabel);
+    }];
+    [_gradeLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.nameLabel.mas_bottom);
+        make.height.equalTo(self.nameLabel);
+        make.left.right.equalTo(self.nameLabel);
+    }];
+    
+    [_professionalTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.gradeTitleLabel.mas_bottom);
+        make.width.height.equalTo(self.gradeTitleLabel);
+        make.left.equalTo(self.gradeTitleLabel);
+    }];
+    [_professionalLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.gradeLabel.mas_bottom);
+        make.width.height.equalTo(self.gradeLabel);
+        make.left.right.equalTo(self.gradeLabel);
+        make.bottom.equalTo(self);
+    }];
 }
 
 - (void)setViewModel:(XujcInformationViewModel *)viewModel
@@ -63,6 +121,24 @@
     RACChannelTo(self.nameLabel, text) = RACChannelTo(_viewModel, name);
     RACChannelTo(self.gradeLabel, text) = RACChannelTo(_viewModel, grade);
     RACChannelTo(self.professionalLabel, text) = RACChannelTo(_viewModel, professional);
+}
+
+#pragma mark - Helper
+
+- (UILabel *)p_createTitleLabel
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.textColor = [UIColor ty_textGray];
+    return label;
+}
+
+- (UILabel *)p_createValueLabel
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.ty_borderEdge = UIRectEdgeBottom;
+    label.ty_borderWidth = .5f;
+    label.ty_borderColor = [UIColor ty_border].CGColor;
+    return label;
 }
 
 @end

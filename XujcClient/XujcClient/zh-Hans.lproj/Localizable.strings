@@ -58,6 +58,10 @@
 
 "Xujc Account Information" = "嘉庚帐号信息";
 
+"Name" = "姓名";
+"Grade" = "年级";
+"Major" = "专业";
+
 /**
  * TYService Message
  */
