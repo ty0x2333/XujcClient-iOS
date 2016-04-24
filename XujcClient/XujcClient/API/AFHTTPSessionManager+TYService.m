@@ -68,6 +68,33 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
     return [[signal replayLazily] ty_logAll];
 }
 
+- (RACSignal *)requestChangePasswordSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andVertificationCode:(NSString *)code
+{
+    @weakify(self);
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self PUT:@"password" parameters:@{TYServiceKeyPhone: phone, TYServiceKeyPassword: password, TYServiceKeyVerificationCode: code} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
+            NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
+            if (isError) {
+                NSError *error = [NSError errorWithDomain:TYServiceRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
+                [subscriber sendError:error];
+            } else {
+                [subscriber sendNext:message];
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    signal.name = [NSString stringWithFormat:@"requestChangePasswordSignalWithPhone: %@ andPassword: %@ andVertificationCode: %@", phone, password, code];
+    return [[signal replayLazily] ty_logAll];
+}
+
 #pragma mark - Helper
 
 + (BOOL)p_ty_cleanApiKeyIfNeedWithTask:(NSURLSessionDataTask *)task

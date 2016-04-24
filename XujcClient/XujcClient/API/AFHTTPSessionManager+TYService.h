@@ -18,4 +18,6 @@
 
 - (RACSignal *)requestBindingXujcAccountSignalWithXujcKey:(NSString *)xujcKey;
 
+- (RACSignal *)requestChangePasswordSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andVertificationCode:(NSString *)code;
+
 @end

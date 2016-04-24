@@ -41,7 +41,7 @@ static NSString * const kChangePasswordRequestDomain = @"ChangePasswordRequestDo
                                                     return @([phoneValid boolValue] && [passwordValid boolValue] && [verificationCodeValid boolValue]);
                                                 }];
         _executeChangePassword = [[RACCommand alloc] initWithEnabled:_changePasswordActiveSignal signalBlock:^RACSignal *(id input) {
-            return [[[self executeChangePasswordSignal] setNameWithFormat:@"executeChangePasswordSignal"] logAll];
+            return [self executeChangePasswordSignal];
         }];
     }
     return self;
@@ -49,28 +49,7 @@ static NSString * const kChangePasswordRequestDomain = @"ChangePasswordRequestDo
 
 - (RACSignal *)executeChangePasswordSignal
 {
-    @weakify(self);
-    RACSignal *executeChangePasswordSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        @strongify(self);
-        NSURLSessionDataTask *task = [self.sessionManager PUT:@"password" parameters:@{TYServiceKeyPhone: self.phone, TYServiceKeyPassword: self.password, TYServiceKeyVerificationCode: self.verificationCodeTextFieldViewModel.verificationCode} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
-            NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
-            if (isError) {
-                NSError *error = [NSError errorWithDomain:kChangePasswordRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
-                [subscriber sendError:error];
-            } else {
-                [subscriber sendNext:message];
-                [subscriber sendCompleted];
-            }
-
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                [subscriber sendError:error];
-        }];
-        return [RACDisposable disposableWithBlock:^{
-            [task cancel];
-        }];
-    }];
-    return executeChangePasswordSignal;
+    return [self.sessionManager requestChangePasswordSignalWithPhone:self.phone andPassword:self.password andVertificationCode:self.verificationCodeTextFieldViewModel.verificationCode];
 }
 
 @end
