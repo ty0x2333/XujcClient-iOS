@@ -16,7 +16,7 @@
 static CGFloat const kAvatarImageViewHeight = 80.f;
 static CGFloat const kAvatarMarginRight = 15.f;
 
-static CGFloat const kContentInterval = 15.f;
+static CGFloat const kContentInterval = 30.f;
 
 static CGFloat const kContentMarginTop = 10.f;
 static CGFloat const kContentMarginHorizontal = 10.f;
@@ -74,6 +74,7 @@ static CGFloat const kContentMarginHorizontal = 10.f;
     [_scrollView addSubview:_phoneLabel];
     
     _xujcInformationTitleLabel = [[UILabel alloc] init];
+    _xujcInformationTitleLabel.textColor = [UIColor ty_textGray];
     _xujcInformationTitleLabel.text = NSLocalizedString(@"Xujc Account Information", nil);
     [_scrollView addSubview:_xujcInformationTitleLabel];
     
