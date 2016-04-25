@@ -25,6 +25,8 @@ typedef NS_ENUM(NSInteger, VerificationCodeType) {
 
 - (RACSignal *)requestLoginSignalWithPhone:(NSString *)phone andPassword:(NSString *)password;
 
+- (RACSignal *)requestProfileSignal;
+
 - (RACSignal *)requestSignupSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andName:(NSString *)name andVertificationCode:(NSString *)code;
 
 - (RACSignal *)requestChangePasswordSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andVertificationCode:(NSString *)code;

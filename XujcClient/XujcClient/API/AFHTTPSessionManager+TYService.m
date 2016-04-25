@@ -133,6 +133,39 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
     return [[signal replayLazily] ty_logAll];
 }
 
+- (RACSignal *)requestProfileSignal
+{
+    @weakify(self);
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        NSURLSessionDataTask *task = [self GET:@"profile" parameters:@{TYServiceKeyAuthorization: DYNAMIC_DATA.apiKey} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+            
+            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
+            
+            if (isError) {
+                NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
+                NSError *error = [NSError errorWithDomain:TYServiceRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
+                [subscriber sendError:error];
+            } else {
+                UserModel *user = [[UserModel alloc] initWithJSONResopnse:responseObject];
+                DYNAMIC_DATA.user = user;
+                NSString *xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
+                DYNAMIC_DATA.xujcKey = xujcKey;
+                
+                [subscriber sendNext:user];
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
+    signal.name = @"requestProfileSignal";
+    return [[signal replayLazily] ty_logAll];
+}
+
 - (RACSignal *)requestSignupSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andName:(NSString *)name andVertificationCode:(NSString *)code
 {
     @weakify(self);
