@@ -9,6 +9,7 @@
 #import "SettingsViewModel.h"
 #import "CacheUtils.h"
 #import "UserModel.h"
+#import "DynamicData.h"
 
 @interface SettingsViewModel()
 
@@ -46,11 +47,7 @@
 - (RACSignal *)executeLoginoutSignal
 {
     RACSignal *executeLoginoutSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setValue:@"" forKey:kUserDefaultsKeyApiKey];
-        [userDefaults setValue:@"" forKey:kUserDefaultsKeyXujcKey];
-        [userDefaults setValue:[[[UserModel alloc] init] data] forKey:kUserDefaultsKeyUser];
-        [userDefaults synchronize];
+        [DYNAMIC_DATA cleanAllIdentityInformation];
         [[CacheUtils instance] cleanCache];
         [subscriber sendNext:nil];
         [subscriber sendCompleted];

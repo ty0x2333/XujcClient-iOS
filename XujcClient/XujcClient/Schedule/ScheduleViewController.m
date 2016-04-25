@@ -17,7 +17,6 @@
 #import "MSDayColumnHeaderBackground.h"
 #import "NSDate+Week.h"
 #import "CollectionViewScheduleLayout.h"
-#import "XujcAPI.h"
 #import "XujcSemesterModel.h"
 #import "XujcLessonModel.h"
 #import "DynamicData.h"
@@ -77,7 +76,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         [self.viewModel.fetchScheduleLessonSignal subscribeNext:^(id x) {
             [self.collectionViewCalendarLayout invalidateLayoutCache];
             [self.collectionView reloadData];
-            TyLogDebug(@"fetchScheduleSuccess success");
         } error:^(NSError *error) {
             [self.collectionViewCalendarLayout invalidateLayoutCache];
             [self.collectionView reloadData];
@@ -85,7 +83,6 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
             MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hub.detailsLabelText = error.localizedDescription;
             [hub hide:YES afterDelay:kErrorHUDShowTime];
-            TyLogDebug(@"fetchScheduleLesson error");
         }];
     }];
 }

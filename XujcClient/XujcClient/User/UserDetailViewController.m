@@ -11,9 +11,13 @@
 #import "AvatarImageView.h"
 #import "UIView+BorderLine.h"
 #import <UIImageView+WebCache.h>
+#import "XujcInformationView.h"
+#import <MJRefresh.h>
 
 static CGFloat const kAvatarImageViewHeight = 80.f;
 static CGFloat const kAvatarMarginRight = 15.f;
+
+static CGFloat const kContentInterval = 30.f;
 
 static CGFloat const kContentMarginTop = 10.f;
 static CGFloat const kContentMarginHorizontal = 10.f;
@@ -28,6 +32,9 @@ static CGFloat const kContentMarginHorizontal = 10.f;
 
 @property (strong, nonatomic) UILabel *nicknameLabel;
 @property (strong, nonatomic) UILabel *phoneLabel;
+
+@property (strong, nonatomic) UILabel *xujcInformationTitleLabel;
+@property (strong, nonatomic) XujcInformationView *xujcInformationView;
 
 @end
 
@@ -67,6 +74,49 @@ static CGFloat const kContentMarginHorizontal = 10.f;
     _phoneLabel = [[UILabel alloc] init];
     [_scrollView addSubview:_phoneLabel];
     
+    _xujcInformationTitleLabel = [[UILabel alloc] init];
+    _xujcInformationTitleLabel.textColor = [UIColor ty_textGray];
+    _xujcInformationTitleLabel.text = NSLocalizedString(@"Xujc Account Information", nil);
+    [_scrollView addSubview:_xujcInformationTitleLabel];
+    
+    _xujcInformationView = [[XujcInformationView alloc] init];
+    [_scrollView addSubview:_xujcInformationView];
+    
+    [self initLayout];
+    
+    _xujcInformationView.viewModel = [_viewModel xujcInformationViewModel];
+    RAC(self.nicknameLabel, text) = RACObserve(self.viewModel, nickname);
+    RAC(self.phoneLabel, text) = RACObserve(self.viewModel, phone);
+    @weakify(self);
+    [RACObserve(self.viewModel, avatar) subscribeNext:^(NSString *avatarURL) {
+        @strongify(self);
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
+    }];
+    
+    _scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self);
+        [self.viewModel.fetchProfileSignal subscribeNext:^(id x) {
+            [self.viewModel.fetchXujcInformationSignal subscribeNext:^(id x) {
+                [self.scrollView.mj_header endRefreshing];
+            } error:^(NSError *error) {
+                MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hub.detailsLabelText = error.localizedDescription;
+                [hub hide:YES afterDelay:kErrorHUDShowTime];
+                [self.scrollView.mj_header endRefreshing];
+            }];
+        } error:^(NSError *error) {
+            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hub.detailsLabelText = error.localizedDescription;
+            [hub hide:YES afterDelay:kErrorHUDShowTime];
+            [self.scrollView.mj_header endRefreshing];
+        }];
+    }];
+    
+    [_scrollView.mj_header beginRefreshing];
+}
+
+- (void)initLayout
+{
     [_nicknameLabel makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.avatarImageView.centerY);
         make.left.equalTo(self.avatarImageView.mas_right).with.offset(kAvatarMarginRight);
@@ -85,12 +135,15 @@ static CGFloat const kContentMarginHorizontal = 10.f;
         make.top.bottom.leading.trailing.equalTo(self.view);
     }];
     
-    RAC(self.nicknameLabel, text) = RACObserve(self.viewModel, nickname);
-    RAC(self.phoneLabel, text) = RACObserve(self.viewModel, phone);
-    @weakify(self);
-    [RACObserve(self.viewModel, avatar) subscribeNext:^(NSString *avatarURL) {
-        @strongify(self);
-        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
+    [_xujcInformationTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.avatarImageView.mas_bottom).with.offset(kContentInterval);
+        make.left.equalTo(self.avatarImageView);
+    }];
+    
+    [_xujcInformationView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.xujcInformationTitleLabel.mas_bottom);
+        make.left.equalTo(self.view).with.offset(kContentMarginHorizontal);
+        make.right.equalTo(self.view).with.offset(-kContentMarginHorizontal);
     }];
 }
 

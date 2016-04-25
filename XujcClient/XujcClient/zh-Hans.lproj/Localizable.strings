@@ -56,6 +56,12 @@
 
 "Service Protocol" = "服务协议";
 
+"Xujc Account Information" = "嘉庚帐号信息";
+
+"Name" = "姓名";
+"Grade" = "年级";
+"Major" = "专业";
+
 /**
  * TYService Message
  */
@@ -71,11 +77,12 @@
 
 "Verification Code error." = "验证码错误";
 
+"Authentication failed" = "身份认证已失效";
+
 /**
  * XujcService Message
  */
 "Account binding successfully" = "帐号绑定成功";
-//"Authentication failed" = "认证失败";
 "Xujc Key authentication failed" = "教务系统 ApiKey 验证失败";
 "Requests are too frequent." = "发送短信太频繁，请稍后再试";
 

@@ -19,17 +19,17 @@
 
 - (void)loadingSettings;
 
-- (void)flush;
-/**
- *  @brief  清除所有数据
- */
-- (void)clear;
+- (void)cleanAllIdentityInformation;
 
-@property(nonatomic, strong) UserModel *user;
+- (void)cleanApiKey;
 
-@property (copy, readonly, nonatomic) NSString *apiKey;
+- (void)cleanXujcKey;
 
-@property (copy, readonly, nonatomic) NSString *xujcKey;
+@property (nonatomic, strong) UserModel *user;
+
+@property (copy, nonatomic) NSString *apiKey;
+
+@property (copy, nonatomic) NSString *xujcKey;
 
 @property (assign, readonly, nonatomic) BOOL shakingReportStatus;
 

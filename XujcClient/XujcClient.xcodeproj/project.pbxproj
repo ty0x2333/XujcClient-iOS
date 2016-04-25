@@ -85,6 +85,11 @@
 		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
 		7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9C11BE72F280046CF3B /* NSDate+Week.m */; };
+		70246E211CCB88C900960190 /* RACSignal+TYDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */; };
+		70246E241CCCBE8400960190 /* NSError+TYService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E231CCCBE8400960190 /* NSError+TYService.m */; };
+		70246E271CCCBF4500960190 /* NSError+XujcService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E261CCCBF4500960190 /* NSError+XujcService.m */; };
+		70246E2A1CCD06FC00960190 /* XujcInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E291CCD06FC00960190 /* XujcInformationView.m */; };
+		70246E2D1CCD078B00960190 /* XujcInformationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E2C1CCD078B00960190 /* XujcInformationViewModel.m */; };
 		702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */; };
 		702F99D31C7D08F9003B35A7 /* tabbar-exam-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */; };
 		702F99D41C7D08F9003B35A7 /* tabbar-exam-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702F99C01C7D08F9003B35A7 /* tabbar-exam-selected@3x.png */; };
@@ -166,7 +171,6 @@
 		70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE1D1BE3AC25001D027C /* AppDelegate.m */; };
 		70F7CE261BE3AC25001D027C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE251BE3AC25001D027C /* Assets.xcassets */; };
 		70F7CE291BE3AC25001D027C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */; };
-		70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE321BE3BDF0001D027C /* XujcAPI.m */; };
 		70F7CE3D1BE3E806001D027C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE3C1BE3E806001D027C /* BaseModel.m */; };
 		70F7CE431BE3E832001D027C /* XujcUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE421BE3E832001D027C /* XujcUserModel.m */; };
 		70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE481BE3ECAE001D027C /* DynamicData.m */; };
@@ -332,6 +336,16 @@
 		7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcLessonEventModel.m; sourceTree = "<group>"; };
 		7023F9C01BE72F280046CF3B /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		7023F9C11BE72F280046CF3B /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
+		70246E1F1CCB88C900960190 /* RACSignal+TYDebugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RACSignal+TYDebugging.h"; sourceTree = "<group>"; };
+		70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACSignal+TYDebugging.m"; sourceTree = "<group>"; };
+		70246E221CCCBE8400960190 /* NSError+TYService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+TYService.h"; sourceTree = "<group>"; };
+		70246E231CCCBE8400960190 /* NSError+TYService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+TYService.m"; sourceTree = "<group>"; };
+		70246E251CCCBF4500960190 /* NSError+XujcService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+XujcService.h"; sourceTree = "<group>"; };
+		70246E261CCCBF4500960190 /* NSError+XujcService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+XujcService.m"; sourceTree = "<group>"; };
+		70246E281CCD06FC00960190 /* XujcInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcInformationView.h; sourceTree = "<group>"; };
+		70246E291CCD06FC00960190 /* XujcInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcInformationView.m; sourceTree = "<group>"; };
+		70246E2B1CCD078B00960190 /* XujcInformationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcInformationViewModel.h; sourceTree = "<group>"; };
+		70246E2C1CCD078B00960190 /* XujcInformationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcInformationViewModel.m; sourceTree = "<group>"; };
 		702CF8CC1CA44EE5007820B5 /* AvatarImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarImageView.h; sourceTree = "<group>"; };
 		702CF8CD1CA44EE5007820B5 /* AvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarImageView.m; sourceTree = "<group>"; };
 		702F99BF1C7D08F9003B35A7 /* tabbar-exam-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-exam-selected@2x.png"; sourceTree = "<group>"; };
@@ -477,8 +491,6 @@
 		70F7CE251BE3AC25001D027C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70F7CE281BE3AC25001D027C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70F7CE2A1BE3AC25001D027C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		70F7CE311BE3BDF0001D027C /* XujcAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcAPI.h; sourceTree = "<group>"; };
-		70F7CE321BE3BDF0001D027C /* XujcAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcAPI.m; sourceTree = "<group>"; };
 		70F7CE351BE3D1B8001D027C /* TyLog_Objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyLog_Objc.h; sourceTree = "<group>"; };
 		70F7CE3B1BE3E806001D027C /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		70F7CE3C1BE3E806001D027C /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
@@ -553,6 +565,8 @@
 				19FAB3151CB4F01100179484 /* PersonalHeaderView.m */,
 				19FAB3181CB4F01100179484 /* PersonalViewController.h */,
 				19FAB3191CB4F01100179484 /* PersonalViewController.m */,
+				70246E281CCD06FC00960190 /* XujcInformationView.h */,
+				70246E291CCD06FC00960190 /* XujcInformationView.m */,
 				19FAB31C1CB4F01100179484 /* UserDetailViewController.h */,
 				19FAB31D1CB4F01100179484 /* UserDetailViewController.m */,
 				701583E61CC4E5AB003567F7 /* ChangePasswordViewController.h */,
@@ -572,6 +586,8 @@
 				19FAB31B1CB4F01100179484 /* PersonalViewModel.m */,
 				19FAB31E1CB4F01100179484 /* UserDetailViewModel.h */,
 				19FAB31F1CB4F01100179484 /* UserDetailViewModel.m */,
+				70246E2B1CCD078B00960190 /* XujcInformationViewModel.h */,
+				70246E2C1CCD078B00960190 /* XujcInformationViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -817,6 +833,8 @@
 				70A88CFD1C9F37380067DB77 /* NSUserDefaults+TYSupport.m */,
 				70B167CF1CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.h */,
 				70B167D01CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m */,
+				70246E1F1CCB88C900960190 /* RACSignal+TYDebugging.h */,
+				70246E201CCB88C900960190 /* RACSignal+TYDebugging.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -868,8 +886,8 @@
 				7062B6B51C8F6E560074C716 /* XujcServiceKeys.h */,
 				7062B6B01C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.h */,
 				7062B6B11C8F5FFE0074C716 /* AFHTTPSessionManager+XujcService.m */,
-				70F7CE311BE3BDF0001D027C /* XujcAPI.h */,
-				70F7CE321BE3BDF0001D027C /* XujcAPI.m */,
+				70246E251CCCBF4500960190 /* NSError+XujcService.h */,
+				70246E261CCCBF4500960190 /* NSError+XujcService.m */,
 			);
 			name = Xujc;
 			sourceTree = "<group>";
@@ -881,6 +899,8 @@
 				7062B68F1C8B1EC90074C716 /* TYServiceKeys.h */,
 				7062B6881C8A21BF0074C716 /* AFHTTPSessionManager+TYService.h */,
 				7062B6891C8A21BF0074C716 /* AFHTTPSessionManager+TYService.m */,
+				70246E221CCCBE8400960190 /* NSError+TYService.h */,
+				70246E231CCCBE8400960190 /* NSError+TYService.m */,
 			);
 			name = TYService;
 			sourceTree = "<group>";
@@ -1482,6 +1502,7 @@
 				70730DB41C9A635F007CBEBB /* OssService.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */,
+				70246E2D1CCD078B00960190 /* XujcInformationViewModel.m in Sources */,
 				7062B6D41C9369F50074C716 /* FMDatabaseQueue+Utils.m in Sources */,
 				70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */,
 				701583EE1CC4E5ED003567F7 /* VerificationCodeTableViewCell.m in Sources */,
@@ -1499,7 +1520,6 @@
 				7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */,
 				70730D821C999D67007CBEBB /* SignupViewModel.m in Sources */,
 				70730DA81C9A3FFF007CBEBB /* AppUtils.m in Sources */,
-				70F7CE331BE3BDF0001D027C /* XujcAPI.m in Sources */,
 				70730D8A1C999DD5007CBEBB /* ScheduleViewModel.m in Sources */,
 				701584551CC6A8FF003567F7 /* ScheduleColumnHeader.m in Sources */,
 				70730E051C9EE556007CBEBB /* TableViewCellViewModel.m in Sources */,
@@ -1545,7 +1565,9 @@
 				7062B67F1C887B020074C716 /* LoginTextFieldGroupView.m in Sources */,
 				70730DC81C9D99A7007CBEBB /* LessonEventCell.m in Sources */,
 				70730DCE1C9DF2D0007CBEBB /* SettingsViewController.m in Sources */,
+				70246E211CCB88C900960190 /* RACSignal+TYDebugging.m in Sources */,
 				701584361CC53103003567F7 /* ExamViewModel.m in Sources */,
+				70246E271CCCBF4500960190 /* NSError+XujcService.m in Sources */,
 				70730DAB1C9A6152007CBEBB /* UIImage+Coding.m in Sources */,
 				7015842F1CC52FAB003567F7 /* InformationTableViewCell.m in Sources */,
 				701583ED1CC4E5ED003567F7 /* InputTableViewCell.m in Sources */,
@@ -1557,12 +1579,14 @@
 				7023F9C21BE72F280046CF3B /* NSDate+Week.m in Sources */,
 				7062B6AF1C8F1D620074C716 /* BindingAccountViewModel.m in Sources */,
 				701583E51CC4E595003567F7 /* ChangePasswordViewModel.m in Sources */,
+				70246E2A1CCD06FC00960190 /* XujcInformationView.m in Sources */,
 				7062B68E1C8B0F480074C716 /* RequestViewModel.m in Sources */,
 				70730D9C1C99F580007CBEBB /* MainTabBarViewModel.m in Sources */,
 				19781BA01CAB70A800D078A6 /* VerificationCodeTextFieldViewModel.m in Sources */,
 				19781B9C1CAB6EE700D078A6 /* VerificationCodeTextField.m in Sources */,
 				701584511CC6A8FF003567F7 /* MSCurrentTimeIndicator.m in Sources */,
 				702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */,
+				70246E241CCCBE8400960190 /* NSError+TYService.m in Sources */,
 				701584561CC6A8FF003567F7 /* ScheduleRowHeader.m in Sources */,
 				19FAB3211CB4F01100179484 /* PersonalHeaderViewModel.m in Sources */,
 				7062B6C51C9331BD0074C716 /* ScoreTableViewCell.m in Sources */,
@@ -1727,7 +1751,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1771,7 +1795,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

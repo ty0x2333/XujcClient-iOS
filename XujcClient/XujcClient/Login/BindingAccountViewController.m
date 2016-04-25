@@ -7,7 +7,6 @@
 //
 
 #import "BindingAccountViewController.h"
-#import "XujcAPI.h"
 #import "DynamicData.h"
 #import "UIView+BorderLine.h"
 #import "XujcUserModel.h"

@@ -26,17 +26,7 @@
 
 - (NSString *)description
 {
-    NSMutableString *description = [[super description] mutableCopy];
-    [description appendFormat:@"{\n"];
-    [description appendFormat:@"\n\tlessonName: %@", _lessonName];
-    [description appendFormat:@"\n\tcredit: %zd", _credit];
-    [description appendFormat:@"\n\tscore: %zd", _score];
-    [description appendFormat:@"\n\tscoreLevel: %@", _scoreLevel];
-    [description appendFormat:@"\n\tmidSemesterStatus: %@", _midSemesterStatus];
-    [description appendFormat:@"\n\tendSemesterStatus: %@", _endSemesterStatus];
-    [description appendFormat:@"\n\tstudyWay: %@", _studyWay];
-    [description appendFormat:@"\n}"];
-    return description;
+    return [NSString stringWithFormat:@"<%@: %p> (lessonName: %@, score: %zd)", NSStringFromClass([self class]), self, _lessonName, _score];
 }
 
 @end

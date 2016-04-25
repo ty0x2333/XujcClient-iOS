@@ -29,39 +29,20 @@
 
 - (RACSignal *)fetchScoresSignal
 {
-    RACSignal *fetchScoresSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSString *semesterId = [self.semesterSelectorViewModel selectedSemesterId];
-        NSURLSessionDataTask *task = [self.xujcSessionManager GET:@"score.php" parameters:@{XujcServiceKeyApiKey: DYNAMIC_DATA.xujcKey, XujcServiceKeySemesterId: semesterId} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSArray *scoreDatas = responseObject;
-            NSMutableArray *scoreModels = [[NSMutableArray alloc] initWithCapacity:scoreDatas.count];
-            [scoreDatas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                XujcScoreModel *xujcScore = [[XujcScoreModel alloc] initWithJSONResopnse:obj];
-                TyLogDebug(@"Score: %@", xujcScore);
-                [scoreModels addObject:xujcScore];
-            }];
-            self.scores = [scoreModels copy];
-            
-            [[CacheUtils instance] cacheScore:[scoreModels copy] inSemester:semesterId];
-            
+    NSString *semesterId = [self.semesterSelectorViewModel selectedSemesterId];
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        return [[self.xujcSessionManager requestScoresSignalWithSemesterId:semesterId] subscribeNext:^(NSArray *scores) {
+            self.scores = scores;
             [subscriber sendNext:nil];
+        } error:^(NSError *error) {
+            self.semesters = [[CacheUtils instance] semestersFormCache];
+            [subscriber sendError:error];
+        } completed:^{
             [subscriber sendCompleted];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSInteger statusCode = ((NSHTTPURLResponse *)(task.response)).statusCode;
-            if (statusCode == 400) {
-                self.scores = nil;
-                [subscriber sendNext:nil];
-                [subscriber sendCompleted];
-            } else {
-                self.scores = [[CacheUtils instance] scoresFormCacheWithSemester:semesterId];
-                
-                [subscriber sendError:error];
-            }
-        }];
-        return [RACDisposable disposableWithBlock:^{
-            [task cancel];
         }];
     }];
-    return [[fetchScoresSignal setNameWithFormat:@"fetchScoresSignal"] logAll];
 }
 
 - (NSInteger)scoreCount

@@ -18,7 +18,7 @@ static NSString* const XujcServiceKeySemesterId = @"tm_id";
 static NSString* const XujcServiceKeyStudentId = @"xj_id";
 static NSString* const XujcServiceKeyName = @"xj_xm";
 static NSString* const XujcServiceKeyGrade = @"xj_nj";
-static NSString* const XujcServiceKeyProfessional = @"zy_mc";
+static NSString* const XujcServiceKeyMajor = @"zy_mc";
 
 #pragma mark - Xujc Exam
 

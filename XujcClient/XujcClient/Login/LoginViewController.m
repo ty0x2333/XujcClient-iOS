@@ -78,7 +78,7 @@ static CGFloat const kSwitchButtonFontSize = 15.f;
     
     _accountTextField = [UITextField ty_textField];
     _accountTextField.placeholder = NSLocalizedString(@"Phone", nil);
-    _accountTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    _accountTextField.keyboardType = UIKeyboardTypeNumberPad;
     [_loginTextFieldGroupView addSubview:_accountTextField];
     
     _passwordTextField = [UITextField ty_textField];

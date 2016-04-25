@@ -59,13 +59,11 @@ static CGFloat const kTableViewSectionHeaderHeight = 5.f;
         @strongify(self);
         [self.viewModel.fetchExamsSignal subscribeNext:^(id x) {
             [self.tableView reloadData];
-            TyLogDebug(@"fetchExams success");
             [self.tableView.mj_header endRefreshing];
         } error:^(NSError *error) {
             MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hub.detailsLabelText = error.localizedDescription;
             [hub hide:YES afterDelay:kErrorHUDShowTime];
-            TyLogDebug(@"fetchExams error");
             
             // load data from cache
             [_tableView reloadData];

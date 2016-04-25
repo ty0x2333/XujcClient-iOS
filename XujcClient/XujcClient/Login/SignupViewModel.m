@@ -29,7 +29,7 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
 - (instancetype)init
 {
     if (self = [super init]) {
-        _verificationCodeTextFieldViewModel = [[VerificationCodeTextFieldViewModel alloc] init];
+        _verificationCodeTextFieldViewModel = [[VerificationCodeTextFieldViewModel alloc] initWithType:VerificationCodeTypeSignUp];
         
         RACChannelTo(_verificationCodeTextFieldViewModel, phone) = RACChannelTo(self, account);
         
@@ -53,27 +53,7 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
 
 - (RACSignal *)executeSignupSignal
 {
-    @weakify(self);
-    RACSignal *executeSignupSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        @strongify(self);
-        NSURLSessionDataTask *task = [self.sessionManager POST:@"register" parameters:@{TYServiceKeyNickname: self.nickname, TYServiceKeyPhone: self.account, TYServiceKeyPassword: self.password, TYServiceKeyVerificationCode: self.verificationCodeTextFieldViewModel.verificationCode} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
-            BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
-            NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
-            if (isError) {
-                NSError *error = [NSError errorWithDomain:kSignupRequestDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(message, nil)}];
-                [subscriber sendError:error];
-            } else {
-                [subscriber sendNext:message];
-                [subscriber sendCompleted];
-            }
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [subscriber sendError:error];
-        }];
-        return [RACDisposable disposableWithBlock:^{
-            [task cancel];
-        }];
-    }];
-    return executeSignupSignal;
+    return [self.sessionManager requestSignupSignalWithPhone:self.account andPassword:self.password andName:self.nickname andVertificationCode:self.verificationCodeTextFieldViewModel.verificationCode];
 }
 
 - (ServiceProtocolViewModel *)serviceProtocolViewModel

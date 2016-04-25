@@ -11,5 +11,6 @@
 
 #import "XujcServiceKeys.h"
 #import "AFHTTPSessionManager+XujcService.h"
+#import "NSError+XujcService.h"
 
 #endif /* XujcService_h */

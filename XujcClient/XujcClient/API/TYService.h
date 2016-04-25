@@ -11,5 +11,6 @@
 
 #import "TYServiceKeys.h"
 #import "AFHTTPSessionManager+TYService.h"
+#import "NSError+TYService.h"
 
 #endif /* TYService_h */

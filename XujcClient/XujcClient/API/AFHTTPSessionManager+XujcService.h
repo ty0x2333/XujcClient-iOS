@@ -12,4 +12,14 @@
 
 + (instancetype)xujc_manager;
 
+- (RACSignal *)requestSemestersSignal;
+
+- (RACSignal *)requestUserInformationSignalWithXujcKey:(NSString *)xujcKey;
+
+- (RACSignal *)requestScoresSignalWithSemesterId:(NSString *)semesterId;
+
+- (RACSignal *)requestScheduleLessonSignalWithSemesterId:(NSString *)semesterId;
+
+- (RACSignal *)requestExamsSignal;
+
 @end

@@ -39,21 +39,58 @@
     TyLogDebug(@"DynamicData Loaded:%@", [self description]);
 }
 
-- (void)flush
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:[_user data] forKey:kUserDefaultsKeyUser];
-    
-    TyLogDebug(@"DynamicData Flush:%@", [self description]);
-    
-    [userDefaults synchronize];
-}
-
-- (void)clear
+- (void)cleanAllIdentityInformation
 {
     UserModel *user = [[UserModel alloc] init];
     _user = user;
-    [self flush];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:@"" forKey:kUserDefaultsKeyApiKey];
+    [userDefaults setValue:@"" forKey:kUserDefaultsKeyXujcKey];
+    [userDefaults setValue:[user data] forKey:kUserDefaultsKeyUser];
+    [userDefaults synchronize];
+}
+
+- (void)cleanApiKey
+{
+    [self setApiKey:@""];
+}
+
+- (void)cleanXujcKey
+{
+    [self setXujcKey:@""];
+}
+
+#pragma mark - Setter
+
+- (void)setApiKey:(NSString *)apiKey
+{
+    if ([apiKey isEqualToString:self.apiKey]) {
+        return;
+    }
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:[NSString safeString:apiKey] forKey:kUserDefaultsKeyApiKey];
+    [userDefaults synchronize];
+}
+
+- (void)setXujcKey:(NSString *)xujcKey
+{
+    if ([xujcKey isEqualToString:self.xujcKey]) {
+        return;
+    }
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:[NSString safeString:xujcKey] forKey:kUserDefaultsKeyXujcKey];
+    [userDefaults synchronize];
+}
+
+- (void)setUser:(UserModel *)user
+{
+    if (_user == user) {
+        return;
+    }
+    _user = user;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[_user data] forKey:kUserDefaultsKeyUser];
+    [userDefaults synchronize];
 }
 
 #pragma mark - Getter
