@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *phone;
 
 @property (strong, nonatomic) RACSignal *fetchXujcInformationSignal;
+@property (strong, nonatomic) RACSignal *fetchProfileSignal;
 
 - (XujcInformationViewModel *)xujcInformationViewModel;
 

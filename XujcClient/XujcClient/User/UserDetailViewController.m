@@ -12,6 +12,7 @@
 #import "UIView+BorderLine.h"
 #import <UIImageView+WebCache.h>
 #import "XujcInformationView.h"
+#import <MJRefresh.h>
 
 static CGFloat const kAvatarImageViewHeight = 80.f;
 static CGFloat const kAvatarMarginRight = 15.f;
@@ -92,9 +93,26 @@ static CGFloat const kContentMarginHorizontal = 10.f;
         [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
     }];
     
-    [_viewModel.fetchXujcInformationSignal subscribeNext:^(id x) {
-        
+    _scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self);
+        [self.viewModel.fetchProfileSignal subscribeNext:^(id x) {
+            [self.viewModel.fetchXujcInformationSignal subscribeNext:^(id x) {
+                [self.scrollView.mj_header endRefreshing];
+            } error:^(NSError *error) {
+                MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hub.detailsLabelText = error.localizedDescription;
+                [hub hide:YES afterDelay:kErrorHUDShowTime];
+                [self.scrollView.mj_header endRefreshing];
+            }];
+        } error:^(NSError *error) {
+            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hub.detailsLabelText = error.localizedDescription;
+            [hub hide:YES afterDelay:kErrorHUDShowTime];
+            [self.scrollView.mj_header endRefreshing];
+        }];
     }];
+    
+    [_scrollView.mj_header beginRefreshing];
 }
 
 - (void)initLayout

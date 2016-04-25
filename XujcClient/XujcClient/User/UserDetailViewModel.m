@@ -10,6 +10,7 @@
 #import "DynamicData.h"
 #import "XujcUserModel.h"
 #import "XujcInformationViewModel.h"
+#import "TYService.h"
 
 @interface UserDetailViewModel()
 
@@ -38,6 +39,7 @@
                 [subscriber sendCompleted];
             }];
         }];
+        _fetchProfileSignal = [self.sessionManager requestProfileSignal];
     }
     return self;
 }
