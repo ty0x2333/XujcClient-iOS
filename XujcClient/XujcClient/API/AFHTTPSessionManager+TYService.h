@@ -8,6 +8,11 @@
 
 #import <AFNetworking/AFNetworking.h>
 
+typedef NS_ENUM(NSInteger, VerificationCodeType) {
+    VerificationCodeTypeSignUp,
+    VerificationCodeTypeChangePasswordUp,
+};
+
 @interface AFHTTPSessionManager (TYService)
 
 + (instancetype)ty_manager;
@@ -24,6 +29,6 @@
 
 - (RACSignal *)requestChangePasswordSignalWithPhone:(NSString *)phone andPassword:(NSString *)password andVertificationCode:(NSString *)code;
 
-- (RACSignal *)requestGetVerificationCodeSignalWithPhone:(NSString *)phone;
+- (RACSignal *)requestGetVerificationCodeSignalWithPhone:(NSString *)phone withType:(VerificationCodeType)codeType;
 
 @end

@@ -20,6 +20,7 @@ static NSString * const TYServiceKeyXujcKey = @"xujc_key";
 static NSString * const TYServiceKeyCreatedTime = @"created_time";
 static NSString * const TYServiceKeyAvatar = @"avatar";
 static NSString * const TYServiceKeyVerificationCode = @"code";
+static NSString * const TYServiceKeyType = @"type";
 
 static NSString * const TYServiceKeyAuthorization = @"authorization";
 

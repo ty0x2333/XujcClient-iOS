@@ -7,8 +7,11 @@
 //
 
 #import "RequestViewModel.h"
+#import "TYService.h"
 
 @interface VerificationCodeTextFieldViewModel : RequestViewModel
+
+- (instancetype)initWithType:(VerificationCodeType)verificationCodeType;
 
 @property (copy, nonatomic) NSString *phone;
 

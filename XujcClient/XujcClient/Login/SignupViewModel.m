@@ -29,7 +29,7 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
 - (instancetype)init
 {
     if (self = [super init]) {
-        _verificationCodeTextFieldViewModel = [[VerificationCodeTextFieldViewModel alloc] init];
+        _verificationCodeTextFieldViewModel = [[VerificationCodeTextFieldViewModel alloc] initWithType:VerificationCodeTypeSignUp];
         
         RACChannelTo(_verificationCodeTextFieldViewModel, phone) = RACChannelTo(self, account);
         

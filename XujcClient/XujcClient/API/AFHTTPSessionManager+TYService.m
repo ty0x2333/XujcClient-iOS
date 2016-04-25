@@ -160,12 +160,12 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
     return [[signal replayLazily] ty_logAll];
 }
 
-- (RACSignal *)requestGetVerificationCodeSignalWithPhone:(NSString *)phone
+- (RACSignal *)requestGetVerificationCodeSignalWithPhone:(NSString *)phone withType:(VerificationCodeType)codeType
 {
     @weakify(self);
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        NSURLSessionDataTask *task = [self POST:@"sms" parameters:@{TYServiceKeyPhone: phone} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
+        NSURLSessionDataTask *task = [self POST:@"sms" parameters:@{TYServiceKeyPhone: phone, TYServiceKeyType: @(codeType)} progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *responseObject) {
             BOOL isError = [[responseObject objectForKey:TYServiceKeyError] boolValue];
             NSString *message = [responseObject objectForKey:TYServiceKeyMessage];
             if (isError) {

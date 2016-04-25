@@ -23,7 +23,7 @@ static NSString * const kChangePasswordRequestDomain = @"ChangePasswordRequestDo
 - (instancetype)init
 {
     if (self = [super init]) {
-        _verificationCodeTextFieldViewModel = [[VerificationCodeTextFieldViewModel alloc] init];
+        _verificationCodeTextFieldViewModel = [[VerificationCodeTextFieldViewModel alloc] initWithType:VerificationCodeTypeChangePasswordUp];
         RACChannelTo(_verificationCodeTextFieldViewModel, phone) = RACChannelTo(self, phone);
         
         RACSignal *validPhoneSignal = [[RACObserve(self, phone)

@@ -8,7 +8,6 @@
 
 #import "VerificationCodeTextFieldViewModel.h"
 #import "NSString+Validator.h"
-#import "TYService.h"
 
 static NSString * const kVerificationCodeRequestDomain = @"VerificationCodeRequestDomain";
 
@@ -18,11 +17,19 @@ static NSInteger const kCountdownTime = 10;
 static NSInteger const kCountdownTime = 60;
 #endif
 
+@interface VerificationCodeTextFieldViewModel()
+
+@property (nonatomic, assign) VerificationCodeType verificationCodeType;
+
+@end
+
 @implementation VerificationCodeTextFieldViewModel
 
-- (instancetype)init
+- (instancetype)initWithType:(VerificationCodeType)verificationCodeType
 {
     if (self = [super init]) {
+        _verificationCodeType = verificationCodeType;
+        
         RACSignal *validPhoneSignal = [[RACObserve(self, phone)
                                          map:^id(NSString *text) {
                                              return @([NSString ty_validatePhone:text]);
@@ -43,7 +50,7 @@ static NSInteger const kCountdownTime = 60;
 {
     __block NSInteger number = kCountdownTime;
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        return [[self.sessionManager requestGetVerificationCodeSignalWithPhone:self.phone] subscribeNext:^(id x) {
+        return [[self.sessionManager requestGetVerificationCodeSignalWithPhone:self.phone withType:self.verificationCodeType] subscribeNext:^(id x) {
             RACSignal *timerSignal = [[[RACSignal interval:1.0f onScheduler:[RACScheduler mainThreadScheduler]] take:number] map:^id(id x) {
                 return @(--number);
             }];
