@@ -12,7 +12,7 @@
 static const CGFloat kLoginContentMarginHorizontal = 25.f;
 
 static const CGFloat kLoginButtonHeight = 40.f;
-static const CGFloat kLoginTextFieldHeight = 40.f;
+static const CGFloat kLoginTextFieldHeight = 35.f;
 
 static const CGFloat kLoginButtonMarginTop = 20.f;
 
