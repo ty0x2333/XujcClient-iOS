@@ -50,7 +50,7 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
     UIView *tableFooterView = [[UIView alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(0, kTableViewTableFooterHeight)}];
     
     _okButton = [[FormButton alloc] init];
-    [_okButton setTitle:@"完成" forState:UIControlStateNormal];
+    [_okButton setTitle:NSLocalizedString(@"Complete", nil) forState:UIControlStateNormal];
     _okButton.backgroundColor = [UIColor ty_buttonBackground];
     
     [tableFooterView addSubview:_okButton];
@@ -118,19 +118,21 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
     if (indexPath.row == 1) {
         VerificationCodeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kVerificationCodeTableViewCellReuseIdentifier forIndexPath:indexPath];
         cell.verificationCodeTextFieldViewModel = [_viewModel verificationCodeTextFieldViewModel];
-        cell.inputLabel.text = @"验证码";
+        cell.inputLabel.text = NSLocalizedString(@"Verification Code", nil);
         return cell;
     }
     InputTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kInputTableViewCellReuseIdentifier forIndexPath:indexPath];
     if (indexPath.row == 0) {
         _phoneTextField = cell.textField;
+        _phoneTextField.placeholder = NSLocalizedString(@"Phone", nil);
         cell.textField.keyboardType = UIKeyboardTypeNumberPad;
-        cell.inputLabel.text = @"手机号";
+        cell.inputLabel.text = NSLocalizedString(@"Phone", nil);
         RAC(self.viewModel, phone) = [[RACSignal merge:@[RACObserve(self.phoneTextField, text), self.phoneTextField.rac_textSignal]] takeUntil:cell.rac_prepareForReuseSignal];
     } else if (indexPath.row == 2) {
         _passwordTextField = cell.textField;
+        _passwordTextField.placeholder = NSLocalizedString(@"New Password", nil);
         cell.textField.secureTextEntry = YES;
-        cell.inputLabel.text = @"新密码";
+        cell.inputLabel.text = NSLocalizedString(@"New Password", nil);
         RAC(self.viewModel, password) = [[RACSignal merge:@[RACObserve(self.passwordTextField, text), self.passwordTextField.rac_textSignal]] takeUntil:cell.rac_prepareForReuseSignal];
     }
     
