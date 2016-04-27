@@ -16,6 +16,8 @@ static CGFloat const kTableViewTableFooterHeight = 40.f;
 
 static CGFloat const kOKButtonMarginHorizontal = 10.f;
 
+static CGFloat const kTableViewRowHeight = 35.f;
+
 static NSString * const kInputTableViewCellReuseIdentifier = @"InputTableViewCellReuseIdentifier";
 static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"VerificationCodeTableViewCellReuseIdentifier";
 
@@ -56,6 +58,7 @@ static NSString * const kVerificationCodeTableViewCellReuseIdentifier = @"Verifi
     [tableFooterView addSubview:_okButton];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    _tableView.rowHeight = kTableViewRowHeight;
     _tableView.tableFooterView = tableFooterView;
     [self.view addSubview:_tableView];
     [_tableView registerClass:[InputTableViewCell class] forCellReuseIdentifier:kInputTableViewCellReuseIdentifier];
