@@ -21,4 +21,11 @@
     return [dayOfWeekChineseNames indexOfObject:str] + 1;
 }
 
++ (NSInteger)currentChineseDayOfWeek
+{
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    NSInteger dayOfWeek = [calender component:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+    return dayOfWeek > 1 ? dayOfWeek - 1 : kDayCountOfWeek;
+}
+
 @end

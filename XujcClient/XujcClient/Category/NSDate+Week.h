@@ -25,4 +25,6 @@ static NSInteger const kTimeIntervalOfMinute = 60;
 
 + (NSInteger)dayNumberOfWeekFromString:(NSString *)str;
 
++ (NSInteger)currentChineseDayOfWeek;
+
 @end
