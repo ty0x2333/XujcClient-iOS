@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 #define LESSON_TIME_CALCULATOR [LessonTimeCalculator instance]
 

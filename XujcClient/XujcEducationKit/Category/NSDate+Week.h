@@ -7,7 +7,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <NSDate+CupertinoYankee.h>
 
 static NSInteger const kDayCountOfWeek = 7;
 static NSInteger const kTimeIntervalOfDay = 60 * 60 * 24;

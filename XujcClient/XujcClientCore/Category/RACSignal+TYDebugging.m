@@ -7,6 +7,7 @@
 //
 
 #import "RACSignal+TYDebugging.h"
+#import "TyLog_Objc.h"
 
 @implementation RACSignal (TYDebugging)
 

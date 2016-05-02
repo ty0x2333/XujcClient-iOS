@@ -34,7 +34,6 @@ static const CGFloat kWindowCornerRadius = 4.f;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    TyLogDebug(@"Document Path: %@", DOCUMENT_DIRECTORY);
 #if DEBUG
     NSArray *languages = [NSLocale preferredLanguages];
     NSString *currentLanguage = [languages objectAtIndex:0];

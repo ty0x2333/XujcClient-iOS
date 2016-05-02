@@ -12,6 +12,8 @@
 #import "XujcLessonModel.h"
 #import "XujcSemesterModel.h"
 #import "CacheUtils.h"
+#import "NSDate+Week.h"
+
 
 @interface ScheduleViewModel()
 

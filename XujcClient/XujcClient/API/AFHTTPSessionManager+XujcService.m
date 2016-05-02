@@ -13,6 +13,9 @@
 #import "XujcExamModel.h"
 #import "XujcLessonModel.h"
 #import "CacheUtils.h"
+#import "RACSignal+TYDebugging.h"
+#import "NSError+XujcService.h"
+#import "XujcServiceKeys.h"
 
 static NSString* const kXujcServiceHost = @"http://jw.xujc.com/api/";
 

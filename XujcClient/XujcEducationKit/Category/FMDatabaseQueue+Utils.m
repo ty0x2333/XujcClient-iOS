@@ -8,6 +8,8 @@
 
 #import "FMDatabaseQueue+Utils.h"
 
+#define DOCUMENT_DIRECTORY [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+
 static NSString * const kDBName = @"DataCache";
 
 @implementation FMDatabaseQueue (Utils)

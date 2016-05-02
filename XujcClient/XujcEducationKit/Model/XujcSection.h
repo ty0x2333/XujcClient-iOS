@@ -7,7 +7,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "NSDate+Week.h"
 /**
  *  @brief  课程小节
  */

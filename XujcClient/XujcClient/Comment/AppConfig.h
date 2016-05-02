@@ -32,8 +32,6 @@ static NSString * const kSinaSecret = @"9b66b1dc435bf08b43b99325415af1f8";
 
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
 
-#define DOCUMENT_DIRECTORY [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
-
 /**
  *  Share
  */

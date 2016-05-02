@@ -7,6 +7,7 @@
  */
 
 #import "XujcLessonEventModel.h"
+#import "XujcServiceKeys.h"
 #import "NSDate+Week.h"
 
 @implementation XujcLessonEventModel

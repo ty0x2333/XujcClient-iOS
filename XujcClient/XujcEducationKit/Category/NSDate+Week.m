@@ -7,6 +7,7 @@
  */
 
 #import "NSDate+Week.h"
+#import <NSDate+CupertinoYankee.h>
 
 @implementation NSDate (Week)
 

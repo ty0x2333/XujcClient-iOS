@@ -11,6 +11,7 @@
 #import "XujcUserModel.h"
 #import "XujcInformationViewModel.h"
 #import "TYService.h"
+#import "XujcService.h"
 
 @interface UserDetailViewModel()
 

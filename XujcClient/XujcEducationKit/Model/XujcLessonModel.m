@@ -7,6 +7,7 @@
  */
 
 #import "XujcLessonModel.h"
+#import "XujcServiceKeys.h"
 
 @implementation XujcLessonModel
 

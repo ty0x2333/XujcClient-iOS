@@ -8,6 +8,7 @@
 
 #import "XujcSection.h"
 #import "LessonTimeCalculator.h"
+#import "NSDate+Week.h"
 
 @implementation XujcSection
 

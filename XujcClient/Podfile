@@ -1,6 +1,5 @@
 platform :ios, '7.0'
 pod 'UIColor-HexString'
-pod 'CupertinoYankee'
 pod 'SSKeychain'
 pod 'MBProgressHUD'
 pod 'LMDropdownView'
@@ -10,16 +9,24 @@ pod 'MJRefresh'
 pod 'TTTAttributedLabel'
 
 # Core Frameworks
-pod 'ReactiveCocoa'
 pod 'Masonry'
 pod "AFNetworking", :git => 'https://github.com/luckytianyiyan/AFNetworking.git', :branch => 'ty_no_unescaped_ctrl_char'
 pod 'SDWebImage'
-pod 'FMDB'
-target :XujcClientTests, :exclusive => true do
-  pod 'Kiwi'
-end
 
 # Services
 pod 'Instabug'
 pod 'AliyunOSSiOS', '~> 2.2.0'
 pod 'Google/Analytics'
+
+target :XujcClientTests, :exclusive => true do
+  pod 'Kiwi'
+end
+
+target :XujcClientCore, :exclusive => true do
+  pod 'CupertinoYankee'
+  pod 'ReactiveCocoa'
+end
+
+target :XujcEducationKit, :exclusive => true do
+  pod 'FMDB'
+end
