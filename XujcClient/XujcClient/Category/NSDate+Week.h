@@ -23,7 +23,7 @@ static NSInteger const kTimeIntervalOfMinute = 60;
  */
 - (NSDate *)dayOfCurrentWeek:(NSInteger)offset;
 
-+ (NSInteger)dayNumberOfWeekFromString:(NSString *)str;
++ (NSInteger)chineseDayOfWeekFromString:(NSString *)str;
 
 + (NSInteger)currentChineseDayOfWeek;
 

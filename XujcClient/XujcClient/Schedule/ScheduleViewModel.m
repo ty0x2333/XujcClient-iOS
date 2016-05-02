@@ -75,7 +75,7 @@
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (XujcLessonEventModel *event in allLessonEvents) {
-        NSInteger currentDayNumberOfWeek = [NSDate dayNumberOfWeekFromString:event.studyDay];
+        NSInteger currentDayNumberOfWeek = [NSDate chineseDayOfWeekFromString:event.studyDay];
         if (currentDayNumberOfWeek == dayNumberOfWeek){
             [result addObject:event];
         }

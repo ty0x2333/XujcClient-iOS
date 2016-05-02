@@ -15,10 +15,10 @@
     return [[[NSDate date] beginningOfWeek] dateByAddingTimeInterval:kTimeIntervalOfDay * offset];
 }
 
-+ (NSInteger)dayNumberOfWeekFromString:(NSString *)str
++ (NSInteger)chineseDayOfWeekFromString:(NSString *)str
 {
-    NSArray *dayOfWeekChineseNames = @[@"周一", @"周二", @"周三", @"周四", @"周五", @"周六", @"周日"];
-    return [dayOfWeekChineseNames indexOfObject:str] + 1;
+    NSArray *chineseDayOfWeekNames = @[@"周一", @"周二", @"周三", @"周四", @"周五", @"周六", @"周日"];
+    return [chineseDayOfWeekNames indexOfObject:str] + 1;
 }
 
 + (NSInteger)currentChineseDayOfWeek
