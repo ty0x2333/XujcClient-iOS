@@ -37,6 +37,11 @@
     self.endSection = [XujcSection section:sectionNumbser];
 }
 
+- (NSInteger)chineseDayOfWeek
+{
+    return [NSDate chineseDayOfWeekFromString:self.dayOfWeekName];
+}
+
 - (NSDate *)startTime:(NSDate *)date
 {
     return [_startSection startTime:date];

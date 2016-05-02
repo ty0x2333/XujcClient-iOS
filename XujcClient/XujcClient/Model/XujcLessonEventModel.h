@@ -30,6 +30,8 @@
 
 @property(nonatomic, copy) NSString *location;
 
+- (NSInteger)chineseDayOfWeek;
+
 - (void)setStartSectionWithSectionNumbser:(NSInteger)sectionNumbser;
 - (void)setEndSectionWithSectionNumbser:(NSInteger)sectionNumbser;
 
