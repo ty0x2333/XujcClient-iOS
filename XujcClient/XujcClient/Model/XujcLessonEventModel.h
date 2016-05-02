@@ -14,10 +14,9 @@
 @property(nonatomic, copy) NSString *name;
 @property(nonatomic, copy) NSString *lessonClassId;
 @property(nonatomic, copy) NSString *eventDescription;
-/**
- *  @brief  周几
- */
-@property(nonatomic, copy) NSString *studyDay;
+
+@property(nonatomic, copy) NSString *dayOfWeekName;
+
 /**
  *  @brief  上课周间隔
  */

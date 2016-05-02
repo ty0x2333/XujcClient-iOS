@@ -116,7 +116,7 @@ static NSString * const kLessonEventTableInitSQL = @"CREATE TABLE IF NOT EXISTS 
         [db executeUpdate:@"DELETE FROM lesson_event WHERE semester_id=?;", semesterId];
 
         for (XujcLessonEventModel *event in lessonEvents) {
-            isSuccess = [db executeUpdate:@"INSERT INTO lesson_event(semester_id, name, lesson_class_id, description, study_day, week_interval, start_section, end_section, start_week, end_week, location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", semesterId, event.name, event.lessonClassId, event.eventDescription, event.studyDay, event.weekInterval, @(event.startSection.sectionNumber), @(event.endSection.sectionNumber), @(event.startWeek), @(event.endWeek), event.location];
+            isSuccess = [db executeUpdate:@"INSERT INTO lesson_event(semester_id, name, lesson_class_id, description, study_day, week_interval, start_section, end_section, start_week, end_week, location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", semesterId, event.name, event.lessonClassId, event.eventDescription, event.dayOfWeekName, event.weekInterval, @(event.startSection.sectionNumber), @(event.endSection.sectionNumber), @(event.startWeek), @(event.endWeek), event.location];
             if (!isSuccess) {
                 *rollback = YES;
                 return;
@@ -184,7 +184,7 @@ static NSString * const kLessonEventTableInitSQL = @"CREATE TABLE IF NOT EXISTS 
             event.name = [set objectForColumnName:@"name"];
             event.lessonClassId = [set objectForColumnName:@"lesson_class_id"];
             event.eventDescription = [set objectForColumnName:@"description"];
-            event.studyDay = [set objectForColumnName:@"study_day"];
+            event.dayOfWeekName = [set objectForColumnName:@"study_day"];
             event.weekInterval = [set objectForColumnName:@"week_interval"];
             [event setStartSectionWithSectionNumbser:[[set objectForColumnName:@"start_section"] integerValue]];
             [event setEndSectionWithSectionNumbser:[[set objectForColumnName:@"end_section"] integerValue]];
