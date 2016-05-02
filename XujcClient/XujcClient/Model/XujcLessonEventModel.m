@@ -16,7 +16,7 @@
     if (self = [super init]) {
         _lessonClassId = [self checkForNull:json[XujcServiceKeyLessonClassId]];
         _eventDescription = [self checkForNull:json[XujcServiceKeyLessonEventDescription]];
-        _dayOfWeekName = [self checkForNull:json[XujcServiceKeyLessonEventStudyDay]];
+        _dayOfWeekName = [self checkForNull:json[XujcServiceKeyLessonEventDayOfWeekName]];
         _weekInterval = [self checkForNull:json[XujcServiceKeyLessonEventWeekInterval]];
         _startSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyLessonEventStartSection]] integerValue]];
         _endSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyLessonEventEndSection]] integerValue]];

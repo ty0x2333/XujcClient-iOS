@@ -59,7 +59,7 @@ static NSString* const XujcServiceKeyScoreStudyWay = @"xkfs";
 #pragma mark - Xujc Lesson Event
 
 static NSString* const XujcServiceKeyLessonEventDescription = @"sksd_mc";
-static NSString* const XujcServiceKeyLessonEventStudyDay = @"sksd_xq";
+static NSString* const XujcServiceKeyLessonEventDayOfWeekName = @"sksd_xq";
 static NSString* const XujcServiceKeyLessonEventWeekInterval = @"sksd_zc";
 static NSString* const XujcServiceKeyLessonEventStartSection = @"sksd_jc_s";
 static NSString* const XujcServiceKeyLessonEventEndSection = @"sksd_jc_e";
