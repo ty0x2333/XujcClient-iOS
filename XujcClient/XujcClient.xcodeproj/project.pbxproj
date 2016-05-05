@@ -1749,8 +1749,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
 				CURRENT_PROJECT_VERSION = 11;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

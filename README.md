@@ -41,10 +41,6 @@ Dependencies
 - [MMPopupView](https://github.com/adad184/MMPopupView)
 - [MJRefresh](https://github.com/CoderMJLee/MJRefresh)
 
-ViewControllers
----
-![ViewControllers](README_RES/ViewController.png)
-
 License
 ---
 `XujcClient` is available under the GPLv3 license. See the LICENSE file for more info.

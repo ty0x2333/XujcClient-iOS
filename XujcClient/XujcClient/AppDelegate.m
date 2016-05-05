@@ -151,7 +151,7 @@ static const CGFloat kWindowCornerRadius = 4.f;
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    [UMessage registerDeviceToken:deviceToken];
+    self.masterViewModel.deviceToken = deviceToken;
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo

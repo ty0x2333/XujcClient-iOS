@@ -12,7 +12,7 @@
 #import "AppUtils.h"
 
 static CGFloat const kVerificationButtonWidth = 100.f;
-static CGFloat const kVerificationButtonHeight = 34.f;
+static CGFloat const kVerificationButtonMarginVertical = 5.f;
 
 @interface VerificationCodeTextField()
 
@@ -33,7 +33,7 @@ static CGFloat const kVerificationButtonHeight = 34.f;
         self.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.placeholder = NSLocalizedString(@"Verification Code", nil);
         
-        _button = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(kVerificationButtonWidth, kVerificationButtonHeight)}];
+        _button = [[UIButton alloc] initWithFrame:(CGRect){CGPointZero, CGSizeMake(kVerificationButtonWidth, 0)}];
         _button.layer.borderWidth = .5f;
         _button.layer.cornerRadius = 4.f;
         _button.layer.borderColor = [UIColor ty_border].CGColor;
@@ -52,6 +52,15 @@ static CGFloat const kVerificationButtonHeight = 34.f;
         [[self.viewModel.executeGetVerificationCode.executionSignals concat] subscribeNext:^(NSNumber *value) {
             @strongify(self);
             [self.button setTitle:[NSString stringWithFormat:@"%zd", [value integerValue]] forState:UIControlStateNormal];
+        }];
+        
+        // auto resize button
+        [[RACObserve(self, frame) merge:RACObserve(self, bounds)] subscribeNext:^(NSValue *value) {
+            @strongify(self);
+            CGRect rect = [value CGRectValue];
+            CGRect frame = self.button.frame;
+            frame.size.height = CGRectGetHeight(rect) - kVerificationButtonMarginVertical;
+            self.button.frame = frame;
         }];
         
         [[self.viewModel.executeGetVerificationCode.executing filter:^BOOL(NSNumber *value) {

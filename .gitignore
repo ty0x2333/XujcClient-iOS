@@ -6,6 +6,10 @@
 build/
 DerivedData
 
+## Doxygen
+debug.txt
+Document/
+
 ## Various settings
 *.pbxuser
 !default.pbxuser

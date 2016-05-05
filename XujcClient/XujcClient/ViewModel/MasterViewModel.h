@@ -11,6 +11,8 @@
 
 @interface MasterViewModel : NSObject
 
+@property (nonatomic, strong) NSData *deviceToken;
+
 - (MainTabBarViewModel *)mainTabBarViewModel;
 
 @end
