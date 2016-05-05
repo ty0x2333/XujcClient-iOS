@@ -116,8 +116,8 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
                 DYNAMIC_DATA.user = user;
                 NSString *apiKey = [responseObject objectForKey:TYServiceKeyAPIKey];
                 DYNAMIC_DATA.apiKey = apiKey;
-                NSString *xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
-                DYNAMIC_DATA.xujcKey = xujcKey;
+                id xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
+                DYNAMIC_DATA.xujcKey = xujcKey == [NSNull null] ? @"" : xujcKey;
                 
                 [subscriber sendNext:responseObject];
                 [subscriber sendCompleted];
@@ -149,8 +149,8 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
             } else {
                 UserModel *user = [[UserModel alloc] initWithJSONResopnse:responseObject];
                 DYNAMIC_DATA.user = user;
-                NSString *xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
-                DYNAMIC_DATA.xujcKey = xujcKey;
+                id xujcKey = [responseObject objectForKey:TYServiceKeyXujcKey];
+                DYNAMIC_DATA.xujcKey = xujcKey == [NSNull null] ? @"" : xujcKey;
                 
                 [subscriber sendNext:user];
                 [subscriber sendCompleted];
