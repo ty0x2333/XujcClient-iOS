@@ -81,6 +81,10 @@
 		701584551CC6A8FF003567F7 /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015844D1CC6A8FF003567F7 /* ScheduleColumnHeader.m */; };
 		701584561CC6A8FF003567F7 /* ScheduleRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015844F1CC6A8FF003567F7 /* ScheduleRowHeader.m */; };
 		701584591CC6AA6B003567F7 /* ScheduleTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584581CC6AA6B003567F7 /* ScheduleTheme.m */; };
+		7019A24D1CDD21CE00858FA5 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7019A24C1CDD21CE00858FA5 /* NotificationCenter.framework */; };
+		7019A2511CDD21CF00858FA5 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7019A2501CDD21CF00858FA5 /* TodayViewController.m */; };
+		7019A2541CDD21CF00858FA5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7019A2521CDD21CF00858FA5 /* MainInterface.storyboard */; };
+		7019A2581CDD21CF00858FA5 /* XujcClientTodayExtenstion.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtenstion.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7023F9AE1BE6550A0046CF3B /* XujcSemesterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */; };
 		7023F9B41BE678E60046CF3B /* XujcLessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9B31BE678E60046CF3B /* XujcLessonModel.m */; };
 		7023F9BB1BE681300046CF3B /* XujcLessonEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F9BA1BE681300046CF3B /* XujcLessonEventModel.m */; };
@@ -188,7 +192,28 @@
 			remoteGlobalIDString = 70F7CE151BE3AC25001D027C;
 			remoteInfo = XujcClient;
 		};
+		7019A2561CDD21CF00858FA5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 70F7CE0E1BE3AC25001D027C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7019A24A1CDD21CE00858FA5;
+			remoteInfo = XujcClientTodayExtenstion;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7019A25C1CDD21CF00858FA5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7019A2581CDD21CF00858FA5 /* XujcClientTodayExtenstion.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		19370EDA1CA8840500B96042 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -328,6 +353,14 @@
 		7015844F1CC6A8FF003567F7 /* ScheduleRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRowHeader.m; sourceTree = "<group>"; };
 		701584571CC6AA6B003567F7 /* ScheduleTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTheme.h; sourceTree = "<group>"; };
 		701584581CC6AA6B003567F7 /* ScheduleTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTheme.m; sourceTree = "<group>"; };
+		7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtenstion.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XujcClientTodayExtenstion.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7019A24C1CDD21CE00858FA5 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		7019A24F1CDD21CF00858FA5 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		7019A2501CDD21CF00858FA5 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		7019A2531CDD21CF00858FA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7019A2551CDD21CF00858FA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7019A25D1CDD229800858FA5 /* XujcClientTodayExtenstion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XujcClientTodayExtenstion.entitlements; sourceTree = "<group>"; };
+		7019A25E1CDD22FE00858FA5 /* XujcClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XujcClient.entitlements; sourceTree = "<group>"; };
 		7023F9AC1BE6550A0046CF3B /* XujcSemesterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcSemesterModel.h; sourceTree = "<group>"; };
 		7023F9AD1BE6550A0046CF3B /* XujcSemesterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XujcSemesterModel.m; sourceTree = "<group>"; };
 		7023F9B21BE678E60046CF3B /* XujcLessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XujcLessonModel.h; sourceTree = "<group>"; };
@@ -517,6 +550,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FD55C1711385BB6C4C5F085 /* libPods-XujcClientTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7019A2481CDD21CE00858FA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7019A24D1CDD21CE00858FA5 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +768,7 @@
 				19370EDA1CA8840500B96042 /* ImageIO.framework */,
 				F22B4B799576540B0102BE0C /* libPods.a */,
 				8EBE7B96CF2BA8072608936A /* libPods-XujcClientTests.a */,
+				7019A24C1CDD21CE00858FA5 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -810,6 +852,18 @@
 				7015844F1CC6A8FF003567F7 /* ScheduleRowHeader.m */,
 			);
 			path = "Collection View Reusable Views";
+			sourceTree = "<group>";
+		};
+		7019A24E1CDD21CF00858FA5 /* XujcClientTodayExtenstion */ = {
+			isa = PBXGroup;
+			children = (
+				7019A25D1CDD229800858FA5 /* XujcClientTodayExtenstion.entitlements */,
+				7019A24F1CDD21CF00858FA5 /* TodayViewController.h */,
+				7019A2501CDD21CF00858FA5 /* TodayViewController.m */,
+				7019A2521CDD21CF00858FA5 /* MainInterface.storyboard */,
+				7019A2551CDD21CF00858FA5 /* Info.plist */,
+			);
+			path = XujcClientTodayExtenstion;
 			sourceTree = "<group>";
 		};
 		7023F9BF1BE72E5E0046CF3B /* Category */ = {
@@ -1096,6 +1150,7 @@
 			children = (
 				70F7CE181BE3AC25001D027C /* XujcClient */,
 				701583D21CBEA25A003567F7 /* XujcClientTests */,
+				7019A24E1CDD21CF00858FA5 /* XujcClientTodayExtenstion */,
 				70F7CE171BE3AC25001D027C /* Products */,
 				34B4EF0F9104D9147B0C3989 /* Pods */,
 				5A4C8CA49D7012FCB8256C25 /* Frameworks */,
@@ -1107,6 +1162,7 @@
 			children = (
 				70F7CE161BE3AC25001D027C /* XujcClient.app */,
 				701583D11CBEA25A003567F7 /* XujcClientTests.xctest */,
+				7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtenstion.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1114,6 +1170,7 @@
 		70F7CE181BE3AC25001D027C /* XujcClient */ = {
 			isa = PBXGroup;
 			children = (
+				7019A25E1CDD22FE00858FA5 /* XujcClient.entitlements */,
 				7023F9BF1BE72E5E0046CF3B /* Category */,
 				70F7CE3A1BE3E7E7001D027C /* Model */,
 				7062B68B1C8B0F350074C716 /* ViewModel */,
@@ -1253,6 +1310,23 @@
 			productReference = 701583D11CBEA25A003567F7 /* XujcClientTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7019A24A1CDD21CE00858FA5 /* XujcClientTodayExtenstion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7019A25B1CDD21CF00858FA5 /* Build configuration list for PBXNativeTarget "XujcClientTodayExtenstion" */;
+			buildPhases = (
+				7019A2471CDD21CE00858FA5 /* Sources */,
+				7019A2481CDD21CE00858FA5 /* Frameworks */,
+				7019A2491CDD21CE00858FA5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XujcClientTodayExtenstion;
+			productName = XujcClientTodayExtenstion;
+			productReference = 7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtenstion.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		70F7CE151BE3AC25001D027C /* XujcClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70F7CE2D1BE3AC25001D027C /* Build configuration list for PBXNativeTarget "XujcClient" */;
@@ -1263,10 +1337,12 @@
 				70F7CE141BE3AC25001D027C /* Resources */,
 				AD59B45E58504EB86000E3BC /* Copy Pods Resources */,
 				C9F090DD24B53E8F8F48E747 /* Embed Pods Frameworks */,
+				7019A25C1CDD21CF00858FA5 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7019A2571CDD21CF00858FA5 /* PBXTargetDependency */,
 			);
 			name = XujcClient;
 			productName = XujcClient;
@@ -1286,10 +1362,22 @@
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 70F7CE151BE3AC25001D027C;
 					};
+					7019A24A1CDD21CE00858FA5 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9KYD7S7AZY;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					70F7CE151BE3AC25001D027C = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 9KYD7S7AZY;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -1313,6 +1401,7 @@
 			targets = (
 				70F7CE151BE3AC25001D027C /* XujcClient */,
 				701583D01CBEA25A003567F7 /* XujcClientTests */,
+				7019A24A1CDD21CE00858FA5 /* XujcClientTodayExtenstion */,
 			);
 		};
 /* End PBXProject section */
@@ -1322,6 +1411,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7019A2491CDD21CE00858FA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7019A2541CDD21CF00858FA5 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1485,6 +1582,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7019A2471CDD21CE00858FA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7019A2511CDD21CF00858FA5 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70F7CE121BE3AC25001D027C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1602,6 +1707,11 @@
 			target = 70F7CE151BE3AC25001D027C /* XujcClient */;
 			targetProxy = 701583D61CBEA25A003567F7 /* PBXContainerItemProxy */;
 		};
+		7019A2571CDD21CF00858FA5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7019A24A1CDD21CE00858FA5 /* XujcClientTodayExtenstion */;
+			targetProxy = 7019A2561CDD21CF00858FA5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1612,6 +1722,14 @@
 				19FAB35D1CB4F52600179484 /* zh-Hans */,
 			);
 			name = UMSocialLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		7019A2521CDD21CF00858FA5 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7019A2531CDD21CF00858FA5 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		70730DE81C9E11A8007CBEBB /* Localizable.strings */ = {
@@ -1660,6 +1778,38 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.XujcClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XujcClient.app/XujcClient";
+			};
+			name = Release;
+		};
+		7019A2591CDD21CF00858FA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = XujcClientTodayExtenstion/XujcClientTodayExtenstion.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = XujcClientTodayExtenstion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.XujcClientTodayExtenstion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7019A25A1CDD21CF00858FA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = XujcClientTodayExtenstion/XujcClientTodayExtenstion.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = XujcClientTodayExtenstion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.XujcClientTodayExtenstion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -1749,8 +1899,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
+				CODE_SIGN_ENTITLEMENTS = XujcClient/XujcClient.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1793,8 +1944,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
+				CODE_SIGN_ENTITLEMENTS = XujcClient/XujcClient.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1842,6 +1994,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7019A25B1CDD21CF00858FA5 /* Build configuration list for PBXNativeTarget "XujcClientTodayExtenstion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7019A2591CDD21CF00858FA5 /* Debug */,
+				7019A25A1CDD21CF00858FA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		70F7CE111BE3AC25001D027C /* Build configuration list for PBXProject "XujcClient" */ = {
 			isa = XCConfigurationList;
