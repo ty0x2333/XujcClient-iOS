@@ -10,6 +10,8 @@
 
 #define DOCUMENT_DIRECTORY [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
 
+static NSString * const kAppGroupName = @"group.com.tianyiyan.xujcclient";
+
 static NSString * const kDBName = @"DataCache";
 
 @implementation FMDatabaseQueue (Utils)
@@ -19,7 +21,9 @@ static NSString * const kDBName = @"DataCache";
     static FMDatabaseQueue *databaseQueue = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        databaseQueue = [FMDatabaseQueue databaseQueueWithPath:[NSString stringWithFormat:@"%@/%@.db", DOCUMENT_DIRECTORY, kDBName]];
+        NSURL *groupURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.tianyiyan.xujcclient"];
+        NSURL *path = [groupURL URLByAppendingPathComponent:kDBName];
+        databaseQueue = [FMDatabaseQueue databaseQueueWithPath:[path absoluteString]];
     });
     return databaseQueue;
 }
