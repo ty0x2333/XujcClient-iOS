@@ -46,7 +46,10 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
     _contentView = [[UIView alloc] init];
     [self.view addSubview:_contentView];
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(kContentMarginVertical, kContentMarginHorizontal, kContentMarginVertical, kContentMarginHorizontal));
+        make.left.equalTo(self.view).with.offset(kContentMarginHorizontal);
+        make.right.equalTo(self.view).with.offset(-kContentMarginHorizontal);
+        make.top.equalTo(self.view).with.offset(kContentMarginVertical).priorityMedium();
+        make.bottom.equalTo(self.view).with.offset(-kContentMarginVertical).priorityMedium();
     }];
     
     _semesterLabel = [[UILabel alloc] init];
@@ -70,6 +73,7 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
     }];
     
     _lessonNameLabel = [[UILabel alloc] init];
+    _lessonNameLabel.numberOfLines = 0;
     _lessonNameLabel.textColor = [UIColor whiteColor];
     [_contentView addSubview:_lessonNameLabel];
     
@@ -79,6 +83,7 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
     }];
     
     _lessonLocationLabel = [[UILabel alloc] init];
+    _lessonLocationLabel.numberOfLines = 0;
     _lessonLocationLabel.textColor = [UIColor whiteColor];
     [_contentView addSubview:_lessonLocationLabel];
     
@@ -89,8 +94,8 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
     
 //    self.preferredContentSize = CGSizeMake(0, 200);
     
-//#warning test
-//    _contentView.backgroundColor = [UIColor redColor];
+#warning test
+    _contentView.backgroundColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,6 +130,11 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
         }
     }
     
+//#warning test
+//    nextEvent = [[XujcLessonEventModel alloc] init];
+//    nextEvent.name = @"课程名字课程名字课程名字课程名字课程名字课程名字";
+//    nextEvent.location = @"课程地点课程地点课程地点课程地点课程地点课程地点";
+    
     
     if (nextEvent == nil) {
         _nextLessonTitleLabel.text = @"今天没有后续课程";
@@ -133,10 +143,6 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
     
     _lessonNameLabel.text = nextEvent.name;
     _lessonLocationLabel.text = nextEvent.location;
-    
-//#warning test
-//    _lessonNameLabel.text = @"课程名称超级无敌长";
-//    _lessonLocationLabel.text = @"课程地点超级无敌长";
     
     // Perform any setup necessary in order to update the view.
     
