@@ -14,6 +14,7 @@
 #import "CacheUtils.h"
 #import "NSDate+Week.h"
 
+#import "LessonTimeCalculator.h"
 
 @interface ScheduleViewModel()
 

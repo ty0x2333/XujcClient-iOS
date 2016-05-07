@@ -22,6 +22,10 @@ target :XujcClientTests, :exclusive => true do
   pod 'Kiwi'
 end
 
+target :XujcClientTodayExtenstion, :exclusive => true do
+  pod 'Masonry'
+end
+
 target :XujcClientCore, :exclusive => true do
   pod 'CupertinoYankee'
   pod 'ReactiveCocoa'
