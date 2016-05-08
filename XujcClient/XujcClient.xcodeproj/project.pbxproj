@@ -2253,6 +2253,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 599AF315494DFE72DE4D5103 /* Pods-XujcEducationKit.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -2277,6 +2278,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F89BB7D3012A1B56866B307F /* Pods-XujcEducationKit.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -2301,7 +2303,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1F2068770D023B4B85B7DB19 /* Pods-XujcClientCore.debug.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -2326,7 +2328,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5179AAE720816C5F4B25763E /* Pods-XujcClientCore.release.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
