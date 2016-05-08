@@ -7,6 +7,7 @@
 //
 
 #import "XujcScoreModel.h"
+#import "XujcServiceKeys.h"
 
 @implementation XujcScoreModel
 

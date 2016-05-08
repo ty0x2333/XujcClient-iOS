@@ -7,6 +7,7 @@
 //
 
 #import "XujcExamModel.h"
+#import "XujcServiceKeys.h"
 
 @implementation XujcExamModel
 

@@ -7,6 +7,7 @@
  */
 
 #import "XujcUserModel.h"
+#import "XujcServiceKeys.h"
 
 static NSString* const kDataStudentId = @"StudentId";
 static NSString* const kDataName = @"Name";

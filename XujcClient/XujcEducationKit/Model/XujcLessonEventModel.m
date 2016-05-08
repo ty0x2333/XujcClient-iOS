@@ -7,6 +7,7 @@
  */
 
 #import "XujcLessonEventModel.h"
+#import "XujcServiceKeys.h"
 #import "NSDate+Week.h"
 
 @implementation XujcLessonEventModel
@@ -16,7 +17,7 @@
     if (self = [super init]) {
         _lessonClassId = [self checkForNull:json[XujcServiceKeyLessonClassId]];
         _eventDescription = [self checkForNull:json[XujcServiceKeyLessonEventDescription]];
-        _studyDay = [self checkForNull:json[XujcServiceKeyLessonEventStudyDay]];
+        _dayOfWeekName = [self checkForNull:json[XujcServiceKeyLessonEventDayOfWeekName]];
         _weekInterval = [self checkForNull:json[XujcServiceKeyLessonEventWeekInterval]];
         _startSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyLessonEventStartSection]] integerValue]];
         _endSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyLessonEventEndSection]] integerValue]];
@@ -35,6 +36,11 @@
 - (void)setEndSectionWithSectionNumbser:(NSInteger)sectionNumbser
 {
     self.endSection = [XujcSection section:sectionNumbser];
+}
+
+- (NSInteger)chineseDayOfWeek
+{
+    return [NSDate chineseDayOfWeekFromString:self.dayOfWeekName];
 }
 
 - (NSDate *)startTime:(NSDate *)date

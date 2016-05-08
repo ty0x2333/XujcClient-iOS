@@ -7,7 +7,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "XujcService.h"
 
 @interface BaseModel : NSObject
 

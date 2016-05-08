@@ -7,7 +7,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <NSDate+CupertinoYankee.h>
 
 static NSInteger const kDayCountOfWeek = 7;
 static NSInteger const kTimeIntervalOfDay = 60 * 60 * 24;
@@ -23,6 +22,8 @@ static NSInteger const kTimeIntervalOfMinute = 60;
  */
 - (NSDate *)dayOfCurrentWeek:(NSInteger)offset;
 
-+ (NSInteger)dayNumberOfWeekFromString:(NSString *)str;
++ (NSInteger)chineseDayOfWeekFromString:(NSString *)str;
+
++ (NSInteger)currentChineseDayOfWeek;
 
 @end

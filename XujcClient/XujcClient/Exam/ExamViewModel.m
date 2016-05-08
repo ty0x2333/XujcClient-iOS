@@ -10,6 +10,7 @@
 #import "DynamicData.h"
 #import "XujcExamModel.h"
 #import "ExamTableViewCellViewModel.h"
+#import "XujcService.h"
 
 @interface ExamViewModel()
 

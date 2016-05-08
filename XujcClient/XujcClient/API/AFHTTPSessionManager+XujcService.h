@@ -7,6 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+#import <ReactiveCocoa.h>
 
 @interface AFHTTPSessionManager (XujcService)
 
