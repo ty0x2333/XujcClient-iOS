@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TodayEventTableViewCellViewModel;
 
 @interface TodayEventTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) TodayEventTableViewCellViewModel *viewModel;
 
 @end

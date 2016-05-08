@@ -7,7 +7,9 @@
 //
 
 #import "TodayEventTableViewCell.h"
+#import "TodayEventTableViewCellViewModel.h"
 #import <Masonry/Masonry.h>
+#import <ReactiveCocoa.h>
 
 static CGFloat const kContentInterval = 4.f;
 
@@ -77,6 +79,14 @@ static CGFloat const kIconSize = 12.f;
         }];
     }
     return self;
+}
+
+- (void)setViewModel:(TodayEventTableViewCellViewModel *)viewModel
+{
+    _viewModel = viewModel;
+    RAC(self.lessonNameLabel, text) = [RACObserve(_viewModel, lessonName) takeUntil:self.rac_prepareForReuseSignal];
+    RAC(self.lessonLocationLabel, text) = [RACObserve(_viewModel, lessonLocation) takeUntil:self.rac_prepareForReuseSignal];
+    RAC(self.sectionLabel, text) = [RACObserve(_viewModel, sectionDescription) takeUntil:self.rac_prepareForReuseSignal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

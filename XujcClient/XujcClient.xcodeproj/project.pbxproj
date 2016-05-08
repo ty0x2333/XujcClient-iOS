@@ -190,6 +190,7 @@
 		70A8BD701CDF314300D506EC /* TodayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD6F1CDF314300D506EC /* TodayViewModel.m */; };
 		70A8BD731CDF31B800D506EC /* TodayEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD721CDF31B800D506EC /* TodayEventViewModel.m */; };
 		70A8BD761CDF387300D506EC /* TodayEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD751CDF387300D506EC /* TodayEventTableViewCell.m */; };
+		70A8BD791CDF392C00D506EC /* TodayEventTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD781CDF392C00D506EC /* TodayEventTableViewCellViewModel.m */; };
 		70AF300F1CD7140100BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF30101CD7141500BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF301E1CD718C700BA93AD /* NSDate+Week.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AF301C1CD718C700BA93AD /* NSDate+Week.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -592,6 +593,8 @@
 		70A8BD721CDF31B800D506EC /* TodayEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventViewModel.m; sourceTree = "<group>"; };
 		70A8BD741CDF387300D506EC /* TodayEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayEventTableViewCell.h; sourceTree = "<group>"; };
 		70A8BD751CDF387300D506EC /* TodayEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventTableViewCell.m; sourceTree = "<group>"; };
+		70A8BD771CDF392C00D506EC /* TodayEventTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayEventTableViewCellViewModel.h; sourceTree = "<group>"; };
+		70A8BD781CDF392C00D506EC /* TodayEventTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventTableViewCellViewModel.m; sourceTree = "<group>"; };
 		70AF301C1CD718C700BA93AD /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		70AF301D1CD718C700BA93AD /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
 		70AF30201CD71DF300BA93AD /* FMDatabaseQueue+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+Utils.h"; sourceTree = "<group>"; };
@@ -979,6 +982,8 @@
 				70A8BD721CDF31B800D506EC /* TodayEventViewModel.m */,
 				70A8BD661CDF103400D506EC /* TodayEventView.h */,
 				70A8BD671CDF103400D506EC /* TodayEventView.m */,
+				70A8BD771CDF392C00D506EC /* TodayEventTableViewCellViewModel.h */,
+				70A8BD781CDF392C00D506EC /* TodayEventTableViewCellViewModel.m */,
 				70A8BD741CDF387300D506EC /* TodayEventTableViewCell.h */,
 				70A8BD751CDF387300D506EC /* TodayEventTableViewCell.m */,
 				7019A2551CDD21CF00858FA5 /* Info.plist */,
@@ -1999,6 +2004,7 @@
 				70A8BD761CDF387300D506EC /* TodayEventTableViewCell.m in Sources */,
 				70A8BD701CDF314300D506EC /* TodayViewModel.m in Sources */,
 				7019A2511CDD21CF00858FA5 /* TodayViewController.m in Sources */,
+				70A8BD791CDF392C00D506EC /* TodayEventTableViewCellViewModel.m in Sources */,
 				70A8BD681CDF103400D506EC /* TodayEventView.m in Sources */,
 				70A8BD731CDF31B800D506EC /* TodayEventViewModel.m in Sources */,
 			);
