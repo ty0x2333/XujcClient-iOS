@@ -25,7 +25,7 @@
 + (NSInteger)currentChineseDayOfWeek
 {
     NSCalendar *calender = [NSCalendar currentCalendar];
-    NSInteger dayOfWeek = [calender component:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+    NSInteger dayOfWeek = [calender component:NSCalendarUnitWeekday fromDate:[NSDate date]];
     return dayOfWeek > 1 ? dayOfWeek - 1 : kDayCountOfWeek;
 }
 
