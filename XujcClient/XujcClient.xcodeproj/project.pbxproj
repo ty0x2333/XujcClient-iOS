@@ -48,7 +48,7 @@
 		19FAB3771CB4F52600179484 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FAB3601CB4F52600179484 /* libWeChatSDK.a */; };
 		386F1613EF6338FD4F686502 /* libPods-XujcClientCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D659B08FE4425D903D4C3F /* libPods-XujcClientCore.a */; };
 		44A3FE127352C5FAD169C643 /* libPods-XujcClientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A314AE7490DF17BC976ECC15 /* libPods-XujcClientTests.a */; };
-		68F221B4BC69E15BE92B440F /* libPods-XujcClientTodayExtenstion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 532E830E838DCEA1AF97208F /* libPods-XujcClientTodayExtenstion.a */; };
+		68F221B4BC69E15BE92B440F /* libPods-XujcClientTodayExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 532E830E838DCEA1AF97208F /* libPods-XujcClientTodayExtension.a */; };
 		700CE1481CC6B8A800B7EBA1 /* LessonEventPopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 700CE1471CC6B8A800B7EBA1 /* LessonEventPopViewModel.m */; };
 		701583E21CBEB1DD003567F7 /* ValidatorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 701583E11CBEB1DD003567F7 /* ValidatorSpec.m */; };
 		701583E51CC4E595003567F7 /* ChangePasswordViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 701583E41CC4E595003567F7 /* ChangePasswordViewModel.m */; };
@@ -84,7 +84,7 @@
 		701584591CC6AA6B003567F7 /* ScheduleTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584581CC6AA6B003567F7 /* ScheduleTheme.m */; };
 		7019A24D1CDD21CE00858FA5 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7019A24C1CDD21CE00858FA5 /* NotificationCenter.framework */; };
 		7019A2511CDD21CF00858FA5 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7019A2501CDD21CF00858FA5 /* TodayViewController.m */; };
-		7019A2581CDD21CF00858FA5 /* XujcClientTodayExtenstion.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtenstion.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7019A2581CDD21CF00858FA5 /* XujcClientTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		70246E241CCCBE8400960190 /* NSError+TYService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E231CCCBE8400960190 /* NSError+TYService.m */; };
 		70246E2A1CCD06FC00960190 /* XujcInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E291CCD06FC00960190 /* XujcInformationView.m */; };
 		70246E2D1CCD078B00960190 /* XujcInformationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70246E2C1CCD078B00960190 /* XujcInformationViewModel.m */; };
@@ -231,7 +231,7 @@
 			containerPortal = 70F7CE0E1BE3AC25001D027C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7019A24A1CDD21CE00858FA5;
-			remoteInfo = XujcClientTodayExtenstion;
+			remoteInfo = XujcClientTodayExtension;
 		};
 		703024AA1CD700D700974438 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -256,7 +256,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				7019A2581CDD21CF00858FA5 /* XujcClientTodayExtenstion.appex in Embed App Extensions */,
+				7019A2581CDD21CF00858FA5 /* XujcClientTodayExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,8 +276,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		14D98AD1C998665C4FBBE10A /* Pods-XujcClientTodayExtenstion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientTodayExtenstion.release.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientTodayExtenstion/Pods-XujcClientTodayExtenstion.release.xcconfig"; sourceTree = "<group>"; };
-		1885F5C25CD0DE9980ED283E /* Pods-XujcClientTodayExtenstion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientTodayExtenstion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientTodayExtenstion/Pods-XujcClientTodayExtenstion.debug.xcconfig"; sourceTree = "<group>"; };
+		14D98AD1C998665C4FBBE10A /* Pods-XujcClientTodayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientTodayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientTodayExtension/Pods-XujcClientTodayExtension.release.xcconfig"; sourceTree = "<group>"; };
+		1885F5C25CD0DE9980ED283E /* Pods-XujcClientTodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientTodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientTodayExtension/Pods-XujcClientTodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		19370EDA1CA8840500B96042 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		19370EDC1CA88CAD00B96042 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		19370EDE1CA88CB700B96042 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
@@ -359,7 +359,7 @@
 		45E47240F87E78BB223C01D7 /* libPods-XujcEducationKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XujcEducationKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F373E5963C19446E3F233B /* Pods-XujcClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientTests/Pods-XujcClientTests.release.xcconfig"; sourceTree = "<group>"; };
 		5179AAE720816C5F4B25763E /* Pods-XujcClientCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcClientCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-XujcClientCore/Pods-XujcClientCore.release.xcconfig"; sourceTree = "<group>"; };
-		532E830E838DCEA1AF97208F /* libPods-XujcClientTodayExtenstion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XujcClientTodayExtenstion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		532E830E838DCEA1AF97208F /* libPods-XujcClientTodayExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XujcClientTodayExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		599AF315494DFE72DE4D5103 /* Pods-XujcEducationKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XujcEducationKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XujcEducationKit/Pods-XujcEducationKit.debug.xcconfig"; sourceTree = "<group>"; };
 		700CE1461CC6B8A800B7EBA1 /* LessonEventPopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonEventPopViewModel.h; sourceTree = "<group>"; };
 		700CE1471CC6B8A800B7EBA1 /* LessonEventPopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonEventPopViewModel.m; sourceTree = "<group>"; };
@@ -418,12 +418,12 @@
 		7015844F1CC6A8FF003567F7 /* ScheduleRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRowHeader.m; sourceTree = "<group>"; };
 		701584571CC6AA6B003567F7 /* ScheduleTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTheme.h; sourceTree = "<group>"; };
 		701584581CC6AA6B003567F7 /* ScheduleTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTheme.m; sourceTree = "<group>"; };
-		7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtenstion.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XujcClientTodayExtenstion.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XujcClientTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7019A24C1CDD21CE00858FA5 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		7019A24F1CDD21CF00858FA5 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		7019A2501CDD21CF00858FA5 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		7019A2551CDD21CF00858FA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7019A25D1CDD229800858FA5 /* XujcClientTodayExtenstion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XujcClientTodayExtenstion.entitlements; sourceTree = "<group>"; };
+		7019A25D1CDD229800858FA5 /* XujcClientTodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XujcClientTodayExtension.entitlements; sourceTree = "<group>"; };
 		7019A25E1CDD22FE00858FA5 /* XujcClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XujcClient.entitlements; sourceTree = "<group>"; };
 		70246E221CCCBE8400960190 /* NSError+TYService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+TYService.h"; sourceTree = "<group>"; };
 		70246E231CCCBE8400960190 /* NSError+TYService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+TYService.m"; sourceTree = "<group>"; };
@@ -644,7 +644,7 @@
 				70AF30101CD7141500BA93AD /* XujcClientCore.framework in Frameworks */,
 				7030250B1CD70EF000974438 /* XujcEducationKit.framework in Frameworks */,
 				7019A24D1CDD21CE00858FA5 /* NotificationCenter.framework in Frameworks */,
-				68F221B4BC69E15BE92B440F /* libPods-XujcClientTodayExtenstion.a in Frameworks */,
+				68F221B4BC69E15BE92B440F /* libPods-XujcClientTodayExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,8 +860,8 @@
 				F89BB7D3012A1B56866B307F /* Pods-XujcEducationKit.release.xcconfig */,
 				1F2068770D023B4B85B7DB19 /* Pods-XujcClientCore.debug.xcconfig */,
 				5179AAE720816C5F4B25763E /* Pods-XujcClientCore.release.xcconfig */,
-				1885F5C25CD0DE9980ED283E /* Pods-XujcClientTodayExtenstion.debug.xcconfig */,
-				14D98AD1C998665C4FBBE10A /* Pods-XujcClientTodayExtenstion.release.xcconfig */,
+				1885F5C25CD0DE9980ED283E /* Pods-XujcClientTodayExtension.debug.xcconfig */,
+				14D98AD1C998665C4FBBE10A /* Pods-XujcClientTodayExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -882,7 +882,7 @@
 				BA1DBACEDE7736ADBBCAB8D8 /* libPods.a */,
 				E4D659B08FE4425D903D4C3F /* libPods-XujcClientCore.a */,
 				A314AE7490DF17BC976ECC15 /* libPods-XujcClientTests.a */,
-				532E830E838DCEA1AF97208F /* libPods-XujcClientTodayExtenstion.a */,
+				532E830E838DCEA1AF97208F /* libPods-XujcClientTodayExtension.a */,
 				45E47240F87E78BB223C01D7 /* libPods-XujcEducationKit.a */,
 			);
 			name = Frameworks;
@@ -969,12 +969,12 @@
 			path = "Collection View Reusable Views";
 			sourceTree = "<group>";
 		};
-		7019A24E1CDD21CF00858FA5 /* XujcClientTodayExtenstion */ = {
+		7019A24E1CDD21CF00858FA5 /* XujcClientTodayExtension */ = {
 			isa = PBXGroup;
 			children = (
 				70A8BD6E1CDF314300D506EC /* TodayViewModel.h */,
 				70A8BD6F1CDF314300D506EC /* TodayViewModel.m */,
-				7019A25D1CDD229800858FA5 /* XujcClientTodayExtenstion.entitlements */,
+				7019A25D1CDD229800858FA5 /* XujcClientTodayExtension.entitlements */,
 				7019A24F1CDD21CF00858FA5 /* TodayViewController.h */,
 				7019A2501CDD21CF00858FA5 /* TodayViewController.m */,
 				70A8BD771CDF392C00D506EC /* TodayEventTableViewCellViewModel.h */,
@@ -984,7 +984,7 @@
 				7019A2551CDD21CF00858FA5 /* Info.plist */,
 				70A8BD691CDF1EC700D506EC /* Resource */,
 			);
-			path = XujcClientTodayExtenstion;
+			path = XujcClientTodayExtension;
 			sourceTree = "<group>";
 		};
 		7023F9BF1BE72E5E0046CF3B /* Category */ = {
@@ -1369,7 +1369,7 @@
 			children = (
 				70F7CE181BE3AC25001D027C /* XujcClient */,
 				701583D21CBEA25A003567F7 /* XujcClientTests */,
-				7019A24E1CDD21CF00858FA5 /* XujcClientTodayExtenstion */,
+				7019A24E1CDD21CF00858FA5 /* XujcClientTodayExtension */,
 				703024A61CD700D600974438 /* XujcEducationKit */,
 				703024E61CD7048400974438 /* XujcClientCore */,
 				70F7CE171BE3AC25001D027C /* Products */,
@@ -1383,7 +1383,7 @@
 			children = (
 				70F7CE161BE3AC25001D027C /* XujcClient.app */,
 				701583D11CBEA25A003567F7 /* XujcClientTests.xctest */,
-				7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtenstion.appex */,
+				7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtension.appex */,
 				703024A51CD700D600974438 /* XujcEducationKit.framework */,
 				703024E51CD7048400974438 /* XujcClientCore.framework */,
 			);
@@ -1548,9 +1548,9 @@
 			productReference = 701583D11CBEA25A003567F7 /* XujcClientTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7019A24A1CDD21CE00858FA5 /* XujcClientTodayExtenstion */ = {
+		7019A24A1CDD21CE00858FA5 /* XujcClientTodayExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7019A25B1CDD21CF00858FA5 /* Build configuration list for PBXNativeTarget "XujcClientTodayExtenstion" */;
+			buildConfigurationList = 7019A25B1CDD21CF00858FA5 /* Build configuration list for PBXNativeTarget "XujcClientTodayExtension" */;
 			buildPhases = (
 				73CB33BE0ADBF02DC768CFFA /* Check Pods Manifest.lock */,
 				7019A2471CDD21CE00858FA5 /* Sources */,
@@ -1564,9 +1564,9 @@
 			);
 			dependencies = (
 			);
-			name = XujcClientTodayExtenstion;
-			productName = XujcClientTodayExtenstion;
-			productReference = 7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtenstion.appex */;
+			name = XujcClientTodayExtension;
+			productName = XujcClientTodayExtension;
+			productReference = 7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		703024A41CD700D600974438 /* XujcEducationKit */ = {
@@ -1694,7 +1694,7 @@
 			targets = (
 				70F7CE151BE3AC25001D027C /* XujcClient */,
 				701583D01CBEA25A003567F7 /* XujcClientTests */,
-				7019A24A1CDD21CE00858FA5 /* XujcClientTodayExtenstion */,
+				7019A24A1CDD21CE00858FA5 /* XujcClientTodayExtension */,
 				703024A41CD700D600974438 /* XujcEducationKit */,
 				703024E41CD7048400974438 /* XujcClientCore */,
 			);
@@ -1848,7 +1848,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XujcClientTodayExtenstion/Pods-XujcClientTodayExtenstion-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XujcClientTodayExtension/Pods-XujcClientTodayExtension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		50A3B488EB9382DA5850DE47 /* Embed Pods Frameworks */ = {
@@ -1937,7 +1937,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XujcClientTodayExtenstion/Pods-XujcClientTodayExtenstion-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XujcClientTodayExtension/Pods-XujcClientTodayExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A37004DB10D0B38C3EFA755A /* Check Pods Manifest.lock */ = {
@@ -2156,7 +2156,7 @@
 		};
 		7019A2571CDD21CF00858FA5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7019A24A1CDD21CE00858FA5 /* XujcClientTodayExtenstion */;
+			target = 7019A24A1CDD21CE00858FA5 /* XujcClientTodayExtension */;
 			targetProxy = 7019A2561CDD21CF00858FA5 /* PBXContainerItemProxy */;
 		};
 		703024AB1CD700D700974438 /* PBXTargetDependency */ = {
@@ -2232,15 +2232,15 @@
 		};
 		7019A2591CDD21CF00858FA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1885F5C25CD0DE9980ED283E /* Pods-XujcClientTodayExtenstion.debug.xcconfig */;
+			baseConfigurationReference = 1885F5C25CD0DE9980ED283E /* Pods-XujcClientTodayExtension.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = XujcClientTodayExtenstion/XujcClientTodayExtenstion.entitlements;
+				CODE_SIGN_ENTITLEMENTS = XujcClientTodayExtension/XujcClientTodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
-				INFOPLIST_FILE = XujcClientTodayExtenstion/Info.plist;
+				INFOPLIST_FILE = XujcClientTodayExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.XujcClientTodayExtenstion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.todayextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -2249,15 +2249,15 @@
 		};
 		7019A25A1CDD21CF00858FA5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14D98AD1C998665C4FBBE10A /* Pods-XujcClientTodayExtenstion.release.xcconfig */;
+			baseConfigurationReference = 14D98AD1C998665C4FBBE10A /* Pods-XujcClientTodayExtension.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = XujcClientTodayExtenstion/XujcClientTodayExtenstion.entitlements;
+				CODE_SIGN_ENTITLEMENTS = XujcClientTodayExtension/XujcClientTodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
-				INFOPLIST_FILE = XujcClientTodayExtenstion/Info.plist;
+				INFOPLIST_FILE = XujcClientTodayExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.XujcClientTodayExtenstion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.todayextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -2271,10 +2271,10 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = XujcEducationKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -2296,10 +2296,10 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = XujcEducationKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -2321,10 +2321,10 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = XujcClientCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -2346,10 +2346,10 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = XujcClientCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -2453,7 +2453,7 @@
 				CODE_SIGN_ENTITLEMENTS = XujcClient/XujcClient.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yiyan Tian (2FX3L73H6X)";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2498,7 +2498,7 @@
 				CODE_SIGN_ENTITLEMENTS = XujcClient/XujcClient.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yiyan Tian (9KYD7S7AZY)";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2546,7 +2546,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7019A25B1CDD21CF00858FA5 /* Build configuration list for PBXNativeTarget "XujcClientTodayExtenstion" */ = {
+		7019A25B1CDD21CF00858FA5 /* Build configuration list for PBXNativeTarget "XujcClientTodayExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7019A2591CDD21CF00858FA5 /* Debug */,

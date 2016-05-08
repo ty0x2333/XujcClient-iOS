@@ -1,7 +1,7 @@
 #!/bin/sh
 current_dir=$(dirname $0)
-target_dir=$current_dir/../XujcClient/XujcClientTodayExtenstion/Resource
-for item in `find $current_dir/../ImageSource/TodayExtenstion -name "icon_*.png" -maxdepth 1`;
+target_dir=$current_dir/../XujcClient/XujcClientTodayExtension/Resource
+for item in `find $current_dir/../ImageSource/TodayExtension -name "icon_*.png" -maxdepth 1`;
 do
   item_without_type=${item%.*}
   icon_2x=${item_without_type}"@2x.png"
