@@ -13,6 +13,7 @@
 #import <Masonry/Masonry.h>
 #import "NSDate+Week.h"
 #import "LessonTimeCalculator.h"
+#import "TodayEventView.h"
 
 static CGFloat const kContentInterval = 8.f;
 
@@ -31,9 +32,7 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
 
 @property (nonatomic, strong) UILabel *nextLessonTitleLabel;
 
-@property (nonatomic, strong) UILabel *lessonNameLabel;
-
-@property (nonatomic, strong) UILabel *lessonLocationLabel;
+@property (nonatomic, strong) TodayEventView *eventView;
 
 @end
 
@@ -53,6 +52,7 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
     }];
     
     _semesterLabel = [[UILabel alloc] init];
+    _semesterLabel.textAlignment = NSTextAlignmentCenter;
     _semesterLabel.textColor = [UIColor whiteColor];
     _semesterLabel.font = [UIFont systemFontOfSize:kSemesterLabelFont];
     [_contentView addSubview:_semesterLabel];
@@ -72,30 +72,16 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
         make.top.equalTo(self.semesterLabel.mas_bottom).with.offset(kContentInterval);
     }];
     
-    _lessonNameLabel = [[UILabel alloc] init];
-    _lessonNameLabel.numberOfLines = 0;
-    _lessonNameLabel.textColor = [UIColor whiteColor];
-    [_contentView addSubview:_lessonNameLabel];
+    _eventView = [[TodayEventView alloc] init];
+    [_contentView addSubview:_eventView];
     
-    [_lessonNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_eventView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.contentView);
         make.top.equalTo(self.nextLessonTitleLabel.mas_bottom).with.offset(kContentInterval);
-    }];
-    
-    _lessonLocationLabel = [[UILabel alloc] init];
-    _lessonLocationLabel.numberOfLines = 0;
-    _lessonLocationLabel.textColor = [UIColor whiteColor];
-    [_contentView addSubview:_lessonLocationLabel];
-    
-    [_lessonLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.contentView);
-        make.top.equalTo(self.lessonNameLabel.mas_bottom).with.offset(kContentInterval);
+        make.bottom.equalTo(self.contentView);
     }];
     
 //    self.preferredContentSize = CGSizeMake(0, 200);
-    
-#warning test
-    _contentView.backgroundColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,8 +94,6 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
 {
     NSArray<XujcSemesterModel *> *semesters = [[CacheUtils instance] semestersFormCache];
     XujcSemesterModel *currentSemester = [semesters firstObject];
-//    TyLogDebug(@"Current Semester: %@", currentSemester.displayName);
-    self.semesterLabel.text = currentSemester.displayName;
     
     NSArray *events = [[CacheUtils instance] lessonEventFormCacheWithSemester:currentSemester.semesterId];
     NSArray *lessonEvents = [self p_sortLessonEvents:events];
@@ -130,19 +114,25 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
         }
     }
     
-//#warning test
-//    nextEvent = [[XujcLessonEventModel alloc] init];
-//    nextEvent.name = @"课程名字课程名字课程名字课程名字课程名字课程名字";
-//    nextEvent.location = @"课程地点课程地点课程地点课程地点课程地点课程地点";
-    
+#warning test
+    currentSemester = [[XujcSemesterModel alloc] init];
+    currentSemester.displayName = @"2014-2015第二学期";
+    nextEvent = [[XujcLessonEventModel alloc] init];
+    nextEvent.name = @"课程名字课程名字课程名字课程名字课程名字课程名字";
+    nextEvent.location = @"课程地点课程地点课程地点课程地点课程地点课程地点";
+    nextEvent.startSection = [XujcSection sectionIndex:1];
+    nextEvent.endSection = [XujcSection sectionIndex:2];
     
     if (nextEvent == nil) {
         _nextLessonTitleLabel.text = @"今天没有后续课程";
         return;
     }
     
-    _lessonNameLabel.text = nextEvent.name;
-    _lessonLocationLabel.text = nextEvent.location;
+    _semesterLabel.text = currentSemester.displayName;
+    
+    _eventView.lessonName = nextEvent.name;
+    _eventView.lessonLocation = nextEvent.location;
+    _eventView.sectionDescription = [NSString stringWithFormat:@"%@-%@节", [nextEvent.startSection displayName], [nextEvent.endSection displayName]];
     
     // Perform any setup necessary in order to update the view.
     

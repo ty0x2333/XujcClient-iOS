@@ -184,6 +184,9 @@
 		70730E051C9EE556007CBEBB /* TableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70730E041C9EE556007CBEBB /* TableViewCellViewModel.m */; };
 		70A88CFB1C9F230C0067DB77 /* SupportCenterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A88CFA1C9F230C0067DB77 /* SupportCenterViewModel.m */; };
 		70A88CFE1C9F37380067DB77 /* NSUserDefaults+TYSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A88CFD1C9F37380067DB77 /* NSUserDefaults+TYSupport.m */; };
+		70A8BD681CDF103400D506EC /* TodayEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD671CDF103400D506EC /* TodayEventView.m */; };
+		70A8BD6C1CDF1EC700D506EC /* icon_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A8BD6A1CDF1EC700D506EC /* icon_time@2x.png */; };
+		70A8BD6D1CDF1EC700D506EC /* icon_time@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A8BD6B1CDF1EC700D506EC /* icon_time@3x.png */; };
 		70AF300F1CD7140100BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF30101CD7141500BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF301E1CD718C700BA93AD /* NSDate+Week.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AF301C1CD718C700BA93AD /* NSDate+Week.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -576,6 +579,10 @@
 		70A88CFA1C9F230C0067DB77 /* SupportCenterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportCenterViewModel.m; sourceTree = "<group>"; };
 		70A88CFC1C9F37380067DB77 /* NSUserDefaults+TYSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+TYSupport.h"; sourceTree = "<group>"; };
 		70A88CFD1C9F37380067DB77 /* NSUserDefaults+TYSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+TYSupport.m"; sourceTree = "<group>"; };
+		70A8BD661CDF103400D506EC /* TodayEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayEventView.h; sourceTree = "<group>"; };
+		70A8BD671CDF103400D506EC /* TodayEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventView.m; sourceTree = "<group>"; };
+		70A8BD6A1CDF1EC700D506EC /* icon_time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_time@2x.png"; sourceTree = "<group>"; };
+		70A8BD6B1CDF1EC700D506EC /* icon_time@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_time@3x.png"; sourceTree = "<group>"; };
 		70AF301C1CD718C700BA93AD /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		70AF301D1CD718C700BA93AD /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
 		70AF30201CD71DF300BA93AD /* FMDatabaseQueue+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+Utils.h"; sourceTree = "<group>"; };
@@ -958,6 +965,9 @@
 				7019A24F1CDD21CF00858FA5 /* TodayViewController.h */,
 				7019A2501CDD21CF00858FA5 /* TodayViewController.m */,
 				7019A2551CDD21CF00858FA5 /* Info.plist */,
+				70A8BD661CDF103400D506EC /* TodayEventView.h */,
+				70A8BD671CDF103400D506EC /* TodayEventView.m */,
+				70A8BD691CDF1EC700D506EC /* Resource */,
 			);
 			path = XujcClientTodayExtenstion;
 			sourceTree = "<group>";
@@ -1307,6 +1317,15 @@
 				70730DFE1C9E1CBB007CBEBB /* SupportCenterViewController.m */,
 			);
 			path = SupportCenter;
+			sourceTree = "<group>";
+		};
+		70A8BD691CDF1EC700D506EC /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				70A8BD6A1CDF1EC700D506EC /* icon_time@2x.png */,
+				70A8BD6B1CDF1EC700D506EC /* icon_time@3x.png */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		70AF301B1CD718C700BA93AD /* Category */ = {
@@ -1674,6 +1693,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70A8BD6C1CDF1EC700D506EC /* icon_time@2x.png in Resources */,
+				70A8BD6D1CDF1EC700D506EC /* icon_time@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1961,6 +1982,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7019A2511CDD21CF00858FA5 /* TodayViewController.m in Sources */,
+				70A8BD681CDF103400D506EC /* TodayEventView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
