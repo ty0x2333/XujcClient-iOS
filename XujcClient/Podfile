@@ -22,7 +22,7 @@ target :XujcClientTests, :exclusive => true do
   pod 'Kiwi'
 end
 
-target :XujcClientTodayExtenstion, :exclusive => true do
+target :XujcClientTodayExtension, :exclusive => true do
   pod 'Masonry'
 end
 
