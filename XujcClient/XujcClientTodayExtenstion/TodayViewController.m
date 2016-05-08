@@ -32,7 +32,7 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
 
 @property (nonatomic, strong) UILabel *nextLessonTitleLabel;
 
-@property (nonatomic, strong) TodayEventView *eventView;
+@property (nonatomic, strong) NSArray<TodayEventView *> *eventViews;
 
 @end
 
@@ -72,14 +72,7 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
         make.top.equalTo(self.semesterLabel.mas_bottom).with.offset(kContentInterval);
     }];
     
-    _eventView = [[TodayEventView alloc] init];
-    [_contentView addSubview:_eventView];
-    
-    [_eventView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.contentView);
-        make.top.equalTo(self.nextLessonTitleLabel.mas_bottom).with.offset(kContentInterval);
-        make.bottom.equalTo(self.contentView);
-    }];
+    _eventViews = [[NSArray alloc] init];
     
 //    self.preferredContentSize = CGSizeMake(0, 200);
 }
@@ -94,45 +87,83 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
 {
     NSArray<XujcSemesterModel *> *semesters = [[CacheUtils instance] semestersFormCache];
     XujcSemesterModel *currentSemester = [semesters firstObject];
+//#warning test
+//    currentSemester = nil;
+//    currentSemester.semesterId = @"20151";
     
     NSArray *events = [[CacheUtils instance] lessonEventFormCacheWithSemester:currentSemester.semesterId];
     NSArray *lessonEvents = [self p_sortLessonEvents:events];
     
     NSInteger chineseDayOfWeek = [NSDate currentChineseDayOfWeek];
+//#warning test
+//    chineseDayOfWeek = 1;
+    
     NSInteger currentLessonNumber = [[LessonTimeCalculator instance] currentLessonNumberByTime:[NSDate date]];
     NSArray *currentLessonEvents = lessonEvents[chineseDayOfWeek - 1];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startSection.sectionIndex" ascending:YES];
     currentLessonEvents = [currentLessonEvents sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-
-    XujcLessonEventModel *nextEvent = nil;
+    
+//#warning test
+//    currentLessonNumber = 1;
+    
+    NSMutableArray<XujcLessonEventModel *> *nextEvents = [[NSMutableArray alloc] init];
+    NSInteger nextEventLessonNumber = 0;
     
     for (NSUInteger i = 0; i < currentLessonEvents.count; ++i) {
         XujcLessonEventModel *event = currentLessonEvents[i];
-        if (event.startSection.sectionIndex > currentLessonNumber) {
-            nextEvent = event;
-            break;
+        if (nextEvents.count < 1) {
+            if (event.startSection.sectionIndex > currentLessonNumber) {
+                [nextEvents addObject:event];
+                nextEventLessonNumber = event.startSection.sectionIndex;
+            }
+        } else {
+            if (event.startSection.sectionIndex == nextEventLessonNumber) {
+                [nextEvents addObject:event];
+            } else {
+                break;
+            }
+        }
+        
+    }
+    
+    // remove old eventViews
+    [_eventViews enumerateObjectsUsingBlock:^(TodayEventView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperview];
+    }];
+    _eventViews = nil;
+    
+    NSMutableArray *mutableEventViews = [[NSMutableArray alloc] init];
+    __block UIView *lastView = self.nextLessonTitleLabel;
+    
+    [nextEvents enumerateObjectsUsingBlock:^(XujcLessonEventModel * _Nonnull event, NSUInteger idx, BOOL * _Nonnull stop) {
+        TodayEventView *eventView = [[TodayEventView alloc] init];
+        eventView.lessonName = event.name;
+        eventView.lessonLocation = event.location;
+        eventView.sectionDescription = [NSString stringWithFormat:@"%@-%@节", [event.startSection displayName], [event.endSection displayName]];
+        [_contentView addSubview:eventView];
+        [mutableEventViews addObject:eventView];
+        
+        [eventView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.contentView);
+            make.top.equalTo(lastView.mas_bottom).with.offset(kContentInterval);
+        }];
+        
+        lastView = eventView;
+    }];
+    
+    [lastView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView);
+    }];
+    
+    if (currentSemester == nil) {
+        _semesterLabel.text = @"暂无学期数据";
+        _nextLessonTitleLabel.text = nil;
+    } else {
+        _semesterLabel.text = currentSemester.displayName;
+        if (nextEvents.count < 1) {
+            _nextLessonTitleLabel.text = @"今天没有后续课程";
         }
     }
-    
-#warning test
-    currentSemester = [[XujcSemesterModel alloc] init];
-    currentSemester.displayName = @"2014-2015第二学期";
-    nextEvent = [[XujcLessonEventModel alloc] init];
-    nextEvent.name = @"课程名字课程名字课程名字课程名字课程名字课程名字";
-    nextEvent.location = @"课程地点课程地点课程地点课程地点课程地点课程地点";
-    nextEvent.startSection = [XujcSection sectionIndex:1];
-    nextEvent.endSection = [XujcSection sectionIndex:2];
-    
-    if (nextEvent == nil) {
-        _nextLessonTitleLabel.text = @"今天没有后续课程";
-        return;
-    }
-    
-    _semesterLabel.text = currentSemester.displayName;
-    
-    _eventView.lessonName = nextEvent.name;
-    _eventView.lessonLocation = nextEvent.location;
-    _eventView.sectionDescription = [NSString stringWithFormat:@"%@-%@节", [nextEvent.startSection displayName], [nextEvent.endSection displayName]];
     
     // Perform any setup necessary in order to update the view.
     
