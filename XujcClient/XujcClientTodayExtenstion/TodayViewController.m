@@ -17,6 +17,7 @@
 #import "TodayEventTableViewCell.h"
 #import <ReactiveCocoa.h>
 #import "RACSignal+TYDebugging.h"
+#import "NSString+Safe.h"
 
 static CGFloat const kContentInterval = 8.f;
 
@@ -80,7 +81,6 @@ static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIden
     _warningLabel.textAlignment = NSTextAlignmentCenter;
     _warningLabel.textColor = [UIColor whiteColor];
     _warningLabel.font = [UIFont systemFontOfSize:kSemesterLabelFont];
-    _warningLabel.text = @"今天已经没有后续课程";
     [_contentView addSubview:_warningLabel];
     
     [_warningLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -113,14 +113,24 @@ static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIden
         make.bottom.equalTo(self.contentView);
     }];
     
-    RAC(self.semesterLabel, text) = RACObserve(_viewModel, semesterName);
+    RACSignal *semesterNameSignal = [RACObserve(_viewModel, semesterName) setNameWithFormat:@"semesterNameSignal"];
     
-    RACSignal *nextEventsEmptySignal = [[[RACObserve(_viewModel, nextEventsCount) map:^id(id value) {
+    RAC(self.semesterLabel, text) = [semesterNameSignal ty_logAll];
+    
+    RACSignal *nextEventsEmptySignal = [[RACObserve(self.viewModel, nextEventsCount) map:^id(id value) {
         return @([value integerValue] < 1);
-    }] setNameWithFormat:@"nextEventsEmptySignal"] ty_logAll];
+    }] setNameWithFormat:@"nextEventsEmptySignal"];
     
-    RAC(self.nextLessonTitleLabel, hidden) = nextEventsEmptySignal;
+    RAC(self.nextLessonTitleLabel, hidden) = [nextEventsEmptySignal ty_logAll];
     RAC(self.warningLabel, hidden) = [nextEventsEmptySignal not];
+    
+    RACSignal *semesterEmptySignal = [semesterNameSignal map:^id(id value) {
+        return @([NSString isEmpty:value]);
+    }];
+
+    RAC(self.warningLabel, text) = [semesterEmptySignal map:^id(id value) {
+        return [value boolValue] ? @"暂无学期数据" : @"今天已经没有后续课程";
+    }];
     
 }
 
