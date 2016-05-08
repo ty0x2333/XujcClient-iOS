@@ -2240,7 +2240,7 @@
 				INFOPLIST_FILE = XujcClientTodayExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.XujcClientTodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.todayextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -2257,7 +2257,7 @@
 				INFOPLIST_FILE = XujcClientTodayExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.XujcClientTodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tianyiyan.xujcclient.todayextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
