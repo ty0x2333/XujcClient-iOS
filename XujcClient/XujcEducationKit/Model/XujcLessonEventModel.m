@@ -53,5 +53,14 @@
     return [_endSection endTime:date];
 }
 
+- (NSString *)description
+{
+    NSMutableString *description = [[NSMutableString alloc] init];
+    [description appendString:[NSString stringWithFormat:@"<%@: %p> { ", NSStringFromClass([self class]), self]];
+    [description appendString:[NSString stringWithFormat:@"%@: %@, ", @"name", self.name]];
+    [description appendString:[NSString stringWithFormat:@"%@: %zd-%zd, ", @"week", self.startWeek, self.endWeek]];
+    [description appendString:[NSString stringWithFormat:@"%@: %@ }", @"eventDescription", self.eventDescription]];
+    return description;
+}
 
 @end
