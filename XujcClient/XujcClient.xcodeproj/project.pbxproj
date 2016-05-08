@@ -1558,6 +1558,7 @@
 				7019A2491CDD21CE00858FA5 /* Resources */,
 				43A78BCA0B5C5E49AF075BEA /* Embed Pods Frameworks */,
 				8836CC96C85344856350702C /* Copy Pods Resources */,
+				70A8BD821CDFB8BC00D506EC /* Fix ERROR ITMS-90206 */,
 			);
 			buildRules = (
 			);
@@ -1879,6 +1880,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XujcEducationKit/Pods-XujcEducationKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		70A8BD821CDFB8BC00D506EC /* Fix ERROR ITMS-90206 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fix ERROR ITMS-90206";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\nrm -fr Frameworks\nfi";
 		};
 		73CB33BE0ADBF02DC768CFFA /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
