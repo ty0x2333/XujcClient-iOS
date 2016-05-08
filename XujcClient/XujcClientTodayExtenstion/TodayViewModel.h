@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <ReactiveCocoa.h>
-@class TodayEventViewModel;
 @class XujcLessonEventModel;
 @class TodayEventTableViewCellViewModel;
 
@@ -19,8 +18,6 @@
 @property (nonatomic, readonly, copy) NSString *semesterName;
 
 @property (nonatomic, readonly, assign) NSInteger nextEventsCount;
-
-- (TodayEventViewModel *)todayEventViewModel;
 
 - (TodayEventTableViewCellViewModel *)todayEventTableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath;
 

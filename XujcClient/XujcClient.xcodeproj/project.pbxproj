@@ -187,7 +187,6 @@
 		70A8BD6C1CDF1EC700D506EC /* icon_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A8BD6A1CDF1EC700D506EC /* icon_time@2x.png */; };
 		70A8BD6D1CDF1EC700D506EC /* icon_time@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A8BD6B1CDF1EC700D506EC /* icon_time@3x.png */; };
 		70A8BD701CDF314300D506EC /* TodayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD6F1CDF314300D506EC /* TodayViewModel.m */; };
-		70A8BD731CDF31B800D506EC /* TodayEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD721CDF31B800D506EC /* TodayEventViewModel.m */; };
 		70A8BD761CDF387300D506EC /* TodayEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD751CDF387300D506EC /* TodayEventTableViewCell.m */; };
 		70A8BD791CDF392C00D506EC /* TodayEventTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD781CDF392C00D506EC /* TodayEventTableViewCellViewModel.m */; };
 		70AF300F1CD7140100BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
@@ -586,8 +585,6 @@
 		70A8BD6B1CDF1EC700D506EC /* icon_time@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_time@3x.png"; sourceTree = "<group>"; };
 		70A8BD6E1CDF314300D506EC /* TodayViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewModel.h; sourceTree = "<group>"; };
 		70A8BD6F1CDF314300D506EC /* TodayViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewModel.m; sourceTree = "<group>"; };
-		70A8BD711CDF31B800D506EC /* TodayEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayEventViewModel.h; sourceTree = "<group>"; };
-		70A8BD721CDF31B800D506EC /* TodayEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventViewModel.m; sourceTree = "<group>"; };
 		70A8BD741CDF387300D506EC /* TodayEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayEventTableViewCell.h; sourceTree = "<group>"; };
 		70A8BD751CDF387300D506EC /* TodayEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventTableViewCell.m; sourceTree = "<group>"; };
 		70A8BD771CDF392C00D506EC /* TodayEventTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayEventTableViewCellViewModel.h; sourceTree = "<group>"; };
@@ -975,8 +972,6 @@
 				7019A25D1CDD229800858FA5 /* XujcClientTodayExtenstion.entitlements */,
 				7019A24F1CDD21CF00858FA5 /* TodayViewController.h */,
 				7019A2501CDD21CF00858FA5 /* TodayViewController.m */,
-				70A8BD711CDF31B800D506EC /* TodayEventViewModel.h */,
-				70A8BD721CDF31B800D506EC /* TodayEventViewModel.m */,
 				70A8BD771CDF392C00D506EC /* TodayEventTableViewCellViewModel.h */,
 				70A8BD781CDF392C00D506EC /* TodayEventTableViewCellViewModel.m */,
 				70A8BD741CDF387300D506EC /* TodayEventTableViewCell.h */,
@@ -2000,7 +1995,6 @@
 				70A8BD701CDF314300D506EC /* TodayViewModel.m in Sources */,
 				7019A2511CDD21CF00858FA5 /* TodayViewController.m in Sources */,
 				70A8BD791CDF392C00D506EC /* TodayEventTableViewCellViewModel.m in Sources */,
-				70A8BD731CDF31B800D506EC /* TodayEventViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

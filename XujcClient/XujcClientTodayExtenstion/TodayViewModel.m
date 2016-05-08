@@ -9,7 +9,6 @@
 #import "TodayViewModel.h"
 #import "XujcSemesterModel.h"
 #import "CacheUtils.h"
-#import "TodayEventViewModel.h"
 #import "NSDate+Week.h"
 #import "LessonTimeCalculator.h"
 #import "TodayEventTableViewCellViewModel.h"
@@ -79,11 +78,6 @@
         }];
     }
     return self;
-}
-
-- (TodayEventViewModel *)todayEventViewModel
-{
-    return [[TodayEventViewModel alloc] init];
 }
 
 - (TodayEventTableViewCellViewModel *)todayEventTableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath
