@@ -7,10 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ReactiveCocoa.h>
 @class TodayEventViewModel;
+@class XujcLessonEventModel;
+@class TodayEventTableViewCellViewModel;
 
 @interface TodayViewModel : NSObject
 
+@property (nonatomic, strong) RACSignal *fetchDataSignal;
+
+@property (nonatomic, readonly, copy) NSString *semesterName;
+
+@property (nonatomic, readonly, assign) NSInteger nextEventsCount;
+
 - (TodayEventViewModel *)todayEventViewModel;
+
+- (TodayEventTableViewCellViewModel *)todayEventTableViewCellViewModelForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section;
 
 @end
