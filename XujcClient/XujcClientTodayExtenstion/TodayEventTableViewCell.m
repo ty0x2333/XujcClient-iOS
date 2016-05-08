@@ -37,35 +37,35 @@ static CGFloat const kIconSize = 12.f;
         _lessonNameLabel.numberOfLines = 0;
         _lessonNameLabel.textColor = [UIColor whiteColor];
         _lessonNameLabel.font = [UIFont systemFontOfSize:kLessonNameLabelFontSize];
-        [self addSubview:_lessonNameLabel];
+        [self.contentView addSubview:_lessonNameLabel];
         
         _lessonLocationLabel = [[UILabel alloc] init];
         _lessonLocationLabel.numberOfLines = 0;
         _lessonLocationLabel.textColor = [UIColor whiteColor];
         _lessonLocationLabel.font = [UIFont systemFontOfSize:kSmallLabelFontSize];
-        [self addSubview:_lessonLocationLabel];
+        [self.contentView addSubview:_lessonLocationLabel];
         
         _sectionLabel = [[UILabel alloc] init];
         _sectionLabel.textColor = [UIColor whiteColor];
         _sectionLabel.font = [UIFont systemFontOfSize:kSmallLabelFontSize];
-        [self addSubview:_sectionLabel];
+        [self.contentView addSubview:_sectionLabel];
         
         _timeIconImageView = [[UIImageView alloc] init];
         _timeIconImageView.image = [UIImage imageNamed:@"icon_time"];
-        [self addSubview:_timeIconImageView];
+        [self.contentView addSubview:_timeIconImageView];
         
         [_lessonNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.right.equalTo(self);
+            make.top.left.right.equalTo(self.contentView);
         }];
         
         [_timeIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self);
+            make.left.equalTo(self.contentView);
             make.centerY.equalTo(self.sectionLabel);
             make.width.height.equalTo(@(kIconSize));
         }];
         
         [_sectionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self);
+            make.bottom.equalTo(self.contentView);
             make.left.equalTo(self.timeIconImageView.mas_right).with.offset(kContentInterval);
             make.top.equalTo(self.lessonNameLabel.mas_bottom).with.offset(kContentInterval);
         }];
@@ -73,7 +73,7 @@ static CGFloat const kIconSize = 12.f;
         [_sectionLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
         
         [_lessonLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.bottom.equalTo(self);
+            make.right.bottom.equalTo(self.contentView);
             make.left.equalTo(self.sectionLabel.mas_right).with.offset(kContentInterval);
             make.top.equalTo(self.lessonNameLabel.mas_bottom).with.offset(kContentInterval);
         }];
