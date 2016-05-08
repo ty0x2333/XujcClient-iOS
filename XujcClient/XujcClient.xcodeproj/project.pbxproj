@@ -191,6 +191,8 @@
 		70A8BD791CDF392C00D506EC /* TodayEventTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD781CDF392C00D506EC /* TodayEventTableViewCellViewModel.m */; };
 		70A8BD7C1CDF52E400D506EC /* NSString+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 70A8BD7A1CDF52E400D506EC /* NSString+Safe.h */; };
 		70A8BD7D1CDF52E400D506EC /* NSString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD7B1CDF52E400D506EC /* NSString+Safe.m */; };
+		70A8BD801CDF5DE700D506EC /* NSArray+TYLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 70A8BD7E1CDF5DE700D506EC /* NSArray+TYLog.h */; };
+		70A8BD811CDF5DE700D506EC /* NSArray+TYLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD7F1CDF5DE700D506EC /* NSArray+TYLog.m */; };
 		70AF300F1CD7140100BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF30101CD7141500BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF301E1CD718C700BA93AD /* NSDate+Week.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AF301C1CD718C700BA93AD /* NSDate+Week.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -592,6 +594,8 @@
 		70A8BD781CDF392C00D506EC /* TodayEventTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventTableViewCellViewModel.m; sourceTree = "<group>"; };
 		70A8BD7A1CDF52E400D506EC /* NSString+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Safe.h"; sourceTree = "<group>"; };
 		70A8BD7B1CDF52E400D506EC /* NSString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Safe.m"; sourceTree = "<group>"; };
+		70A8BD7E1CDF5DE700D506EC /* NSArray+TYLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TYLog.h"; sourceTree = "<group>"; };
+		70A8BD7F1CDF5DE700D506EC /* NSArray+TYLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TYLog.m"; sourceTree = "<group>"; };
 		70AF301C1CD718C700BA93AD /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		70AF301D1CD718C700BA93AD /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
 		70AF30201CD71DF300BA93AD /* FMDatabaseQueue+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+Utils.h"; sourceTree = "<group>"; };
@@ -1083,6 +1087,8 @@
 		703024F21CD704DA00974438 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				70A8BD7E1CDF5DE700D506EC /* NSArray+TYLog.h */,
+				70A8BD7F1CDF5DE700D506EC /* NSArray+TYLog.m */,
 				70A8BD7A1CDF52E400D506EC /* NSString+Safe.h */,
 				70A8BD7B1CDF52E400D506EC /* NSString+Safe.m */,
 				703024F31CD704DA00974438 /* RACSignal+TYDebugging.h */,
@@ -1510,6 +1516,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70A8BD801CDF5DE700D506EC /* NSArray+TYLog.h in Headers */,
 				703024E81CD7048400974438 /* XujcClientCore.h in Headers */,
 				703024F51CD704DA00974438 /* RACSignal+TYDebugging.h in Headers */,
 				703024F91CD7058600974438 /* TyLog_Objc.h in Headers */,
@@ -2024,6 +2031,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70A8BD7D1CDF52E400D506EC /* NSString+Safe.m in Sources */,
+				70A8BD811CDF5DE700D506EC /* NSArray+TYLog.m in Sources */,
 				703024F61CD704DA00974438 /* RACSignal+TYDebugging.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
