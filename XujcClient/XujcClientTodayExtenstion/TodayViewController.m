@@ -15,6 +15,9 @@
 #import "LessonTimeCalculator.h"
 #import "TodayEventView.h"
 #import "TodayViewModel.h"
+#import "TodayEventTableViewCell.h"
+#import <ReactiveCocoa.h>
+#import "RACSignal+TYDebugging.h"
 
 static CGFloat const kContentInterval = 8.f;
 
@@ -25,9 +28,15 @@ static CGFloat const kContentMarginVertical = 10.f;
 static CGFloat const kSemesterLabelFont = 14.f;
 static CGFloat const kNextLessonTitleLabelFont = 14.f;
 
-@interface TodayViewController () <NCWidgetProviding>
+static CGFloat const kTableViewRowHeight = 50.f;
+
+static NSString * const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
+
+@interface TodayViewController () <NCWidgetProviding, UITableViewDataSource>
 
 @property (nonatomic, strong) TodayViewModel *viewModel;
+
+@property (nonatomic, strong) MASConstraint *tableViewHeightConstraint;
 
 @property (nonatomic, strong) UIView *contentView;
 
@@ -35,7 +44,9 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
 
 @property (nonatomic, strong) UILabel *nextLessonTitleLabel;
 
-@property (nonatomic, strong) NSArray<TodayEventView *> *eventViews;
+@property (nonatomic, strong) UILabel *warningLabel;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -66,6 +77,19 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
         make.top.left.right.equalTo(self.contentView);
     }];
     
+    _warningLabel = [[UILabel alloc] init];
+    _warningLabel.textAlignment = NSTextAlignmentCenter;
+    _warningLabel.textColor = [UIColor whiteColor];
+    _warningLabel.font = [UIFont systemFontOfSize:kSemesterLabelFont];
+    _warningLabel.text = @"今天已经没有后续课程";
+    [_contentView addSubview:_warningLabel];
+    
+    [_warningLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.contentView);
+        make.top.equalTo(self.semesterLabel.mas_bottom).with.offset(kContentInterval);
+        make.bottom.equalTo(self.contentView).priorityLow();
+    }];
+    
     _nextLessonTitleLabel = [[UILabel alloc] init];
     _nextLessonTitleLabel.textColor = [UIColor whiteColor];
     _nextLessonTitleLabel.text = @"下节课";
@@ -77,9 +101,28 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
         make.top.equalTo(self.semesterLabel.mas_bottom).with.offset(kContentInterval);
     }];
     
-    _eventViews = [[NSArray alloc] init];
+    _tableView = [[UITableView alloc] init];
+    _tableView.dataSource = self;
+    _tableView.rowHeight = kTableViewRowHeight;
+    [_tableView registerClass:[TodayEventTableViewCell class] forCellReuseIdentifier:kTableViewCellReuseIdentifier];
+    [_contentView addSubview:_tableView];
     
-//    self.preferredContentSize = CGSizeMake(0, 200);
+    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        self.tableViewHeightConstraint = make.height.equalTo(@(0));
+        make.left.right.equalTo(self.contentView);
+        make.top.equalTo(self.nextLessonTitleLabel.mas_bottom).with.offset(kContentInterval);
+        make.bottom.equalTo(self.contentView);
+    }];
+    
+    RAC(self.semesterLabel, text) = RACObserve(_viewModel, semesterName);
+    
+    RACSignal *nextEventsEmptySignal = [[[RACObserve(_viewModel, nextEventsCount) map:^id(id value) {
+        return @([value integerValue] < 1);
+    }] setNameWithFormat:@"nextEventsEmptySignal"] ty_logAll];
+    
+    RAC(self.nextLessonTitleLabel, hidden) = nextEventsEmptySignal;
+    RAC(self.warningLabel, hidden) = [nextEventsEmptySignal not];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,86 +133,19 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler
 {
-    NSArray<XujcSemesterModel *> *semesters = [[CacheUtils instance] semestersFormCache];
-    XujcSemesterModel *currentSemester = [semesters firstObject];
-//#warning test
-//    currentSemester = nil;
-//    currentSemester.semesterId = @"20151";
-    
-    NSArray *events = [[CacheUtils instance] lessonEventFormCacheWithSemester:currentSemester.semesterId];
-    NSArray *lessonEvents = [self p_sortLessonEvents:events];
-    
-    NSInteger chineseDayOfWeek = [NSDate currentChineseDayOfWeek];
-//#warning test
-//    chineseDayOfWeek = 1;
-    
-    NSInteger currentLessonNumber = [[LessonTimeCalculator instance] currentLessonNumberByTime:[NSDate date]];
-    NSArray *currentLessonEvents = lessonEvents[chineseDayOfWeek - 1];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startSection.sectionIndex" ascending:YES];
-    currentLessonEvents = [currentLessonEvents sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-    
-//#warning test
-//    currentLessonNumber = 1;
-    
-    NSMutableArray<XujcLessonEventModel *> *nextEvents = [[NSMutableArray alloc] init];
-    NSInteger nextEventLessonNumber = 0;
-    
-    for (NSUInteger i = 0; i < currentLessonEvents.count; ++i) {
-        XujcLessonEventModel *event = currentLessonEvents[i];
-        if (nextEvents.count < 1) {
-            if (event.startSection.sectionIndex > currentLessonNumber) {
-                [nextEvents addObject:event];
-                nextEventLessonNumber = event.startSection.sectionIndex;
-            }
-        } else {
-            if (event.startSection.sectionIndex == nextEventLessonNumber) {
-                [nextEvents addObject:event];
-            } else {
-                break;
-            }
-        }
+    @weakify(self);
+    [_viewModel.fetchDataSignal subscribeNext:^(NSNumber *nextEventsCount) {
+        @strongify(self);
+        [self.tableView reloadData];
+        NSInteger numberOfRow = [_viewModel numberOfRowsInSection:0];
+        CGFloat rowHeight = self.tableView.rowHeight;
         
-    }
-    
-    // remove old eventViews
-    [_eventViews enumerateObjectsUsingBlock:^(TodayEventView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [obj removeFromSuperview];
-    }];
-    _eventViews = nil;
-    
-    NSMutableArray *mutableEventViews = [[NSMutableArray alloc] init];
-    __block UIView *lastView = self.nextLessonTitleLabel;
-    
-    [nextEvents enumerateObjectsUsingBlock:^(XujcLessonEventModel * _Nonnull event, NSUInteger idx, BOOL * _Nonnull stop) {
-        TodayEventView *eventView = [[TodayEventView alloc] initWithViewModel:[_viewModel todayEventViewModel]];
-        eventView.lessonName = event.name;
-        eventView.lessonLocation = event.location;
-        eventView.sectionDescription = [NSString stringWithFormat:@"%@-%@节", [event.startSection displayName], [event.endSection displayName]];
-        [_contentView addSubview:eventView];
-        [mutableEventViews addObject:eventView];
-        
-        [eventView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self.contentView);
-            make.top.equalTo(lastView.mas_bottom).with.offset(kContentInterval);
+        [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.tableViewHeightConstraint uninstall];
+            self.tableViewHeightConstraint = make.height.equalTo(@(numberOfRow * rowHeight));
         }];
-        
-        lastView = eventView;
+        [self.tableView updateConstraints];
     }];
-    
-    [lastView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.contentView);
-    }];
-    
-    if (currentSemester == nil) {
-        _semesterLabel.text = @"暂无学期数据";
-        _nextLessonTitleLabel.text = nil;
-    } else {
-        _semesterLabel.text = currentSemester.displayName;
-        if (nextEvents.count < 1) {
-            _nextLessonTitleLabel.text = @"今天没有后续课程";
-        }
-    }
-    
     // Perform any setup necessary in order to update the view.
     
     // If an error is encountered, use NCUpdateResultFailed
@@ -179,31 +155,25 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
     completionHandler(NCUpdateResultNewData);
 }
 
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_viewModel numberOfRowsInSection:section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TodayEventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellReuseIdentifier forIndexPath:indexPath];
+    cell.viewModel = [_viewModel todayEventTableViewCellViewModelForRowAtIndexPath:indexPath];
+    return cell;
+}
+
 #pragma mark - NCWidgetProviding
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets
 {
     return UIEdgeInsetsZero;
-}
-
-- (NSArray *)p_sortLessonEvents:(NSArray *)lessonEvents
-{
-    NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:kDayCountOfWeek];
-    for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
-        [events addObject:[self p_coureEvents:lessonEvents chineseDayOfWeek:i + 1]];
-    }
-    return [events copy];
-}
-
-- (NSArray *)p_coureEvents:(NSArray *)allLessonEvents chineseDayOfWeek:(NSInteger)chineseDayOfWeek
-{
-    NSMutableArray *result = [[NSMutableArray alloc] init];
-    for (XujcLessonEventModel *event in allLessonEvents) {
-        if ([event chineseDayOfWeek] == chineseDayOfWeek){
-            [result addObject:event];
-        }
-    }
-    return result;
 }
 
 @end
