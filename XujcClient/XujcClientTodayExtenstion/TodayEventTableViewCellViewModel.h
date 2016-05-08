@@ -15,6 +15,7 @@
 
 @property (nonatomic, readonly, copy) NSString *lessonName;
 @property (nonatomic, readonly, copy) NSString *lessonLocation;
+@property (nonatomic, readonly, copy) NSString *weekDescription;
 
 @property (nonatomic, readonly, copy) NSString *sectionDescription;
 

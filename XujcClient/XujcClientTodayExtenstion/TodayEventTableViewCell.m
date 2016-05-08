@@ -25,6 +25,7 @@ static CGFloat const kIconSize = 12.f;
 @property (nonatomic, strong) UILabel *lessonNameLabel;
 @property (nonatomic, strong) UILabel *lessonLocationLabel;
 @property (nonatomic, strong) UILabel *sectionLabel;
+@property (nonatomic, strong) UILabel *weekLabel;
 
 @end
 
@@ -50,6 +51,11 @@ static CGFloat const kIconSize = 12.f;
         _sectionLabel.font = [UIFont systemFontOfSize:kSmallLabelFontSize];
         [self.contentView addSubview:_sectionLabel];
         
+        _weekLabel = [[UILabel alloc] init];
+        _weekLabel.textColor = [UIColor whiteColor];
+        _weekLabel.font = [UIFont systemFontOfSize:kSmallLabelFontSize];
+        [self.contentView addSubview:_weekLabel];
+        
         _timeIconImageView = [[UIImageView alloc] init];
         _timeIconImageView.image = [UIImage imageNamed:@"icon_time"];
         [self.contentView addSubview:_timeIconImageView];
@@ -70,11 +76,20 @@ static CGFloat const kIconSize = 12.f;
             make.top.equalTo(self.lessonNameLabel.mas_bottom).with.offset(kContentInterval);
         }];
         
+        [_sectionLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
         [_sectionLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+        
+        [_weekLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.sectionLabel.mas_right).with.offset(kContentInterval);
+            make.top.equalTo(self.lessonNameLabel.mas_bottom).with.offset(kContentInterval);
+        }];
+        
+        [_weekLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+        [_weekLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
         
         [_lessonLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.bottom.equalTo(self.contentView);
-            make.left.equalTo(self.sectionLabel.mas_right).with.offset(kContentInterval);
+            make.left.equalTo(self.weekLabel.mas_right).with.offset(kContentInterval);
             make.top.equalTo(self.lessonNameLabel.mas_bottom).with.offset(kContentInterval);
         }];
     }
@@ -87,6 +102,7 @@ static CGFloat const kIconSize = 12.f;
     RAC(self.lessonNameLabel, text) = [RACObserve(_viewModel, lessonName) takeUntil:self.rac_prepareForReuseSignal];
     RAC(self.lessonLocationLabel, text) = [RACObserve(_viewModel, lessonLocation) takeUntil:self.rac_prepareForReuseSignal];
     RAC(self.sectionLabel, text) = [RACObserve(_viewModel, sectionDescription) takeUntil:self.rac_prepareForReuseSignal];
+    RAC(self.weekLabel, text) = [RACObserve(_viewModel, weekDescription) takeUntil:self.rac_prepareForReuseSignal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

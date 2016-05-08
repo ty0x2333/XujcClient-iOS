@@ -25,8 +25,11 @@
         _model = model;
         RACChannelTo(self, lessonName) = RACChannelTo(_model, name);
         RACChannelTo(self, lessonLocation) = RACChannelTo(_model, location);
-        RAC(self, sectionDescription) = [RACSignal combineLatest:@[RACObserve(_model, startSection), RACObserve(_model, endSection)] reduce:^id(XujcSection *start, XujcSection *end) {
+        RAC(self, sectionDescription) = [RACSignal combineLatest:@[RACObserve(self.model, startSection), RACObserve(self.model, endSection)] reduce:^id(XujcSection *start, XujcSection *end) {
             return [NSString stringWithFormat:@"%@-%@节", [start displayName], [end displayName]];
+        }];
+        RAC(self, weekDescription) = [RACSignal combineLatest:@[RACObserve(self.model, startWeek), RACObserve(self.model, endWeek), RACObserve(self.model, weekInterval)] reduce:^id(NSNumber *start, NSNumber *end, NSString *interval) {
+            return [NSString stringWithFormat:@"%zd-%zd周 %@", [start integerValue], [end integerValue], interval];
         }];
     }
     return self;
