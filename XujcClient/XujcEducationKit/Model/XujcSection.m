@@ -8,6 +8,7 @@
 
 #import "XujcSection.h"
 #import "LessonTimeCalculator.h"
+#import "NSDate+Week.h"
 
 @implementation XujcSection
 
@@ -56,6 +57,17 @@
 - (NSInteger)sectionIndex
 {
     return [LessonTimeCalculator sectionIndexFromSectionNumber:self.sectionNumber];
+}
+
+- (NSString *)displayName
+{
+    if (_sectionNumber == 51){
+        return @"午1";
+    } else if (_sectionNumber == 52){
+        return @"午2";
+    } else {
+        return [NSString stringWithFormat:@"%zd", _sectionNumber];
+    }
 }
 
 @end

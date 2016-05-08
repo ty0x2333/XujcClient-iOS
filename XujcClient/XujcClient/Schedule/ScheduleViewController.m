@@ -144,13 +144,10 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
         
         NSDate *day = [self.collectionViewCalendarLayout dateForDayColumnHeaderAtIndexPath:indexPath];
         
-        NSDate *currentDay = [self currentTimeForCollectionView:self.collectionView layout:self.collectionViewCalendarLayout];
-        
-        NSDate *startOfDay = [[NSCalendar currentCalendar] startOfDayForDate:day];
-        NSDate *startOfCurrentDay = [[NSCalendar currentCalendar] startOfDayForDate:currentDay];
+        NSInteger currentChineseDayOfWeek = [NSDate currentChineseDayOfWeek];
         
         dayColumnHeader.day = day;
-        dayColumnHeader.isCurrentDay = [startOfDay isEqualToDate:startOfCurrentDay];
+        dayColumnHeader.isCurrentDay = indexPath.section == (currentChineseDayOfWeek - 1);
         
         view = dayColumnHeader;
     } else if (kind == MSCollectionElementKindTimeRowHeader) {

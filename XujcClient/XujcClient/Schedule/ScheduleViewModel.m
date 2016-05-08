@@ -12,6 +12,9 @@
 #import "XujcLessonModel.h"
 #import "XujcSemesterModel.h"
 #import "CacheUtils.h"
+#import "NSDate+Week.h"
+
+#import "LessonTimeCalculator.h"
 
 @interface ScheduleViewModel()
 
@@ -66,17 +69,16 @@
 {
     NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:kDayCountOfWeek];
     for (NSInteger i = 0; i < kDayCountOfWeek; ++i) {
-        [events addObject:[self p_coureEventsFromDayNumberOfWeek:lessonEvents dayNumberOfWeek:i + 1]];
+        [events addObject:[self p_coureEvents:lessonEvents chineseDayOfWeek:i + 1]];
     }
     return [events copy];
 }
 
-- (NSArray *)p_coureEventsFromDayNumberOfWeek:(NSArray *)allLessonEvents dayNumberOfWeek:(NSInteger)dayNumberOfWeek
+- (NSArray *)p_coureEvents:(NSArray *)allLessonEvents chineseDayOfWeek:(NSInteger)chineseDayOfWeek
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (XujcLessonEventModel *event in allLessonEvents) {
-        NSInteger currentDayNumberOfWeek = [NSDate dayNumberOfWeekFromString:event.studyDay];
-        if (currentDayNumberOfWeek == dayNumberOfWeek){
+        if ([event chineseDayOfWeek] == chineseDayOfWeek){
             [result addObject:event];
         }
     }

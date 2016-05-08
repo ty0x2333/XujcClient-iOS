@@ -56,14 +56,7 @@ static CGFloat const kClassSectionNumberTitleFontSize = 16.0f;
     }
     _timeTitle.text = [dateFormatter stringFromDate:_classSection.startTime];
     
-    NSInteger sectionNumber = _classSection.sectionNumber;
-    if (sectionNumber == 51){
-        _classSectionNumberTitle.text = @"午1";
-    }else if (sectionNumber == 52){
-        _classSectionNumberTitle.text = @"午2";
-    }else{
-        _classSectionNumberTitle.text = [NSString stringWithFormat:@"%zd", _classSection.sectionNumber];
-    }
+    _classSectionNumberTitle.text = [_classSection displayName];
     [self setNeedsLayout];
 }
 

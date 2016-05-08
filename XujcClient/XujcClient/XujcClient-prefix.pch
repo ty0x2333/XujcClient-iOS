@@ -32,6 +32,7 @@
 #import "NSUserDefaults+TYSupport.h"
 #import "NSNotificationCenter+KeyboardSupport.h"
 #import "RACSignal+TYDebugging.h"
+#import "NSArray+TYLog.h"
 
 // Pod Configuration
 #define MAS_SHORTHAND

@@ -7,6 +7,7 @@
  */
 
 #import "XujcLessonEventModel.h"
+#import "XujcServiceKeys.h"
 #import "NSDate+Week.h"
 
 @implementation XujcLessonEventModel
@@ -16,7 +17,7 @@
     if (self = [super init]) {
         _lessonClassId = [self checkForNull:json[XujcServiceKeyLessonClassId]];
         _eventDescription = [self checkForNull:json[XujcServiceKeyLessonEventDescription]];
-        _studyDay = [self checkForNull:json[XujcServiceKeyLessonEventStudyDay]];
+        _dayOfWeekName = [self checkForNull:json[XujcServiceKeyLessonEventDayOfWeekName]];
         _weekInterval = [self checkForNull:json[XujcServiceKeyLessonEventWeekInterval]];
         _startSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyLessonEventStartSection]] integerValue]];
         _endSection = [XujcSection section:[[self checkForNull:json[XujcServiceKeyLessonEventEndSection]] integerValue]];
@@ -37,6 +38,11 @@
     self.endSection = [XujcSection section:sectionNumbser];
 }
 
+- (NSInteger)chineseDayOfWeek
+{
+    return [NSDate chineseDayOfWeekFromString:self.dayOfWeekName];
+}
+
 - (NSDate *)startTime:(NSDate *)date
 {
     return [_startSection startTime:date];
@@ -47,5 +53,14 @@
     return [_endSection endTime:date];
 }
 
+- (NSString *)description
+{
+    NSMutableString *description = [[NSMutableString alloc] init];
+    [description appendString:[NSString stringWithFormat:@"<%@: %p> { ", NSStringFromClass([self class]), self]];
+    [description appendString:[NSString stringWithFormat:@"%@: %@, ", @"name", self.name]];
+    [description appendString:[NSString stringWithFormat:@"%@: %zd-%zd, ", @"week", self.startWeek, self.endWeek]];
+    [description appendString:[NSString stringWithFormat:@"%@: %@ }", @"eventDescription", self.eventDescription]];
+    return description;
+}
 
 @end

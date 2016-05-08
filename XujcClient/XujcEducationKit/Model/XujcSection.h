@@ -7,7 +7,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "NSDate+Week.h"
 /**
  *  @brief  课程小节
  */
@@ -30,6 +29,8 @@
  *  @param sectionIndex 课程节的序号
  */
 + (instancetype)sectionIndex:(NSInteger)sectionIndex;
+
+- (NSString *)displayName;
 
 - (NSDate *)startTime;
 - (NSDate *)startTime:(NSDate *)currentDay;

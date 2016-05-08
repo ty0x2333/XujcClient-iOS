@@ -7,6 +7,7 @@
 //
 
 #import "XujcScoreModel.h"
+#import "XujcServiceKeys.h"
 
 @implementation XujcScoreModel
 
@@ -26,7 +27,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p> (lessonName: %@, score: %zd)", NSStringFromClass([self class]), self, _lessonName, _score];
+    return [NSString stringWithFormat:@"<%@: %p> { lessonName: %@, score: %zd }", NSStringFromClass([self class]), self, _lessonName, _score];
 }
 
 @end

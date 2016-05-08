@@ -32,9 +32,9 @@
             return [self selectedSemesterId];
         }] distinctUntilChanged];
         
-        _semestersSignal = [[[RACObserve(self, semesters) filter:^BOOL(id value) {
-            return value!=nil;
-        }] setNameWithFormat:@"SemesterSelectorViewModel semestersSignal"] logAll];
+        _semestersSignal = [RACObserve(self, semesters) filter:^BOOL(id value) {
+            return value != nil;
+        }];
         
         [self.semestersSignal subscribeNext:^(id x) {
             @strongify(self);
