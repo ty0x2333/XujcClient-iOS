@@ -29,23 +29,23 @@
         _fetchDataSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             NSArray<XujcSemesterModel *> *semesters = [[CacheUtils instance] semestersFormCache];
             XujcSemesterModel *currentSemester = [semesters firstObject];
-            #warning test
-            currentSemester.semesterId = @"20151";
+//            #warning test
+//            currentSemester.semesterId = @"20151";
             
             NSArray *events = [[CacheUtils instance] lessonEventFormCacheWithSemester:currentSemester.semesterId];
             NSArray *lessonEvents = [self p_sortLessonEvents:events];
             
             NSInteger chineseDayOfWeek = [NSDate currentChineseDayOfWeek];
-            #warning test
-            chineseDayOfWeek = 1;
+//            #warning test
+//            chineseDayOfWeek = 1;
             
             NSInteger currentLessonNumber = [[LessonTimeCalculator instance] currentLessonNumberByTime:[NSDate date]];
             NSArray *currentLessonEvents = lessonEvents[chineseDayOfWeek - 1];
             NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startSection.sectionIndex" ascending:YES];
             currentLessonEvents = [currentLessonEvents sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
             
-            #warning test
-            currentLessonNumber = 1;
+//            #warning test
+//            currentLessonNumber = 1;
             
             NSMutableArray<XujcLessonEventModel *> *nextEvents = [[NSMutableArray alloc] init];
             NSInteger nextEventLessonNumber = 0;
