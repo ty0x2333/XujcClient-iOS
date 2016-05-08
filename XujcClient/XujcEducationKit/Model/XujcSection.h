@@ -30,6 +30,8 @@
  */
 + (instancetype)sectionIndex:(NSInteger)sectionIndex;
 
+- (NSString *)displayName;
+
 - (NSDate *)startTime;
 - (NSDate *)startTime:(NSDate *)currentDay;
 
