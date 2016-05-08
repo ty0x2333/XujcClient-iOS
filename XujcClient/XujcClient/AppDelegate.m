@@ -20,9 +20,6 @@
 #import "UMessage.h"
 #import "TYService.h"
 
-#define UMSYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define _IPHONE80_ 80000
-
 static const CGFloat kWindowCornerRadius = 4.f;
 
 @interface AppDelegate ()
@@ -79,36 +76,25 @@ static const CGFloat kWindowCornerRadius = 4.f;
     
     [UMessage startWithAppkey:kUMengAppKey launchOptions:launchOptions];
     
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
-    if(UMSYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        // register remoteNotification types （iOS 8.0及其以上版本）
-        UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
-        acceptAction.identifier = @"AcceptIdentifier";
-        acceptAction.title = @"Accept";
-        acceptAction.activationMode = UIUserNotificationActivationModeForeground;
-        
-        UIMutableUserNotificationAction *rejectAction = [[UIMutableUserNotificationAction alloc] init];
-        rejectAction.identifier = @"RejectIdentifier";
-        rejectAction.title = @"Reject";
-        rejectAction.activationMode = UIUserNotificationActivationModeBackground;
-        rejectAction.authenticationRequired = YES;
-        rejectAction.destructive = YES;
-        
-        UIMutableUserNotificationCategory *categorys = [[UIMutableUserNotificationCategory alloc] init];
-        categorys.identifier = @"UMessage";
-        [categorys setActions:@[acceptAction, rejectAction] forContext:(UIUserNotificationActionContextDefault)];
-        
-        UIUserNotificationSettings *userSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:[NSSet setWithObject:categorys]];
-        [UMessage registerRemoteNotificationAndUserNotificationSettings:userSettings];
-        
-    } else {
-        // register remoteNotification types (iOS 8.0以下)
-        [UMessage registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
-    }
-#else
-    //register remoteNotification types (iOS 8.0以下)
-    [UMessage registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
-#endif
+    UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
+    acceptAction.identifier = @"AcceptIdentifier";
+    acceptAction.title = @"Accept";
+    acceptAction.activationMode = UIUserNotificationActivationModeForeground;
+    
+    UIMutableUserNotificationAction *rejectAction = [[UIMutableUserNotificationAction alloc] init];
+    rejectAction.identifier = @"RejectIdentifier";
+    rejectAction.title = @"Reject";
+    rejectAction.activationMode = UIUserNotificationActivationModeBackground;
+    rejectAction.authenticationRequired = YES;
+    rejectAction.destructive = YES;
+    
+    UIMutableUserNotificationCategory *categorys = [[UIMutableUserNotificationCategory alloc] init];
+    categorys.identifier = @"UMessage";
+    [categorys setActions:@[acceptAction, rejectAction] forContext:(UIUserNotificationActionContextDefault)];
+    
+    UIUserNotificationSettings *userSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:[NSSet setWithObject:categorys]];
+    [UMessage registerRemoteNotificationAndUserNotificationSettings:userSettings];
+
     
 #if DEBUG
     [UMessage setLogEnabled:YES];
