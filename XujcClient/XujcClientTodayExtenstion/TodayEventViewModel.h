@@ -1,5 +1,5 @@
 //
-//  TodayViewModel.h
+//  TodayEventViewModel.h
 //  XujcClient
 //
 //  Created by 田奕焰 on 16/5/8.
@@ -7,10 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class TodayEventViewModel;
 
-@interface TodayViewModel : NSObject
-
-- (TodayEventViewModel *)todayEventViewModel;
+@interface TodayEventViewModel : NSObject
 
 @end

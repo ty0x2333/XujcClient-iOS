@@ -188,6 +188,7 @@
 		70A8BD6C1CDF1EC700D506EC /* icon_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A8BD6A1CDF1EC700D506EC /* icon_time@2x.png */; };
 		70A8BD6D1CDF1EC700D506EC /* icon_time@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A8BD6B1CDF1EC700D506EC /* icon_time@3x.png */; };
 		70A8BD701CDF314300D506EC /* TodayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD6F1CDF314300D506EC /* TodayViewModel.m */; };
+		70A8BD731CDF31B800D506EC /* TodayEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD721CDF31B800D506EC /* TodayEventViewModel.m */; };
 		70AF300F1CD7140100BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF30101CD7141500BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF301E1CD718C700BA93AD /* NSDate+Week.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AF301C1CD718C700BA93AD /* NSDate+Week.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -586,6 +587,8 @@
 		70A8BD6B1CDF1EC700D506EC /* icon_time@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_time@3x.png"; sourceTree = "<group>"; };
 		70A8BD6E1CDF314300D506EC /* TodayViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewModel.h; sourceTree = "<group>"; };
 		70A8BD6F1CDF314300D506EC /* TodayViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewModel.m; sourceTree = "<group>"; };
+		70A8BD711CDF31B800D506EC /* TodayEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayEventViewModel.h; sourceTree = "<group>"; };
+		70A8BD721CDF31B800D506EC /* TodayEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventViewModel.m; sourceTree = "<group>"; };
 		70AF301C1CD718C700BA93AD /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		70AF301D1CD718C700BA93AD /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
 		70AF30201CD71DF300BA93AD /* FMDatabaseQueue+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+Utils.h"; sourceTree = "<group>"; };
@@ -969,9 +972,11 @@
 				7019A25D1CDD229800858FA5 /* XujcClientTodayExtenstion.entitlements */,
 				7019A24F1CDD21CF00858FA5 /* TodayViewController.h */,
 				7019A2501CDD21CF00858FA5 /* TodayViewController.m */,
-				7019A2551CDD21CF00858FA5 /* Info.plist */,
+				70A8BD711CDF31B800D506EC /* TodayEventViewModel.h */,
+				70A8BD721CDF31B800D506EC /* TodayEventViewModel.m */,
 				70A8BD661CDF103400D506EC /* TodayEventView.h */,
 				70A8BD671CDF103400D506EC /* TodayEventView.m */,
+				7019A2551CDD21CF00858FA5 /* Info.plist */,
 				70A8BD691CDF1EC700D506EC /* Resource */,
 			);
 			path = XujcClientTodayExtenstion;
@@ -1989,6 +1994,7 @@
 				70A8BD701CDF314300D506EC /* TodayViewModel.m in Sources */,
 				7019A2511CDD21CF00858FA5 /* TodayViewController.m in Sources */,
 				70A8BD681CDF103400D506EC /* TodayEventView.m in Sources */,
+				70A8BD731CDF31B800D506EC /* TodayEventViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

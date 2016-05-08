@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TodayEventViewModel;
 
 @interface TodayEventView : UIView
+
+- (instancetype)initWithViewModel:(TodayEventViewModel *)viewModel;
 
 @property (nonatomic, copy) NSString *lessonName;
 @property (nonatomic, copy) NSString *lessonLocation;

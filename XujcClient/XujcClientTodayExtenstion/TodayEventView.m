@@ -7,6 +7,7 @@
 //
 
 #import "TodayEventView.h"
+#import "TodayEventViewModel.h"
 #import <Masonry/Masonry.h>
 
 static CGFloat const kContentInterval = 4.f;
@@ -19,6 +20,8 @@ static CGFloat const kIconSize = 12.f;
 
 @interface TodayEventView()
 
+@property (nonatomic, strong) TodayEventViewModel *viewModel;
+
 @property (nonatomic, strong) UIImageView *timeIconImageView;
 @property (nonatomic, strong) UILabel *lessonNameLabel;
 @property (nonatomic, strong) UILabel *lessonLocationLabel;
@@ -27,6 +30,14 @@ static CGFloat const kIconSize = 12.f;
 @end
 
 @implementation TodayEventView
+
+- (instancetype)initWithViewModel:(TodayEventViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

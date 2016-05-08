@@ -141,7 +141,7 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
     __block UIView *lastView = self.nextLessonTitleLabel;
     
     [nextEvents enumerateObjectsUsingBlock:^(XujcLessonEventModel * _Nonnull event, NSUInteger idx, BOOL * _Nonnull stop) {
-        TodayEventView *eventView = [[TodayEventView alloc] init];
+        TodayEventView *eventView = [[TodayEventView alloc] initWithViewModel:[_viewModel todayEventViewModel]];
         eventView.lessonName = event.name;
         eventView.lessonLocation = event.location;
         eventView.sectionDescription = [NSString stringWithFormat:@"%@-%@节", [event.startSection displayName], [event.endSection displayName]];

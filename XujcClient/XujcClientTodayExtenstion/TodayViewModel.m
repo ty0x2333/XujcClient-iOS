@@ -7,7 +7,13 @@
 //
 
 #import "TodayViewModel.h"
+#import "TodayEventViewModel.h"
 
 @implementation TodayViewModel
+
+- (TodayEventViewModel *)todayEventViewModel
+{
+    return [[TodayEventViewModel alloc] init];
+}
 
 @end
