@@ -13,7 +13,6 @@
 #import <Masonry/Masonry.h>
 #import "NSDate+Week.h"
 #import "LessonTimeCalculator.h"
-#import "TodayEventView.h"
 #import "TodayViewModel.h"
 #import "TodayEventTableViewCell.h"
 #import <ReactiveCocoa.h>
