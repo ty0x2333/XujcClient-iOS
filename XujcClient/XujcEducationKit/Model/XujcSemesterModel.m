@@ -29,4 +29,9 @@ static NSString* const kDataSemesterDisplayName = @"SemesterDisplayName";
     [encoder encodeObject:_displayName forKey:kDataSemesterDisplayName];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<%@: %p> { %@: %@, %@: %@ }", NSStringFromClass([self class]), self, @"semesterId", self.semesterId, @"displayName", self.displayName];
+}
+
 @end
