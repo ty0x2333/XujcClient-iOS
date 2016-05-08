@@ -14,6 +14,7 @@
 #import "NSDate+Week.h"
 #import "LessonTimeCalculator.h"
 #import "TodayEventView.h"
+#import "TodayViewModel.h"
 
 static CGFloat const kContentInterval = 8.f;
 
@@ -25,6 +26,8 @@ static CGFloat const kSemesterLabelFont = 14.f;
 static CGFloat const kNextLessonTitleLabelFont = 14.f;
 
 @interface TodayViewController () <NCWidgetProviding>
+
+@property (nonatomic, strong) TodayViewModel *viewModel;
 
 @property (nonatomic, strong) UIView *contentView;
 
@@ -41,6 +44,8 @@ static CGFloat const kNextLessonTitleLabelFont = 14.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _viewModel = [[TodayViewModel alloc] init];
     
     _contentView = [[UIView alloc] init];
     [self.view addSubview:_contentView];
