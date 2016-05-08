@@ -189,6 +189,8 @@
 		70A8BD701CDF314300D506EC /* TodayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD6F1CDF314300D506EC /* TodayViewModel.m */; };
 		70A8BD761CDF387300D506EC /* TodayEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD751CDF387300D506EC /* TodayEventTableViewCell.m */; };
 		70A8BD791CDF392C00D506EC /* TodayEventTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD781CDF392C00D506EC /* TodayEventTableViewCellViewModel.m */; };
+		70A8BD7C1CDF52E400D506EC /* NSString+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 70A8BD7A1CDF52E400D506EC /* NSString+Safe.h */; };
+		70A8BD7D1CDF52E400D506EC /* NSString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD7B1CDF52E400D506EC /* NSString+Safe.m */; };
 		70AF300F1CD7140100BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF30101CD7141500BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF301E1CD718C700BA93AD /* NSDate+Week.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AF301C1CD718C700BA93AD /* NSDate+Week.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -208,7 +210,6 @@
 		70F7CE291BE3AC25001D027C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F7CE271BE3AC25001D027C /* LaunchScreen.storyboard */; };
 		70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE481BE3ECAE001D027C /* DynamicData.m */; };
 		70F7CE611BE42391001D027C /* MSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F7CE601BE42391001D027C /* MSEvent.m */; };
-		70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE64B01C7F8DEE00112038 /* NSString+Safe.m */; };
 		BAB89E539489BBFFC7FB4CD8 /* libPods-XujcClientCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C2912E7447DEE5D6A4CCF9 /* libPods-XujcClientCore.a */; };
 		C59E7E23C922195B49B2F67F /* libPods-XujcClientTodayExtenstion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED12031786EEB18F1673157F /* libPods-XujcClientTodayExtenstion.a */; };
 		C9EB933CE75083693052AFF6 /* libPods-XujcEducationKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C06A4ED3D07441373BF1A51 /* libPods-XujcEducationKit.a */; };
@@ -589,6 +590,8 @@
 		70A8BD751CDF387300D506EC /* TodayEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventTableViewCell.m; sourceTree = "<group>"; };
 		70A8BD771CDF392C00D506EC /* TodayEventTableViewCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayEventTableViewCellViewModel.h; sourceTree = "<group>"; };
 		70A8BD781CDF392C00D506EC /* TodayEventTableViewCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayEventTableViewCellViewModel.m; sourceTree = "<group>"; };
+		70A8BD7A1CDF52E400D506EC /* NSString+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Safe.h"; sourceTree = "<group>"; };
+		70A8BD7B1CDF52E400D506EC /* NSString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Safe.m"; sourceTree = "<group>"; };
 		70AF301C1CD718C700BA93AD /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		70AF301D1CD718C700BA93AD /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
 		70AF30201CD71DF300BA93AD /* FMDatabaseQueue+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+Utils.h"; sourceTree = "<group>"; };
@@ -613,8 +616,6 @@
 		70F7CE5F1BE42391001D027C /* MSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEvent.h; sourceTree = "<group>"; };
 		70F7CE601BE42391001D027C /* MSEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEvent.m; sourceTree = "<group>"; };
 		70F7CE6B1BE4394D001D027C /* XujcClient-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XujcClient-prefix.pch"; sourceTree = "<group>"; };
-		70FE64AF1C7F8DEE00112038 /* NSString+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Safe.h"; sourceTree = "<group>"; };
-		70FE64B01C7F8DEE00112038 /* NSString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Safe.m"; sourceTree = "<group>"; };
 		809B7A975EDBE96102E85C69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8EBE7B96CF2BA8072608936A /* libPods-XujcClientTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XujcClientTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED12031786EEB18F1673157F /* libPods-XujcClientTodayExtenstion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XujcClientTodayExtenstion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -987,8 +988,6 @@
 			children = (
 				702F99E71C7D1BF6003B35A7 /* UIView+BorderLine.h */,
 				702F99E81C7D1BF6003B35A7 /* UIView+BorderLine.m */,
-				70FE64AF1C7F8DEE00112038 /* NSString+Safe.h */,
-				70FE64B01C7F8DEE00112038 /* NSString+Safe.m */,
 				70730DA91C9A6152007CBEBB /* UIImage+Coding.h */,
 				70730DAA1C9A6152007CBEBB /* UIImage+Coding.m */,
 				70730DAC1C9A6222007CBEBB /* NSData+Coding.h */,
@@ -1084,6 +1083,8 @@
 		703024F21CD704DA00974438 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				70A8BD7A1CDF52E400D506EC /* NSString+Safe.h */,
+				70A8BD7B1CDF52E400D506EC /* NSString+Safe.m */,
 				703024F31CD704DA00974438 /* RACSignal+TYDebugging.h */,
 				703024F41CD704DA00974438 /* RACSignal+TYDebugging.m */,
 			);
@@ -1512,6 +1513,7 @@
 				703024E81CD7048400974438 /* XujcClientCore.h in Headers */,
 				703024F51CD704DA00974438 /* RACSignal+TYDebugging.h in Headers */,
 				703024F91CD7058600974438 /* TyLog_Objc.h in Headers */,
+				70A8BD7C1CDF52E400D506EC /* NSString+Safe.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2021,6 +2023,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70A8BD7D1CDF52E400D506EC /* NSString+Safe.m in Sources */,
 				703024F61CD704DA00974438 /* RACSignal+TYDebugging.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2061,7 +2064,6 @@
 				701584551CC6A8FF003567F7 /* ScheduleColumnHeader.m in Sources */,
 				70730E051C9EE556007CBEBB /* TableViewCellViewModel.m in Sources */,
 				70730D791C94A13A007CBEBB /* SemesterBaseViewModel.m in Sources */,
-				70FE64B11C7F8DEE00112038 /* NSString+Safe.m in Sources */,
 				70B167D11CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m in Sources */,
 				701584591CC6AA6B003567F7 /* ScheduleTheme.m in Sources */,
 				19FAB3201CB4F01100179484 /* PersonalHeaderView.m in Sources */,
