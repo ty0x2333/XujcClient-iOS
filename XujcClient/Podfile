@@ -28,7 +28,7 @@ end
 
 target :XujcClientCore, :exclusive => true do
   pod 'CupertinoYankee'
-  pod 'ReactiveCocoa'
+  pod 'ReactiveCocoa', '~> 2.5'
 end
 
 target :XujcEducationKit, :exclusive => true do
