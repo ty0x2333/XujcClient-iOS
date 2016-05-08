@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+@class XujcLessonEventModel;
 
 @interface TodayEventTableViewCellViewModel : NSObject
+
+- (instancetype)initWithModel:(XujcLessonEventModel *)model;
 
 @property (nonatomic, readonly, copy) NSString *lessonName;
 @property (nonatomic, readonly, copy) NSString *lessonLocation;
