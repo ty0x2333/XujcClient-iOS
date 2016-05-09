@@ -15,7 +15,8 @@
 // Local
 //static NSString* const kTYServiceHost = @"http://192.168.1.101:8080/";
 // Online
-static NSString* const kTYServiceHost = @"http://xujcservice.tianyiyan.com/";
+//static NSString* const kTYServiceHost = @"http://xujcservice.tianyiyan.com/";
+static NSString* const kTYServiceHost = @"http://120.26.122.139/";
 
 static NSString* const kTYServiceAPIVersion = @"v1/";
 
