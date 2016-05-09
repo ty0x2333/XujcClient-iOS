@@ -10,16 +10,24 @@
 
 @implementation NSArray (TYLog)
 
-- (NSString *)descriptionWithLocale:(id)locale
+- (NSString *)descriptionWithLocale:(nullable id)locale indent:(NSUInteger)level
 {
     NSMutableString *description = [NSMutableString string];
+    
+    NSMutableString *indentString = [NSMutableString string];
+    for (NSUInteger l = 0; l < level; ++l) {
+        [indentString appendString:@"\t"];
+    }
     
     [description appendString:@"(\n"];
     
     for (id obj in self) {
-        [description appendFormat:@"\t%@,\n", obj];
+        [description appendFormat:@"%@\t%@,\n",
+         indentString,
+         [obj respondsToSelector:@selector(descriptionWithLocale:indent:)] ? [obj descriptionWithLocale:locale indent:level + 1] : obj
+         ];
     }
-    [description appendString:@")"];
+    [description appendFormat:@"%@)", indentString];
     
     return description;
 }
