@@ -195,6 +195,8 @@
 		70A8BD7D1CDF52E400D506EC /* NSString+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD7B1CDF52E400D506EC /* NSString+Safe.m */; };
 		70A8BD801CDF5DE700D506EC /* NSArray+TYLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 70A8BD7E1CDF5DE700D506EC /* NSArray+TYLog.h */; };
 		70A8BD811CDF5DE700D506EC /* NSArray+TYLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BD7F1CDF5DE700D506EC /* NSArray+TYLog.m */; };
+		70A8BDAF1CE0671900D506EC /* EditableAvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BDAE1CE0671900D506EC /* EditableAvatarImageView.m */; };
+		70A8BDB21CE067FE00D506EC /* EditableAvatarImageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A8BDB11CE067FE00D506EC /* EditableAvatarImageViewModel.m */; };
 		70AF300F1CD7140100BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF30101CD7141500BA93AD /* XujcClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703024E51CD7048400974438 /* XujcClientCore.framework */; };
 		70AF301E1CD718C700BA93AD /* NSDate+Week.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AF301C1CD718C700BA93AD /* NSDate+Week.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -596,6 +598,10 @@
 		70A8BD7B1CDF52E400D506EC /* NSString+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Safe.m"; sourceTree = "<group>"; };
 		70A8BD7E1CDF5DE700D506EC /* NSArray+TYLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TYLog.h"; sourceTree = "<group>"; };
 		70A8BD7F1CDF5DE700D506EC /* NSArray+TYLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TYLog.m"; sourceTree = "<group>"; };
+		70A8BDAD1CE0671900D506EC /* EditableAvatarImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableAvatarImageView.h; sourceTree = "<group>"; };
+		70A8BDAE1CE0671900D506EC /* EditableAvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableAvatarImageView.m; sourceTree = "<group>"; };
+		70A8BDB01CE067FE00D506EC /* EditableAvatarImageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableAvatarImageViewModel.h; sourceTree = "<group>"; };
+		70A8BDB11CE067FE00D506EC /* EditableAvatarImageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableAvatarImageViewModel.m; sourceTree = "<group>"; };
 		70AF301C1CD718C700BA93AD /* NSDate+Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Week.h"; sourceTree = "<group>"; };
 		70AF301D1CD718C700BA93AD /* NSDate+Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Week.m"; sourceTree = "<group>"; };
 		70AF30201CD71DF300BA93AD /* FMDatabaseQueue+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+Utils.h"; sourceTree = "<group>"; };
@@ -710,6 +716,8 @@
 				19FAB3261CB4F02900179484 /* ViewModel */,
 				19FAB3141CB4F01100179484 /* PersonalHeaderView.h */,
 				19FAB3151CB4F01100179484 /* PersonalHeaderView.m */,
+				70A8BDAD1CE0671900D506EC /* EditableAvatarImageView.h */,
+				70A8BDAE1CE0671900D506EC /* EditableAvatarImageView.m */,
 				19FAB3181CB4F01100179484 /* PersonalViewController.h */,
 				19FAB3191CB4F01100179484 /* PersonalViewController.m */,
 				70246E281CCD06FC00960190 /* XujcInformationView.h */,
@@ -735,6 +743,8 @@
 				19FAB31F1CB4F01100179484 /* UserDetailViewModel.m */,
 				70246E2B1CCD078B00960190 /* XujcInformationViewModel.h */,
 				70246E2C1CCD078B00960190 /* XujcInformationViewModel.m */,
+				70A8BDB01CE067FE00D506EC /* EditableAvatarImageViewModel.h */,
+				70A8BDB11CE067FE00D506EC /* EditableAvatarImageViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -2067,6 +2077,7 @@
 				70730DB41C9A635F007CBEBB /* OssService.m in Sources */,
 				70F7CE611BE42391001D027C /* MSEvent.m in Sources */,
 				70730D811C999D67007CBEBB /* LoginViewModel.m in Sources */,
+				70A8BDAF1CE0671900D506EC /* EditableAvatarImageView.m in Sources */,
 				70246E2D1CCD078B00960190 /* XujcInformationViewModel.m in Sources */,
 				70730D991C99F567007CBEBB /* MainTabBarController.m in Sources */,
 				701583EE1CC4E5ED003567F7 /* VerificationCodeTableViewCell.m in Sources */,
@@ -2097,6 +2108,7 @@
 				70F7CE491BE3ECAE001D027C /* DynamicData.m in Sources */,
 				701583E81CC4E5AB003567F7 /* ChangePasswordViewController.m in Sources */,
 				7015843A1CC536BF003567F7 /* ExamTableViewCell.m in Sources */,
+				70A8BDB21CE067FE00D506EC /* EditableAvatarImageViewModel.m in Sources */,
 				19FAB3241CB4F01100179484 /* UserDetailViewController.m in Sources */,
 				7062B69A1C8E14780074C716 /* AccountViewModel.m in Sources */,
 				70F7CE1E1BE3AC25001D027C /* AppDelegate.m in Sources */,

@@ -7,11 +7,9 @@
 //
 
 #import "PersonalHeaderView.h"
-#import <MMSheetView.h>
 #import <MMPopupItem.h>
-#import "AppUtils.h"
 #import <UIImageView+WebCache.h>
-#import "AvatarImageView.h"
+#import "EditableAvatarImageView.h"
 
 static CGFloat const kAvatarImageViewMarginTop = 10.f;
 
@@ -23,7 +21,7 @@ static CGFloat const kAvatarImageViewHeight = 100.f;
 
 @property (strong, nonatomic) PersonalHeaderViewModel *viewModel;
 
-@property (strong, nonatomic) AvatarImageView *avatarImageView;
+@property (strong, nonatomic) EditableAvatarImageView *avatarImageView;
 @property (strong, nonatomic) UILabel *nicknameLabel;
 
 @end
@@ -35,26 +33,8 @@ static CGFloat const kAvatarImageViewHeight = 100.f;
     if (self = [super initWithFrame:frame]) {
         _viewModel = viewModel;
         self.backgroundColor = [UIColor whiteColor];
-        _avatarImageView = [[AvatarImageView alloc] init];
-        _avatarImageView.userInteractionEnabled = YES;
+        _avatarImageView = [[EditableAvatarImageView alloc] initWithViewModel:[_viewModel editableAvatarImageViewModel]];
         [self addSubview:_avatarImageView];
-        
-        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
-        @weakify(self);
-        [tapGestureRecognizer.rac_gestureSignal subscribeNext:^(id x) {
-            NSArray *items = @[
-                               MMItemMake(NSLocalizedString(@"Take a picture", nil), MMItemTypeNormal, ^(NSInteger index){
-                                   [self p_presentImagePickerControllerWithSourceType:UIImagePickerControllerSourceTypeCamera];
-                               }),
-                               MMItemMake(NSLocalizedString(@"From photo library", nil), MMItemTypeNormal, ^(NSInteger index){
-                                   [self p_presentImagePickerControllerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-                               })
-                               ];
-            [[[MMSheetView alloc] initWithTitle:nil items:items] showWithBlock:^(MMPopupView * view, BOOL finished){
-                
-            }];
-        }];
-        [_avatarImageView addGestureRecognizer:tapGestureRecognizer];
         
         _nicknameLabel = [[UILabel alloc] init];
         [self addSubview:_nicknameLabel];
@@ -74,6 +54,7 @@ static CGFloat const kAvatarImageViewHeight = 100.f;
             make.bottom.equalTo(self.nicknameLabel).with.offset(kNicknameLabelMarginVertical);
         }];
         
+        @weakify(self);
         RAC(self.nicknameLabel, text) = RACObserve(self.viewModel, nickname);
         [RACObserve(self.viewModel, avatar) subscribeNext:^(NSString *avatarURL) {
             @strongify(self);
@@ -81,45 +62,6 @@ static CGFloat const kAvatarImageViewHeight = 100.f;
         }];
     }
     return self;
-}
-
-- (void)p_presentImagePickerControllerWithSourceType:(UIImagePickerControllerSourceType)sourceType
-{
-    UIViewController *viewController = [AppUtils viewController:self];
-    
-    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
-    pickerController.sourceType = sourceType;
-    pickerController.allowsEditing = YES;
-    
-    RACSignal *imageSelectedSignal = pickerController.rac_imageSelectedSignal;
-    @weakify(self);
-    [imageSelectedSignal subscribeNext:^(NSDictionary *userInfo) {
-        @strongify(self);
-        self.avatarImageView.image = userInfo[UIImagePickerControllerEditedImage];
-        //                                       TyLogDebug(@"userInfo: %@", userInfo);
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:viewController.view animated:YES];
-        [[self.viewModel updateAvatarSignalWithImage:self.avatarImageView.image] subscribeNext:^(NSNumber *progress) {
-            hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-            hud.progress = [progress floatValue];
-        } error:^(NSError *error) {
-            hud.mode = MBProgressHUDModeText;
-            hud.detailsLabelText = [error localizedDescription];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [hud hide:YES afterDelay:kErrorHUDShowTime];
-            });
-        } completed:^{
-            hud.mode = MBProgressHUDModeText;
-            hud.detailsLabelText = NSLocalizedString(@"Upload to complete", nil);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [hud hide:YES afterDelay:kSuccessHUDShowTime];
-            });
-        }];
-        [pickerController dismissViewControllerAnimated:YES completion:nil];
-    } completed:^{
-        [pickerController dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
-    [viewController presentViewController:pickerController animated:NO completion:nil];
 }
 
 @end
