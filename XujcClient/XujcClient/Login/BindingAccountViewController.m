@@ -116,11 +116,6 @@ static const CGFloat kDescriptionLabelFontSize = 10.f;
     [self initViewConstraints];
     
     [self bindViewModel];
-    
-#ifdef DEBUG
-    _accountTextField.text = @"swe12023";
-    _apiKeyTextField.text = @"szyufvxh";
-#endif
 }
 
 - (void)bindViewModel
