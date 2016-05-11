@@ -8,6 +8,7 @@
 
 #import "VerificationCodeTextFieldViewModel.h"
 #import "NSString+Validator.h"
+#import "NSError+Valid.h"
 
 static NSString * const kVerificationCodeRequestDomain = @"VerificationCodeRequestDomain";
 
@@ -21,6 +22,8 @@ static NSInteger const kCountdownTime = 60;
 
 @property (nonatomic, assign) VerificationCodeType verificationCodeType;
 
+@property (nonatomic, assign) BOOL isValidPhone;
+
 @end
 
 @implementation VerificationCodeTextFieldViewModel
@@ -30,11 +33,16 @@ static NSInteger const kCountdownTime = 60;
     if (self = [super init]) {
         _verificationCodeType = verificationCodeType;
         
-        RACSignal *validPhoneSignal = [[RACObserve(self, phone)
-                                         map:^id(NSString *text) {
-                                             return @([NSString ty_validatePhone:text]);
-                                         }] distinctUntilChanged];
-        _executeGetVerificationCode = [[RACCommand alloc] initWithEnabled:validPhoneSignal signalBlock:^RACSignal *(id input) {
+        RACSignal *getVerificationCodeActiveSignal = [RACObserve(self, phone) map:^id(NSString *phone) {
+            return @(![NSString isEmpty:phone]);
+        }];
+        
+        @weakify(self);
+        _executeGetVerificationCode = [[RACCommand alloc] initWithEnabled:getVerificationCodeActiveSignal signalBlock:^RACSignal *(id input) {
+            @strongify(self);
+            if (![NSString ty_validatePhone:self.phone]) {
+                return [RACSignal error:[NSError ty_validPhoneError]];
+            }
             return [self executeGetVerificationCodeSignal];
         }];
         
