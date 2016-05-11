@@ -18,4 +18,6 @@ extern NSString * const TYValidErrorDomain;
 
 + (NSError *)ty_validVertificationCodeError;
 
++ (NSError *)ty_validNickname;
+
 @end

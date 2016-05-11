@@ -73,6 +73,7 @@
 "Phone Valid Error" = "请输入正确的手机号";
 "Password Valid Error" = "密码应由6位以上字母以及数字组成";
 "Vertification Code Valid Error" = "验证码格式错误";
+"Nickname Valid Error" = "昵称应由2-20个字符组成";
 
 /**
  * TYService Message

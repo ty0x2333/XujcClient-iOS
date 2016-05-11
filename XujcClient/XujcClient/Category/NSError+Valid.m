@@ -30,4 +30,10 @@ NSString * const TYValidErrorDomain = @"TYValidErrorDomain";
     return error;
 }
 
++ (NSError *)ty_validNickname
+{
+    NSError *error = [NSError errorWithDomain:TYValidErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Nickname Valid Error", nil)}];
+    return error;
+}
+
 @end
