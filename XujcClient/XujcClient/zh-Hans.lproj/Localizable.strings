@@ -67,6 +67,12 @@
 "Major" = "专业";
 
 /**
+ *  @brief Valid Error Message
+ */
+
+"Phone Valid Error" = "请输入正确的手机号";
+
+/**
  * TYService Message
  */
 "An error occurred." = "发生未知错误, 请重试";
