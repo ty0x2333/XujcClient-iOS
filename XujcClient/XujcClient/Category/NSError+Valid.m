@@ -24,4 +24,10 @@ NSString * const TYValidErrorDomain = @"TYValidErrorDomain";
     return error;
 }
 
++ (NSError *)ty_validVertificationError
+{
+    NSError *error = [NSError errorWithDomain:TYValidErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Vertification Code Valid Error", nil)}];
+    return error;
+}
+
 @end

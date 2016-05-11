@@ -16,4 +16,6 @@ extern NSString * const TYValidErrorDomain;
 
 + (NSError *)ty_validPasswordError;
 
++ (NSError *)ty_validVertificationError;
+
 @end
