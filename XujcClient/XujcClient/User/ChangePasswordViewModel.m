@@ -9,6 +9,7 @@
 #import "ChangePasswordViewModel.h"
 #import "NSString+Validator.h"
 #import "TYService.h"
+#import "NSError+Valid.h"
 
 static NSString * const kChangePasswordRequestDomain = @"ChangePasswordRequestDomain";
 
@@ -26,21 +27,20 @@ static NSString * const kChangePasswordRequestDomain = @"ChangePasswordRequestDo
         _verificationCodeTextFieldViewModel = [[VerificationCodeTextFieldViewModel alloc] initWithType:VerificationCodeTypeChangePasswordUp];
         RACChannelTo(_verificationCodeTextFieldViewModel, phone) = RACChannelTo(self, phone);
         
-        RACSignal *validPhoneSignal = [[RACObserve(self, phone)
-                              map:^id(NSString *text) {
-                                  return @([NSString ty_validatePhone:text]);
-                              }] distinctUntilChanged];
-        
-        RACSignal *validPasswordSignal = [[RACObserve(self, password)
-                                 map:^id(NSString *text) {
-                                     return @([NSString ty_validatePassword:text]);
-                                 }] distinctUntilChanged];
-        
-        _changePasswordActiveSignal = [RACSignal combineLatest:@[validPhoneSignal, validPasswordSignal, _verificationCodeTextFieldViewModel.validVerificationCodeSignal]
-                                                reduce:^id(NSNumber *phoneValid, NSNumber *passwordValid, NSNumber *verificationCodeValid) {
-                                                    return @([phoneValid boolValue] && [passwordValid boolValue] && [verificationCodeValid boolValue]);
+        RACSignal *changePasswordActiveSignal = [RACSignal combineLatest:@[RACObserve(self, phone), RACObserve(self, password), RACObserve(self.verificationCodeTextFieldViewModel, verificationCode)]
+                                                reduce:^id(NSString *phone, NSString *password, NSString *verificationCode) {
+                                                    return @(![NSString isEmpty:phone] && ![NSString isEmpty:password] && ![NSString isEmpty:verificationCode]);
                                                 }];
-        _executeChangePassword = [[RACCommand alloc] initWithEnabled:_changePasswordActiveSignal signalBlock:^RACSignal *(id input) {
+        _executeChangePassword = [[RACCommand alloc] initWithEnabled:changePasswordActiveSignal signalBlock:^RACSignal *(id input) {
+            if (![NSString ty_validatePhone:self.phone]) {
+                return [RACSignal error:[NSError ty_validPhoneError]];
+            }
+            if (!self.verificationCodeTextFieldViewModel.isValidVerificationCode) {
+                return [RACSignal error:[NSError ty_validVertificationCodeError]];
+            }
+            if (![NSString ty_validatePassword:self.password]) {
+                return [RACSignal error:[NSError ty_validPasswordError]];
+            }
             return [self executeChangePasswordSignal];
         }];
     }
