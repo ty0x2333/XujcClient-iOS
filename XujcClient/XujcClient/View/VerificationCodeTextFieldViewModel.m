@@ -50,6 +50,8 @@ static NSInteger const kCountdownTime = 60;
                                                    map:^id(NSString *text) {
                                                        return @([NSString ty_validateVerificationCode:text]);
                                                    }] distinctUntilChanged];
+        
+        RAC(self, isValidVerificationCode) = _validVerificationCodeSignal;
     }
     return self;
 }

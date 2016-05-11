@@ -17,6 +17,8 @@
 
 @property (copy, nonatomic) NSString *verificationCode;
 
+@property (nonatomic, assign, readonly) BOOL isValidVerificationCode;
+
 @property (readonly, copy, nonatomic) RACSignal *validVerificationCodeSignal;
 
 @property (readonly, strong, nonatomic) RACCommand *executeGetVerificationCode;
