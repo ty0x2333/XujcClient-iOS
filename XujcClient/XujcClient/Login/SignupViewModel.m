@@ -14,6 +14,7 @@
 #import "NSString+Validator.h"
 #import "VerificationCodeTextFieldViewModel.h"
 #import "ServiceProtocolViewModel.h"
+#import "NSError+Valid.h"
 
 static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
 
@@ -33,19 +34,33 @@ static NSString * const kSignupRequestDomain = @"SignupRequestDomain";
         
         RACChannelTo(_verificationCodeTextFieldViewModel, phone) = RACChannelTo(self, account);
         
-        _validNicknameSignal = [[RACObserve(self, nickname)
-                                 map:^id(NSString *text) {
-                                     return @([NSString ty_validateUsername:text]);
-                                 }] distinctUntilChanged];
+        RAC(self, isValidNickname) = [[RACObserve(self, nickname)
+                                       map:^id(NSString *text) {
+                                           return @([NSString ty_validateUsername:text]);
+                                       }] distinctUntilChanged];
         
-        _signupActiveSignal = [RACSignal combineLatest:@[self.validPhoneSignal, self.validPasswordSignal, self.validNicknameSignal, _verificationCodeTextFieldViewModel.validVerificationCodeSignal]
-                                                reduce:^id(NSNumber *phoneValid, NSNumber *usernameValid, NSNumber *passwordValid, NSNumber *VerificationCodeValid) {
-                                                    return @([phoneValid boolValue] && [usernameValid boolValue] && [passwordValid boolValue] && [VerificationCodeValid boolValue]);
+        RACSignal *signupActiveSignal = [RACSignal combineLatest:@[RACObserve(self, account), RACObserve(self, password), RACObserve(self, nickname), RACObserve(self.verificationCodeTextFieldViewModel, verificationCode)]
+                                                reduce:^id(NSString *phone, NSString *password, NSString *nickname, NSString *verificationCode) {
+                                                    return @(![NSString isEmpty:phone] && ![NSString isEmpty:password] &&
+                                                    ![NSString isEmpty:nickname] && ![NSString isEmpty:verificationCode]);
                                                 }];
 
-        _executeSignup = [[RACCommand alloc] initWithEnabled:_signupActiveSignal signalBlock:^RACSignal *(id input) {
-            TyLogDebug(@"executeSignup");
-            return [[[self executeSignupSignal] setNameWithFormat:@"executeSignupSignal"] logAll];
+        @weakify(self);
+        _executeSignup = [[RACCommand alloc] initWithEnabled:signupActiveSignal signalBlock:^RACSignal *(id input) {
+            @strongify(self);
+            if (!self.isValidNickname) {
+                return [RACSignal error:[NSError ty_validNickname]];
+            }
+            if (!self.isValidPhone) {
+                return [RACSignal error:[NSError ty_validPhoneError]];
+            }
+            if (!self.verificationCodeTextFieldViewModel.isValidVerificationCode) {
+                return [RACSignal error:[NSError ty_validVertificationCodeError]];
+            }
+            if (!self.isValidPassword) {
+                return [RACSignal error:[NSError ty_validPasswordError]];
+            }
+            return [[[self executeSignupSignal] setNameWithFormat:@"executeSignupSignal"] ty_logAll];
         }];
     }
     return self;
