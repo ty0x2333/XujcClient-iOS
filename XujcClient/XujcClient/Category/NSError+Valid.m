@@ -18,4 +18,10 @@ NSString * const TYValidErrorDomain = @"TYValidErrorDomain";
     return error;
 }
 
++ (NSError *)ty_validPasswordError
+{
+    NSError *error = [NSError errorWithDomain:TYValidErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Password Valid Error", nil)}];
+    return error;
+}
+
 @end

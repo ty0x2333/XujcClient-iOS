@@ -82,6 +82,7 @@
 		701584551CC6A8FF003567F7 /* ScheduleColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015844D1CC6A8FF003567F7 /* ScheduleColumnHeader.m */; };
 		701584561CC6A8FF003567F7 /* ScheduleRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7015844F1CC6A8FF003567F7 /* ScheduleRowHeader.m */; };
 		701584591CC6AA6B003567F7 /* ScheduleTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 701584581CC6AA6B003567F7 /* ScheduleTheme.m */; };
+		7018F0051CE304AD00425DE3 /* NSError+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 7018F0041CE304AD00425DE3 /* NSError+Valid.m */; };
 		7019A24D1CDD21CE00858FA5 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7019A24C1CDD21CE00858FA5 /* NotificationCenter.framework */; };
 		7019A2511CDD21CF00858FA5 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7019A2501CDD21CF00858FA5 /* TodayViewController.m */; };
 		7019A2581CDD21CF00858FA5 /* XujcClientTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -423,6 +424,8 @@
 		7015844F1CC6A8FF003567F7 /* ScheduleRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRowHeader.m; sourceTree = "<group>"; };
 		701584571CC6AA6B003567F7 /* ScheduleTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTheme.h; sourceTree = "<group>"; };
 		701584581CC6AA6B003567F7 /* ScheduleTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTheme.m; sourceTree = "<group>"; };
+		7018F0031CE304AD00425DE3 /* NSError+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Valid.h"; sourceTree = "<group>"; };
+		7018F0041CE304AD00425DE3 /* NSError+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Valid.m"; sourceTree = "<group>"; };
 		7019A24B1CDD21CE00858FA5 /* XujcClientTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XujcClientTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7019A24C1CDD21CE00858FA5 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		7019A24F1CDD21CF00858FA5 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
@@ -1019,6 +1022,8 @@
 				70A88CFD1C9F37380067DB77 /* NSUserDefaults+TYSupport.m */,
 				70B167CF1CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.h */,
 				70B167D01CA0D74F00AF8322 /* NSNotificationCenter+KeyboardSupport.m */,
+				7018F0031CE304AD00425DE3 /* NSError+Valid.h */,
+				7018F0041CE304AD00425DE3 /* NSError+Valid.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2162,6 +2167,7 @@
 				19781B9C1CAB6EE700D078A6 /* VerificationCodeTextField.m in Sources */,
 				701584511CC6A8FF003567F7 /* MSCurrentTimeIndicator.m in Sources */,
 				702CF8CE1CA44EE5007820B5 /* AvatarImageView.m in Sources */,
+				7018F0051CE304AD00425DE3 /* NSError+Valid.m in Sources */,
 				70246E241CCCBE8400960190 /* NSError+TYService.m in Sources */,
 				701584561CC6A8FF003567F7 /* ScheduleRowHeader.m in Sources */,
 				19FAB3211CB4F01100179484 /* PersonalHeaderViewModel.m in Sources */,
