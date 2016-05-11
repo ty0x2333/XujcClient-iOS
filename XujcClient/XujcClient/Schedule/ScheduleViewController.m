@@ -158,6 +158,22 @@ static NSString * const kScheduleRowHeaderReuseIdentifier = @"ScheduleRowHeaderR
     return view;
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    CGFloat contentOffsetX = targetContentOffset->x;
+    CGFloat sectionWidth_2 = self.collectionViewCalendarLayout.sectionWidth / 2.f;
+    CGFloat offset = fmodf(contentOffsetX, self.collectionViewCalendarLayout.sectionWidth);
+    NSInteger sectionIndex = contentOffsetX / self.collectionViewCalendarLayout.sectionWidth;
+    
+    if (offset < sectionWidth_2) {
+        targetContentOffset->x = sectionIndex * self.collectionViewCalendarLayout.sectionWidth;
+    } else if (offset > self.collectionViewCalendarLayout.sectionWidth - sectionWidth_2) {
+        targetContentOffset->x = (sectionIndex + 1) * self.collectionViewCalendarLayout.sectionWidth;
+    }
+}
+
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
