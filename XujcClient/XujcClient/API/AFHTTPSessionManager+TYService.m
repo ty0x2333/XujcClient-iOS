@@ -35,7 +35,7 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
 
 + (NSString *)ty_shareURL
 {
-    return [NSString stringWithFormat:@"%@/share", [self ty_serviceBaseURL]];
+    return [NSString stringWithFormat:@"%@share", [self ty_serviceBaseURL]];
 }
 
 - (RACSignal *)requestBindingXujcAccountSignalWithXujcKey:(NSString *)xujcKey
