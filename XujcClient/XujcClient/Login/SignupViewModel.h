@@ -16,9 +16,7 @@
 
 @property (strong, nonatomic) RACCommand *executeSignup;
 
-@property (strong, nonatomic) RACSignal *signupActiveSignal;
-
-@property (strong, nonatomic) RACSignal *validNicknameSignal;
+@property (nonatomic, assign, readonly) BOOL isValidNickname;
 
 @property (readonly, strong, nonatomic) VerificationCodeTextFieldViewModel *verificationCodeTextFieldViewModel;
 

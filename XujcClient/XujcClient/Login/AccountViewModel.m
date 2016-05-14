@@ -7,6 +7,7 @@
 //
 
 #import "AccountViewModel.h"
+#import "NSError+Valid.h"
 #import "NSString+Validator.h"
 
 @implementation AccountViewModel
@@ -24,13 +25,27 @@
                                   return @([NSString ty_validatePhone:text]);
                               }] distinctUntilChanged];
         
+        RAC(self, isValidPhone) = _validPhoneSignal;
+        
         _validPasswordSignal = [[RACObserve(self, password)
                                  map:^id(NSString *text) {
                                      return @([NSString ty_validatePassword:text]);
                                  }] distinctUntilChanged];
         
+        RAC(self, isValidPassword) = _validPasswordSignal;
+        
     }
     return self;
+}
+
+- (NSError *)validPhoneError
+{
+    return _isValidPhone ? nil : [NSError ty_validPhoneError];
+}
+
+- (NSError *)validPasswordError
+{
+    return _isValidPassword ? nil : [NSError ty_validPasswordError];
 }
 
 @end

@@ -14,7 +14,6 @@
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *password;
 
-@property (strong, nonatomic) RACSignal *changePasswordActiveSignal;
 @property (strong, nonatomic) RACCommand *executeChangePassword;
 
 @property (nonatomic, readonly, strong) VerificationCodeTextFieldViewModel *verificationCodeTextFieldViewModel;

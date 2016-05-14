@@ -15,17 +15,33 @@
 
 NSString * const kLoginRequestDomain = @"LoginRequestDomain";
 
+@interface LoginViewModel()
+
+@property (nonatomic, assign) BOOL isLoginActive;
+
+@end
+
 @implementation LoginViewModel
 
 - (instancetype)init
 {
     if (self = [super init]) {
-        _loginActiveSignal = [[self.validPhoneSignal combineLatestWith:self.validPasswordSignal]
-                              reduceEach:^id(NSNumber *phoneValid, NSNumber *passwordValid) {
-                                  return @([phoneValid boolValue] && [passwordValid boolValue]);
-                              }];
-        
-        _executeLogin = [[RACCommand alloc] initWithEnabled:_loginActiveSignal signalBlock:^RACSignal *(id input) {
+        RAC(self, isLoginActive) = [[self.validPhoneSignal combineLatestWith:self.validPasswordSignal]
+                                    reduceEach:^id(NSNumber *phoneValid, NSNumber *passwordValid) {
+                                        return @([phoneValid boolValue] && [passwordValid boolValue]);
+                                    }];
+        RACSignal *loginActiveSignal = [RACSignal combineLatest:@[RACObserve(self, account), RACObserve(self, password)] reduce:^id(NSString *phone, NSString *password){
+            return @(![NSString isEmpty:phone] && ![NSString isEmpty:password]);
+        }];
+        @weakify(self);
+        _executeLogin = [[RACCommand alloc] initWithEnabled:loginActiveSignal signalBlock:^RACSignal *(id input) {
+            @strongify(self);
+            if (!self.isValidPhone) {
+                return [RACSignal error:self.validPhoneError];
+            }
+            if (!self.isValidPassword) {
+                return [RACSignal error:self.validPasswordError];
+            }
             return [self executeLoginSignal];
         }];
     }

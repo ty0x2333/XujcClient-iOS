@@ -1,14 +1,14 @@
 //
-//  NSArray+TYLog.m
+//  NSDictionary+TYLog.m
 //  XujcClient
 //
-//  Created by 田奕焰 on 16/5/8.
+//  Created by 田奕焰 on 16/5/9.
 //  Copyright © 2016年 luckytianyiyan. All rights reserved.
 //
 
-#import "NSArray+TYLog.h"
+#import "NSDictionary+TYLog.h"
 
-@implementation NSArray (TYLog)
+@implementation NSDictionary (TYLog)
 
 - (NSString *)descriptionWithLocale:(nullable id)locale indent:(NSUInteger)level
 {
@@ -19,15 +19,15 @@
         [indentString appendString:@"\t"];
     }
     
-    [description appendString:@"(\n"];
-    
-    for (id obj in self) {
-        [description appendFormat:@"%@\t%@,\n",
+    [description appendString:@"{\n"];
+    [self enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [description appendFormat:@"%@\t%@ = %@,\n",
          indentString,
+         key,
          [obj respondsToSelector:@selector(descriptionWithLocale:indent:)] ? [obj descriptionWithLocale:locale indent:level + 1] : obj
          ];
-    }
-    [description appendFormat:@"%@)", indentString];
+    }];
+    [description appendFormat:@"%@}", indentString];
     
     return description;
 }

@@ -15,7 +15,8 @@
 // Local
 //static NSString* const kTYServiceHost = @"http://192.168.1.101:8080/";
 // Online
-static NSString* const kTYServiceHost = @"http://xujcservice.tianyiyan.com/";
+//static NSString* const kTYServiceHost = @"http://xujcservice.tianyiyan.com/";
+static NSString* const kTYServiceHost = @"http://120.26.122.139/";
 
 static NSString* const kTYServiceAPIVersion = @"v1/";
 
@@ -34,7 +35,7 @@ static NSString* const kTYServiceAPIVersion = @"v1/";
 
 + (NSString *)ty_shareURL
 {
-    return [NSString stringWithFormat:@"%@/share", [self ty_serviceBaseURL]];
+    return [NSString stringWithFormat:@"%@share", [self ty_serviceBaseURL]];
 }
 
 - (RACSignal *)requestBindingXujcAccountSignalWithXujcKey:(NSString *)xujcKey

@@ -7,8 +7,8 @@
 //
 
 #import "PersonalHeaderViewModel.h"
+#import "EditableAvatarImageViewModel.h"
 #import "UserModel.h"
-#import "OssService.h"
 
 @implementation PersonalHeaderViewModel
 
@@ -32,9 +32,9 @@
     return self;
 }
 
-- (RACSignal *)updateAvatarSignalWithImage:(UIImage *)image
+- (EditableAvatarImageViewModel *)editableAvatarImageViewModel
 {
-    return [OssService updateAvatarSignalWithImage:image];
+    return [[EditableAvatarImageViewModel alloc] init];
 }
 
 @end

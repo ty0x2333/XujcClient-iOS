@@ -14,6 +14,12 @@
 @property (copy, nonatomic) NSString *account;
 @property (copy, nonatomic) NSString *password;
 
+@property (nonatomic, assign, readonly) BOOL isValidPhone;
+@property (nonatomic, assign, readonly) BOOL isValidPassword;
+
+@property (nonatomic, strong, readonly) NSError *validPhoneError;
+@property (nonatomic, strong, readonly) NSError *validPasswordError;
+
 @property (strong, nonatomic) RACSignal *validEmailSignal;
 @property (strong, nonatomic) RACSignal *validPhoneSignal;
 @property (strong, nonatomic) RACSignal *validPasswordSignal;

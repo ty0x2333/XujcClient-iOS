@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class EditableAvatarImageViewModel;
 
 @interface PersonalHeaderViewModel : NSObject
 
@@ -14,6 +15,6 @@
 
 @property (copy, readonly, nonatomic) NSString *avatar;
 
-- (RACSignal *)updateAvatarSignalWithImage:(UIImage *)image;
+- (EditableAvatarImageViewModel *)editableAvatarImageViewModel;
 
 @end
