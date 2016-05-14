@@ -17,7 +17,11 @@ static NSString * const kUserDefaultsKeyShakingReportStatus = @"shaking_report";
 static NSString * const kUserDefaultsKeyXujcKey = @"xujc_key";
 static NSString * const kUserDefaultsKeyUser = @"user";
 
+#if DEBUG
 static NSString * const kInstabugToken = @"f0a9d84167a85899070415ed37f5d1b2";
+#else
+static NSString * const kInstabugToken = @"4e6f628480e204ffc69e15ff062ddf7a";
+#endif
 
 static NSString * const kUMengAppKey = @"56f14cc1e0f55a639e001151";
 

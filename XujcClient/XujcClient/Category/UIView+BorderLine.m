@@ -135,6 +135,7 @@ static char const kKeyBorderLineLayerKey = '\0';
     }
     
     [self ty_p_borderLayerInstance].path = path;
+    CFRelease(path);
 }
 
 
