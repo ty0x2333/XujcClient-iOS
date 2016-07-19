@@ -1,36 +1,39 @@
 platform :ios, '8.0'
-pod 'UIColor-HexString'
-pod 'SSKeychain'
-pod 'MBProgressHUD'
-pod 'LMDropdownView'
-pod 'DZNEmptyDataSet'
-pod 'MMPopupView'
-pod 'MJRefresh'
-pod 'TTTAttributedLabel'
 
-# Core Frameworks
-pod 'Masonry'
-pod "AFNetworking", :git => 'https://github.com/luckytianyiyan/AFNetworking.git', :branch => 'ty_no_unescaped_ctrl_char'
-pod 'SDWebImage'
+target 'XujcClient' do
+  pod 'UIColor-HexString'
+  pod 'SSKeychain'
+  pod 'MBProgressHUD'
+  pod 'LMDropdownView'
+  pod 'DZNEmptyDataSet'
+  pod 'MMPopupView'
+  pod 'MJRefresh'
+  pod 'TTTAttributedLabel'
 
-# Services
-pod 'Instabug'
-pod 'AliyunOSSiOS', '~> 2.2.0'
-pod 'Google/Analytics'
+  # Core Frameworks
+  pod 'Masonry'
+  pod "AFNetworking", :git => 'https://github.com/luckytianyiyan/AFNetworking.git', :branch => 'ty_no_unescaped_ctrl_char'
+  pod 'SDWebImage'
 
-target :XujcClientTests, :exclusive => true do
+  # Services
+  pod 'Instabug'
+  pod 'AliyunOSSiOS', '~> 2.2.0'
+  pod 'Google/Analytics'
+end
+
+target :XujcClientTests do
   pod 'Kiwi'
 end
 
-target :XujcClientTodayExtension, :exclusive => true do
+target :XujcClientTodayExtension do
   pod 'Masonry'
 end
 
-target :XujcClientCore, :exclusive => true do
+target :XujcClientCore do
   pod 'CupertinoYankee'
   pod 'ReactiveCocoa', '~> 2.5'
 end
 
-target :XujcEducationKit, :exclusive => true do
+target :XujcEducationKit do
   pod 'FMDB'
 end
